@@ -36,5 +36,6 @@ module.exports = {
                 aspects: ['invalidHref', 'preferButton']
             }
         ]
-    }
+    },
+    plugins: ['simple-import-sort']
 };
