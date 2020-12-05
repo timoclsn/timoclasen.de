@@ -1,0 +1,1527 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ease-o",
+				"ease-out"
+			],
+			[
+				"eas",
+				"ease-in-out"
+			],
+			[
+				"ea",
+				"ease-out"
+			],
+			[
+				"i",
+				"inline"
+			],
+			[
+				"a",
+				"anim	animation"
+			],
+			[
+				"ease-in-ou",
+				"ease-in-out"
+			],
+			[
+				"ease",
+				"ease-in-out"
+			],
+			[
+				"pre",
+				"preserve-3d"
+			],
+			[
+				"mar",
+				"margin-bottom"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"ma",
+				"margin-bottom"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"margi",
+				"margin-left"
+			],
+			[
+				"tr",
+				"translate"
+			],
+			[
+				"pa",
+				"padding-bottom"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"s",
+				"solid"
+			],
+			[
+				"bor",
+				"border-right"
+			],
+			[
+				"ta",
+				"target	Attr"
+			],
+			[
+				"fo",
+				"font-size"
+			],
+			[
+				"border",
+				"border-top"
+			],
+			[
+				"c",
+				"cursor"
+			],
+			[
+				"moodicon",
+				"moodicontop"
+			],
+			[
+				"moodhe",
+				"moodheadfadein"
+			],
+			[
+				"in",
+				"inline-block"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"texr",
+				"text-decoration"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"bo",
+				"border"
+			],
+			[
+				"r",
+				"rgba"
+			],
+			[
+				"rg",
+				"rgba()"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"bord",
+				"border-radius"
+			],
+			[
+				"paddi",
+				"padding-left"
+			],
+			[
+				"text-",
+				"text-decoration"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"to",
+				"toggleClass	.toggleClass()"
+			],
+			[
+				"le",
+				"letter-spacing"
+			],
+			[
+				"op",
+				"opacity"
+			],
+			[
+				"remo",
+				"remove"
+			],
+			[
+				"bi",
+				"bilddelete"
+			],
+			[
+				"liste",
+				"listenpunkt"
+			],
+			[
+				"drop",
+				"dropzone"
+			],
+			[
+				"o",
+				"overflow"
+			],
+			[
+				"remove",
+				"removeClass"
+			],
+			[
+				"value",
+				"valueBunteintönig"
+			],
+			[
+				"BORDE",
+				"border-radius"
+			],
+			[
+				"z",
+				"z-index"
+			],
+			[
+				"mark",
+				"mark-overlay-content"
+			],
+			[
+				"border-col",
+				"border-color"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"word",
+				"word"
+			],
+			[
+				"border-s",
+				"border-style"
+			],
+			[
+				"out",
+				"outline-color"
+			],
+			[
+				"n",
+				"nowrap"
+			],
+			[
+				"ov",
+				"overflow"
+			],
+			[
+				"fot",
+				"font-weight"
+			],
+			[
+				"h",
+				"height"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"fl",
+				"float"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"l",
+				"line-height"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"d",
+				"dashed"
+			],
+			[
+				"f",
+				"float"
+			],
+			[
+				"im",
+				"impressumdiv"
+			],
+			[
+				"p",
+				"p"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"mari",
+				"margin-bottom"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"border-c",
+				"border-color"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"bild",
+				"bildblock"
+			],
+			[
+				"cl",
+				"clear"
+			],
+			[
+				"backgr",
+				"background-position"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 3817,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "html/work.html",
+			"settings":
+			{
+				"buffer_size": 14062,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "html/about.html",
+			"settings":
+			{
+				"buffer_size": 6932,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "html/contact.html",
+			"settings":
+			{
+				"buffer_size": 5120,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "html/imprint.html",
+			"settings":
+			{
+				"buffer_size": 9547,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "html/work/moodapp.html",
+			"settings":
+			{
+				"buffer_size": 102863,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "html/work/plattentestsapp.html",
+			"settings":
+			{
+				"buffer_size": 9574,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "styles/style.css",
+			"settings":
+			{
+				"buffer_size": 41032,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "script/customjquery.js",
+			"settings":
+			{
+				"buffer_size": 843,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 400.0,
+		"selected_items":
+		[
+			[
+				"ss jq",
+				"Set Syntax: jQuery (JavaScript)"
+			],
+			[
+				"pac",
+				"Package Control: Enable Package"
+			],
+			[
+				"packa",
+				"Package Control: Disable Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Autoprefix CSS"
+			],
+			[
+				"a",
+				"Autoprefix CSS"
+			],
+			[
+				"aut",
+				"Autoprefix CSS"
+			],
+			[
+				"au",
+				"Autoprefix CSS"
+			],
+			[
+				"auto",
+				"Autoprefix CSS"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"ss sa",
+				"Set Syntax: Sass"
+			],
+			[
+				"list",
+				"Package Control: List Packages"
+			],
+			[
+				"ss jqu",
+				"Set Syntax: jQuery (JavaScript)"
+			],
+			[
+				"ss j",
+				"Set Syntax: jQuery (JavaScript)"
+			],
+			[
+				"ss ja",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"save",
+				"File: Save All"
+			],
+			[
+				"ssht",
+				"Set Syntax: HTML5"
+			],
+			[
+				"sft",
+				"SFTP: Browse Server…"
+			],
+			[
+				"ssja",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"ss ob",
+				"Set Syntax: Objective-C"
+			],
+			[
+				"sav",
+				"File: Save All"
+			],
+			[
+				"ss ac",
+				"Set Syntax: ActionScript 3"
+			],
+			[
+				"ftp",
+				"SFTP: Browse Server…"
+			],
+			[
+				"sftp",
+				"SFTP: Browse Server…"
+			],
+			[
+				"server",
+				"SFTP: Browse Server…"
+			],
+			[
+				"pack",
+				"Package Control: Disable Package"
+			],
+			[
+				"ssy pro",
+				"Set Syntax: Processing"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ty",
+				"Tidy HTML"
+			],
+			[
+				"sni",
+				"Snippet: input - button"
+			],
+			[
+				"peck",
+				"Package Control: List Packages"
+			],
+			[
+				"bra",
+				"Bracket Highlighter: Select Tag"
+			],
+			[
+				"brack",
+				"Bracket Highlighter: Match Brackets"
+			],
+			[
+				"bracke",
+				"Bracket Highlighter: Select Tag"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 583.0
+	},
+	"console":
+	{
+		"height": 125.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp"
+	],
+	"file_history":
+	[
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/script/.gitignore",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/moodapp/script/customjquery.js",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/styles/style.css",
+		"/Users/TimoG/Dropbox/1_Privat/Minimal Helmets/logo.svg",
+		"/Users/TimoG/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/script/data-img.min.js",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/portfolio.sublime-project",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/html/work/plattentestsapp.html",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/html/work/moodapp.html",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/hdm/moodapp/index.html",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/hdm/infographic/rwd.html",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/moodapp/index.html",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/google1d3b58a8b443ab67.html",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/hdm/moodapp/fonts/entypo.svg",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/hdm/moodapp/manifest.appcache",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/hdm/infographic/styles/jui/jquery-ui-1.10.3.custom.css",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/hdm/infographic/styles/style.css",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/hdm/infographic/script/jquery.js",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/hdm/infographic/script/jquery.flot.js",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/hdm/infographic/script/jquery.easing.min.js",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/hdm/infographic/script/jquery-ui.min.js",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/hdm/infographic/script/customjquery.js",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/hdm/infographic/script/curtain.js",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/hdm/infographic/fonts/entypo.woff",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/hdm/infographic/fonts/entypo.svg",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/fonts/entypo.woff",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/fonts/entypo.svg",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/fonts/entypo-social.woff",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/fonts/entypo-social.svg",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/moodapp/script/swipeout.js",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/moodapp/styles/style.css",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/script/customjquery.js",
+		"/Users/TimoG/Library/Application Support/Sublime Text 3/Packages/Autoprefixer/Autoprefixer.sublime-settings",
+		"/Users/TimoG/Library/Application Support/Sublime Text 3/Packages/User/Autoprefixer.sublime-settings",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/html/contact.html",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/html/imprint.html",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/html/work.html",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/html/about.html",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/index.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Websites/OCCA/index.html",
+		"/Users/TimoG/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/TimoG/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/TimoG/Desktop/test",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/html/impressum.html",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/html/moodtest.html",
+		"/Users/TimoG/Dropbox/1_Privat/Portfolio/1_ftp/script/jquery.min.js",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/01_ftp/script/jquery.min.js",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/01_ftp/cache.manifest",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/01_ftp/manifest.appcache",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/01_ftp/script/hammer.js",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/01_ftp/script/hammer.min.js",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/01_ftp/script/swipeout.js",
+		"/Users/TimoG/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/01_ftp/script/jquery.easing.min.js",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/01_ftp/styles/jui/jquery-ui-1.10.3.custom.css",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/01_ftp/styles/jquery-ui.css",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/01_ftp/styles/jquery-ui-1.10.3.custom.css",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/01_ftp/script/touchpunch.js",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/01_ftp/script/jquery.js",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/index.html",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/styles/style.css",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/script/customjquery.js",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/script/jquery.js",
+		"/Users/TimoG/Dropbox/1_Privat/HdM/Interfacegestaltung/jquery.js",
+		"/Users/TimoG/Documents/Programming/Webapps/index_leer.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/index.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/styles/style.css",
+		"/Users/TimoG/Sites/index.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/html/impressum.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/html/kleiderschrank.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/html/lovers.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/html/ui.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/html/ux.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/html/flugreiseapp.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/html/elearning.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/html/buchderzukunft.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/html/ild.html",
+		"/var/folders/rt/kn__29hj227fsgjzr64_brmw0000gp/T/sublime-sftp-browse-1366048828/informationlovers/webseiten/index.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/html/leer.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/script/fade.js",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/html/zettwerk.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/html/index.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/html/index.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/html/kleiderschrank.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/html/zettwerk.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/html/buchderzukunft.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/html/elearning.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/html/flugreiseapp.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/html/ux.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/html/ui.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/html/ild.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/html/impressum.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/css/style.css",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/style.css",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/index.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/leer.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/ild.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/kleiderschrank.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/elearning.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/flugreiseapp.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/ux.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/impressum.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/zettwerk.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/buchderzukunft.html",
+		"/var/folders/rt/kn__29hj227fsgjzr64_brmw0000gp/T/sublime-sftp-browse-1365361058/informationlovers/webseiten/index.html",
+		"/Users/TimoG/Downloads/minimal/css/style.css",
+		"/Users/TimoG/Downloads/minimal/index.html",
+		"/Users/TimoG/Library/Application Support/Sublime Text 2/Packages/User/sftp_servers/mars",
+		"/var/folders/rt/kn__29hj227fsgjzr64_brmw0000gp/T/sublime-sftp-browse-1365182738/informationlovers/webseiten/index.html",
+		"/var/folders/rt/kn__29hj227fsgjzr64_brmw0000gp/T/sublime-sftp-browse-1365182256/informationlovers/webseiten/style.css",
+		"/var/folders/rt/kn__29hj227fsgjzr64_brmw0000gp/T/sublime-sftp-browse-1365182078/informationlovers/webseiten/index.html",
+		"/Users/TimoG/Library/Application Support/Sublime Text 2/Packages/User/sftp_servers/informationlovers",
+		"/Users/TimoG/Dropbox/4_katha_shared/Website/website_code/ui.html",
+		"/Users/TimoG/Downloads/nathansmith-960-Grid-System-231ee0c/code/css/960_12_col.css",
+		"/Users/TimoG/Dropbox/4_katha_shared/website_code/elearning.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/website_code/index.html",
+		"/Users/TimoG/Dropbox/4_Katha_shared/website_code/informationlovers_website.sublime-project",
+		"/Users/TimoG/Desktop/sketch.pde",
+		"/Users/TimoG/Dropbox/4_katha_shared/website_code/style.css",
+		"/Users/TimoG/Dropbox/4_katha_shared/website_code/ux.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/website_code/buchderzukunft.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/website_code/flugreiseapp.html",
+		"/Users/TimoG/Dropbox/4_katha_shared/website_code/lightbox2-master/js/lightbox.js",
+		"/Users/TimoG/Dropbox/4_katha_shared/website_code/lightbox2-master/css/lightbox.css",
+		"/Users/TimoG/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/TimoG/Library/Application Support/Sublime Text 2/Packages/SideBarEnhancements/messages/11.13.2012.1305.0.txt",
+		"/Users/TimoG/Dropbox/4_katha_shared/website_code/ui.html",
+		"/Users/TimoG/Library/Application Support/Sublime Text 2/Packages/BracketHighlighter/BracketHighlighter.sublime-settings"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"100",
+			"../bilder/work/moodapp_",
+			"30px",
+			"     left: 10px;",
+			"17",
+			"44",
+			"100",
+			"translatez",
+			"table",
+			"scroll",
+			"ease-in",
+			"ease-in-out",
+			"our",
+			".4s",
+			"0.3s",
+			"-60px",
+			"-300px",
+			"-50%",
+			"all 0.3s",
+			"970",
+			"2s",
+			"100px",
+			"100",
+			"100p",
+			"40",
+			"ease-in-out",
+			"1.3",
+			"600px",
+			"ease-in-out",
+			"cubic-bezier(.42, 0, .58, 1)",
+			"400",
+			"leaddown",
+			"cubic-bezier(.42, 0, .58, 1)",
+			"cubic-bezier(.42, 0, .58, 1);\n  transition: 0.3s cubic-bezier(.42, 0, .58, 1)",
+			"0",
+			"webkit",
+			"resnavdownfive",
+			"resnavdownfour",
+			"resnavdownthree",
+			"resnavdowntwo",
+			"292929",
+			"a",
+			"50",
+			"contactklappeight",
+			"contactklappseven",
+			"contactklappsix",
+			"contactklappfive",
+			"contactklapptfour1",
+			"contactklappthree",
+			"contactklapptwo",
+			"contactklappone",
+			"webkit",
+			"0% {\n    -moz-transform-origin:  left;\n    -moz-backface-visibility: hidden;\n    -moz-transform: rotateY(-70deg);\n  }\n\n  60% {\n    -moz-transform: rotateY(20deg);\n  }\n\n  80% {\n    -moz-transform: rotateY(-20deg);\n  }\n\n  100% {\n    -moz-transform: rotateY(0deg);\n  }\n}",
+			"ease-out",
+			"200",
+			"ease-in-out",
+			"1.5s",
+			"1.8",
+			"1.2s",
+			"1.2",
+			"1.5",
+			"1.2",
+			"1.5",
+			"1.2",
+			"1s ",
+			"ease-out",
+			"perspe",
+			"1.2s",
+			"ease-out",
+			"30",
+			"0,0",
+			"1.2",
+			"cubic-bezier(.42, 0, .58, 1)",
+			"3s",
+			"0.5",
+			"1.8s ",
+			"contactklappeight",
+			"contactklappone",
+			"1s",
+			"contactklapptwo",
+			"1s",
+			"contactklapptwo",
+			"1s",
+			"contactklapptwo",
+			"1s",
+			"contactklapptwo",
+			"contactklappthree",
+			"1s",
+			"contactklapptwo",
+			"1s",
+			"contactklapptwo",
+			"0.8",
+			"contactklappone",
+			"webkit",
+			"3s",
+			"0.8",
+			"1s",
+			"0.5",
+			"cubic-bezier(.42, 0, .19, 1)",
+			"0",
+			"0%",
+			"0.6s",
+			"ease-in-out",
+			"origin: 0% 0%;",
+			"-webkit-transform: rotateY(100deg)",
+			"ease-out",
+			"cubic-bezier(.42, 0, .19, 1)",
+			"0.9",
+			"0.8",
+			"0.7",
+			"0.6s",
+			"0.5",
+			"0.4",
+			"0.3",
+			"0.2",
+			"0.4",
+			"contactklappthree",
+			"0.4s",
+			"contactklappthree",
+			"0.4",
+			"contactklappthree",
+			"0.4s",
+			"contactklappthree",
+			"0.4",
+			"contactklappthree",
+			"0.3s",
+			"contactklapp2",
+			"contactklapp1"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"imprint",
+			"legal"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 4,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3817,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6,
+								6
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close"
+							],
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "html/work.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 14062,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5181,
+								5181
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "html/about.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6932,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4144,
+								4144
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "html/contact.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5120,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1119,
+								1119
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "html/imprint.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9547,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3050,
+								3050
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 129.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "html/work/moodapp.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 102863,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7354,
+								7374
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "html/work/plattentestsapp.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9574,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6,
+								6
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 7,
+					"file": "styles/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 41032,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								43,
+								43
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "script/customjquery.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 843,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								376,
+								376
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/jQuery/Syntaxes/jQueryJavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.662863498264,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 100.0
+	},
+	"project": "portfolio.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"css",
+				"styles/style.css"
+			],
+			[
+				"pl",
+				"html/work/plattentestsapp.html"
+			],
+			[
+				"html",
+				"html/work/moodapp.html"
+			],
+			[
+				"cus",
+				"script/customjquery.js"
+			],
+			[
+				"work",
+				"html/work.html"
+			],
+			[
+				"con",
+				"html/contact.html"
+			],
+			[
+				"a",
+				"html/about.html"
+			],
+			[
+				"cont",
+				"html/contact.html"
+			],
+			[
+				"im",
+				"html/imprint.html"
+			],
+			[
+				"inde",
+				"index.html"
+			],
+			[
+				"moo",
+				"html/work/moodapp.html"
+			],
+			[
+				"ind",
+				"index.html"
+			],
+			[
+				"cust",
+				"moodapp/script/customjquery.js"
+			],
+			[
+				"sty",
+				"moodapp/styles/style.css"
+			],
+			[
+				"cu",
+				"moodapp/script/customjquery.js"
+			],
+			[
+				"st",
+				"moodapp/styles/style.css"
+			],
+			[
+				"s",
+				"moodapp/styles/style.css"
+			],
+			[
+				"style",
+				"moodapp/styles/style.css"
+			],
+			[
+				"mood",
+				"html/moodtest.html"
+			],
+			[
+				"j",
+				"script/jquery.min.js"
+			],
+			[
+				"mai",
+				"manifest.appcache"
+			],
+			[
+				"hammer",
+				"script/hammer.js"
+			],
+			[
+				"sw",
+				"script/swipeout.js"
+			],
+			[
+				"ha",
+				"script/hammer.min.js"
+			],
+			[
+				"hamm",
+				"script/hammer.js"
+			],
+			[
+				"ui",
+				"styles/jui/jquery-ui-1.10.3.custom.css"
+			],
+			[
+				"m",
+				"manifest.appcache"
+			],
+			[
+				"ap",
+				"manifest.appcache"
+			],
+			[
+				"in",
+				"index.html"
+			],
+			[
+				"",
+				"index.html"
+			],
+			[
+				"i",
+				"index.html"
+			],
+			[
+				"imp",
+				"html/impressum.html"
+			],
+			[
+				"kl",
+				"html/kleiderschrank.html"
+			],
+			[
+				"kleider",
+				"html/kleiderschrank.html"
+			],
+			[
+				"lover",
+				"html/lovers.html"
+			],
+			[
+				"ux",
+				"html/ux.html"
+			],
+			[
+				"flug",
+				"html/flugreiseapp.html"
+			],
+			[
+				"el",
+				"html/elearning.html"
+			],
+			[
+				"bu",
+				"html/buchderzukunft.html"
+			],
+			[
+				"klei",
+				"html/kleiderschrank.html"
+			],
+			[
+				"il",
+				"html/ild.html"
+			],
+			[
+				"lee",
+				"html/leer.html"
+			],
+			[
+				"flu",
+				"html/flugreiseapp.html"
+			],
+			[
+				"buch",
+				"html/buchderzukunft.html"
+			],
+			[
+				"lo",
+				"html/lovers.html"
+			],
+			[
+				"impress",
+				"html/impressum.html"
+			],
+			[
+				"fl",
+				"html/flugreiseapp.html"
+			],
+			[
+				"ild",
+				"html/ild.html"
+			],
+			[
+				"f",
+				"html/flugreiseapp.html"
+			],
+			[
+				"zett",
+				"html/zettwerk.html"
+			],
+			[
+				"impre",
+				"html/impressum.html"
+			],
+			[
+				"buc",
+				"html/buchderzukunft.html"
+			],
+			[
+				"ele",
+				"elearning.html"
+			],
+			[
+				"ze",
+				"zettwerk.html"
+			],
+			[
+				"light",
+				"lightbox2-master/js/lightbox.js"
+			],
+			[
+				"is",
+				"flugreiseapp.html"
+			],
+			[
+				"u",
+				"ux.html"
+			],
+			[
+				"kleide",
+				"kleiderschrank.html"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"~/Dropbox/1_Privat/HdM/BA/bulb1.sublime-project"
+			],
+			[
+				"informatio",
+				"/Users/TimoG/Dropbox/4_Katha_shared/Website/website_code/sublime/informationlovers_website.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 173.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+		"max_columns": 2
+	}
+}
