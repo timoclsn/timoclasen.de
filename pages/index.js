@@ -1,5 +1,7 @@
 export default function Home() {
   return (
-    <html>Test</html>
+    <div className={'text-5xl text-red-900'}>
+      Test
+    </div>
   )
 }
