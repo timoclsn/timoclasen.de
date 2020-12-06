@@ -1,8 +1,15 @@
+import Image from 'next/image';
+
 function Post({ alt, date, image, title, url }) {
     return (
         <div className="container">
             <a href={url}>
-                <img alt={alt} src={image} />
+                <Image
+                    alt={alt}
+                    src={`https:${image.fields.file.url}`}
+                    width={500}
+                    height={500}
+                />
             </a>
             <div className="text">
                 <h2>{title}</h2>
