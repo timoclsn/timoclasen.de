@@ -1,29 +1,8 @@
 import Layout from '../components/layout';
-import { useEffect, useState } from 'react';
 import Post from '../components/post';
+import { fetchEntries } from '../lib/contentful.js';
 
-const client = require('contentful').createClient({
-    space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-    accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN
-});
-
-export default function Home() {
-    async function fetchEntries() {
-        const entries = await client.getEntries();
-        if (entries.items) return entries.items;
-        console.log(`Error getting Entries for ${contentType.name}.`);
-    }
-
-    const [posts, setPosts] = useState([]);
-
-    useEffect(() => {
-        async function getPosts() {
-            const allPosts = await fetchEntries();
-            setPosts([...allPosts]);
-        }
-        getPosts();
-    }, []);
-
+export default function Home({ posts }) {
     return (
         <Layout>
             <div className={'text-5xl text-red-900'}>Test</div>
@@ -41,4 +20,13 @@ export default function Home() {
                 : null}
         </Layout>
     );
+}
+
+export async function getStaticProps() {
+    const posts = await fetchEntries();
+    return {
+        props: {
+            posts
+        }
+    };
 }
