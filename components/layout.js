@@ -4,7 +4,7 @@ export default function Layout({ children }) {
     return (
         <div>
             <Head>
-                <title>Test</title>
+                <title>Timo Clasen</title>
             </Head>
             <div>{children}</div>
         </div>
