@@ -4,7 +4,7 @@ export default function Layout({ children }) {
     return (
         <div>
             <Head>
-                <title>Timo Clasen Website</title>
+                <title>Timo Clasen Website Test</title>
             </Head>
             <div>{children}</div>
         </div>
