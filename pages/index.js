@@ -7,8 +7,10 @@ import { fetchEntries } from '../lib/api';
 export default function Home({ homepage }) {
     const data = homepage[0].fields;
     return (
-        <Layout>
-            <Profileimage url={data.profileImage.fields.file.url} />
+        <Layout data={data}>
+            <div className={'flex justify-center'}>
+                <Profileimage url={data.profileImage.fields.file.url} />
+            </div>
             <Teaser text={data.title} />
             <Textblock text={data.about} />
         </Layout>

@@ -1,3 +1,8 @@
 export default function Navigation() {
-    return <div>Navigation</div>;
+    return (
+        <div>
+            <div className={'text-lg font-bold'}>Timo Clasen</div>
+            <div>Untertitel</div>
+        </div>
+    );
 }

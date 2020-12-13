@@ -2,14 +2,14 @@ import Head from 'next/head';
 import Navigation from '../components/navigation';
 import Footer from '../components/footer';
 
-export default function Layout({ children }) {
+export default function Layout({ children, data }) {
     return (
         <>
             <Head>
-                <title>Timo Clasen Website</title>
+                <title>{data.title}</title>
             </Head>
             <Navigation />
-            <div>{children}</div>
+            <div className={'max-w-screen-sm mx-auto'}>{children}</div>
             <Footer />
         </>
     );
