@@ -1,3 +1,3 @@
 export default function Teaser({ text }) {
-    return <div>{text}</div>;
+    return <div dangerouslySetInnerHTML={{ __html: text }}></div>;
 }

@@ -6,9 +6,11 @@ export default function Layout({ children, data }) {
     return (
         <>
             <Head>
-                <title>{data.title}</title>
+                <title>
+                    {data.name} | {data.title}
+                </title>
             </Head>
-            <Navigation />
+            <Navigation name={data.name} title={data.title} />
             <div className={'max-w-screen-sm mx-auto'}>{children}</div>
             <Footer />
         </>
