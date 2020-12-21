@@ -3,7 +3,7 @@ import Profileimage from '../components/profileimage';
 import Teaser from '../components/teaser';
 import Textblock from '../components/textblock';
 import { getPersonalInfo } from '../lib/api';
-import markdownToHtml from '../lib/markdownToHTML';
+import markdownToHTML from '../lib/markdownToHTML';
 
 export default function Home({ personalInfo }) {
     return (
