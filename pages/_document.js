@@ -9,7 +9,7 @@ class MyDocument extends Document {
                 }
                 lang="de">
                 <Head />
-                <body>
+                <body className={'p-6'}>
                     <Main />
                     <NextScript />
                 </body>

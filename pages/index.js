@@ -16,9 +16,10 @@ export default function Home({ page, content }) {
             previewImage={page.previewImage}
             keywords={page.keywords}>
             <Teaser text={content.introduction} />
-            <div className={'flex justify-center'}>
-                <Profileimage url={content.image.fields.file.url} />
-            </div>
+            <Profileimage
+                url={content.image.fields.file.url}
+                alt={content.image.fields.description}
+            />
             <Textblock text={content.about} />
             <Textblock text={content.contact} />
         </Layout>

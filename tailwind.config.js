@@ -30,7 +30,7 @@ module.exports = {
                             color: theme('colors.highlight.DEFAULT'),
                             textDecoration: 'underline',
                             '&:hover': {
-                                color: theme('colors.highlight.DEFAULT')
+                                color: theme('colors.highlight.dark')
                             }
                         },
                         h1: {
@@ -60,7 +60,7 @@ module.exports = {
                             color: theme('colors.highlight.dark'),
                             textDecoration: 'underline',
                             '&:hover': {
-                                color: theme('colors.highlight.dark')
+                                color: theme('colors.highlight.DEFAULT')
                             }
                         },
                         h1: {

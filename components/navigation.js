@@ -2,13 +2,18 @@ import Link from 'next/link';
 
 export default function Navigation({ name, profession }) {
     return (
-        <div>
+        <header className={'flex justify-start mb-16'}>
             <Link href="/">
-                <a>
-                    <div className={'text-lg font-bold'}>{name}</div>
-                    <div>{profession}</div>
+                <a
+                    className={
+                        'hover:text-highlight dark:hover:text-highlight-dark'
+                    }>
+                    <div className={'text-xl font-bold'}>
+                        <h1>{name}</h1>
+                    </div>
+                    <div className={'text-sm'}>{profession}</div>
                 </a>
             </Link>
-        </div>
+        </header>
     );
 }

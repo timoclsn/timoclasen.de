@@ -50,7 +50,9 @@ export default function Layout({
                 />
             </Head>
             <Navigation name={name} profession={profession} />
-            <div className={'max-w-screen-sm mx-auto'}>{children}</div>
+            <main className={'flex flex-col items-center space-y-16'}>
+                {children}
+            </main>
             <Footer />
         </>
     );

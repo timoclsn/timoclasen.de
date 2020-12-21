@@ -1,7 +1,7 @@
 export default function Textblock({ text }) {
     return (
-        <div
-            className={'prose dark:prose-dark'}
-            dangerouslySetInnerHTML={{ __html: text }}></div>
+        <article
+            className={'prose dark:prose-dark prose-sm'}
+            dangerouslySetInnerHTML={{ __html: text }}></article>
     );
 }
