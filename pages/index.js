@@ -11,7 +11,7 @@ export default function Home({ personalInfo }) {
             name={personalInfo.name}
             title={personalInfo.title}
             description={personalInfo.introductionStriped}
-            twitterHandle={personalInfo.twitter}
+            twitterHandle={personalInfo.username}
             previewImage={personalInfo.previewImage.fields.file.url}
             keywords={personalInfo.keywords}>
             <Teaser text={personalInfo.introduction} />
