@@ -1,3 +1,7 @@
 export default function Textblock({ text }) {
-    return <div dangerouslySetInnerHTML={{ __html: text }}></div>;
+    return (
+        <div
+            className={'prose dark:prose-dark'}
+            dangerouslySetInnerHTML={{ __html: text }}></div>
+    );
 }

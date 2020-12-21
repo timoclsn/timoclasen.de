@@ -5,7 +5,7 @@ class MyDocument extends Document {
         return (
             <Html
                 className={
-                    'font-normal bg-white dark:bg-black text-black dark:text-white'
+                    'font-normal bg-primary dark:bg-primary-dark text-secondary dark:text-secondary-dark'
                 }
                 lang="de">
                 <Head />
