@@ -3,11 +3,17 @@ import Profileimage from '../components/profileimage';
 import Teaser from '../components/teaser';
 import Textblock from '../components/textblock';
 import { getPersonalInfo } from '../lib/api';
-import markdownToHTML from '../lib/markdownToHTML';
+import { markdownToHTML, stripMarkdown } from '../lib/markdown';
 
 export default function Home({ personalInfo }) {
     return (
-        <Layout data={personalInfo}>
+        <Layout
+            name={personalInfo.name}
+            title={personalInfo.title}
+            description={personalInfo.introductionStriped}
+            twitterHandle={personalInfo.twitter}
+            previewImage={personalInfo.previewImage.fields.file.url}
+            keywords={personalInfo.keywords}>
             <Teaser text={personalInfo.introduction} />
             <div className={'flex justify-center'}>
                 <Profileimage url={personalInfo.image.fields.file.url} />
@@ -22,6 +28,7 @@ export async function getStaticProps() {
 
     // Convert markdown fields to html
     const introduction = await markdownToHTML(personalInfo.introduction);
+    const introductionStriped = await stripMarkdown(personalInfo.introduction);
     const description = await markdownToHTML(personalInfo.description);
 
     return {
@@ -29,6 +36,7 @@ export async function getStaticProps() {
             personalInfo: {
                 ...personalInfo,
                 introduction,
+                introductionStriped,
                 description
             }
         }
