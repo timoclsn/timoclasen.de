@@ -32,6 +32,24 @@ module.exports = {
                             '&:hover': {
                                 color: theme('colors.highlight.DEFAULT')
                             }
+                        },
+                        h1: {
+                            color: theme('colors.secondary.DEFAULT')
+                        },
+                        h2: {
+                            color: theme('colors.secondary.DEFAULT')
+                        },
+                        h3: {
+                            color: theme('colors.secondary.DEFAULT')
+                        },
+                        h4: {
+                            color: theme('colors.secondary.DEFAULT')
+                        },
+                        h5: {
+                            color: theme('colors.secondary.DEFAULT')
+                        },
+                        strong: {
+                            color: theme('colors.secondary.DEFAULT')
                         }
                     }
                 },
@@ -44,6 +62,24 @@ module.exports = {
                             '&:hover': {
                                 color: theme('colors.highlight.dark')
                             }
+                        },
+                        h1: {
+                            color: theme('colors.secondary.dark')
+                        },
+                        h2: {
+                            color: theme('colors.secondary.dark')
+                        },
+                        h3: {
+                            color: theme('colors.secondary.dark')
+                        },
+                        h4: {
+                            color: theme('colors.secondary.dark')
+                        },
+                        h5: {
+                            color: theme('colors.secondary.dark')
+                        },
+                        strong: {
+                            color: theme('colors.secondary.dark')
                         }
                     }
                 }
