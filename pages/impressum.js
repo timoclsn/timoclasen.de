@@ -1,6 +1,4 @@
 import Layout from '../components/layout';
-import Profileimage from '../components/profileimage';
-import Teaser from '../components/teaser';
 import Textblock from '../components/textblock';
 import { getEntryById } from '../lib/api';
 import { markdownToHTML } from '../lib/markdown';
@@ -15,19 +13,13 @@ export default function Home({ page, content }) {
             twitterHandle={page.username}
             previewImage={page.previewImage}
             keywords={page.keywords}>
-            <Teaser text={content.introduction} />
-            <Profileimage
-                url={content.image.fields.file.url}
-                alt={content.image.fields.description}
-            />
-            <Textblock text={content.about} />
-            <Textblock text={content.contact} />
+            <Textblock text={content.legal} />
         </Layout>
     );
 }
 
 export async function getStaticProps() {
-    const entry = await getEntryById('3YasLSg8HDTFzoYt16xoPW');
+    const entry = await getEntryById('3T1VKasU8N5Ew7OidhQkfB');
 
     return {
         props: {
@@ -41,12 +33,7 @@ export async function getStaticProps() {
                 username: entry.about.fields.username
             },
             content: {
-                introduction: await markdownToHTML(
-                    entry.about.fields.introduction
-                ),
-                image: entry.about.fields.image,
-                about: await markdownToHTML(entry.about.fields.description),
-                contact: await markdownToHTML(entry.about.fields.contact)
+                legal: await markdownToHTML(entry.content.fields.content)
             }
         }
     };

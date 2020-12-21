@@ -10,12 +10,16 @@
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.3.1",
     "autoprefixer": "^10.1.0",
     "contentful": "^8.1.4",
     "next": "10.0.3",
     "postcss": "^8.2.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
+    "remark": "^13.0.0",
+    "remark-html": "^13.0.1",
+    "strip-markdown": "^4.0.0",
     "tailwindcss": "^2.0.2"
   },
   "devDependencies": {
