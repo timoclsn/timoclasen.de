@@ -1,43 +1,39 @@
 import Layout from '../components/layout';
 import Textblock from '../components/textblock';
-import { getPersonalInfo, getLegal } from '../lib/api';
-import { markdownToHTML, stripMarkdown } from '../lib/markdown';
+import { getEntryById } from '../lib/api';
+import { markdownToHTML } from '../lib/markdown';
 
-export default function Home({ personalInfo, legal }) {
+export default function Home({ page, content }) {
     return (
         <Layout
-            name={personalInfo.name}
-            title={personalInfo.title}
-            description={personalInfo.introductionStriped}
-            twitterHandle={personalInfo.username}
-            previewImage={personalInfo.previewImage.fields.file.url}
-            keywords={personalInfo.keywords}>
-            <Textblock text={legal.content} />
+            name={page.name}
+            profession={page.profession}
+            title={page.title}
+            description={page.description}
+            twitterHandle={page.username}
+            previewImage={page.previewImage}
+            keywords={page.keywords}>
+            <Textblock text={content.legal} />
         </Layout>
     );
 }
 
 export async function getStaticProps() {
-    const personalInfo = await getPersonalInfo();
-    const legal = await getLegal();
-
-    // Convert markdown fields to html
-    const introduction = await markdownToHTML(personalInfo.introduction);
-    const introductionStriped = await stripMarkdown(personalInfo.introduction);
-    const description = await markdownToHTML(personalInfo.description);
-    const content = await markdownToHTML(legal.content);
+    const entry = await getEntryById('3T1VKasU8N5Ew7OidhQkfB');
 
     return {
         props: {
-            personalInfo: {
-                ...personalInfo,
-                introduction,
-                introductionStriped,
-                description
+            page: {
+                title: entry.title,
+                keywords: entry.keywords,
+                description: entry.description,
+                previewImage: entry.previewImage.fields.file.url,
+                name: entry.about.fields.name,
+                profession: entry.about.fields.profession,
+                username: entry.about.fields.username
             },
-            legal: {
-                ...legal,
-                content
+            content: {
+                legal: await markdownToHTML(entry.content.fields.content)
             }
         }
     };

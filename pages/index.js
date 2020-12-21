@@ -2,42 +2,50 @@ import Layout from '../components/layout';
 import Profileimage from '../components/profileimage';
 import Teaser from '../components/teaser';
 import Textblock from '../components/textblock';
-import { getPersonalInfo } from '../lib/api';
-import { markdownToHTML, stripMarkdown } from '../lib/markdown';
+import { getEntryById } from '../lib/api';
+import { markdownToHTML } from '../lib/markdown';
 
-export default function Home({ personalInfo }) {
+export default function Home({ page, content }) {
     return (
         <Layout
-            name={personalInfo.name}
-            title={personalInfo.title}
-            description={personalInfo.introductionStriped}
-            twitterHandle={personalInfo.username}
-            previewImage={personalInfo.previewImage.fields.file.url}
-            keywords={personalInfo.keywords}>
-            <Teaser text={personalInfo.introduction} />
+            name={page.name}
+            profession={page.profession}
+            title={page.title}
+            description={page.description}
+            twitterHandle={page.username}
+            previewImage={page.previewImage}
+            keywords={page.keywords}>
+            <Teaser text={content.introduction} />
             <div className={'flex justify-center'}>
-                <Profileimage url={personalInfo.image.fields.file.url} />
+                <Profileimage url={content.image.fields.file.url} />
             </div>
-            <Textblock text={personalInfo.description} />
+            <Textblock text={content.about} />
+            <Textblock text={content.contact} />
         </Layout>
     );
 }
 
 export async function getStaticProps() {
-    const personalInfo = await getPersonalInfo();
-
-    // Convert markdown fields to html
-    const introduction = await markdownToHTML(personalInfo.introduction);
-    const introductionStriped = await stripMarkdown(personalInfo.introduction);
-    const description = await markdownToHTML(personalInfo.description);
+    const entry = await getEntryById('3YasLSg8HDTFzoYt16xoPW');
 
     return {
         props: {
-            personalInfo: {
-                ...personalInfo,
-                introduction,
-                introductionStriped,
-                description
+            page: {
+                title: entry.title,
+                keywords: entry.keywords,
+                description: entry.description,
+                previewImage: entry.previewImage.fields.file.url,
+                name: entry.about.fields.name,
+                profession: entry.about.fields.profession,
+                username: entry.about.fields.username
+            },
+            content: {
+                introduction: await markdownToHTML(
+                    entry.about.fields.introduction
+                ),
+                image: entry.about.fields.image,
+                about: await markdownToHTML(entry.about.fields.description),
+                contact: await markdownToHTML(entry.about.fields.contact)
             }
         }
     };
