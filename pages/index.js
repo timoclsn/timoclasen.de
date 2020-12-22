@@ -22,6 +22,7 @@ export default function Home({ page, content }) {
             />
             <Textblock text={content.about} />
             <Textblock text={content.contact} />
+            <Textblock text={content.tools} />
         </Layout>
     );
 }
@@ -46,7 +47,8 @@ export async function getStaticProps() {
                 ),
                 image: entry.about.fields.image,
                 about: await markdownToHTML(entry.about.fields.description),
-                contact: await markdownToHTML(entry.about.fields.contact)
+                contact: await markdownToHTML(entry.about.fields.contact),
+                tools: await markdownToHTML(entry.about.fields.tools)
             }
         }
     };
