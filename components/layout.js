@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import GoogleFonts from 'next-google-fonts';
 import Navigation from '../components/navigation';
 import Footer from '../components/footer';
 
@@ -16,7 +15,6 @@ export default function Layout({
     const pageTitle = title + ' | ' + name;
     return (
         <>
-            <GoogleFonts href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
             <Head>
                 <title>{pageTitle}</title>
 
@@ -50,6 +48,10 @@ export default function Layout({
                     content={description}
                     key="ogdesc"
                 />
+
+                <link rel="preconnect" href="https://fonts.gstatic.com"> 
+                <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=optional" rel="stylesheet">
+
             </Head>
             <Navigation name={name} profession={profession} />
             <main className={'flex flex-col items-center space-y-16'}>
