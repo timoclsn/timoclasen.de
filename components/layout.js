@@ -51,7 +51,7 @@ export default function Layout({
 
                 <link
                     rel="preload"
-                    href="/Inter-Regular.woff2"
+                    href="/fonts/Inter-Regular.woff2"
                     as="font"
                     crossOrigin=""
                 />
