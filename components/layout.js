@@ -49,9 +49,12 @@ export default function Layout({
                     key="ogdesc"
                 />
 
-                <link rel="preconnect" href="https://fonts.gstatic.com"> 
-                <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=optional" rel="stylesheet">
-
+                <link rel="preconnect" href="https://fonts.gstatic.com" />
+                <link
+                    rel="preload"
+                    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=optional"
+                    rel="stylesheet"
+                />
             </Head>
             <Navigation name={name} profession={profession} />
             <main className={'flex flex-col items-center space-y-16'}>
