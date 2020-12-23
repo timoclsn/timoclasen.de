@@ -49,11 +49,17 @@ export default function Layout({
                     key="ogdesc"
                 />
 
-                <link rel="preconnect" href="https://fonts.gstatic.com" />
                 <link
                     rel="preload"
-                    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
-                    rel="stylesheet"
+                    href="/Inter-Regular.woff2"
+                    as="font"
+                    crossOrigin=""
+                />
+                <link
+                    rel="preload"
+                    href="/fonts/Inter-Bold.woff2"
+                    as="font"
+                    crossOrigin=""
                 />
             </Head>
             <Navigation name={name} profession={profession} />
