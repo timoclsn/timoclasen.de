@@ -12,8 +12,8 @@
   "dependencies": {
     "@tailwindcss/typography": "^0.3.1",
     "autoprefixer": "^10.1.0",
-    "contentful": "^8.1.4",
-    "next": "10.0.3",
+    "contentful": "^8.1.5",
+    "next": "^10.0.4",
     "postcss": "^8.2.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
