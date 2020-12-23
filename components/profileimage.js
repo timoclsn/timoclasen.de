@@ -11,6 +11,7 @@ export default function Profileimage({ url, alt }) {
                 width={400}
                 height={500}
                 alt={alt}
+                quality={90}
                 priority
             />
         </div>
