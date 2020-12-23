@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import GoogleFonts from 'next-google-fonts';
 import Navigation from '../components/navigation';
 import Footer from '../components/footer';
 
@@ -15,6 +16,7 @@ export default function Layout({
     const pageTitle = title + ' | ' + name;
     return (
         <>
+            <GoogleFonts href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
             <Head>
                 <title>{pageTitle}</title>
 
