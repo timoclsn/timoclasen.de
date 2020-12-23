@@ -16,10 +16,6 @@ export default function Home({ page, content }) {
             previewImage={page.previewImage}
             keywords={page.keywords}>
             <Teaser text={content.introduction} />
-            <Profileimage
-                url={content.image.fields.file.url}
-                alt={content.image.fields.description}
-            />
             <Textblock text={content.about} />
             <Textblock text={content.contact} />
             <Textblock text={content.tools} />
