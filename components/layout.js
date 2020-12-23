@@ -48,11 +48,6 @@ export default function Layout({
                     content={description}
                     key="ogdesc"
                 />
-
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
-                    rel="stylesheet"
-                />
             </Head>
             <Navigation name={name} profession={profession} />
             <main className={'flex flex-col items-center space-y-16'}>
