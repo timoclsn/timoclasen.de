@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import Navigation from '../components/navigation';
-import Footer from '../components/footer';
+import Navigation from './Navigation';
+import Footer from './Footer';
 
 export default function Layout({
     children,
@@ -12,7 +12,7 @@ export default function Layout({
     name,
     profession
 }) {
-    const pageTitle = title + ' | ' + name;
+    const pageTitle = title.includes(name) ? title : title + ' | ' + name;
     return (
         <>
             <Head>

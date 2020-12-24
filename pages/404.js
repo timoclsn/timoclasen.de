@@ -1,6 +1,4 @@
 import Layout from '../components/Layout';
-import ProfileImage from '../components/ProfileImage';
-import Teaser from '../components/Teaser';
 import TextBlock from '../components/TextBlock';
 import { getEntryById } from '../lib/api';
 import { markdownToHTML } from '../lib/markdown';
@@ -15,20 +13,13 @@ export default function Home({ page, content }) {
             twitterHandle={page.username}
             previewImage={page.previewImage}
             keywords={page.keywords}>
-            <Teaser text={content.introduction} />
-            <ProfileImage
-                url={content.image.fields.file.url}
-                alt={content.image.fields.description}
-            />
-            <TextBlock text={content.about} />
-            <TextBlock text={content.contact} />
-            <TextBlock text={content.tools} />
+            <TextBlock text={content.error} />
         </Layout>
     );
 }
 
 export async function getStaticProps() {
-    const entry = await getEntryById('3YasLSg8HDTFzoYt16xoPW');
+    const entry = await getEntryById('w2qRPPvpxtbTFMDQhFBWn');
 
     return {
         props: {
@@ -42,13 +33,7 @@ export async function getStaticProps() {
                 username: entry.about.fields.username
             },
             content: {
-                introduction: await markdownToHTML(
-                    entry.about.fields.introduction
-                ),
-                image: entry.about.fields.image,
-                about: await markdownToHTML(entry.about.fields.description),
-                contact: await markdownToHTML(entry.about.fields.contact),
-                tools: await markdownToHTML(entry.about.fields.tools)
+                error: await markdownToHTML(entry.content.fields.content)
             }
         }
     };

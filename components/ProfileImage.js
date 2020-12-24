@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function Profileimage({ url, alt }) {
+export default function ProfileImage({ url, alt }) {
     return (
         <div
             className={
