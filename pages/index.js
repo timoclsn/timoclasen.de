@@ -1,7 +1,7 @@
-import Layout from '../components/layout';
-import Profileimage from '../components/profileimage';
-import Teaser from '../components/teaser';
-import Textblock from '../components/textblock';
+import Layout from '../components/Layout';
+import ProfileImage from '../components/ProfileImage';
+import Teaser from '../components/Teaser';
+import TextBlock from '../components/TextBlock';
 import { getEntryById } from '../lib/api';
 import { markdownToHTML } from '../lib/markdown';
 
@@ -16,13 +16,13 @@ export default function Home({ page, content }) {
             previewImage={page.previewImage}
             keywords={page.keywords}>
             <Teaser text={content.introduction} />
-            <Profileimage
+            <ProfileImage
                 url={content.image.fields.file.url}
                 alt={content.image.fields.description}
             />
-            <Textblock text={content.about} />
-            <Textblock text={content.contact} />
-            <Textblock text={content.tools} />
+            <TextBlock text={content.about} />
+            <TextBlock text={content.contact} />
+            <TextBlock text={content.tools} />
         </Layout>
     );
 }

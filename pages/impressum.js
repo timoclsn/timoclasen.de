@@ -1,5 +1,5 @@
-import Layout from '../components/layout';
-import Textblock from '../components/textblock';
+import Layout from '../components/Layout';
+import TextBlock from '../components/TextBlock';
 import { getEntryById } from '../lib/api';
 import { markdownToHTML } from '../lib/markdown';
 
@@ -13,7 +13,7 @@ export default function Home({ page, content }) {
             twitterHandle={page.username}
             previewImage={page.previewImage}
             keywords={page.keywords}>
-            <Textblock text={content.legal} />
+            <TextBlock text={content.legal} />
         </Layout>
     );
 }
