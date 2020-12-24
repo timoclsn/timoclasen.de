@@ -12,7 +12,7 @@ export default function Layout({
     name,
     profession
 }) {
-    const pageTitle = title + ' | ' + name;
+    const pageTitle = title.includes(name) ? title : title + ' | ' + name;
     return (
         <>
             <Head>
