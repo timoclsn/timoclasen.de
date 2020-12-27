@@ -2,20 +2,14 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
     purge: ['./pages/**/*.js', './components/**/*.js'],
-    darkMode: 'media', // or 'media' or 'class'
+    darkMode: 'media',
     theme: {
         colors: {
-            primary: {
-                DEFAULT: '#ffffff',
-                dark: '#000000'
-            },
-            secondary: {
-                DEFAULT: '#000000',
-                dark: '#ffffff'
-            },
+            light: '#FFFFFF',
+            dark: '#000000',
             highlight: {
-                DEFAULT: '#831843',
-                dark: '#EC4899'
+                DEFAULT: '#3E51F7',
+                dark: '#7C64FC'
             }
         },
         extend: {
@@ -25,61 +19,61 @@ module.exports = {
             typography: (theme) => ({
                 DEFAULT: {
                     css: {
-                        color: theme('colors.secondary.DEFAULT'),
+                        color: theme('colors.dark'),
                         a: {
                             color: theme('colors.highlight.DEFAULT'),
-                            textDecoration: 'underline',
-                            '&:hover': {
-                                color: theme('colors.highlight.dark')
-                            }
-                        },
-                        h1: {
-                            color: theme('colors.secondary.DEFAULT')
-                        },
-                        h2: {
-                            color: theme('colors.secondary.DEFAULT')
-                        },
-                        h3: {
-                            color: theme('colors.secondary.DEFAULT')
-                        },
-                        h4: {
-                            color: theme('colors.secondary.DEFAULT')
-                        },
-                        h5: {
-                            color: theme('colors.secondary.DEFAULT')
-                        },
-                        strong: {
-                            color: theme('colors.secondary.DEFAULT')
-                        }
-                    }
-                },
-                dark: {
-                    css: {
-                        color: theme('colors.secondary.dark'),
-                        a: {
-                            color: theme('colors.highlight.dark'),
                             textDecoration: 'underline',
                             '&:hover': {
                                 color: theme('colors.highlight.DEFAULT')
                             }
                         },
                         h1: {
-                            color: theme('colors.secondary.dark')
+                            color: theme('colors.dark.DEFAULT')
                         },
                         h2: {
-                            color: theme('colors.secondary.dark')
+                            color: theme('colors.dark.DEFAULT')
                         },
                         h3: {
-                            color: theme('colors.secondary.dark')
+                            color: theme('colors.dark.DEFAULT')
                         },
                         h4: {
-                            color: theme('colors.secondary.dark')
+                            color: theme('colors.dark.DEFAULT')
                         },
                         h5: {
-                            color: theme('colors.secondary.dark')
+                            color: theme('colors.dark.DEFAULT')
                         },
                         strong: {
-                            color: theme('colors.secondary.dark')
+                            color: theme('colors.dark.DEFAULT')
+                        }
+                    }
+                },
+                dark: {
+                    css: {
+                        color: theme('colors.light'),
+                        a: {
+                            color: theme('colors.highlight.dark'),
+                            textDecoration: 'underline',
+                            '&:hover': {
+                                color: theme('colors.highlight.dark')
+                            }
+                        },
+                        h1: {
+                            color: theme('colors.light')
+                        },
+                        h2: {
+                            color: theme('colors.light')
+                        },
+                        h3: {
+                            color: theme('colors.light')
+                        },
+                        h4: {
+                            color: theme('colors.light')
+                        },
+                        h5: {
+                            color: theme('colors.light')
+                        },
+                        strong: {
+                            color: theme('colors.light')
                         }
                     }
                 }

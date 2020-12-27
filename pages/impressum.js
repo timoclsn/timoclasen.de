@@ -1,9 +1,10 @@
 import Layout from '../components/Layout';
 import TextBlock from '../components/TextBlock';
+import ContactWidget from '../components/ContactWidget';
 import { getEntryById } from '../lib/api';
-import { markdownToHTML } from '../lib/markdown';
+import { markdownToHTML } from '../lib/text';
 
-export default function Home({ page, content }) {
+export default function Legal({ page, content }) {
     return (
         <Layout
             name={page.name}
@@ -14,12 +15,13 @@ export default function Home({ page, content }) {
             previewImage={page.previewImage}
             keywords={page.keywords}>
             <TextBlock text={content.legal} />
+            <ContactWidget text={content.contact} />
         </Layout>
     );
 }
 
 export async function getStaticProps() {
-    const entry = await getEntryById('3T1VKasU8N5Ew7OidhQkfB');
+    const entry = await getEntryById('6zV2aj0F7ZIqeu58L9QYwp');
 
     return {
         props: {
@@ -33,7 +35,8 @@ export async function getStaticProps() {
                 username: entry.about.fields.username
             },
             content: {
-                legal: await markdownToHTML(entry.content.fields.content)
+                legal: await markdownToHTML(entry.content.fields.content),
+                contact: await markdownToHTML(entry.about.fields.contact)
             }
         }
     };

@@ -62,11 +62,16 @@ export default function Layout({
                     crossOrigin=""
                 />
             </Head>
-            <Navigation name={name} profession={profession} />
-            <main className={'flex flex-col items-center space-y-16'}>
-                {children}
-            </main>
-            <Footer />
+            <div
+                className={
+                    'min-h-screen max-w-screen-xl flex flex-col mx-auto px-6 md:px-12 lg:px-24 text-sm md:text-base lg:text-lg antialiased'
+                }>
+                <Navigation name={name} profession={profession} />
+                <main className={'space-y-6 md:space-y-12 lg:space-y-24'}>
+                    {children}
+                </main>
+                <Footer />
+            </div>
         </>
     );
 }

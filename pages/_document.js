@@ -5,11 +5,11 @@ class MyDocument extends Document {
         return (
             <Html
                 className={
-                    'font-normal bg-primary dark:bg-primary-dark text-secondary dark:text-secondary-dark'
+                    'min-h-screen bg-light text-dark dark:bg-dark dark:text-light'
                 }
                 lang="de">
                 <Head />
-                <body className={'p-6'}>
+                <body className={'min-h-screen'}>
                     <Main />
                     <NextScript />
                     {/*Cloudflare Web Analytics*/}

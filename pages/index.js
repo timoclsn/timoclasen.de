@@ -1,9 +1,9 @@
 import Layout from '../components/Layout';
-import ProfileImage from '../components/ProfileImage';
 import Teaser from '../components/Teaser';
-import TextBlock from '../components/TextBlock';
+import AboutWidget from '../components/AboutWidget';
+import ContactWidget from '../components/ContactWidget';
 import { getEntryById } from '../lib/api';
-import { markdownToHTML } from '../lib/markdown';
+import { markdownToHTML, truncate } from '../lib/text';
 
 export default function Home({ page, content }) {
     return (
@@ -16,19 +16,18 @@ export default function Home({ page, content }) {
             previewImage={page.previewImage}
             keywords={page.keywords}>
             <Teaser text={content.introduction} />
-            <ProfileImage
-                url={content.image.fields.file.url}
-                alt={content.image.fields.description}
+            <AboutWidget
+                text={content.about}
+                imageUrl={content.image.fields.file.url}
+                imageDescription={content.image.fields.description}
             />
-            <TextBlock text={content.about} />
-            <TextBlock text={content.contact} />
-            <TextBlock text={content.tools} />
+            <ContactWidget text={content.contact} />
         </Layout>
     );
 }
 
 export async function getStaticProps() {
-    const entry = await getEntryById('3YasLSg8HDTFzoYt16xoPW');
+    const entry = await getEntryById('2x1CnUQDnjtEYZAbhiHOzd');
 
     return {
         props: {
@@ -46,7 +45,9 @@ export async function getStaticProps() {
                     entry.about.fields.introduction
                 ),
                 image: entry.about.fields.image,
-                about: await markdownToHTML(entry.about.fields.description),
+                about: await markdownToHTML(
+                    truncate(entry.about.fields.description, 500, true)
+                ),
                 contact: await markdownToHTML(entry.about.fields.contact),
                 tools: await markdownToHTML(entry.about.fields.tools)
             }

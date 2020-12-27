@@ -1,9 +1,11 @@
 import Layout from '../components/Layout';
+import ProfileImage from '../components/ProfileImage';
 import TextBlock from '../components/TextBlock';
+import ContactWidget from '../components/ContactWidget';
 import { getEntryById } from '../lib/api';
-import { markdownToHTML } from '../lib/markdown';
+import { markdownToHTML } from '../lib/text';
 
-export default function Home({ page, content }) {
+export default function About({ page, content }) {
     return (
         <Layout
             name={page.name}
@@ -13,14 +15,19 @@ export default function Home({ page, content }) {
             twitterHandle={page.username}
             previewImage={page.previewImage}
             keywords={page.keywords}>
-            <TextBlock text={content.error} />
+            <ProfileImage
+                url={content.image.fields.file.url}
+                alt={content.image.fields.description}
+            />
+            <TextBlock text={content.about} />
+            <TextBlock text={content.tools} />
             <ContactWidget text={content.contact} />
         </Layout>
     );
 }
 
 export async function getStaticProps() {
-    const entry = await getEntryById('w2qRPPvpxtbTFMDQhFBWn');
+    const entry = await getEntryById('5ZLf7s8EjtSJ42FMprERgT');
 
     return {
         props: {
@@ -34,7 +41,9 @@ export async function getStaticProps() {
                 username: entry.about.fields.username
             },
             content: {
-                error: await markdownToHTML(entry.content.fields.content),
+                image: entry.about.fields.image,
+                about: await markdownToHTML(entry.about.fields.description),
+                tools: await markdownToHTML(entry.about.fields.tools),
                 contact: await markdownToHTML(entry.about.fields.contact)
             }
         }
