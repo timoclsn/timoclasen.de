@@ -46,7 +46,7 @@ export async function getStaticProps() {
                 ),
                 image: entry.about.fields.image,
                 about: await markdownToHTML(
-                    truncate(entry.about.fields.description, 500, true)
+                    truncate(entry.about.fields.description, 400, true)
                 ),
                 contact: await markdownToHTML(entry.about.fields.contact),
                 tools: await markdownToHTML(entry.about.fields.tools)
