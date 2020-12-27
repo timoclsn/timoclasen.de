@@ -14,7 +14,7 @@ export default function Navigation({ name, profession }) {
                             'hover:text-highlight dark:hover:text-highlight-dark'
                         }>
                         <div className={''}>{name}</div>
-                        <div className={'text-sm opacity-60'}>{profession}</div>
+                        <div className={'text-sm opacity-80'}>{profession}</div>
                     </a>
                 </Link>
                 <ul className={'flex space-x-4'}>
