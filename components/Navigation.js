@@ -17,11 +17,16 @@ export default function Navigation({ name, profession }) {
                         <div className={'text-sm opacity-80'}>{profession}</div>
                     </a>
                 </Link>
-                <ul className={'flex space-x-4'}>
+                <ul className={'flex space-x-8'}>
                     <li>
                         <Link href="/ueber" passHref>
                             <NavigationLink>Über</NavigationLink>
                         </Link>
+                    </li>
+                    <li>
+                        <NavigationLink href="https://codeatelier.com">
+                            Codeatelier
+                        </NavigationLink>
                     </li>
                 </ul>
             </nav>
