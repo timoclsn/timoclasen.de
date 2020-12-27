@@ -6,7 +6,7 @@ export default function WidgetText({ title, text, href }) {
         <>
             <div
                 className={
-                    'relative flex flex-col justify-end h-full px-6 py-12 xl:px-12 xl:py-20'
+                    'relative flex flex-col px-6 py-12 xl:px-12 xl:py-20'
                 }>
                 <h2
                     className={
