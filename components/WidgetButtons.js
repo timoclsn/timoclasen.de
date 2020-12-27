@@ -6,7 +6,7 @@ export default function WidgetButtons() {
         <>
             <div
                 className={
-                    'flex flex-col justify-between items-center space-y-10 h-full w-full px-6 pt-0 sm:pt-12 py-12'
+                    'flex flex-col justify-between items-center space-y-10 h-full w-full px-6 xl:px-12 pt-0 sm:pt-12 py-12 xl:py-20'
                 }>
                 <Button
                     Icon={Mail}

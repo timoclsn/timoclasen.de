@@ -4,20 +4,24 @@ import { ArrowRight } from 'react-feather';
 export default function WidgetText({ title, text, href }) {
     return (
         <>
-            <div className={'flex flex-col justify-end h-full px-6 py-12'}>
-                <div className={'flex-1'}>
-                    <h2
-                        className={
-                            'font-bold text-xl md:text-2xl lg:text-3xl mb-4'
-                        }>
-                        {title}
-                    </h2>
-                    <div
-                        className={'flex flex-col space-y-4'}
-                        dangerouslySetInnerHTML={{ __html: text }}></div>
-                </div>
+            <div
+                className={
+                    'relative flex flex-col justify-end h-full px-6 py-12 xl:px-12 xl:py-20'
+                }>
+                <h2
+                    className={
+                        'font-bold text-xl md:text-2xl lg:text-3xl mb-4'
+                    }>
+                    {title}
+                </h2>
+                <div
+                    className={'flex flex-col space-y-4'}
+                    dangerouslySetInnerHTML={{ __html: text }}></div>
                 {href && (
-                    <div className={'flex-none flex justify-end'}>
+                    <div
+                        className={
+                            'absolute bottom-6 right-6 xl:bottom-12 xl:right-12'
+                        }>
                         <Link href={href}>
                             <a
                                 className={
