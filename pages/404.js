@@ -1,7 +1,8 @@
 import Layout from '../components/Layout';
 import TextBlock from '../components/TextBlock';
+import ContactWidget from '../components/ContactWidget';
 import { getEntryById } from '../lib/api';
-import { markdownToHTML } from '../lib/markdown';
+import { markdownToHTML } from '../lib/text';
 
 export default function Home({ page, content }) {
     return (
