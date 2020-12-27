@@ -6,12 +6,12 @@ export default function WidgetText({ title, text, href }) {
         <>
             <div className={'flex flex-col justify-end h-full px-6 py-12'}>
                 <div className={'flex-1'}>
-                    <p
+                    <h2
                         className={
                             'font-bold text-xl md:text-2xl lg:text-3xl mb-4'
                         }>
                         {title}
-                    </p>
+                    </h2>
                     <div
                         className={'flex flex-col space-y-4'}
                         dangerouslySetInnerHTML={{ __html: text }}></div>
