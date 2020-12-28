@@ -8,7 +8,7 @@ export default function Footer() {
             <CenteredColumn>
                 <ul
                     className={
-                        'flex flex-col space-y-6 text-center sm:text-left sm:space-y-0 sm:flex-row sm:space-x-8 mt-6 md:mt-12 xl:mt-24 mb-12'
+                        'flex flex-col space-y-6 text-center sm:text-left sm:space-y-0 sm:flex-row sm:space-x-8 mt-12 md:mt-16 xl:mt-24 mb-12'
                     }>
                     <li>
                         <NavigationLink href="https://twitter.com/timoclsn">

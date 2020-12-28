@@ -11,7 +11,7 @@ export default React.forwardRef(function NavigationLink(
             href={href}
             onClick={onClick}
             ref={ref}
-            className={`font-bold hover:text-highlight dark:hover:text-highlight-dark ${
+            className={`hover:text-highlight dark:hover:text-highlight-dark ${
                 router.pathname === href
                     ? 'text-highlight dark:text-highlight-dark'
                     : ''

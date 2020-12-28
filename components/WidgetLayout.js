@@ -16,11 +16,11 @@ export default function WidgetLayout({
     let containerSyles = [
         'flex',
         'flex-col',
-        'space-y-6',
+        'space-y-12',
         'sm:space-y-0',
         'sm:flex-row',
-        'sm:space-x-6',
-        'md:space-x-12',
+        'sm:space-x-12',
+        'md:space-x-16',
         'lg:space-x-24',
         textColor
     ];

@@ -4,6 +4,12 @@ module.exports = {
     purge: ['./pages/**/*.js', './components/**/*.js'],
     darkMode: 'media',
     theme: {
+        screens: {
+            sm: '640px',
+            md: '768px',
+            lg: '1024px',
+            xl: '1280px'
+        },
         colors: {
             light: '#FFFFFF',
             dark: '#000000',
