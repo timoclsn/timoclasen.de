@@ -14,8 +14,8 @@ module.exports = {
             light: '#FFFFFF',
             dark: '#000000',
             highlight: {
-                DEFAULT: '#1D4ED8',
-                dark: '#2563EB'
+                DEFAULT: '#3E51F7',
+                dark: '#4F5FEF'
             }
         },
         extend: {
