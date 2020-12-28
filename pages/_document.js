@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Favicons from '../components/Favicons';
 
 class MyDocument extends Document {
     render() {
@@ -21,6 +22,7 @@ class MyDocument extends Document {
                         as="font"
                         crossOrigin=""
                     />
+                    <Favicons />
                 </Head>
                 <body className={'min-h-screen'}>
                     <Main />
