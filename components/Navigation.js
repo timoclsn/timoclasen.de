@@ -6,7 +6,7 @@ export default function Navigation({ name }) {
     return (
         <header
             className={
-                'sticky-nav bg-light dark:bg-dark bg-opacity-80 py-4 md:py-6 mb-8 md:mb-20 xl:mb-40'
+                'sticky-nav bg-light dark:bg-dark bg-opacity-80 py-4 md:py-6 mb-8 md:mb-20 xl:mb-36'
             }>
             <Container>
                 <nav className={'flex justify-between items-center'}>
