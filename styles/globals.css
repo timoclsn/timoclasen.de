@@ -17,3 +17,35 @@
     font-display: optional;
     src: url('/fonts/Inter-Bold.woff2') format('woff2');
 }
+
+#__next {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.sticky-nav {
+    position: sticky;
+    z-index: 10;
+    top: 0;
+    backdrop-filter: saturate(180%) blur(20px);
+    transition: background-color 0.1 ease-in-out;
+}
+
+@layer components {
+    .text-teaser {
+        @apply text-2xl sm:text-3xl md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight;
+    }
+
+    .text-teaser h2 {
+        @apply font-bold mb-4 md:mb-6;
+    }
+
+    .text-teaser p a {
+        @apply text-highlight dark:text-highlight-dark underline;
+    }
+
+    .text-teaser p a:hover {
+        @apply opacity-80;
+    }
+}

@@ -1,52 +1,50 @@
 import Layout from '../components/Layout';
-import ProfileImage from '../components/ProfileImage';
 import Teaser from '../components/Teaser';
-import TextBlock from '../components/TextBlock';
+import AboutWidget from '../components/AboutWidget';
+import ContactWidget from '../components/ContactWidget';
 import { getEntryById } from '../lib/api';
-import { markdownToHTML } from '../lib/markdown';
+import { markdownToHTML, truncate, stripFirstLine } from '../lib/text';
 
 export default function Home({ page, content }) {
     return (
         <Layout
             name={page.name}
-            profession={page.profession}
             title={page.title}
             description={page.description}
-            twitterHandle={page.username}
-            previewImage={page.previewImage}
-            keywords={page.keywords}>
+            previewImage={page.previewImage}>
             <Teaser text={content.introduction} />
-            <ProfileImage
-                url={content.image.fields.file.url}
-                alt={content.image.fields.description}
+            <AboutWidget
+                text={content.about}
+                imageUrl={content.image.fields.file.url}
+                imageDescription={content.image.fields.description}
             />
-            <TextBlock text={content.about} />
-            <TextBlock text={content.contact} />
-            <TextBlock text={content.tools} />
+            <ContactWidget text={content.contact} />
         </Layout>
     );
 }
 
 export async function getStaticProps() {
-    const entry = await getEntryById('3YasLSg8HDTFzoYt16xoPW');
+    const entry = await getEntryById('2x1CnUQDnjtEYZAbhiHOzd');
+
+    let about = entry.about.fields.description;
+    about = stripFirstLine(about);
+    about = truncate(about, 400, true);
+    about = await markdownToHTML(about);
 
     return {
         props: {
             page: {
-                title: entry.title,
-                keywords: entry.keywords,
-                description: entry.description,
-                previewImage: entry.previewImage.fields.file.url,
                 name: entry.about.fields.name,
-                profession: entry.about.fields.profession,
-                username: entry.about.fields.username
+                title: entry.title,
+                description: entry.description,
+                previewImage: entry.previewImage.fields.file.url
             },
             content: {
                 introduction: await markdownToHTML(
                     entry.about.fields.introduction
                 ),
                 image: entry.about.fields.image,
-                about: await markdownToHTML(entry.about.fields.description),
+                about,
                 contact: await markdownToHTML(entry.about.fields.contact),
                 tools: await markdownToHTML(entry.about.fields.tools)
             }

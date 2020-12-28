@@ -1,15 +1,30 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import Favicons from '../components/Favicons';
 
 class MyDocument extends Document {
     render() {
         return (
             <Html
                 className={
-                    'font-normal bg-primary dark:bg-primary-dark text-secondary dark:text-secondary-dark'
+                    'min-h-screen bg-light text-dark dark:bg-dark dark:text-light'
                 }
                 lang="de">
-                <Head />
-                <body className={'p-6'}>
+                <Head>
+                    <link
+                        rel="preload"
+                        href="/fonts/Inter-Regular.woff2"
+                        as="font"
+                        crossOrigin=""
+                    />
+                    <link
+                        rel="preload"
+                        href="/fonts/Inter-Bold.woff2"
+                        as="font"
+                        crossOrigin=""
+                    />
+                    <Favicons />
+                </Head>
+                <body className={'min-h-screen'}>
                     <Main />
                     <NextScript />
                     {/*Cloudflare Web Analytics*/}
