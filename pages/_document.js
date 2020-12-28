@@ -8,7 +8,20 @@ class MyDocument extends Document {
                     'min-h-screen bg-light text-dark dark:bg-dark dark:text-light'
                 }
                 lang="de">
-                <Head />
+                <Head>
+                    <link
+                        rel="preload"
+                        href="/fonts/Inter-Regular.woff2"
+                        as="font"
+                        crossOrigin=""
+                    />
+                    <link
+                        rel="preload"
+                        href="/fonts/Inter-Bold.woff2"
+                        as="font"
+                        crossOrigin=""
+                    />
+                </Head>
                 <body className={'min-h-screen'}>
                     <Main />
                     <NextScript />

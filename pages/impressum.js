@@ -8,12 +8,9 @@ export default function Legal({ page, content }) {
     return (
         <Layout
             name={page.name}
-            profession={page.profession}
             title={page.title}
             description={page.description}
-            twitterHandle={page.username}
-            previewImage={page.previewImage}
-            keywords={page.keywords}>
+            previewImage={page.previewImage}>
             <TextBlock text={content.legal} />
             <ContactWidget text={content.contact} />
         </Layout>
@@ -26,13 +23,10 @@ export async function getStaticProps() {
     return {
         props: {
             page: {
-                title: entry.title,
-                keywords: entry.keywords,
-                description: entry.description,
-                previewImage: entry.previewImage.fields.file.url,
                 name: entry.about.fields.name,
-                profession: entry.about.fields.profession,
-                username: entry.about.fields.username
+                title: entry.title,
+                description: entry.description,
+                previewImage: entry.previewImage.fields.file.url
             },
             content: {
                 legal: await markdownToHTML(entry.content.fields.content),

@@ -9,12 +9,9 @@ export default function About({ page, content }) {
     return (
         <Layout
             name={page.name}
-            profession={page.profession}
             title={page.title}
             description={page.description}
-            twitterHandle={page.username}
-            previewImage={page.previewImage}
-            keywords={page.keywords}>
+            previewImage={page.previewImage}>
             <ProfileImage
                 url={content.image.fields.file.url}
                 alt={content.image.fields.description}
@@ -32,13 +29,10 @@ export async function getStaticProps() {
     return {
         props: {
             page: {
-                title: entry.title,
-                keywords: entry.keywords,
-                description: entry.description,
-                previewImage: entry.previewImage.fields.file.url,
                 name: entry.about.fields.name,
-                profession: entry.about.fields.profession,
-                username: entry.about.fields.username
+                title: entry.title,
+                description: entry.description,
+                previewImage: entry.previewImage.fields.file.url
             },
             content: {
                 image: entry.about.fields.image,
