@@ -10,7 +10,8 @@ export default function Legal({ page, content }) {
             name={page.name}
             title={page.title}
             description={page.description}
-            previewImage={page.previewImage}>
+            previewImage={page.previewImage}
+            slug="impressum">
             <TextBlock text={content.legal} />
             <ContactWidget text={content.contact} />
         </Layout>

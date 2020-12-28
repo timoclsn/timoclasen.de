@@ -11,7 +11,8 @@ export default function About({ page, content }) {
             name={page.name}
             title={page.title}
             description={page.description}
-            previewImage={page.previewImage}>
+            previewImage={page.previewImage}
+            slug="ueber">
             <ProfileImage
                 url={content.image.fields.file.url}
                 alt={content.image.fields.description}

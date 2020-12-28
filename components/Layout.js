@@ -1,5 +1,4 @@
 import { NextSeo } from 'next-seo';
-import { useRouter } from 'next/router';
 import CenteredColumn from './CenteredColumn';
 import Navigation from './Navigation';
 import Footer from './Footer';
@@ -9,17 +8,19 @@ export default function Layout({
     name,
     title,
     description,
-    previewImage
+    previewImage,
+    slug
 }) {
     const pageTitle = title.includes(name) ? title : title + ' | ' + name;
+    slug = slug ? slug : '';
     return (
         <>
             <NextSeo
                 title={pageTitle}
                 description={description}
-                canonical={'https://timoclasen.de' + useRouter().pathname}
+                canonical={'https://timoclasen.de/' + slug}
                 openGraph={{
-                    url: 'https://timoclasen.de' + useRouter().pathname,
+                    url: 'https://timoclasen.de/' + slug,
                     title: pageTitle,
                     description: description,
                     images: [

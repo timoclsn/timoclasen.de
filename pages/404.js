@@ -10,7 +10,8 @@ export default function Home({ page, content }) {
             name={page.name}
             title={page.title}
             description={page.description}
-            previewImage={page.previewImage}>
+            previewImage={page.previewImage}
+            slug="404">
             <TextBlock text={content.error} />
             <ContactWidget text={content.contact} />
         </Layout>
@@ -18,7 +19,7 @@ export default function Home({ page, content }) {
 }
 
 export async function getStaticProps() {
-    const entry = await getEntryById('w2qRPPvpxtbTFMDQhFBWn');
+    const entry = await getEntryById('6milrVfCyEEUIbjiKpyVz1');
 
     return {
         props: {
