@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import CenteredColumn from './CenteredColumn';
 import Navigation from './Navigation';
 import Footer from './Footer';
 
@@ -64,11 +65,11 @@ export default function Layout({
             </Head>
             <div
                 className={
-                    'min-h-screen max-w-screen-xl flex flex-col mx-auto px-6 md:px-12 lg:px-24 text-sm md:text-base lg:text-lg antialiased'
+                    'min-h-screen flex flex-col text-sm md:text-base lg:text-lg antialiased'
                 }>
                 <Navigation name={name} profession={profession} />
-                <main className={'space-y-6 md:space-y-12 lg:space-y-24'}>
-                    {children}
+                <main>
+                    <CenteredColumn>{children}</CenteredColumn>
                 </main>
                 <Footer />
             </div>
