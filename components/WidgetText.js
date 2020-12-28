@@ -18,10 +18,7 @@ export default function WidgetText({ title, text, href }) {
                     className={'flex flex-col space-y-4'}
                     dangerouslySetInnerHTML={{ __html: text }}></div>
                 {href && (
-                    <div
-                        className={
-                            'absolute bottom-6 right-6 xl:bottom-12 xl:right-12'
-                        }>
+                    <div className={'flex justify-end -mb-6 xl:-mb-12'}>
                         <Link href={href}>
                             <a
                                 className={
