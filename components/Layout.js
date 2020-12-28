@@ -11,7 +11,7 @@ export default function Layout({
     previewImage,
     slug
 }) {
-    const pageTitle = title.includes(name) ? title : title + ' | ' + name;
+    const pageTitle = title.includes(name) ? title : title + ' • ' + name;
     slug = slug ? slug : '';
     return (
         <>
