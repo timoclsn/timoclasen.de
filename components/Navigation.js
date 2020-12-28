@@ -2,11 +2,11 @@ import Link from 'next/link';
 import Container from './CenteredColumn';
 import NavigationLink from './NavigationLink';
 
-export default function Navigation({ name, profession }) {
+export default function Navigation({ name }) {
     return (
         <header
             className={
-                'sticky-nav bg-light dark:bg-dark bg-opacity-80 py-4 mb-6 md:mb-12 xl:mb-24'
+                'sticky-nav bg-light dark:bg-dark bg-opacity-80 py-4 md:py-6 mb-8 md:mb-20 xl:mb-40'
             }>
             <Container>
                 <nav className={'flex justify-between items-center'}>
@@ -15,7 +15,7 @@ export default function Navigation({ name, profession }) {
                             className={
                                 'hover:text-highlight dark:hover:text-highlight-dark'
                             }>
-                            {name}
+                            <h1>{name}</h1>
                         </a>
                     </Link>
                     <ul className={'flex space-x-4 md:space-x-8'}>
