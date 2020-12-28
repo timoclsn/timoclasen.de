@@ -47,10 +47,10 @@ export default function WidgetLayout({
 
     return (
         <>
-            <div className={containerSyles}>
+            <section className={containerSyles}>
                 <div className={widgetStyles}>{FirstWidget}</div>
                 <div className={widgetStyles}>{SecondWidget}</div>
-            </div>
+            </section>
         </>
     );
 }
