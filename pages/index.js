@@ -3,7 +3,7 @@ import Teaser from '../components/Teaser';
 import AboutWidget from '../components/AboutWidget';
 import ContactWidget from '../components/ContactWidget';
 import { getEntryById } from '../lib/api';
-import { markdownToHTML, truncate } from '../lib/text';
+import { markdownToHTML, truncate, stripFirstLine } from '../lib/text';
 
 export default function Home({ page, content }) {
     return (
@@ -26,6 +26,11 @@ export default function Home({ page, content }) {
 export async function getStaticProps() {
     const entry = await getEntryById('2x1CnUQDnjtEYZAbhiHOzd');
 
+    let about = entry.about.fields.description;
+    about = stripFirstLine(about);
+    about = truncate(about, 400, true);
+    about = await markdownToHTML(about);
+
     return {
         props: {
             page: {
@@ -39,9 +44,7 @@ export async function getStaticProps() {
                     entry.about.fields.introduction
                 ),
                 image: entry.about.fields.image,
-                about: await markdownToHTML(
-                    truncate(entry.about.fields.description, 400, true)
-                ),
+                about,
                 contact: await markdownToHTML(entry.about.fields.contact),
                 tools: await markdownToHTML(entry.about.fields.tools)
             }
