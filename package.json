@@ -1,37 +1,38 @@
 {
-  "name": "website",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "NODE_OPTIONS='--inspect' next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint --fix .",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
-  },
-  "dependencies": {
-    "@tailwindcss/typography": "^0.3.1",
-    "autoprefixer": "^10.1.0",
-    "contentful": "^8.1.5",
-    "next": "^10.0.4",
-    "next-seo": "^4.17.0",
-    "postcss": "^8.2.1",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "react-feather": "^2.0.9",
-    "remark": "^13.0.0",
-    "remark-html": "^13.0.1",
-    "strip-markdown": "^4.0.0",
-    "tailwindcss": "^2.0.2"
-  },
-  "devDependencies": {
-    "eslint": "^7.16.0",
-    "eslint-config-prettier": "^7.1.0",
-    "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.3.0",
-    "eslint-plugin-react": "^7.21.5",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
-    "prettier": "^2.2.1"
-  }
+    "name": "website",
+    "version": "2.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "inspect": "NODE_OPTIONS='--inspect' next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "eslint --fix .",
+        "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    },
+    "dependencies": {
+        "@tailwindcss/typography": "^0.3.1",
+        "autoprefixer": "^10.1.0",
+        "contentful": "^8.1.5",
+        "next": "^10.0.4",
+        "next-seo": "^4.17.0",
+        "postcss": "^8.2.1",
+        "react": "17.0.1",
+        "react-dom": "17.0.1",
+        "react-feather": "^2.0.9",
+        "remark": "^13.0.0",
+        "remark-html": "^13.0.1",
+        "strip-markdown": "^4.0.0",
+        "tailwindcss": "^2.0.2"
+    },
+    "devDependencies": {
+        "eslint": "^7.16.0",
+        "eslint-config-prettier": "^7.1.0",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-prettier": "^3.3.0",
+        "eslint-plugin-react": "^7.21.5",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "eslint-plugin-simple-import-sort": "^7.0.0",
+        "prettier": "^2.2.1"
+    }
 }
