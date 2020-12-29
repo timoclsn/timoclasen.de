@@ -29,7 +29,7 @@ export async function getStaticProps() {
                 name: about.name,
                 title: page.title,
                 description: page.description,
-                previewImage: page.previewImage.url
+                previewImage: page.previewImage
             },
             content: {
                 legal: await markdownToHTML(legal.content),

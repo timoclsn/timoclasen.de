@@ -25,10 +25,10 @@ export default function Layout({
                     description: description,
                     images: [
                         {
-                            url: previewImage,
+                            url: previewImage.url,
                             width: 1200,
                             height: 630,
-                            alt: pageTitle
+                            alt: previewImage.description
                         }
                     ],
                     site_name: name
