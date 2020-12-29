@@ -5,12 +5,12 @@ import Footer from './Footer';
 
 export default function Layout({
     children,
-    name,
     title,
     description,
     previewImage,
     slug
 }) {
+    const name = 'Timo Clasen';
     const pageTitle = title.includes(name) ? title : title + ' • ' + name;
     slug = slug ? slug : '';
     return (

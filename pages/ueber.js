@@ -2,46 +2,40 @@ import Layout from '../components/Layout';
 import ProfileImage from '../components/ProfileImage';
 import TextBlock from '../components/TextBlock';
 import ContactWidget from '../components/ContactWidget';
-import { getPageBySlug, getAbout } from '../lib/content';
+import { getPage, getPerson, getTextSnippet } from '../lib/content';
 import { markdownToHTML } from '../lib/text';
 
-export default function About({ page, content }) {
+export default function About(props) {
     return (
         <Layout
-            name={page.name}
-            title={page.title}
-            description={page.description}
-            previewImage={page.previewImage}
-            slug="ueber">
-            <ProfileImage
-                url={content.image.url}
-                alt={content.image.description}
-            />
-            <TextBlock text={content.about} />
-            <TextBlock text={content.tools} />
-            <ContactWidget text={content.contact} />
+            title={props.title}
+            description={props.description}
+            previewImage={props.previewImage}
+            slug={props.slug}>
+            <ProfileImage url={props.image.url} alt={props.image.description} />
+            <TextBlock text={props.about} />
+            <TextBlock text={props.tools} />
+            <ContactWidget text={props.contact} />
         </Layout>
     );
 }
 
 export async function getStaticProps() {
-    const page = await getPageBySlug('ueber');
-    const about = await getAbout();
+    const page = await getPage('5ZLf7s8EjtSJ42FMprERgT');
+    const person = await getPerson('48e2ptDM7x29M9yBCaM1Ik');
+    const tools = await getTextSnippet('5wbqPBHzM7r3xTFbGFfCh1');
+    const contact = await getTextSnippet('12GIX05Hy53JHINj1NpkrO');
 
     return {
         props: {
-            page: {
-                name: about.name,
-                title: page.title,
-                description: page.description,
-                previewImage: page.previewImage
-            },
-            content: {
-                image: about.image,
-                about: await markdownToHTML(about.description),
-                tools: await markdownToHTML(about.tools),
-                contact: await markdownToHTML(about.contact)
-            }
+            title: page.title,
+            description: page.description,
+            previewImage: page.previewImage,
+            slug: page.slug,
+            image: person.picture,
+            about: await markdownToHTML(person.description),
+            tools: await markdownToHTML(tools.content),
+            contact: await markdownToHTML(contact.content)
         }
     };
 }

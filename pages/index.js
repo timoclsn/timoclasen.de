@@ -2,51 +2,46 @@ import Layout from '../components/Layout';
 import Teaser from '../components/Teaser';
 import AboutWidget from '../components/AboutWidget';
 import ContactWidget from '../components/ContactWidget';
-import { getPageBySlug, getAbout } from '../lib/content';
+import { getPage, getPerson, getTextSnippet } from '../lib/content';
 import { markdownToHTML, truncate, stripFirstLine } from '../lib/text';
 
-export default function Home({ page, content }) {
+export default function Home(props) {
     return (
         <Layout
-            name={page.name}
-            title={page.title}
-            description={page.description}
-            previewImage={page.previewImage}>
-            <Teaser text={content.introduction} />
+            title={props.title}
+            description={props.description}
+            previewImage={props.previewImage}>
+            <Teaser text={props.header} />
             <AboutWidget
-                text={content.aboutTeaser}
-                imageUrl={content.image.url}
-                imageDescription={content.image.description}
+                text={props.aboutTeaser}
+                imageUrl={props.image.url}
+                imageDescription={props.image.description}
             />
-            <ContactWidget text={content.contact} />
+            <ContactWidget text={props.contact} />
         </Layout>
     );
 }
 
 export async function getStaticProps() {
-    const page = await getPageBySlug('home');
-    const about = await getAbout();
+    const page = await getPage('2x1CnUQDnjtEYZAbhiHOzd');
+    const header = await getTextSnippet('3cCPudPXTgyl9z047wNZAC');
+    const person = await getPerson('48e2ptDM7x29M9yBCaM1Ik');
+    const contact = await getTextSnippet('12GIX05Hy53JHINj1NpkrO');
 
-    let aboutTeaser = about.description;
+    let aboutTeaser = person.cvText;
     aboutTeaser = stripFirstLine(aboutTeaser);
     aboutTeaser = truncate(aboutTeaser, 400, true);
     aboutTeaser = await markdownToHTML(aboutTeaser);
 
     return {
         props: {
-            page: {
-                name: about.name,
-                title: page.title,
-                description: page.description,
-                previewImage: page.previewImage
-            },
-            content: {
-                introduction: await markdownToHTML(about.introduction),
-                image: about.image,
-                aboutTeaser,
-                contact: await markdownToHTML(about.contact),
-                tools: await markdownToHTML(about.tools)
-            }
+            title: page.title,
+            description: page.description,
+            previewImage: page.previewImage,
+            header: await markdownToHTML(header.content),
+            image: person.picture,
+            aboutTeaser,
+            contact: await markdownToHTML(contact.content)
         }
     };
 }
