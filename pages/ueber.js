@@ -2,7 +2,7 @@ import Layout from '../components/Layout';
 import ProfileImage from '../components/ProfileImage';
 import TextBlock from '../components/TextBlock';
 import ContactWidget from '../components/ContactWidget';
-import { getEntryById } from '../lib/api';
+import { getPageBySlug, getAbout } from '../lib/content';
 import { markdownToHTML } from '../lib/text';
 
 export default function About({ page, content }) {
@@ -14,8 +14,8 @@ export default function About({ page, content }) {
             previewImage={page.previewImage}
             slug="ueber">
             <ProfileImage
-                url={content.image.fields.file.url}
-                alt={content.image.fields.description}
+                url={content.image.url}
+                alt={content.image.description}
             />
             <TextBlock text={content.about} />
             <TextBlock text={content.tools} />
@@ -25,21 +25,22 @@ export default function About({ page, content }) {
 }
 
 export async function getStaticProps() {
-    const entry = await getEntryById('5ZLf7s8EjtSJ42FMprERgT');
+    const page = await getPageBySlug('ueber');
+    const about = await getAbout();
 
     return {
         props: {
             page: {
-                name: entry.about.fields.name,
-                title: entry.title,
-                description: entry.description,
-                previewImage: entry.previewImage.fields.file.url
+                name: about.name,
+                title: page.title,
+                description: page.description,
+                previewImage: page.previewImage.url
             },
             content: {
-                image: entry.about.fields.image,
-                about: await markdownToHTML(entry.about.fields.description),
-                tools: await markdownToHTML(entry.about.fields.tools),
-                contact: await markdownToHTML(entry.about.fields.contact)
+                image: about.image,
+                about: await markdownToHTML(about.description),
+                tools: await markdownToHTML(about.tools),
+                contact: await markdownToHTML(about.contact)
             }
         }
     };

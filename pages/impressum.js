@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 import TextBlock from '../components/TextBlock';
 import ContactWidget from '../components/ContactWidget';
-import { getEntryById } from '../lib/api';
+import { getPageBySlug, getAbout, getLegal } from '../lib/content';
 import { markdownToHTML } from '../lib/text';
 
 export default function Legal({ page, content }) {
@@ -19,19 +19,21 @@ export default function Legal({ page, content }) {
 }
 
 export async function getStaticProps() {
-    const entry = await getEntryById('6zV2aj0F7ZIqeu58L9QYwp');
+    const page = await getPageBySlug('impressum');
+    const about = await getAbout();
+    const legal = await getLegal();
 
     return {
         props: {
             page: {
-                name: entry.about.fields.name,
-                title: entry.title,
-                description: entry.description,
-                previewImage: entry.previewImage.fields.file.url
+                name: about.name,
+                title: page.title,
+                description: page.description,
+                previewImage: page.previewImage.url
             },
             content: {
-                legal: await markdownToHTML(entry.content.fields.content),
-                contact: await markdownToHTML(entry.about.fields.contact)
+                legal: await markdownToHTML(legal.content),
+                contact: await markdownToHTML(about.contact)
             }
         }
     };

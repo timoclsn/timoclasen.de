@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 import TextBlock from '../components/TextBlock';
 import ContactWidget from '../components/ContactWidget';
-import { getEntryById } from '../lib/api';
+import { getPageBySlug, getAbout, getError } from '../lib/content';
 import { markdownToHTML } from '../lib/text';
 
 export default function Home({ page, content }) {
@@ -19,19 +19,21 @@ export default function Home({ page, content }) {
 }
 
 export async function getStaticProps() {
-    const entry = await getEntryById('6milrVfCyEEUIbjiKpyVz1');
+    const page = await getPageBySlug('404');
+    const about = await getAbout();
+    const error = await getError();
 
     return {
         props: {
             page: {
-                name: entry.about.fields.name,
-                title: entry.title,
-                description: entry.description,
-                previewImage: entry.previewImage.fields.file.url
+                name: about.name,
+                title: page.title,
+                description: page.description,
+                previewImage: page.previewImage.url
             },
             content: {
-                error: await markdownToHTML(entry.content.fields.content),
-                contact: await markdownToHTML(entry.about.fields.contact)
+                error: await markdownToHTML(error.content),
+                contact: await markdownToHTML(about.contact)
             }
         }
     };
