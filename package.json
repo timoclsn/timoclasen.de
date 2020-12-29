@@ -1,10 +1,10 @@
 {
-    "name": "website",
+    "name": "timoclasen.de",
     "version": "2.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev",
-        "inspect": "NODE_OPTIONS='--inspect' next dev",
+        "dev": "next dev -p 3000",
+        "inspect": "NODE_OPTIONS='--inspect' next dev-p 3000",
         "build": "next build",
         "start": "next start",
         "lint": "eslint --fix .",
