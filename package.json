@@ -1,19 +1,18 @@
 {
-    "name": "website",
+    "name": "timoclasen.de",
     "version": "2.1.0",
     "private": true,
     "scripts": {
-        "dev": "next dev",
-        "inspect": "NODE_OPTIONS='--inspect' next dev",
+        "dev": "next dev -p 3000",
+        "inspect": "NODE_OPTIONS='--inspect' next dev -p 3000",
         "build": "next build",
-        "start": "next start",
+        "start": "next start -p 3000",
         "lint": "eslint --fix .",
         "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
     },
     "dependencies": {
         "@tailwindcss/typography": "^0.3.1",
         "autoprefixer": "^10.1.0",
-        "contentful": "^8.1.5",
         "next": "^10.0.4",
         "next-seo": "^4.17.0",
         "postcss": "^8.2.1",

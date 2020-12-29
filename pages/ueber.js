@@ -2,45 +2,40 @@ import Layout from '../components/Layout';
 import ProfileImage from '../components/ProfileImage';
 import TextBlock from '../components/TextBlock';
 import ContactWidget from '../components/ContactWidget';
-import { getEntryById } from '../lib/api';
+import { getPage, getPerson, getTextSnippet } from '../lib/content';
 import { markdownToHTML } from '../lib/text';
 
-export default function About({ page, content }) {
+export default function About(props) {
     return (
         <Layout
-            name={page.name}
-            title={page.title}
-            description={page.description}
-            previewImage={page.previewImage}
-            slug="ueber">
-            <ProfileImage
-                url={content.image.fields.file.url}
-                alt={content.image.fields.description}
-            />
-            <TextBlock text={content.about} />
-            <TextBlock text={content.tools} />
-            <ContactWidget text={content.contact} />
+            title={props.title}
+            description={props.description}
+            previewImage={props.previewImage}
+            slug={props.slug}>
+            <ProfileImage url={props.image.url} alt={props.image.description} />
+            <TextBlock text={props.about} />
+            <TextBlock text={props.tools} />
+            <ContactWidget text={props.contact} />
         </Layout>
     );
 }
 
 export async function getStaticProps() {
-    const entry = await getEntryById('5ZLf7s8EjtSJ42FMprERgT');
+    const page = await getPage('5ZLf7s8EjtSJ42FMprERgT');
+    const person = await getPerson('48e2ptDM7x29M9yBCaM1Ik');
+    const tools = await getTextSnippet('5wbqPBHzM7r3xTFbGFfCh1');
+    const contact = await getTextSnippet('12GIX05Hy53JHINj1NpkrO');
 
     return {
         props: {
-            page: {
-                name: entry.about.fields.name,
-                title: entry.title,
-                description: entry.description,
-                previewImage: entry.previewImage.fields.file.url
-            },
-            content: {
-                image: entry.about.fields.image,
-                about: await markdownToHTML(entry.about.fields.description),
-                tools: await markdownToHTML(entry.about.fields.tools),
-                contact: await markdownToHTML(entry.about.fields.contact)
-            }
+            title: page.title,
+            description: page.description,
+            previewImage: page.previewImage,
+            slug: page.slug,
+            image: person.picture,
+            about: await markdownToHTML(person.description),
+            tools: await markdownToHTML(tools.content),
+            contact: await markdownToHTML(contact.content)
         }
     };
 }

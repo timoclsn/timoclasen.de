@@ -7,8 +7,8 @@ export default function AboutWidget({ text, imageUrl, imageDescription }) {
         <WidgetLayout
             FirstWidget={
                 <WidgetImage
-                    imageUrl={imageUrl}
-                    imageDescription={imageDescription}
+                    url={imageUrl}
+                    description={imageDescription}
                     priority
                 />
             }
