@@ -1,8 +1,14 @@
-# Personal Website
+# timoclasen.de
 
-To run use:
+My personal website.
+
+## Running Locally
 
 ```bash
-npm install
-npm run dev
+$ git clone https://github.com/timoclsn/timoclasen.de.git
+$ cd timoclasen.de
+$ npm install
+$ npm run dev
 ```
+
+Create a `.env.local` file similar to [`.env.example`](https://github.com/timoclsn/timoclasen.de.git).

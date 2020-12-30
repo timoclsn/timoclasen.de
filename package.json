@@ -1,7 +1,17 @@
 {
     "name": "timoclasen.de",
-    "version": "2.1.0",
+    "description": "My personal website.",
+    "version": "2.2.0",
     "private": true,
+    "author": {
+        "name": "Timo Clasen",
+        "email": "timo@timoclasen.de",
+        "url": "https://timoclasen.de"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/timoclsn/timoclasen.de.git"
+    },
     "scripts": {
         "dev": "next dev -p 3000",
         "inspect": "NODE_OPTIONS='--inspect' next dev -p 3000",
