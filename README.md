@@ -11,4 +11,4 @@ $ npm install
 $ npm run dev
 ```
 
-Create a `.env.local` file similar to [`.env.example`](https://github.com/timoclsn/timoclasen.de.git).
+Create a `.env.local` file similar to [`.env.example`](https://github.com/timoclsn/timoclasen.de/blob/main/.env.example).
