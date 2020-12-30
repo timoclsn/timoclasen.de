@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 import TextBlock from '../components/TextBlock';
 import ContactWidget from '../components/ContactWidget';
-import { getPage, getTextSnippet } from '../lib/content';
+import { queryContent } from '../lib/content';
 import { markdownToHTML } from '../lib/text';
 
 export default function Error(props) {
@@ -18,9 +18,35 @@ export default function Error(props) {
 }
 
 export async function getStaticProps() {
-    const page = await getPage('2x1CnUQDnjtEYZAbhiHOzd');
-    const error = await getTextSnippet('2RbTQMAQ3KJccG9CipNpq1');
-    const contact = await getTextSnippet('12GIX05Hy53JHINj1NpkrO');
+    const response = await queryContent(
+        `{
+            page: pageCollection(where: {slug: "404"}, limit: 1) {
+                items {
+                    title
+                    slug
+                    description
+                    previewImage {
+                        url
+                        description
+                    }
+                }
+            }
+            errorSnippet: textSnippetCollection(where: {title: "Error 404"}, limit: 1) {
+                items {
+                    content
+                }
+            }
+            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1) {
+                items {
+                    content
+                }
+            }
+        }`
+    );
+
+    const page = response.data.page.items[0];
+    const errorText = response.data.errorSnippet.items[0].content;
+    const contactText = response.data.contactSnippet.items[0].content;
 
     return {
         props: {
@@ -28,8 +54,8 @@ export async function getStaticProps() {
             description: page.description,
             previewImage: page.previewImage,
             slug: page.slug,
-            error: await markdownToHTML(error.content),
-            contact: await markdownToHTML(contact.content)
+            error: await markdownToHTML(errorText),
+            contact: await markdownToHTML(contactText)
         }
     };
 }
