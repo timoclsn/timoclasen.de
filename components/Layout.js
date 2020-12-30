@@ -12,15 +12,15 @@ export default function Layout({
 }) {
     const name = 'Timo Clasen';
     const pageTitle = title.includes(name) ? title : title + ' • ' + name;
-    slug = slug ? slug : '';
+    slug = slug ? '/' + slug : '';
     return (
         <>
             <NextSeo
                 title={pageTitle}
                 description={description}
-                canonical={'https://timoclasen.de/' + slug}
+                canonical={'https://timoclasen.de' + slug}
                 openGraph={{
-                    url: 'https://timoclasen.de/' + slug,
+                    url: 'https://timoclasen.de' + slug,
                     title: pageTitle,
                     description: description,
                     images: [

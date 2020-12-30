@@ -1,7 +1,7 @@
 const title = 'Timo Clasen';
 const description =
     'Timo Clasen ist Informationsdesigner aus Esslingen am Neckar. Er ist Geschäftsführer bei Codeatelier und in der digitalen Produktentwicklung zu Hause. Dort beschäftigt er sich mit Konzept, Design und Softwareentwicklung.';
-const url = 'https://timoclasen.de/';
+const url = 'https://timoclasen.de';
 
 const SEO = {
     title,
