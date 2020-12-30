@@ -12,7 +12,6 @@ export default function WidgetImage({ url, description }) {
                     alt={description}
                     quality={90}
                     sizes="(min-width: 640px) 50vw, 100vw"
-                    priority
                 />
             </div>
         </>
