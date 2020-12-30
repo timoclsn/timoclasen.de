@@ -2,7 +2,7 @@ import Layout from '../components/Layout';
 import Teaser from '../components/Teaser';
 import AboutWidget from '../components/AboutWidget';
 import ContactWidget from '../components/ContactWidget';
-import { getPage, getPerson, getTextSnippet } from '../lib/content';
+import { queryContent } from '../lib/content';
 import { markdownToHTML, truncate, stripFirstLine } from '../lib/text';
 
 export default function Home(props) {
@@ -23,10 +23,45 @@ export default function Home(props) {
 }
 
 export async function getStaticProps() {
-    const page = await getPage('2x1CnUQDnjtEYZAbhiHOzd');
-    const header = await getTextSnippet('3cCPudPXTgyl9z047wNZAC');
-    const person = await getPerson('48e2ptDM7x29M9yBCaM1Ik');
-    const contact = await getTextSnippet('12GIX05Hy53JHINj1NpkrO');
+    const response = await queryContent(
+        `{
+            page: pageCollection(where: {slug: "home"}, limit: 1) {
+                items {
+                    title
+                    slug
+                    description
+                    previewImage {
+                        url
+                        description
+                    }
+                }
+            }
+            headerSnippet: textSnippetCollection(where: {title: "Frontpage Header"}, limit: 1) {
+                items {
+                    content
+                }
+            }
+            person: personCollection(where: {name: "Timo Clasen"}, limit: 1) {
+                items {
+                    cvText
+                    picture {
+                        url
+                        description
+                    }
+                }
+            }
+            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1) {
+                items {
+                    content
+                }
+            }
+        }`
+    );
+
+    const page = response.data.page.items[0];
+    const headerText = response.data.headerSnippet.items[0].content;
+    const person = response.data.person.items[0];
+    const contactText = response.data.contactSnippet.items[0].content;
 
     let aboutTeaser = person.cvText;
     aboutTeaser = stripFirstLine(aboutTeaser);
@@ -38,10 +73,10 @@ export async function getStaticProps() {
             title: page.title,
             description: page.description,
             previewImage: page.previewImage,
-            header: await markdownToHTML(header.content),
+            header: await markdownToHTML(headerText),
             image: person.picture,
             aboutTeaser,
-            contact: await markdownToHTML(contact.content)
+            contact: await markdownToHTML(contactText)
         }
     };
 }

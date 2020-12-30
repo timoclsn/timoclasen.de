@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 import TextBlock from '../components/TextBlock';
 import ContactWidget from '../components/ContactWidget';
-import { getPage, getTextSnippet } from '../lib/content';
+import { queryContent } from '../lib/content';
 import { markdownToHTML } from '../lib/text';
 
 export default function Legal(props) {
@@ -18,9 +18,35 @@ export default function Legal(props) {
 }
 
 export async function getStaticProps() {
-    const page = await getPage('6zV2aj0F7ZIqeu58L9QYwp');
-    const legal = await getTextSnippet('1yjXhC4GYcunicnGBNsZPL');
-    const contact = await getTextSnippet('12GIX05Hy53JHINj1NpkrO');
+    const response = await queryContent(
+        `{
+            page: pageCollection(where: {slug: "impressum"}, limit: 1) {
+                items {
+                    title
+                    slug
+                    description
+                    previewImage {
+                        url
+                        description
+                    }
+                }
+            }
+            legalSnippet: textSnippetCollection(where: {title: "Impressum & Datenschutz"}, limit: 1) {
+                items {
+                    content
+                }
+            }
+            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1) {
+                items {
+                    content
+                }
+            }
+        }`
+    );
+
+    const page = response.data.page.items[0];
+    const legalText = response.data.legalSnippet.items[0].content;
+    const contactText = response.data.contactSnippet.items[0].content;
 
     return {
         props: {
@@ -28,8 +54,8 @@ export async function getStaticProps() {
             description: page.description,
             previewImage: page.previewImage,
             slug: page.slug,
-            legal: await markdownToHTML(legal.content),
-            contact: await markdownToHTML(contact.content)
+            legal: await markdownToHTML(legalText),
+            contact: await markdownToHTML(contactText)
         }
     };
 }

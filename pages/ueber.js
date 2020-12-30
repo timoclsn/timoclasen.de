@@ -2,7 +2,7 @@ import Layout from '../components/Layout';
 import ProfileImage from '../components/ProfileImage';
 import TextBlock from '../components/TextBlock';
 import ContactWidget from '../components/ContactWidget';
-import { getPage, getPerson, getTextSnippet } from '../lib/content';
+import { queryContent } from '../lib/content';
 import { markdownToHTML } from '../lib/text';
 
 export default function About(props) {
@@ -21,10 +21,45 @@ export default function About(props) {
 }
 
 export async function getStaticProps() {
-    const page = await getPage('5ZLf7s8EjtSJ42FMprERgT');
-    const person = await getPerson('48e2ptDM7x29M9yBCaM1Ik');
-    const tools = await getTextSnippet('5wbqPBHzM7r3xTFbGFfCh1');
-    const contact = await getTextSnippet('12GIX05Hy53JHINj1NpkrO');
+    const response = await queryContent(
+        `{
+            page: pageCollection(where: {slug: "ueber"}, limit: 1) {
+                items {
+                    title
+                    slug
+                    description
+                    previewImage {
+                        url
+                        description
+                    }
+                }
+            }
+            person: personCollection(where: {name: "Timo Clasen"}, limit: 1) {
+                items {
+                    cvText
+                    picture {
+                        url
+                        description
+                    }
+                }
+            }
+            toolsSnippet: textSnippetCollection(where: {title: "Website Tools"}, limit: 1) {
+                items {
+                    content
+                }
+            }
+            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1) {
+                items {
+                    content
+                }
+            }
+        }`
+    );
+
+    const page = response.data.page.items[0];
+    const person = response.data.person.items[0];
+    const toolsText = response.data.toolsSnippet.items[0].content;
+    const contactText = response.data.contactSnippet.items[0].content;
 
     return {
         props: {
@@ -34,8 +69,8 @@ export async function getStaticProps() {
             slug: page.slug,
             image: person.picture,
             about: await markdownToHTML(person.cvText),
-            tools: await markdownToHTML(tools.content),
-            contact: await markdownToHTML(contact.content)
+            tools: await markdownToHTML(toolsText),
+            contact: await markdownToHTML(contactText)
         }
     };
 }
