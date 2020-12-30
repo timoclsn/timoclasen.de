@@ -9,7 +9,6 @@ export default function ProfileImage({ url, alt }) {
                 height={400}
                 alt={alt}
                 quality={90}
-                priority
                 className={'rounded-3xl'}
             />
         </div>
