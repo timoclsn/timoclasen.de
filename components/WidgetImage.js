@@ -4,7 +4,7 @@ export default function WidgetImage({ url, description }) {
     return (
         <>
             <div className={'relative w-full h-96 sm:h-full'}>
-                {/* <Image
+                <Image
                     src={url}
                     layout={'fill'}
                     objectFit="cover"
@@ -12,7 +12,7 @@ export default function WidgetImage({ url, description }) {
                     alt={description}
                     quality={90}
                     sizes="(min-width: 640px) 50vw, 100vw"
-                /> */}
+                />
             </div>
         </>
     );
