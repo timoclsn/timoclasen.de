@@ -10,7 +10,7 @@ class MyDocument extends Document {
                 }
                 lang="de">
                 <Head>
-                    {/* <link
+                    <link
                         rel="preload"
                         href="/fonts/Inter-Regular.woff2"
                         as="font"
@@ -21,7 +21,7 @@ class MyDocument extends Document {
                         href="/fonts/Inter-Bold.woff2"
                         as="font"
                         crossOrigin=""
-                    /> */}
+                    />
                     <Favicons />
                 </Head>
                 <body className={'min-h-screen'}>
