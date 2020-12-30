@@ -44,7 +44,7 @@ export async function getStaticProps() {
             person: personCollection(where: {name: "Timo Clasen"}, limit: 1) {
                 items {
                     cvText
-                    picture {
+                    image {
                         url
                         description
                     }
@@ -74,7 +74,7 @@ export async function getStaticProps() {
             description: page.description,
             previewImage: page.previewImage,
             header: await markdownToHTML(headerText),
-            image: person.picture,
+            image: person.image,
             aboutTeaser,
             contact: await markdownToHTML(contactText)
         }
