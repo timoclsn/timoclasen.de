@@ -1,5 +1,6 @@
 import Layout from '../../components/Layout';
 import TextPost from '../../components/TextPost';
+import BlogPostHeader from '../../components/BlogPostHeader';
 import ContactWidget from '../../components/ContactWidget';
 import { queryContent } from '../../lib/content';
 import { NextSeo, ArticleJsonLd } from 'next-seo';
@@ -32,6 +33,12 @@ export default function BlogPost(props) {
                 description={props.blogPost.summary}
                 previewImage={props.blogPost.previewImage}
                 slug={`blog/${props.blogPost.slug}`}>
+                <BlogPostHeader
+                    title={props.blogPost.title}
+                    summary={props.blogPost.summary}
+                    date={props.blogPost.date}
+                    author={props.blogPost.author}
+                />
                 <TextPost text={props.blogPost.text} />
                 <ContactWidget text={props.contact} />
             </Layout>
@@ -53,6 +60,10 @@ export async function getStaticProps({ params }) {
                     date
                     author {
                         name
+                        image {
+                            url
+                            description
+                        }
                     }
                     summary
                     text
