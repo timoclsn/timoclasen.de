@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 import ContactWidget from '../components/ContactWidget';
 import { queryContent } from '../lib/content';
-import Link from 'next/link';
+import BlogPostPreview from '../components/BlogPostPreview';
 
 export default function Blog(props) {
     return (
@@ -11,9 +11,13 @@ export default function Blog(props) {
             previewImage={props.previewImage}
             slug={props.slug}>
             {props.blogPosts.map((post) => (
-                <Link href={`/blog/${post.slug}`} key={post.slug}>
-                    <a>{post.title}</a>
-                </Link>
+                <BlogPostPreview
+                    title={post.title}
+                    summary={post.summary}
+                    date={post.date}
+                    slug={post.slug}
+                    key={post.slug}
+                />
             ))}
             <ContactWidget text={props.contact} />
         </Layout>
@@ -34,7 +38,7 @@ export async function getStaticProps() {
                     }
                 }
             }
-            blogPosts: blogPostCollection {
+            blogPosts: blogPostCollection(order: [date_DESC]) {
                 items {
                     title
                     slug
@@ -42,6 +46,7 @@ export async function getStaticProps() {
                     author {
                         name
                     }
+                    summary
                     text
                 }
             }
