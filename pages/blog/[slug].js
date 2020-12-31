@@ -1,5 +1,5 @@
 import Layout from '../../components/Layout';
-import TextBlock from '../../components/TextBlock';
+import TextPost from '../../components/TextPost';
 import ContactWidget from '../../components/ContactWidget';
 import { queryContent } from '../../lib/content';
 
@@ -10,7 +10,7 @@ export default function Blog(props) {
             description={props.description}
             previewImage={props.previewImage}
             slug={props.slug}>
-            <TextBlock text={props.blogPost.text} key={props.blogPost.slug} />
+            <TextPost text={props.blogPost.text} key={props.blogPost.slug} />
             <ContactWidget text={props.contact} />
         </Layout>
     );

@@ -51,9 +51,6 @@ module.exports = {
                         strong: {
                             color: theme('colors.dark')
                         },
-                        code: {
-                            color: theme('colors.dark')
-                        },
                         blockquote: {
                             color: theme('colors.dark')
                         }
@@ -85,9 +82,6 @@ module.exports = {
                             color: theme('colors.light')
                         },
                         strong: {
-                            color: theme('colors.light')
-                        },
-                        code: {
                             color: theme('colors.light')
                         },
                         blockquote: {
