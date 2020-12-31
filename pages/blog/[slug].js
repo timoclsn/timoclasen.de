@@ -1,8 +1,8 @@
-import Layout from '../components/Layout';
-import ContactWidget from '../components/ContactWidget';
-import { queryContent } from '../lib/content';
-import { markdownToHTML } from '../lib/text';
-import Link from 'next/link';
+import Layout from '../../components/Layout';
+import TextBlock from '../../components/TextBlock';
+import ContactWidget from '../../components/ContactWidget';
+import { queryContent } from '../../lib/content';
+import { markdownToHTML } from '../../lib/text';
 
 export default function Blog(props) {
     return (
@@ -11,17 +11,13 @@ export default function Blog(props) {
             description={props.description}
             previewImage={props.previewImage}
             slug={props.slug}>
-            {props.blogPosts.map((post) => (
-                <Link href={`/blog/${post.slug}`} key={post.slug}>
-                    <a>{post.title}</a>
-                </Link>
-            ))}
+            <TextBlock text={props.blogPost.text} key={props.blogPost.slug} />
             <ContactWidget text={props.contact} />
         </Layout>
     );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ params }) {
     const response = await queryContent(
         `{
             page: pageCollection(where: {slug: "blog"}, limit: 1) {
@@ -35,7 +31,7 @@ export async function getStaticProps() {
                     }
                 }
             }
-            blogPosts: blogPostCollection {
+            blogPost: blogPostCollection(where: {slug: "${params.slug}"}, limit: 1) {
                 items {
                     title
                     slug
@@ -55,8 +51,10 @@ export async function getStaticProps() {
     );
 
     const page = response.data.page.items[0];
-    const blogPosts = response.data.blogPosts.items || [];
+    const blogPost = response.data.blogPost.items[0];
     const contactText = response.data.contactSnippet.items[0].content;
+
+    blogPost.text = await markdownToHTML(blogPost.text);
 
     return {
         props: {
@@ -64,8 +62,33 @@ export async function getStaticProps() {
             description: page.description,
             previewImage: page.previewImage,
             slug: page.slug,
-            blogPosts,
+            blogPost,
             contact: await markdownToHTML(contactText)
         }
+    };
+}
+
+export async function getStaticPaths() {
+    const response = await queryContent(
+        `{
+            blogPosts: blogPostCollection {
+                items {
+                    slug
+                }
+            }
+        }`
+    );
+
+    const blogPosts = response.data.blogPosts.items;
+
+    return {
+        paths: blogPosts.map((blogPost) => {
+            return {
+                params: {
+                    slug: blogPost.slug
+                }
+            };
+        }),
+        fallback: false
     };
 }
