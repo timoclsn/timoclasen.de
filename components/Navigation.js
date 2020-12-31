@@ -25,6 +25,11 @@ export default function Navigation({ name }) {
                             </Link>
                         </li>
                         <li>
+                            <Link href="/blog" passHref>
+                                <NavigationLink>Blog</NavigationLink>
+                            </Link>
+                        </li>
+                        <li>
                             <NavigationLink href="https://codeatelier.com">
                                 Codeatelier
                             </NavigationLink>
