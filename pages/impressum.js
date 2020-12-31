@@ -2,7 +2,6 @@ import Layout from '../components/Layout';
 import TextBlock from '../components/TextBlock';
 import ContactWidget from '../components/ContactWidget';
 import { queryContent } from '../lib/content';
-import { markdownToHTML } from '../lib/text';
 
 export default function Legal(props) {
     return (
@@ -54,8 +53,8 @@ export async function getStaticProps() {
             description: page.description,
             previewImage: page.previewImage,
             slug: page.slug,
-            legal: await markdownToHTML(legalText),
-            contact: await markdownToHTML(contactText)
+            legal: legalText,
+            contact: contactText
         }
     };
 }

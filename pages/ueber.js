@@ -3,7 +3,6 @@ import ProfileImage from '../components/ProfileImage';
 import TextBlock from '../components/TextBlock';
 import ContactWidget from '../components/ContactWidget';
 import { queryContent } from '../lib/content';
-import { markdownToHTML } from '../lib/text';
 
 export default function About(props) {
     return (
@@ -68,9 +67,9 @@ export async function getStaticProps() {
             previewImage: page.previewImage,
             slug: page.slug,
             image: person.image,
-            about: await markdownToHTML(person.cvText),
-            tools: await markdownToHTML(toolsText),
-            contact: await markdownToHTML(contactText)
+            about: person.cvText,
+            tools: toolsText,
+            contact: contactText
         }
     };
 }

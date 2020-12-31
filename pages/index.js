@@ -3,7 +3,7 @@ import Teaser from '../components/Teaser';
 import AboutWidget from '../components/AboutWidget';
 import ContactWidget from '../components/ContactWidget';
 import { queryContent } from '../lib/content';
-import { markdownToHTML, truncate, stripFirstLine } from '../lib/text';
+import { truncate, stripFirstLine } from '../lib/text';
 
 export default function Home(props) {
     return (
@@ -66,17 +66,16 @@ export async function getStaticProps() {
     let aboutTeaser = person.cvText;
     aboutTeaser = stripFirstLine(aboutTeaser);
     aboutTeaser = truncate(aboutTeaser, 400, true);
-    aboutTeaser = await markdownToHTML(aboutTeaser);
 
     return {
         props: {
             title: page.title,
             description: page.description,
             previewImage: page.previewImage,
-            header: await markdownToHTML(headerText),
+            header: headerText,
             image: person.image,
             aboutTeaser,
-            contact: await markdownToHTML(contactText)
+            contact: contactText
         }
     };
 }

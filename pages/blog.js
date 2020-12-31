@@ -1,7 +1,6 @@
 import Layout from '../components/Layout';
 import ContactWidget from '../components/ContactWidget';
 import { queryContent } from '../lib/content';
-import { markdownToHTML } from '../lib/text';
 import Link from 'next/link';
 
 export default function Blog(props) {
@@ -65,7 +64,7 @@ export async function getStaticProps() {
             previewImage: page.previewImage,
             slug: page.slug,
             blogPosts,
-            contact: await markdownToHTML(contactText)
+            contact: contactText
         }
     };
 }

@@ -1,3 +1,4 @@
+import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 import { ArrowRight } from 'react-feather';
 
@@ -14,9 +15,9 @@ export default function WidgetText({ title, text, href }) {
                     }>
                     {title}
                 </h2>
-                <div
-                    className={'flex flex-col space-y-4'}
-                    dangerouslySetInnerHTML={{ __html: text }}></div>
+                <div className={'flex flex-col space-y-4'}>
+                    <ReactMarkdown>{text}</ReactMarkdown>
+                </div>
                 {href && (
                     <div className={'flex justify-end -mb-6 xl:-mb-12'}>
                         <Link href={href}>

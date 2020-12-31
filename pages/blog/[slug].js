@@ -2,7 +2,6 @@ import Layout from '../../components/Layout';
 import TextBlock from '../../components/TextBlock';
 import ContactWidget from '../../components/ContactWidget';
 import { queryContent } from '../../lib/content';
-import { markdownToHTML } from '../../lib/text';
 
 export default function Blog(props) {
     return (
@@ -54,8 +53,6 @@ export async function getStaticProps({ params }) {
     const blogPost = response.data.blogPost.items[0];
     const contactText = response.data.contactSnippet.items[0].content;
 
-    blogPost.text = await markdownToHTML(blogPost.text);
-
     return {
         props: {
             title: page.title,
@@ -63,7 +60,7 @@ export async function getStaticProps({ params }) {
             previewImage: page.previewImage,
             slug: page.slug,
             blogPost,
-            contact: await markdownToHTML(contactText)
+            contact: contactText
         }
     };
 }

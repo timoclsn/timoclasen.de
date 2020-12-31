@@ -2,7 +2,6 @@ import Layout from '../components/Layout';
 import TextBlock from '../components/TextBlock';
 import ContactWidget from '../components/ContactWidget';
 import { queryContent } from '../lib/content';
-import { markdownToHTML } from '../lib/text';
 
 export default function Error(props) {
     return (
@@ -54,8 +53,8 @@ export async function getStaticProps() {
             description: page.description,
             previewImage: page.previewImage,
             slug: page.slug,
-            error: await markdownToHTML(errorText),
-            contact: await markdownToHTML(contactText)
+            error: errorText,
+            contact: contactText
         }
     };
 }
