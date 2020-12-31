@@ -1,3 +1,4 @@
+import TextContainer from '../components/TextContainer';
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -35,11 +36,8 @@ const renderers = {
 
 export default function TextPost({ text }) {
     return (
-        <article
-            className={
-                'prose dark:prose-dark prose lg:prose-lg xl:prose-xl mx-auto'
-            }>
+        <TextContainer>
             <ReactMarkdown renderers={renderers}>{text}</ReactMarkdown>
-        </article>
+        </TextContainer>
     );
 }
