@@ -17,13 +17,13 @@ export default function BlogPost(props) {
                 }}
             />
             <ArticleJsonLd
-                authorName="Timo Clasen"
+                authorName={props.blogPost.author.name}
                 dateModified={date}
                 datePublished={date}
                 description={props.blogPost.summary}
                 images={[props.blogPost.previewImage.url]}
                 publisherLogo="/favicons/android-chrome-192x192.png"
-                publisherName="Timo Clasen"
+                publisherName={props.blogPost.author.name}
                 title={props.blogPost.title}
                 url={`https://timoclasen.de/blog/${props.blogPost.slug}`}
             />
