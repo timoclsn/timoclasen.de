@@ -22,6 +22,7 @@ export default function BlogPostHeader({ title, summary, date, author, text }) {
                             src={author.image.url}
                             width={24}
                             height={24}
+                            layout="fixed"
                             alt={author.image.description}
                             quality={90}
                             className={'rounded-full'}
