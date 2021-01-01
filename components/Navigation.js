@@ -30,7 +30,10 @@ export default function Navigation({ name }) {
                             </Link>
                         </li>
                         <li>
-                            <NavigationLink href="https://codeatelier.com">
+                            <NavigationLink
+                                href="https://codeatelier.com"
+                                target="_blank"
+                                rel="noopener">
                                 Codeatelier
                             </NavigationLink>
                         </li>
