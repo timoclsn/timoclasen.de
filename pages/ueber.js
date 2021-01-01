@@ -13,11 +13,10 @@ export default function About(props) {
             slug={props.slug}>
             <Image
                 src={props.image.url}
-                width="960"
-                height="540"
-                layout="responsive"
+                width="1088"
+                height="612"
                 alt={props.image.description}
-                quality={75}
+                quality={60}
                 className={'rounded-3xl'}
             />
             <TextBlock text={props.about} />
