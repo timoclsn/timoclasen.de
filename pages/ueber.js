@@ -21,7 +21,6 @@ export default function About(props) {
                 className={'rounded-3xl'}
             />
             <TextBlock text={props.about} />
-            <TextBlock text={props.tools} />
             <ContactWidget text={props.contact} />
         </Layout>
     );
@@ -52,11 +51,6 @@ export async function getStaticProps() {
                     }
                 }
             }
-            toolsSnippet: textSnippetCollection(where: {title: "Website Tools"}, limit: 1) {
-                items {
-                    content
-                }
-            }
             contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1) {
                 items {
                     content
@@ -67,7 +61,6 @@ export async function getStaticProps() {
 
     const page = response.data.page.items[0];
     const person = response.data.person.items[0];
-    const toolsText = response.data.toolsSnippet.items[0].content;
     const contactText = response.data.contactSnippet.items[0].content;
 
     return {
@@ -78,7 +71,6 @@ export async function getStaticProps() {
             slug: page.slug,
             image: person.imagesCollection.items[0],
             about: person.cvText,
-            tools: toolsText,
             contact: contactText
         }
     };
