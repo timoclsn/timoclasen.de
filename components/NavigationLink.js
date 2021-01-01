@@ -15,7 +15,7 @@ export default React.forwardRef(function NavigationLink(
             rel={rel}
             className={`hover:text-highlight dark:hover:text-highlight-dark ${
                 router.pathname.includes(href)
-                    ? 'text-highlight dark:text-highlight-dark'
+                    ? 'text-highlight dark:text-highlight-dark hover:opacity-80'
                     : ''
             }`}>
             {children}

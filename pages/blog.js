@@ -13,10 +13,10 @@ export default function Blog(props) {
             {props.blogPosts.map((post) => (
                 <BlogPostPreview
                     title={post.title}
-                    summary={post.summary}
+                    subtitle={post.subtitle}
                     date={post.date}
                     slug={post.slug}
-                    key={post.slug}
+                    key={post.sys.id}
                 />
             ))}
             <ContactWidget text={props.contact} />
@@ -40,14 +40,13 @@ export async function getStaticProps() {
             }
             blogPosts: blogPostCollection(order: [date_DESC]) {
                 items {
+                    sys {
+                        id
+                    }
                     title
+                    subtitle
                     slug
                     date
-                    author {
-                        name
-                    }
-                    summary
-                    text
                 }
             }
             contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1) {

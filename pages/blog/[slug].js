@@ -33,14 +33,16 @@ export default function BlogPost(props) {
                 description={props.blogPost.summary}
                 previewImage={props.blogPost.previewImage}
                 slug={`blog/${props.blogPost.slug}`}>
-                <BlogPostHeader
-                    title={props.blogPost.title}
-                    summary={props.blogPost.summary}
-                    date={props.blogPost.date}
-                    author={props.blogPost.author}
-                    text={props.blogPost.text}
-                />
-                <TextPost text={props.blogPost.text} />
+                <div className={'space-y-8 md:space-y-16'}>
+                    <BlogPostHeader
+                        title={props.blogPost.title}
+                        subtitle={props.blogPost.subtitle}
+                        date={props.blogPost.date}
+                        author={props.blogPost.author}
+                        text={props.blogPost.text}
+                    />
+                    <TextPost text={props.blogPost.text} />
+                </div>
                 <ContactWidget text={props.contact} />
             </Layout>
         </>
@@ -53,6 +55,7 @@ export async function getStaticProps({ params }) {
             blogPost: blogPostCollection(where: {slug: "${params.slug}"}, limit: 1) {
                 items {
                     title
+                    subtitle
                     slug
                     previewImage {
                         url
