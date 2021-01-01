@@ -1,5 +1,5 @@
 import Layout from '../components/Layout';
-import ProfileImage from '../components/ProfileImage';
+import Image from 'next/image';
 import TextBlock from '../components/TextBlock';
 import ContactWidget from '../components/ContactWidget';
 import { queryContent } from '../lib/content';
@@ -11,7 +11,15 @@ export default function About(props) {
             description={props.description}
             previewImage={props.previewImage}
             slug={props.slug}>
-            <ProfileImage url={props.image.url} alt={props.image.description} />
+            <Image
+                src={props.image.url}
+                width="960"
+                height="540"
+                layout="responsive"
+                alt={props.image.description}
+                quality={75}
+                className={'rounded-3xl'}
+            />
             <TextBlock text={props.about} />
             <TextBlock text={props.tools} />
             <ContactWidget text={props.contact} />
@@ -36,9 +44,11 @@ export async function getStaticProps() {
             person: personCollection(where: {name: "Timo Clasen"}, limit: 1) {
                 items {
                     cvText
-                    image {
-                        url
-                        description
+                    imagesCollection {
+                        items {
+                            url
+                            description
+                        }
                     }
                 }
             }
@@ -66,7 +76,7 @@ export async function getStaticProps() {
             description: page.description,
             previewImage: page.previewImage,
             slug: page.slug,
-            image: person.image,
+            image: person.imagesCollection.items[0],
             about: person.cvText,
             tools: toolsText,
             contact: contactText
