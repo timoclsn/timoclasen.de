@@ -36,7 +36,7 @@ export default function Layout({
             />
             <div
                 className={
-                    'min-h-screen flex flex-col text-base lg:text-lg antialiased'
+                    'min-h-screen flex flex-col text-base lg:text-lg xl:text-xl antialiased'
                 }>
                 <Navigation name={name} />
                 <main>

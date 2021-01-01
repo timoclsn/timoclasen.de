@@ -38,6 +38,7 @@ export default function BlogPost(props) {
                     summary={props.blogPost.summary}
                     date={props.blogPost.date}
                     author={props.blogPost.author}
+                    text={props.blogPost.text}
                 />
                 <TextPost text={props.blogPost.text} />
                 <ContactWidget text={props.contact} />

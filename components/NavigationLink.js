@@ -12,7 +12,7 @@ export default React.forwardRef(function NavigationLink(
             onClick={onClick}
             ref={ref}
             className={`hover:text-highlight dark:hover:text-highlight-dark ${
-                router.pathname === href
+                router.pathname.includes(href)
                     ? 'text-highlight dark:text-highlight-dark'
                     : ''
             }`}>

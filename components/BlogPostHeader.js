@@ -1,41 +1,57 @@
 import { parseISO, format } from 'date-fns';
 import { de } from 'date-fns/locale';
+import readingTime from 'reading-time';
 import Image from 'next/image';
+import { Clock } from 'react-feather';
 
-export default function BlogPostHeader({ title, summary, date, author }) {
+export default function BlogPostHeader({ title, summary, date, author, text }) {
+    const readingTimeObj = readingTime(text);
+    const readingTimeMinutes =
+        Math.round(readingTimeObj.minutes) < 1
+            ? 1
+            : Math.round(readingTimeObj.minutes);
     return (
         <>
             <div className={'max-w-prose mx-auto'}>
                 <div
                     className={
-                        'flex items-center space-x-2 mb-2 text-sm md:text-base'
+                        'w-full flex flex-wrap justify-between text-sm md:text-base'
                     }>
-                    <Image
-                        src={author.image.url}
-                        width={24}
-                        height={24}
-                        alt={author.image.description}
-                        quality={90}
-                        className={'rounded-full'}
-                    />
-                    <p className={'opacity-70'}>
-                        {`${author.name} | ${format(
-                            parseISO(date),
-                            'dd. MMMM yyyy',
-                            {
-                                locale: de
-                            }
-                        )}`}
-                        {}
-                    </p>
+                    <div className={'flex items-center space-x-2 mr-4 mb-2'}>
+                        <Image
+                            src={author.image.url}
+                            width={24}
+                            height={24}
+                            alt={author.image.description}
+                            quality={90}
+                            className={'rounded-full'}
+                        />
+                        <p className={'opacity-70 uppercase'}>
+                            {`${author.name} | ${format(
+                                parseISO(date),
+                                'dd. MMMM yyyy',
+                                {
+                                    locale: de
+                                }
+                            )}`}
+                            {}
+                        </p>
+                    </div>
+                    <div
+                        className={
+                            'flex items-center space-x-2 opacity-50 mb-2'
+                        }>
+                        <Clock size={16} />
+                        <p>{`${readingTimeMinutes} min`}</p>
+                    </div>
                 </div>
-                <h2
+                <h1
                     className={
-                        'text-3xl md:text-4xl lg:text-5xl font-bold hover:text-highlight dark:hover:text-highlight-dark mb-2'
+                        'text-3xl md:text-4xl lg:text-5xl font-bold my-2'
                     }>
                     {title}
-                </h2>
-                <p>{summary}</p>
+                </h1>
+                <p className={'opacity-70 mt-2'}>{summary}</p>
             </div>
         </>
     );
