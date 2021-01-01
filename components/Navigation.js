@@ -18,7 +18,7 @@ export default function Navigation({ name }) {
                             <h1>{name}</h1>
                         </a>
                     </Link>
-                    <ul className={'flex space-x-2 sm:space-x-4 md:space-x-8'}>
+                    <ul className={'flex space-x-4 md:space-x-8'}>
                         <li>
                             <Link href="/ueber" passHref>
                                 <NavigationLink>Über</NavigationLink>
@@ -28,14 +28,6 @@ export default function Navigation({ name }) {
                             <Link href="/blog" passHref>
                                 <NavigationLink>Blog</NavigationLink>
                             </Link>
-                        </li>
-                        <li>
-                            <NavigationLink
-                                href="https://codeatelier.com"
-                                target="_blank"
-                                rel="noopener">
-                                Codeatelier
-                            </NavigationLink>
                         </li>
                     </ul>
                 </nav>
