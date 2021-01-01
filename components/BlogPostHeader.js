@@ -2,7 +2,7 @@ import { parseISO, format } from 'date-fns';
 import { de } from 'date-fns/locale';
 import readingTime from 'reading-time';
 import Image from 'next/image';
-import { Clock } from 'react-feather';
+import { Clock, Twitter } from 'react-feather';
 
 export default function BlogPostHeader({ title, summary, date, author, text }) {
     const readingTimeObj = readingTime(text);
@@ -28,13 +28,26 @@ export default function BlogPostHeader({ title, summary, date, author, text }) {
                             className={'rounded-full'}
                         />
                         <p className={'opacity-70 uppercase'}>
-                            {`${author.name} | ${format(
-                                parseISO(date),
-                                'dd. MMMM yyyy',
-                                {
-                                    locale: de
-                                }
-                            )}`}
+                            {author.username ? (
+                                <a
+                                    className={
+                                        'underline hover:text-highlight dark:hover:text-highlight-dark'
+                                    }
+                                    href={`https://twitter.com/${author.username}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                    {author.name}
+                                    <Twitter
+                                        className={'inline ml-1'}
+                                        size={16}
+                                    />
+                                </a>
+                            ) : (
+                                author.name
+                            )}
+                            {` | ${format(parseISO(date), 'dd. MMMM yyyy', {
+                                locale: de
+                            })}`}
                             {}
                         </p>
                     </div>

@@ -61,6 +61,7 @@ export async function getStaticProps({ params }) {
                     date
                     author {
                         name
+                        username
                         image {
                             url
                             description
