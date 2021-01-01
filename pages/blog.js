@@ -58,7 +58,7 @@ export async function getStaticProps() {
     );
 
     const page = response.data.page.items[0];
-    const blogPosts = response.data.blogPosts.items || [];
+    const blogPosts = response.data.blogPosts.items;
     const contactText = response.data.contactSnippet.items[0].content;
 
     return {
