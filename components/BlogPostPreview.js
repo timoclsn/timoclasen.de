@@ -13,7 +13,7 @@ export default function BlogPostPreview({ title, summary, date, slug }) {
                     <a>
                         <h2
                             className={
-                                'text-2xl md:text-3xl lg:text-4xl font-bold hover:text-highlight dark:hover:text-highlight-dark mb-2'
+                                'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold hover:text-highlight dark:hover:text-highlight-dark mb-2'
                             }>
                             {title}
                         </h2>

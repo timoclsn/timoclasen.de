@@ -48,7 +48,7 @@ export default function BlogPostHeader({ title, summary, date, author, text }) {
                 </div>
                 <h1
                     className={
-                        'text-3xl md:text-4xl lg:text-5xl font-bold my-2'
+                        'text-3xl sm:text-4xl md:text-6xl lg:text-6xl font-bold my-2'
                     }>
                     {title}
                 </h1>
