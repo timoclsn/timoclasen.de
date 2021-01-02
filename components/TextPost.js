@@ -15,8 +15,9 @@ const renderers = {
             return (
                 <Image
                     src={`https:${image.url}`}
-                    width="1088"
-                    height="612"
+                    width="900"
+                    height="600"
+                    layout="responsive"
                     alt={image.alt}
                     quality={60}
                     className={'rounded-3xl'}
