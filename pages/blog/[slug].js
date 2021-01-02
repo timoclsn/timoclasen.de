@@ -49,10 +49,12 @@ export default function BlogPost(props) {
     );
 }
 
-export async function getStaticProps({ params }) {
+export async function getStaticProps({ params, preview = false }) {
     const response = await queryContent(
         `{
-            blogPost: blogPostCollection(where: {slug: "${params.slug}"}, limit: 1) {
+            blogPost: blogPostCollection(where: {slug: "${
+                params.slug
+            }"}, preview: ${preview ? 'true' : 'false'}, limit: 1) {
                 items {
                     title
                     subtitle
@@ -79,7 +81,8 @@ export async function getStaticProps({ params }) {
                     content
                 }
             }
-        }`
+        }`,
+        preview
     );
 
     const blogPost = response.data.blogPost.items[0];
@@ -87,6 +90,7 @@ export async function getStaticProps({ params }) {
 
     return {
         props: {
+            preview,
             blogPost,
             contact: contactText
         }
