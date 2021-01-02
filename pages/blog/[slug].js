@@ -53,9 +53,7 @@ export default function BlogPost(props) {
 export async function getStaticProps({ params, preview = false }) {
     const response = await queryContent(
         `{
-            blogPost: blogPostCollection(where: {slug: "${
-                params.slug
-            }"}, preview: ${preview ? 'true' : 'false'}, limit: 1) {
+            blogPost: blogPostCollection(where: {slug: "${params.slug}"}, limit: 1, preview: false) {
                 items {
                     title
                     subtitle

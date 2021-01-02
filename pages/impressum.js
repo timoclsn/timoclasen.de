@@ -19,7 +19,7 @@ export default function Legal(props) {
 export async function getStaticProps() {
     const response = await queryContent(
         `{
-            page: pageCollection(where: {slug: "impressum"}, limit: 1) {
+            page: pageCollection(where: {slug: "impressum"}, limit: 1, preview: false) {
                 items {
                     title
                     slug
@@ -30,12 +30,12 @@ export async function getStaticProps() {
                     }
                 }
             }
-            legalSnippet: textSnippetCollection(where: {title: "Impressum & Datenschutz"}, limit: 1) {
+            legalSnippet: textSnippetCollection(where: {title: "Impressum & Datenschutz"}, limit: 1, preview: false) {
                 items {
                     content
                 }
             }
-            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1) {
+            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
                 items {
                     content
                 }

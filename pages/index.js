@@ -30,7 +30,7 @@ export default function Home(props) {
 export async function getStaticProps() {
     const response = await queryContent(
         `{
-            page: pageCollection(where: {slug: "home"}, limit: 1) {
+            page: pageCollection(where: {slug: "home"}, limit: 1, preview: false) {
                 items {
                     title
                     slug
@@ -41,12 +41,12 @@ export async function getStaticProps() {
                     }
                 }
             }
-            headerSnippet: textSnippetCollection(where: {title: "Frontpage Header"}, limit: 1) {
+            headerSnippet: textSnippetCollection(where: {title: "Frontpage Header"}, limit: 1, preview: false) {
                 items {
                     content
                 }
             }
-            person: personCollection(where: {name: "Timo Clasen"}, limit: 1) {
+            person: personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
                 items {
                     cvText
                     image {
@@ -55,14 +55,14 @@ export async function getStaticProps() {
                     }
                 }
             }
-            blogPosts: blogPostCollection(order: [date_DESC], limit: 2) {
+            blogPosts: blogPostCollection(order: [date_DESC], limit: 2, preview: false) {
                 items {
                     title
                     summary
                     slug
                 }
             }
-            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1) {
+            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
                 items {
                     content
                 }

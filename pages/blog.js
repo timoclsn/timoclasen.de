@@ -27,7 +27,7 @@ export default function Blog(props) {
 export async function getStaticProps() {
     const response = await queryContent(
         `{
-            page: pageCollection(where: {slug: "blog"}, limit: 1) {
+            page: pageCollection(where: {slug: "blog"}, limit: 1, preview: false) {
                 items {
                     title
                     slug
@@ -38,7 +38,7 @@ export async function getStaticProps() {
                     }
                 }
             }
-            blogPosts: blogPostCollection(order: [date_DESC]) {
+            blogPosts: blogPostCollection(order: [date_DESC], preview: false) {
                 items {
                     sys {
                         id
@@ -49,7 +49,7 @@ export async function getStaticProps() {
                     date
                 }
             }
-            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1) {
+            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
                 items {
                     content
                 }

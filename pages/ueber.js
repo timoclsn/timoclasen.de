@@ -28,7 +28,7 @@ export default function About(props) {
 export async function getStaticProps() {
     const response = await queryContent(
         `{
-            page: pageCollection(where: {slug: "ueber"}, limit: 1) {
+            page: pageCollection(where: {slug: "ueber"}, limit: 1, preview: false) {
                 items {
                     title
                     slug
@@ -39,7 +39,7 @@ export async function getStaticProps() {
                     }
                 }
             }
-            person: personCollection(where: {name: "Timo Clasen"}, limit: 1) {
+            person: personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
                 items {
                     cvText
                     imagesCollection {
@@ -50,7 +50,7 @@ export async function getStaticProps() {
                     }
                 }
             }
-            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1) {
+            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
                 items {
                     content
                 }
