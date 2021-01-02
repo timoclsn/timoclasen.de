@@ -33,7 +33,7 @@ export default function BlogPost(props) {
                 description={props.blogPost.summary}
                 previewImage={props.blogPost.previewImage}
                 slug={`blog/${props.blogPost.slug}`}>
-                <div className={'space-y-8 md:space-y-16'}>
+                <article className={'space-y-8 md:space-y-16'}>
                     <BlogPostHeader
                         title={props.blogPost.title}
                         subtitle={props.blogPost.subtitle}
@@ -42,7 +42,7 @@ export default function BlogPost(props) {
                         text={props.blogPost.text}
                     />
                     <TextPost text={props.blogPost.text} />
-                </div>
+                </article>
                 <ContactWidget text={props.contact} />
             </Layout>
         </>

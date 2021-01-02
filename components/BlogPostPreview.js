@@ -6,7 +6,7 @@ import { Calendar } from 'react-feather';
 export default function BlogPostPreview({ title, subtitle, date, slug }) {
     return (
         <>
-            <div className={'max-w-prose mx-auto'}>
+            <article className={'max-w-prose mx-auto'}>
                 <div
                     className={
                         'flex items-center space-x-2 text-xs sm:text-sm uppercase text-highlight dark:text-highlight-dark mb-1 md:mb-2'
@@ -35,7 +35,7 @@ export default function BlogPostPreview({ title, subtitle, date, slug }) {
                     }>
                     {subtitle}
                 </p>
-            </div>
+            </article>
         </>
     );
 }
