@@ -8,9 +8,9 @@ export default function Footer() {
             <CenteredColumn>
                 <ul
                     className={
-                        'flex flex-col space-y-6 text-center sm:text-left sm:space-y-0 sm:flex-row sm:space-x-8 mt-12 md:mt-16 xl:mt-24 mb-12'
+                        'flex flex-col space-y-6 sm:space-y-0 text-center sm:text-left sm:flex-row mt-12 md:mt-16 xl:mt-24 mb-12'
                     }>
-                    <li>
+                    <li className={'mr-0 sm:mr-8'}>
                         <NavigationLink
                             href="https://twitter.com/timoclsn"
                             target="_blank"
@@ -18,7 +18,7 @@ export default function Footer() {
                             Twitter
                         </NavigationLink>
                     </li>
-                    <li>
+                    <li className={'mr-0 sm:mr-8'}>
                         <NavigationLink
                             href="https://www.linkedin.com/in/timoclsn"
                             target="_blank"
@@ -26,7 +26,7 @@ export default function Footer() {
                             LinkedIn
                         </NavigationLink>
                     </li>
-                    <li>
+                    <li className={'mr-0 sm:mr-8'}>
                         <NavigationLink
                             href="https://github.com/timoclsn"
                             target="_blank"
@@ -34,7 +34,7 @@ export default function Footer() {
                             Github
                         </NavigationLink>
                     </li>
-                    <li>
+                    <li className={'mr-0 sm:mr-8'}>
                         <NavigationLink
                             href="https://www.strava.com/athletes/timoclsn"
                             target="_blank"
@@ -42,7 +42,7 @@ export default function Footer() {
                             Strava
                         </NavigationLink>
                     </li>
-                    <li>
+                    <li className={'ml-0 sm:ml-auto'}>
                         <Link href="/impressum" passHref>
                             <NavigationLink>
                                 Impressum & Datenschutz
