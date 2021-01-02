@@ -2,13 +2,15 @@ import { NextSeo } from 'next-seo';
 import CenteredColumn from './CenteredColumn';
 import Navigation from './Navigation';
 import Footer from './Footer';
+import PreviewAlert from './PreviewAlert';
 
 export default function Layout({
     children,
     title,
     description,
     previewImage,
-    slug
+    slug,
+    preview
 }) {
     const name = 'Timo Clasen';
     const pageTitle = title.includes(name) ? title : title + ' • ' + name;
@@ -34,6 +36,7 @@ export default function Layout({
                     site_name: name
                 }}
             />
+            {preview && <PreviewAlert />}
             <div
                 className={
                     'min-h-screen flex flex-col text-base lg:text-lg xl:text-xl antialiased'
