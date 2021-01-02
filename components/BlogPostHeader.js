@@ -1,7 +1,7 @@
 import { parseISO, format } from 'date-fns';
 import { de } from 'date-fns/locale';
 import readingTime from 'reading-time';
-import { Clock, Twitter, Calendar, User } from 'react-feather';
+import { Clock, Twitter, Calendar, User, Feather } from 'react-feather';
 import Image from 'next/image';
 
 export default function BlogPostHeader({
@@ -9,13 +9,19 @@ export default function BlogPostHeader({
     subtitle,
     date,
     author,
-    text
+    text,
+    sys
 }) {
     const readingTimeObj = readingTime(text);
     const readingTimeMinutes =
         Math.round(readingTimeObj.minutes) < 1
             ? 1
             : Math.round(readingTimeObj.minutes);
+
+    function isDraft(sys) {
+        return !sys.publishedVersion;
+    }
+
     return (
         <>
             <header className={'max-w-prose mx-auto'}>
@@ -76,7 +82,7 @@ export default function BlogPostHeader({
                             )}
                         </div>
 
-                        <div className={'flex items-center space-x-2'}>
+                        <div className={'flex items-center space-x-2 mr-6'}>
                             <Calendar size={16} />
                             <p className={'whitespace-nowrap'}>
                                 {format(parseISO(date), 'dd. MMMM yyyy', {
@@ -84,6 +90,13 @@ export default function BlogPostHeader({
                                 })}
                             </p>
                         </div>
+
+                        {isDraft(sys) && (
+                            <div className={'flex items-center space-x-2'}>
+                                <Feather size={16} />
+                                <p>Draft</p>
+                            </div>
+                        )}
                     </div>
 
                     <div className={'flex items-center space-x-2'}>

@@ -17,6 +17,7 @@ export default function Blog(props) {
                     date={post.date}
                     slug={post.slug}
                     key={post.sys.id}
+                    sys={post.sys}
                 />
             ))}
             <ContactWidget text={props.contact} />
@@ -42,6 +43,7 @@ export async function getStaticProps() {
                 items {
                     sys {
                         id
+                        publishedVersion
                     }
                     title
                     subtitle

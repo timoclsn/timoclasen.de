@@ -41,6 +41,7 @@ export default function BlogPost(props) {
                         date={props.blogPost.date}
                         author={props.blogPost.author}
                         text={props.blogPost.text}
+                        sys={props.blogPost.sys}
                     />
                     <TextPost text={props.blogPost.text} />
                 </article>
@@ -55,6 +56,9 @@ export async function getStaticProps({ params, preview = false }) {
         `{
             blogPost: blogPostCollection(where: {slug: "${params.slug}"}, limit: 1, preview: false) {
                 items {
+                    sys {
+                        publishedVersion
+                    }
                     title
                     subtitle
                     slug
