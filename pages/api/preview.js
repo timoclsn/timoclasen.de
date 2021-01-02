@@ -9,13 +9,14 @@ export default async function preview(req, res) {
 
     const response = await queryContent(
         `{
-            blogPost: blogPostCollection(where: {slug: "${slug}"}, limit: 1) {
+            blogPost: blogPostCollection(where: {slug: "${slug}"}, limit: 1, preview: false) {
                 items {
                     title
                     slug
                 }
             }
-        }`
+        }`,
+        true
     );
 
     const post = response.data.blogPost.items[0];

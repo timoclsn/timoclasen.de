@@ -99,7 +99,7 @@ export async function getStaticProps({ params, preview = false }) {
 export async function getStaticPaths() {
     const response = await queryContent(
         `{
-            blogPosts: blogPostCollection {
+            blogPosts: blogPostCollection(preview: false) {
                 items {
                     slug
                 }
