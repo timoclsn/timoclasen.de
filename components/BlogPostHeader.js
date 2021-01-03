@@ -3,6 +3,7 @@ import { de } from 'date-fns/locale';
 import readingTime from 'reading-time';
 import { Clock, Twitter, Calendar, User, Feather } from 'react-feather';
 import Image from 'next/image';
+import Head from 'next/head';
 
 export default function BlogPostHeader({
     title,
@@ -24,6 +25,15 @@ export default function BlogPostHeader({
 
     return (
         <>
+            <Head>
+                <meta name="twitter:label1" content="Geschrieben von" />
+                <meta name="twitter:data1" content={author.name} />
+                <meta name="twitter:label2" content="Geschätze Lesezeit" />
+                <meta
+                    name="twitter:data2"
+                    content={`${readingTimeMinutes} Minuten`}
+                />
+            </Head>
             <header className={'max-w-prose mx-auto'}>
                 <h1
                     className={
