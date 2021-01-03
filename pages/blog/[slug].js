@@ -100,7 +100,7 @@ export async function getStaticProps({ params, preview = false }) {
     };
 }
 
-export async function getStaticPaths() {
+export async function getStaticPaths({ preview = false }) {
     const response = await queryContent(
         `{
             blogPosts: blogPostCollection(preview: false) {
@@ -108,7 +108,8 @@ export async function getStaticPaths() {
                     slug
                 }
             }
-        }`
+        }`,
+        preview
     );
 
     const blogPosts = response.data.blogPosts.items;
