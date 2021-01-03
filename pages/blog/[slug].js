@@ -5,14 +5,37 @@ import BlogPostHeader from '../../components/BlogPostHeader';
 import ContactWidget from '../../components/ContactWidget';
 import { queryContent } from '../../lib/content';
 import { NextSeo, ArticleJsonLd } from 'next-seo';
+import TextBlock from '../../components/TextBlock';
 
 export default function BlogPost(props) {
     const router = useRouter();
 
     if (!router.isFallback && !props.blogPost) {
-        return <div>Error 404</div>;
-    } else if (router.isFallback && !props.blogPost) {
-        return <div>Loading…</div>;
+        return (
+            <Layout
+                preview=""
+                title="Error 404"
+                description="Error 404"
+                previewImage=""
+                slug="">
+                <TextBlock text={props.error} />
+                <ContactWidget text={props.contact} />
+            </Layout>
+        );
+    }
+
+    if (router.isFallback && !props.blogPost) {
+        return (
+            <Layout
+                preview=""
+                title="Seite lädt…"
+                description="Seite lädt…"
+                previewImage=""
+                slug="">
+                <TextBlock text="# Seite lädt…" />
+                <ContactWidget text={props.contact} />
+            </Layout>
+        );
     }
 
     const date = new Date(props.blogPost.date).toISOString();
@@ -88,6 +111,11 @@ export async function getStaticProps({ params, preview = false }) {
                     text
                 }
             }
+            errorSnippet: textSnippetCollection(where: {title: "Error 404"}, limit: 1, preview: false) {
+                items {
+                    content
+                }
+            }
             contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1) {
                 items {
                     content
@@ -98,12 +126,14 @@ export async function getStaticProps({ params, preview = false }) {
     );
 
     const blogPost = response.data.blogPost.items[0];
+    const errorText = response.data.errorSnippet.items[0].content;
     const contactText = response.data.contactSnippet.items[0].content;
 
     return {
         props: {
             preview,
             blogPost,
+            error: errorText,
             contact: contactText
         }
     };
