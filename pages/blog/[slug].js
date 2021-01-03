@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
 import TextPost from '../../components/TextPost';
 import BlogPostHeader from '../../components/BlogPostHeader';
@@ -6,6 +7,12 @@ import { queryContent } from '../../lib/content';
 import { NextSeo, ArticleJsonLd } from 'next-seo';
 
 export default function BlogPost(props) {
+    const router = useRouter();
+
+    if (!router.isFallback && !props.blogPost) {
+        return <div>Loading…</div>;
+    }
+
     const date = new Date(props.blogPost.date).toISOString();
     return (
         <>
