@@ -2,7 +2,7 @@ import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
 import { ArrowRight } from 'react-feather';
 
-export default function WidgetText({ title, text, href }) {
+export default function WidgetText({ title, text, linkText, href }) {
     return (
         <>
             <div
@@ -28,7 +28,7 @@ export default function WidgetText({ title, text, href }) {
                                     'flex items-center space-x-2 hover:opacity-80'
                                 }>
                                 <ArrowRight size={24} />
-                                <div className={'font-bold'}>mehr</div>
+                                <div className={'font-bold'}>{linkText}</div>
                             </a>
                         </Link>
                     </div>
