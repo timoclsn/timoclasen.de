@@ -10,6 +10,11 @@ class MyDocument extends Document {
                 }
                 lang="de">
                 <Head>
+                    <meta
+                        content="width=device-width, initial-scale=1"
+                        name="viewport"
+                    />
+
                     <link
                         rel="preload"
                         href="/fonts/Inter-roman.var.woff2"

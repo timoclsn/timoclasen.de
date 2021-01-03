@@ -4,8 +4,8 @@ import TextPost from '../../components/TextPost';
 import BlogPostHeader from '../../components/BlogPostHeader';
 import ContactWidget from '../../components/ContactWidget';
 import { queryContent } from '../../lib/content';
-import { NextSeo, ArticleJsonLd } from 'next-seo';
 import TextBlock from '../../components/TextBlock';
+import Head from 'next/head';
 
 export default function BlogPost(props) {
     const router = useRouter();
@@ -41,25 +41,57 @@ export default function BlogPost(props) {
     const date = new Date(props.blogPost.date).toISOString();
     return (
         <>
-            <NextSeo
-                openGraph={{
-                    type: 'article',
-                    article: {
-                        publishedTime: date
-                    }
-                }}
-            />
-            <ArticleJsonLd
-                authorName={props.blogPost.author.name}
-                dateModified={date}
-                datePublished={date}
-                description={props.blogPost.summary}
-                images={[props.blogPost.previewImage.url]}
-                publisherLogo="/favicons/android-chrome-192x192.png"
-                publisherName={props.blogPost.author.name}
-                title={props.blogPost.title}
-                url={`https://timoclasen.de/blog/${props.blogPost.slug}`}
-            />
+            <Head>
+                <meta property="og:type" content="article" key="og:type" />
+                <meta
+                    property="article:published_time"
+                    content={date}
+                    key="article:published_time"
+                />
+                <meta
+                    property="article:modified_time"
+                    content={date}
+                    key="article:modified_time"
+                />
+                <meta
+                    property="article:author"
+                    content={props.blogPost.author.name}
+                    key="article:author"
+                />
+
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            {
+                                "@context": "https://schema.org",
+                                "@type": "Article",
+                                "mainEntityOfPage": {
+                                    "@type": "WebPage",
+                                    "@id": "https://timoclasen.de/blog/${props.blogPost.slug}"
+                                },
+                                "headline": "${props.blogPost.title}",
+                                "image": [
+                                    "${props.blogPost.previewImage.url}"
+                                ],
+                                "datePublished": "${date}",
+                                "dateModified": "${date}",
+                                "author": {
+                                    "@type": "Person",
+                                    "name": "${props.blogPost.author.name}"
+                                },
+                                "publisher": {
+                                    "@type": "Organization",
+                                    "name": "${props.blogPost.author.name}",
+                                    "logo": {
+                                        "@type": "ImageObject",
+                                        "url": "/favicons/android-chrome-192x192.png"
+                                    }
+                                },
+                                "description": "${props.blogPost.summary}"
+                            }`
+                    }}></script>
+            </Head>
             <Layout
                 preview={props.preview}
                 title={props.blogPost.title}

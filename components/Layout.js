@@ -1,4 +1,3 @@
-import { NextSeo } from 'next-seo';
 import CenteredColumn from './CenteredColumn';
 import Navigation from './Navigation';
 import Footer from './Footer';
@@ -15,28 +14,76 @@ export default function Layout({
     const name = 'Timo Clasen';
     const pageTitle = title.includes(name) ? title : title + ' • ' + name;
     slug = slug ? '/' + slug : '';
+
     return (
         <>
-            <NextSeo
-                title={pageTitle}
-                description={description}
-                canonical={'https://timoclasen.de' + slug}
-                openGraph={{
-                    url: 'https://timoclasen.de' + slug,
-                    title: pageTitle,
-                    description: description,
-                    images: [
-                        {
-                            url: previewImage.url,
-                            width: 1200,
-                            height: 630,
-                            alt: previewImage.description
-                        }
-                    ],
-                    site_name: name
-                }}
+            <title>{pageTitle}</title>
+            <meta name="description" content={description} key="description" />
+            <link
+                rel="canonical"
+                href={`https://timoclasen.de${slug}`}
+                key="canonical"
             />
+
+            <meta property="og:type" content="website" key="og:type" />
+            <meta property="og:site_name" content={name} key="og:site_name" />
+            <meta property="og:locale" content="de" key="og:locale" />
+            <meta
+                property="og:url"
+                content={`https://timoclasen.de${slug}`}
+                key="og:url"
+            />
+            <meta property="og:title" content={pageTitle} key="og:title" />
+            <meta
+                property="og:description"
+                content={description}
+                key="og:description"
+            />
+            <meta
+                property="og:image"
+                content={previewImage.url}
+                key="og:image"
+            />
+            <meta
+                property="og:image:alt"
+                content={previewImage.description}
+                key="og:image:alt"
+            />
+            <meta
+                property="og:image:width"
+                content="1200"
+                key="og:image:width"
+            />
+            <meta
+                property="og:image:height"
+                content="630"
+                key="og:image:height"
+            />
+
+            <meta
+                name="twitter:card"
+                content="summary_large_image"
+                key="twitter:card"
+            />
+            <meta
+                name="twitter:title"
+                content={pageTitle}
+                key="twitter:title"
+            />
+            <meta
+                name="twitter:description"
+                content={description}
+                key="twitter:description"
+            />
+            <meta name="twitter:site" content="@timoclsn" key="twitter:site" />
+            <meta
+                name="twitter:creator"
+                content="@timoclsn"
+                key="twitter:creator"
+            />
+
             {preview && <PreviewAlert />}
+
             <div
                 className={
                     'min-h-screen flex flex-col text-base lg:text-lg xl:text-xl antialiased'

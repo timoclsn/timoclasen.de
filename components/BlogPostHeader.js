@@ -26,12 +26,25 @@ export default function BlogPostHeader({
     return (
         <>
             <Head>
-                <meta name="twitter:label1" content="Geschrieben von" />
-                <meta name="twitter:data1" content={author.name} />
-                <meta name="twitter:label2" content="Geschätze Lesezeit" />
+                <meta
+                    name="twitter:label1"
+                    content="Geschrieben von"
+                    key="twitter:label1"
+                />
+                <meta
+                    name="twitter:data1"
+                    content={author.name}
+                    key="twitter:data1"
+                />
+                <meta
+                    name="twitter:label2"
+                    content="Geschätze Lesezeit"
+                    key="twitter:label2"
+                />
                 <meta
                     name="twitter:data2"
                     content={`${readingTimeMinutes} Minuten`}
+                    key="twitter:data2"
                 />
             </Head>
             <header className={'max-w-prose mx-auto'}>
