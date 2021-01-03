@@ -10,6 +10,8 @@ export default function BlogPost(props) {
     const router = useRouter();
 
     if (!router.isFallback && !props.blogPost) {
+        return <div>Error 404</div>;
+    } else if (router.isFallback && !props.blogPost) {
         return <div>Loading…</div>;
     }
 
