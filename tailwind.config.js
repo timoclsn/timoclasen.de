@@ -53,6 +53,9 @@ module.exports = {
                         },
                         blockquote: {
                             color: theme('colors.dark')
+                        },
+                        code: {
+                            color: theme('colors.dark')
                         }
                     }
                 },
@@ -85,6 +88,9 @@ module.exports = {
                             color: theme('colors.light')
                         },
                         blockquote: {
+                            color: theme('colors.light')
+                        },
+                        code: {
                             color: theme('colors.light')
                         }
                     }
