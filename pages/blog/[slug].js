@@ -29,11 +29,11 @@ export default function BlogPost(props) {
                 url={`https://timoclasen.de/blog/${props.blogPost.slug}`}
             />
             <Layout
+                preview={props.preview}
                 title={props.blogPost.title}
                 description={props.blogPost.summary}
                 previewImage={props.blogPost.previewImage}
-                slug={`blog/${props.blogPost.slug}`}
-                preview={props.preview}>
+                slug={`blog/${props.blogPost.slug}`}>
                 <article className={'space-y-8 md:space-y-16'}>
                     <BlogPostHeader
                         title={props.blogPost.title}

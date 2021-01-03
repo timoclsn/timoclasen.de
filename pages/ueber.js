@@ -7,6 +7,7 @@ import { queryContent } from '../lib/content';
 export default function About(props) {
     return (
         <Layout
+            preview={props.preview}
             title={props.title}
             description={props.description}
             previewImage={props.previewImage}
@@ -25,7 +26,7 @@ export default function About(props) {
     );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ preview = false }) {
     const response = await queryContent(
         `{
             page: pageCollection(where: {slug: "ueber"}, limit: 1, preview: false) {
@@ -55,7 +56,8 @@ export async function getStaticProps() {
                     content
                 }
             }
-        }`
+        }`,
+        preview
     );
 
     const page = response.data.page.items[0];
@@ -64,6 +66,7 @@ export async function getStaticProps() {
 
     return {
         props: {
+            preview,
             title: page.title,
             description: page.description,
             previewImage: page.previewImage,
