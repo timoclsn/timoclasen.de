@@ -1,13 +1,15 @@
 import Layout from '../components/Layout';
 import Teaser from '../components/Teaser';
 import AboutWidget from '../components/AboutWidget';
+import BlogWidget from '../components/BlogWidget';
 import ContactWidget from '../components/ContactWidget';
 import { queryContent } from '../lib/content';
-import { markdownToHTML, truncate, stripFirstLine } from '../lib/text';
+import { truncate, stripFirstLine } from '../lib/text';
 
 export default function Home(props) {
     return (
         <Layout
+            preview={props.preview}
             title={props.title}
             description={props.description}
             previewImage={props.previewImage}>
@@ -17,15 +19,19 @@ export default function Home(props) {
                 imageUrl={props.image.url}
                 imageDescription={props.image.description}
             />
+            <BlogWidget
+                blogPost1={props.blogPosts[0]}
+                blogPost2={props.blogPosts[1]}
+            />
             <ContactWidget text={props.contact} />
         </Layout>
     );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ preview = false }) {
     const response = await queryContent(
         `{
-            page: pageCollection(where: {slug: "home"}, limit: 1) {
+            page: pageCollection(where: {slug: "home"}, limit: 1, preview: false) {
                 items {
                     title
                     slug
@@ -36,12 +42,12 @@ export async function getStaticProps() {
                     }
                 }
             }
-            headerSnippet: textSnippetCollection(where: {title: "Frontpage Header"}, limit: 1) {
+            headerSnippet: textSnippetCollection(where: {title: "Frontpage Header"}, limit: 1, preview: false) {
                 items {
                     content
                 }
             }
-            person: personCollection(where: {name: "Timo Clasen"}, limit: 1) {
+            person: personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
                 items {
                     cvText
                     image {
@@ -50,33 +56,43 @@ export async function getStaticProps() {
                     }
                 }
             }
-            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1) {
+            blogPosts: blogPostCollection(order: [date_DESC], limit: 2, preview: false) {
+                items {
+                    title
+                    summary
+                    slug
+                }
+            }
+            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
                 items {
                     content
                 }
             }
-        }`
+        }`,
+        preview
     );
 
     const page = response.data.page.items[0];
     const headerText = response.data.headerSnippet.items[0].content;
     const person = response.data.person.items[0];
+    const blogPosts = response.data.blogPosts.items;
     const contactText = response.data.contactSnippet.items[0].content;
 
     let aboutTeaser = person.cvText;
     aboutTeaser = stripFirstLine(aboutTeaser);
     aboutTeaser = truncate(aboutTeaser, 400, true);
-    aboutTeaser = await markdownToHTML(aboutTeaser);
 
     return {
         props: {
+            preview,
             title: page.title,
             description: page.description,
             previewImage: page.previewImage,
-            header: await markdownToHTML(headerText),
+            header: headerText,
             image: person.image,
             aboutTeaser,
-            contact: await markdownToHTML(contactText)
+            blogPosts,
+            contact: contactText
         }
     };
 }

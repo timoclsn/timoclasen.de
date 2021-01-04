@@ -20,7 +20,7 @@ module.exports = {
         },
         extend: {
             fontFamily: {
-                sans: ['Inter', ...defaultTheme.fontFamily.sans]
+                sans: ['Inter var', ...defaultTheme.fontFamily.sans]
             },
             typography: (theme) => ({
                 DEFAULT: {
@@ -34,22 +34,28 @@ module.exports = {
                             }
                         },
                         h1: {
-                            color: theme('colors.dark.DEFAULT')
+                            color: theme('colors.dark')
                         },
                         h2: {
-                            color: theme('colors.dark.DEFAULT')
+                            color: theme('colors.dark')
                         },
                         h3: {
-                            color: theme('colors.dark.DEFAULT')
+                            color: theme('colors.dark')
                         },
                         h4: {
-                            color: theme('colors.dark.DEFAULT')
+                            color: theme('colors.dark')
                         },
                         h5: {
-                            color: theme('colors.dark.DEFAULT')
+                            color: theme('colors.dark')
                         },
                         strong: {
-                            color: theme('colors.dark.DEFAULT')
+                            color: theme('colors.dark')
+                        },
+                        blockquote: {
+                            color: theme('colors.dark')
+                        },
+                        code: {
+                            color: theme('colors.dark')
                         }
                     }
                 },
@@ -79,6 +85,12 @@ module.exports = {
                             color: theme('colors.light')
                         },
                         strong: {
+                            color: theme('colors.light')
+                        },
+                        blockquote: {
+                            color: theme('colors.light')
+                        },
+                        code: {
                             color: theme('colors.light')
                         }
                     }

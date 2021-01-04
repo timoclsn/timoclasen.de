@@ -8,29 +8,41 @@ export default function Footer() {
             <CenteredColumn>
                 <ul
                     className={
-                        'flex flex-col space-y-6 text-center sm:text-left sm:space-y-0 sm:flex-row sm:space-x-8 mt-12 md:mt-16 xl:mt-24 mb-12'
+                        'flex flex-col space-y-6 sm:space-y-0 text-center sm:text-left sm:flex-row mt-12 md:mt-16 xl:mt-24 mb-12'
                     }>
-                    <li>
-                        <NavigationLink href="https://twitter.com/timoclsn">
+                    <li className={'mr-0 sm:mr-8'}>
+                        <NavigationLink
+                            href="https://twitter.com/timoclsn"
+                            target="_blank"
+                            rel="noopener noreferrer">
                             Twitter
                         </NavigationLink>
                     </li>
-                    <li>
-                        <NavigationLink href="https://www.linkedin.com/in/timoclsn">
+                    <li className={'mr-0 sm:mr-8'}>
+                        <NavigationLink
+                            href="https://www.linkedin.com/in/timoclsn"
+                            target="_blank"
+                            rel="noopener noreferrer">
                             LinkedIn
                         </NavigationLink>
                     </li>
-                    <li>
-                        <NavigationLink href="https://github.com/timoclsn">
+                    <li className={'mr-0 sm:mr-8'}>
+                        <NavigationLink
+                            href="https://github.com/timoclsn"
+                            target="_blank"
+                            rel="noopener noreferrer">
                             Github
                         </NavigationLink>
                     </li>
-                    <li>
-                        <NavigationLink href="https://www.strava.com/athletes/timoclsn">
+                    <li className={'mr-0 sm:mr-8'}>
+                        <NavigationLink
+                            href="https://www.strava.com/athletes/timoclsn"
+                            target="_blank"
+                            rel="noopener noreferrer">
                             Strava
                         </NavigationLink>
                     </li>
-                    <li>
+                    <li className={'ml-0 sm:ml-auto'}>
                         <Link href="/impressum" passHref>
                             <NavigationLink>
                                 Impressum & Datenschutz

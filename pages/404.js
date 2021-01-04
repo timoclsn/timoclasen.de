@@ -2,11 +2,11 @@ import Layout from '../components/Layout';
 import TextBlock from '../components/TextBlock';
 import ContactWidget from '../components/ContactWidget';
 import { queryContent } from '../lib/content';
-import { markdownToHTML } from '../lib/text';
 
 export default function Error(props) {
     return (
         <Layout
+            preview={props.preview}
             title={props.title}
             description={props.description}
             previewImage={props.previewImage}
@@ -17,10 +17,10 @@ export default function Error(props) {
     );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({ preview = false }) {
     const response = await queryContent(
         `{
-            page: pageCollection(where: {slug: "404"}, limit: 1) {
+            page: pageCollection(where: {slug: "404"}, limit: 1, preview: false) {
                 items {
                     title
                     slug
@@ -31,17 +31,18 @@ export async function getStaticProps() {
                     }
                 }
             }
-            errorSnippet: textSnippetCollection(where: {title: "Error 404"}, limit: 1) {
+            errorSnippet: textSnippetCollection(where: {title: "Error 404"}, limit: 1, preview: false) {
                 items {
                     content
                 }
             }
-            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1) {
+            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
                 items {
                     content
                 }
             }
-        }`
+        }`,
+        preview
     );
 
     const page = response.data.page.items[0];
@@ -50,12 +51,13 @@ export async function getStaticProps() {
 
     return {
         props: {
+            preview,
             title: page.title,
             description: page.description,
             previewImage: page.previewImage,
             slug: page.slug,
-            error: await markdownToHTML(errorText),
-            contact: await markdownToHTML(contactText)
+            error: errorText,
+            contact: contactText
         }
     };
 }

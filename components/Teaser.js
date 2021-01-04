@@ -1,7 +1,9 @@
+import ReactMarkdown from 'react-markdown';
+
 export default function Teaser({ text }) {
     return (
-        <div
-            className={'text-teaser'}
-            dangerouslySetInnerHTML={{ __html: text }}></div>
+        <section className={'text-teaser'}>
+            <ReactMarkdown>{text}</ReactMarkdown>
+        </section>
     );
 }

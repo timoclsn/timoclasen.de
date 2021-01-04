@@ -1,9 +1,9 @@
 import Layout from '../components/Layout';
-import TextBlock from '../components/TextBlock';
 import ContactWidget from '../components/ContactWidget';
 import { queryContent } from '../lib/content';
+import BlogPostPreview from '../components/BlogPostPreview';
 
-export default function Legal(props) {
+export default function Blog(props) {
     return (
         <Layout
             preview={props.preview}
@@ -11,7 +11,16 @@ export default function Legal(props) {
             description={props.description}
             previewImage={props.previewImage}
             slug={props.slug}>
-            <TextBlock text={props.legal} />
+            {props.blogPosts.map((post) => (
+                <BlogPostPreview
+                    title={post.title}
+                    subtitle={post.subtitle}
+                    date={post.date}
+                    slug={post.slug}
+                    key={post.sys.id}
+                    sys={post.sys}
+                />
+            ))}
             <ContactWidget text={props.contact} />
         </Layout>
     );
@@ -20,7 +29,7 @@ export default function Legal(props) {
 export async function getStaticProps({ preview = false }) {
     const response = await queryContent(
         `{
-            page: pageCollection(where: {slug: "impressum"}, limit: 1, preview: false) {
+            page: pageCollection(where: {slug: "blog"}, limit: 1, preview: false) {
                 items {
                     title
                     slug
@@ -31,9 +40,16 @@ export async function getStaticProps({ preview = false }) {
                     }
                 }
             }
-            legalSnippet: textSnippetCollection(where: {title: "Impressum & Datenschutz"}, limit: 1, preview: false) {
+            blogPosts: blogPostCollection(order: [date_DESC], preview: false) {
                 items {
-                    content
+                    sys {
+                        id
+                        publishedVersion
+                    }
+                    title
+                    subtitle
+                    slug
+                    date
                 }
             }
             contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
@@ -46,7 +62,7 @@ export async function getStaticProps({ preview = false }) {
     );
 
     const page = response.data.page.items[0];
-    const legalText = response.data.legalSnippet.items[0].content;
+    const blogPosts = response.data.blogPosts.items;
     const contactText = response.data.contactSnippet.items[0].content;
 
     return {
@@ -56,7 +72,7 @@ export async function getStaticProps({ preview = false }) {
             description: page.description,
             previewImage: page.previewImage,
             slug: page.slug,
-            legal: legalText,
+            blogPosts,
             contact: contactText
         }
     };
