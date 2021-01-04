@@ -1,5 +1,9 @@
 describe('The Home Page', () => {
-    it('successfully loads', () => {
+    before(() => {
         cy.visit('/');
+    });
+
+    it('should render successfully', () => {
+        cy.get('[data-cy="home-page-teaser"]').should('be.visible');
     });
 });

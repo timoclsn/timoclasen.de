@@ -39,7 +39,7 @@ export default function BlogPostPreview({ title, subtitle, date, slug, sys }) {
                 </div>
 
                 <Link href={`/blog/${slug}`}>
-                    <a data-cy="blogpostLink">
+                    <a data-cy="blogpost-link">
                         <h2
                             className={
                                 'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold hover:text-highlight dark:hover:text-highlight-dark mb-2 md:mb-4'
