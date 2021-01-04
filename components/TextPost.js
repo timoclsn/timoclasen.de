@@ -20,7 +20,7 @@ const renderers = {
                     layout="responsive"
                     alt={image.alt}
                     quality={60}
-                    className={'rounded-3xl'}
+                    className={'rounded-md'}
                 />
             );
         }
