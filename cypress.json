@@ -1,7 +1,6 @@
 {
-  "baseUrl": "http://localhost:3000",
-  "blockHosts": [
-    "*.cloudflareinsights.com"
-  ],
-  "projectId": "2s35af"
+    "baseUrl": "http://localhost:3000",
+    "blockHosts": ["*.cloudflareinsights.com"],
+    "projectId": "2s35af",
+    "video": false
 }
