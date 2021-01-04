@@ -1,6 +1,8 @@
+import Head from 'next/head';
+
 export default function Favicons() {
     return (
-        <>
+        <Head>
             <link href="/favicons/favicon.ico" rel="shortcut icon" />
             <link
                 rel="apple-touch-icon"
@@ -78,6 +80,6 @@ export default function Favicons() {
                 content="/favisons/ms-icon-144x144.png"
             />
             <meta name="theme-color" content="#3E51F7" />
-        </>
+        </Head>
     );
 }

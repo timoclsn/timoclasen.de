@@ -5,8 +5,8 @@ import BlogPostHeader from '../../components/BlogPostHeader';
 import ContactWidget from '../../components/ContactWidget';
 import { queryContent } from '../../lib/content';
 import TextBlock from '../../components/TextBlock';
-import Head from 'next/head';
 import readingTime from 'reading-time';
+import SEOBlogPost from '../../components/SEOBlogPost';
 
 export default function BlogPost(props) {
     const router = useRouter();
@@ -49,85 +49,21 @@ export default function BlogPost(props) {
 
     return (
         <>
-            <Head>
-                <meta
-                    name="twitter:label1"
-                    content="Geschrieben von"
-                    key="twitter:label1"
-                />
-                <meta
-                    name="twitter:data1"
-                    content={props.blogPost.author.name}
-                    key="twitter:data1"
-                />
-                <meta
-                    name="twitter:label2"
-                    content="Geschätze Lesezeit"
-                    key="twitter:label2"
-                />
-                <meta
-                    name="twitter:data2"
-                    content={`${readingTimeMinutes} Minuten`}
-                    key="twitter:data2"
-                />
-
-                <meta property="og:type" content="article" key="og:type" />
-                <meta
-                    property="article:published_time"
-                    content={date}
-                    key="article:published_time"
-                />
-                <meta
-                    property="article:modified_time"
-                    content={date}
-                    key="article:modified_time"
-                />
-                <meta
-                    property="article:author"
-                    content={props.blogPost.author.name}
-                    key="article:author"
-                />
-
-                <script
-                    type="application/ld+json"
-                    dangerouslySetInnerHTML={{
-                        __html: `
-                        {
-                            "@context": "https://schema.org",
-                            "@type": "Article",
-                            "mainEntityOfPage": {
-                                "@type": "WebPage",
-                                "@id": "https://timoclasen.de/blog/${props.blogPost.slug}"
-                            },
-                            "headline": "${props.blogPost.title}",
-                            "image": [
-                                "${props.blogPost.previewImage.url}"
-                            ],
-                            "datePublished": "${date}",
-                            "dateModified": "${date}",
-                            "author": {
-                                "@type": "Person",
-                                "name": "${props.blogPost.author.name}"
-                            },
-                            "publisher": {
-                                "@type": "Organization",
-                                "name": "${props.blogPost.author.name}",
-                                "logo": {
-                                    "@type": "ImageObject",
-                                    "url": "/favicons/android-chrome-192x192.png"
-                                }
-                            },
-                            "description": "${props.blogPost.summary}"
-                        }`
-                    }}
-                />
-            </Head>
             <Layout
                 preview={props.preview}
                 title={props.blogPost.title}
                 description={props.blogPost.summary}
                 previewImage={props.blogPost.previewImage}
                 slug={`blog/${props.blogPost.slug}`}>
+                <SEOBlogPost
+                    authorName={props.blogPost.author.name}
+                    readingTime={readingTimeMinutes}
+                    date={date}
+                    slug={props.blogPost.slug}
+                    title={props.blogPost.title}
+                    description={props.blogPost.summary}
+                    previewImage={props.blogPost.previewImage}
+                />
                 <article className={'space-y-8 md:space-y-16'}>
                     <BlogPostHeader
                         title={props.blogPost.title}
