@@ -1,52 +1,22 @@
 import { parseISO, format } from 'date-fns';
 import { de } from 'date-fns/locale';
-import readingTime from 'reading-time';
 import { Clock, Twitter, Calendar, User, Feather } from 'react-feather';
 import Image from 'next/image';
-import Head from 'next/head';
 
 export default function BlogPostHeader({
     title,
     subtitle,
     date,
     author,
-    text,
+    readingTime,
     sys
 }) {
-    const readingTimeObj = readingTime(text);
-    const readingTimeMinutes =
-        Math.round(readingTimeObj.minutes) < 1
-            ? 1
-            : Math.round(readingTimeObj.minutes);
-
     function isDraft(sys) {
         return !sys.publishedVersion;
     }
 
     return (
         <>
-            <Head>
-                <meta
-                    name="twitter:label1"
-                    content="Geschrieben von"
-                    key="twitter:label1"
-                />
-                <meta
-                    name="twitter:data1"
-                    content={author.name}
-                    key="twitter:data1"
-                />
-                <meta
-                    name="twitter:label2"
-                    content="Geschätze Lesezeit"
-                    key="twitter:label2"
-                />
-                <meta
-                    name="twitter:data2"
-                    content={`${readingTimeMinutes} Minuten`}
-                    key="twitter:data2"
-                />
-            </Head>
             <header className={'max-w-prose mx-auto'}>
                 <h1
                     className={
@@ -124,7 +94,7 @@ export default function BlogPostHeader({
 
                     <div className={'flex items-center space-x-2'}>
                         <Clock size={16} />
-                        <p>{`${readingTimeMinutes} min`}</p>
+                        <p>{`${readingTime} min`}</p>
                     </div>
                 </div>
             </header>

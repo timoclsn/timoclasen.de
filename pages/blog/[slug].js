@@ -6,6 +6,7 @@ import ContactWidget from '../../components/ContactWidget';
 import { queryContent } from '../../lib/content';
 import TextBlock from '../../components/TextBlock';
 import Head from 'next/head';
+import readingTime from 'reading-time';
 
 export default function BlogPost(props) {
     const router = useRouter();
@@ -39,9 +40,37 @@ export default function BlogPost(props) {
     }
 
     const date = new Date(props.blogPost.date).toISOString();
+
+    const readingTimeObj = readingTime(props.blogPost.text);
+    const readingTimeMinutes =
+        Math.round(readingTimeObj.minutes) < 1
+            ? 1
+            : Math.round(readingTimeObj.minutes);
+
     return (
         <>
             <Head>
+                <meta
+                    name="twitter:label1"
+                    content="Geschrieben von"
+                    key="twitter:label1"
+                />
+                <meta
+                    name="twitter:data1"
+                    content={props.blogPost.author.name}
+                    key="twitter:data1"
+                />
+                <meta
+                    name="twitter:label2"
+                    content="Geschätze Lesezeit"
+                    key="twitter:label2"
+                />
+                <meta
+                    name="twitter:data2"
+                    content={`${readingTimeMinutes} Minuten`}
+                    key="twitter:data2"
+                />
+
                 <meta property="og:type" content="article" key="og:type" />
                 <meta
                     property="article:published_time"
@@ -63,34 +92,35 @@ export default function BlogPost(props) {
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{
                         __html: `
-                            {
-                                "@context": "https://schema.org",
-                                "@type": "Article",
-                                "mainEntityOfPage": {
-                                    "@type": "WebPage",
-                                    "@id": "https://timoclasen.de/blog/${props.blogPost.slug}"
-                                },
-                                "headline": "${props.blogPost.title}",
-                                "image": [
-                                    "${props.blogPost.previewImage.url}"
-                                ],
-                                "datePublished": "${date}",
-                                "dateModified": "${date}",
-                                "author": {
-                                    "@type": "Person",
-                                    "name": "${props.blogPost.author.name}"
-                                },
-                                "publisher": {
-                                    "@type": "Organization",
-                                    "name": "${props.blogPost.author.name}",
-                                    "logo": {
-                                        "@type": "ImageObject",
-                                        "url": "/favicons/android-chrome-192x192.png"
-                                    }
-                                },
-                                "description": "${props.blogPost.summary}"
-                            }`
-                    }}></script>
+                        {
+                            "@context": "https://schema.org",
+                            "@type": "Article",
+                            "mainEntityOfPage": {
+                                "@type": "WebPage",
+                                "@id": "https://timoclasen.de/blog/${props.blogPost.slug}"
+                            },
+                            "headline": "${props.blogPost.title}",
+                            "image": [
+                                "${props.blogPost.previewImage.url}"
+                            ],
+                            "datePublished": "${date}",
+                            "dateModified": "${date}",
+                            "author": {
+                                "@type": "Person",
+                                "name": "${props.blogPost.author.name}"
+                            },
+                            "publisher": {
+                                "@type": "Organization",
+                                "name": "${props.blogPost.author.name}",
+                                "logo": {
+                                    "@type": "ImageObject",
+                                    "url": "/favicons/android-chrome-192x192.png"
+                                }
+                            },
+                            "description": "${props.blogPost.summary}"
+                        }`
+                    }}
+                />
             </Head>
             <Layout
                 preview={props.preview}
@@ -104,7 +134,7 @@ export default function BlogPost(props) {
                         subtitle={props.blogPost.subtitle}
                         date={props.blogPost.date}
                         author={props.blogPost.author}
-                        text={props.blogPost.text}
+                        readingTime={readingTimeMinutes}
                         sys={props.blogPost.sys}
                     />
                     <TextPost text={props.blogPost.text} />
