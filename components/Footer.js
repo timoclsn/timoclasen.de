@@ -4,7 +4,7 @@ import NavigationLink from './NavigationLink';
 
 export default function Footer() {
     return (
-        <footer className={'mt-auto'}>
+        <footer className={'mt-auto'} data-cy="footer">
             <CenteredColumn>
                 <ul
                     className={
