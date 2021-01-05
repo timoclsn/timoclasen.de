@@ -4,7 +4,7 @@ import AboutWidget from '../components/AboutWidget';
 import BlogWidget from '../components/BlogWidget';
 import ContactWidget from '../components/ContactWidget';
 import { queryContent } from '../lib/content';
-import { truncate, stripFirstLine } from '../lib/text';
+import { markdownToHTML, truncate, stripFirstLine } from '../lib/text';
 
 export default function Home(props) {
     return (
@@ -81,6 +81,7 @@ export async function getStaticProps({ preview = false }) {
     let aboutTeaser = person.cvText;
     aboutTeaser = stripFirstLine(aboutTeaser);
     aboutTeaser = truncate(aboutTeaser, 400, true);
+    aboutTeaser = await markdownToHTML(aboutTeaser);
 
     return {
         props: {
@@ -88,11 +89,11 @@ export async function getStaticProps({ preview = false }) {
             title: page.title,
             description: page.description,
             previewImage: page.previewImage,
-            header: headerText,
+            header: await markdownToHTML(headerText),
             image: person.image,
             aboutTeaser,
             blogPosts,
-            contact: contactText
+            contact: await markdownToHTML(contactText)
         }
     };
 }
