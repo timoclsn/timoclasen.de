@@ -9,7 +9,7 @@ export default function Navigation({ name }) {
                 'sticky-nav bg-light dark:bg-dark bg-opacity-80 py-4 md:py-6 mb-8 md:mb-20 xl:mb-22'
             }>
             <Container>
-                <nav>
+                <nav data-cy="navigation">
                     <ul className={'flex justify-end space-x-4 md:space-x-8'}>
                         <li className={'mr-auto'}>
                             <Link href="/">
