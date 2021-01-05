@@ -42,6 +42,7 @@
     },
     "devDependencies": {
         "cypress": "^6.2.0",
+        "dotenv": "^8.2.0",
         "eslint": "^7.17.0",
         "eslint-config-prettier": "^7.1.0",
         "eslint-plugin-cypress": "^2.11.2",
@@ -50,6 +51,8 @@
         "eslint-plugin-react": "^7.22.0",
         "eslint-plugin-react-hooks": "^4.2.0",
         "eslint-plugin-simple-import-sort": "^7.0.0",
+        "globby": "^11.0.1",
+        "node-fetch": "^2.6.1",
         "prettier": "^2.2.1"
     }
 }

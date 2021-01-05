@@ -5,5 +5,12 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = withBundleAnalyzer({
     images: {
         domains: ['images.ctfassets.net']
+    },
+    webpack: (config, { isServer }) => {
+        if (isServer) {
+            require('./scripts/generate-sitemap');
+        }
+
+        return config;
     }
 });
