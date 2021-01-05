@@ -7,6 +7,7 @@ import { queryContent } from '../../lib/content';
 import TextBlock from '../../components/TextBlock';
 import readingTime from 'reading-time';
 import SEOBlogPost from '../../components/SEOBlogPost';
+import { markdownToHTML } from '../../lib/text';
 
 export default function BlogPost(props) {
     const router = useRouter();
@@ -132,7 +133,7 @@ export async function getStaticProps({ params, preview = false }) {
             preview,
             blogPost,
             error: errorText,
-            contact: contactText
+            contact: await markdownToHTML(contactText)
         }
     };
 }

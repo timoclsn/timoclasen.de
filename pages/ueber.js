@@ -3,6 +3,7 @@ import Image from 'next/image';
 import TextBlock from '../components/TextBlock';
 import ContactWidget from '../components/ContactWidget';
 import { queryContent } from '../lib/content';
+import { markdownToHTML } from '../lib/text';
 
 export default function About(props) {
     return (
@@ -72,8 +73,8 @@ export async function getStaticProps({ preview = false }) {
             previewImage: page.previewImage,
             slug: page.slug,
             image: person.imagesCollection.items[0],
-            about: person.cvText,
-            contact: contactText
+            about: await markdownToHTML(person.cvText),
+            contact: await markdownToHTML(contactText)
         }
     };
 }
