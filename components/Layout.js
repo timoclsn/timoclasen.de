@@ -3,10 +3,10 @@ import Head from 'next/head';
 import Favicons from '@/components/Favicons';
 import SEO from '@/components/SEO';
 
-import CenteredColumn from './CenteredColumn';
-import Footer from './Footer';
-import Navigation from './Navigation';
-import PreviewAlert from './PreviewAlert';
+import CenteredColumn from '@/components/CenteredColumn';
+import Footer from '@/components/Footer';
+import Navigation from '@/components/Navigation';
+import PreviewAlert from '@/components/PreviewAlert';
 
 export default function Layout({
     children,

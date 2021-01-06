@@ -1,5 +1,5 @@
-import WidgetLayout from './WidgetLayout';
-import WidgetText from './WidgetText';
+import WidgetLayout from '@/components/WidgetLayout';
+import WidgetText from '@/components/WidgetText';
 
 export default function BlogWidget({ blogPost1, blogPost2 }) {
     return (
