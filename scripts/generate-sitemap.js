@@ -10,7 +10,6 @@ const publicAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 (async () => {
     const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
 
-    // Ignore Next.js specific files (e.g., _app.js) and API routes.
     const pages = await globby([
         'pages/**/*js',
         '!pages/_*.js',
@@ -30,10 +29,9 @@ const publicAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 
     const blogPosts = response.data.blogPosts.items;
 
-    for (let i = 0; i < blogPosts.length; i++) {
-        const post = blogPosts[i];
-        pages.push(`pages/blog/${post.slug}.js`);
-    }
+    blogPosts.forEach((blogPost) => {
+        pages.push(`pages/blog/${blogPost.slug}.js`);
+    });
 
     const sitemap = `
         <?xml version="1.0" encoding="UTF-8"?>
@@ -56,7 +54,6 @@ const publicAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
         </urlset>
     `;
 
-    // If you're not using Prettier, you can remove this.
     const formatted = prettier.format(sitemap, {
         ...prettierConfig,
         parser: 'html'
