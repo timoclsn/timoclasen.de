@@ -1,8 +1,9 @@
-require('dotenv').config();
 const fs = require('fs');
 const globby = require('globby');
 const prettier = require('prettier');
 const fetch = require('node-fetch');
+
+require('dotenv').config();
 
 const spaceId = process.env.CONTENTFUL_SPACE_ID;
 const publicAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
