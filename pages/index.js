@@ -1,10 +1,10 @@
-import Layout from '../components/Layout';
-import Teaser from '../components/Teaser';
-import AboutWidget from '../components/AboutWidget';
-import BlogWidget from '../components/BlogWidget';
-import ContactWidget from '../components/ContactWidget';
-import { queryContent } from '../lib/content';
-import { markdownToHTML, truncate, stripFirstLine } from '../lib/text';
+import Layout from '@/components/Layout';
+import Teaser from '@/components/Teaser';
+import AboutWidget from '@/components/AboutWidget';
+import BlogWidget from '@/components/BlogWidget';
+import ContactWidget from '@/components/ContactWidget';
+import { queryContent } from '@/lib/content';
+import { markdownToHTML, truncate, stripFirstLine } from '@/lib/text';
 
 export default function Home(props) {
     return (

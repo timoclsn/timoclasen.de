@@ -1,8 +1,8 @@
-import Layout from '../components/Layout';
-import TextBlock from '../components/TextBlock';
-import ContactWidget from '../components/ContactWidget';
-import { queryContent } from '../lib/content';
-import { markdownToHTML } from '../lib/text';
+import Layout from '@/components/Layout';
+import TextBlock from '@/components/TextBlock';
+import ContactWidget from '@/components/ContactWidget';
+import { queryContent } from '@/lib/content';
+import { markdownToHTML } from '@/lib/text';
 
 export default function Legal(props) {
     return (

@@ -1,8 +1,8 @@
-import Layout from '../components/Layout';
-import ContactWidget from '../components/ContactWidget';
-import { queryContent } from '../lib/content';
-import BlogPostPreview from '../components/BlogPostPreview';
-import { markdownToHTML } from '../lib/text';
+import Layout from '@/components/Layout';
+import ContactWidget from '@/components/ContactWidget';
+import { queryContent } from '@/lib/content';
+import BlogPostPreview from '@/components/BlogPostPreview';
+import { markdownToHTML } from '@/lib/text';
 
 export default function Blog(props) {
     return (

@@ -1,4 +1,4 @@
-import TextContainer from '../components/TextContainer';
+import TextContainer from '@/components/TextContainer';
 import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';

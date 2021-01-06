@@ -2,8 +2,8 @@ import CenteredColumn from './CenteredColumn';
 import Navigation from './Navigation';
 import Footer from './Footer';
 import PreviewAlert from './PreviewAlert';
-import Favicons from '../components/Favicons';
-import SEO from '../components/SEO';
+import Favicons from '@/components/Favicons';
+import SEO from '@/components/SEO';
 import Head from 'next/head';
 
 export default function Layout({
