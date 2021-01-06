@@ -1,12 +1,11 @@
 import Head from 'next/head';
 
-import Favicons from '@/components/Favicons';
-import SEO from '@/components/SEO';
-
 import CenteredColumn from '@/components/CenteredColumn';
+import Favicons from '@/components/Favicons';
 import Footer from '@/components/Footer';
 import Navigation from '@/components/Navigation';
 import PreviewAlert from '@/components/PreviewAlert';
+import SEO from '@/components/SEO';
 
 export default function Layout({
     children,
@@ -17,8 +16,8 @@ export default function Layout({
     preview
 }) {
     const name = 'Timo Clasen';
-    const pageTitle = title.includes(name) ? title : title + ' • ' + name;
-    slug = slug ? '/' + slug : '';
+    const pageTitle = title.includes(name) ? title : `${title}  •  ${name}`;
+    slug = slug ? `/${slug}` : '';
 
     return (
         <>

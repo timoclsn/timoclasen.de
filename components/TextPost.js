@@ -9,7 +9,7 @@ import TextContainer from '@/components/TextContainer';
 SyntaxHighlighter.registerLanguage('jsx', jsx);
 
 const renderers = {
-    paragraph: function paragraph(paragraph) {
+    paragraph: function Paragraph(paragraph) {
         const { node } = paragraph;
         if (node.children[0].type === 'image') {
             const image = node.children[0];
@@ -28,7 +28,7 @@ const renderers = {
 
         return <p>{paragraph.children}</p>;
     },
-    code: function code({ language, value }) {
+    code: function Code({ language, value }) {
         return (
             <SyntaxHighlighter style={style} language={language}>
                 {value}
