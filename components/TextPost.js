@@ -1,14 +1,15 @@
-import TextContainer from '../components/TextContainer';
-import ReactMarkdown from 'react-markdown';
 import Image from 'next/image';
+import ReactMarkdown from 'react-markdown';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
 import style from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark';
 
+import TextContainer from '@/components/TextContainer';
+
 SyntaxHighlighter.registerLanguage('jsx', jsx);
 
 const renderers = {
-    paragraph: function paragraph(paragraph) {
+    paragraph: function Paragraph(paragraph) {
         const { node } = paragraph;
         if (node.children[0].type === 'image') {
             const image = node.children[0];
@@ -27,7 +28,7 @@ const renderers = {
 
         return <p>{paragraph.children}</p>;
     },
-    code: function code({ language, value }) {
+    code: function Code({ language, value }) {
         return (
             <SyntaxHighlighter style={style} language={language}>
                 {value}

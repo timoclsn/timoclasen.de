@@ -1,4 +1,4 @@
-import TextContainer from '../components/TextContainer';
+import TextContainer from '@/components/TextContainer';
 
 export default function TextBlock({ text }) {
     return (

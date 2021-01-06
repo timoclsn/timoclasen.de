@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { parseISO, format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
+import Link from 'next/link';
 import { Calendar, Feather } from 'react-feather';
 
 export default function BlogPostPreview({ title, subtitle, date, slug, sys }) {

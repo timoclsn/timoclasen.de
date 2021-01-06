@@ -1,7 +1,7 @@
-import { parseISO, format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
-import { Clock, Twitter, Calendar, User, Feather } from 'react-feather';
 import Image from 'next/image';
+import { Calendar, Clock, Feather, Twitter, User } from 'react-feather';
 
 export default function BlogPostHeader({
     title,

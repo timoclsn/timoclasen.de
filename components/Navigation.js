@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import Container from './CenteredColumn';
-import NavigationLink from './NavigationLink';
+
+import Container from '@/components/CenteredColumn';
+import NavigationLink from '@/components/NavigationLink';
 
 export default function Navigation({ name }) {
     return (

@@ -1,13 +1,14 @@
 import { useRouter } from 'next/router';
-import Layout from '../../components/Layout';
-import TextPost from '../../components/TextPost';
-import BlogPostHeader from '../../components/BlogPostHeader';
-import ContactWidget from '../../components/ContactWidget';
-import { queryContent } from '../../lib/content';
-import TextBlock from '../../components/TextBlock';
 import readingTime from 'reading-time';
-import SEOBlogPost from '../../components/SEOBlogPost';
-import { markdownToHTML } from '../../lib/text';
+
+import BlogPostHeader from '@/components/BlogPostHeader';
+import ContactWidget from '@/components/ContactWidget';
+import Layout from '@/components/Layout';
+import SEOBlogPost from '@/components/SEOBlogPost';
+import TextBlock from '@/components/TextBlock';
+import TextPost from '@/components/TextPost';
+import { queryContent } from '@/lib/content';
+import { markdownToHTML } from '@/lib/text';
 
 export default function BlogPost(props) {
     const router = useRouter();
@@ -43,10 +44,7 @@ export default function BlogPost(props) {
     const date = new Date(props.blogPost.date).toISOString();
 
     const readingTimeObj = readingTime(props.blogPost.text);
-    const readingTimeMinutes =
-        Math.round(readingTimeObj.minutes) < 1
-            ? 1
-            : Math.round(readingTimeObj.minutes);
+    const readingTimeInMinutes = Math.ceil(readingTimeObj.minutes);
 
     return (
         <>
@@ -58,7 +56,7 @@ export default function BlogPost(props) {
                 slug={`blog/${props.blogPost.slug}`}>
                 <SEOBlogPost
                     authorName={props.blogPost.author.name}
-                    readingTime={readingTimeMinutes}
+                    readingTime={readingTimeInMinutes}
                     date={date}
                     slug={props.blogPost.slug}
                     title={props.blogPost.title}
@@ -71,7 +69,7 @@ export default function BlogPost(props) {
                         subtitle={props.blogPost.subtitle}
                         date={props.blogPost.date}
                         author={props.blogPost.author}
-                        readingTime={readingTimeMinutes}
+                        readingTime={readingTimeInMinutes}
                         sys={props.blogPost.sys}
                     />
                     <TextPost text={props.blogPost.text} />
