@@ -1,5 +1,6 @@
+import { Linkedin, Mail, Twitter } from 'react-feather';
+
 import Button from './Button';
-import { Mail, Twitter, Linkedin } from 'react-feather';
 
 export default function WidgetButtons() {
     return (

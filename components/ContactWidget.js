@@ -1,5 +1,5 @@
-import WidgetLayout from './WidgetLayout';
 import WidgetButtons from './WidgetButtons';
+import WidgetLayout from './WidgetLayout';
 import WidgetText from './WidgetText';
 
 export default function ContactWidget({ text }) {

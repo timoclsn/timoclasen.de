@@ -1,5 +1,5 @@
-import WidgetLayout from './WidgetLayout';
 import WidgetImage from './WidgetImage';
+import WidgetLayout from './WidgetLayout';
 import WidgetText from './WidgetText';
 
 export default function AboutWidget({ text, imageUrl, imageDescription }) {

@@ -36,7 +36,9 @@ module.exports = {
                 specialLink: ['hrefLeft', 'hrefRight'],
                 aspects: ['invalidHref', 'preferButton']
             }
-        ]
+        ],
+        'simple-import-sort/imports': 'error',
+        'simple-import-sort/exports': 'error'
     },
     plugins: ['simple-import-sort']
 };

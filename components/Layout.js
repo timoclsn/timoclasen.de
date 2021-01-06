@@ -1,10 +1,12 @@
-import CenteredColumn from './CenteredColumn';
-import Navigation from './Navigation';
-import Footer from './Footer';
-import PreviewAlert from './PreviewAlert';
+import Head from 'next/head';
+
 import Favicons from '@/components/Favicons';
 import SEO from '@/components/SEO';
-import Head from 'next/head';
+
+import CenteredColumn from './CenteredColumn';
+import Footer from './Footer';
+import Navigation from './Navigation';
+import PreviewAlert from './PreviewAlert';
 
 export default function Layout({
     children,

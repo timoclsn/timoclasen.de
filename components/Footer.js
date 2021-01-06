@@ -1,4 +1,5 @@
 import Link from 'next/link';
+
 import CenteredColumn from './CenteredColumn';
 import NavigationLink from './NavigationLink';
 

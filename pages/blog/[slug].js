@@ -1,12 +1,13 @@
 import { useRouter } from 'next/router';
-import Layout from '@/components/Layout';
-import TextPost from '@/components/TextPost';
+import readingTime from 'reading-time';
+
 import BlogPostHeader from '@/components/BlogPostHeader';
 import ContactWidget from '@/components/ContactWidget';
-import { queryContent } from '@/lib/content';
-import TextBlock from '@/components/TextBlock';
-import readingTime from 'reading-time';
+import Layout from '@/components/Layout';
 import SEOBlogPost from '@/components/SEOBlogPost';
+import TextBlock from '@/components/TextBlock';
+import TextPost from '@/components/TextPost';
+import { queryContent } from '@/lib/content';
 import { markdownToHTML } from '@/lib/text';
 
 export default function BlogPost(props) {
