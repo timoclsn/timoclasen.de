@@ -16,8 +16,6 @@ export default function WidgetLayout({
     let containerSyles = [
         'flex',
         'flex-col',
-        'space-y-12',
-        'sm:space-y-0',
         'sm:flex-row',
         'sm:space-x-12',
         'md:space-x-16',
@@ -37,6 +35,8 @@ export default function WidgetLayout({
     if (separate) {
         widgetStyles.push('rounded-3xl');
         widgetStyles.push(bgColor);
+        containerSyles.push('space-y-12');
+        containerSyles.push('sm:space-y-0');
     } else {
         containerSyles.push('rounded-3xl');
         containerSyles.push(bgColor);
