@@ -80,7 +80,7 @@ export async function getStaticProps({ preview = false }) {
 
     let aboutTeaser = person.cvText;
     aboutTeaser = stripFirstLine(aboutTeaser);
-    aboutTeaser = truncate(aboutTeaser, 400, true);
+    aboutTeaser = truncate(aboutTeaser, 550, true);
     aboutTeaser = await markdownToHTML(aboutTeaser);
 
     return {

@@ -16,7 +16,9 @@ export default function WidgetText({ title, text, linkText, href }) {
                         {title}
                     </h2>
                     <div
-                        className={'flex flex-col space-y-4'}
+                        className={
+                            'flex flex-col space-y-4 line-clamp-8 xl:line-clamp-9'
+                        }
                         dangerouslySetInnerHTML={{ __html: text }}></div>
                 </div>
                 {href && (

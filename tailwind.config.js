@@ -22,6 +22,12 @@ module.exports = {
             fontFamily: {
                 sans: ['Inter var', ...defaultTheme.fontFamily.sans]
             },
+            lineClamp: {
+                7: '7',
+                8: '8',
+                9: '9',
+                10: '10'
+            },
             typography: (theme) => ({
                 DEFAULT: {
                     css: {
@@ -101,7 +107,11 @@ module.exports = {
     variants: {
         extend: {
             typography: ['dark']
-        }
+        },
+        lineClamp: ['responsive']
     },
-    plugins: [require('@tailwindcss/typography')]
+    plugins: [
+        require('@tailwindcss/typography'),
+        require('@tailwindcss/line-clamp')
+    ]
 };
