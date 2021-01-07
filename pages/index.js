@@ -4,7 +4,12 @@ import ContactWidget from '@/components/ContactWidget';
 import Layout from '@/components/Layout';
 import Teaser from '@/components/Teaser';
 import { queryContent } from '@/lib/content';
-import { markdownToHTML, stripFirstLine, truncate } from '@/lib/text';
+import {
+    markdownToHTML,
+    stripFirstLine,
+    truncate,
+    stripMarkdown
+} from '@/lib/text';
 
 export default function Home(props) {
     return (
@@ -81,7 +86,7 @@ export async function getStaticProps({ preview = false }) {
     let aboutTeaser = person.cvText;
     aboutTeaser = stripFirstLine(aboutTeaser);
     aboutTeaser = truncate(aboutTeaser, 550, true);
-    aboutTeaser = await markdownToHTML(aboutTeaser);
+    aboutTeaser = await stripMarkdown(aboutTeaser);
 
     return {
         props: {
