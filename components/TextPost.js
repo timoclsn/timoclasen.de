@@ -14,15 +14,19 @@ const renderers = {
         if (node.children[0].type === 'image') {
             const image = node.children[0];
             return (
-                <Image
-                    src={`https:${image.url}`}
-                    width="900"
-                    height="600"
-                    layout="responsive"
-                    alt={image.alt}
-                    quality={60}
-                    className={'rounded-md'}
-                />
+                <div
+                    className={
+                        'relative overflow-hidden pb-2/3 bg-dark dark:bg-light bg-opacity-10 rounded-md'
+                    }>
+                    <Image
+                        src={`https:${image.url}`}
+                        layout="fill"
+                        objectFit="contain"
+                        objectPosition="center center"
+                        alt={image.alt}
+                        quality={60}
+                    />
+                </div>
             );
         }
 
