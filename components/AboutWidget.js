@@ -20,7 +20,6 @@ export default function AboutWidget({ text, imageUrl, imageDescription }) {
                     href="/ueber"
                 />
             }
-            reverse
             separate
             highlight
         />
