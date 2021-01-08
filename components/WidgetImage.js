@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function WidgetImage({ url, description }) {
+export default function WidgetImage({ url, description, priority }) {
     return (
         <>
             <div
@@ -15,6 +15,7 @@ export default function WidgetImage({ url, description }) {
                     alt={description}
                     quality={60}
                     sizes="(min-width: 640px) 45vw, 90vw"
+                    priority={priority}
                 />
             </div>
         </>
