@@ -6,7 +6,11 @@ export default function AboutWidget({ text, imageUrl, imageDescription }) {
     return (
         <WidgetLayout
             FirstWidget={
-                <WidgetImage url={imageUrl} description={imageDescription} />
+                <WidgetImage
+                    url={imageUrl}
+                    description={imageDescription}
+                    priority
+                />
             }
             SecondWidget={
                 <WidgetText
