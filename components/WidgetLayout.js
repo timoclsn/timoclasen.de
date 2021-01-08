@@ -1,7 +1,6 @@
 export default function WidgetLayout({
     FirstWidget,
     SecondWidget,
-    reverse,
     separate,
     highlight
 }) {
@@ -24,13 +23,6 @@ export default function WidgetLayout({
     ];
 
     let widgetStyles = ['flex-1 overflow-hidden'];
-
-    if (reverse) {
-        containerSyles.push('sm:flex-row-reverse');
-        containerSyles.push('sm:space-x-reverse');
-        containerSyles.push('md:space-x-reverse');
-        containerSyles.push('lg:space-x-reverse');
-    }
 
     if (separate) {
         widgetStyles.push('rounded-3xl');

@@ -1,17 +1,21 @@
 import Image from 'next/image';
 
-export default function WidgetImage({ url, description }) {
+export default function WidgetImage({ url, description, priority }) {
     return (
         <>
-            <div className={'relative w-full h-96 sm:h-full'}>
+            <div
+                className={
+                    'relative overflow-hidden pb-full sm:pb-0 sm:h-full'
+                }>
                 <Image
                     src={url}
                     layout={'fill'}
                     objectFit="cover"
                     objectPosition="center center"
+                    sizes="(min-width: 640px) 45vw, 90vw"
+                    quality={60}
+                    priority={priority}
                     alt={description}
-                    quality={75}
-                    sizes="(min-width: 640px) 50vw, 100vw"
                 />
             </div>
         </>
