@@ -29,9 +29,10 @@ export default function Layout({
                 />
                 <link
                     rel="preload"
-                    href="/fonts/Inter-roman.var.woff2"
+                    href="/fonts/inter-var-latin.woff2"
                     as="font"
-                    crossOrigin=""
+                    type="font/woff2"
+                    crossOrigin="anonymous"
                 />
             </Head>
             <SEO

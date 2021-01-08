@@ -20,7 +20,7 @@ module.exports = {
         },
         extend: {
             fontFamily: {
-                sans: ['Inter var', ...defaultTheme.fontFamily.sans]
+                sans: ['Inter', ...defaultTheme.fontFamily.sans]
             },
             spacing: {
                 '1/2': '50%',
