@@ -14,7 +14,7 @@ export default function WidgetImage({ url, description }) {
                     objectPosition="center center"
                     alt={description}
                     quality={60}
-                    sizes="(min-width: 640px) 50vw, 100vw"
+                    sizes="(min-width: 640px) 45vw, 90vw"
                 />
             </div>
         </>
