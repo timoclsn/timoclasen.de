@@ -28,7 +28,7 @@
         "@tailwindcss/typography": "^0.3.1",
         "autoprefixer": "^10.1.0",
         "date-fns": "^2.16.1",
-        "next": "^10.0.4",
+        "next": "^10.0.5",
         "postcss": "^8.2.2",
         "react": "17.0.1",
         "react-dom": "17.0.1",
