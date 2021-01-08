@@ -3,7 +3,10 @@ import Image from 'next/image';
 export default function WidgetImage({ url, description }) {
     return (
         <>
-            <div className={'relative w-full h-96 sm:h-full'}>
+            <div
+                className={
+                    'relative overflow-hidden pb-full sm:pb-0 sm:h-full'
+                }>
                 <Image
                     src={url}
                     layout={'fill'}

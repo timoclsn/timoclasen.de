@@ -23,7 +23,8 @@ module.exports = {
                 sans: ['Inter var', ...defaultTheme.fontFamily.sans]
             },
             spacing: {
-                '2/3': '66.666667%'
+                '2/3': '66.666667%',
+                full: '100%'
             },
             typography: (theme) => ({
                 DEFAULT: {
