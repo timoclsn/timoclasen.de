@@ -21,6 +21,7 @@ export default function About(props) {
                 alt={props.image.description}
                 quality={60}
                 className={'rounded-3xl'}
+                priority
             />
             <TextBlock text={props.about} />
             <ContactWidget text={props.contact} />
