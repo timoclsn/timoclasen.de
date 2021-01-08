@@ -6,18 +6,18 @@ export default function AboutWidget({ text, imageUrl, imageDescription }) {
     return (
         <WidgetLayout
             FirstWidget={
-                <WidgetImage
-                    url={imageUrl}
-                    description={imageDescription}
-                    priority
-                />
-            }
-            SecondWidget={
                 <WidgetText
                     title="Über mich"
                     text={text}
                     linkText="mehr"
                     href="/ueber"
+                />
+            }
+            SecondWidget={
+                <WidgetImage
+                    url={imageUrl}
+                    description={imageDescription}
+                    priority
                 />
             }
             separate
