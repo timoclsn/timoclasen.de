@@ -23,8 +23,9 @@ const renderers = {
                         layout="fill"
                         objectFit="contain"
                         objectPosition="center center"
-                        alt={image.alt}
+                        sizes="90vw"
                         quality={60}
+                        alt={image.alt}
                     />
                 </div>
             );

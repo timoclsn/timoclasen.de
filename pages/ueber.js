@@ -14,15 +14,19 @@ export default function About(props) {
             description={props.description}
             previewImage={props.previewImage}
             slug={props.slug}>
-            <Image
-                src={props.image.url}
-                width="1088"
-                height="612"
-                alt={props.image.description}
-                quality={60}
-                className={'rounded-3xl'}
-                priority
-            />
+            <div className={'relative overflow-hidden pb-1/2'}>
+                <Image
+                    src={props.image.url}
+                    layout={'fill'}
+                    objectFit="cover"
+                    objectPosition="center center"
+                    sizes="90vw"
+                    quality={60}
+                    priority
+                    alt={props.image.description}
+                    className={'rounded-3xl'}
+                />
+            </div>
             <TextBlock text={props.about} />
             <ContactWidget text={props.contact} />
         </Layout>
