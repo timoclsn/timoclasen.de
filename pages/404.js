@@ -57,7 +57,7 @@ export async function getStaticProps({ preview = false }) {
             description: page.description,
             previewImage: page.previewImage,
             slug: page.slug,
-            error: errorText,
+            error: await markdownToHTML(errorText),
             contact: await markdownToHTML(contactText)
         }
     };

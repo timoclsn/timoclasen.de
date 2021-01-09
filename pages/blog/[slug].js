@@ -35,7 +35,7 @@ export default function BlogPost(props) {
                 description="Seite lädt…"
                 previewImage=""
                 slug="">
-                <TextBlock text="# Seite lädt…" />
+                <TextBlock text={props.loading} />
                 <ContactWidget text={props.contact} />
             </Layout>
         );
@@ -130,7 +130,8 @@ export async function getStaticProps({ params, preview = false }) {
         props: {
             preview,
             blogPost,
-            error: errorText,
+            error: await markdownToHTML(errorText),
+            loading: await markdownToHTML('# Seite lädt…'),
             contact: await markdownToHTML(contactText)
         }
     };
