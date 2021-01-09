@@ -1,5 +1,9 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 
+import { analyticsId } from '@/lib/analytics';
+
+const prod = process.env.NODE_ENV === 'production';
+
 class MyDocument extends Document {
     render() {
         return (
@@ -12,11 +16,13 @@ class MyDocument extends Document {
                 <body className={'min-h-screen'}>
                     <Main />
                     <NextScript />
-                    {/*Cloudflare Web Analytics*/}
-                    <script
-                        defer
-                        src="https://static.cloudflareinsights.com/beacon.min.js"
-                        data-cf-beacon='{"token": "ec9ecd1863434736b53313eb3fe81317"}'></script>
+                    {prod && (
+                        <script
+                            defer
+                            src="https://static.cloudflareinsights.com/beacon.min.js"
+                            data-cf-beacon={`{"token": "${analyticsId}"}`}
+                        />
+                    )}
                 </body>
             </Html>
         );
