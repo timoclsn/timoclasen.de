@@ -1,9 +1,16 @@
 import { format, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
 import Link from 'next/link';
-import { Calendar, Feather } from 'react-feather';
+import { Calendar, Clock, Feather } from 'react-feather';
 
-export default function BlogPostPreview({ title, subtitle, date, slug, sys }) {
+export default function BlogPostPreview({
+    title,
+    subtitle,
+    date,
+    readingTime,
+    slug,
+    sys
+}) {
     function isDraft(sys) {
         return !sys.publishedVersion;
     }
@@ -25,6 +32,11 @@ export default function BlogPostPreview({ title, subtitle, date, slug, sys }) {
                                 locale: de
                             })}
                         </p>
+                    </div>
+
+                    <div className={'flex items-center space-x-2 mb-1 md:mb-2'}>
+                        <Clock size={16} />
+                        <p>{`${readingTime} min`}</p>
                     </div>
 
                     {isDraft(sys) && (
