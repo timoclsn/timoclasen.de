@@ -1,3 +1,5 @@
+import { format, parseISO } from 'date-fns';
+import { de } from 'date-fns/locale';
 import { useRouter } from 'next/router';
 import readingTime from 'reading-time';
 
@@ -43,9 +45,6 @@ export default function BlogPost(props) {
 
     const date = new Date(props.blogPost.date).toISOString();
 
-    const readingTimeObj = readingTime(props.blogPost.text);
-    const readingTimeInMinutes = Math.ceil(readingTimeObj.minutes);
-
     return (
         <>
             <Layout
@@ -56,7 +55,7 @@ export default function BlogPost(props) {
                 slug={`blog/${props.blogPost.slug}`}>
                 <SEOBlogPost
                     authorName={props.blogPost.author.name}
-                    readingTime={readingTimeInMinutes}
+                    readingTime={props.blogPost.readingTime}
                     date={date}
                     slug={props.blogPost.slug}
                     title={props.blogPost.title}
@@ -67,9 +66,9 @@ export default function BlogPost(props) {
                     <BlogPostHeader
                         title={props.blogPost.title}
                         subtitle={props.blogPost.subtitle}
-                        date={props.blogPost.date}
+                        date={props.blogPost.dateFormatted}
                         author={props.blogPost.author}
-                        readingTime={readingTimeInMinutes}
+                        readingTime={props.blogPost.readingTime}
                         sys={props.blogPost.sys}
                     />
                     <TextPost text={props.blogPost.text} />
@@ -123,6 +122,14 @@ export async function getStaticProps({ params, preview = false }) {
     );
 
     const blogPost = response.data.blogPost.items[0];
+
+    const readingTimeObj = readingTime(blogPost.text);
+    blogPost.readingTime = Math.ceil(readingTimeObj.minutes);
+
+    blogPost.dateFormatted = format(parseISO(blogPost.date), 'dd. MMMM yyyy', {
+        locale: de
+    });
+
     const errorText = response.data.errorSnippet.items[0].content;
     const contactText = response.data.contactSnippet.items[0].content;
 
