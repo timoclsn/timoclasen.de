@@ -3,6 +3,8 @@ import { de } from 'date-fns/locale';
 import Link from 'next/link';
 import { Calendar, Clock, Feather } from 'react-feather';
 
+import BlogPostLabel from '@/components/BlogPostLabel';
+
 export default function BlogPostPreview({
     title,
     subtitle,
@@ -20,33 +22,19 @@ export default function BlogPostPreview({
             <article className={'max-w-prose mx-auto'}>
                 <div
                     className={
-                        'flex flex-wrap items-center text-xs sm:text-sm uppercase text-highlight dark:text-highlight-dark'
+                        'flex space-x-6 mb-1 sm:mb-2 text-xs sm:text-sm uppercase text-highlight dark:text-highlight-dark'
                     }>
-                    <div
-                        className={
-                            'flex items-center space-x-2 mr-6 mb-1 md:mb-2'
-                        }>
-                        <Calendar size={16} />
-                        <p className={'whitespace-nowrap'}>
-                            {format(parseISO(date), 'dd. MMMM yyyy', {
-                                locale: de
-                            })}
-                        </p>
-                    </div>
+                    <BlogPostLabel
+                        Icon={Calendar}
+                        text={format(parseISO(date), 'dd. MMMM yyyy', {
+                            locale: de
+                        })}
+                    />
 
-                    <div className={'flex items-center space-x-2 mb-1 md:mb-2'}>
-                        <Clock size={16} />
-                        <p>{`${readingTime} min`}</p>
-                    </div>
+                    <BlogPostLabel Icon={Clock} text={`${readingTime} min`} />
 
                     {isDraft(sys) && (
-                        <div
-                            className={
-                                'flex items-center space-x-2 mb-1 md:mb-2'
-                            }>
-                            <Feather size={16} />
-                            <p>Draft</p>
-                        </div>
+                        <BlogPostLabel Icon={Feather} text="Entwurf" />
                     )}
                 </div>
 
