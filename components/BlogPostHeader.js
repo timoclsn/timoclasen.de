@@ -1,5 +1,3 @@
-import { format, parseISO } from 'date-fns';
-import { de } from 'date-fns/locale';
 import Image from 'next/image';
 import { Calendar, Clock, Feather, Twitter, User } from 'react-feather';
 
@@ -61,12 +59,7 @@ export default function BlogPostHeader({
                                 <BlogPostLabel Icon={User} text={author.name} />
                             )}
 
-                            <BlogPostLabel
-                                Icon={Calendar}
-                                text={format(parseISO(date), 'dd. MMMM yyyy', {
-                                    locale: de
-                                })}
-                            />
+                            <BlogPostLabel Icon={Calendar} text={date} />
 
                             {isDraft(sys) && (
                                 <BlogPostLabel Icon={Feather} text="Entwurf" />

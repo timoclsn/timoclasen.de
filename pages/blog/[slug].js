@@ -1,3 +1,5 @@
+import { format, parseISO } from 'date-fns';
+import { de } from 'date-fns/locale';
 import { useRouter } from 'next/router';
 import readingTime from 'reading-time';
 
@@ -64,7 +66,7 @@ export default function BlogPost(props) {
                     <BlogPostHeader
                         title={props.blogPost.title}
                         subtitle={props.blogPost.subtitle}
-                        date={props.blogPost.date}
+                        date={props.blogPost.dateFormatted}
                         author={props.blogPost.author}
                         readingTime={props.blogPost.readingTime}
                         sys={props.blogPost.sys}
@@ -120,8 +122,13 @@ export async function getStaticProps({ params, preview = false }) {
     );
 
     const blogPost = response.data.blogPost.items[0];
+
     const readingTimeObj = readingTime(blogPost.text);
     blogPost.readingTime = Math.ceil(readingTimeObj.minutes);
+
+    blogPost.dateFormatted = format(parseISO(blogPost.date), 'dd. MMMM yyyy', {
+        locale: de
+    });
 
     const errorText = response.data.errorSnippet.items[0].content;
     const contactText = response.data.contactSnippet.items[0].content;

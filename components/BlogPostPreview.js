@@ -1,5 +1,3 @@
-import { format, parseISO } from 'date-fns';
-import { de } from 'date-fns/locale';
 import Link from 'next/link';
 import { Calendar, Clock, Feather } from 'react-feather';
 
@@ -24,12 +22,7 @@ export default function BlogPostPreview({
                     className={
                         'flex space-x-6 mb-1 sm:mb-2 text-xs sm:text-sm uppercase text-highlight dark:text-highlight-dark'
                     }>
-                    <BlogPostLabel
-                        Icon={Calendar}
-                        text={format(parseISO(date), 'dd. MMMM yyyy', {
-                            locale: de
-                        })}
-                    />
+                    <BlogPostLabel Icon={Calendar} text={date} />
 
                     <BlogPostLabel Icon={Clock} text={`${readingTime} min`} />
 

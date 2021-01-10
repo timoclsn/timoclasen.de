@@ -1,3 +1,5 @@
+import { format, parseISO } from 'date-fns';
+import { de } from 'date-fns/locale';
 import readingTime from 'reading-time';
 
 import BlogPostPreview from '@/components/BlogPostPreview';
@@ -18,7 +20,7 @@ export default function Blog(props) {
                 <BlogPostPreview
                     title={post.title}
                     subtitle={post.subtitle}
-                    date={post.date}
+                    date={post.dateFormatted}
                     slug={post.slug}
                     readingTime={post.readingTime}
                     key={post.sys.id}
@@ -71,7 +73,17 @@ export async function getStaticProps({ preview = false }) {
     const blogPosts = response.data.blogPosts.items.map((blogPost) => {
         const readingTimeObj = readingTime(blogPost.text);
         blogPost.readingTime = Math.ceil(readingTimeObj.minutes);
+
         delete blogPost.text;
+
+        blogPost.dateFormatted = format(
+            parseISO(blogPost.date),
+            'dd. MMMM yyyy',
+            {
+                locale: de
+            }
+        );
+
         return blogPost;
     });
 
