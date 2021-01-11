@@ -11,7 +11,6 @@ const publicAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 
 const name = 'Timo Clasen';
 const url = 'https://timoclasen.de';
-const email = 'timo@timoclasen.de';
 
 (async () => {
     const response = await queryContent(
@@ -46,7 +45,6 @@ const email = 'timo@timoclasen.de';
         },
         author: {
             name: name,
-            email: email,
             link: url
         }
     });
@@ -63,7 +61,6 @@ const email = 'timo@timoclasen.de';
             author: [
                 {
                     name: name,
-                    email: email,
                     link: url
                 }
             ],
