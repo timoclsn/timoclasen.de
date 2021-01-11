@@ -56,7 +56,7 @@ const email = 'timo@timoclasen.de';
 
         feed.addItem({
             title: post.title,
-            id: post.sys.id,
+            id: `${url}/blog/${post.slug}`,
             link: `${url}/blog/${post.slug}`,
             description: post.summary,
             content: await markdownToHTML(post.text),
