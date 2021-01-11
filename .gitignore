@@ -4,4 +4,5 @@
 node_modules
 .env
 public/sitemap.xml
+public/rss.xml
 .vercel
