@@ -26,6 +26,11 @@ const email = 'timo@timoclasen.de';
                     slug
                     date
                     text
+                    author {
+                        name
+                        email
+                        website
+                    }
                 }
             }
         }`
@@ -62,9 +67,9 @@ const email = 'timo@timoclasen.de';
             content: await markdownToHTML(post.text),
             author: [
                 {
-                    name: name,
-                    email: email,
-                    link: url
+                    name: post.author.name,
+                    email: post.author.email,
+                    link: post.author.website
                 }
             ],
             date: new Date(post.date)
