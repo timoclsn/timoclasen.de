@@ -43,6 +43,9 @@ export default function Footer() {
                             Strava
                         </NavigationLink>
                     </li>
+                    <li className={'mr-0 sm:mr-8'}>
+                        <NavigationLink href="/rss.xml">RSS</NavigationLink>
+                    </li>
                     <li className={'ml-0 sm:ml-auto'}>
                         <Link href="/impressum" passHref>
                             <NavigationLink>
