@@ -17,7 +17,7 @@ export default function BlogWidget({ blogPost1, blogPost2 }) {
                     title={blogPost2.title}
                     text={blogPost2.summary}
                     linkText="Blog"
-                    href={`/blog/${blogPost1.slug}`}
+                    href={`/blog/${blogPost2.slug}`}
                 />
             }
         />
