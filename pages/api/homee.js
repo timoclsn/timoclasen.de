@@ -8,7 +8,27 @@ export default async (_, res) => {
 
     const livingRoom = nodes.find((node) => node.id === 69);
 
-    return res.status(200).json(livingRoom);
+    const temperature = livingRoom.attributes.find(
+        (attribute) => attribute.type === 5
+    );
+
+    const humidity = livingRoom.attributes.find(
+        (attribute) => attribute.type === 7
+    );
+
+    res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=1200, stale-while-revalidate=600'
+    );
+
+    return res.status(200).json({
+        temperature: `${
+            Math.round(temperature.current_value * 10) / 10
+        } ${decodeURIComponent(temperature.unit)}`,
+        humidity: `${
+            Math.round(humidity.current_value * 10) / 10
+        } ${decodeURIComponent(humidity.unit)}`
+    });
 };
 
 function getNodes(homeeID, accessToken) {
@@ -18,7 +38,7 @@ function getNodes(homeeID, accessToken) {
             'v2',
             {
                 headers: {
-                    'User-Agent': 'timoclasen.de'
+                    'User-Agent': 'timoclasen.de / Smart Home Dashboard'
                 }
             }
         );
