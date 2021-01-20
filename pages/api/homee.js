@@ -4,17 +4,73 @@ const homeeID = process.env.HOMEE_ID;
 const accessToken = process.env.HOMEE_ACCESS_TOKEN;
 
 export default async (_, res) => {
+    // Temperature
     const nodes = await getNodes(homeeID, accessToken);
-
-    const livingRoom = nodes.find((node) => node.id === 69);
-
-    const temperature = livingRoom.attributes.find(
+    const livingRoomNode = nodes.find((node) => node.id === 69);
+    const temperatureAttribute = livingRoomNode.attributes.find(
         (attribute) => attribute.type === 5
     );
+    const temperature = `${roundValue(
+        temperatureAttribute.current_value
+    )} ${decodeURIComponent(temperatureAttribute.unit)}`;
 
-    const humidity = livingRoom.attributes.find(
+    // Himidity
+    const humidityAttribute = livingRoomNode.attributes.find(
         (attribute) => attribute.type === 7
     );
+    const humidity = `${roundValue(
+        humidityAttribute.current_value
+    )} ${decodeURIComponent(humidityAttribute.unit)}`;
+
+    // Energy
+    const energyAttributes = nodes.flatMap((node) => {
+        return node.attributes.find((attribute) => attribute.type === 3) || [];
+    });
+    const accumulatedEnergy = energyAttributes.reduce((acc, attribute) => {
+        return acc + attribute.current_value;
+    }, 0);
+    const energy = `${roundValue(accumulatedEnergy)} W`;
+
+    // Lights
+    const lightAttributes = nodes.flatMap((node) => {
+        if (
+            node.profile === 1001 ||
+            node.profile === 1002 ||
+            node.profile === 1003 ||
+            node.profile === 14 ||
+            (node.profile === 1004 && node.state === 1)
+        ) {
+            return node.attributes.find((attribute) => attribute.type === 1);
+        } else {
+            return [];
+        }
+    });
+    const lights = lightAttributes.some((attribute) => {
+        return attribute.current_value > 0;
+    });
+
+    // Outside temparature
+    const outsideNode = nodes.find((node) => node.id === 72);
+    const outsideTemperatureAttribute = outsideNode.attributes.find(
+        (attribute) => attribute.type === 5
+    );
+    const outsideTemperature = `${roundValue(
+        outsideTemperatureAttribute.current_value
+    )} ${decodeURIComponent(outsideTemperatureAttribute.unit)}`;
+
+    // Rain
+    const rainNode = nodes.find((node) => node.id === 258);
+    const rainAttribute = rainNode.attributes.find(
+        (attribute) => attribute.type === 12
+    );
+    const rain = rainAttribute.current_value > 0;
+
+    // Weather
+    const weatherNode = nodes.find((node) => node.id === -1);
+    const weatherAttribute = weatherNode.attributes.find(
+        (attribute) => attribute.type === 243
+    );
+    const weather = weatherAttribute.current_value;
 
     res.setHeader(
         'Cache-Control',
@@ -22,12 +78,13 @@ export default async (_, res) => {
     );
 
     return res.status(200).json({
-        temperature: `${
-            Math.round(temperature.current_value * 10) / 10
-        } ${decodeURIComponent(temperature.unit)}`,
-        humidity: `${
-            Math.round(humidity.current_value * 10) / 10
-        } ${decodeURIComponent(humidity.unit)}`
+        temperature,
+        humidity,
+        energy,
+        lights,
+        outsideTemperature,
+        rain,
+        weather
     });
 };
 
@@ -70,4 +127,8 @@ function getNodes(homeeID, accessToken) {
             reject(error);
         });
     });
+}
+
+function roundValue(value) {
+    return Math.round(value * 10) / 10;
 }
