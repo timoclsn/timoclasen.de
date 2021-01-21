@@ -1,5 +1,7 @@
 import WebSocket from 'ws';
 
+import { ENUMS } from '@/lib/enums';
+
 const homeeID = process.env.HOMEE_ID;
 const accessToken = process.env.HOMEE_ACCESS_TOKEN;
 
@@ -8,7 +10,7 @@ export default async (_, res) => {
     const nodes = await getNodes(homeeID, accessToken);
     const livingRoomNode = nodes.find((node) => node.id === 69);
     const temperatureAttribute = livingRoomNode.attributes.find(
-        (attribute) => attribute.type === 5
+        (attribute) => attribute.type === ENUMS.AttributeType.Temperature
     );
     const temperature = `${roundValue(
         temperatureAttribute.current_value
@@ -16,7 +18,7 @@ export default async (_, res) => {
 
     // Himidity
     const humidityAttribute = livingRoomNode.attributes.find(
-        (attribute) => attribute.type === 7
+        (attribute) => attribute.type === ENUMS.AttributeType.RelativeHumidity
     );
     const humidity = `${roundValue(
         humidityAttribute.current_value
@@ -24,7 +26,12 @@ export default async (_, res) => {
 
     // Energy
     const energyAttributes = nodes.flatMap((node) => {
-        return node.attributes.find((attribute) => attribute.type === 3) || [];
+        return (
+            node.attributes.find(
+                (attribute) =>
+                    attribute.type === ENUMS.AttributeType.TotalCurrentEnergyUse
+            ) || []
+        );
     });
     const accumulatedEnergy = energyAttributes.reduce((acc, attribute) => {
         return acc + attribute.current_value;
@@ -34,13 +41,16 @@ export default async (_, res) => {
     // Lights
     const lightAttributes = nodes.flatMap((node) => {
         if (
-            node.profile === 1001 ||
-            node.profile === 1002 ||
-            node.profile === 1003 ||
-            node.profile === 14 ||
-            (node.profile === 1004 && node.state === 1)
+            node.profile === ENUMS.NodeProfile.DimmablePlug ||
+            node.profile === ENUMS.NodeProfile.DimmableColorLight ||
+            node.profile === ENUMS.NodeProfile.DimmableExtendedColorLight ||
+            node.profile === ENUMS.NodeProfile.DimmableColorTemperatureLight ||
+            (node.profile === ENUMS.NodeProfile.DimmableLight &&
+                node.state === ENUMS.NodeState.Available)
         ) {
-            return node.attributes.find((attribute) => attribute.type === 1);
+            return node.attributes.find(
+                (attribute) => attribute.type === ENUMS.AttributeType.OnOff
+            );
         } else {
             return [];
         }
@@ -54,7 +64,7 @@ export default async (_, res) => {
     // Outside temparature
     const outsideNode = nodes.find((node) => node.id === 72);
     const outsideTemperatureAttribute = outsideNode.attributes.find(
-        (attribute) => attribute.type === 5
+        (attribute) => attribute.type === ENUMS.AttributeType.Temperature
     );
     const outsideTemperature = `${roundValue(
         outsideTemperatureAttribute.current_value
@@ -63,7 +73,7 @@ export default async (_, res) => {
     // Rain
     const rainNode = nodes.find((node) => node.id === 258);
     const rainAttribute = rainNode.attributes.find(
-        (attribute) => attribute.type === 12
+        (attribute) => attribute.type === ENUMS.AttributeType.FloodAlarm
     );
     const rain = rainAttribute.current_value > 0 ? 'Es regnet' : 'Kein Regen';
 
