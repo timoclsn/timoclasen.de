@@ -13,11 +13,11 @@ import SmartHomeElement from '@/components/SmartHomeElement';
 import WidgetLayout from '@/components/WidgetLayout';
 import fetcher from '@/lib/fetcher';
 
-export default function SmartHomeWidget() {
+export default function SmartHomeWidget({ text }) {
     const { data } = useSWR('/api/homee', fetcher);
 
     const firstWidget = (
-        <div className={'space-y-12'}>
+        <div className={'space-y-6 sm:space-y-8'}>
             <SmartHomeElement
                 Icon={Thermometer}
                 title="Temparatur"
@@ -36,7 +36,7 @@ export default function SmartHomeWidget() {
         </div>
     );
     const secondWidget = (
-        <div className={'space-y-12'}>
+        <div className={'space-y-6 sm:space-y-8'}>
             <SmartHomeElement
                 Icon={data?.lights === 'An' ? ToggleRight : ToggleLeft}
                 title="Lichter"
@@ -58,7 +58,7 @@ export default function SmartHomeWidget() {
     return (
         <section>
             <h2 className={'font-bold text-xl md:text-2xl lg:text-3xl mb-8'}>
-                Smart Home Dashboard
+                Smart Home
             </h2>
             <WidgetLayout
                 FirstWidget={firstWidget}
@@ -66,14 +66,9 @@ export default function SmartHomeWidget() {
                 separate
                 transparent
             />
-            <p className={'text-sm mt-8 opacity-40'}>
-                Live Daten aus unserem Zuhause aus dem schönen Esslingen am
-                Neckar. Die Daten haben eine Genauigkeit von ca. 10 Min. und
-                stammen natürlich aus unserem homee. Der aktuelle
-                Energieverbrauch bezieht sich auf die Geräte Fernseher,
-                Waschmaschine und Trockner, da diese sind mit einer
-                Stromzähler-Steckdose ausgestattet sind.
-            </p>
+            <div
+                className={'text-sm mt-8 opacity-40'}
+                dangerouslySetInnerHTML={{ __html: text }}></div>
         </section>
     );
 }

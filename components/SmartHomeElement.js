@@ -2,7 +2,7 @@ import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 
 export default function SmartHomeElement({ Icon, title, value }) {
     return (
-        <SkeletonTheme color="#202020" highlightColor="#444">
+        <SkeletonTheme color="#8D8D8D" highlightColor="#B5B5B5">
             <div
                 className={
                     'flex p-4 bg-dark dark:bg-light bg-opacity-10 rounded-3xl'

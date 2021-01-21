@@ -24,7 +24,7 @@ export default function Home(props) {
                 blogPost1={props.blogPosts[0]}
                 blogPost2={props.blogPosts[1]}
             />
-            <SmartHomeWidget />
+            <SmartHomeWidget text={props.smartHome} />
             <ContactWidget text={props.contact} />
         </Layout>
     );
@@ -65,6 +65,11 @@ export async function getStaticProps({ preview = false }) {
                     slug
                 }
             }
+            smartHomeSnippet: textSnippetCollection(where: {title: "Smart Home Widget"}, limit: 1, preview: false) {
+                items {
+                    content
+                }
+            }
             contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
                 items {
                     content
@@ -78,6 +83,7 @@ export async function getStaticProps({ preview = false }) {
     const headerText = response.data.headerSnippet.items[0].content;
     const person = response.data.person.items[0];
     const blogPosts = response.data.blogPosts.items;
+    const smartHomeText = response.data.smartHomeSnippet.items[0].content;
     const contactText = response.data.contactSnippet.items[0].content;
 
     let aboutTeaser = person.cvText;
@@ -95,6 +101,7 @@ export async function getStaticProps({ preview = false }) {
             image: person.image,
             aboutTeaser,
             blogPosts,
+            smartHome: await markdownToHTML(smartHomeText),
             contact: await markdownToHTML(contactText)
         }
     };
