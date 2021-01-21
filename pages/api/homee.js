@@ -47,7 +47,9 @@ export default async (_, res) => {
     });
     const lights = lightAttributes.some((attribute) => {
         return attribute.current_value > 0;
-    });
+    })
+        ? 'An'
+        : 'Aus';
 
     // Outside temparature
     const outsideNode = nodes.find((node) => node.id === 72);
@@ -63,7 +65,7 @@ export default async (_, res) => {
     const rainAttribute = rainNode.attributes.find(
         (attribute) => attribute.type === 12
     );
-    const rain = rainAttribute.current_value > 0;
+    const rain = rainAttribute.current_value > 0 ? 'Es regnet' : 'Kein Regen';
 
     // Weather
     const weatherNode = nodes.find((node) => node.id === -1);
