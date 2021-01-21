@@ -48,7 +48,7 @@ export default function SmartHomeWidget({ text }) {
                 value={data?.outsideTemperature}
             />
             <SmartHomeElement
-                Icon={data?.rain === 'Regen' ? Umbrella : Sun}
+                Icon={data?.rain === 'Es regnet' ? Umbrella : Sun}
                 title="Regen"
                 value={data?.rain}
             />
