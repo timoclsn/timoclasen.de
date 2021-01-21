@@ -67,13 +67,6 @@ export default async (_, res) => {
     );
     const rain = rainAttribute.current_value > 0 ? 'Es regnet' : 'Kein Regen';
 
-    // Weather
-    const weatherNode = nodes.find((node) => node.id === -1);
-    const weatherAttribute = weatherNode.attributes.find(
-        (attribute) => attribute.type === 243
-    );
-    const weather = weatherAttribute.current_value;
-
     res.setHeader(
         'Cache-Control',
         'public, s-maxage=600, stale-while-revalidate=1200'
@@ -85,8 +78,7 @@ export default async (_, res) => {
         energy,
         lights,
         outsideTemperature,
-        rain,
-        weather
+        rain
     });
 };
 
