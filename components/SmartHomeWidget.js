@@ -14,24 +14,25 @@ import WidgetLayout from '@/components/WidgetLayout';
 import fetcher from '@/lib/fetcher';
 
 export default function SmartHomeWidget({ text }) {
-    const { data } = useSWR('/api/homee', fetcher);
+    const { data, error } = useSWR('/api/homee', fetcher);
+    const errorMessage = 'Nicht erreichbar';
 
     const firstWidget = (
         <div className={'space-y-6 sm:space-y-8'}>
             <SmartHomeElement
                 Icon={Thermometer}
                 title="Temparatur"
-                value={data?.temperature}
+                value={error ? errorMessage : data?.temperature}
             />
             <SmartHomeElement
                 Icon={Droplet}
                 title="Luftfeuchtigkeit"
-                value={data?.humidity}
+                value={error ? errorMessage : data?.humidity}
             />
             <SmartHomeElement
                 Icon={Zap}
                 title="Energieverbrauch"
-                value={data?.energy}
+                value={error ? errorMessage : data?.energy}
             />
         </div>
     );
@@ -40,17 +41,17 @@ export default function SmartHomeWidget({ text }) {
             <SmartHomeElement
                 Icon={data?.lights === 'An' ? ToggleRight : ToggleLeft}
                 title="Lichter"
-                value={data?.lights}
+                value={error ? errorMessage : data?.lights}
             />
             <SmartHomeElement
                 Icon={Thermometer}
                 title="Außentemperatur"
-                value={data?.outsideTemperature}
+                value={error ? errorMessage : data?.outsideTemperature}
             />
             <SmartHomeElement
                 Icon={data?.rain === 'Es regnet' ? Umbrella : Sun}
                 title="Regen"
-                value={data?.rain}
+                value={error ? errorMessage : data?.rain}
             />
         </div>
     );
