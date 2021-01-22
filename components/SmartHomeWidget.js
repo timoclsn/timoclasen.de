@@ -50,7 +50,7 @@ export default function SmartHomeWidget({ text, footnote }) {
             />
             <SmartHomeElement
                 Icon={data?.rain === 'Es regnet' ? Umbrella : Sun}
-                title="Regen"
+                title="Regensensor"
                 value={error ? errorMessage : data?.rain}
             />
         </div>
