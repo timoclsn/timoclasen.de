@@ -25,7 +25,7 @@ export default function WidgetLayout({
         textColor
     ];
 
-    let widgetStyles = ['flex-1 overflow-hidden'];
+    let widgetStyles = ['flex-1'];
 
     if (separate) {
         widgetStyles.push('rounded-3xl');

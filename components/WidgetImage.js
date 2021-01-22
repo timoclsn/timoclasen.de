@@ -5,7 +5,7 @@ export default function WidgetImage({ url, description, priority }) {
         <>
             <div
                 className={
-                    'relative overflow-hidden pb-full sm:pb-0 sm:h-full'
+                    'relative overflow-hidden pb-full sm:pb-0 sm:h-full rounded-3xl'
                 }>
                 <Image
                     src={url}

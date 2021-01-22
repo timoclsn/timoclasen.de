@@ -36,7 +36,7 @@ export default function SmartHomeWidget({ text }) {
         </div>
     );
     const secondWidget = (
-        <div className={'space-y-6 sm:space-y-8'}>
+        <div className={'space-y-6 sm:space-y-8 -mt-6 sm:mt-0'}>
             <SmartHomeElement
                 Icon={data?.lights === 'An' ? ToggleRight : ToggleLeft}
                 title="Lichter"

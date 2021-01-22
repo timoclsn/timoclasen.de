@@ -5,20 +5,26 @@ export default function SmartHomeElement({ Icon, title, value }) {
         <SkeletonTheme color="#8D8D8D" highlightColor="#B5B5B5">
             <div
                 className={
-                    'flex p-4 bg-dark dark:bg-light bg-opacity-10 rounded-3xl'
+                    'flex bg-dark dark:bg-light bg-opacity-10 rounded-3xl p-4'
                 }>
-                <div className={'flex flex-none justify-center items-center'}>
-                    {value ? (
-                        <Icon size={40} />
-                    ) : (
-                        <Skeleton circle={true} height={40} width={40} />
-                    )}
-                </div>
-                <div className={'pl-4'}>
-                    <h3 className={'font-bold'}>
-                        {value ? title : <Skeleton width={200} />}
+                {value ? (
+                    <div
+                        className={
+                            'flex flex-none justify-center items-center w-16 h-16 rounded-full bg-light dark:bg-dark'
+                        }>
+                        <Icon size={36} />
+                    </div>
+                ) : (
+                    <Skeleton circle={true} height={60} width={60} />
+                )}
+
+                <div className={'flex flex-col justify-center pl-4'}>
+                    <h3 className={'font-bold pb-0.5'}>
+                        {value ? title : <Skeleton width={150} />}
                     </h3>
-                    <p>{value ? value : <Skeleton width={100} />}</p>
+                    <p className={'opacity-60'}>
+                        {value ? value : <Skeleton width={75} />}
+                    </p>
                 </div>
             </div>
         </SkeletonTheme>
