@@ -13,7 +13,7 @@ import SmartHomeElement from '@/components/SmartHomeElement';
 import WidgetLayout from '@/components/WidgetLayout';
 import fetcher from '@/lib/fetcher';
 
-export default function SmartHomeWidget({ text }) {
+export default function SmartHomeWidget({ text, footnote }) {
     const { data, error } = useSWR('/api/homee', fetcher);
     const errorMessage = 'Nicht erreichbar';
 
@@ -58,9 +58,12 @@ export default function SmartHomeWidget({ text }) {
 
     return (
         <section>
-            <h2 className={'font-bold text-xl md:text-2xl lg:text-3xl mb-8'}>
+            <h2 className={'font-bold text-xl md:text-2xl lg:text-3xl mb-2'}>
                 Smart Home
             </h2>
+            <div
+                className={'mb-8'}
+                dangerouslySetInnerHTML={{ __html: text }}></div>
             <WidgetLayout
                 FirstWidget={firstWidget}
                 SecondWidget={secondWidget}
@@ -69,7 +72,7 @@ export default function SmartHomeWidget({ text }) {
             />
             <div
                 className={'text-sm mt-8 opacity-40'}
-                dangerouslySetInnerHTML={{ __html: text }}></div>
+                dangerouslySetInnerHTML={{ __html: footnote }}></div>
         </section>
     );
 }

@@ -24,7 +24,10 @@ export default function Home(props) {
                 blogPost1={props.blogPosts[0]}
                 blogPost2={props.blogPosts[1]}
             />
-            <SmartHomeWidget text={props.smartHome} />
+            <SmartHomeWidget
+                text={props.smartHome}
+                footnote={props.smartHomeFootnote}
+            />
             <ContactWidget text={props.contact} />
         </Layout>
     );
@@ -70,6 +73,11 @@ export async function getStaticProps({ preview = false }) {
                     content
                 }
             }
+            smartHomeFootnoteSnippet: textSnippetCollection(where: {title: "Smart Home Widget Footnote"}, limit: 1, preview: false) {
+                items {
+                    content
+                }
+            }
             contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
                 items {
                     content
@@ -84,6 +92,8 @@ export async function getStaticProps({ preview = false }) {
     const person = response.data.person.items[0];
     const blogPosts = response.data.blogPosts.items;
     const smartHomeText = response.data.smartHomeSnippet.items[0].content;
+    const smartHomeFootnoteText =
+        response.data.smartHomeFootnoteSnippet.items[0].content;
     const contactText = response.data.contactSnippet.items[0].content;
 
     let aboutTeaser = person.cvText;
@@ -102,6 +112,7 @@ export async function getStaticProps({ preview = false }) {
             aboutTeaser,
             blogPosts,
             smartHome: await markdownToHTML(smartHomeText),
+            smartHomeFootnote: await markdownToHTML(smartHomeFootnoteText),
             contact: await markdownToHTML(contactText)
         }
     };
