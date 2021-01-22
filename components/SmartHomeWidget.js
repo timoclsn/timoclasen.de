@@ -21,7 +21,7 @@ export default function SmartHomeWidget({ text, footnote }) {
         <div className={'space-y-6 sm:space-y-8'}>
             <SmartHomeElement
                 Icon={Thermometer}
-                title="Temparatur"
+                title="Raumtemparatur"
                 value={error ? errorMessage : data?.temperature}
             />
             <SmartHomeElement
@@ -71,7 +71,7 @@ export default function SmartHomeWidget({ text, footnote }) {
                 transparent
             />
             <div
-                className={'text-sm mt-8 opacity-50'}
+                className={'text-sm mt-8 opacity-40'}
                 dangerouslySetInnerHTML={{ __html: footnote }}></div>
         </section>
     );
