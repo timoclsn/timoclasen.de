@@ -27,6 +27,12 @@
     transition: background-color 0.1 ease-in-out;
 }
 
+@layer base {
+    p a {
+        @apply underline;
+    }
+}
+
 @layer components {
     .text-teaser {
         @apply text-2xl sm:text-3xl md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight;
