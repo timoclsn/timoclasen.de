@@ -29,7 +29,7 @@ export default async (_, res) => {
         return (
             node.attributes.find(
                 (attribute) =>
-                    attribute.type === ENUMS.AttributeType.TotalCurrentEnergyUse
+                    attribute.type === ENUMS.AttributeType.CurrentEnergyUse
             ) || []
         );
     });
