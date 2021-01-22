@@ -21,7 +21,7 @@ export default function SmartHomeWidget({ text, footnote }) {
         <div className={'space-y-6 sm:space-y-8'}>
             <SmartHomeElement
                 Icon={Thermometer}
-                title="Raumtemparatur"
+                title="Raumtemperatur"
                 value={error ? errorMessage : data?.temperature}
             />
             <SmartHomeElement
