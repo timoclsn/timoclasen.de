@@ -56,9 +56,7 @@ const email = 'timo@timoclasen.de';
         }
     });
 
-    for (let i = 0; i < blogPosts.length; i++) {
-        const post = blogPosts[i];
-
+    for (const post of blogPosts) {
         feed.addItem({
             title: post.title,
             id: `${url}/blog/${post.slug}`,

@@ -1,7 +1,7 @@
 {
     "name": "timoclasen.de",
     "description": "My personal website.",
-    "version": "2.3.0",
+    "version": "2.4.0",
     "private": true,
     "author": {
         "name": "Timo Clasen",
@@ -35,13 +35,16 @@
         "react": "17.0.1",
         "react-dom": "17.0.1",
         "react-feather": "^2.0.9",
+        "react-loading-skeleton": "^2.1.1",
         "react-markdown": "^5.0.3",
         "react-syntax-highlighter": "^15.4.3",
         "reading-time": "^1.2.1",
         "remark": "^13.0.0",
         "remark-html": "^13.0.1",
         "strip-markdown": "^4.0.0",
-        "tailwindcss": "^2.0.2"
+        "swr": "^0.4.0",
+        "tailwindcss": "^2.0.2",
+        "ws": "^7.4.2"
     },
     "devDependencies": {
         "cypress": "^6.2.1",

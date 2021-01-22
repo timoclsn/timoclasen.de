@@ -2,6 +2,7 @@ import AboutWidget from '@/components/AboutWidget';
 import BlogWidget from '@/components/BlogWidget';
 import ContactWidget from '@/components/ContactWidget';
 import Layout from '@/components/Layout';
+import SmartHomeWidget from '@/components/SmartHomeWidget';
 import Teaser from '@/components/Teaser';
 import { queryContent } from '@/lib/content';
 import { markdownToHTML, stripFirstLine, truncate } from '@/lib/text';
@@ -22,6 +23,10 @@ export default function Home(props) {
             <BlogWidget
                 blogPost1={props.blogPosts[0]}
                 blogPost2={props.blogPosts[1]}
+            />
+            <SmartHomeWidget
+                text={props.smartHome}
+                footnote={props.smartHomeFootnote}
             />
             <ContactWidget text={props.contact} />
         </Layout>
@@ -63,6 +68,16 @@ export async function getStaticProps({ preview = false }) {
                     slug
                 }
             }
+            smartHomeSnippet: textSnippetCollection(where: {title: "Smart Home Widget"}, limit: 1, preview: false) {
+                items {
+                    content
+                }
+            }
+            smartHomeFootnoteSnippet: textSnippetCollection(where: {title: "Smart Home Widget Footnote"}, limit: 1, preview: false) {
+                items {
+                    content
+                }
+            }
             contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
                 items {
                     content
@@ -76,6 +91,9 @@ export async function getStaticProps({ preview = false }) {
     const headerText = response.data.headerSnippet.items[0].content;
     const person = response.data.person.items[0];
     const blogPosts = response.data.blogPosts.items;
+    const smartHomeText = response.data.smartHomeSnippet.items[0].content;
+    const smartHomeFootnoteText =
+        response.data.smartHomeFootnoteSnippet.items[0].content;
     const contactText = response.data.contactSnippet.items[0].content;
 
     let aboutTeaser = person.cvText;
@@ -93,6 +111,8 @@ export async function getStaticProps({ preview = false }) {
             image: person.image,
             aboutTeaser,
             blogPosts,
+            smartHome: await markdownToHTML(smartHomeText),
+            smartHomeFootnote: await markdownToHTML(smartHomeFootnoteText),
             contact: await markdownToHTML(contactText)
         }
     };

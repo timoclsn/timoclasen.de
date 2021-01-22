@@ -2,11 +2,14 @@ export default function WidgetLayout({
     FirstWidget,
     SecondWidget,
     separate,
-    highlight
+    highlight,
+    transparent
 }) {
     const bgColor = highlight
         ? 'bg-highlight dark:bg-highlight-dark'
-        : 'bg-dark dark:bg-light bg-opacity-10';
+        : `bg-dark dark:bg-light ${
+              transparent ? 'bg-opacity-0' : 'bg-opacity-10'
+          }`;
 
     const textColor = highlight
         ? 'text-light dark:text-light'
@@ -22,7 +25,7 @@ export default function WidgetLayout({
         textColor
     ];
 
-    let widgetStyles = ['flex-1 overflow-hidden'];
+    let widgetStyles = ['flex-1'];
 
     if (separate) {
         widgetStyles.push('rounded-3xl');
