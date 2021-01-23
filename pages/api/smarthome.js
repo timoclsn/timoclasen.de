@@ -17,7 +17,7 @@ export default async (_, res) => {
         temperatureAttribute.current_value
     )} ${decodeURIComponent(temperatureAttribute.unit)}`;
 
-    // Himidity
+    // Humidity
     const humidityAttribute = livingRoomNode.attributes.find(
         (attribute) => attribute.type === ENUMS.AttributeType.RelativeHumidity
     );
