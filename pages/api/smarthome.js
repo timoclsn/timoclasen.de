@@ -58,9 +58,7 @@ export default async (_, res) => {
         })
         .some((attribute) => {
             return attribute.current_value > 0;
-        })
-        ? 'An'
-        : 'Aus';
+        });
 
     const outsideTemperature = nodes
         .find((node) => node.id === climateSensorOutsideId)
@@ -68,14 +66,11 @@ export default async (_, res) => {
             (attribute) => attribute.type === ENUMS.AttributeType.Temperature
         );
 
-    const rain =
-        nodes
-            .find((node) => node.id === rainSensorId)
-            .attributes.find(
-                (attribute) => attribute.type === ENUMS.AttributeType.FloodAlarm
-            ).current_value > 0
-            ? 'Es regnet'
-            : 'Kein Regen';
+    const rain = nodes
+        .find((node) => node.id === rainSensorId)
+        .attributes.find(
+            (attribute) => attribute.type === ENUMS.AttributeType.FloodAlarm
+        );
 
     res.setHeader(
         'Cache-Control',
@@ -83,8 +78,8 @@ export default async (_, res) => {
     );
 
     return res.status(200).json({
-        lights,
-        rain,
+        lights: lights ? 'An' : 'Aus',
+        rain: rain.current_value > 0 ? 'Es regnet' : 'Kein Regen',
         temperature: formatValue(temperature.current_value, temperature.unit),
         humidity: formatValue(humidity.current_value, humidity.unit),
         energy: formatValue(accumulatedEnergy, 'W'),
