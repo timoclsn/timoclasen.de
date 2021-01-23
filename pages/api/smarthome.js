@@ -1,5 +1,5 @@
-import { ENUMS } from '@/lib/enums';
-import { formatValue, getNodes } from '@/lib/homee';
+import { AttributeType, NodeState } from '@/lib/enums';
+import { formatValue, getNodes, isLight } from '@/lib/homee';
 
 export default async (_, res) => {
     const nodes = await getNodes();
@@ -15,14 +15,13 @@ export default async (_, res) => {
     const tempAtr = nodes
         .find((node) => node.id === climateSensorId)
         .attributes.find(
-            (attribute) => attribute.type === ENUMS.AttributeType.Temperature
+            (attribute) => attribute.type === AttributeType.Temperature
         );
 
     const humidityAtr = nodes
         .find((node) => node.id === climateSensorId)
         .attributes.find(
-            (attribute) =>
-                attribute.type === ENUMS.AttributeType.RelativeHumidity
+            (attribute) => attribute.type === AttributeType.RelativeHumidity
         );
 
     const accumulatedEnergy = nodes
@@ -30,7 +29,7 @@ export default async (_, res) => {
             return (
                 node.attributes.find(
                     (attribute) =>
-                        attribute.type === ENUMS.AttributeType.CurrentEnergyUse
+                        attribute.type === AttributeType.CurrentEnergyUse
                 ) || []
             );
         })
@@ -40,17 +39,9 @@ export default async (_, res) => {
 
     const lightsOn = nodes
         .flatMap((node) => {
-            if (
-                node.profile === ENUMS.NodeProfile.DimmablePlug ||
-                node.profile === ENUMS.NodeProfile.DimmableColorLight ||
-                node.profile === ENUMS.NodeProfile.DimmableExtendedColorLight ||
-                node.profile ===
-                    ENUMS.NodeProfile.DimmableColorTemperatureLight ||
-                (node.profile === ENUMS.NodeProfile.DimmableLight &&
-                    node.state === ENUMS.NodeState.Available)
-            ) {
+            if (isLight(node) && node.state === NodeState.Available) {
                 return node.attributes.find(
-                    (attribute) => attribute.type === ENUMS.AttributeType.OnOff
+                    (attribute) => attribute.type === AttributeType.OnOff
                 );
             } else {
                 return [];
@@ -63,14 +54,14 @@ export default async (_, res) => {
     const outsideTempAtr = nodes
         .find((node) => node.id === climateSensorOutsideId)
         .attributes.find(
-            (attribute) => attribute.type === ENUMS.AttributeType.Temperature
+            (attribute) => attribute.type === AttributeType.Temperature
         );
 
     const isRaining =
         nodes
             .find((node) => node.id === rainSensorId)
             .attributes.find(
-                (attribute) => attribute.type === ENUMS.AttributeType.FloodAlarm
+                (attribute) => attribute.type === AttributeType.FloodAlarm
             ).current_value > 0;
 
     res.setHeader(
