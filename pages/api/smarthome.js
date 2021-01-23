@@ -12,13 +12,13 @@ export default async (_, res) => {
     const climateSensorOutsideId = 72;
     const rainSensorId = 258;
 
-    const temperature = nodes
+    const tempAtr = nodes
         .find((node) => node.id === climateSensorId)
         .attributes.find(
             (attribute) => attribute.type === ENUMS.AttributeType.Temperature
         );
 
-    const humidity = nodes
+    const humidityAtr = nodes
         .find((node) => node.id === climateSensorId)
         .attributes.find(
             (attribute) =>
@@ -38,7 +38,7 @@ export default async (_, res) => {
             return acc + attribute.current_value;
         }, 0);
 
-    const lights = nodes
+    const lightsOn = nodes
         .flatMap((node) => {
             if (
                 node.profile === ENUMS.NodeProfile.DimmablePlug ||
@@ -60,17 +60,18 @@ export default async (_, res) => {
             return attribute.current_value > 0;
         });
 
-    const outsideTemperature = nodes
+    const outsideTempAtr = nodes
         .find((node) => node.id === climateSensorOutsideId)
         .attributes.find(
             (attribute) => attribute.type === ENUMS.AttributeType.Temperature
         );
 
-    const rain = nodes
-        .find((node) => node.id === rainSensorId)
-        .attributes.find(
-            (attribute) => attribute.type === ENUMS.AttributeType.FloodAlarm
-        );
+    const isRaining =
+        nodes
+            .find((node) => node.id === rainSensorId)
+            .attributes.find(
+                (attribute) => attribute.type === ENUMS.AttributeType.FloodAlarm
+            ).current_value > 0;
 
     res.setHeader(
         'Cache-Control',
@@ -78,14 +79,14 @@ export default async (_, res) => {
     );
 
     return res.status(200).json({
-        lights: lights ? 'An' : 'Aus',
-        rain: rain.current_value > 0 ? 'Es regnet' : 'Kein Regen',
-        temperature: formatValue(temperature.current_value, temperature.unit),
-        humidity: formatValue(humidity.current_value, humidity.unit),
+        lights: lightsOn ? 'An' : 'Aus',
+        rain: isRaining ? 'Es regnet' : 'Kein Regen',
+        temperature: formatValue(tempAtr.current_value, tempAtr.unit),
+        humidity: formatValue(humidityAtr.current_value, humidityAtr.unit),
         energy: formatValue(accumulatedEnergy, 'W'),
         outsideTemperature: formatValue(
-            outsideTemperature.current_value,
-            outsideTemperature.unit
+            outsideTempAtr.current_value,
+            outsideTempAtr.unit
         )
     });
 };
