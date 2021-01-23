@@ -8,14 +8,18 @@ export default async (_, res) => {
         return res.status(504).send('Gateway Timeout');
     }
 
+    const climateSensorId = 69;
+    const climateSensorOutsideId = 72;
+    const rainSensorId = 258;
+
     const temperature = nodes
-        .find((node) => node.id === 69)
+        .find((node) => node.id === climateSensorId)
         .attributes.find(
             (attribute) => attribute.type === ENUMS.AttributeType.Temperature
         );
 
     const humidity = nodes
-        .find((node) => node.id === 69)
+        .find((node) => node.id === climateSensorId)
         .attributes.find(
             (attribute) =>
                 attribute.type === ENUMS.AttributeType.RelativeHumidity
@@ -59,14 +63,14 @@ export default async (_, res) => {
         : 'Aus';
 
     const outsideTemperature = nodes
-        .find((node) => node.id === 72)
+        .find((node) => node.id === climateSensorOutsideId)
         .attributes.find(
             (attribute) => attribute.type === ENUMS.AttributeType.Temperature
         );
 
     const rain =
         nodes
-            .find((node) => node.id === 258)
+            .find((node) => node.id === rainSensorId)
             .attributes.find(
                 (attribute) => attribute.type === ENUMS.AttributeType.FloodAlarm
             ).current_value > 0
