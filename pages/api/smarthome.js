@@ -1,5 +1,5 @@
 import { ENUMS } from '@/lib/enums';
-import { getNodes, roundValue } from '@/lib/homee';
+import { formatValue, getNodes } from '@/lib/homee';
 
 export default async (_, res) => {
     const nodes = await getNodes();
@@ -81,16 +81,12 @@ export default async (_, res) => {
     return res.status(200).json({
         lights,
         rain,
-        temperature: createString(temperature.current_value, temperature.unit),
-        humidity: createString(humidity.current_value, humidity.unit),
-        energy: createString(accumulatedEnergy, 'W'),
-        outsideTemperature: createString(
+        temperature: formatValue(temperature.current_value, temperature.unit),
+        humidity: formatValue(humidity.current_value, humidity.unit),
+        energy: formatValue(accumulatedEnergy, 'W'),
+        outsideTemperature: formatValue(
             outsideTemperature.current_value,
             outsideTemperature.unit
         )
     });
 };
-
-function createString(value, unit) {
-    return `${roundValue(value)} ${decodeURIComponent(unit)}`;
-}
