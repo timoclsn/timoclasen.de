@@ -8,75 +8,70 @@ export default async (_, res) => {
         return res.status(504).send('Gateway Timeout');
     }
 
-    // Temperature
-    const livingRoomNode = nodes.find((node) => node.id === 69);
-    const temperatureAttribute = livingRoomNode.attributes.find(
-        (attribute) => attribute.type === ENUMS.AttributeType.Temperature
-    );
-    const temperature = `${roundValue(
-        temperatureAttribute.current_value
-    )} ${decodeURIComponent(temperatureAttribute.unit)}`;
-
-    // Humidity
-    const humidityAttribute = livingRoomNode.attributes.find(
-        (attribute) => attribute.type === ENUMS.AttributeType.RelativeHumidity
-    );
-    const humidity = `${roundValue(
-        humidityAttribute.current_value
-    )} ${decodeURIComponent(humidityAttribute.unit)}`;
-
-    // Energy
-    const energyAttributes = nodes.flatMap((node) => {
-        return (
-            node.attributes.find(
-                (attribute) =>
-                    attribute.type === ENUMS.AttributeType.CurrentEnergyUse
-            ) || []
+    const temperature = nodes
+        .find((node) => node.id === 69)
+        .attributes.find(
+            (attribute) => attribute.type === ENUMS.AttributeType.Temperature
         );
-    });
-    const accumulatedEnergy = energyAttributes.reduce((acc, attribute) => {
-        return acc + attribute.current_value;
-    }, 0);
-    const energy = `${roundValue(accumulatedEnergy)} W`;
 
-    // Lights
-    const lightAttributes = nodes.flatMap((node) => {
-        if (
-            node.profile === ENUMS.NodeProfile.DimmablePlug ||
-            node.profile === ENUMS.NodeProfile.DimmableColorLight ||
-            node.profile === ENUMS.NodeProfile.DimmableExtendedColorLight ||
-            node.profile === ENUMS.NodeProfile.DimmableColorTemperatureLight ||
-            (node.profile === ENUMS.NodeProfile.DimmableLight &&
-                node.state === ENUMS.NodeState.Available)
-        ) {
-            return node.attributes.find(
-                (attribute) => attribute.type === ENUMS.AttributeType.OnOff
+    const humidity = nodes
+        .find((node) => node.id === 69)
+        .attributes.find(
+            (attribute) =>
+                attribute.type === ENUMS.AttributeType.RelativeHumidity
+        );
+
+    const accumulatedEnergy = nodes
+        .flatMap((node) => {
+            return (
+                node.attributes.find(
+                    (attribute) =>
+                        attribute.type === ENUMS.AttributeType.CurrentEnergyUse
+                ) || []
             );
-        } else {
-            return [];
-        }
-    });
-    const lights = lightAttributes.some((attribute) => {
-        return attribute.current_value > 0;
-    })
+        })
+        .reduce((acc, attribute) => {
+            return acc + attribute.current_value;
+        }, 0);
+
+    const lights = nodes
+        .flatMap((node) => {
+            if (
+                node.profile === ENUMS.NodeProfile.DimmablePlug ||
+                node.profile === ENUMS.NodeProfile.DimmableColorLight ||
+                node.profile === ENUMS.NodeProfile.DimmableExtendedColorLight ||
+                node.profile ===
+                    ENUMS.NodeProfile.DimmableColorTemperatureLight ||
+                (node.profile === ENUMS.NodeProfile.DimmableLight &&
+                    node.state === ENUMS.NodeState.Available)
+            ) {
+                return node.attributes.find(
+                    (attribute) => attribute.type === ENUMS.AttributeType.OnOff
+                );
+            } else {
+                return [];
+            }
+        })
+        .some((attribute) => {
+            return attribute.current_value > 0;
+        })
         ? 'An'
         : 'Aus';
 
-    // Outside temparature
-    const outsideNode = nodes.find((node) => node.id === 72);
-    const outsideTemperatureAttribute = outsideNode.attributes.find(
-        (attribute) => attribute.type === ENUMS.AttributeType.Temperature
-    );
-    const outsideTemperature = `${roundValue(
-        outsideTemperatureAttribute.current_value
-    )} ${decodeURIComponent(outsideTemperatureAttribute.unit)}`;
+    const outsideTemperature = nodes
+        .find((node) => node.id === 72)
+        .attributes.find(
+            (attribute) => attribute.type === ENUMS.AttributeType.Temperature
+        );
 
-    // Rain
-    const rainNode = nodes.find((node) => node.id === 258);
-    const rainAttribute = rainNode.attributes.find(
-        (attribute) => attribute.type === ENUMS.AttributeType.FloodAlarm
-    );
-    const rain = rainAttribute.current_value > 0 ? 'Es regnet' : 'Kein Regen';
+    const rain =
+        nodes
+            .find((node) => node.id === 258)
+            .attributes.find(
+                (attribute) => attribute.type === ENUMS.AttributeType.FloodAlarm
+            ).current_value > 0
+            ? 'Es regnet'
+            : 'Kein Regen';
 
     res.setHeader(
         'Cache-Control',
@@ -84,11 +79,18 @@ export default async (_, res) => {
     );
 
     return res.status(200).json({
-        temperature,
-        humidity,
-        energy,
         lights,
-        outsideTemperature,
-        rain
+        rain,
+        temperature: createString(temperature.current_value, temperature.unit),
+        humidity: createString(humidity.current_value, humidity.unit),
+        energy: createString(accumulatedEnergy, 'W'),
+        outsideTemperature: createString(
+            outsideTemperature.current_value,
+            outsideTemperature.unit
+        )
     });
 };
+
+function createString(value, unit) {
+    return `${roundValue(value)} ${decodeURIComponent(unit)}`;
+}
