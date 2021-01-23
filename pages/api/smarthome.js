@@ -1,13 +1,14 @@
-import WebSocket from 'ws';
-
 import { ENUMS } from '@/lib/enums';
-
-const homeeID = process.env.HOMEE_ID;
-const accessToken = process.env.HOMEE_ACCESS_TOKEN;
+import { getNodes, roundValue } from '@/lib/homee';
 
 export default async (_, res) => {
+    const nodes = await getNodes();
+
+    if (!nodes.length) {
+        return res.status(504);
+    }
+
     // Temperature
-    const nodes = await getNodes(homeeID, accessToken);
     const livingRoomNode = nodes.find((node) => node.id === 69);
     const temperatureAttribute = livingRoomNode.attributes.find(
         (attribute) => attribute.type === ENUMS.AttributeType.Temperature
@@ -91,48 +92,3 @@ export default async (_, res) => {
         rain
     });
 };
-
-function getNodes(homeeID, accessToken) {
-    return new Promise((resolve, reject) => {
-        const ws = new WebSocket(
-            `wss://${homeeID}.hom.ee/connection?access_token=${accessToken}`,
-            'v2',
-            {
-                headers: {
-                    'User-Agent': 'timoclasen.de / Smart Home Dashboard'
-                }
-            }
-        );
-
-        let nodes = [];
-
-        ws.on('open', () => {
-            ws.send('GET:nodes');
-        });
-
-        ws.on('message', (data) => {
-            data = JSON.parse(data);
-
-            if (data.nodes) {
-                nodes = data.nodes;
-                ws.close();
-            }
-        });
-
-        ws.on('close', () => {
-            if (nodes.length) {
-                resolve(nodes);
-            } else {
-                reject();
-            }
-        });
-
-        ws.on('error', (error) => {
-            reject(error);
-        });
-    });
-}
-
-function roundValue(value) {
-    return Math.round(value * 10) / 10;
-}

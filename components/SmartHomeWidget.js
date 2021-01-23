@@ -14,7 +14,7 @@ import WidgetLayout from '@/components/WidgetLayout';
 import fetcher from '@/lib/fetcher';
 
 export default function SmartHomeWidget({ text, footnote }) {
-    const { data, error } = useSWR('/api/homee', fetcher);
+    const { data, error } = useSWR('/api/smarthome', fetcher);
     const errorMessage = 'Nicht erreichbar';
 
     const firstWidget = (
