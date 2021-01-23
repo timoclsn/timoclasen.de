@@ -5,7 +5,7 @@ export default async (_, res) => {
     const nodes = await getNodes();
 
     if (!nodes.length) {
-        return res.status(504);
+        return res.status(504).send('Gateway Timeout');
     }
 
     // Temperature

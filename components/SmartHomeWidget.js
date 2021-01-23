@@ -15,7 +15,7 @@ import fetcher from '@/lib/fetcher';
 
 export default function SmartHomeWidget({ text, footnote }) {
     const { data, error } = useSWR('/api/smarthome', fetcher);
-    const errorMessage = 'Nicht erreichbar';
+    const errorMessage = 'Nicht erreichbar…';
 
     const firstWidget = (
         <div className={'space-y-6 sm:space-y-8'}>
