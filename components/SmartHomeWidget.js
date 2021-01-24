@@ -57,7 +57,7 @@ export default function SmartHomeWidget({ text, footnote }) {
     );
 
     return (
-        <section>
+        <section id="smarthome">
             <h2 className={'font-bold text-xl md:text-2xl lg:text-3xl mb-2'}>
                 Smart Home
             </h2>
