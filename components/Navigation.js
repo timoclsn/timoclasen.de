@@ -11,6 +11,9 @@ export default function Navigation({ name }) {
             }>
             <Container>
                 <nav data-cy="navigation">
+                    <a href="#skip" className="sr-only">
+                        Zu Inhalt springen
+                    </a>
                     <ul className={'flex justify-end space-x-4 md:space-x-8'}>
                         <li className={'mr-auto'}>
                             <Link href="/">

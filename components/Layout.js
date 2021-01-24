@@ -44,7 +44,7 @@ export default function Layout({
                     'min-h-screen flex flex-col text-base lg:text-lg xl:text-xl antialiased'
                 }>
                 <Navigation name={name} />
-                <main>
+                <main id="skip">
                     <CenteredColumn>{children}</CenteredColumn>
                 </main>
                 <Footer />
