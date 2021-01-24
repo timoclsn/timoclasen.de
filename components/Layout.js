@@ -22,11 +22,6 @@ export default function Layout({
     return (
         <>
             <Head>
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                    key="viewport"
-                />
                 <link
                     rel="preload"
                     href="/fonts/inter-var-latin.woff2"
