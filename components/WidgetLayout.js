@@ -41,11 +41,9 @@ export default function WidgetLayout({
     widgetStyles = widgetStyles.join(' ');
 
     return (
-        <>
-            <section className={containerSyles}>
-                <div className={widgetStyles}>{FirstWidget}</div>
-                <div className={widgetStyles}>{SecondWidget}</div>
-            </section>
-        </>
+        <section className={containerSyles}>
+            <div className={widgetStyles}>{FirstWidget}</div>
+            <div className={widgetStyles}>{SecondWidget}</div>
+        </section>
     );
 }
