@@ -13,11 +13,16 @@ export default function WidgetRunning({ thisYear, lastRun }) {
     return (
         <div className={'px-6 py-12 xl:px-12 xl:py-20'}>
             <h2 className={'font-bold text-xl md:text-2xl lg:text-3xl mb-4'}>
-                Laufen
+                Lauf Stats
             </h2>
             <RunningElement
                 Icon={TrendingUp}
-                text={thisYear && `${thisYear.distance} von 1000 km in 2021`}
+                text={
+                    thisYear &&
+                    `${thisYear.distance} von 1000 km in 2021 (${
+                        thisYear.distance / (1000 / 100)
+                    } %)`
+                }
             />
 
             <h3 className={'font-bold mb-4 mt-8'}>Letzter Lauf</h3>

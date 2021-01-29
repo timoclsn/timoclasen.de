@@ -35,7 +35,7 @@ export default async (_, res) => {
 
     return res.status(200).json({
         thisYear: {
-            distance: `${Math.round(distanceThisYear / 1000)} km`
+            distance: Math.round(distanceThisYear / 1000)
         },
         lastRun: {
             distance: `${roundDistance(lastRun.distance / 1000)} km`,
