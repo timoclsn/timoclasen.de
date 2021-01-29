@@ -8,6 +8,10 @@ import fetcher from '@/lib/fetcher';
 export default function RunningWidget() {
     const { data, error } = useSWR('/api/running', fetcher);
 
+    if (error) {
+        return <div>Fehler beim Laden…</div>;
+    }
+
     const darkMode =
         typeof window !== 'undefined' &&
         window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -16,8 +20,8 @@ export default function RunningWidget() {
         <WidgetLayout
             FirstWidget={
                 <WidgetRunning
-                    thisYear={error ? error : data?.thisYear}
-                    lastRun={error ? error : data?.lastRun}
+                    thisYear={data?.thisYear}
+                    lastRun={data?.lastRun}
                 />
             }
             SecondWidget={
