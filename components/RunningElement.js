@@ -9,7 +9,7 @@ export default function RunningElement({ Icon, text }) {
                 ) : (
                     <Skeleton circle={true} height={20} width={20} />
                 )}
-                <p>{text ? text : <Skeleton width={200} />}</p>
+                <p>{text || <Skeleton width={200} />}</p>
             </div>
         </SkeletonTheme>
     );
