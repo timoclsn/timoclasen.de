@@ -1,6 +1,7 @@
 import { format, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
 
+import { getMapURL } from '@/lib/mapbox';
 import {
     formatSpeed,
     formatTime,
@@ -10,12 +11,13 @@ import {
 
 export default async (_, res) => {
     const activites = await getActivities();
+    const runs = activites.filter((activity) => activity.type === 'Run');
 
-    const distanceThisYear = activites.reduce((acc, activity) => {
-        return acc + activity.distance;
+    const distanceThisYear = runs.reduce((distanceThisYear, activity) => {
+        return distanceThisYear + activity.distance;
     }, 0);
 
-    const lastRun = activites.reduce((lastRun, activity) => {
+    const lastRun = runs.reduce((lastRun, activity) => {
         if (!lastRun.start_date) {
             return activity;
         }
@@ -28,7 +30,7 @@ export default async (_, res) => {
 
     res.setHeader(
         'Cache-Control',
-        'public, s-maxage=600, stale-while-revalidate=1200'
+        'public, s-maxage=3600, stale-while-revalidate=86400'
     );
 
     return res.status(200).json({
@@ -43,7 +45,10 @@ export default async (_, res) => {
             time: formatTime(lastRun.moving_time),
             avgSpeed: formatSpeed(lastRun.average_speed),
             avgHeartrate: `${Math.round(lastRun.average_heartrate)} bpm`,
-            map: lastRun.map.summary_polyline
+            map: {
+                light: getMapURL(lastRun.map.summary_polyline, false),
+                dark: getMapURL(lastRun.map.summary_polyline, true)
+            }
         }
     });
 };

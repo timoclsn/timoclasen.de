@@ -4,7 +4,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withBundleAnalyzer({
     images: {
-        domains: ['images.ctfassets.net']
+        domains: ['images.ctfassets.net', 'api.mapbox.com']
     },
     webpack: (config, { dev, isServer }) => {
         if (isServer) {
