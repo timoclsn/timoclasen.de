@@ -19,7 +19,7 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                 Icon={TrendingUp}
                 text={
                     thisYear &&
-                    `${thisYear.distance} von 1000 km in 2021 (${
+                    `${thisYear.distance} von 1000 km pro Jahr (${
                         thisYear.distance / (1000 / 100)
                     } %)`
                 }
