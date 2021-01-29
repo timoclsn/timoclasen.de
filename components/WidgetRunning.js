@@ -27,7 +27,7 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                     }
                 />
 
-                <h2 className={'font-bold mb-4 mt-8'}>Letzter Lauf</h2>
+                <h3 className={'font-bold mb-4 mt-8'}>Letzter Lauf</h3>
                 <RunningElement
                     Icon={Calendar}
                     text={lastRun && lastRun.date}
