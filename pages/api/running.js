@@ -1,4 +1,4 @@
-import { format, parseISO } from 'date-fns';
+import { formatRelative, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
 
 import { getMapURL } from '@/lib/mapbox';
@@ -39,9 +39,11 @@ export default async (_, res) => {
         },
         lastRun: {
             distance: `${roundDistance(lastRun.distance / 1000)} km`,
-            date: format(parseISO(lastRun.start_date), 'dd. MMMM yyyy', {
-                locale: de
-            }),
+            date: capitalizeFirstLetter(
+                formatRelative(parseISO(lastRun.start_date), new Date(), {
+                    locale: de
+                })
+            ),
             time: formatTime(lastRun.moving_time),
             avgSpeed: formatSpeed(lastRun.average_speed),
             avgHeartrate: `${Math.round(lastRun.average_heartrate)} bpm`,
@@ -52,3 +54,7 @@ export default async (_, res) => {
         }
     });
 };
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
