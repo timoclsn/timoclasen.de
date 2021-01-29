@@ -5,7 +5,7 @@ export default function RunningElement({ Icon, text }) {
         <SkeletonTheme color="#8D8D8D" highlightColor="#B5B5B5">
             <div className={'flex items-center space-x-4 mb-4'}>
                 {text ? (
-                    <Icon size={24} />
+                    <Icon size={22} />
                 ) : (
                     <Skeleton circle={true} height={20} width={20} />
                 )}
