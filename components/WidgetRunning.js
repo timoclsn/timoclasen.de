@@ -6,7 +6,7 @@ import {
     Heart,
     TrendingUp
 } from 'react-feather';
-import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
+import { SkeletonTheme } from 'react-loading-skeleton';
 
 import RunningElement from '@/components/RunningElement';
 
