@@ -33,7 +33,7 @@
         "feed": "^4.2.2",
         "next": "^10.0.5",
         "postcss": "^8.2.4",
-        "preact": "^10.5.11",
+        "preact": "^10.5.12",
         "react": "17.0.1",
         "react-dom": "17.0.1",
         "react-feather": "^2.0.9",
