@@ -17,26 +17,28 @@ export default function RunningWidget() {
         window.matchMedia('(prefers-color-scheme: dark)').matches;
 
     return (
-        <WidgetLayout
-            FirstWidget={
-                <WidgetRunning
-                    thisYear={data?.thisYear}
-                    lastRun={data?.lastRun}
-                />
-            }
-            SecondWidget={
-                data && (
-                    <WidgetImage
-                        url={
-                            darkMode
-                                ? data.lastRun.map.dark
-                                : data.lastRun.map.light
-                        }
-                        description="Kartenansicht des letzten Laufes von Timo"
+        <div id="running">
+            <WidgetLayout
+                FirstWidget={
+                    <WidgetRunning
+                        thisYear={data?.thisYear}
+                        lastRun={data?.lastRun}
                     />
-                )
-            }
-            separate
-        />
+                }
+                SecondWidget={
+                    data && (
+                        <WidgetImage
+                            url={
+                                darkMode
+                                    ? data.lastRun.map.dark
+                                    : data.lastRun.map.light
+                            }
+                            description="Kartenansicht des letzten Laufes von Timo"
+                        />
+                    )
+                }
+                separate
+            />
+        </div>
     );
 }
