@@ -42,12 +42,15 @@ export default async (_, res) => {
             distance: `${roundDistance(lastRun.distance / 1000)} km`,
             date: capitalizeFirstLetter(
                 formatRelative(
-                    parseISO(lastRun.start_date),
-                    utcToZonedTime(new Date(), 'Europe/Berlin'),
+                    utcToZonedTime(
+                        parseISO(lastRun.start_date),
+                        lastRun.timezone.split(' ')[1]
+                    ),
+                    utcToZonedTime(new Date(), lastRun.timezone.split(' ')[1]),
                     {
-                        locale: de
-                    },
-                    1 // Start of the week: monday
+                        locale: de,
+                        weekStartsOn: 1 // Monday
+                    }
                 )
             ),
             time: formatTime(lastRun.moving_time),
