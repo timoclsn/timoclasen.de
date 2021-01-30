@@ -1,5 +1,6 @@
 import { formatRelative, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
+import { utcToZonedTime } from 'date-fns-tz';
 
 import { getMapURL } from '@/lib/mapbox';
 import {
@@ -42,11 +43,11 @@ export default async (_, res) => {
             date: capitalizeFirstLetter(
                 formatRelative(
                     parseISO(lastRun.start_date),
-                    new Date(),
+                    utcToZonedTime(new Date(), 'Europe/Berlin'),
                     {
                         locale: de
                     },
-                    1
+                    1 // Start of the week: monday
                 )
             ),
             time: formatTime(lastRun.moving_time),
