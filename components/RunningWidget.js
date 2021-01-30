@@ -26,16 +26,14 @@ export default function RunningWidget() {
                     />
                 }
                 SecondWidget={
-                    data && (
-                        <WidgetImage
-                            url={
-                                darkMode
-                                    ? data.lastRun.map.dark
-                                    : data.lastRun.map.light
-                            }
-                            description="Kartenansicht des letzten Laufes von Timo"
-                        />
-                    )
+                    <WidgetImage
+                        url={
+                            darkMode
+                                ? data?.lastRun?.map?.dark
+                                : data?.lastRun?.map?.light
+                        }
+                        description="Kartenansicht des letzten Laufes von Timo"
+                    />
                 }
                 separate
             />
