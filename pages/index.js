@@ -2,6 +2,7 @@ import AboutWidget from '@/components/AboutWidget';
 import BlogWidget from '@/components/BlogWidget';
 import ContactWidget from '@/components/ContactWidget';
 import Layout from '@/components/Layout';
+import RunningWidget from '@/components/RunningWidget';
 import SmartHomeWidget from '@/components/SmartHomeWidget';
 import Teaser from '@/components/Teaser';
 import { queryContent } from '@/lib/content';
@@ -28,6 +29,7 @@ export default function Home(props) {
                 text={props.smartHome}
                 footnote={props.smartHomeFootnote}
             />
+            <RunningWidget />
             <ContactWidget text={props.contact} />
         </Layout>
     );
