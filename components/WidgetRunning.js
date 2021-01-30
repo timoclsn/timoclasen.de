@@ -21,7 +21,7 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                     thisYear &&
                     `${thisYear.distance} von 1000 km pro Jahr (${
                         thisYear.distance / (1000 / 100)
-                    } %)`
+                    }%)`
                 }
             />
 
