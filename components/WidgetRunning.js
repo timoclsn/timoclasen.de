@@ -13,7 +13,7 @@ export default function WidgetRunning({ thisYear, lastRun }) {
     return (
         <div className={'px-6 py-12 xl:px-12 xl:py-20'}>
             <h2 className={'font-bold text-xl md:text-2xl lg:text-3xl mb-4'}>
-                Lauf Stats
+                Laufen
             </h2>
             <RunningElement
                 Icon={TrendingUp}
