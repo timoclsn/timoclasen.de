@@ -4,6 +4,7 @@ import WidgetImage from '@/components/WidgetImage';
 import WidgetLayout from '@/components/WidgetLayout';
 import WidgetRunning from '@/components/WidgetRunning';
 import fetcher from '@/lib/fetcher';
+import { useThemeDetector } from '@/lib/hooks';
 
 export default function RunningWidget() {
     const { data, error } = useSWR('/api/running', fetcher);
@@ -12,9 +13,7 @@ export default function RunningWidget() {
         return <div>Fehler beim Laden…</div>;
     }
 
-    const darkMode =
-        typeof window !== 'undefined' &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDarkTheme = useThemeDetector();
 
     return (
         <div id="running">
@@ -28,7 +27,7 @@ export default function RunningWidget() {
                 SecondWidget={
                     <WidgetImage
                         url={
-                            darkMode
+                            isDarkTheme
                                 ? data?.lastRun?.map?.dark
                                 : data?.lastRun?.map?.light
                         }
