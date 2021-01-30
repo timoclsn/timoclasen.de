@@ -40,9 +40,14 @@ export default async (_, res) => {
         lastRun: {
             distance: `${roundDistance(lastRun.distance / 1000)} km`,
             date: capitalizeFirstLetter(
-                formatRelative(parseISO(lastRun.start_date), new Date(), {
-                    locale: de
-                })
+                formatRelative(
+                    parseISO(lastRun.start_date),
+                    new Date(),
+                    {
+                        locale: de
+                    },
+                    1
+                )
             ),
             time: formatTime(lastRun.moving_time),
             avgSpeed: formatSpeed(lastRun.average_speed),
