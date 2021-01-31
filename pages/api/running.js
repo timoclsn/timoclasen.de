@@ -59,7 +59,8 @@ export default async (_, res) => {
             map: {
                 light: getMapURL(lastRun.map.summary_polyline, false),
                 dark: getMapURL(lastRun.map.summary_polyline, true)
-            }
+            },
+            url: `https://www.strava.com/activities/${lastRun.id}`
         }
     });
 };

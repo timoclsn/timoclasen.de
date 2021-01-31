@@ -26,7 +26,11 @@ export default function WidgetRunning({ thisYear, lastRun }) {
             />
 
             <h3 className={'font-bold mb-4 mt-8'}>Letzter Lauf</h3>
-            <RunningElement Icon={Calendar} text={lastRun?.date} />
+            <RunningElement
+                Icon={Calendar}
+                text={lastRun?.date}
+                href={lastRun?.url}
+            />
             <RunningElement Icon={ArrowRight} text={lastRun?.distance} />
             <RunningElement Icon={FastForward} text={lastRun?.avgSpeed} />
             <RunningElement Icon={Clock} text={lastRun?.time} />

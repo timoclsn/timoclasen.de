@@ -1,6 +1,6 @@
 import Skeleton from 'react-loading-skeleton';
 
-export default function RunningElement({ Icon, text }) {
+export default function RunningElement({ Icon, text, href }) {
     return (
         <div className={'flex items-center space-x-4 mb-4'}>
             <div className={'leading-none'}>
@@ -10,7 +10,15 @@ export default function RunningElement({ Icon, text }) {
                     <Skeleton circle={true} height={20} width={20} />
                 )}
             </div>
-            <p>{text || <Skeleton width={200} />}</p>
+            <p>
+                {href ? (
+                    <a href={href} target="_blank" rel="noopener noreferrer">
+                        {text}
+                    </a>
+                ) : (
+                    text || <Skeleton width={200} />
+                )}
+            </p>
         </div>
     );
 }
