@@ -1,6 +1,6 @@
 import Skeleton from 'react-loading-skeleton';
 
-export default function RunningElement({ Icon, text, href }) {
+export default function RunningElement({ Icon, text, href, label }) {
     return (
         <div className={'flex items-center space-x-4 mb-4'}>
             <div className={'leading-none'}>
@@ -19,6 +19,14 @@ export default function RunningElement({ Icon, text, href }) {
                     text || <Skeleton width={200} />
                 )}
             </p>
+            {label && (
+                <div
+                    className={
+                        'bg-highlight dark:bg-highlight-dark text-light rounded-full px-3 py-1 font-bold uppercase text-xs'
+                    }>
+                    {label}
+                </div>
+            )}
         </div>
     );
 }
