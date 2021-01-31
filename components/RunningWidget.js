@@ -32,6 +32,7 @@ export default function RunningWidget() {
                                 : data?.lastRun?.map?.light
                         }
                         description="Kartenansicht des letzten Laufes von Timo"
+                        unoptimized
                     />
                 }
                 separate

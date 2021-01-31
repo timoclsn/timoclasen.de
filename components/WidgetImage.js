@@ -1,7 +1,12 @@
 import Image from 'next/image';
 import Skeleton from 'react-loading-skeleton';
 
-export default function WidgetImage({ url, description, priority }) {
+export default function WidgetImage({
+    url,
+    description,
+    priority,
+    unoptimized
+}) {
     if (!url) {
         return (
             <div className={'flex overflow-hidden h-96 sm:h-full rounded-3xl'}>
@@ -26,6 +31,7 @@ export default function WidgetImage({ url, description, priority }) {
                 quality={60}
                 priority={priority}
                 alt={description}
+                unoptimized={unoptimized}
             />
         </div>
     );
