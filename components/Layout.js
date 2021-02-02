@@ -29,6 +29,7 @@ export default function Layout({
                     type="font/woff2"
                     crossOrigin="anonymous"
                 />
+                <script async data-no-cookie data-api="/_hive" src="/bee.js" />
             </Head>
             <SEO
                 title={pageTitle}
