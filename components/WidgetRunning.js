@@ -64,38 +64,55 @@ export default function WidgetRunning({ thisYear, lastRun }) {
             <h2 className={'font-bold text-xl md:text-2xl lg:text-3xl mb-4'}>
                 Laufen
             </h2>
-            <RunningElement
-                Icon={TrendingUp}
-                text={
-                    thisYear &&
-                    `${thisYear.distance} von 1000 km pro Jahr (${
-                        thisYear.distance / (1000 / 100)
-                    }%)`
-                }
-            />
-
+            <ul>
+                <li>
+                    <RunningElement
+                        Icon={TrendingUp}
+                        text={
+                            thisYear &&
+                            `${thisYear.distance} von 1000 km pro Jahr (${
+                                thisYear.distance / (1000 / 100)
+                            }%)`
+                        }
+                    />
+                </li>
+            </ul>
             <h3 className={'font-bold mb-4 mt-8'}>Letzter Lauf</h3>
-            <RunningElement
-                Icon={Calendar}
-                text={lastRun?.date}
-                href={lastRun?.url}
-            />
-            <RunningElement
-                Icon={ArrowRight}
-                text={lastRun?.distance}
-                label={isLong(lastRun?.distance) && 'longrun'}
-            />
-            <RunningElement
-                Icon={FastForward}
-                text={lastRun?.avgSpeed}
-                label={isFast(lastRun?.avgSpeed) && 'fast'}
-            />
-            <RunningElement Icon={Clock} text={lastRun?.time} />
-            <RunningElement
-                Icon={Heart}
-                text={lastRun?.avgHeartrate}
-                label={isGoodPulse(lastRun?.avgHeartrate) && 'goodpulse'}
-            />
+            <ul>
+                <li>
+                    <RunningElement
+                        Icon={Calendar}
+                        text={lastRun?.date}
+                        href={lastRun?.url}
+                    />
+                </li>
+                <li>
+                    <RunningElement
+                        Icon={ArrowRight}
+                        text={lastRun?.distance}
+                        label={isLong(lastRun?.distance) && 'longrun'}
+                    />
+                </li>
+                <li>
+                    <RunningElement
+                        Icon={FastForward}
+                        text={lastRun?.avgSpeed}
+                        label={isFast(lastRun?.avgSpeed) && 'fast'}
+                    />
+                </li>
+                <li>
+                    <RunningElement Icon={Clock} text={lastRun?.time} />
+                </li>
+                <li>
+                    <RunningElement
+                        Icon={Heart}
+                        text={lastRun?.avgHeartrate}
+                        label={
+                            isGoodPulse(lastRun?.avgHeartrate) && 'goodpulse'
+                        }
+                    />
+                </li>
+            </ul>
         </div>
     );
 }
