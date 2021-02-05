@@ -10,53 +10,40 @@ import {
 import RunningElement from '@/components/RunningElement';
 
 export default function WidgetRunning({ thisYear, lastRun }) {
-    function isLong(distanceText) {
-        if (!distanceText) {
-            return false;
+    function distanceLabels(thisYear, lastRun) {
+        const distanceLabels = [];
+        const distanceThreshold = 10000; // 10km
+        if (lastRun.distanceM >= distanceThreshold) {
+            distanceLabels.push('longrun');
         }
-
-        const distanceThreshold = 10;
-
-        const distance = parseFloat(distanceText.split(' ')[0]);
-        return distance >= distanceThreshold;
+        if (lastRun.distanceM >= thisYear.longest) {
+            distanceLabels.push('yearbest');
+        }
+        return distanceLabels;
     }
 
-    function isFast(speedText) {
-        if (!speedText) {
-            return false;
+    function speedLabels(thisYear, lastRun) {
+        const speedLabels = [];
+        const paceThreshold = 3.03; // 5:30 /km in m/s
+        if (lastRun.speedMs > paceThreshold) {
+            speedLabels.push('fast');
         }
-
-        const paceThresholdMin = 5;
-        const paceThresholdSec = 30;
-
-        const pace = speedText.split(' ')[0];
-        const min = parseInt(pace.split(':')[0]);
-        const sec = parseInt(pace.split(':')[1]);
-
-        if (min < paceThresholdMin) {
-            return true;
+        if (lastRun.avgSpeedMs >= thisYear.fastest) {
+            speedLabels.push('yearbest');
         }
-
-        if (min === paceThresholdMin) {
-            if (sec < paceThresholdSec) {
-                return true;
-            }
-
-            return false;
-        }
-
-        return false;
+        return speedLabels;
     }
 
-    function isGoodPulse(heartrateText) {
-        if (!heartrateText) {
-            return false;
+    function getPulseLabels(lastRun) {
+        const pulseLabels = [];
+        const heartrateThreshold = 160; // 160 bpm
+        if (lastRun.heartrateBpm < heartrateThreshold) {
+            pulseLabels.push('goodpulse');
         }
-
-        const heartrateThreshold = 160;
-
-        const heartrate = parseInt(heartrateText.split(' ')[0]);
-        return heartrate < heartrateThreshold;
+        if (lastRun.avgHeartrateBpm <= thisYear.lowest) {
+            pulseLabels.push('yearbest');
+        }
+        return pulseLabels;
     }
 
     return (
@@ -90,14 +77,14 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                     <RunningElement
                         Icon={ArrowRight}
                         text={lastRun?.distance}
-                        label={isLong(lastRun?.distance) && 'longrun'}
+                        labels={lastRun && distanceLabels(thisYear, lastRun)}
                     />
                 </li>
                 <li>
                     <RunningElement
                         Icon={FastForward}
                         text={lastRun?.avgSpeed}
-                        label={isFast(lastRun?.avgSpeed) && 'fast'}
+                        labels={lastRun && speedLabels(thisYear, lastRun)}
                     />
                 </li>
                 <li>
@@ -107,9 +94,7 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                     <RunningElement
                         Icon={Heart}
                         text={lastRun?.avgHeartrate}
-                        label={
-                            isGoodPulse(lastRun?.avgHeartrate) && 'goodpulse'
-                        }
+                        labels={lastRun && getPulseLabels(lastRun)}
                     />
                 </li>
             </ul>

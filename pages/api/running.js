@@ -14,9 +14,36 @@ export default async (_, res) => {
     const activites = await getActivities();
     const runs = activites.filter((activity) => activity.type === 'Run');
 
-    const distanceThisYear = runs.reduce((distanceThisYear, activity) => {
-        return distanceThisYear + activity.distance;
-    }, 0);
+    const {
+        distance: distanceThisYear,
+        fastest: fastestThisYear,
+        longest: longestThisYear,
+        lowest: lowestThisYear
+    } = runs.reduce(
+        (thisYear, activity) => {
+            return {
+                distance: thisYear.distance + activity.distance,
+                fastest:
+                    activity.average_speed > thisYear.fastest
+                        ? activity.average_speed
+                        : thisYear.fastest,
+                longest:
+                    activity.distance > thisYear.longest
+                        ? activity.distance
+                        : thisYear.longest,
+                lowest:
+                    activity.average_heartrate < thisYear.lowest
+                        ? activity.average_heartrate
+                        : thisYear.lowest
+            };
+        },
+        {
+            distance: 0,
+            fastest: 0,
+            longest: 0,
+            lowest: 1000
+        }
+    );
 
     const lastRun = runs.reduce((lastRun, activity) => {
         if (!lastRun.start_date) {
@@ -36,10 +63,14 @@ export default async (_, res) => {
 
     return res.status(200).json({
         thisYear: {
-            distance: Math.round(distanceThisYear / 1000)
+            distance: Math.round(distanceThisYear / 1000),
+            fastest: fastestThisYear,
+            longest: longestThisYear,
+            lowest: lowestThisYear
         },
         lastRun: {
             distance: `${roundDistance(lastRun.distance / 1000)} km`,
+            distanceM: lastRun.distance,
             date: capitalizeFirstLetter(
                 formatRelative(
                     utcToZonedTime(
@@ -55,7 +86,9 @@ export default async (_, res) => {
             ),
             time: formatTime(lastRun.moving_time),
             avgSpeed: formatSpeed(lastRun.average_speed),
+            avgSpeedMs: lastRun.average_speed,
             avgHeartrate: `${Math.round(lastRun.average_heartrate)} bpm`,
+            avgHeartrateBpm: lastRun.average_heartrate,
             map: {
                 light: getMapURL(lastRun.map.summary_polyline, false),
                 dark: getMapURL(lastRun.map.summary_polyline, true)
