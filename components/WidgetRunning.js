@@ -10,10 +10,10 @@ import {
 import RunningElement from '@/components/RunningElement';
 
 export default function WidgetRunning({ thisYear, lastRun }) {
-    const distanceThreshold = 10000; // 10km
+    const distanceThreshold = 10000; // 10km in m
     const speedThreshold = 3.03; // ca. 5:30 /km in m/s
-    const timeThreshold = 3600; // 1h
-    const heartrateThreshold = 160; // 160 bpm
+    const timeThreshold = 3600; // 1h in s
+    const heartrateThreshold = 160; // 160 bpm in bpm
     const yearsBestLabel = 'best';
 
     const distanceLabels = [
