@@ -14,9 +14,42 @@ export default async (_, res) => {
     const activites = await getActivities();
     const runs = activites.filter((activity) => activity.type === 'Run');
 
-    const distanceThisYear = runs.reduce((distanceThisYear, activity) => {
-        return distanceThisYear + activity.distance;
-    }, 0);
+    const {
+        distance: distanceThisYear,
+        farthest: farthestThisYear,
+        fastest: fastestThisYear,
+        longest: longestThisYear,
+        lowest: lowestThisYear
+    } = runs.reduce(
+        (thisYear, activity) => {
+            return {
+                distance: thisYear.distance + activity.distance,
+                farthest:
+                    activity.distance > thisYear.farthest
+                        ? activity.distance
+                        : thisYear.farthest,
+                fastest:
+                    activity.average_speed > thisYear.fastest
+                        ? activity.average_speed
+                        : thisYear.fastest,
+                longest:
+                    activity.moving_time > thisYear.longest
+                        ? activity.moving_time
+                        : thisYear.longest,
+                lowest:
+                    activity.average_heartrate < thisYear.lowest
+                        ? activity.average_heartrate
+                        : thisYear.lowest
+            };
+        },
+        {
+            distance: 0,
+            farthest: 0,
+            fastest: 0,
+            longest: 0,
+            lowest: 1000
+        }
+    );
 
     const lastRun = runs.reduce((lastRun, activity) => {
         if (!lastRun.start_date) {
@@ -36,26 +69,49 @@ export default async (_, res) => {
 
     return res.status(200).json({
         thisYear: {
-            distance: Math.round(distanceThisYear / 1000)
+            distance: Math.round(distanceThisYear / 1000),
+            fastest: fastestThisYear,
+            farthest: farthestThisYear,
+            lowest: lowestThisYear,
+            longest: longestThisYear
         },
         lastRun: {
-            distance: `${roundDistance(lastRun.distance / 1000)} km`,
-            date: capitalizeFirstLetter(
-                formatRelative(
-                    utcToZonedTime(
-                        parseISO(lastRun.start_date),
-                        lastRun.timezone.split(' ')[1]
-                    ),
-                    utcToZonedTime(new Date(), lastRun.timezone.split(' ')[1]),
-                    {
-                        locale: de,
-                        weekStartsOn: 1 // Monday
-                    }
-                )
-            ),
-            time: formatTime(lastRun.moving_time),
-            avgSpeed: formatSpeed(lastRun.average_speed),
-            avgHeartrate: `${Math.round(lastRun.average_heartrate)} bpm`,
+            date: {
+                raw: lastRun.start_date,
+                relative: capitalizeFirstLetter(
+                    formatRelative(
+                        utcToZonedTime(
+                            parseISO(lastRun.start_date),
+                            lastRun.timezone.split(' ')[1]
+                        ),
+                        utcToZonedTime(
+                            new Date(),
+                            lastRun.timezone.split(' ')[1]
+                        ),
+                        {
+                            locale: de,
+                            weekStartsOn: 1 // Monday
+                        }
+                    )
+                ),
+                timezone: lastRun.timezone
+            },
+            distance: {
+                raw: lastRun.distance,
+                formatted: `${roundDistance(lastRun.distance / 1000)} km`
+            },
+            avgSpeed: {
+                raw: lastRun.average_speed,
+                formatted: formatSpeed(lastRun.average_speed)
+            },
+            time: {
+                raw: lastRun.moving_time,
+                formatted: formatTime(lastRun.moving_time)
+            },
+            avgHeartrate: {
+                raw: lastRun.average_heartrate,
+                formatted: `${Math.round(lastRun.average_heartrate)} bpm`
+            },
             map: {
                 light: getMapURL(lastRun.map.summary_polyline, false),
                 dark: getMapURL(lastRun.map.summary_polyline, true)

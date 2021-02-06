@@ -10,54 +10,35 @@ import {
 import RunningElement from '@/components/RunningElement';
 
 export default function WidgetRunning({ thisYear, lastRun }) {
-    function isLong(distanceText) {
-        if (!distanceText) {
-            return false;
-        }
+    const distanceThreshold = 10000; // 10km in m
+    const speedThreshold = 3.03; // ca. 5:30 /km in m/s
+    const timeThreshold = 3600; // 1h in s
+    const heartrateThreshold = 160; // 160 bpm in bpm
+    const yearsBestLabel = 'best';
 
-        const distanceThreshold = 10;
+    const distanceLabels = [
+        ...(lastRun?.distance?.raw >= distanceThreshold ? ['far'] : []),
+        ...(lastRun?.distance?.raw >= thisYear?.farthest
+            ? [yearsBestLabel]
+            : [])
+    ];
 
-        const distance = parseFloat(distanceText.split(' ')[0]);
-        return distance >= distanceThreshold;
-    }
+    const speedLabels = [
+        ...(lastRun?.avgSpeed?.raw > speedThreshold ? ['fast'] : []),
+        ...(lastRun?.avgSpeed?.raw >= thisYear?.fastest ? [yearsBestLabel] : [])
+    ];
 
-    function isFast(speedText) {
-        if (!speedText) {
-            return false;
-        }
+    const timeLabels = [
+        ...(lastRun?.time?.raw >= timeThreshold ? ['long'] : []),
+        ...(lastRun?.time?.raw >= thisYear?.longest ? [yearsBestLabel] : [])
+    ];
 
-        const paceThresholdMin = 5;
-        const paceThresholdSec = 30;
-
-        const pace = speedText.split(' ')[0];
-        const min = parseInt(pace.split(':')[0]);
-        const sec = parseInt(pace.split(':')[1]);
-
-        if (min < paceThresholdMin) {
-            return true;
-        }
-
-        if (min === paceThresholdMin) {
-            if (sec < paceThresholdSec) {
-                return true;
-            }
-
-            return false;
-        }
-
-        return false;
-    }
-
-    function isGoodPulse(heartrateText) {
-        if (!heartrateText) {
-            return false;
-        }
-
-        const heartrateThreshold = 160;
-
-        const heartrate = parseInt(heartrateText.split(' ')[0]);
-        return heartrate < heartrateThreshold;
-    }
+    const heartrateLabels = [
+        ...(lastRun?.avgHeartrate?.raw < heartrateThreshold ? ['low'] : []),
+        ...(lastRun?.avgHeartrate?.raw <= thisYear?.lowest
+            ? [yearsBestLabel]
+            : [])
+    ];
 
     return (
         <div className={'px-6 py-12 xl:px-12 xl:py-20'}>
@@ -70,9 +51,10 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                         Icon={TrendingUp}
                         text={
                             thisYear &&
-                            `${thisYear.distance} von 1000 km pro Jahr (${
-                                thisYear.distance / (1000 / 100)
-                            }%)`
+                            `${thisYear.distance} von 1000 km pro Jahr`
+                        }
+                        labels={
+                            thisYear && [`${thisYear.distance / (1000 / 100)}%`]
                         }
                     />
                 </li>
@@ -82,34 +64,36 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                 <li>
                     <RunningElement
                         Icon={Calendar}
-                        text={lastRun?.date}
+                        text={lastRun?.date?.relative}
                         href={lastRun?.url}
                     />
                 </li>
                 <li>
                     <RunningElement
                         Icon={ArrowRight}
-                        text={lastRun?.distance}
-                        label={isLong(lastRun?.distance) && 'longrun'}
+                        text={lastRun?.distance?.formatted}
+                        labels={distanceLabels}
                     />
                 </li>
                 <li>
                     <RunningElement
                         Icon={FastForward}
-                        text={lastRun?.avgSpeed}
-                        label={isFast(lastRun?.avgSpeed) && 'fast'}
+                        text={lastRun?.avgSpeed?.formatted}
+                        labels={speedLabels}
                     />
                 </li>
                 <li>
-                    <RunningElement Icon={Clock} text={lastRun?.time} />
+                    <RunningElement
+                        Icon={Clock}
+                        text={lastRun?.time?.formatted}
+                        labels={timeLabels}
+                    />
                 </li>
                 <li>
                     <RunningElement
                         Icon={Heart}
-                        text={lastRun?.avgHeartrate}
-                        label={
-                            isGoodPulse(lastRun?.avgHeartrate) && 'goodpulse'
-                        }
+                        text={lastRun?.avgHeartrate?.formatted}
+                        labels={heartrateLabels}
                     />
                 </li>
             </ul>

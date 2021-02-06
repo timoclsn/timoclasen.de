@@ -15,30 +15,21 @@ export default function WidgetLayout({
         ? 'text-light dark:text-light'
         : 'text-dark dark:text-light';
 
-    let containerSyles = [
+    const containerSyles = [
         'flex',
         'flex-col',
         'sm:flex-row',
         'sm:space-x-12',
         'md:space-x-16',
         'lg:space-x-24',
-        textColor
-    ];
+        textColor,
+        ...(separate ? ['space-y-12 sm:space-y-0'] : [`rounded-3xl ${bgColor}`])
+    ].join(' ');
 
-    let widgetStyles = ['flex-1'];
-
-    if (separate) {
-        widgetStyles.push('rounded-3xl');
-        widgetStyles.push(bgColor);
-        containerSyles.push('space-y-12');
-        containerSyles.push('sm:space-y-0');
-    } else {
-        containerSyles.push('rounded-3xl');
-        containerSyles.push(bgColor);
-    }
-
-    containerSyles = containerSyles.join(' ');
-    widgetStyles = widgetStyles.join(' ');
+    const widgetStyles = [
+        'flex-1',
+        ...(separate ? [`rounded-3xl ${bgColor}`] : [])
+    ].join(' ');
 
     return (
         <section className={containerSyles}>
