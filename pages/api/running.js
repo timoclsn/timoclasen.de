@@ -69,26 +69,42 @@ export default async (_, res) => {
             lowest: lowestThisYear
         },
         lastRun: {
-            distance: `${roundDistance(lastRun.distance / 1000)} km`,
-            distanceM: lastRun.distance,
-            date: capitalizeFirstLetter(
-                formatRelative(
-                    utcToZonedTime(
-                        parseISO(lastRun.start_date),
-                        lastRun.timezone.split(' ')[1]
-                    ),
-                    utcToZonedTime(new Date(), lastRun.timezone.split(' ')[1]),
-                    {
-                        locale: de,
-                        weekStartsOn: 1 // Monday
-                    }
-                )
-            ),
-            time: formatTime(lastRun.moving_time),
-            avgSpeed: formatSpeed(lastRun.average_speed),
-            avgSpeedMs: lastRun.average_speed,
-            avgHeartrate: `${Math.round(lastRun.average_heartrate)} bpm`,
-            avgHeartrateBpm: lastRun.average_heartrate,
+            distance: {
+                raw: lastRun.distance,
+                formatted: `${roundDistance(lastRun.distance / 1000)} km`
+            },
+            date: {
+                raw: lastRun.start_date,
+                relative: capitalizeFirstLetter(
+                    formatRelative(
+                        utcToZonedTime(
+                            parseISO(lastRun.start_date),
+                            lastRun.timezone.split(' ')[1]
+                        ),
+                        utcToZonedTime(
+                            new Date(),
+                            lastRun.timezone.split(' ')[1]
+                        ),
+                        {
+                            locale: de,
+                            weekStartsOn: 1 // Monday
+                        }
+                    )
+                ),
+                timezone: lastRun.timezone
+            },
+            time: {
+                raw: lastRun.moving_time,
+                formatted: formatTime(lastRun.moving_time)
+            },
+            avgSpeed: {
+                raw: lastRun.average_speed,
+                formatted: formatSpeed(lastRun.average_speed)
+            },
+            avgHeartrate: {
+                raw: lastRun.average_heartrate,
+                formatted: `${Math.round(lastRun.average_heartrate)} bpm`
+            },
             map: {
                 light: getMapURL(lastRun.map.summary_polyline, false),
                 dark: getMapURL(lastRun.map.summary_polyline, true)

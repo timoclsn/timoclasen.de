@@ -13,11 +13,11 @@ export default function WidgetRunning({ thisYear, lastRun }) {
     function distanceLabels(thisYear, lastRun) {
         const distanceLabels = [];
         const distanceThreshold = 10000; // 10km
-        if (lastRun.distanceM >= distanceThreshold) {
+        if (lastRun.distance.raw >= distanceThreshold) {
             distanceLabels.push('longrun');
         }
-        if (lastRun.distanceM >= thisYear.longest) {
-            distanceLabels.push('yearbest');
+        if (lastRun.distance.raw >= thisYear.longest) {
+            distanceLabels.push('yearsbest');
         }
         return distanceLabels;
     }
@@ -25,25 +25,25 @@ export default function WidgetRunning({ thisYear, lastRun }) {
     function speedLabels(thisYear, lastRun) {
         const speedLabels = [];
         const paceThreshold = 3.03; // 5:30 /km in m/s
-        if (lastRun.speedMs > paceThreshold) {
+        if (lastRun.avgSpeed.raw > paceThreshold) {
             speedLabels.push('fast');
         }
-        if (lastRun.avgSpeedMs >= thisYear.fastest) {
-            speedLabels.push('yearbest');
+        if (lastRun.avgSpeed.raw >= thisYear.fastest) {
+            speedLabels.push('yearsbest');
         }
         return speedLabels;
     }
 
-    function getPulseLabels(lastRun) {
-        const pulseLabels = [];
+    function getHeartrateLabels(thisYear, lastRun) {
+        const heartrateLabels = [];
         const heartrateThreshold = 160; // 160 bpm
-        if (lastRun.heartrateBpm < heartrateThreshold) {
-            pulseLabels.push('goodpulse');
+        if (lastRun.avgHeartrate.raw < heartrateThreshold) {
+            heartrateLabels.push('goodpulse');
         }
-        if (lastRun.avgHeartrateBpm <= thisYear.lowest) {
-            pulseLabels.push('yearbest');
+        if (lastRun.avgHeartrate.raw <= thisYear.lowest) {
+            heartrateLabels.push('yearsbest');
         }
-        return pulseLabels;
+        return heartrateLabels;
     }
 
     return (
@@ -69,32 +69,37 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                 <li>
                     <RunningElement
                         Icon={Calendar}
-                        text={lastRun?.date}
+                        text={lastRun?.date?.relative}
                         href={lastRun?.url}
                     />
                 </li>
                 <li>
                     <RunningElement
                         Icon={ArrowRight}
-                        text={lastRun?.distance}
+                        text={lastRun?.distance?.formatted}
                         labels={lastRun && distanceLabels(thisYear, lastRun)}
                     />
                 </li>
                 <li>
                     <RunningElement
                         Icon={FastForward}
-                        text={lastRun?.avgSpeed}
+                        text={lastRun?.avgSpeed?.formatted}
                         labels={lastRun && speedLabels(thisYear, lastRun)}
                     />
                 </li>
                 <li>
-                    <RunningElement Icon={Clock} text={lastRun?.time} />
+                    <RunningElement
+                        Icon={Clock}
+                        text={lastRun?.time?.formatted}
+                    />
                 </li>
                 <li>
                     <RunningElement
                         Icon={Heart}
-                        text={lastRun?.avgHeartrate}
-                        labels={lastRun && getPulseLabels(lastRun)}
+                        text={lastRun?.avgHeartrate?.formatted}
+                        labels={
+                            lastRun && getHeartrateLabels(thisYear, lastRun)
+                        }
                     />
                 </li>
             </ul>
