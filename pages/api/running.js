@@ -16,6 +16,7 @@ export default async (_, res) => {
 
     const {
         distance: distanceThisYear,
+        farthest: farthestThisYear,
         fastest: fastestThisYear,
         longest: longestThisYear,
         lowest: lowestThisYear
@@ -23,13 +24,17 @@ export default async (_, res) => {
         (thisYear, activity) => {
             return {
                 distance: thisYear.distance + activity.distance,
+                farthest:
+                    activity.distance > thisYear.farthest
+                        ? activity.distance
+                        : thisYear.farthest,
                 fastest:
                     activity.average_speed > thisYear.fastest
                         ? activity.average_speed
                         : thisYear.fastest,
                 longest:
-                    activity.distance > thisYear.longest
-                        ? activity.distance
+                    activity.moving_time > thisYear.longest
+                        ? activity.moving_time
                         : thisYear.longest,
                 lowest:
                     activity.average_heartrate < thisYear.lowest
@@ -39,6 +44,7 @@ export default async (_, res) => {
         },
         {
             distance: 0,
+            farthest: 0,
             fastest: 0,
             longest: 0,
             lowest: 1000
@@ -65,14 +71,11 @@ export default async (_, res) => {
         thisYear: {
             distance: Math.round(distanceThisYear / 1000),
             fastest: fastestThisYear,
-            longest: longestThisYear,
-            lowest: lowestThisYear
+            farthest: farthestThisYear,
+            lowest: lowestThisYear,
+            longest: longestThisYear
         },
         lastRun: {
-            distance: {
-                raw: lastRun.distance,
-                formatted: `${roundDistance(lastRun.distance / 1000)} km`
-            },
             date: {
                 raw: lastRun.start_date,
                 relative: capitalizeFirstLetter(
@@ -93,13 +96,17 @@ export default async (_, res) => {
                 ),
                 timezone: lastRun.timezone
             },
-            time: {
-                raw: lastRun.moving_time,
-                formatted: formatTime(lastRun.moving_time)
+            distance: {
+                raw: lastRun.distance,
+                formatted: `${roundDistance(lastRun.distance / 1000)} km`
             },
             avgSpeed: {
                 raw: lastRun.average_speed,
                 formatted: formatSpeed(lastRun.average_speed)
+            },
+            time: {
+                raw: lastRun.moving_time,
+                formatted: formatTime(lastRun.moving_time)
             },
             avgHeartrate: {
                 raw: lastRun.average_heartrate,

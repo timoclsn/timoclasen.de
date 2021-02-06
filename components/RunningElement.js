@@ -2,7 +2,7 @@ import Skeleton from 'react-loading-skeleton';
 
 export default function RunningElement({ Icon, text, href, labels }) {
     return (
-        <div className={'flex items-center space-x-4 mb-4'}>
+        <div className={'flex flex-wrap items-center space-x-4 mb-4'}>
             <div className={'leading-none'}>
                 {text ? (
                     <Icon size={22} />

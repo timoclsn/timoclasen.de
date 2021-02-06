@@ -11,24 +11,30 @@ import RunningElement from '@/components/RunningElement';
 
 export default function WidgetRunning({ thisYear, lastRun }) {
     const distanceThreshold = 10000; // 10km
-    const paceThreshold = 3.03; // ca. 5:30 /km in m/s
+    const speedThreshold = 3.03; // ca. 5:30 /km in m/s
+    const timeThreshold = 3600; // 1h
     const heartrateThreshold = 160; // 160 bpm
-    const yearsBestLabel = 'yearsbest';
+    const yearsBestLabel = 'best';
 
     const distanceLabels = [
-        ...(lastRun?.distance?.raw >= distanceThreshold ? ['longrun'] : []),
-        ...(lastRun?.distance?.raw >= thisYear?.longest ? [yearsBestLabel] : [])
+        ...(lastRun?.distance?.raw >= distanceThreshold ? ['far'] : []),
+        ...(lastRun?.distance?.raw >= thisYear?.farthest
+            ? [yearsBestLabel]
+            : [])
     ];
 
     const speedLabels = [
-        ...(lastRun?.avgSpeed?.raw > paceThreshold ? ['fast'] : []),
+        ...(lastRun?.avgSpeed?.raw > speedThreshold ? ['fast'] : []),
         ...(lastRun?.avgSpeed?.raw >= thisYear?.fastest ? [yearsBestLabel] : [])
     ];
 
+    const timeLabels = [
+        ...(lastRun?.time?.raw >= timeThreshold ? ['long'] : []),
+        ...(lastRun?.time?.raw >= thisYear?.longest ? [yearsBestLabel] : [])
+    ];
+
     const heartrateLabels = [
-        ...(lastRun?.avgHeartrate?.raw < heartrateThreshold
-            ? ['goodpulse']
-            : []),
+        ...(lastRun?.avgHeartrate?.raw < heartrateThreshold ? ['low'] : []),
         ...(lastRun?.avgHeartrate?.raw <= thisYear?.lowest
             ? [yearsBestLabel]
             : [])
@@ -79,6 +85,7 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                     <RunningElement
                         Icon={Clock}
                         text={lastRun?.time?.formatted}
+                        labels={timeLabels}
                     />
                 </li>
                 <li>
