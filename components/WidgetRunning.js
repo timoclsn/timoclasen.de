@@ -10,41 +10,29 @@ import {
 import RunningElement from '@/components/RunningElement';
 
 export default function WidgetRunning({ thisYear, lastRun }) {
-    function distanceLabels(thisYear, lastRun) {
-        const distanceLabels = [];
-        const distanceThreshold = 10000; // 10km
-        if (lastRun.distance.raw >= distanceThreshold) {
-            distanceLabels.push('longrun');
-        }
-        if (lastRun.distance.raw >= thisYear.longest) {
-            distanceLabels.push('yearsbest');
-        }
-        return distanceLabels;
-    }
+    const distanceThreshold = 10000; // 10km
+    const paceThreshold = 3.03; // ca. 5:30 /km in m/s
+    const heartrateThreshold = 160; // 160 bpm
+    const yearsBestLabel = 'yearsbest';
 
-    function speedLabels(thisYear, lastRun) {
-        const speedLabels = [];
-        const paceThreshold = 3.03; // 5:30 /km in m/s
-        if (lastRun.avgSpeed.raw > paceThreshold) {
-            speedLabels.push('fast');
-        }
-        if (lastRun.avgSpeed.raw >= thisYear.fastest) {
-            speedLabels.push('yearsbest');
-        }
-        return speedLabels;
-    }
+    const distanceLabels = [
+        ...(lastRun?.distance?.raw >= distanceThreshold ? ['longrun'] : []),
+        ...(lastRun?.distance?.raw >= thisYear?.longest ? [yearsBestLabel] : [])
+    ];
 
-    function getHeartrateLabels(thisYear, lastRun) {
-        const heartrateLabels = [];
-        const heartrateThreshold = 160; // 160 bpm
-        if (lastRun.avgHeartrate.raw < heartrateThreshold) {
-            heartrateLabels.push('goodpulse');
-        }
-        if (lastRun.avgHeartrate.raw <= thisYear.lowest) {
-            heartrateLabels.push('yearsbest');
-        }
-        return heartrateLabels;
-    }
+    const speedLabels = [
+        ...(lastRun?.avgSpeed?.raw > paceThreshold ? ['fast'] : []),
+        ...(lastRun?.avgSpeed?.raw >= thisYear?.fastest ? [yearsBestLabel] : [])
+    ];
+
+    const heartrateLabels = [
+        ...(lastRun?.avgHeartrate?.raw < heartrateThreshold
+            ? ['goodpulse']
+            : []),
+        ...(lastRun?.avgHeartrate?.raw <= thisYear?.lowest
+            ? [yearsBestLabel]
+            : [])
+    ];
 
     return (
         <div className={'px-6 py-12 xl:px-12 xl:py-20'}>
@@ -77,14 +65,14 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                     <RunningElement
                         Icon={ArrowRight}
                         text={lastRun?.distance?.formatted}
-                        labels={lastRun && distanceLabels(thisYear, lastRun)}
+                        labels={distanceLabels}
                     />
                 </li>
                 <li>
                     <RunningElement
                         Icon={FastForward}
                         text={lastRun?.avgSpeed?.formatted}
-                        labels={lastRun && speedLabels(thisYear, lastRun)}
+                        labels={speedLabels}
                     />
                 </li>
                 <li>
@@ -97,9 +85,7 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                     <RunningElement
                         Icon={Heart}
                         text={lastRun?.avgHeartrate?.formatted}
-                        labels={
-                            lastRun && getHeartrateLabels(thisYear, lastRun)
-                        }
+                        labels={heartrateLabels}
                     />
                 </li>
             </ul>

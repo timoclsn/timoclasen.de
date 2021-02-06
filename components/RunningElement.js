@@ -19,18 +19,17 @@ export default function RunningElement({ Icon, text, href, labels }) {
                     text || <Skeleton width={200} />
                 )}
             </p>
-            {labels &&
-                labels.map((label) => {
-                    return (
-                        <div
-                            key={label}
-                            className={
-                                'bg-highlight dark:bg-highlight-dark text-light rounded-full px-3 py-1 font-bold uppercase text-xs'
-                            }>
-                            {label}
-                        </div>
-                    );
-                })}
+            {labels?.map((label) => {
+                return (
+                    <div
+                        key={label}
+                        className={
+                            'bg-highlight dark:bg-highlight-dark text-light rounded-full px-3 py-1 font-bold uppercase text-xs'
+                        }>
+                        {label}
+                    </div>
+                );
+            })}
         </div>
     );
 }
