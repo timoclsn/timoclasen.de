@@ -14,27 +14,48 @@ export default function WidgetRunning({ thisYear, lastRun }) {
     const speedThreshold = 3.03; // ca. 5:30 /km in m/s
     const timeThreshold = 3600; // 1h in s
     const heartrateThreshold = 160; // 160 bpm in bpm
-    const yearsBestLabel = 'best';
+    const yearsBestLabel = {
+        text: 'best',
+        description: 'Bester Wert des Jahres in dieser Kategorie'
+    };
 
     const distanceLabels = [
-        ...(lastRun?.distance?.raw >= distanceThreshold ? ['far'] : []),
+        ...(lastRun?.distance?.raw >= distanceThreshold
+            ? [{ text: 'far', description: 'Strecke von 10 km oder mehr' }]
+            : []),
         ...(lastRun?.distance?.raw >= thisYear?.farthest
             ? [yearsBestLabel]
             : [])
     ];
 
     const speedLabels = [
-        ...(lastRun?.avgSpeed?.raw > speedThreshold ? ['fast'] : []),
+        ...(lastRun?.avgSpeed?.raw > speedThreshold
+            ? [
+                  {
+                      text: 'fast',
+                      description: 'Geschwindigkeit schneller als 5:30 /km'
+                  }
+              ]
+            : []),
         ...(lastRun?.avgSpeed?.raw >= thisYear?.fastest ? [yearsBestLabel] : [])
     ];
 
     const timeLabels = [
-        ...(lastRun?.time?.raw >= timeThreshold ? ['long'] : []),
+        ...(lastRun?.time?.raw >= timeThreshold
+            ? [
+                  {
+                      text: 'long',
+                      description: 'Laufzeit von über einer Stunde'
+                  }
+              ]
+            : []),
         ...(lastRun?.time?.raw >= thisYear?.longest ? [yearsBestLabel] : [])
     ];
 
     const heartrateLabels = [
-        ...(lastRun?.avgHeartrate?.raw < heartrateThreshold ? ['low'] : []),
+        ...(lastRun?.avgHeartrate?.raw < heartrateThreshold
+            ? [{ text: 'low', description: 'Puls von unter 160 bpm' }]
+            : []),
         ...(lastRun?.avgHeartrate?.raw <= thisYear?.lowest
             ? [yearsBestLabel]
             : [])
@@ -54,7 +75,14 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                             `${thisYear.distance} von 1000 km pro Jahr`
                         }
                         labels={
-                            thisYear && [`${thisYear.distance / (1000 / 100)}%`]
+                            thisYear && [
+                                {
+                                    text: `${
+                                        thisYear.distance / (1000 / 100)
+                                    }%`,
+                                    description: 'Jahresziel'
+                                }
+                            ]
                         }
                     />
                 </li>

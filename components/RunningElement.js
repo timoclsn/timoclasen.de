@@ -22,11 +22,12 @@ export default function RunningElement({ Icon, text, href, labels }) {
             {labels?.map((label) => {
                 return (
                     <div
-                        key={label}
+                        key={label.text}
                         className={
                             'bg-highlight dark:bg-highlight-dark text-light rounded-full px-3 py-1 font-bold uppercase text-xs'
-                        }>
-                        {label}
+                        }
+                        title={label.description}>
+                        {label.text}
                     </div>
                 );
             })}
