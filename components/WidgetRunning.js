@@ -63,7 +63,7 @@ export default function WidgetRunning({ thisYear, lastRun }) {
 
     return (
         <div className={'px-6 py-12 xl:px-12 xl:py-20'}>
-            <h2 className={'font-bold text-xl md:text-2xl lg:text-3xl mb-4'}>
+            <h2 className={'font-bold text-xl md:text-2xl lg:text-3xl mb-2'}>
                 Laufen
             </h2>
             <ul>
@@ -87,13 +87,14 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                     />
                 </li>
             </ul>
-            <h3 className={'font-bold mb-4 mt-8'}>Letzter Lauf</h3>
+            <h3 className={'font-bold mb-2 mt-8'}>Letzter Lauf</h3>
             <ul>
                 <li>
                     <RunningElement
                         Icon={Calendar}
                         text={lastRun?.date?.relative}
                         href={lastRun?.url}
+                        nowrap
                     />
                 </li>
                 <li>
@@ -101,6 +102,7 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                         Icon={ArrowRight}
                         text={lastRun?.distance?.formatted}
                         labels={distanceLabels}
+                        nowrap
                     />
                 </li>
                 <li>
@@ -108,6 +110,7 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                         Icon={FastForward}
                         text={lastRun?.avgSpeed?.formatted}
                         labels={speedLabels}
+                        nowrap
                     />
                 </li>
                 <li>
@@ -115,6 +118,7 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                         Icon={Clock}
                         text={lastRun?.time?.formatted}
                         labels={timeLabels}
+                        nowrap
                     />
                 </li>
                 <li>
@@ -122,6 +126,7 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                         Icon={Heart}
                         text={lastRun?.avgHeartrate?.formatted}
                         labels={heartrateLabels}
+                        nowrap
                     />
                 </li>
             </ul>
