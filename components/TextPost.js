@@ -16,7 +16,7 @@ const renderers = {
             return (
                 <div
                     className={
-                        'relative overflow-hidden pb-2/3 bg-dark dark:bg-light bg-opacity-10 rounded-md'
+                        'relative overflow-hidden pb-2/3 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-md'
                     }>
                     <Image
                         src={`https:${image.url}`}

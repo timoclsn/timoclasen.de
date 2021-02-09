@@ -1,9 +1,9 @@
+import { useTheme } from 'next-themes';
 import useSWR from 'swr';
 
 import WidgetImage from '@/components/WidgetImage';
 import WidgetLayout from '@/components/WidgetLayout';
 import WidgetRunning from '@/components/WidgetRunning';
-import useThemeDetector from '@/hooks/useThemeDetector';
 import fetcher from '@/lib/fetcher';
 
 export default function RunningWidget() {
@@ -13,7 +13,7 @@ export default function RunningWidget() {
         return <div>Fehler beim Laden…</div>;
     }
 
-    const isDarkTheme = useThemeDetector();
+    const { theme } = useTheme();
 
     return (
         <div id="running">
@@ -27,7 +27,7 @@ export default function RunningWidget() {
                 SecondWidget={
                     <WidgetImage
                         url={
-                            isDarkTheme
+                            theme === 'dark'
                                 ? data?.lastRun?.map?.dark
                                 : data?.lastRun?.map?.light
                         }
