@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-export function useThemeDetector() {
-    if (!isBrowser()) {
+export default function useThemeDetector() {
+    if (typeof window === 'undefined') {
         return false;
     }
 
@@ -16,12 +16,9 @@ export function useThemeDetector() {
     useEffect(() => {
         const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
         darkThemeMq.addEventListener('change', mqListener);
+
         return () => darkThemeMq.removeEventListener('change', mqListener);
     }, []);
 
     return isDarkTheme;
-}
-
-function isBrowser() {
-    return typeof window !== 'undefined';
 }

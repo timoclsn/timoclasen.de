@@ -3,8 +3,8 @@ import useSWR from 'swr';
 import WidgetImage from '@/components/WidgetImage';
 import WidgetLayout from '@/components/WidgetLayout';
 import WidgetRunning from '@/components/WidgetRunning';
+import useThemeDetector from '@/hooks/useThemeDetector';
 import fetcher from '@/lib/fetcher';
-import { useThemeDetector } from '@/lib/hooks';
 
 export default function RunningWidget() {
     const { data, error } = useSWR('/api/running', fetcher);
