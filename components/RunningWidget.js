@@ -13,7 +13,7 @@ export default function RunningWidget() {
         return <div>Fehler beim Laden…</div>;
     }
 
-    const { theme } = useTheme();
+    const { resolvedTheme } = useTheme();
 
     return (
         <div id="running">
@@ -27,7 +27,7 @@ export default function RunningWidget() {
                 SecondWidget={
                     <WidgetImage
                         url={
-                            theme === 'dark'
+                            resolvedTheme === 'dark'
                                 ? data?.lastRun?.map?.dark
                                 : data?.lastRun?.map?.light
                         }
