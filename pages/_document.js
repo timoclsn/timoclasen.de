@@ -1,4 +1,7 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
+
+import NoFlash from '@/components/NoFlash';
+
 class MyDocument extends Document {
     render() {
         return (
@@ -8,6 +11,7 @@ class MyDocument extends Document {
                     className={
                         'min-h-screen bg-light text-dark dark:bg-dark dark:text-light'
                     }>
+                    <NoFlash />
                     <Main />
                     <NextScript />
                 </body>
