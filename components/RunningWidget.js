@@ -1,9 +1,10 @@
+import { useContext } from 'react';
 import useSWR from 'swr';
 
+import { ThemeContext } from '@/components/ThemeContext';
 import WidgetImage from '@/components/WidgetImage';
 import WidgetLayout from '@/components/WidgetLayout';
 import WidgetRunning from '@/components/WidgetRunning';
-import useThemeDetector from '@/hooks/useThemeDetector';
 import fetcher from '@/lib/fetcher';
 
 export default function RunningWidget() {
@@ -13,7 +14,7 @@ export default function RunningWidget() {
         return <div>Fehler beim Laden…</div>;
     }
 
-    const isDarkTheme = useThemeDetector();
+    const { darkMode } = useContext(ThemeContext);
 
     return (
         <div id="running">
@@ -27,7 +28,7 @@ export default function RunningWidget() {
                 SecondWidget={
                     <WidgetImage
                         url={
-                            isDarkTheme
+                            darkMode
                                 ? data?.lastRun?.map?.dark
                                 : data?.lastRun?.map?.light
                         }

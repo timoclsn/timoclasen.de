@@ -4,7 +4,7 @@ export default function SmartHomeElement({ Icon, title, value }) {
     return (
         <div
             className={
-                'flex bg-dark dark:bg-light bg-opacity-10 rounded-3xl p-4'
+                'flex bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-3xl p-4'
             }>
             {value ? (
                 <div
