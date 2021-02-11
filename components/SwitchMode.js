@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Moon, Sun } from 'react-feather';
 
-import { ThemeContext } from '@/hooks/ThemeContext';
+import { ThemeContext } from '@/components/ThemeContext';
 
 export default function SwitchMode() {
     const [mounted, setMounted] = useState(false);
@@ -11,7 +11,7 @@ export default function SwitchMode() {
     useEffect(() => setMounted(true), []);
 
     function handleThemeChange() {
-        setDarkMode(darkMode ? false : true);
+        setDarkMode(!darkMode);
     }
 
     return (

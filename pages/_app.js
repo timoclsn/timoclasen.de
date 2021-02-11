@@ -2,7 +2,7 @@ import '@/styles/globals.css';
 
 import { SkeletonTheme } from 'react-loading-skeleton';
 
-import { ThemeProvider } from '@/hooks/ThemeContext';
+import { ThemeProvider } from '@/components/ThemeContext';
 
 function MyApp({ Component, pageProps }) {
     return (

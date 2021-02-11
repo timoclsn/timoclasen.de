@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import useSWR from 'swr';
 
+import { ThemeContext } from '@/components/ThemeContext';
 import WidgetImage from '@/components/WidgetImage';
 import WidgetLayout from '@/components/WidgetLayout';
 import WidgetRunning from '@/components/WidgetRunning';
-import { ThemeContext } from '@/hooks/ThemeContext';
 import fetcher from '@/lib/fetcher';
 
 export default function RunningWidget() {
