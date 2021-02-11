@@ -1,4 +1,5 @@
 import {
+    CloudSnow,
     Droplet,
     Sun,
     Thermometer,
@@ -49,7 +50,13 @@ export default function SmartHomeWidget({ text, footnote }) {
                 value={error ? errorMessage : data?.outsideTemperature}
             />
             <SmartHomeElement
-                Icon={data?.rain === 'Es regnet' ? Umbrella : Sun}
+                Icon={
+                    data?.rain === 'Es regnet'
+                        ? Umbrella
+                        : data?.rain === 'Es schneit'
+                        ? CloudSnow
+                        : Sun
+                }
                 title="Regensensor"
                 value={error ? errorMessage : data?.rain}
             />

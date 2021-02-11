@@ -71,7 +71,11 @@ export default async (_, res) => {
 
     return res.status(200).json({
         lights: lightsOn ? 'An' : 'Aus',
-        rain: isRaining ? 'Es regnet' : 'Kein Regen',
+        rain: isRaining
+            ? outsideTempAtr.current_value > 0
+                ? 'Es regnet'
+                : 'Es schneit'
+            : 'Kein Regen',
         temperature: formatValue(tempAtr.current_value, tempAtr.unit),
         humidity: formatValue(humidityAtr.current_value, humidityAtr.unit),
         energy: formatValue(accumulatedEnergy, 'W'),
