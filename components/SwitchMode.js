@@ -19,10 +19,10 @@ export default function SwitchMode() {
             aria-label="Farbschema wechseln"
             type="button"
             className={
-                'flex items-center justify-center text-highlight dark:text-highlight-dark bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-xl h-10 w-10 focus:outline-none'
+                'flex items-center justify-center text-highlight dark:text-highlight-dark bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-xl h-8 w-8 focus:outline-none'
             }
             onClick={handleThemeChange}>
-            {mounted && (darkMode ? <Sun size={20} /> : <Moon size={20} />)}
+            {mounted && (darkMode ? <Sun size={16} /> : <Moon size={16} />)}
         </button>
     );
 }
