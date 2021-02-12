@@ -2,7 +2,7 @@ import { formatRelative, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
 import { utcToZonedTime } from 'date-fns-tz';
 
-import { getMapURL } from '@/lib/mapbox';
+import { getMapURLs } from '@/lib/mapbox';
 import {
     formatSpeed,
     formatTime,
@@ -112,10 +112,7 @@ export default async (_, res) => {
                 raw: lastRun.average_heartrate,
                 formatted: `${Math.round(lastRun.average_heartrate)} bpm`
             },
-            map: {
-                light: getMapURL(lastRun.map.summary_polyline, false),
-                dark: getMapURL(lastRun.map.summary_polyline, true)
-            },
+            map: getMapURLs(lastRun.map.summary_polyline),
             url: `https://www.strava.com/activities/${lastRun.id}`
         }
     });
