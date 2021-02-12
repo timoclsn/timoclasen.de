@@ -17,6 +17,7 @@ export default function RunningWidget() {
     const { darkMode } = useContext(ThemeContext);
 
     console.log(data?.lastRun?.map?.dark?.length);
+    console.log(encodeURI(data?.lastRun?.map?.dark).length);
     console.log(data?.lastRun?.map?.dark);
 
     return (
