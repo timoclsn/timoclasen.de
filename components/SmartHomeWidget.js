@@ -78,7 +78,7 @@ export default function SmartHomeWidget({ text, footnote }) {
                 transparent
             />
             <div
-                className={'text-sm mt-8 opacity-50'}
+                className={'text-sm mt-8 opacity-60'}
                 dangerouslySetInnerHTML={{ __html: footnote }}></div>
         </section>
     );
