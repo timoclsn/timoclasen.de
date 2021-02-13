@@ -4,6 +4,7 @@ import {
     Clock,
     FastForward,
     Heart,
+    ThumbsUp,
     TrendingUp
 } from 'react-feather';
 
@@ -87,7 +88,17 @@ export default function WidgetRunning({ thisYear, lastRun }) {
                     />
                 </li>
             </ul>
-            <h3 className={'font-bold mb-2 mt-8'}>Letzter Lauf</h3>
+            <div className={'flex justify-between mb-2 mt-8'}>
+                <h3 className={'font-bold'}>Letzter Lauf</h3>
+                {lastRun?.kudos > 0 && (
+                    <div
+                        className={'flex items-center space-x-1 opacity-60'}
+                        title={`${lastRun.kudos} Kudos für diesen Lauf auf Strava`}>
+                        <ThumbsUp size={18} />
+                        <span className={'text-md'}>{lastRun.kudos}</span>
+                    </div>
+                )}
+            </div>
             <ul>
                 <li>
                     <RunningElement

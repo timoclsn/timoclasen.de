@@ -113,7 +113,8 @@ export default async (_, res) => {
                 formatted: `${Math.round(lastRun.average_heartrate)} bpm`
             },
             map: getMapURLs(lastRun.map.summary_polyline),
-            url: `https://www.strava.com/activities/${lastRun.id}`
+            url: `https://www.strava.com/activities/${lastRun.id}`,
+            kudos: lastRun.kudos_count
         }
     });
 };
