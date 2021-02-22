@@ -50,7 +50,7 @@
         "ws": "^7.4.3"
     },
     "devDependencies": {
-        "cypress": "^6.4.0",
+        "cypress": "^6.5.0",
         "dotenv": "^8.2.0",
         "eslint": "^7.20.0",
         "eslint-config-prettier": "^8.0.0",
