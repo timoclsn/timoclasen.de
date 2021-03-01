@@ -49,6 +49,7 @@ fs.mkdirSync(coversDir);
                     podcastObj.title = podcastJSObj.title;
                     podcastObj.description = podcastJSObj.description;
                     podcastObj.website = podcastJSObj.link;
+                    podcastObj.hosts = podcastJSObj['itunes:author'];
 
                     const randomString = Math.random()
                         .toString(36)
