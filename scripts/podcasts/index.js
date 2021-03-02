@@ -25,12 +25,9 @@ fs.mkdirSync(coversDir);
         true
     ).opml.body.outline;
 
-    const data = await Promise.all(
-        subsJSObj.flatMap(async (podcast) => {
-            let podcastObj = {
-                titel: podcast.title,
-                feedUrl: podcast.xmlUrl
-            };
+    const podcasts = await Promise.all(
+        subsJSObj.map(async (podcast) => {
+            let podcastObj = {};
 
             const response = await fetch(podcast.xmlUrl);
             if (response.ok) {
@@ -47,9 +44,13 @@ fs.mkdirSync(coversDir);
                     ).rss.channel;
 
                     podcastObj.title = podcastJSObj.title;
+                    podcastObj.feedUrl = podcastJSObj.xmlUrl;
                     podcastObj.description = podcastJSObj.description;
                     podcastObj.website = podcastJSObj.link;
                     podcastObj.hosts = podcastJSObj['itunes:author'];
+                    podcastObj.category =
+                        podcastJSObj['media:category'] ||
+                        podcastJSObj['itunes:category'];
 
                     const randomString = Math.random()
                         .toString(36)
@@ -61,23 +62,29 @@ fs.mkdirSync(coversDir);
 
                     const imageResponse = await fetch(imageUrl);
                     const buffer = await imageResponse.buffer();
-                    fs.writeFile(
-                        `${coversDir}/${randomString}.jpg`,
-                        buffer,
-                        () => {}
-                    );
-                    podcastObj.image = `/public/podcasts/${randomString}.jpg`;
+                    const filename = `${coversDir}/cover-${randomString}.jpg`;
+                    fs.writeFile(filename, buffer, () => {});
+                    podcastObj.image = filename;
                 } catch (e) {
-                    console.log(`❌ ${podcast.title} (${podcast.xmlUrl})`);
-                    return [];
+                    console.log(
+                        `❌ (parse feed) ${podcast.title} (${podcast.xmlUrl})`
+                    );
+                    return null;
                 }
             } else {
-                console.log(`❌ ${podcast.title} (${podcast.xmlUrl})`);
-                return [];
+                console.log(
+                    `❌ (fetch feed) ${podcast.title} (${podcast.xmlUrl})`
+                );
+                return null;
             }
             return podcastObj;
         })
     );
 
-    console.log(data);
+    const filteredPodcasts = podcasts.filter(
+        (podcast) => podcast !== null || Object.keys(podcast).length === 0
+    );
+
+    const podcastsJSON = JSON.stringify(filteredPodcasts);
+    fs.writeFileSync('./data/podcasts.json', podcastsJSON);
 })();
