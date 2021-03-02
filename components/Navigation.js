@@ -40,6 +40,11 @@ export default function Navigation({ name }) {
                                 <NavigationLink>Blog</NavigationLink>
                             </Link>
                         </li>
+                        <li>
+                            <Link href="/podcasts" passHref>
+                                <NavigationLink>Podcasts</NavigationLink>
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
             </Container>
