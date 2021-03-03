@@ -61,9 +61,9 @@ fs.mkdirSync(coversDir);
                         : podcastJSObj['itunes:image'].href;
 
                     const imageResponse = await fetch(imageUrl);
-                    const buffer = await imageResponse.buffer();
+                    const imageBuffer = await imageResponse.buffer();
                     const filename = `${coversDir}/cover-${randomString}.jpg`;
-                    fs.writeFile(filename, buffer, () => {});
+                    fs.writeFile(filename, imageBuffer, () => {});
                     podcastObj.image = filename;
                 } catch (e) {
                     console.log(

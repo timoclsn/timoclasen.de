@@ -1,6 +1,7 @@
 import ContactWidget from '@/components/ContactWidget';
 import Layout from '@/components/Layout';
 import { queryContent } from '@/lib/content';
+import { getPodcastData } from '@/lib/podcasts';
 import { markdownToHTML } from '@/lib/text';
 
 export default function Podcasts(props) {
@@ -11,17 +12,11 @@ export default function Podcasts(props) {
             description={props.description}
             previewImage={props.previewImage}
             slug={props.slug}>
-            {/* {props.blogPosts.map((post) => (
-                <BlogPostPreview
-                    title={post.title}
-                    subtitle={post.subtitle}
-                    date={post.dateFormatted}
-                    slug={post.slug}
-                    readingTime={post.readingTime}
-                    key={post.sys.id}
-                    sys={post.sys}
-                />
-            ))} */}
+            {props.podcasts.map((podcast) => (
+                <div key={podcast.title}>
+                    <h1>{podcast.title}</h1>
+                </div>
+            ))}
             <ContactWidget text={props.contact} />
         </Layout>
     );
@@ -51,8 +46,8 @@ export async function getStaticProps({ preview = false }) {
     );
 
     const page = response.data.page.items[0];
-
     const contactText = response.data.contactSnippet.items[0].content;
+    const podcasts = getPodcastData();
 
     return {
         props: {
@@ -61,6 +56,7 @@ export async function getStaticProps({ preview = false }) {
             description: page.description,
             previewImage: page.previewImage,
             slug: page.slug,
+            podcasts,
             contact: await markdownToHTML(contactText)
         }
     };
