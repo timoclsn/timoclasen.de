@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import ContactWidget from '@/components/ContactWidget';
 import Layout from '@/components/Layout';
 import { queryContent } from '@/lib/content';
@@ -15,6 +17,13 @@ export default function Podcasts(props) {
             {props.podcasts.map((podcast) => (
                 <div key={podcast.title}>
                     <h1>{podcast.title}</h1>
+                    <Image
+                        src={`/podcasts/${podcast.image}`}
+                        quality={60}
+                        alt={podcast.title}
+                        width={200}
+                        height={200}
+                    />
                 </div>
             ))}
             <ContactWidget text={props.contact} />
