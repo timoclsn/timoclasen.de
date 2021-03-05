@@ -79,11 +79,11 @@ fs.mkdirSync(coversDir);
         })
     );
 
-    const podcastsClean = podcasts
+    const podcastsSorted = podcasts
         .flat()
         .sort((a, b) => a.title.localeCompare(b.title));
 
-    fs.writeFileSync('./data/podcasts.json', JSON.stringify(podcastsClean));
+    fs.writeFileSync('./data/podcasts.json', JSON.stringify(podcastsSorted));
 })();
 
 function hashString(string) {
@@ -98,5 +98,6 @@ function hashString(string) {
         hash = (hash << 5) - hash + chr;
         hash |= 0; // Convert to 32bit integer
     }
+
     return hash;
 }
