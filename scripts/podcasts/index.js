@@ -3,6 +3,8 @@ const fetch = require('node-fetch');
 const parser = require('fast-xml-parser');
 const sharp = require('sharp');
 var he = require('he');
+const remark = require('remark');
+const strip = require('remark-strip-html');
 
 const coversDir = './public/podcasts';
 
@@ -47,7 +49,9 @@ fs.mkdirSync(coversDir);
 
                     podcastObj.title = he.decode(podcastJSObj.title);
                     podcastObj.feed = podcast.xmlUrl;
-                    // podcastObj.description = podcastJSObj.description;
+                    podcastObj.description = await stripHTML(
+                        he.decode(podcastJSObj.description)
+                    );
                     podcastObj.website = podcastJSObj.link;
                     podcastObj.hosts = he.decode(podcastJSObj['itunes:author']);
                     // podcastObj.category =
@@ -101,4 +105,9 @@ function hashString(string) {
     }
 
     return hash;
+}
+
+async function stripHTML(html) {
+    const result = await remark().use(strip).process(html);
+    return result.toString();
 }

@@ -2,6 +2,7 @@
     {
         "title": "99% Invisible",
         "feed": "https://feeds.99percentinvisible.org/99percentinvisible",
+        "description": "Design is everywhere in our lives, perhaps most importantly in the places where we've just stopped noticing. 99% Invisible is a weekly exploration of the process and power of design and architecture. From award winning producer Roman Mars. Learn more at 99percentinvisible.org.  A proud member of Radiotopia, from PRX. Learn more at radiotopia.fm.\n",
         "website": "http://99percentinvisible.org",
         "hosts": "Roman Mars",
         "image": "cover--435347918.jpg"
@@ -9,6 +10,7 @@
     {
         "title": "Accidental Tech Podcast",
         "feed": "https://atp.fm/episodes?format=rss",
+        "description": "Three nerds discussing tech, Apple, programming, and loosely related matters.\n",
         "website": "https://atp.fm/",
         "hosts": "Marco Arment, Casey Liss, John Siracusa",
         "image": "cover--435634368.jpg"
@@ -16,6 +18,7 @@
     {
         "title": "AppStories",
         "feed": "https://appstories.net/episodes/feed/",
+        "description": "AppStories is a weekly exploration of the world of apps by MacStories' Federico Viticci and John Voorhees. Each week, they discuss the best new apps, the impact of apps on our culture, and cover the stories behind popular apps. Hosted by Federico Viticci and John Voorhees.\n",
         "website": "https://appstories.net",
         "hosts": "Federico Viticci, John Voorhees",
         "image": "cover-1241703186.jpg"
@@ -23,6 +26,7 @@
     {
         "title": "Automators",
         "feed": "https://www.relay.fm/automators/feed",
+        "description": "Automation makes your life easier and everyone can do it. We tell you how.  Hosted by David Sparks and Rosemary Orchard.\n",
         "website": "https://www.relay.fm/automators",
         "hosts": "Relay FM",
         "image": "cover--1957296097.jpg"
@@ -30,6 +34,7 @@
     {
         "title": "Bits und so",
         "feed": "http://www.bitsundso.de/feed/",
+        "description": "Die wöchentliche Talkrunde rund um Apple, Mac, iPod + iPhone, Gadgets und so. Fast live aus München.\n",
         "website": "http://www.bitsundso.de",
         "hosts": "Undsoversum GmbH",
         "image": "cover--655790613.jpg"
@@ -37,6 +42,7 @@
     {
         "title": "Cautionary Tales with Tim Harford",
         "feed": "https://feeds.megaphone.fm/cautionarytales",
+        "description": "We tell our children unsettling fairy tales to teach them valuable life lessons, but these Cautionary Tales are for the education of the grown ups – and they are all true. Tim Harford (Financial Times, BBC, author of “The Data Detective” and “The Undercover Economist”) brings you stories of awful human error, tragic catastrophes, daring heists and hilarious fiascos. They'll delight you, scare you, but also make you wiser. iHeartMedia is the exclusive podcast partner of Pushkin Industries.\n",
         "website": "https://www.pushkin.fm",
         "hosts": "Pushkin Industries",
         "image": "cover-560689736.jpg"
@@ -44,6 +50,7 @@
     {
         "title": "Chaosradio",
         "feed": "http://chaosradio.ccc.de/chaosradio-latest.rss",
+        "description": "Das monatliche Radio des Chaos Computer Club Berlin\n",
         "website": "https://chaosradio.de",
         "hosts": "Chaos Computer Club Berlin",
         "image": "cover-1104988315.jpg"
@@ -51,6 +58,7 @@
     {
         "title": "CLEANELECTRIC Podcast",
         "feed": "https://www.cleanelectric.de/feed/mp3/",
+        "description": "Der Podcast rund um das Thema Elektromobilität\n",
         "website": "https://www.cleanelectric.de",
         "hosts": "CLEANELECTRIC",
         "image": "cover--1209386230.jpg"
@@ -58,6 +66,7 @@
     {
         "title": "cloudonaut",
         "feed": "https://podcast.cloudonaut.io/feed/aac",
+        "description": "We are two brothers focusing 100% on Amazon Web Services (AWS). Every other week, one of us prepares the topic of the podcast. The topic is not known to the other one, which results in surprising conversations about all things AWS.\n\nTypically, we are covering the following topics: DevOps, Serverless, Container, Security, Infrastructure as Code, Container, Continuous Deployment, S3, EC2, RDS, VPC, IAM, VPC, and many more.\n",
         "website": "https://cloudonaut.io",
         "hosts": "Andreas Wittig and Michael Wittig focusing on AWS Cloud",
         "image": "cover--300587156.jpg"
@@ -65,6 +74,7 @@
     {
         "title": "Connected",
         "feed": "https://www.relay.fm/connected/feed",
+        "description": "Connected is a weekly panel discussion on Apple and the impact of technology on our lives. With each co-host having a unique background — and accent — Connected provides a perspective that no other show can. Hosted by Federico Viticci, Myke Hurley, and Stephen Hackett.\n",
         "website": "https://www.relay.fm/connected",
         "hosts": "Relay FM",
         "image": "cover-1424757481.jpg"
@@ -72,6 +82,7 @@
     {
         "title": "Cortex",
         "feed": "https://www.relay.fm/cortex/feed",
+        "description": "CGP Grey and Myke Hurley are both independent content creators. Each episode, they get together to discuss their working lives. Hosted by CGP Grey and Myke Hurley.\n",
         "website": "https://www.relay.fm/cortex",
         "hosts": "Relay FM",
         "image": "cover-2024174849.jpg"
@@ -79,6 +90,7 @@
     {
         "title": "Decoder with Nilay Patel",
         "feed": "https://feeds.megaphone.fm/recodedecode",
+        "description": "Decoder is a new show from The Verge about big ideas — and other problems. Verge editor-in-chief Nilay Patel talks to a diverse cast of innovators and policymakers at the frontiers of business and technology to reveal how they’re navigating an ever-changing landscape, what keeps them up at night, and what it all means for our shared future.\n",
         "website": "https://theverge.com",
         "hosts": "The Verge",
         "image": "cover--1906039915.jpg"
@@ -86,6 +98,7 @@
     {
         "title": "Design Better Podcast",
         "feed": "https://designbetter.libsyn.com/rss",
+        "description": "The Design Better podcast delivers insights from the world’s most renowned design leaders, empowering teams to transform their practice and build remarkable products. This series is hosted by Aarron Walter and Eli Woolery and brought to you by InVision, the digital product design platform used to make the world’s best customer experiences. Discover more best practices, research, and resources at www.designbetter.com.\n",
         "website": "http://designbetter.co/podcast",
         "hosts": "InVisionApp, Inc",
         "image": "cover-1391567702.jpg"
@@ -93,6 +106,7 @@
     {
         "title": "Design Details",
         "feed": "https://feeds.simplecast.com/eew_vyNL",
+        "description": "A weekly conversation about design process and culture. Hosted by Marshall Bock and Brian Lovin.\n",
         "website": "https://designdetails.fm",
         "hosts": "Brian Lovin, Marshall Bock",
         "image": "cover-1516312032.jpg"
@@ -100,6 +114,7 @@
     {
         "title": "Design Matters with Debbie Millman",
         "feed": "https://feeds.feedburner.com/DesignMattersWithDebbieMillman",
+        "description": "Design Matters with Debbie Millman is one of the world’s very first podcasts. Broadcasting independently for over 15 years, the show is about how incredibly creative people design the arc of their lives.\n",
         "website": "https://www.designmattersmedia.com/designmatters",
         "hosts": "Design Matters Media",
         "image": "cover--1800126491.jpg"
@@ -107,6 +122,7 @@
     {
         "title": "digital kompakt | Business & Digitalisierung von Startup bis Corporate",
         "feed": "https://digitalkompakt.podigee.io/feed/mp3",
+        "description": "Spannende Interviews aus der Digitalwirtschaft, hochwertiges Tiefenwissen von erfolgreichen Geschäftsleuten und echte Einblicke aus der Unternehmerpraxis – dafür steht digital kompakt. Dazu spricht Digitalexperte Joel Kaczmarek auf unterhaltsame Weise mit bekannten Unternehmern, Investoren und Experten.\n",
         "website": "https://www.digitalkompakt.de/",
         "hosts": "Joel Kaczmarek",
         "image": "cover-1122955532.jpg"
@@ -114,6 +130,7 @@
     {
         "title": "Digitale Vorreiter - Vodafone Business Cases",
         "feed": "https://digitalevorreiter.podigee.io/feed/mp3",
+        "description": "Willkommen zu DIGITALE VORREITER – deinem Digitalisierungspodcast.\n\nDas erwartet euch:\n\n*   SPANNENDE INSIGHTS rund um das Thema Digitalisierung\n*   Echte ERFOLGSGESCHICHTEN und Erfahrungsberichte von Unternehmen, die den digitalen Wandel geschafft haben\n*   Interviews mit EXPERTEN, DIGITAL-PIONIEREN und VORBILDERN der digitalen Wirtschaft\n\nDas ist uns wichtig:\n\n*   Wir möchten dich mit Best Practices INSPIRIEREN\n*   Wir möchten dir KONKRETE ANSÄTZE für dein Business liefern\n*   Wir möchten dich über aktuelle News und Trends AUF DEM LAUFENDEN HALTEN\n\nDas ist unser Host:\n\n*   Christoph Burseg beschäftigt sich schon über 15 Jahre mit TECHNOLOGIE und ENTREPRENEURSHIP\n*   Als UNTERNEHMER berät er zu Digitalisierungs- und Online Marketing Themen.\n*   Besondere Expertise besitzt er in den Bereichen Search Marketing und Video Marketing.\n\nJETZT den wöchentlichen Vodafone Business Podcast “Digitale Vorreiter” ABONNIEREN, reinhören und inspirieren lassen.\n\nSpannende Erfolgsgeschichten könnt ihr auch im Online-Magazin „Business Cases“ nachlesen: www.vodafone.de/business/featured-digitale-vorreiter/business-cases/\n\nKontaktiere uns über Instagram: www.instagram.com/vodafonebusinessde/\nEmail für Feedback: digitalevorreiter@podstars.de\n\nProduziert von Podstars by OMR.\n",
         "website": "https://www.vodafone.de/business/featured-digitale-vorreiter/business-cases/",
         "hosts": "Christoph Burseg / Vodafone Business",
         "image": "cover--797438357.jpg"
@@ -121,6 +138,7 @@
     {
         "title": "Does Not Compute",
         "feed": "https://feeds.simplecast.com/ETk2QA__",
+        "description": "A weekly chat about the lives and workflows of modern web developers, hosted by Sean Washington & Rockwell Schrock.\n",
         "website": "https://dnc.show",
         "hosts": "Sean Washington, Rockwell Schrock",
         "image": "cover-687976611.jpg"
@@ -128,6 +146,7 @@
     {
         "title": "Exponent",
         "feed": "http://exponent.fm/feed/",
+        "description": "A podcast about tech and society, hosted by Ben Thompson and James Allworth\n",
         "website": "http://exponent.fm",
         "hosts": "Ben Thompson / James Allworth",
         "image": "cover--1861525809.jpg"
@@ -135,6 +154,7 @@
     {
         "title": "F1 Nation",
         "feed": "https://audioboom.com/channels/5024396.rss",
+        "description": "F1 Nation is a weekly podcast aiming to unite like-minded fans from around the world. Join Tom Clarkson and Alex Jacques as they bring you a slice of light-hearted F1 chat, with guests, debates and plenty of laughs…\n",
         "website": "https://audioboom.com/channels/5024396",
         "hosts": "Formula 1",
         "image": "cover--1807838084.jpg"
@@ -142,6 +162,7 @@
     {
         "title": "F1: Beyond The Grid",
         "feed": "https://audioboom.com/channels/4964339.rss",
+        "description": "Beyond The Grid, delivers great stories, fresh insight and amazing anecdotes from the world of F1. Each week Tom Clarkson brings you in-depth, personal conversations with the biggest names in the sport, from current superstar drivers and leading team bosses to legendary figures from history.\n",
         "website": "https://audioboom.com/channel/beyond-the-grid",
         "hosts": "Formula 1",
         "image": "cover--546450571.jpg"
@@ -149,6 +170,7 @@
     {
         "title": "Finance Forward – der Podcast für die neue Finanzwelt",
         "feed": "https://financefwd.podigee.io/feed/mp3",
+        "description": "Fintechs, Insurtechs, Robo-Advisor oder Kryptowährungen: Die Finanzwelt ist im Umbruch. Wir sprechen mit den wichtigsten Köpfen aus Fintech-, Banken- und Blockchainszene. Kritisch, unabhängig, unterhaltsam – und in 30 Minuten auf den Punkt.\n\nProduziert von Podstars by OMR.\n",
         "website": "https://financefwd.com/de/",
         "hosts": "Niklas Wirminghaus und Caspar Schlenk | Finance FWD",
         "image": "cover-413214548.jpg"
@@ -156,6 +178,7 @@
     {
         "title": "Full Stack Radio",
         "feed": "https://feeds.transistor.fm/full-stack-radio",
+        "description": "A podcast for developers interested in building great software products. Every episode, Adam Wathan is joined by a guest to talk about everything from product design and user experience to unit testing and system administration.\n",
         "website": "http://fullstackradio.com",
         "hosts": "Adam Wathan",
         "image": "cover-1194151986.jpg"
@@ -163,6 +186,7 @@
     {
         "title": "Getting Things Done",
         "feed": "https://gettingthingsdone.libsyn.com/rss",
+        "description": "Our GTD podcasts are here to support you at every stage of your GTD practice. You will hear interviews with people from all walks of life about their journey with GTD, from beginners to those who have been at it for years. The podcasts include personal and professional stories, as well as practical tips about GTD systems for desktop and mobile, using apps and paper. Start listening now and you'll be well on your way to stress-free productivity.\n",
         "website": "https://gettingthingsdone.com/podcasts/",
         "hosts": "GTD®",
         "image": "cover--896659839.jpg"
@@ -170,6 +194,7 @@
     {
         "title": "How to Save a Planet",
         "feed": "https://feeds.megaphone.fm/howtosaveaplanet",
+        "description": "Does climate change freak you out? Want to know what we, collectively, can do about it? Us, too. How to Save a Planet is a podcast that asks the big questions: What do we need to do to solve the climate crisis, and how do we get it done? Join us, journalist Alex Blumberg and scientist and policy nerd Dr. Ayana Elizabeth Johnson, as we scour the earth for solutions, talk to people who are making a difference, ask hard questions, crack dumb jokes and — episode by episode — figure out how to build the future we want.\n",
         "website": "https://gimletmedia.com/shows/howtosaveaplanet",
         "hosts": "Gimlet",
         "image": "cover--2132882811.jpg"
@@ -177,6 +202,7 @@
     {
         "title": "Information Lovers Podcast",
         "feed": "https://feeds.simplecast.com/YMT15IpV",
+        "description": "Im Information Lovers Podcast teile ich mit allen wissenshungrigen Zuhörern meine Gedanken, Erfahrungen und spannende Gespräche rund um UX Design & Strategie, digitale Produkte, Leadership und vieles mehr. Bist auch du ein Information Lover? Dann sei dabei und lass uns jede Woche gemeinsam lernen!\n",
         "website": [
             {
                 "href": "https://pubsubhubbub.appspot.com/",
@@ -195,6 +221,7 @@
     {
         "title": "Inside Shopify UX",
         "feed": "https://anchor.fm/s/149e69d4/podcast/rss",
+        "description": "Shopify is building the future of commerce, but who are the people building it? Inside Shopify UX introduces some of the leaders of our UX team and asks them to explain the big commerce problem their team is trying to solve.\n\nListen to learn more about the meaty UX challenges our team is solving and how we're making it easier for independent businesses to thrive.\n",
         "website": "ux.shopify.com",
         "hosts": "Gene Shannon",
         "image": "cover-394007393.jpg"
@@ -202,6 +229,7 @@
     {
         "title": "iPad Pros",
         "feed": "Http://feeds.feedburner.com/ipadpros",
+        "description": "Learn how to get the most out of your iPad Pro by listening to the pros using the iPad. See acast.com/privacy for privacy and opt-out information.\n",
         "website": "https://www.ipadpros.net",
         "hosts": "Tim Chaten",
         "image": "cover--29776260.jpg"
@@ -209,6 +237,7 @@
     {
         "title": "JS Party: JavaScript & Web Dev",
         "feed": "https://changelog.com/jsparty/feed",
+        "description": "Your weekly celebration of JavaScript and the web.  This show records LIVE on Thursdays at 1pm US/Eastern time. Panelists include Jerod Santo, Feross Aboukhadijeh, Kevin Ball, Emma Bostian, Nick Nisi, Divya Sasidharan, Mikeal Rogers,  Chris Hiller, and Amal Hussein.\n\nTopics discussed include the web platform (Chrome, Safari, Edge, Firefox, Brave, etc), front-end frameworks (React, Ember, Angular, Vue, etc), Node.js, web animation, SVG, robotics, IoT, and much more. If JavaScript and/or the web touch your life, this show’s for you.\n\nSome people search for JSParty and can't find the show, so now the string JSParty is in our description too.\n",
         "website": "https://changelog.com/jsparty",
         "hosts": "Changelog Media",
         "image": "cover--601005967.jpg"
@@ -216,6 +245,7 @@
     {
         "title": "Ladybug Podcast",
         "feed": "https://pinecast.com/feed/ladybug-podcast",
+        "description": "We're Emma Bostian, Sidney Buckner, Kelly Vaughn, and Ali Spittel - four seasoned software developers working in different sectors. Since there's a major lack of technical podcasts out there, we've decided to start one. Just kidding -- there's already a ton! But, we wanted to add our voices to the space and share our experiences and advice. We'll have great discussions around how to start coding, the hot technologies right now, how to get your first developer job, and more!\n",
         "website": "https://ladybug.dev",
         "hosts": "Emma Bostian, Sidney Buckner, Kelly Vaughn, and Ali Spittel",
         "image": "cover--1540741618.jpg"
@@ -223,6 +253,7 @@
     {
         "title": "Lage der Nation - der Politik-Podcast aus Berlin",
         "feed": "https://feeds.lagedernation.org/feeds/ldn-mp3.xml",
+        "description": "Mit Philip Banse und Ulf Buermeyer\n",
         "website": "https://lagedernation.org",
         "hosts": "Philip Banse & Ulf Buermeyer",
         "image": "cover-1464195409.jpg"
@@ -230,6 +261,7 @@
     {
         "title": "Layout",
         "feed": "https://layout.fm/rss",
+        "description": "A weekly podcast about design, technology, programming and everything else.\n",
         "website": "https://layout.fm",
         "hosts": "Kevin Clark and Rafael Conde",
         "image": "cover--2025855158.jpg"
@@ -237,6 +269,7 @@
     {
         "title": "Mac Power Users",
         "feed": "https://www.relay.fm/mpu/feed",
+        "description": "Learn about getting the most from your Apple technology with focused topics and workflow guests. Creating Mac Power Users, one geek at a time since 2009. Hosted by David Sparks and Stephen Hackett.\n",
         "website": "https://www.relay.fm/mpu",
         "hosts": "Relay FM",
         "image": "cover--203172484.jpg"
@@ -244,6 +277,7 @@
     {
         "title": "Material",
         "feed": "https://www.relay.fm/material/feed",
+        "description": "Material is a weekly discussion about the Google and Android universe. Your intrepid hosts try to answer the question, “What holds up the digital world?” The answer, so far, is that it’s Google all the way down. Hosted by Andy Ihnatko and Florence Ion.\n",
         "website": "https://www.relay.fm/material",
         "hosts": "Relay FM",
         "image": "cover-363710791.jpg"
@@ -251,6 +285,7 @@
     {
         "title": "Mit Schirm, Charme und Sensoren . . . dein IOT Podcast",
         "feed": "https://schirm-charme-sensoren.libsyn.com/rss",
+        "description": "In diesem Podcast geht es um das Internet der Dinge, Daten und Algorithmen und vor allem um deren praktische Anwendung.\n\nWir liefern dir konkrete Praxisbeispiele, Erfolgsgeschichten sowie kaufmännische und technische Hintergründe. Alle zwei Wochen findest du bei uns neue Geschichten rund um das Internet der Dinge.\nWir geben einen Einblick in industrielle IoT-Lösungen, die sich heute auf die Unternehmen auswirken. Unser Ziel ist es, einen Einblick in die Projektierung und Implementierung von IoT-Systemen zu geben, von neuen Geschäftsmodellen über die Auswahl der Technologiearchitektur bis hin zu Datenbesitz und Sicherheit.\n",
         "website": "http://schirm-charme-sensoren.libsyn.com/website",
         "hosts": "Elisabeth Schloten und Robert Jänisch",
         "image": "cover-1893267276.jpg"
@@ -258,6 +293,7 @@
     {
         "title": "Modern Web",
         "feed": "https://modernweb.podbean.com/feed.xml",
+        "description": "Modern Web is a podcast that explores next generation frameworks, standards, and techniques. Visit http://modern-web.org for more.\n",
         "website": "https://modernweb.podbean.com",
         "hosts": "Tracy Lee",
         "image": "cover--13336877.jpg"
@@ -265,6 +301,7 @@
     {
         "title": "My Climate Journey",
         "feed": "https://feeds.simplecast.com/XFfCG1w8",
+        "description": "A podcast about a recovering software entrepreneur (me!), and my quest to reorient my career around helping solve climate change for this next chapter and beyond. Includes interviews with people in the thick of tackling this problem, and commentary from yours truly. I'm glad you are here!\n",
         "website": "https://my-climate-journey.simplecast.com",
         "hosts": "Jason Jacobs",
         "image": "cover-7818289.jpg"
@@ -272,6 +309,7 @@
     {
         "title": "OMR Podcast",
         "feed": "https://omr.podigee.io/feed/mp3",
+        "description": "Der OMR Podcast ist der erste große Podcastkanal zu digitalem Marketing und allen anderen Themen, die uns Spaß machen. Philipp Westermeyer spricht im OMR Podcast mit Machern, Könnern und guten Freunden. Jeden Mittwoch und Sonntag neu!\n\nDu suchst unseren OMR Education Podcast? Hier entlang: https://askomr.podigee.io/\n\nProduziert von Podstars by OMR.\n",
         "website": "http://www.omr.com/podcast",
         "hosts": "Philipp Westermeyer - OMR",
         "image": "cover-835155192.jpg"
@@ -279,6 +317,7 @@
     {
         "title": "On the Way to New Work - Der Podcast über neue Arbeit",
         "feed": "https://newwork.podigee.io/feed/mp3",
+        "description": "Wir sind zwei Unternehmer aus Hamburg, die von den Möglichkeiten neuer Tools und Methoden, um Arbeit zu verändern, begeistert sind. Bei allen Tools, Cloud, künstlicher Intelligenz und Co. sind wir zudem der Meinung, dass die Frage nach dem Sinn von und die Erfüllung durch Arbeit nie wichtiger war als heute.\n\nAuf einem gemeinsamen Trip nach New York kam uns die Idee, dass wir uns dem Thema am besten mit einem Buch nähern, das alle guten Konzepte, Ideen und Erfahrungen zusammen bringt.\n\n‘New Work’ wäre nicht ‘New Work’, wenn wir den Prozess dahin nicht auch gleich dokumentieren würden. Daher teilen wir auf dem Weg dahin unsere Eindrücke und alles, was dabei hilft, das Buch noch besser zu machen.\nUnd daher eben ‘On the Way to New Work’.\n\nMichael Trautmann, Gründer thjnk AG und Upsolut Sports GmbH/HYROX\nChristoph Magnussen, Gründer & CEO, BLACKBOAT (youtube.com/christophmagnussen)\n\nProduziert von Podstars by OMR.\n",
         "website": "https://www.onthewaytonewwork.com/",
         "hosts": "Christoph Magnussen & Michael Trautmann",
         "image": "cover-1074266260.jpg"
@@ -286,6 +325,7 @@
     {
         "title": "Pivot",
         "feed": "https://feeds.megaphone.fm/pivot",
+        "description": "Every Tuesday and Friday, Recode’s Kara Swisher and NYU Professor Scott Galloway offer sharp, unfiltered insights into the biggest stories in tech, business, and politics. They make bold predictions, pick winners and losers, and bicker and banter like no one else. After all, with great power comes great scrutiny. From New York Magazine and the Vox Media Podcast Network.\n",
         "website": "https://www.vox.com/pivot-with-kara-swisher-and-scott-galloway",
         "hosts": "New York Magazine",
         "image": "cover-77126690.jpg"
@@ -293,6 +333,7 @@
     {
         "title": "Planet Money",
         "feed": "https://feeds.npr.org/510289/podcast.xml",
+        "description": "The economy explained. Imagine you could call up a friend and say, \"Meet me at the bar and tell me what's going on with the economy.\" Now imagine that's actually a fun evening.\n",
         "website": "https://www.npr.org/planetmoney",
         "hosts": "NPR",
         "image": "cover--1401915336.jpg"
@@ -300,6 +341,7 @@
     {
         "title": "Presentable",
         "feed": "https://www.relay.fm/presentable/feed",
+        "description": "The Presentable Podcast focuses on how we design and build the products that are shaping our digital future. We'll track the tools, trends, and methods being used by teams from the biggest companies and latest startups. In each episode, Jeff will bring over two decades of experience as a designer, developer, entrepreneur, and investor as he chats with guests about how design is changing the world. Hosted by Jeff Veen.\n",
         "website": "https://www.relay.fm/presentable",
         "hosts": "Relay FM",
         "image": "cover-443408501.jpg"
@@ -307,6 +349,7 @@
     {
         "title": "Quarks",
         "feed": "https://www1.wdr.de/mediathek/video/podcast/channel-quarks-und-co-100.podcast",
+        "description": "Die Sendung zum Mitnehmen\n",
         "website": "https://www1.wdr.de/mediathek/video/podcast/channel-quarks-und-co-100.html",
         "hosts": "Westdeutscher Rundfunk",
         "image": "cover--1864951395.jpg"
@@ -314,6 +357,7 @@
     {
         "title": "Release Notes",
         "feed": "https://releasenotes.tv/feed/podcast/",
+        "description": "The Business of Online Businesses\n",
         "website": "https://releasenotes.tv",
         "hosts": "Charles Perry and Joe Cieplinski",
         "image": "cover--1836553944.jpg"
@@ -321,6 +365,7 @@
     {
         "title": "Rework",
         "feed": "https://feeds.transistor.fm/rework",
+        "description": "A podcast by Basecamp about the better way to work and run your business. We bring you stories and unconventional wisdom from Basecamp’s co-founders and other business owners.\n",
         "website": "https://rework.fm",
         "hosts": "Basecamp",
         "image": "cover--1850445852.jpg"
@@ -328,6 +373,7 @@
     {
         "title": "ShopTalk",
         "feed": "https://shoptalkshow.com/feed/podcast",
+        "description": "A live podcast about front end web design and UX.\n",
         "website": "https://shoptalkshow.com/",
         "hosts": "ShopTalk",
         "image": "cover--280658718.jpg"
@@ -335,6 +381,7 @@
     {
         "title": "Smarteinander - der Smart Home Podcast",
         "feed": "https://anchor.fm/s/4a19bfdc/podcast/rss",
+        "description": "Zu Dritt kommen Marc, Thomas und Chris zusammen an den virtuell Podcast Tisch um über die verschiedensten Themen im vernetzten Wohnen zu sprechen.\n",
         "website": "www.smarteinander.de",
         "hosts": "Smarteinander",
         "image": "cover-733741497.jpg"
@@ -342,6 +389,7 @@
     {
         "title": "Stacktrace",
         "feed": "http://feeds.feedburner.com/StacktraceBy9to5mac",
+        "description": "A weekly Apple news and rumors podcast from a developer's perspective. Hosted by 9to5Mac's Gui Rambo and John Sundell.\n",
         "website": "https://9to5mac.com",
         "hosts": "9to5Mac",
         "image": "cover--245669923.jpg"
@@ -349,6 +397,7 @@
     {
         "title": "Syntax - Tasty Web Development Treats",
         "feed": "https://feed.syntax.fm/rss",
+        "description": "Full Stack Developers Wes Bos and Scott Tolinski dive deep into web development topics, explaining how they work and talking about their own experiences. They cover from JavaScript frameworks like React, to the latest advancements in CSS to simplifying web tooling.\n",
         "website": "https://syntax.fm",
         "hosts": "Wes Bos & Scott Tolinski - Full Stack JavaScript Web Developers",
         "image": "cover--747382577.jpg"
@@ -356,6 +405,7 @@
     {
         "title": "Techmeme Ride Home",
         "feed": "https://rss.art19.com/techmeme-ridehome",
+        "description": "The day's tech news, every day at 5pm. From Techmeme.com, Silicon Valley's most-read news source. 15 minutes and you're up to date. \n",
         "website": "https://www.ridehome.info/show/techmeme-ride-home/",
         "hosts": "Ride Home Media",
         "image": "cover-1410345037.jpg"
@@ -363,6 +413,7 @@
     {
         "title": "The Changelog: Software Dev & Open Source",
         "feed": "https://changelog.com/podcast/feed",
+        "description": "Conversations with the hackers, leaders, and innovators of the software world.  Hosts Adam Stacoviak and Jerod Santo face their imposter syndrome so you don’t have to. Expect in-depth interviews with the best and brightest in software engineering, open source, and leadership. This is a polyglot podcast. All programming languages, platforms, and communities are welcome. Open source moves fast. Keep up.\n",
         "website": "https://changelog.com/podcast",
         "hosts": "Changelog Media",
         "image": "cover-518079806.jpg"
@@ -370,6 +421,7 @@
     {
         "title": "The Energy Gang",
         "feed": "https://rss.art19.com/the-energy-gang",
+        "description": "Looking to understand the fast-changing world of energy? This isn't your ordinary energy business show. Every week, we debate and discuss the latest trends in energy, cleantech, renewables, and the environment. Join us as we explore the forces transforming energy markets in America and around the world.\n",
         "website": "https://art19.com/shows/the-energy-gang",
         "hosts": "Greentech Media",
         "image": "cover-1098415452.jpg"
@@ -377,6 +429,7 @@
     {
         "title": "The Incomparable",
         "feed": "https://feeds.theincomparable.com/theincomparable",
+        "description": "The Incomparable is a weekly dive into geeky media we love, including movies, books, TV, comics, and more, featuring a rotating panel of guests and hosted by Jason Snell.\n",
         "website": "https://www.theincomparable.com/theincomparable/",
         "hosts": "Jason Snell",
         "image": "cover-1802851150.jpg"
@@ -384,6 +437,7 @@
     {
         "title": "The Smart Home Show",
         "feed": "http://feeds.feedburner.com/soundcloud/scvz",
+        "description": "Join hosts Adam Justice and Richard Gunther as they explore the smart home universe. The Smart Home Show features interviews with smart home leaders, analysis of the latest smart home news and the occasional Q and A and product review. All smart home, all the time.\n",
         "website": "http://smarthome.fm/",
         "hosts": "Richard Gunther and Adam Justice",
         "image": "cover-1773890072.jpg"
@@ -391,6 +445,7 @@
     {
         "title": "The Stack Overflow Podcast",
         "feed": "https://stackoverflow.blog/podcast/?feed=podcast",
+        "description": "The Stack Overflow podcast is a weekly conversation about working in software development, learning to code, and the art and culture of computer programming. Hosted by Sara Chipps, Paul Ford, and Ben Popper, the series will feature questions from our community, interviews with fascinating guests, and hot takes on what’s happening in tech.\nAbout Stack Overflow\nFounded in 2008, Stack Overflow is the largest, most trusted online community for developers to learn, share their knowledge, and build their careers. More than 50 million professional and aspiring programmers visit Stack Overflow each month to help solve coding problems, develop new skills, and find job opportunities.\n",
         "website": "https://stackoverflow.blog/podcast/",
         "hosts": "The Stack Overflow Podcast",
         "image": "cover-972139597.jpg"
@@ -398,6 +453,7 @@
     {
         "title": "The Talk Show With John Gruber",
         "feed": "https://daringfireball.net/thetalkshow/rss",
+        "description": "The director’s commentary track for Daring Fireball.\n",
         "website": "https://daringfireball.net/thetalkshow",
         "hosts": "Daring Fireball / John Gruber",
         "image": "cover-2099220318.jpg"
@@ -405,6 +461,7 @@
     {
         "title": "The UIE Podcast",
         "feed": "https://uie.fm/shows/uie/feed",
+        "description": "The Next Generation of Podcasts from UIE. Stay tuned for new stories and take-aways you can use in your day to day design work.\n",
         "website": "https://uie.fm/shows/uie",
         "hosts": "Jared Spool",
         "image": "cover--1534902106.jpg"
@@ -412,6 +469,7 @@
     {
         "title": "The Vergecast",
         "feed": "https://feeds.megaphone.fm/vergecast",
+        "description": "Hello! This is The Vergecast, the flagship podcast of The Verge... and your life. Every Friday, Nilay Patel and Dieter Bohn make sense of the week's tech news with help from our wide-ranging staff. And on Tuesdays, Nilay hosts in-depth, one-on-one interviews with major technology leaders. Join us every week for a fun, deeply nerdy, often off-the-rails conversation about what's happening now (and next) in technology and gadgets.\n",
         "website": "https://www.theverge.com/the-vergecast",
         "hosts": "The Verge",
         "image": "cover--1184021167.jpg"
@@ -419,6 +477,7 @@
     {
         "title": "This is Product Management",
         "feed": "https://alphaux.libsyn.com/rss",
+        "description": "“This is Product Management” interviews the brightest minds across the numerous disciplines that fuel modern product teams. Episodes span from arts to science, tactics to strategies, confessions to professions. Take a deep dive into user experience, statistics, innovation, differentiation, design, development, metrics, and more with the latest podcast for product managers. This is Product Management is produced by Feedback Loop\n\nLearn more and subscribe at tipm.feedbackloop.com\n",
         "website": "http://tipm.feedbackloop.com",
         "hosts": "Feedback Loop",
         "image": "cover--1692136664.jpg"
@@ -426,6 +485,7 @@
     {
         "title": "Tomorrow",
         "feed": "https://feeds.theoutline.com/tomorrow",
+        "description": "Tomorrow is a podcast hosted by Joshua Topolsky and Ryan Houlihan about what's happening right now — and next — in the world of culture, technology and the internet, music, movies, politics, and more. Whether it's dissecting the news of the day or having an in-depth conversation with a creator, deep thinker, or artist, Tomorrow will be the best hour of funny, weird, and wonderful you'll get all week.\n",
         "website": "http://www.inputmag.com",
         "hosts": "Input",
         "image": "cover--972528859.jpg"
@@ -433,6 +493,7 @@
     {
         "title": "TOMorrow - der Business & Style Podcast",
         "feed": "https://tomorrow.podigee.io/feed/aac",
+        "description": "TOMorrow ist das Instagram der Podcasts. Hier kommen die Stars und Love-Brands zusammen, die wir liken und die uns inspirieren.\n\nWillkommen in der Welt des Luxury Lifestyles.\n\nAls GQ-Chefredakteur und Gastgeber der legendären GQ Men Of The Year Awards hat Tom Junkersdorf die spannendsten Persönlichkeiten unserer Zeit kennengelernt. In TOMorrow spricht er mit den Stars, CEOs, Designern und Disruptor der berühmtesten Luxusmarken der Welt über ihr außergewöhnliches Leben. Wie sich ihr Business verändert, was Style heute ausmacht und darüber, was Luxus wirklich bedeutet.\n\nExklusive Einblicke und Interviews über die wichtigsten Trends aus Fashion, Watches, Automotive, Movie, Musik, Sport und Style –  ab jetzt jede Woche montags neu in TOMorrow.\n",
         "website": "https://tomorrow.podigee.io/",
         "hosts": "Tom Junkersdorf",
         "image": "cover--1736755912.jpg"
@@ -440,6 +501,7 @@
     {
         "title": "Under the Radar",
         "feed": "https://www.relay.fm/radar/feed",
+        "description": "From development and design to marketing and support, Under the Radar is all about independent app development. It's never longer than 30 minutes.  Hosted by Marco Arment and David Smith.\n",
         "website": "https://www.relay.fm/radar",
         "hosts": "Relay FM",
         "image": "cover-1796181775.jpg"
@@ -447,6 +509,7 @@
     {
         "title": "Upgrade",
         "feed": "https://www.relay.fm/upgrade/feed",
+        "description": "Upgrade looks at how technology shapes our lives, from the devices in our hands and pockets to the streaming services that keep us entertained. Hosted by Myke Hurley and Jason Snell.\n",
         "website": "https://www.relay.fm/upgrade",
         "hosts": "Relay FM",
         "image": "cover-1433481724.jpg"
@@ -454,6 +517,7 @@
     {
         "title": "User Defenders – UX Design & Personal Growth",
         "feed": "https://userdefenders.libsyn.com/rss",
+        "description": "Being a great UX designer begins and ends with being a great human.\n\nEver since I can remember, I’ve been fascinated by superheroes. Early on, it was their amazing superpowers that drew me in. As I grew older, it was the realization of a very tangible connection between us and them.\n\nSuperheroes typically possess a strong moral code, including a willingness to risk one’s own safety in the service of good without expectation of reward. Even though they still fall and fail often, they always get back up, learn, and continue to make things better.\n\nSound a little like UX?\n\nI also discovered this little-known, world-changing link between UX Design and personal growth after beginning my own personal growth journey in 2015 (just before starting this podcast & community) that quite literally changed my life.\n\nThe reality is, we cannot pour an empty cup into another. There’s a reason why on every flight we’re told to put our oxygen mask on first…we can’t help others unless we first help ourselves. We can’t lead others where we are not.\n\nWhat the world needs now is not just love, but especially more empathy. We live in some of the most divided times in human history. It’s true empathy isn’t everything, but please don’t design or ship a product or experience meant for other human beings without it!\n\nThis UX podcast will help you become the best, most powerful UX designer (and human) you can be.\n\nAs you listen to the most inspiring and influential UX superheroes in the world tell impactful stories, reveal their design superpowers/kryptonite and offer game-changing advice–you’ll be moved and inspired to unleash your growth mindset, grow in your empathy for others, all while being enlightened, informed and even entertained as you learn about the most important issues facing our UX community today.\n\nYes, you’ll discover how-to’s, but much more importantly you’ll discover why-to’s\n\nEvery episode is sure to inspire and equip you on how to better fight for your users and business, and dare I say change the world (even if only for one human at a time) in a much deeper and more tangible way than you ever thought possible.\n",
         "website": "https://userdefenders.com/",
         "hosts": "Jason Ogle",
         "image": "cover-1815355830.jpg"
@@ -461,6 +525,7 @@
     {
         "title": "Waveform: The MKBHD Podcast",
         "feed": "http://feeds.feedburner.com/WaveformWithMkbhd",
+        "description": "A tech podcast for the gadget lovers and tech heads among us from the mind of Marques Brownlee, better known as MKBHD. MKBHD has made a name for himself on YouTube reviewing everything from the newest smartphones to cameras to electric cars. Pulling from over 10 years of experience covering the tech industry, MKBHD and co-host Andrew Manganelli will keep you informed and entertained as they take a deep dive into the latest and greatest in tech and what deserves your hard earned cash.  New episodes every other week. Link to ad survey: https://bit.ly/2EcYbu4.\nFor advertising opportunities please reach out to PodcastPartnerships@studio71us.com\n",
         "website": "https://www.studio71.com/us/podcasts/",
         "hosts": "Studio71",
         "image": "cover-1562093234.jpg"
@@ -468,6 +533,7 @@
     {
         "title": "Working Draft",
         "feed": "https://workingdraft.de/?feed=podcast",
+        "description": "Der wöchentliche News-Podcast für Webdesigner und -entwickler.\nSupported uns bei Patreon: https://patreon.com/workingdraft\n",
         "website": "https://workingdraft.de",
         "hosts": "Vanessa Böhner, Peter Kröner, Hans Christian Reinl, Rodney Rehm, Stefan Baumgartner, Kahlil Lechelt und Christian Schaefer",
         "image": "cover--1021636686.jpg"
@@ -475,6 +541,7 @@
     {
         "title": "WTF1 Podcast",
         "feed": "https://audioboom.com/channels/4949565.rss",
+        "description": "The WTF1 Podcast covers all the latest F1 news, races, incidents and controversy. Who was at fault for the crash? Who needs to step up their game before they get the sack? What can be guaranteed… there will be arguments and there will be memes. What more could you possibly ask for?\n",
         "website": "https://audioboom.com/channels/4949565",
         "hosts": "WTF1 Podcast",
         "image": "cover--322322676.jpg"
