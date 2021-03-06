@@ -6,14 +6,22 @@ import Podcast from '@/components/Podcast';
 import Search from '@/components/Search';
 import TextBlock from '@/components/TextBlock';
 import { queryContent } from '@/lib/content';
-import { getPodcastData } from '@/lib/podcasts';
+import { getPodcasts } from '@/lib/podcasts';
 import { markdownToHTML } from '@/lib/text';
 
 export default function Podcasts(props) {
     const [searchValue, setSearchValue] = useState('');
-    const filteredPodcast = props.podcasts.filter((podcast) =>
-        podcast.title.toLowerCase().includes(searchValue.toLowerCase())
-    );
+
+    const filteredPodcast = props.podcasts.filter((podcast) => {
+        return (
+            podcast.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+            podcast.hosts.toLowerCase().includes(searchValue.toLowerCase()) ||
+            podcast.description
+                .toLowerCase()
+                .includes(searchValue.toLowerCase())
+        );
+    });
+
     return (
         <Layout
             preview={props.preview}
@@ -81,7 +89,7 @@ export async function getStaticProps({ preview = false }) {
 
     const page = response.data.page.items[0];
     const podcastsText = response.data.podcastsSnippet.items[0].content;
-    const podcasts = getPodcastData();
+    const podcasts = getPodcasts();
     const contactText = response.data.contactSnippet.items[0].content;
 
     return {
