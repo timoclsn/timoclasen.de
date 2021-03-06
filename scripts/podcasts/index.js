@@ -2,6 +2,7 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 const parser = require('fast-xml-parser');
 const sharp = require('sharp');
+var he = require('he');
 
 const coversDir = './public/podcasts';
 
@@ -44,11 +45,11 @@ fs.mkdirSync(coversDir);
                         true
                     ).rss.channel;
 
-                    podcastObj.title = podcastJSObj.title;
+                    podcastObj.title = he.decode(podcastJSObj.title);
                     podcastObj.feed = podcast.xmlUrl;
                     // podcastObj.description = podcastJSObj.description;
                     podcastObj.website = podcastJSObj.link;
-                    podcastObj.hosts = podcastJSObj['itunes:author'];
+                    podcastObj.hosts = he.decode(podcastJSObj['itunes:author']);
                     // podcastObj.category =
                     //     podcastJSObj['media:category'] ||
                     //     podcastJSObj['itunes:category'];
