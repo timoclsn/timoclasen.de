@@ -48,8 +48,8 @@ export default function Podcasts(props) {
                     ))}
                 </ul>
                 {!filteredPodcast.length && (
-                    <p className="max-w-prose mx-auto">
-                        Keine Podcast gefunden…
+                    <p className="mx-auto max-w-prose">
+                        Keinen Podcast gefunden…
                     </p>
                 )}
             </div>
