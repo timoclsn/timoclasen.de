@@ -22,7 +22,7 @@ export default function Podcasts(props) {
             previewImage={props.previewImage}
             slug={props.slug}>
             <TextBlock text={props.podcastsText} />
-            <ul className={'space-y-10'}>
+            <ul className={'space-y-16'}>
                 <Search
                     placeholder="Podcasts durchsuchen"
                     handleChange={(e) => setSearchValue(e.target.value)}
@@ -34,6 +34,7 @@ export default function Podcasts(props) {
                             image={podcast.image}
                             link={podcast.website}
                             hosts={podcast.hosts}
+                            description={podcast.description}
                         />
                     </li>
                 ))}
