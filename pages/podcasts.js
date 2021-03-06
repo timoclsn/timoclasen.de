@@ -22,23 +22,30 @@ export default function Podcasts(props) {
             previewImage={props.previewImage}
             slug={props.slug}>
             <TextBlock text={props.podcastsText} />
-            <ul className={'space-y-16'}>
+            <div>
                 <Search
                     placeholder="Podcasts durchsuchen"
                     handleChange={(e) => setSearchValue(e.target.value)}
                 />
-                {filteredPodcast.map((podcast) => (
-                    <li key={podcast.title}>
-                        <Podcast
-                            title={podcast.title}
-                            image={podcast.image}
-                            link={podcast.website}
-                            hosts={podcast.hosts}
-                            description={podcast.description}
-                        />
-                    </li>
-                ))}
-            </ul>
+                <ul className={'space-y-20'}>
+                    {filteredPodcast.map((podcast) => (
+                        <li key={podcast.title}>
+                            <Podcast
+                                title={podcast.title}
+                                image={podcast.image}
+                                link={podcast.website}
+                                hosts={podcast.hosts}
+                                description={podcast.description}
+                            />
+                        </li>
+                    ))}
+                </ul>
+                {!filteredPodcast.length && (
+                    <p className="max-w-prose mx-auto">
+                        Keine Podcast gefunden…
+                    </p>
+                )}
+            </div>
             <ContactWidget text={props.contact} />
         </Layout>
     );
