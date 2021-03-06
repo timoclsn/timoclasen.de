@@ -219,18 +219,7 @@
         "title": "Information Lovers Podcast",
         "feed": "https://feeds.simplecast.com/YMT15IpV",
         "description": "Im Information Lovers Podcast teile ich mit allen wissenshungrigen Zuhörern meine Gedanken, Erfahrungen und spannende Gespräche rund um UX Design & Strategie, digitale Produkte, Leadership und vieles mehr. Bist auch du ein Information Lover? Dann sei dabei und lass uns jede Woche gemeinsam lernen!\n",
-        "website": [
-            {
-                "href": "https://pubsubhubbub.appspot.com/",
-                "rel": "hub",
-                "xmlns": "http://www.w3.org/2005/Atom"
-            },
-            {
-                "#text": "https://informationlovers.com/podcast",
-                "href": "https://informationlovers.com/podcast",
-                "rel": "self"
-            }
-        ],
+        "website": "https://informationlovers.com/podcast",
         "hosts": "Katharina Clasen",
         "image": "cover-1359893163.jpg"
     },
