@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import ContactWidget from '@/components/ContactWidget';
 import Layout from '@/components/Layout';
 import Podcast from '@/components/Podcast';
+import Recommendations from '@/components/Recommendations';
 import Search from '@/components/Search';
 import TextBlock from '@/components/TextBlock';
 import { queryContent } from '@/lib/content';
@@ -53,7 +53,7 @@ export default function Podcasts(props) {
                     </p>
                 )}
             </div>
-            <ContactWidget text={props.contact} />
+            <Recommendations />
         </Layout>
     );
 }
@@ -77,11 +77,6 @@ export async function getStaticProps({ preview = false }) {
                     content
                 }
             }
-            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
-                items {
-                    content
-                }
-            }
         }`,
         preview
     );
@@ -89,7 +84,6 @@ export async function getStaticProps({ preview = false }) {
     const page = response.data.page.items[0];
     const podcastsText = response.data.podcastsSnippet.items[0].content;
     const podcasts = getPodcasts();
-    const contactText = response.data.contactSnippet.items[0].content;
 
     return {
         props: {
@@ -99,8 +93,7 @@ export async function getStaticProps({ preview = false }) {
             previewImage: page.previewImage,
             slug: page.slug,
             podcasts,
-            podcastsText: await markdownToHTML(podcastsText),
-            contact: await markdownToHTML(contactText)
+            podcastsText: await markdownToHTML(podcastsText)
         }
     };
 }

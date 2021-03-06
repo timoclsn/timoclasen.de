@@ -105,7 +105,8 @@ module.exports = {
     },
     variants: {
         extend: {
-            typography: ['dark']
+            typography: ['dark'],
+            opacity: ['disabled']
         }
     },
     plugins: [
