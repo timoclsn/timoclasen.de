@@ -48,7 +48,7 @@ export default function Recommendations() {
         'w-full p-4 bg-light text-sm dark:bg-dark rounded-xl placeholder-dark dark:placeholder-light placeholder-opacity-60 dark:placeholder-opacity-60 focus:outline-none focus:ring-2 focus:ring-highlight dark:focus:ring-highlight-dark';
 
     return (
-        <div className="bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-3xl px-6 py-12 xl:px-12 xl:py-20">
+        <div className="px-6 py-12 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-3xl xl:px-12 xl:py-20">
             <h2 className={'font-bold text-xl md:text-2xl lg:text-3xl mb-4'}>
                 Empfehlungen
             </h2>
@@ -98,7 +98,7 @@ export default function Recommendations() {
                     <button
                         type="submit"
                         disabled={serverState.submitting || !message}
-                        className="flex justify-center items-center space-x-2 bg-highlight dark:bg-highlight-dark text-light dark:text-light hover:bg-opacity-90 dark:hover:bg-opacity-90 py-3 px-8 rounded-full font-bold disabled:opacity-50 dark:disabled:opacity-50"
+                        className="flex items-center justify-center px-8 py-3 space-x-2 font-bold rounded-full bg-highlight dark:bg-highlight-dark text-light dark:text-light hover:bg-opacity-90 dark:hover:bg-opacity-90 disabled:opacity-50 dark:disabled:opacity-50"
                         aria-label="Empfehlung senden">
                         {serverState.submitting ? (
                             <Loader size={20} className="animate-spin" />
