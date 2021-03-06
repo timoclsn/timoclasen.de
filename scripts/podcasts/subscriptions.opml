@@ -45,7 +45,7 @@
     <outline xmlUrl="https://feeds.transistor.fm/rework" text="Rework" title="Rework" type="rss" version="RSS"/>
     <outline xmlUrl="https://digitalevorreiter.podigee.io/feed/mp3" text="Digitale Vorreiter - Vodafone Business Cases" title="Digitale Vorreiter - Vodafone Business Cases" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.theincomparable.com/theincomparable" text="The Incomparable" title="The Incomparable" type="rss" version="RSS"/>
-    <outline xmlUrl="https://feeds.megaphone.fm/cautionarytales" text="Cautionary Tales" title="Cautionary Tales" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.megaphone.fm/cautionarytales" text="Cautionary Tales with Tim Harford" title="Cautionary Tales with Tim Harford" type="rss" version="RSS"/>
     <outline xmlUrl="https://layout.fm/rss" text="Layout" title="Layout" type="rss" version="RSS"/>
     <outline xmlUrl="https://newwork.podigee.io/feed/mp3" text="On the Way to New Work - Der Podcast &#xFC;ber neue Arbeit" title="On the Way to New Work - Der Podcast &#xFC;ber neue Arbeit" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.npr.org/510289/podcast.xml" text="Planet Money" title="Planet Money" type="rss" version="RSS"/>
@@ -71,5 +71,7 @@
     <outline xmlUrl="https://rss.art19.com/techmeme-ridehome" text="Techmeme Ride Home" title="Techmeme Ride Home" type="rss" version="RSS"/>
     <outline xmlUrl="https://anchor.fm/s/149e69d4/podcast/rss" text="Inside Shopify UX" title="Inside Shopify UX" type="rss" version="RSS"/>
     <outline xmlUrl="https://modernweb.podbean.com/feed.xml" text="Modern Web" title="Modern Web" type="rss" version="RSS"/>
+    <outline xmlUrl="https://awfnr.podigee.io/feed/mp3" text="Alle Wege f&#xFC;hren nach Ruhm - AWFNR" title="Alle Wege f&#xFC;hren nach Ruhm - AWFNR" type="rss" version="RSS"/>
+    <outline xmlUrl="https://baywatch-berlin.podigee.io/feed/mp3" text="Baywatch Berlin" title="Baywatch Berlin" type="rss" version="RSS"/>
   </body>
 </opml>

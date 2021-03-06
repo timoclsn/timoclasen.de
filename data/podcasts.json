@@ -16,6 +16,14 @@
         "image": "cover--435634368.jpg"
     },
     {
+        "title": "Alle Wege führen nach Ruhm - AWFNR",
+        "feed": "https://awfnr.podigee.io/feed/mp3",
+        "description": "Der Karrierepodcast für Berufsjugendliche\n",
+        "website": "https://awfnr.podigee.io/",
+        "hosts": "Joko Winterscheidt und Paul Ripke",
+        "image": "cover--1543448174.jpg"
+    },
+    {
         "title": "AppStories",
         "feed": "https://appstories.net/episodes/feed/",
         "description": "AppStories is a weekly exploration of the world of apps by MacStories' Federico Viticci and John Voorhees. Each week, they discuss the best new apps, the impact of apps on our culture, and cover the stories behind popular apps. Hosted by Federico Viticci and John Voorhees.\n",
@@ -30,6 +38,14 @@
         "website": "https://www.relay.fm/automators",
         "hosts": "Relay FM",
         "image": "cover--1957296097.jpg"
+    },
+    {
+        "title": "Baywatch Berlin",
+        "feed": "https://baywatch-berlin.podigee.io/feed/mp3",
+        "description": "Das Beautiful Mind Klaas Heufer-Umlauf probiert in diesem Podcast nach über 10 Jahren weltfremden Jet Set Spaß Kontakt zur echten Welt aufzunehmen.\nWie einst in der Weihnachtsgeschichte wird er dabei von seinen Freunden Thomas Schmitt und Jakob Lundt an die Hand genommen und langsam wieder mit den Themen des wahren Lebens in Kontakt gebracht. Tauchen Sie ein und seien Sie die Kugel im Flipperautomaten „Baywatch Berlin“!\n",
+        "website": "https://baywatch-berlin.podigee.io/",
+        "hosts": "Klaas Heufer-Umlauf, Thomas Schmitt und Jakob Lundt",
+        "image": "cover--936846035.jpg"
     },
     {
         "title": "Bits und so",
