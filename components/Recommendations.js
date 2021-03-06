@@ -98,7 +98,7 @@ export default function Recommendations() {
                     <button
                         type="submit"
                         disabled={serverState.submitting || !message}
-                        className="flex items-center justify-center px-8 py-3 space-x-2 font-bold rounded-full bg-highlight dark:bg-highlight-dark text-light dark:text-light hover:bg-opacity-90 dark:hover:bg-opacity-90 disabled:opacity-50 dark:disabled:opacity-50"
+                        className="flex items-center justify-center w-full px-8 py-3 space-x-2 font-bold rounded-full sm:w-auto bg-highlight dark:bg-highlight-dark text-light dark:text-light hover:bg-opacity-90 dark:hover:bg-opacity-90 disabled:opacity-50 dark:disabled:opacity-50"
                         aria-label="Empfehlung senden">
                         {serverState.submitting ? (
                             <Loader size={20} className="animate-spin" />
