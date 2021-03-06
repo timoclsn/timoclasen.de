@@ -13,12 +13,11 @@ export default function Podcasts(props) {
     const [searchValue, setSearchValue] = useState('');
 
     const filteredPodcast = props.podcasts.filter((podcast) => {
+        const search = searchValue.toLowerCase();
         return (
-            podcast.title.toLowerCase().includes(searchValue.toLowerCase()) ||
-            podcast.hosts.toLowerCase().includes(searchValue.toLowerCase()) ||
-            podcast.description
-                .toLowerCase()
-                .includes(searchValue.toLowerCase())
+            podcast.title.toLowerCase().includes(search) ||
+            podcast.hosts.toLowerCase().includes(search) ||
+            podcast.description.toLowerCase().includes(search)
         );
     });
 
