@@ -79,8 +79,8 @@ export default function Recommendations() {
                         name="url"
                         type="url"
                         className={inputStyles}
-                        placeholder="Podcast Website (Optional)"
-                        aria-label="Podcast Website (Optional)"
+                        placeholder="Podcast Website (optional)"
+                        aria-label="Podcast Website (optional)"
                     />
                 </label>
                 <div className="flex space-x-4 sm:space-x-8">
@@ -91,8 +91,8 @@ export default function Recommendations() {
                             name="name"
                             type="text"
                             className={inputStyles}
-                            placeholder="Dein Name (Optional)"
-                            aria-label="Dein Name (Optional)"
+                            placeholder="Dein Name (optional)"
+                            aria-label="Dein Name (optional)"
                         />
                     </label>
                     <label className="w-full">
@@ -102,8 +102,8 @@ export default function Recommendations() {
                             name="email"
                             type="email"
                             className={inputStyles}
-                            placeholder="Deine E-Mail (Optional)"
-                            aria-label="Deine E-Mail (Optional)"
+                            placeholder="Deine E-Mail (optional)"
+                            aria-label="Deine E-Mail (optional)"
                         />
                     </label>
                 </div>
