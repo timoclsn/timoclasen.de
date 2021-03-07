@@ -45,7 +45,7 @@ export default function Recommendations() {
     }
 
     const inputStyles =
-        'w-full p-4 bg-light text-sm dark:bg-dark rounded-xl placeholder-dark dark:placeholder-light placeholder-opacity-60 dark:placeholder-opacity-60 focus:outline-none focus:ring-2 focus:ring-highlight dark:focus:ring-highlight-dark';
+        'w-full p-4 bg-light text-base dark:bg-dark rounded-xl placeholder-dark dark:placeholder-light placeholder-opacity-60 dark:placeholder-opacity-60 focus:outline-none focus:ring-2 focus:ring-highlight dark:focus:ring-highlight-dark';
 
     return (
         <div className="px-6 py-12 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-3xl xl:px-12 xl:py-20">
