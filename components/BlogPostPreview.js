@@ -16,11 +16,8 @@ export default function BlogPostPreview({
     }
 
     return (
-        <article className={'max-w-prose mx-auto'}>
-            <div
-                className={
-                    'flex space-x-6 mb-1 sm:mb-2 text-xs sm:text-sm uppercase text-highlight dark:text-highlight-dark'
-                }>
+        <article className="mx-auto max-w-prose">
+            <div className="flex mb-1 space-x-6 text-xs uppercase sm:mb-2 sm:text-sm text-highlight dark:text-highlight-dark">
                 <BlogPostLabel Icon={Calendar} text={date} />
 
                 <BlogPostLabel Icon={Clock} text={`${readingTime} min`} />
@@ -32,18 +29,12 @@ export default function BlogPostPreview({
 
             <Link href={`/blog/${slug}`}>
                 <a data-cy="blogpost-link">
-                    <h2
-                        className={
-                            'text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold hover:text-highlight dark:hover:text-highlight-dark mb-2 md:mb-4'
-                        }>
+                    <h2 className="mb-2 text-2xl font-bold sm:text-3xl md:text-4xl lg:text-5xl hover:text-highlight dark:hover:text-highlight-dark md:mb-4">
                         {title}
                     </h2>
                 </a>
             </Link>
-            <p
-                className={
-                    'text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl opacity-60'
-                }>
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl opacity-60">
                 {subtitle}
             </p>
         </article>

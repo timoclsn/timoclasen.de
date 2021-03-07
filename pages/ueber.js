@@ -14,10 +14,7 @@ export default function About(props) {
             description={props.description}
             previewImage={props.previewImage}
             slug={props.slug}>
-            <div
-                className={
-                    'relative overflow-hidden pb-1/2 bg-highlight dark:bg-highlight-dark rounded-3xl'
-                }>
+            <div className="relative overflow-hidden pb-1/2 bg-highlight dark:bg-highlight-dark rounded-3xl">
                 <Image
                     src={props.image.url}
                     layout={'fill'}
@@ -27,7 +24,7 @@ export default function About(props) {
                     quality={60}
                     priority
                     alt={props.image.description}
-                    className={'rounded-3xl'}
+                    className="rounded-3xl"
                 />
             </div>
             <TextBlock text={props.about} />

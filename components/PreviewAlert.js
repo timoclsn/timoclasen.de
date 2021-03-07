@@ -5,17 +5,13 @@ import CenteredColumn from '@/components/CenteredColumn';
 
 export default function PreviewAlert() {
     return (
-        <div
-            className={'w-full bg-highlight dark:bg-highlight-dark text-light'}>
+        <div className="w-full bg-highlight dark:bg-highlight-dark text-light">
             <CenteredColumn>
-                <div className={'py-4 flex items-center justify-between'}>
-                    <p
-                        className={
-                            'font-bold text-xl md:text-3xl uppercase text-center'
-                        }>
+                <div className="flex items-center justify-between py-4">
+                    <p className="text-xl font-bold text-center uppercase md:text-3xl">
                         Vorschau
                     </p>
-                    <div className={'min-w-1/5'}>
+                    <div className="min-w-1/5">
                         <Button
                             Icon={XCircle}
                             text="Schließen"

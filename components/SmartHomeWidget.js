@@ -19,7 +19,7 @@ export default function SmartHomeWidget({ text, footnote }) {
     const errorMessage = 'Nicht erreichbar…';
 
     const firstWidget = (
-        <div className={'space-y-6 sm:space-y-8'}>
+        <div className="space-y-6 sm:space-y-8">
             <SmartHomeElement
                 Icon={Thermometer}
                 title="Raumtemperatur"
@@ -38,7 +38,7 @@ export default function SmartHomeWidget({ text, footnote }) {
         </div>
     );
     const secondWidget = (
-        <div className={'space-y-6 sm:space-y-8 -mt-6 sm:mt-0'}>
+        <div className="-mt-6 space-y-6 sm:space-y-8 sm:mt-0">
             <SmartHomeElement
                 Icon={data?.lights === 'An' ? ToggleRight : ToggleLeft}
                 title="Lichter"
@@ -65,11 +65,11 @@ export default function SmartHomeWidget({ text, footnote }) {
 
     return (
         <section id="smarthome">
-            <h2 className={'font-bold text-xl md:text-2xl lg:text-3xl mb-2'}>
+            <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">
                 Smart Home
             </h2>
             <div
-                className={'mb-8'}
+                className="mb-8"
                 dangerouslySetInnerHTML={{ __html: text }}></div>
             <WidgetLayout
                 FirstWidget={firstWidget}
@@ -78,7 +78,7 @@ export default function SmartHomeWidget({ text, footnote }) {
                 transparent
             />
             <div
-                className={'text-sm mt-8 opacity-60'}
+                className="mt-8 text-sm opacity-60"
                 dangerouslySetInnerHTML={{ __html: footnote }}></div>
         </section>
     );

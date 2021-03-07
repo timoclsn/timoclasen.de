@@ -7,7 +7,7 @@ export default function Button({ Icon, text, href, secondary }) {
                     : 'border-dark dark:border-light hover:bg-dark dark:hover:bg-light hover:bg-opacity-10 dark:hover:bg-opacity-10 border-2'
             } block w-full p-3  rounded-full cursor-pointer font-bold`}
             href={href}>
-            <div className={'flex justify-center items-center space-x-2'}>
+            <div className="flex items-center justify-center space-x-2">
                 <Icon size={20} />
                 <div>{text}</div>
             </div>

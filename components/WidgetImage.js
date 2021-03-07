@@ -9,8 +9,8 @@ export default function WidgetImage({
 }) {
     if (!url) {
         return (
-            <div className={'flex overflow-hidden h-96 sm:h-full rounded-3xl'}>
-                <div className={'flex-1 leading-none'}>
+            <div className="flex overflow-hidden h-96 sm:h-full rounded-3xl">
+                <div className="flex-1 leading-none">
                     <Skeleton width="100%" height="100%" />
                 </div>
             </div>
@@ -18,10 +18,7 @@ export default function WidgetImage({
     }
 
     return (
-        <div
-            className={
-                'relative overflow-hidden pb-full sm:pb-0 sm:h-full rounded-3xl'
-            }>
+        <div className="relative overflow-hidden pb-full sm:pb-0 sm:h-full rounded-3xl">
             <Image
                 src={url}
                 layout={'fill'}

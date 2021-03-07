@@ -1,9 +1,6 @@
 export default function TextContainer({ children }) {
     return (
-        <section
-            className={
-                'prose dark:prose-dark prose lg:prose-lg xl:prose-xl mx-auto'
-            }>
+        <section className="mx-auto prose dark:prose-dark lg:prose-lg xl:prose-xl">
             {children}
         </section>
     );

@@ -62,7 +62,7 @@ export default function BlogPost(props) {
                     description={props.blogPost.summary}
                     previewImage={props.blogPost.previewImage}
                 />
-                <article className={'space-y-8 md:space-y-16'}>
+                <article className="space-y-8 md:space-y-16">
                     <BlogPostHeader
                         title={props.blogPost.title}
                         subtitle={props.blogPost.subtitle}

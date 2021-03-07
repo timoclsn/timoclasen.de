@@ -40,10 +40,7 @@ export default function Layout({
             />
             <Favicons />
             {preview && <PreviewAlert />}
-            <div
-                className={
-                    'min-h-screen flex flex-col text-base lg:text-lg xl:text-xl antialiased'
-                }>
+            <div className="flex flex-col min-h-screen text-base antialiased lg:text-lg xl:text-xl">
                 <Navigation name={name} />
                 <main id="skip">
                     <CenteredColumn>{children}</CenteredColumn>

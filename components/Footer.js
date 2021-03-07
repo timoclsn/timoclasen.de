@@ -5,13 +5,10 @@ import NavigationLink from '@/components/NavigationLink';
 
 export default function Footer() {
     return (
-        <footer className={'mt-auto'} data-cy="footer">
+        <footer className="mt-auto" data-cy="footer">
             <CenteredColumn>
-                <ul
-                    className={
-                        'flex flex-col space-y-6 sm:space-y-0 text-center sm:text-left sm:flex-row mt-12 md:mt-16 xl:mt-24 mb-12'
-                    }>
-                    <li className={'mr-0 sm:mr-8'}>
+                <ul className="flex flex-col mt-12 mb-12 space-y-6 text-center sm:space-y-0 sm:text-left sm:flex-row md:mt-16 xl:mt-24">
+                    <li className="mr-0 sm:mr-8">
                         <NavigationLink
                             href="https://twitter.com/timoclsn"
                             target="_blank"
@@ -19,7 +16,7 @@ export default function Footer() {
                             Twitter
                         </NavigationLink>
                     </li>
-                    <li className={'mr-0 sm:mr-8'}>
+                    <li className="mr-0 sm:mr-8">
                         <NavigationLink
                             href="https://www.linkedin.com/in/timoclsn"
                             target="_blank"
@@ -27,7 +24,7 @@ export default function Footer() {
                             LinkedIn
                         </NavigationLink>
                     </li>
-                    <li className={'mr-0 sm:mr-8'}>
+                    <li className="mr-0 sm:mr-8">
                         <NavigationLink
                             href="https://github.com/timoclsn"
                             target="_blank"
@@ -35,7 +32,7 @@ export default function Footer() {
                             Github
                         </NavigationLink>
                     </li>
-                    <li className={'mr-0 sm:mr-8'}>
+                    <li className="mr-0 sm:mr-8">
                         <NavigationLink
                             href="https://www.strava.com/athletes/timoclsn"
                             target="_blank"
@@ -43,10 +40,10 @@ export default function Footer() {
                             Strava
                         </NavigationLink>
                     </li>
-                    <li className={'mr-0 sm:mr-8'}>
+                    <li className="mr-0 sm:mr-8">
                         <NavigationLink href="/rss.xml">RSS</NavigationLink>
                     </li>
-                    <li className={'ml-0 sm:ml-auto'}>
+                    <li className="ml-0 sm:ml-auto">
                         <Link href="/impressum" passHref>
                             <NavigationLink>
                                 Impressum & Datenschutz

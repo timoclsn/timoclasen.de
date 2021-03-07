@@ -34,7 +34,7 @@ export default function Podcasts(props) {
                     placeholder="Podcasts durchsuchen"
                     handleChange={(e) => setSearchValue(e.target.value)}
                 />
-                <ul className={'space-y-20'}>
+                <ul className="space-y-20">
                     {filteredPodcast.map((podcast) => (
                         <li key={podcast.title}>
                             <Podcast

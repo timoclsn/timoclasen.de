@@ -18,9 +18,7 @@ export default function SwitchMode() {
         <button
             aria-label="Farbschema wechseln"
             type="button"
-            className={
-                'flex items-center justify-center text-highlight dark:text-highlight-dark bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-xl h-8 w-8 focus:outline-none'
-            }
+            className="flex items-center justify-center w-8 h-8 text-highlight dark:text-highlight-dark bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-xl focus:outline-none"
             onClick={handleThemeChange}
             title={`Farbschema zu ${darkMode ? 'hell' : 'dunkel'} welchseln`}>
             {mounted && (darkMode ? <Sun size={16} /> : <Moon size={16} />)}

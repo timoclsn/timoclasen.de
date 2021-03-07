@@ -49,7 +49,7 @@ export default function Recommendations() {
 
     return (
         <div className="px-6 py-12 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-3xl xl:px-12 xl:py-20">
-            <h2 className={'font-bold text-xl md:text-2xl lg:text-3xl mb-4'}>
+            <h2 className="mb-4 text-xl font-bold md:text-2xl lg:text-3xl">
                 Empfehlung
             </h2>
             <p className="mb-8">

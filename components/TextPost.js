@@ -17,10 +17,7 @@ const renderers = {
         if (node.children[0].type === 'image') {
             const image = node.children[0];
             return (
-                <div
-                    className={
-                        'relative overflow-hidden pb-2/3 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-md'
-                    }>
+                <div className="relative overflow-hidden rounded-md pb-2/3 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10">
                     <Image
                         src={`https:${image.url}`}
                         layout="fill"
