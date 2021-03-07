@@ -105,8 +105,12 @@ module.exports = {
     },
     variants: {
         extend: {
-            typography: ['dark']
+            typography: ['dark'],
+            opacity: ['disabled']
         }
     },
-    plugins: [require('@tailwindcss/typography')]
+    plugins: [
+        require('@tailwindcss/typography'),
+        require('@tailwindcss/line-clamp')
+    ]
 };
