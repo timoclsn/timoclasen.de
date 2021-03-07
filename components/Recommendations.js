@@ -45,16 +45,17 @@ export default function Recommendations() {
     }
 
     const inputStyles =
-        'w-full p-4 bg-light text-base dark:bg-dark rounded-xl placeholder-dark dark:placeholder-light placeholder-opacity-60 dark:placeholder-opacity-60 focus:outline-none focus:ring-2 focus:ring-highlight dark:focus:ring-highlight-dark';
+        'w-full p-4 bg-light block text-base dark:bg-dark rounded-xl placeholder-dark dark:placeholder-light placeholder-opacity-60 dark:placeholder-opacity-60 focus:outline-none focus:ring-2 focus:ring-highlight dark:focus:ring-highlight-dark';
 
     return (
         <div className="px-6 py-12 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-3xl xl:px-12 xl:py-20">
             <h2 className={'font-bold text-xl md:text-2xl lg:text-3xl mb-4'}>
-                Empfehlungen
+                Empfehlung
             </h2>
             <p className="mb-8">
-                Du kennst einen Podcast, der auf meiner Liste fehlt und ich
-                unbedingt mal reinhören muss? Schick mir gerne eine Empfehlung.
+                Du kennst einen Podcast, der auf meiner Liste fehlt und in den
+                ich unbedingt mal reinhören muss? Schick mir gerne deine
+                Empfehlung!
             </p>
             <form
                 className="flex flex-col space-y-4 sm:space-y-8"
@@ -67,21 +68,22 @@ export default function Recommendations() {
                         id="message"
                         name="message"
                         className={inputStyles}
-                        placeholder="Welchen Podcast möchstest du empfehlen?"
-                        aria-label="Welchen Podcast möchstest du empfehlen?"></textarea>
+                        placeholder="Welchen Podcast (und warum) möchstest du empfehlen?"
+                        aria-label="Welchen Podcast (und warun) möchstest du empfehlen?"
+                        rows="4"></textarea>
+                </label>
+                <label className="w-full">
+                    <span className="sr-only">URL</span>
+                    <input
+                        id="url"
+                        name="url"
+                        type="url"
+                        className={inputStyles}
+                        placeholder="Podcast Website (Optional)"
+                        aria-label="Podcast Website (Optional)"
+                    />
                 </label>
                 <div className="flex space-x-4 sm:space-x-8">
-                    <label className="w-full">
-                        <span className="sr-only">URL</span>
-                        <input
-                            id="url"
-                            name="url"
-                            type="url"
-                            className={inputStyles}
-                            placeholder="Podcast URL (Optional)"
-                            aria-label="Podcast URL (Optional)"
-                        />
-                    </label>
                     <label className="w-full">
                         <span className="sr-only">Name</span>
                         <input
@@ -91,6 +93,17 @@ export default function Recommendations() {
                             className={inputStyles}
                             placeholder="Dein Name (Optional)"
                             aria-label="Dein Name (Optional)"
+                        />
+                    </label>
+                    <label className="w-full">
+                        <span className="sr-only">E-Mail</span>
+                        <input
+                            id="email"
+                            name="email"
+                            type="email"
+                            className={inputStyles}
+                            placeholder="Deine E-Mail (Optional)"
+                            aria-label="Deine E-Mail (Optional)"
                         />
                     </label>
                 </div>
@@ -113,7 +126,7 @@ export default function Recommendations() {
                         (serverState.error ? (
                             <p>{serverState.error}</p>
                         ) : (
-                            <p>Danke für die Empfehlung!</p>
+                            <p>Danke für die Empfehlung – ich höre mal rein!</p>
                         ))}
                 </div>
             </form>
