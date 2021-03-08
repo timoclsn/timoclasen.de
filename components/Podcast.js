@@ -1,7 +1,14 @@
 import Image from 'next/image';
-import { User } from 'react-feather';
+import { Star, User } from 'react-feather';
 
-export default function Podcast({ title, image, hosts, link, description }) {
+export default function Podcast({
+    title,
+    image,
+    hosts,
+    link,
+    description,
+    favorite
+}) {
     return (
         <div className="flex mx-auto space-x-4 max-w-prose">
             <Image
@@ -14,11 +21,12 @@ export default function Podcast({ title, image, hosts, link, description }) {
                 height={80}
             />
             <div className="flex-1 overflow-hidden">
-                <div className="flex items-center mb-1 space-x-2 text-xs uppercase sm:mb-2 text-highlight dark:text-highlight-dark">
-                    <User size={16} className="flex-none" />
-                    <p className="truncate" title={hosts}>
-                        {hosts}
-                    </p>
+                <div className="flex justify-between mb-1 space-x-2 text-xs uppercase truncate sm:mb-2 text-highlight dark:text-highlight-dark">
+                    <div className="flex items-center space-x-2 truncate">
+                        <User size={16} className="flex-none" />
+                        <p title={hosts}>{hosts}</p>
+                    </div>
+                    {favorite && <Star size={16} className="flex-none" />}
                 </div>
                 <a href={link} target="_blank" rel="noopener noreferrer">
                     <h2

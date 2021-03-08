@@ -43,6 +43,7 @@ export default function Podcasts(props) {
                                 link={podcast.website}
                                 hosts={podcast.hosts}
                                 description={podcast.description}
+                                favorite={podcast.favorite}
                             />
                         </li>
                     ))}
