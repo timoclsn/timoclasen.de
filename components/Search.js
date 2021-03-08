@@ -2,7 +2,7 @@ import { Search as SearchIcon } from 'react-feather';
 
 export default function Search({ placeholder, handleChange }) {
     return (
-        <div className="relative flex items-center mx-auto mb-10 max-w-prose">
+        <div className="relative flex items-center w-full">
             <input
                 aria-label={placeholder}
                 type="text"
