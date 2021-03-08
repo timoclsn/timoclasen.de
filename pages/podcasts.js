@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Star } from 'react-feather';
+import { Filter } from 'react-feather';
 
 import Layout from '@/components/Layout';
 import Podcast from '@/components/Podcast';
@@ -52,7 +52,7 @@ export default function Podcasts(props) {
                                 : 'text-highlight dark:text-highlight-dark'
                         }`}
                         onClick={handleClick}>
-                        <Star size={16} />
+                        <Filter size={16} />
                         <span>Favoriten</span>
                     </button>
                 </div>
