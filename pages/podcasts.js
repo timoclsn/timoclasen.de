@@ -40,20 +40,25 @@ export default function Podcasts(props) {
             slug={props.slug}>
             <TextBlock text={props.podcastsText} />
             <div>
-                <div className="flex mx-auto mb-10 space-x-4 max-w-prose">
+                <div className="mx-auto mb-6 max-w-prose">
                     <Search
                         placeholder="Podcasts durchsuchen"
                         handleChange={(e) => setSearchValue(e.target.value)}
                     />
+                </div>
+                <div className="flex mx-auto mb-16 space-x-4 max-w-prose">
+                    <div className="flex items-center justify-center space-x-2 text-base opacity-60">
+                        <Filter size={16} />
+                        <span>Filter:</span>
+                    </div>
                     <button
-                        className={`flex items-center justify-center px-4 rounded-xl focus:outline-none space-x-2 ${
+                        className={`flex items-center justify-center px-2 py-0.5 text-base rounded-lg focus:outline-none ring-2 ring-highlight dark:ring-highlight-darkt ${
                             filterFavorites
-                                ? 'bg-highlight dark:bg-highlight-dark'
+                                ? 'text-light bg-highlight dark:bg-highlight-dark'
                                 : 'text-highlight dark:text-highlight-dark'
                         }`}
                         onClick={handleClick}>
-                        <Filter size={16} />
-                        <span>Favoriten</span>
+                        <span>Meine Favoriten</span>
                     </button>
                 </div>
                 <ul className="space-y-20">

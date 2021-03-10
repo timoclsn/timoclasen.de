@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Star, User } from 'react-feather';
+import { Heart, User } from 'react-feather';
 
 export default function Podcast({
     title,
@@ -26,7 +26,7 @@ export default function Podcast({
                         <User size={16} className="flex-none" />
                         <p title={hosts}>{hosts}</p>
                     </div>
-                    {favorite && <Star size={16} className="flex-none" />}
+                    {favorite && <Heart size={16} className="flex-none" />}
                 </div>
                 <a href={link} target="_blank" rel="noopener noreferrer">
                     <h2
