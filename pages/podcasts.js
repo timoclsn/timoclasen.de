@@ -27,8 +27,8 @@ export default function Podcasts(props) {
             return filterFavorites ? podcast.favorite : true;
         });
 
-    function handleClick() {
-        setfilterFavorites(!filterFavorites);
+    function handleClick(e) {
+        setfilterFavorites(e.target.checked);
     }
 
     return (
@@ -51,15 +51,21 @@ export default function Podcasts(props) {
                         <Filter size={16} />
                         <span>Filter:</span>
                     </div>
-                    <button
-                        className={`flex items-center justify-center px-2 py-0.5 text-base rounded-lg focus:outline-none ring-2 ring-highlight dark:ring-highlight-darkt ${
+                    <label
+                        className={`flex items-center justify-center cursor-pointer select-none px-2 py-0.5 text-base rounded-lg focus:outline-none ring-2 ring-highlight dark:ring-highlight-darkt ${
                             filterFavorites
                                 ? 'text-light bg-highlight dark:bg-highlight-dark'
                                 : 'text-highlight dark:text-highlight-dark'
-                        }`}
-                        onClick={handleClick}>
-                        <span>Meine Favoriten</span>
-                    </button>
+                        }`}>
+                        <input
+                            className="hidden"
+                            type="checkbox"
+                            checked={filterFavorites}
+                            onChange={handleClick}
+                            name="Meine Favoriten"
+                        />
+                        Meine Favoriten
+                    </label>
                 </div>
                 <ul className="space-y-20">
                     {filteredPodcast.map((podcast) => (
