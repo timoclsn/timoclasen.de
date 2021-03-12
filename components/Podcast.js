@@ -3,10 +3,10 @@ import { Heart, User } from 'react-feather';
 
 export default function Podcast({
     title,
-    image,
-    hosts,
-    link,
     description,
+    hosts,
+    image,
+    link,
     favorite
 }) {
     return (
