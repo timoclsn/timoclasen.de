@@ -34,7 +34,7 @@ export default function PodcastsList({ podcasts }) {
 
             <div className="mx-auto mb-16 max-w-prose">
                 <PodcastFilter
-                    filter
+                    filter={filter}
                     handleChange={(e) =>
                         setFilter({ favorites: e.target.checked })
                     }
