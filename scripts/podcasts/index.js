@@ -8,7 +8,9 @@ const strip = require('remark-strip-html');
 
 const favs = [
     'Accidental Tech Podcast',
+    'Baywatch Berlin',
     'F1: Beyond The Grid',
+    'Full Stack Radio',
     'OMR Podcast',
     'The Vergecast'
 ];

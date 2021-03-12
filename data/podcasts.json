@@ -46,7 +46,7 @@
     },
     {
         "title": "Baywatch Berlin",
-        "favorite": false,
+        "favorite": true,
         "feed": "https://baywatch-berlin.podigee.io/feed/mp3",
         "description": "Das Beautiful Mind Klaas Heufer-Umlauf probiert in diesem Podcast nach über 10 Jahren weltfremden Jet Set Spaß Kontakt zur echten Welt aufzunehmen.\nWie einst in der Weihnachtsgeschichte wird er dabei von seinen Freunden Thomas Schmitt und Jakob Lundt an die Hand genommen und langsam wieder mit den Themen des wahren Lebens in Kontakt gebracht. Tauchen Sie ein und seien Sie die Kugel im Flipperautomaten „Baywatch Berlin“!\n",
         "website": "https://baywatch-berlin.podigee.io/",
@@ -217,7 +217,7 @@
     },
     {
         "title": "Full Stack Radio",
-        "favorite": false,
+        "favorite": true,
         "feed": "https://feeds.transistor.fm/full-stack-radio",
         "description": "A podcast for developers interested in building great software products. Every episode, Adam Wathan is joined by a guest to talk about everything from product design and user experience to unit testing and system administration.\n",
         "website": "http://fullstackradio.com",
