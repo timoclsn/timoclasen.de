@@ -2,10 +2,12 @@ import AboutWidget from '@/components/AboutWidget';
 import BlogWidget from '@/components/BlogWidget';
 import ContactWidget from '@/components/ContactWidget';
 import Layout from '@/components/Layout';
+import PodcastsWidget from '@/components/PodcastsWidget';
 import RunningWidget from '@/components/RunningWidget';
 import SmartHomeWidget from '@/components/SmartHomeWidget';
 import Teaser from '@/components/Teaser';
 import { queryContent } from '@/lib/content';
+import { getFavoritePodcasts } from '@/lib/podcasts';
 import { markdownToHTML, stripFirstLine, truncate } from '@/lib/text';
 
 export default function Home(props) {
@@ -30,6 +32,7 @@ export default function Home(props) {
                 footnote={props.smartHomeFootnote}
             />
             <RunningWidget />
+            <PodcastsWidget podcasts={props.favoritePodcasts} />
             <ContactWidget text={props.contact} />
         </Layout>
     );
@@ -97,6 +100,7 @@ export async function getStaticProps({ preview = false }) {
     const smartHomeFootnoteText =
         response.data.smartHomeFootnoteSnippet.items[0].content;
     const contactText = response.data.contactSnippet.items[0].content;
+    const favoritePodcasts = getFavoritePodcasts();
 
     let aboutTeaser = person.cvText;
     aboutTeaser = stripFirstLine(aboutTeaser);
@@ -115,6 +119,7 @@ export async function getStaticProps({ preview = false }) {
             blogPosts,
             smartHome: await markdownToHTML(smartHomeText),
             smartHomeFootnote: await markdownToHTML(smartHomeFootnoteText),
+            favoritePodcasts,
             contact: await markdownToHTML(contactText)
         }
     };

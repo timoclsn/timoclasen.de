@@ -6,6 +6,17 @@ var he = require('he');
 const remark = require('remark');
 const strip = require('remark-strip-html');
 
+const favs = [
+    'Accidental Tech Podcast',
+    'Design Details',
+    'Full Stack Radio',
+    'How to Save a Planet',
+    'OMR Podcast',
+    'The Smart Home Show',
+    'The Vergecast',
+    'This is Product Management'
+];
+
 const coversDir = './public/podcasts';
 
 if (fs.existsSync(coversDir)) {
@@ -48,6 +59,7 @@ fs.mkdirSync(coversDir);
                     ).rss.channel;
 
                     podcastObj.title = he.decode(podcastJSObj.title);
+                    podcastObj.favorite = favs.includes(podcastObj.title);
                     podcastObj.feed = podcast.xmlUrl;
                     podcastObj.description = await stripHTML(
                         he.decode(podcastJSObj.description)

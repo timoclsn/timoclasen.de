@@ -9,7 +9,7 @@ export default function AboutWidget({ text, imageUrl, imageDescription }) {
                 <WidgetText
                     title="Über mich"
                     text={text}
-                    linkText="mehr"
+                    linkText="Mehr"
                     href="/ueber"
                 />
             }
