@@ -4,7 +4,7 @@ import { ArrowRight } from 'react-feather';
 
 export default function PodcastsWidget({ podcasts }) {
     return (
-        <section>
+        <section id="podcasts">
             <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">
                 Podcasts
             </h2>
