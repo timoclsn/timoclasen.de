@@ -46,7 +46,7 @@
     },
     {
         "title": "Baywatch Berlin",
-        "favorite": true,
+        "favorite": false,
         "feed": "https://baywatch-berlin.podigee.io/feed/mp3",
         "description": "Das Beautiful Mind Klaas Heufer-Umlauf probiert in diesem Podcast nach über 10 Jahren weltfremden Jet Set Spaß Kontakt zur echten Welt aufzunehmen.\nWie einst in der Weihnachtsgeschichte wird er dabei von seinen Freunden Thomas Schmitt und Jakob Lundt an die Hand genommen und langsam wieder mit den Themen des wahren Lebens in Kontakt gebracht. Tauchen Sie ein und seien Sie die Kugel im Flipperautomaten „Baywatch Berlin“!\n",
         "website": "https://baywatch-berlin.podigee.io/",
@@ -136,7 +136,7 @@
     },
     {
         "title": "Design Details",
-        "favorite": false,
+        "favorite": true,
         "feed": "https://feeds.simplecast.com/eew_vyNL",
         "description": "A weekly conversation about design process and culture. Hosted by Marshall Bock and Brian Lovin.\n",
         "website": "https://designdetails.fm",
@@ -199,7 +199,7 @@
     },
     {
         "title": "F1: Beyond The Grid",
-        "favorite": true,
+        "favorite": false,
         "feed": "https://audioboom.com/channels/4964339.rss",
         "description": "Beyond The Grid, delivers great stories, fresh insight and amazing anecdotes from the world of F1. Each week Tom Clarkson brings you in-depth, personal conversations with the biggest names in the sport, from current superstar drivers and leading team bosses to legendary figures from history.\n",
         "website": "https://audioboom.com/channel/beyond-the-grid",
@@ -235,7 +235,7 @@
     },
     {
         "title": "How to Save a Planet",
-        "favorite": false,
+        "favorite": true,
         "feed": "https://feeds.megaphone.fm/howtosaveaplanet",
         "description": "Does climate change freak you out? Want to know what we, collectively, can do about it? Us, too. How to Save a Planet is a podcast that asks the big questions: What do we need to do to solve the climate crisis, and how do we get it done? Join us, journalist Alex Blumberg and scientist and policy nerd Dr. Ayana Elizabeth Johnson, as we scour the earth for solutions, talk to people who are making a difference, ask hard questions, crack dumb jokes and — episode by episode — figure out how to build the future we want.\n",
         "website": "https://gimletmedia.com/shows/howtosaveaplanet",
@@ -496,7 +496,7 @@
     },
     {
         "title": "The Smart Home Show",
-        "favorite": false,
+        "favorite": true,
         "feed": "http://feeds.feedburner.com/soundcloud/scvz",
         "description": "Join hosts Adam Justice and Richard Gunther as they explore the smart home universe. The Smart Home Show features interviews with smart home leaders, analysis of the latest smart home news and the occasional Q and A and product review. All smart home, all the time.\n",
         "website": "http://smarthome.fm/",
@@ -541,7 +541,7 @@
     },
     {
         "title": "This is Product Management",
-        "favorite": false,
+        "favorite": true,
         "feed": "https://alphaux.libsyn.com/rss",
         "description": "“This is Product Management” interviews the brightest minds across the numerous disciplines that fuel modern product teams. Episodes span from arts to science, tactics to strategies, confessions to professions. Take a deep dive into user experience, statistics, innovation, differentiation, design, development, metrics, and more with the latest podcast for product managers. This is Product Management is produced by Feedback Loop\n\nLearn more and subscribe at tipm.feedbackloop.com\n",
         "website": "http://tipm.feedbackloop.com",

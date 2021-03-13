@@ -8,11 +8,13 @@ const strip = require('remark-strip-html');
 
 const favs = [
     'Accidental Tech Podcast',
-    'Baywatch Berlin',
-    'F1: Beyond The Grid',
+    'Design Details',
     'Full Stack Radio',
+    'How to Save a Planet',
     'OMR Podcast',
-    'The Vergecast'
+    'The Smart Home Show',
+    'The Vergecast',
+    'This is Product Management'
 ];
 
 const coversDir = './public/podcasts';
