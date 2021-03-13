@@ -8,7 +8,7 @@ export default function BlogWidget({ blogPost1, blogPost2 }) {
                 <WidgetText
                     title={blogPost1.title}
                     text={blogPost1.summary}
-                    linkText="Blog"
+                    linkText="Lesen"
                     href={`/blog/${blogPost1.slug}`}
                 />
             }
@@ -16,7 +16,7 @@ export default function BlogWidget({ blogPost1, blogPost2 }) {
                 <WidgetText
                     title={blogPost2.title}
                     text={blogPost2.summary}
-                    linkText="Blog"
+                    linkText="Lesen"
                     href={`/blog/${blogPost2.slug}`}
                 />
             }
