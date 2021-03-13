@@ -29,7 +29,8 @@ export default function PodcastsWidget({ podcasts }) {
                             href={podcast.website}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="cursor-pointer">
+                            className="cursor-pointer"
+                            aria-label={podcast.title}>
                             <Image
                                 className="rounded-2xl"
                                 src={`/podcasts/${podcast.image}`}
