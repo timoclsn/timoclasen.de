@@ -22,7 +22,7 @@ export default function PodcastsWidget({ podcasts }) {
                     </Link>
                 </div>
             </div>
-            <ul className="flex justify-between space-x-6 overflow-x-auto">
+            <ul className="flex justify-between space-x-4 overflow-x-auto">
                 {podcasts.map((podcast) => (
                     <li key={podcast.title}>
                         <a
