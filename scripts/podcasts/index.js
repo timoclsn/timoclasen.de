@@ -66,8 +66,8 @@ fs.mkdirSync(coversDir);
                     );
                     podcastObj.website =
                         typeof podcastJSObj.link === 'string'
-                            ? podcastJSObj.link
-                            : podcastJSObj.link[1].href; // Hack for ILP
+                            ? addHTTP(podcastJSObj.link)
+                            : addHTTP(podcastJSObj.link[1].href); // Hack for ILP
                     podcastObj.hosts = he.decode(podcastJSObj['itunes:author']);
                     // podcastObj.category =
                     //     podcastJSObj['media:category'] ||
@@ -125,4 +125,8 @@ function hashString(string) {
 async function stripHTML(html) {
     const result = await remark().use(strip).process(html);
     return result.toString();
+}
+
+function addHTTP(url) {
+    return url.includes('://') ? url : `http://${url}`;
 }

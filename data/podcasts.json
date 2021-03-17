@@ -256,7 +256,7 @@
         "favorite": false,
         "feed": "https://anchor.fm/s/149e69d4/podcast/rss",
         "description": "Shopify is building the future of commerce, but who are the people building it? Inside Shopify UX introduces some of the leaders of our UX team and asks them to explain the big commerce problem their team is trying to solve.\n\nListen to learn more about the meaty UX challenges our team is solving and how we're making it easier for independent businesses to thrive.\n",
-        "website": "ux.shopify.com",
+        "website": "http://ux.shopify.com",
         "hosts": "Gene Shannon",
         "image": "cover-394007393.jpg"
     },
@@ -436,7 +436,7 @@
         "favorite": false,
         "feed": "https://anchor.fm/s/4a19bfdc/podcast/rss",
         "description": "Zu Dritt kommen Marc, Thomas und Chris zusammen an den virtuell Podcast Tisch um über die verschiedensten Themen im vernetzten Wohnen zu sprechen.\n",
-        "website": "www.smarteinander.de",
+        "website": "http://www.smarteinander.de",
         "hosts": "Smarteinander",
         "image": "cover-733741497.jpg"
     },
