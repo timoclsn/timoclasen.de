@@ -22,11 +22,6 @@ module.exports = {
             fontFamily: {
                 sans: ['Inter', ...fontFamily.sans]
             },
-            spacing: {
-                '1/2': '50%',
-                '2/3': '66.666667%',
-                full: '100%'
-            },
             typography: (theme) => ({
                 DEFAULT: {
                     css: {
@@ -110,6 +105,7 @@ module.exports = {
     },
     plugins: [
         require('@tailwindcss/typography'),
-        require('@tailwindcss/line-clamp')
+        require('@tailwindcss/line-clamp'),
+        require('@tailwindcss/aspect-ratio')
     ]
 };

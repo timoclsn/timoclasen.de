@@ -14,7 +14,7 @@ export default function About(props) {
             description={props.description}
             previewImage={props.previewImage}
             slug={props.slug}>
-            <div className="relative overflow-hidden pb-1/2 bg-highlight dark:bg-highlight-dark rounded-3xl">
+            <div className="aspect-w-2 aspect-h-1 bg-highlight dark:bg-highlight-dark rounded-3xl">
                 <Image
                     src={props.image.url}
                     layout={'fill'}
