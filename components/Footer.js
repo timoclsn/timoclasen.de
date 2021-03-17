@@ -29,7 +29,7 @@ export default function Footer() {
                             href="https://github.com/timoclsn"
                             target="_blank"
                             rel="noopener noreferrer">
-                            Github
+                            GitHub
                         </NavigationLink>
                     </li>
                     <li className="mr-0 sm:mr-8">
