@@ -55,6 +55,7 @@
         "ws": "^7.4.4"
     },
     "devDependencies": {
+        "@tailwindcss/jit": "^0.1.2",
         "cypress": "^6.7.1",
         "dotenv": "^8.2.0",
         "eslint": "^7.22.0",
