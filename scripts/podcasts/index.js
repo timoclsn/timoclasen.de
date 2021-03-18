@@ -64,10 +64,7 @@ fs.mkdirSync(coversDir);
                     podcastObj.description = await stripHTML(
                         he.decode(podcastJSObj.description)
                     );
-                    podcastObj.website =
-                        typeof podcastJSObj.link === 'string'
-                            ? addHTTP(podcastJSObj.link)
-                            : addHTTP(podcastJSObj.link[1].href); // Hack for ILP
+                    podcastObj.website = addHTTP(podcastJSObj.link);
                     podcastObj.hosts = he.decode(podcastJSObj['itunes:author']);
                     // podcastObj.category =
                     //     podcastJSObj['media:category'] ||
