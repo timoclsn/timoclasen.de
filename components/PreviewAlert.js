@@ -11,14 +11,12 @@ export default function PreviewAlert() {
                     <p className="text-xl font-bold text-center uppercase md:text-3xl">
                         Vorschau
                     </p>
-                    <div className="min-w-1/5">
-                        <Button
-                            Icon={XCircle}
-                            text="Schließen"
-                            href="/api/exit-preview"
-                            secondary
-                        />
-                    </div>
+                    <Button
+                        Icon={XCircle}
+                        text="Schließen"
+                        href="/api/exit-preview"
+                        secondary
+                    />
                 </div>
             </CenteredColumn>
         </div>

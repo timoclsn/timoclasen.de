@@ -7,20 +7,25 @@ export default function WidgetButtons() {
         <div className="flex flex-col items-center justify-between w-full h-full px-6 py-12 pt-0 space-y-4 sm:space-y-0 xl:px-12 sm:pt-12 xl:py-20">
             <Button
                 Icon={Mail}
-                text={'E-Mail'}
-                href={'mailto:timo@timoclasen.de'}
+                text="E-Mail"
+                href="mailto:timo@timoclasen.de"
+                fullWidth
             />
             <Button
                 Icon={Twitter}
-                text={'Twitter'}
-                href={'https://twitter.com/timoclsn'}
+                text="Twitter"
+                href="https://twitter.com/timoclsn"
+                target="_blank"
                 secondary
+                fullWidth
             />
             <Button
                 Icon={Linkedin}
-                text={'LinkedIn'}
-                href={'https://www.linkedin.com/in/timoclsn/'}
+                text="LinkedIn"
+                href="https://www.linkedin.com/in/timoclsn/"
+                target="_blank"
                 secondary
+                fullWidth
             />
         </div>
     );
