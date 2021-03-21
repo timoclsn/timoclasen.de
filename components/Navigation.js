@@ -1,13 +1,13 @@
 import Link from 'next/link';
 
-import Container from '@/components/CenteredColumn';
+import CenteredColumn from '@/components/CenteredColumn';
 import NavigationLink from '@/components/NavigationLink';
 import SwitchMode from '@/components/SwitchMode';
 
 export default function Navigation({ name }) {
     return (
         <header className="py-4 mb-8 sticky-nav bg-light dark:bg-dark bg-opacity-80 dark:bg-opacity-80 md:py-6 md:mb-20 xl:mb-22">
-            <Container>
+            <CenteredColumn>
                 <nav
                     data-cy="navigation"
                     className="flex items-center justify-between">
@@ -42,7 +42,7 @@ export default function Navigation({ name }) {
                         </li>
                     </ul>
                 </nav>
-            </Container>
+            </CenteredColumn>
         </header>
     );
 }
