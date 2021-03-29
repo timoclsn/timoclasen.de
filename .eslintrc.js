@@ -1,10 +1,10 @@
 module.exports = {
-    root: true, // Make sure eslint picks up the config at the root of the directory
+    parser: '@babel/eslint-parser',
     parserOptions: {
-        ecmaVersion: 2020, // Use the latest ecmascript standard
-        sourceType: 'module', // Allows using import/export statements
-        ecmaFeatures: {
-            jsx: true // Enable JSX since we're using React
+        requireConfigFile: false,
+        sourceType: 'module',
+        babelOptions: {
+            presets: ['next/babel']
         }
     },
     settings: {
@@ -21,6 +21,7 @@ module.exports = {
     extends: [
         'eslint:recommended',
         'plugin:react/recommended',
+        'plugin:@next/next/recommended',
         'plugin:jsx-a11y/recommended',
         'plugin:cypress/recommended',
         'plugin:prettier/recommended' // Make this the last element so prettier config overrides other formatting rules
