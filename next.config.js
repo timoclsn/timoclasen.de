@@ -6,6 +6,9 @@ module.exports = withBundleAnalyzer({
     images: {
         domains: ['images.ctfassets.net', 'api.mapbox.com']
     },
+    future: {
+        webpack5: true
+    },
     webpack: (config, { dev, isServer }) => {
         if (isServer) {
             require('./scripts/generate-sitemap');
