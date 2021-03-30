@@ -2,6 +2,7 @@ import AboutWidget from '@/components/AboutWidget';
 import BlogWidget from '@/components/BlogWidget';
 import ContactWidget from '@/components/ContactWidget';
 import Layout from '@/components/Layout';
+import LCDWidget from '@/components/LCDWidget';
 import PodcastsWidget from '@/components/PodcastsWidget';
 import RunningWidget from '@/components/RunningWidget';
 import SmartHomeWidget from '@/components/SmartHomeWidget';
@@ -27,6 +28,7 @@ export default function Home(props) {
                 blogPost1={props.blogPosts[0]}
                 blogPost2={props.blogPosts[1]}
             />
+            <LCDWidget bgImage={props.LCDImage} />
             <SmartHomeWidget
                 text={props.smartHome}
                 footnote={props.smartHomeFootnote}
@@ -88,6 +90,12 @@ export async function getStaticProps({ preview = false }) {
                     content
                 }
             }
+            LCDImage: assetCollection(where: {title: "Life Centered Design.Net"}, limit: 1, preview: false) {
+                items {
+                    url
+                    description
+                }
+            }
         }`,
         preview
     );
@@ -101,6 +109,7 @@ export async function getStaticProps({ preview = false }) {
         response.data.smartHomeFootnoteSnippet.items[0].content;
     const contactText = response.data.contactSnippet.items[0].content;
     const favoritePodcasts = getFavoritePodcasts();
+    const LCDImage = response.data.LCDImage.items[0];
 
     let aboutTeaser = person.cvText;
     aboutTeaser = stripFirstLine(aboutTeaser);
@@ -120,6 +129,7 @@ export async function getStaticProps({ preview = false }) {
             smartHome: await markdownToHTML(smartHomeText),
             smartHomeFootnote: await markdownToHTML(smartHomeFootnoteText),
             favoritePodcasts,
+            LCDImage,
             contact: await markdownToHTML(contactText)
         }
     };
