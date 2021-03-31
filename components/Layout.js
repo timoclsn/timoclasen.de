@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import Navigation from '@/components/Navigation';
 import PreviewAlert from '@/components/PreviewAlert';
 import SEO from '@/components/SEO';
+import { getCssString } from 'stitches.config';
 
 export default function Layout({
     children,
@@ -22,6 +23,10 @@ export default function Layout({
     return (
         <>
             <Head>
+                <style
+                    id="stitches"
+                    dangerouslySetInnerHTML={{ __html: getCssString() }}
+                />
                 <link
                     rel="preload"
                     href="/fonts/inter-var-latin.woff2"
