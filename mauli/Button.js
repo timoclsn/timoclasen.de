@@ -2,66 +2,98 @@ import { styled } from 'stitches.config';
 
 const StyledButton = styled('button', {
     // Reset
-    alignItems: 'center',
-    appearance: 'none',
     boxSizing: 'border-box',
-    display: 'inline-flex',
-    flexShrink: 0,
-    justifyContent: 'center',
-    lineHeight: '1',
-    margin: '0',
+    appearance: 'none',
     outline: 'none',
-    padding: '0',
     textDecoration: 'none',
     userSelect: 'none',
-    WebkitTapHighlightColor: 'rgba(0,0,0,0)',
-    '&::before': {
-        boxSizing: 'border-box'
-    },
-    '&::after': {
-        boxSizing: 'border-box'
-    },
+    margin: '0',
+    flexShrink: '0',
+    lineHeight: '1',
 
     // Custom
-    padding: '$2 $3',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: '$round',
-    fontWeight: 'bold',
-    fontSize: '$3',
 
     variants: {
-        type: {
-            primary: {
-                color: '$light',
-                backgroundColor: '$highlight',
+        variant: {
+            solid: {
+                color: '$highlightText',
+                backgroundColor: '$highlightBackground',
                 '&:hover': {
-                    opacity: 0.9
+                    boxShadow: 'inset 0 0 0 2px $colors$highlightBorder'
                 },
                 '&:active': {
-                    opacity: 0.7
+                    opacity: 0.7, // TODO: Use color
+                    boxShadow: 'inset 0 0 0 2px $colors$highlightBorder'
                 },
                 '&:focus': {
                     outline: 'none',
-                    boxShadow: 'inset 0 0 0 2px $colors$light'
+                    boxShadow:
+                        'inset 0 0 0 2px $colors$highlightBorder, 0 0 0 1px $colors$highlightBorder'
                 },
                 '&:disabled': {
-                    opacity: 0.5
+                    opacity: 0.5 // TODO: Use color
                 }
             },
-            secondary: {
-                color: '$light',
-                boxShadow: 'inset 0 0 0 2px $colors$light',
+            ghost: {
+                color: '$text',
+                boxShadow: 'inset 0 0 0 2px $colors$text',
                 '&:hover': {
-                    backgroundColor: 'rgba(255,255,255,0.1)'
+                    backgroundColor: 'rgba(255,255,255,0.1)' // TODO: Use color
+                },
+                '&:active': {
+                    backgroundColor: 'rgba(255,255,255,0.3)' // TODO: Use color
+                },
+                '&:focus': {
+                    outline: 'none',
+                    boxShadow:
+                        'inset 0 0 0 2px $colors$highlight, 0 0 0 1px $colors$highlight'
+                }
+            }
+        },
+        size: {
+            standard: {
+                fontSize: '$3',
+                fontWeight: '$bold',
+                padding: '$2 $3',
+                svg: {
+                    width: '16px',
+                    height: '16px'
+                },
+                '> * + *': {
+                    marginLeft: '$2'
+                }
+            },
+            small: {
+                fontSize: '$2',
+                fontWeight: '$normal',
+                padding: '$1 $2',
+                svg: {
+                    width: '12px',
+                    height: '12px'
+                },
+                '> * + *': {
+                    marginLeft: '$1'
                 }
             }
         }
     },
 
     defaultVariants: {
-        type: 'primary'
+        variant: 'solid',
+        size: 'standard'
     }
 });
 
 export default function Button({ children, ...props }) {
-    return <StyledButton {...props}>{children}</StyledButton>;
+    return (
+        <StyledButton {...props}>
+            {Array.isArray(children)
+                ? children.map((child) => <span>{child}</span>)
+                : children}
+        </StyledButton>
+    );
 }
