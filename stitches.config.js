@@ -1,11 +1,16 @@
 import { createCss } from '@stitches/react';
 
-export const { styled, getCssString } = createCss({
+export const { css, styled, getCssString, theme } = createCss({
     theme: {
         colors: {
-            light: '#FFFFFF',
-            dark: '#000000',
-            highlight: '#3E51F7'
+            white: 'white',
+            black: 'black',
+            highlight: '#3E51F7',
+            text: '$white',
+            background: '$black',
+            highlightText: '$white',
+            highlightBackground: '$highlight',
+            highlightBorder: '$white'
         },
         fonts: {
             sans: 'Inter, sans-serif'
@@ -20,6 +25,10 @@ export const { styled, getCssString } = createCss({
             7: '48px',
             8: '64px',
             9: '72px'
+        },
+        fontWeights: {
+            normal: 400,
+            bold: 700
         },
         space: {
             1: '4px',
@@ -53,6 +62,9 @@ export const { styled, getCssString } = createCss({
             9: '108px'
         },
         radii: {
+            1: '3px',
+            2: '5px',
+            3: '7px',
             round: '9999px'
         }
     },
@@ -61,5 +73,13 @@ export const { styled, getCssString } = createCss({
         bp2: '(min-width: 768px)',
         bp3: '(min-width: 1024px)',
         bp4: '(min-width: 1280px)'
+    }
+});
+
+export const darkTheme = theme('dark', {
+    colors: {
+        loContrast: 'black',
+        hiContrast: 'white',
+        highlight: 'red'
     }
 });
