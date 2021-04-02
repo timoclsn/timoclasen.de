@@ -6,7 +6,7 @@ const Container = styled('div', {
     width: '100%',
 
     variants: {
-        widht: {
+        size: {
             small: {
                 maxWidth: '640px'
             },
@@ -20,7 +20,7 @@ const Container = styled('div', {
     },
 
     defaultVariants: {
-        widht: 'normal'
+        size: 'medium'
     }
 });
 
