@@ -6,16 +6,16 @@ const Stack = styled('div', {
 
     variants: {
         direction: {
-            horizontal: {
-                flexDirection: 'row',
-                '> * + *': {
-                    marginLeft: '$$gap'
-                }
-            },
             vertical: {
                 flexDirection: 'column',
                 '> * + *': {
-                    marginTop: '$$gap'
+                    margin: '$$gap 0 0 0'
+                }
+            },
+            horizontal: {
+                flexDirection: 'row',
+                '> * + *': {
+                    margin: '0 0 0 $$gap'
                 }
             }
         },
