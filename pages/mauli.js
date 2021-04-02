@@ -62,7 +62,11 @@ export default function Mauli() {
                         </Text>
                     </Stack>
                 </Card>
-                <Stack direction="horizontal">
+                <Stack
+                    direction={{
+                        '@initial': 'vertical',
+                        '@bp1': 'horizontal'
+                    }}>
                     <Card>
                         <Stack>
                             <Heading as="h3" size="small">
@@ -96,21 +100,24 @@ export default function Mauli() {
                     </Card>
                 </Stack>
                 <Container>
-                    <Stack>
-                        <Heading>Überschrift</Heading>
-                        <Text as="p">
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing
-                            elit. Aenean commodo ligula eget dolor. Aenean
-                            massa. Cum sociis natoque penatibus et magnis dis
-                            parturient montes, nascetur ridiculus mus. Donec
-                            quam felis, ultricies nec, pellentesque eu, pretium
-                            quis, sem. Nulla consequat massa quis enim. Donec
-                            pede justo, fringilla vel, aliquet nec, vulputate
-                            eget, arcu. In enim justo, rhoncus ut, imperdiet a,
-                            venenatis vitae, justo. Nullam dictum felis eu pede
-                            mollis pretium.
-                        </Text>
-                    </Stack>
+                    <Box>
+                        <Stack>
+                            <Heading>Überschrift</Heading>
+                            <Text as="p">
+                                Lorem ipsum dolor sit amet, consectetuer
+                                adipiscing elit. Aenean commodo ligula eget
+                                dolor. Aenean massa. Cum sociis natoque
+                                penatibus et magnis dis parturient montes,
+                                nascetur ridiculus mus. Donec quam felis,
+                                ultricies nec, pellentesque eu, pretium quis,
+                                sem. Nulla consequat massa quis enim. Donec pede
+                                justo, fringilla vel, aliquet nec, vulputate
+                                eget, arcu. In enim justo, rhoncus ut, imperdiet
+                                a, venenatis vitae, justo. Nullam dictum felis
+                                eu pede mollis pretium.
+                            </Text>
+                        </Stack>
+                    </Box>
                 </Container>
             </Stack>
         </Box>
