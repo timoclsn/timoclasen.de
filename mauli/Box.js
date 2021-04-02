@@ -6,7 +6,7 @@ const StyledBox = styled('div', {
     variants: {
         inset: {
             none: {
-                padding: '0'
+                padding: 'none'
             },
             small: {
                 padding: '$4'

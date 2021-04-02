@@ -3,7 +3,9 @@ import { Send } from 'react-feather';
 import Box from '@/mauli/Box';
 import Button from '@/mauli/Button';
 import Card from '@/mauli/Card';
+import Heading from '@/mauli/Heading';
 import Stack from '@/mauli/Stack';
+import Text from '@/mauli/Text';
 import { darkTheme } from '@/mauli/stitches.config';
 
 export default function Mauli() {
@@ -33,8 +35,24 @@ export default function Mauli() {
                     rel="noopener noreferrer">
                     Link
                 </Button>
-                <Card>Test</Card>
-                <Card variant="highlight">Test</Card>
+                <Card>
+                    <Heading as="h2">Heading</Heading>
+                    <Text as="p">Test</Text>
+                </Card>
+                <Card>
+                    <Heading as="h3" size="small">
+                        Heading
+                    </Heading>
+                    <Text as="p" variant="highlight">
+                        Test
+                    </Text>
+                </Card>
+                <Card variant="highlight">
+                    <Heading as="h1" size="large">
+                        Heading
+                    </Heading>
+                    <Text as="p">Test</Text>
+                </Card>
             </Stack>
         </Box>
     );
