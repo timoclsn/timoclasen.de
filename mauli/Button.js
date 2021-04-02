@@ -1,6 +1,6 @@
 import { styled } from './stitches.config';
 
-const StyledButton = styled('button', {
+const Button = styled('button', {
     // Reset
     boxSizing: 'border-box',
     appearance: 'none',
@@ -94,12 +94,4 @@ const StyledButton = styled('button', {
     }
 });
 
-export default function Button({ children, ...props }) {
-    return (
-        <StyledButton {...props}>
-            {Array.isArray(children)
-                ? children.map((child) => <span>{child}</span>)
-                : children}
-        </StyledButton>
-    );
-}
+export default Button;

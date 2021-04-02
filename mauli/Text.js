@@ -1,6 +1,16 @@
-import { styled } from './stitches.config';
+import { styled, leadingTrimRef } from './stitches.config';
+import { leadingTrim } from 'leading-trim';
 
-const StyledText = styled('span', {
+function getLeadingTrimCSS(lineHeight) {
+    return leadingTrim({
+        lineHeight: lineHeight,
+        reference: leadingTrimRef
+    });
+}
+
+const Text = styled('span', {
+    ...getLeadingTrimCSS(1.2),
+
     variants: {
         variant: {
             normal: {
@@ -10,6 +20,7 @@ const StyledText = styled('span', {
                 color: '$highlight'
             }
         },
+
         weight: {
             normal: {
                 fontWeight: '$normal'
@@ -18,21 +29,28 @@ const StyledText = styled('span', {
                 fontWeight: '$bold'
             }
         },
+
         size: {
-            xsmall: {
+            small: {
                 fontSize: '$2'
             },
-            small: {
+            medium: {
                 fontSize: '$3'
             },
-            medium: {
-                fontSize: '$4'
-            },
             large: {
-                fontSize: '$5'
+                fontSize: '$4'
+            }
+        },
+
+        align: {
+            left: {
+                textAlign: 'left'
             },
-            xlarge: {
-                fontSize: '$6'
+            center: {
+                textAlign: 'center'
+            },
+            right: {
+                textAlign: 'right'
             }
         }
     },
@@ -40,10 +58,9 @@ const StyledText = styled('span', {
     defaultVariants: {
         variant: 'normal',
         weight: 'normal',
-        size: 'small'
+        size: 'medium',
+        align: 'left'
     }
 });
 
-export default function Text({ children, ...props }) {
-    return <StyledText {...props}>{children}</StyledText>;
-}
+export default Text;

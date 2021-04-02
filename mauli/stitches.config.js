@@ -92,3 +92,17 @@ export const darkTheme = theme('dark', {
         highlight: '$purple'
     }
 });
+
+// Leading trim:
+// This has to be adapted for different custom fonts
+// This config is for "Inter"
+// https://github.com/rudeayelo/leading-trim
+// http://text-crop.eightshapes.com
+// https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62
+// https://medium.com/microsoft-design/leading-trim-the-future-of-digital-typesetting-d082d84b202
+export const leadingTrimRef = {
+    fontSize: 40,
+    lineHeight: 1,
+    topCrop: 5,
+    bottomCrop: 6
+};

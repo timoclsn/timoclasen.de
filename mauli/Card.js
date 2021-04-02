@@ -2,9 +2,9 @@ import { styled } from './stitches.config';
 
 import Box from '@/mauli/Box';
 
-const StyledCard = styled(Box, {
+const Card = styled(Box, {
     boxSizing: 'border-box',
-    borderRadius: '$3',
+    borderRadius: '$4',
     width: '100%',
 
     variants: {
@@ -25,6 +25,4 @@ const StyledCard = styled(Box, {
     }
 });
 
-export default function Card({ children, ...props }) {
-    return <StyledCard {...props}>{children}</StyledCard>;
-}
+export default Card;

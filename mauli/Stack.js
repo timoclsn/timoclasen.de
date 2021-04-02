@@ -1,24 +1,25 @@
 import { styled } from './stitches.config';
 
-const StyledStack = styled('div', {
+const Stack = styled('div', {
     boxSizing: 'border-box',
     display: 'flex',
 
     variants: {
         direction: {
-            vertical: {
+            horizontal: {
                 flexDirection: 'row',
                 '> * + *': {
                     marginLeft: '$$gap'
                 }
             },
-            horizontal: {
+            vertical: {
                 flexDirection: 'column',
                 '> * + *': {
                     marginTop: '$$gap'
                 }
             }
         },
+
         space: {
             xsmall: {
                 $$gap: '$space$2'
@@ -36,6 +37,7 @@ const StyledStack = styled('div', {
                 $$gap: '$space$6'
             }
         },
+
         align: {
             start: {
                 alignItems: 'start'
@@ -47,6 +49,7 @@ const StyledStack = styled('div', {
                 alignItems: 'end'
             }
         },
+
         justify: {
             start: {
                 justifyContet: 'start'
@@ -65,12 +68,10 @@ const StyledStack = styled('div', {
 
     defaultVariants: {
         direction: 'vertical',
-        space: 'small',
+        space: 'medium',
         align: 'start',
         justify: 'center'
     }
 });
 
-export default function Stack({ children, ...props }) {
-    return <StyledStack {...props}>{children}</StyledStack>;
-}
+export default Stack;

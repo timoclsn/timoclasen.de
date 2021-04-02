@@ -1,6 +1,8 @@
 import { styled } from './stitches.config';
 
-const StyledHeading = styled('h1', {
+import Text from '@/mauli/Text';
+
+const Heading = styled(Text, {
     color: '$hiContrast',
     fontWeight: '$bold',
 
@@ -9,7 +11,7 @@ const StyledHeading = styled('h1', {
             small: {
                 fontSize: '$5'
             },
-            mmedium: {
+            medium: {
                 fontSize: '$6'
             },
             large: {
@@ -19,10 +21,8 @@ const StyledHeading = styled('h1', {
     },
 
     defaultVariants: {
-        size: 'mmedium'
+        size: 'medium'
     }
 });
 
-export default function Heading({ children, ...props }) {
-    return <StyledHeading {...props}>{children}</StyledHeading>;
-}
+export default Heading;

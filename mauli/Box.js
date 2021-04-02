@@ -1,6 +1,6 @@
 import { styled } from './stitches.config';
 
-const StyledBox = styled('div', {
+const Box = styled('div', {
     boxSizing: 'border-box',
 
     variants: {
@@ -15,7 +15,7 @@ const StyledBox = styled('div', {
                 padding: '$5'
             },
             large: {
-                padding: '$5'
+                padding: '$6'
             }
         }
     },
@@ -25,6 +25,4 @@ const StyledBox = styled('div', {
     }
 });
 
-export default function Box({ children, ...props }) {
-    return <StyledBox {...props}>{children}</StyledBox>;
-}
+export default Box;
