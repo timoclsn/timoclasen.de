@@ -2,11 +2,13 @@ import { Send } from 'react-feather';
 
 import Box from '@/mauli/Box';
 import Button from '@/mauli/Button';
+import Card from '@/mauli/Card';
 import Stack from '@/mauli/Stack';
+import { darkTheme } from '@/mauli/stitches.config';
 
 export default function Mauli() {
     return (
-        <Box>
+        <Box inset="medium" className={darkTheme}>
             <Stack direction="horizontal">
                 <Button>Standard</Button>
                 <Button disabled>Disabled</Button>
@@ -31,6 +33,8 @@ export default function Mauli() {
                     rel="noopener noreferrer">
                     Link
                 </Button>
+                <Card>Test</Card>
+                <Card variant="highlight">Test</Card>
             </Stack>
         </Box>
     );

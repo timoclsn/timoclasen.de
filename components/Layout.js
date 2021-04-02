@@ -6,7 +6,7 @@ import Footer from '@/components/Footer';
 import Navigation from '@/components/Navigation';
 import PreviewAlert from '@/components/PreviewAlert';
 import SEO from '@/components/SEO';
-import { getCssString } from 'stitches.config';
+import { getCssString } from '@/mauli/stitches.config';
 
 export default function Layout({
     children,

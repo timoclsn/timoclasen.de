@@ -1,9 +1,8 @@
-import { styled } from 'stitches.config';
+import { styled } from './stitches.config';
 
 const StyledStack = styled('div', {
     boxSizing: 'border-box',
     display: 'flex',
-    $$gap: '$space$2',
 
     variants: {
         direction: {
@@ -22,19 +21,19 @@ const StyledStack = styled('div', {
         },
         space: {
             xsmall: {
-                $$gap: '$space$1'
-            },
-            small: {
                 $$gap: '$space$2'
             },
-            medium: {
+            small: {
                 $$gap: '$space$3'
             },
-            large: {
+            medium: {
                 $$gap: '$space$4'
             },
-            xlarge: {
+            large: {
                 $$gap: '$space$5'
+            },
+            xlarge: {
+                $$gap: '$space$6'
             }
         },
         align: {
@@ -67,7 +66,7 @@ const StyledStack = styled('div', {
     defaultVariants: {
         direction: 'vertical',
         space: 'small',
-        align: 'center',
+        align: 'start',
         justify: 'center'
     }
 });

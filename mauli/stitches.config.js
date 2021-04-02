@@ -5,12 +5,12 @@ export const { css, styled, getCssString, theme } = createCss({
         colors: {
             white: 'white',
             black: 'black',
-            highlight: '#3E51F7',
-            text: '$white',
-            background: '$black',
-            highlightText: '$white',
-            highlightBackground: '$highlight',
-            highlightBorder: '$white'
+            purple: '#3E51F7',
+
+            // Semantic
+            loContrast: '$white',
+            hiContrast: '$black',
+            highlight: '$purple'
         },
         fonts: {
             sans: 'Inter, sans-serif'
@@ -31,24 +31,26 @@ export const { css, styled, getCssString, theme } = createCss({
             bold: 700
         },
         space: {
-            1: '4px',
-            2: '8px',
-            3: '16px',
-            4: '32px',
-            5: '64px',
-            6: '128px',
-            7: '256px',
-            8: '512px'
+            1: '2px',
+            2: '4px',
+            3: '8px',
+            4: '16px',
+            5: '32px',
+            6: '64px',
+            7: '128px',
+            8: '256px',
+            9: '512px'
         },
         sizes: {
-            1: '4px',
-            2: '8px',
-            3: '16px',
-            4: '32px',
-            5: '64px',
-            6: '128px',
-            7: '256px',
-            8: '512px'
+            1: '2px',
+            2: '4px',
+            3: '8px',
+            4: '16px',
+            5: '32px',
+            6: '64px',
+            7: '128px',
+            8: '256px',
+            9: '512px'
         },
         lineHeights: {
             1: '18px',
@@ -62,9 +64,11 @@ export const { css, styled, getCssString, theme } = createCss({
             9: '108px'
         },
         radii: {
-            1: '3px',
-            2: '5px',
-            3: '7px',
+            1: '2px',
+            2: '4px',
+            3: '8px',
+            4: '16px',
+            5: '32px',
             round: '9999px'
         }
     },
@@ -78,8 +82,13 @@ export const { css, styled, getCssString, theme } = createCss({
 
 export const darkTheme = theme('dark', {
     colors: {
-        loContrast: 'black',
-        hiContrast: 'white',
-        highlight: 'red'
+        white: 'white',
+        black: 'black',
+        purple: '#4F5FEF',
+
+        // Semantic
+        loContrast: '$black',
+        hiContrast: '$white',
+        highlight: '$purple'
     }
 });

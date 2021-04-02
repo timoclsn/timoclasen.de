@@ -1,4 +1,4 @@
-import { styled } from 'stitches.config';
+import { styled } from './stitches.config';
 
 const StyledButton = styled('button', {
     // Reset
@@ -20,27 +20,28 @@ const StyledButton = styled('button', {
     variants: {
         variant: {
             solid: {
-                color: '$highlightText',
-                backgroundColor: '$highlightBackground',
+                color: '$white',
+                backgroundColor: '$highlight',
                 '&:hover': {
-                    boxShadow: 'inset 0 0 0 2px $colors$highlightBorder'
+                    boxShadow: 'inset 0 0 0 2px $colors$hiContrast'
                 },
                 '&:active': {
                     opacity: 0.7, // TODO: Use color
-                    boxShadow: 'inset 0 0 0 2px $colors$highlightBorder'
+                    boxShadow: 'inset 0 0 0 2px $colors$hiContrast'
                 },
                 '&:focus': {
                     outline: 'none',
                     boxShadow:
-                        'inset 0 0 0 2px $colors$highlightBorder, 0 0 0 1px $colors$highlightBorder'
+                        'inset 0 0 0 2px $colors$hiContrast, 0 0 0 1px $colors$hiContrast'
                 },
                 '&:disabled': {
                     opacity: 0.5 // TODO: Use color
                 }
             },
+
             ghost: {
-                color: '$text',
-                boxShadow: 'inset 0 0 0 2px $colors$text',
+                color: '$hiContrast',
+                boxShadow: 'inset 0 0 0 2px $colors$hiContrast',
                 '&:hover': {
                     backgroundColor: 'rgba(255,255,255,0.1)' // TODO: Use color
                 },
@@ -51,32 +52,37 @@ const StyledButton = styled('button', {
                     outline: 'none',
                     boxShadow:
                         'inset 0 0 0 2px $colors$highlight, 0 0 0 1px $colors$highlight'
+                },
+                '&:disabled': {
+                    opacity: 0.5 // TODO: Use color
                 }
             }
         },
+
         size: {
-            standard: {
+            medium: {
                 fontSize: '$3',
                 fontWeight: '$bold',
-                padding: '$2 $3',
+                padding: '$4 $5',
                 svg: {
                     width: '16px',
                     height: '16px'
                 },
                 '> * + *': {
-                    marginLeft: '$2'
+                    marginLeft: '$3'
                 }
             },
+
             small: {
                 fontSize: '$2',
                 fontWeight: '$normal',
-                padding: '$1 $2',
+                padding: '$3 $4',
                 svg: {
                     width: '12px',
                     height: '12px'
                 },
                 '> * + *': {
-                    marginLeft: '$1'
+                    marginLeft: '$2'
                 }
             }
         }
@@ -84,7 +90,7 @@ const StyledButton = styled('button', {
 
     defaultVariants: {
         variant: 'solid',
-        size: 'standard'
+        size: 'medium'
     }
 });
 
