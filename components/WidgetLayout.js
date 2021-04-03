@@ -1,6 +1,5 @@
 export default function WidgetLayout({
-    FirstWidget,
-    SecondWidget,
+    children,
     separate,
     highlight,
     transparent
@@ -35,8 +34,8 @@ export default function WidgetLayout({
 
     return (
         <section className={containerSyles}>
-            <div className={widgetStyles}>{FirstWidget}</div>
-            <div className={widgetStyles}>{SecondWidget}</div>
+            <div className={widgetStyles}>{children[0]}</div>
+            <div className={widgetStyles}>{children[1]}</div>
         </section>
     );
 }

@@ -18,26 +18,21 @@ export default function RunningWidget() {
 
     return (
         <div id="running">
-            <WidgetLayout
-                FirstWidget={
-                    <WidgetRunning
-                        thisYear={data?.thisYear}
-                        lastRun={data?.lastRun}
-                    />
-                }
-                SecondWidget={
-                    <WidgetImage
-                        url={
-                            darkMode
-                                ? data?.lastRun?.map?.dark
-                                : data?.lastRun?.map?.light
-                        }
-                        description="Kartenansicht des letzten Laufes von Timo"
-                        unoptimized
-                    />
-                }
-                separate
-            />
+            <WidgetLayout separate>
+                <WidgetRunning
+                    thisYear={data?.thisYear}
+                    lastRun={data?.lastRun}
+                />
+                <WidgetImage
+                    url={
+                        darkMode
+                            ? data?.lastRun?.map?.dark
+                            : data?.lastRun?.map?.light
+                    }
+                    description="Kartenansicht des letzten Laufes von Timo"
+                    unoptimized
+                />
+            </WidgetLayout>
         </div>
     );
 }
