@@ -45,10 +45,10 @@ const renderers = {
     }
 };
 
-export default function TextPost({ text }) {
+export default function TextPost({ children }) {
     return (
         <TextContainer>
-            <ReactMarkdown renderers={renderers}>{text}</ReactMarkdown>
+            <ReactMarkdown renderers={renderers}>{children}</ReactMarkdown>
         </TextContainer>
     );
 }

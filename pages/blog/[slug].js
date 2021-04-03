@@ -71,7 +71,7 @@ export default function BlogPost(props) {
                         readingTime={props.blogPost.readingTime}
                         sys={props.blogPost.sys}
                     />
-                    <TextPost text={props.blogPost.text} />
+                    <TextPost>{props.blogPost.text}</TextPost>
                 </article>
                 <ContactWidget text={props.contact} />
             </Layout>
