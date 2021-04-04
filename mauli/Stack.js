@@ -5,10 +5,11 @@ import { getResponsiveClassNames, getValueAtBp } from '@/mauli/utils';
 export default function Stack({
     children,
     as = 'div',
-    direction = 'horizontal',
+    direction = 'vertical',
     space = 'medium',
     align = 'start',
     justify = 'start',
+    fullWidth,
     className,
     ...props
 }) {
@@ -118,6 +119,7 @@ export default function Stack({
             'justify-end': justify === 'end',
             'justify-between': justify === 'between'
         },
+        { 'w-full': fullWidth },
         className
     );
 

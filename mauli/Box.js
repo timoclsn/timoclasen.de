@@ -6,6 +6,7 @@ export default function Box({
     children,
     as = 'div',
     inset = 'medium',
+    fullWidth,
     className,
     ...props
 }) {
@@ -34,6 +35,7 @@ export default function Box({
                 classNames: ['p-16', 'sm:p-16', 'md:p-16', 'lg:p-16', 'xl:p-16']
             }
         ]),
+        { 'w-full': fullWidth },
         className
     );
 

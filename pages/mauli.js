@@ -6,17 +6,17 @@ import Stack from '@/mauli/Stack';
 export default function Mauli() {
     return (
         <Box inset={['small', 'medium', 'large']}>
-            <Stack className="w-full">
+            <Stack fullWidth>
                 <Stack
                     direction={['vertical', 'horizontal', 'vertical']}
                     space={['small', 'medium', 'large']}
-                    className="w-full">
+                    fullWidth>
                     <Button text="Button 1" />
                     <Button text="Button 2" />
                 </Stack>
-                <Stack direction="horizontal" className="w-full">
-                    <Card className="w-full">Card 1</Card>
-                    <Card className="w-full">Card 2</Card>
+                <Stack direction="horizontal" fullWidth>
+                    <Card fullWidth>Card 1</Card>
+                    <Card fullWidth>Card 2</Card>
                 </Stack>
             </Stack>
         </Box>
