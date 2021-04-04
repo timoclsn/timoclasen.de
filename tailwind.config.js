@@ -1,7 +1,7 @@
 const { fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
-    purge: ['./pages/**/*.js', './components/**/*.js'],
+    purge: ['./pages/**/*.js', './components/**/*.js', './mauli/**/*.js'],
     darkMode: 'class',
     theme: {
         screens: {
