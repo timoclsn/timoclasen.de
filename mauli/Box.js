@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { getResponsiveClassNames } from '@/mauli/utils';
+import { responsiveClassNames } from '@/mauli/utils';
 
 export default function Box({
     children,
@@ -13,7 +13,7 @@ export default function Box({
     const Element = as;
 
     const styles = clsx(
-        getResponsiveClassNames(inset, [
+        responsiveClassNames(inset, [
             {
                 value: 'xsmall',
                 classNames: ['p-1', 'sm:p-1', 'md:p-1', 'lg:p-1', 'xl:p-1']

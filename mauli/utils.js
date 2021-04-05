@@ -1,6 +1,14 @@
 import clsx from 'clsx';
 
-export function getResponsiveClassNames(responsiveProp, options) {
+export const BP = {
+    NONE: 0,
+    SM: 1,
+    MD: 2,
+    LG: 3,
+    XL: 4
+};
+
+export function responsiveClassNames(responsiveProp, options) {
     responsiveProp = Array.isArray(responsiveProp)
         ? responsiveProp
         : [responsiveProp];
@@ -12,7 +20,7 @@ export function getResponsiveClassNames(responsiveProp, options) {
     );
 }
 
-export function getValueAtBp(bpIndex, responsiveProp) {
+export function valueAtBp(bpIndex, responsiveProp) {
     responsiveProp = Array.isArray(responsiveProp)
         ? responsiveProp
         : [responsiveProp];
