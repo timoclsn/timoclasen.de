@@ -3,7 +3,9 @@ import { Twitter } from 'react-feather';
 import Box from '@/mauli/Box';
 import Button from '@/mauli/Button';
 import Card from '@/mauli/Card';
+import Heading from '@/mauli/Heading';
 import Stack from '@/mauli/Stack';
+import Text from '@/mauli/Text';
 
 export default function Mauli() {
     return (
@@ -41,6 +43,30 @@ export default function Mauli() {
                 <Stack direction="horizontal" fullWidth>
                     <Card fullWidth>Card 1</Card>
                     <Card fullWidth>Card 2</Card>
+                </Stack>
+                <Stack direction="horizontal">
+                    <Stack>
+                        <Heading as="h1" size="large">
+                            Heading 1
+                        </Heading>
+                        <Heading as="h2" size="medium">
+                            Heading 2
+                        </Heading>
+                        <Heading as="h3" size="small">
+                            Heading 3
+                        </Heading>
+                    </Stack>
+                    <Stack>
+                        <Text as="p" size="large">
+                            Das ist ein Text
+                        </Text>
+                        <Text as="p" size="medium">
+                            Das ist ein Text
+                        </Text>
+                        <Text as="p" size="small">
+                            Das ist ein Text
+                        </Text>
+                    </Stack>
                 </Stack>
             </Stack>
         </Box>
