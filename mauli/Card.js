@@ -12,7 +12,7 @@ export default function Card({ children, as = 'div', className, ...props }) {
     );
 
     return (
-        <Box as={Element} className={styles} {...props}>
+        <Box as={Element} inset="medium" className={styles} {...props}>
             {children}
         </Box>
     );

@@ -9,6 +9,9 @@ export const BP = {
 };
 
 export function responsiveClassNames(responsiveProp, options) {
+    if (!responsiveProp) {
+        return '';
+    }
     responsiveProp = Array.isArray(responsiveProp)
         ? responsiveProp
         : [responsiveProp];

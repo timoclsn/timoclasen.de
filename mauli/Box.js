@@ -5,7 +5,7 @@ import { responsiveClassNames } from '@/mauli/utils';
 export default function Box({
     children,
     as = 'div',
-    inset = 'medium',
+    inset,
     fullWidth,
     className,
     ...props
@@ -13,7 +13,12 @@ export default function Box({
     const Element = as;
 
     const styles = clsx(
+        // Inset
         responsiveClassNames(inset, [
+            {
+                value: 'none',
+                classNames: ['p-0', 'sm:p-0', 'md:p-0', 'lg:p-0', 'xl:p-0']
+            },
             {
                 value: 'xsmall',
                 classNames: ['p-1', 'sm:p-1', 'md:p-1', 'lg:p-1', 'xl:p-1']

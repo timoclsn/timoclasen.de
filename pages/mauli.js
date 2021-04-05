@@ -42,7 +42,9 @@ export default function Mauli() {
                 </Stack>
                 <Stack direction="horizontal" fullWidth>
                     <Card fullWidth>Card 1</Card>
-                    <Card fullWidth>Card 2</Card>
+                    <Card inset="large" fullWidth>
+                        Card 2
+                    </Card>
                 </Stack>
                 <Stack direction="horizontal">
                     <Stack>
