@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 
 import Text from '@/mauli/Text';
+import { responsiveClassNames } from '@/mauli/utils';
 
 export default function Heading({
     children,
@@ -15,11 +16,38 @@ export default function Heading({
         'font-bold',
 
         // Size
-        {
-            'text-2xl': size === 'small',
-            'text-4xl': size === 'medium',
-            'text-6xl': size === 'large'
-        },
+        responsiveClassNames(size, [
+            {
+                value: 'small',
+                classNames: [
+                    'text-2xl',
+                    'sm:text-2xl',
+                    'md:text-2xl',
+                    'lg:text-2xl',
+                    'xl:text-2xl'
+                ]
+            },
+            {
+                value: 'medium',
+                classNames: [
+                    'text-4xl',
+                    'sm:text-4xl',
+                    'md:text-4xl',
+                    'lg:text-4xl',
+                    'xl:text-4xl'
+                ]
+            },
+            {
+                value: 'large',
+                classNames: [
+                    'text-6xl',
+                    'sm:text-6xl',
+                    'md:text-6xl',
+                    'lg:text-6xl',
+                    'xl:text-6xl'
+                ]
+            }
+        ]),
 
         className
     );

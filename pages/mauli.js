@@ -54,7 +54,7 @@ export default function Mauli() {
                         <Heading as="h2" size="medium">
                             Heading 2
                         </Heading>
-                        <Heading as="h3" size="small">
+                        <Heading as="h3" size={['small', 'medium', 'large']}>
                             Heading 3
                         </Heading>
                     </Stack>
@@ -65,7 +65,7 @@ export default function Mauli() {
                         <Text as="p" size="medium">
                             Das ist ein Text
                         </Text>
-                        <Text as="p" size="small">
+                        <Text as="p" size={['small', 'medium', 'large']}>
                             Das ist ein Text
                         </Text>
                     </Stack>
