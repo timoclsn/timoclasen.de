@@ -17,13 +17,21 @@ export default function Button({
         'rounded-full',
         'space-x-2',
         'disabled:opacity-50',
+        'focus:outline-none',
 
         // Variant
         {
-            'bg-highlight dark:bg-highlight-dark text-light hover:bg-opacity-90 dark:hover:bg-opacity-90':
-                variant === 'solid',
-            'ring-2 ring-inset ring-dark dark:ring-light hover:bg-dark dark:hover:bg-light hover:bg-opacity-10 dark:hover:bg-opacity-10':
-                variant === 'ghost'
+            [`
+                text-light 
+                bg-highlight dark:bg-highlight-dark 
+                hover:bg-opacity-80 dark:hover:bg-opacity-80 
+                focus:ring-2 focus:ring-inset focus:ring-dark dark:focus:ring-light
+            `]: variant === 'solid',
+            [`
+                ring-2 ring-inset ring-dark dark:ring-light 
+                hover:bg-dark dark:hover:bg-light hover:bg-opacity-20 dark:hover:bg-opacity-20 
+                focus:ring-highlight dark:focus:ring-highlight-dark
+            `]: variant === 'ghost'
         },
 
         // Size
