@@ -52,11 +52,10 @@
         "simplify-geojson": "^1.0.4",
         "strip-markdown": "^4.0.0",
         "swr": "^0.5.5",
-        "tailwindcss": "^2.0.4",
+        "tailwindcss": "^2.1.1",
         "ws": "^7.4.4"
     },
     "devDependencies": {
-        "@tailwindcss/jit": "^0.1.18",
         "cypress": "^7.0.0",
         "dotenv": "^8.2.0",
         "eslint": "^7.23.0",
