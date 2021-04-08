@@ -14,6 +14,7 @@ const publicAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
     const pages = await globby([
         'pages/**/*js',
         '!pages/_*.js',
+        '!pages/404.js',
         '!pages/blog/*.js',
         '!pages/api'
     ]);
