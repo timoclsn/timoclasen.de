@@ -11,9 +11,8 @@ import { ThemeContext } from '@/components/ThemeContext';
 
 SyntaxHighlighter.registerLanguage('jsx', jsx);
 
-const renderers = {
-    paragraph: function Paragraph(paragraph) {
-        const { node } = paragraph;
+const components = {
+    p: function Paragraph({ node, children }) {
         if (node.children[0].type === 'image') {
             const image = node.children[0];
             return (
@@ -30,16 +29,16 @@ const renderers = {
                 </div>
             );
         }
-
-        return <p>{paragraph.children}</p>;
+        return <p>{children}</p>;
     },
-    code: function Code({ language, value }) {
+    pre: function Code({ node }) {
         const { darkMode } = useContext(ThemeContext);
         const style = darkMode ? styleDark : styleLight;
+        const code = node.children[0].children[0].value.replace(/\n$/, '');
 
         return (
-            <SyntaxHighlighter style={style} language={language}>
-                {value}
+            <SyntaxHighlighter style={style} language="jsx">
+                {code}
             </SyntaxHighlighter>
         );
     }
@@ -48,7 +47,7 @@ const renderers = {
 export default function TextPost({ children }) {
     return (
         <TextContainer>
-            <ReactMarkdown renderers={renderers}>{children}</ReactMarkdown>
+            <ReactMarkdown components={components}>{children}</ReactMarkdown>
         </TextContainer>
     );
 }

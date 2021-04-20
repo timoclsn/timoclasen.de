@@ -81,6 +81,15 @@
         "image": "cover-1104988315.jpg"
     },
     {
+        "title": "Chats with Kent C. Dodds",
+        "favorite": false,
+        "feed": "https://feeds.simplecast.com/X_wS_WYh",
+        "description": "Kent C. Dodds chats with developers.\n",
+        "website": "https://kentcdodds.com/chats-with-kent-podcast",
+        "hosts": "Kent C. Dodds",
+        "image": "cover--77072098.jpg"
+    },
+    {
         "title": "CLEANELECTRIC Podcast",
         "favorite": false,
         "feed": "https://www.cleanelectric.de/feed/mp3/",
@@ -126,6 +135,15 @@
         "image": "cover--1906039915.jpg"
     },
     {
+        "title": "Der AWS-Podcast auf Deutsch",
+        "favorite": false,
+        "feed": "https://german-aws-podcast.libsyn.com/rss",
+        "description": "Der offizielle, deutschsprachige Podcast von Amazon Web Services mit Dennis Traub, Developer Advocate & Technical Evangelist bei AWS\n",
+        "website": "https://bit.ly/aws-de",
+        "hosts": "Dennis Traub, Amazon Web Services",
+        "image": "cover-1467301967.jpg"
+    },
+    {
         "title": "Design Better Podcast",
         "favorite": false,
         "feed": "https://designbetter.libsyn.com/rss",
@@ -151,6 +169,15 @@
         "website": "https://www.designmattersmedia.com/designmatters",
         "hosts": "Design Matters Media",
         "image": "cover--1800126491.jpg"
+    },
+    {
+        "title": "Design Systems Podcast",
+        "favorite": false,
+        "feed": "https://feeds.buzzsprout.com/887923.rss",
+        "description": "Design Systems Podcast interviews industry leaders and product makers to share best practices and explore the areas where design and development come together.\n",
+        "website": "https://www.designsystemspodcast.com/",
+        "hosts": "Knapsack",
+        "image": "cover-924896390.jpg"
     },
     {
         "title": "digital kompakt | Business & Digitalisierung von Startup bis Corporate",
@@ -192,7 +219,7 @@
         "title": "F1 Nation",
         "favorite": false,
         "feed": "https://audioboom.com/channels/5024396.rss",
-        "description": "F1 Nation is a weekly podcast aiming to unite like-minded fans from around the world. Join Tom Clarkson and Alex Jacques as they bring you a slice of light-hearted F1 chat, with guests, debates and plenty of laughs…\n",
+        "description": "F1 Nation is a weekly podcast aiming to unite like-minded fans from around the world. Join Tom Clarkson, Damon Hill and Natalie Pinkham as they bring you a slice of light-hearted F1 chat, with guests, debates and plenty of laughs…\n",
         "website": "https://audioboom.com/channels/5024396",
         "hosts": "Formula 1",
         "image": "cover--1807838084.jpg"
@@ -214,6 +241,15 @@
         "website": "https://financefwd.com/de/",
         "hosts": "Niklas Wirminghaus und Caspar Schlenk | Finance FWD",
         "image": "cover-413214548.jpg"
+    },
+    {
+        "title": "Frontend Greatness",
+        "favorite": false,
+        "feed": "https://anchor.fm/s/4548b47c/podcast/rss",
+        "description": "A podcast that helps frontend developers go from good to great. Hosted by A-P Koponen.\n",
+        "website": "http://www.frontendgreatness.com/",
+        "hosts": "Ari-Pekka Koponen",
+        "image": "cover-1967909334.jpg"
     },
     {
         "title": "Full Stack Radio",
@@ -245,9 +281,9 @@
     {
         "title": "Information Lovers Podcast",
         "favorite": false,
-        "feed": "https://feeds.simplecast.com/YMT15IpV",
+        "feed": "https://anchor.fm/s/5249f848/podcast/rss",
         "description": "Im Information Lovers Podcast teile ich mit allen wissenshungrigen Zuhörern meine Gedanken, Erfahrungen und spannende Gespräche rund um UX Design & Strategie, digitale Produkte, Leadership und vieles mehr. Bist auch du ein Information Lover? Dann sei dabei und lass uns jede Woche gemeinsam lernen!\n",
-        "website": "https://informationlovers.com/podcast",
+        "website": "https://informationlovers.com",
         "hosts": "Katharina Clasen",
         "image": "cover-1359893163.jpg"
     },
@@ -405,6 +441,15 @@
         "image": "cover--1864951395.jpg"
     },
     {
+        "title": "React Podcast",
+        "favorite": false,
+        "feed": "https://feeds.simplecast.com/JoR28o79",
+        "description": "Conversations about React with your favorite developers.\n",
+        "website": "http://reactpodcast.com/",
+        "hosts": "Michael Chan",
+        "image": "cover--934227677.jpg"
+    },
+    {
         "title": "Release Notes",
         "favorite": false,
         "feed": "https://releasenotes.tv/feed/podcast/",
@@ -477,10 +522,28 @@
         "image": "cover-518079806.jpg"
     },
     {
+        "title": "The Clearleft Podcast",
+        "favorite": false,
+        "feed": "https://podcast.clearleft.com/podcast.xml",
+        "description": "The Clearleft podcast investigates the process of design. We talk to peers, clients, and customers. Then we share what we learn about the challenges and rewards of digital design.\n",
+        "website": "https://podcast.clearleft.com",
+        "hosts": "Clearleft",
+        "image": "cover-1073333353.jpg"
+    },
+    {
+        "title": "The CodeSandbox Podcast",
+        "favorite": false,
+        "feed": "https://feeds.resonaterecordings.com/codesandbox-podcast",
+        "description": "At CodeSandbox, we are working hard to enable any creator to build and share their ideas with code. On The CodeSandbox Podcast, we'll introduce you to the best and brightest from our community, show you how people use CodeSandbox for a number of different tasks, and explore the more human side of open source than the purely technical.\n",
+        "website": "https://codesandbox.io/podcasts/codesandbox-podcast",
+        "hosts": "CodeSandbox BV",
+        "image": "cover-1651907183.jpg"
+    },
+    {
         "title": "The Energy Gang",
         "favorite": false,
         "feed": "https://rss.art19.com/the-energy-gang",
-        "description": "Looking to understand the fast-changing world of energy? This isn't your ordinary energy business show. Every week, we debate and discuss the latest trends in energy, cleantech, renewables, and the environment. Join us as we explore the forces transforming energy markets in America and around the world.\n",
+        "description": "Looking to understand the fast-changing world of energy? Every week, we debate and discuss the latest trends in energy, cleantech, renewables, and the environment. Join us as we explore the forces transforming energy markets in America and around the world.\n",
         "website": "https://art19.com/shows/the-energy-gang",
         "hosts": "Greentech Media",
         "image": "cover-1098415452.jpg"
@@ -493,6 +556,15 @@
         "website": "https://www.theincomparable.com/theincomparable/",
         "hosts": "Jason Snell",
         "image": "cover-1802851150.jpg"
+    },
+    {
+        "title": "The Internet of Things Podcast - Stacey On IoT",
+        "favorite": false,
+        "feed": "https://iotpodcast.com/feed/podcast/",
+        "description": "Stacey Higginbotham (formerly Sr. Editor at Fortune) and co-host Kevin Tofel discuss the latest news and analysis of the Internet of Things. Covers Consumer IoT, Industrial IoT and Enterprise IoT.  Guests include Vint Cerf, Om Malik, and people from Amazon.com, AT\\&T, IBM Watson and more.\n",
+        "website": "https://iotpodcast.com",
+        "hosts": "Stacey Higginbotham, tech journalist",
+        "image": "cover-1662565381.jpg"
     },
     {
         "title": "The Smart Home Show",
@@ -529,6 +601,15 @@
         "website": "https://uie.fm/shows/uie",
         "hosts": "Jared Spool",
         "image": "cover--1534902106.jpg"
+    },
+    {
+        "title": "The Undefined Podcast",
+        "favorite": false,
+        "feed": "https://feeds.simplecast.com/8lcA0Is7",
+        "description": "The only engineering podcast with a 2 drink minimum! Full stack developers Jared Palmer and Ken Wheeler have  peer-to-peer conversations with world-class engineers about software development.\n",
+        "website": "https://undefined.fm",
+        "hosts": "Jared Palmer & Ken Wheeler",
+        "image": "cover--1695841819.jpg"
     },
     {
         "title": "The Vergecast",
@@ -592,6 +673,15 @@
         "website": "https://userdefenders.com/",
         "hosts": "Jason Ogle",
         "image": "cover-1815355830.jpg"
+    },
+    {
+        "title": "Version One with Maurice Cherry",
+        "favorite": false,
+        "feed": "https://feeds.resonaterecordings.com/version-one-with-maurice-cherry",
+        "description": "Version One is a new podcast from CodeSandbox that dives into the product development journey of some of the web's most talked-about tools and resources. Follow along with host Maurice Cherry as he uncovers these stories from the creators who built them. You will learn about what worked, what didn't work and hear about the challenges they overcame in creating that all-important first version of their product.\n",
+        "website": "http://",
+        "hosts": "CodeSandbox BV",
+        "image": "cover-2048514391.jpg"
     },
     {
         "title": "Waveform: The MKBHD Podcast",
