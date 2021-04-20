@@ -34,7 +34,6 @@
     <outline xmlUrl="https://feeds.megaphone.fm/vergecast" text="The Vergecast" title="The Vergecast" type="rss" version="RSS"/>
     <outline xmlUrl="https://shoptalkshow.com/feed/podcast" text="ShopTalk" title="ShopTalk" type="rss" version="RSS"/>
     <outline xmlUrl="http://feeds.feedburner.com/StacktraceBy9to5mac" text="Stacktrace" title="Stacktrace" type="rss" version="RSS"/>
-    <outline xmlUrl="https://feeds.simplecast.com/YMT15IpV" text="Information Lovers Podcast" title="Information Lovers Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://atp.fm/episodes?format=rss" text="Accidental Tech Podcast" title="Accidental Tech Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://omr.podigee.io/feed/mp3" text="OMR Podcast" title="OMR Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://feed.syntax.fm/rss" text="Syntax - Tasty Web Development Treats" title="Syntax - Tasty Web Development Treats" type="rss" version="RSS"/>
@@ -73,5 +72,16 @@
     <outline xmlUrl="https://modernweb.podbean.com/feed.xml" text="Modern Web" title="Modern Web" type="rss" version="RSS"/>
     <outline xmlUrl="https://awfnr.podigee.io/feed/mp3" text="Alle Wege f&#xFC;hren nach Ruhm - AWFNR" title="Alle Wege f&#xFC;hren nach Ruhm - AWFNR" type="rss" version="RSS"/>
     <outline xmlUrl="https://baywatch-berlin.podigee.io/feed/mp3" text="Baywatch Berlin" title="Baywatch Berlin" type="rss" version="RSS"/>
+    <outline xmlUrl="https://iotpodcast.com/feed/podcast/" text="The Internet of Things Podcast - Stacey On IoT" title="The Internet of Things Podcast - Stacey On IoT" type="rss" version="RSS"/>
+    <outline xmlUrl="https://podcast.clearleft.com/podcast.xml" text="The Clearleft Podcast" title="The Clearleft Podcast" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.simplecast.com/X_wS_WYh" text="Chats with Kent C. Dodds" title="Chats with Kent C. Dodds" type="rss" version="RSS"/>
+    <outline xmlUrl="https://anchor.fm/s/5249f848/podcast/rss" text="Information Lovers Podcast" title="Information Lovers Podcast" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.simplecast.com/JoR28o79" text="React Podcast" title="React Podcast" type="rss" version="RSS"/>
+    <outline xmlUrl="https://german-aws-podcast.libsyn.com/rss" text="Der AWS-Podcast auf Deutsch" title="Der AWS-Podcast auf Deutsch" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.buzzsprout.com/887923.rss" text="Design Systems Podcast" title="Design Systems Podcast" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.simplecast.com/8lcA0Is7" text="The Undefined Podcast" title="The Undefined Podcast" type="rss" version="RSS"/>
+    <outline xmlUrl="https://anchor.fm/s/4548b47c/podcast/rss" text="Frontend Greatness" title="Frontend Greatness" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.resonaterecordings.com/version-one-with-maurice-cherry" text="Version One with Maurice Cherry" title="Version One with Maurice Cherry" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.resonaterecordings.com/codesandbox-podcast" text="The CodeSandbox Podcast" title="The CodeSandbox Podcast" type="rss" version="RSS"/>
   </body>
 </opml>
