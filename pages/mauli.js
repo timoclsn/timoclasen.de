@@ -5,6 +5,7 @@ import Button from '@/mauli/Button';
 import Card from '@/mauli/Card';
 import Container from '@/mauli/Container';
 import Heading from '@/mauli/Heading';
+import Inline from '@/mauli/Inline';
 import Stack from '@/mauli/Stack';
 import Text from '@/mauli/Text';
 
@@ -76,6 +77,14 @@ export default function Mauli() {
                     </Stack>
                 </Stack>
             </Box>
+            <Inline space={['small', 'medium', 'large']}>
+                <Button variant="solid">Solid</Button>
+                <Button variant="solid">Solid</Button>
+                <Button variant="solid">Solid</Button>
+                <Button variant="solid">Solid</Button>
+                <Button variant="solid">Solid</Button>
+                <Button variant="solid">Solid</Button>
+            </Inline>
         </Container>
     );
 }
