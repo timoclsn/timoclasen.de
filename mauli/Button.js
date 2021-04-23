@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import { Children } from 'react';
 
 export default function Button({
     children,
@@ -21,17 +22,10 @@ export default function Button({
 
         // Variant
         {
-            [`
-                text-light 
-                bg-highlight dark:bg-highlight-dark 
-                hover:bg-opacity-80 dark:hover:bg-opacity-80 
-                focus:ring-2 focus:ring-inset focus:ring-dark dark:focus:ring-light
-            `]: variant === 'solid',
-            [`
-                ring-2 ring-inset ring-dark dark:ring-light 
-                hover:bg-dark dark:hover:bg-light hover:bg-opacity-20 dark:hover:bg-opacity-20 
-                focus:ring-highlight dark:focus:ring-highlight-dark
-            `]: variant === 'ghost'
+            'text-light bg-highlight dark:bg-highlight-dark hover:bg-opacity-80 dark:hover:bg-opacity-80 focus:ring-2 focus:ring-inset focus:ring-dark dark:focus:ring-light':
+                variant === 'solid',
+            'ring-2 ring-inset ring-dark dark:ring-light hover:bg-dark dark:hover:bg-light hover:bg-opacity-20 dark:hover:bg-opacity-20 focus:ring-highlight dark:focus:ring-highlight-dark':
+                variant === 'ghost'
         },
 
         // Size
@@ -44,11 +38,9 @@ export default function Button({
     );
     return (
         <Element className={styles} {...props}>
-            {Array.isArray(children)
-                ? children.map((child, index) => (
-                      <span key={index}>{child}</span>
-                  ))
-                : children}
+            {Children.map(children, (child, index) => (
+                <span key={index}>{child}</span>
+            ))}
         </Element>
     );
 }
