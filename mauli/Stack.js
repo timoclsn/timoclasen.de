@@ -109,7 +109,8 @@ export default function Stack({
         {
             'items-start': align === 'start',
             'items-center': align === 'center',
-            'items-end': align === 'end'
+            'items-end': align === 'end',
+            'items-baseline': align === 'baseline'
         },
 
         // Justify
@@ -119,7 +120,9 @@ export default function Stack({
             'justify-end': justify === 'end',
             'justify-between': justify === 'between'
         },
+
         { 'w-full': fullWidth },
+
         className
     );
 
