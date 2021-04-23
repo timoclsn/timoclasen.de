@@ -7,6 +7,8 @@ export default function Inline({
     children,
     as = 'div',
     space = 'medium',
+    align = 'start',
+    justify = 'start',
     className,
     ...props
 }) {
@@ -50,6 +52,22 @@ export default function Inline({
                 ]
             }
         ]),
+
+        // Align
+        {
+            'items-start': align === 'start',
+            'items-center': align === 'center',
+            'items-end': align === 'end',
+            'items-baseline': align === 'baseline'
+        },
+
+        // Justify
+        {
+            'justify-start': justify === 'start',
+            'justify-center': justify === 'center',
+            'justify-end': justify === 'end',
+            'justify-between': justify === 'between'
+        },
 
         className
     );
