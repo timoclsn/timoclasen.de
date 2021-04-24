@@ -5,17 +5,21 @@ export default function Button({
     children,
     as = 'button',
     variant = 'solid',
-    size = 'medium',
+    fullWidth,
     className,
     ...props
 }) {
-    const Element = as;
+    const Element = props.href ? 'a' : as;
 
     const styles = clsx(
         'inline-flex',
         'items-center',
         'justify-center',
         'rounded-full',
+        'px-8',
+        'py-4',
+        'icon-md',
+        'font-bold',
         'space-x-2',
         'disabled:opacity-50',
         'focus:outline-none',
@@ -28,11 +32,7 @@ export default function Button({
                 variant === 'ghost'
         },
 
-        // Size
-        {
-            'px-4 py-2 icon-sm text-sm': size === 'small',
-            'px-8 py-4 icon-md font-bold text-base': size === 'medium'
-        },
+        { 'w-full': fullWidth },
 
         className
     );
