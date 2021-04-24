@@ -111,13 +111,9 @@ export default function Inline({
     return (
         <Element className={parentStyles} {...props}>
             {Children.map(children, (child, index) => {
-                const { className, ...props } = child.props;
+                const { type: Element, props } = child;
                 return (
-                    <child.type
-                        className={clsx(className, childStyles)}
-                        key={index}
-                        {...props}
-                    />
+                    <Element className={childStyles} key={index} {...props} />
                 );
             })}
         </Element>
