@@ -19,14 +19,18 @@ export default function Mauli() {
                         space={['small', 'medium', 'large']}
                         fullWidth>
                         <Button variant="solid">Solid</Button>
-                        <Button variant="solid" size="small">
-                            Solid
-                        </Button>
+                        <Button variant="solid">Solid</Button>
                         <Button variant="solid">
                             <Twitter />
                             Icon
                         </Button>
-                        <Button variant="ghost" size="small">
+                        <Button variant="solid">
+                            <Twitter />
+                        </Button>
+                        <Button variant="ghost">
+                            <Twitter />
+                        </Button>
+                        <Button variant="ghost">
                             <Twitter />
                             Icon
                         </Button>

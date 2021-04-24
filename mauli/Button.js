@@ -4,6 +4,7 @@ import { Children } from 'react';
 export default function Button({
     children,
     as = 'button',
+    type = 'button',
     variant = 'solid',
     fullWidth,
     className,
@@ -37,7 +38,10 @@ export default function Button({
         className
     );
     return (
-        <Element className={styles} {...props}>
+        <Element
+            type={Element === 'button' ? type : undefined}
+            className={styles}
+            {...props}>
             {Children.map(children, (child, index) => (
                 <span key={index}>{child}</span>
             ))}
