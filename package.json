@@ -25,7 +25,7 @@
     },
     "dependencies": {
         "@mapbox/polyline": "^1.1.1",
-        "@next/bundle-analyzer": "^10.1.3",
+        "@next/bundle-analyzer": "^10.2.0",
         "@tailwindcss/aspect-ratio": "^0.2.0",
         "@tailwindcss/line-clamp": "^0.2.0",
         "@tailwindcss/typography": "^0.4.0",
@@ -37,8 +37,8 @@
         "fast-xml-parser": "^3.19.0",
         "feed": "^4.2.2",
         "he": "^1.2.0",
-        "next": "^10.1.3",
-        "postcss": "^8.2.12",
+        "next": "^10.2.0",
+        "postcss": "^8.2.13",
         "preact": "^10.5.13",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
@@ -58,10 +58,10 @@
         "ws": "^7.4.5"
     },
     "devDependencies": {
-        "cypress": "^7.1.0",
+        "cypress": "^7.2.0",
         "dotenv": "^8.2.0",
         "eslint": "^7.25.0",
-        "eslint-config-prettier": "^8.2.0",
+        "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-cypress": "^2.11.2",
         "eslint-plugin-jsx-a11y": "^6.4.1",
         "eslint-plugin-prettier": "^3.4.0",
