@@ -1,7 +1,7 @@
 import { XCircle } from 'react-feather';
 
-import Button from '@/components/Button';
 import CenteredColumn from '@/components/CenteredColumn';
+import Button from '@/mauli/Button';
 
 export default function PreviewAlert() {
     return (
@@ -11,12 +11,10 @@ export default function PreviewAlert() {
                     <p className="text-xl font-bold text-center uppercase md:text-3xl">
                         Vorschau
                     </p>
-                    <Button
-                        Icon={XCircle}
-                        text="Schließen"
-                        href="/api/exit-preview"
-                        secondary
-                    />
+                    <Button variant="ghost" href="/api/exit-preview">
+                        <XCircle />
+                        Schließen
+                    </Button>
                 </div>
             </CenteredColumn>
         </div>

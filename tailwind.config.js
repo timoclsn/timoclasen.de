@@ -2,7 +2,7 @@ const { fontFamily } = require('tailwindcss/defaultTheme');
 
 module.exports = {
     mode: 'jit',
-    purge: ['./pages/**/*.js', './components/**/*.js'],
+    purge: ['./pages/**/*.js', './components/**/*.js', './mauli/**/*.js'],
     darkMode: 'class',
     theme: {
         screens: {
@@ -22,6 +22,18 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Inter', ...fontFamily.sans]
+            },
+            capsize: {
+                fontMetrics: {
+                    sans: {
+                        capHeight: 2048,
+                        ascent: 2728,
+                        descent: -680,
+                        lineGap: 0,
+                        unitsPerEm: 2816
+                    }
+                },
+                className: 'capsize'
             },
             typography: (theme) => ({
                 DEFAULT: {
@@ -107,6 +119,7 @@ module.exports = {
     plugins: [
         require('@tailwindcss/typography'),
         require('@tailwindcss/line-clamp'),
-        require('@tailwindcss/aspect-ratio')
+        require('@tailwindcss/aspect-ratio'),
+        require('@themosaad/tailwindcss-capsize')
     ]
 };

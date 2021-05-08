@@ -52,3 +52,15 @@
         @apply opacity-80;
     }
 }
+
+@layer utilities {
+    .icon-sm svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .icon-md svg {
+        width: 20px;
+        height: 20px;
+    }
+}

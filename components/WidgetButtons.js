@@ -1,32 +1,32 @@
 import { Linkedin, Mail, Twitter } from 'react-feather';
 
-import Button from '@/components/Button';
+import Button from '@/mauli/Button';
 
 export default function WidgetButtons() {
     return (
         <div className="flex flex-col items-center justify-between w-full h-full px-6 py-12 pt-0 space-y-4 sm:space-y-0 xl:px-12 sm:pt-12 xl:py-20">
+            <Button href="mailto:timo@timoclasen.de" fullWidth>
+                <Mail />
+                E-Mail
+            </Button>
             <Button
-                Icon={Mail}
-                text="E-Mail"
-                href="mailto:timo@timoclasen.de"
-                fullWidth
-            />
-            <Button
-                Icon={Twitter}
-                text="Twitter"
+                variant="ghost"
                 href="https://twitter.com/timoclsn"
                 target="_blank"
-                secondary
-                fullWidth
-            />
+                rel="noopener noreferrer"
+                fullWidth>
+                <Twitter />
+                Twitter
+            </Button>
             <Button
-                Icon={Linkedin}
-                text="LinkedIn"
+                variant="ghost"
                 href="https://www.linkedin.com/in/timoclsn/"
                 target="_blank"
-                secondary
-                fullWidth
-            />
+                rel="noopener noreferrer"
+                fullWidth>
+                <Linkedin />
+                LinkedIn
+            </Button>
         </div>
     );
 }
