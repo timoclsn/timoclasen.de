@@ -16,21 +16,20 @@ export default function Button({
         'inline-flex',
         'items-center',
         'justify-center',
-        'rounded-full',
-        'px-8',
-        'py-4',
         'icon-md',
         'font-bold',
         'space-x-2',
+        'cursor-pointer',
         'disabled:opacity-50',
         'focus:outline-none',
 
         // Variant
         {
-            'text-light bg-highlight dark:bg-highlight-dark hover:bg-opacity-80 dark:hover:bg-opacity-80 focus:ring-2 focus:ring-inset focus:ring-dark dark:focus:ring-light':
+            'px-8 py-4 rounded-full text-light bg-highlight dark:bg-highlight-dark hover:bg-opacity-80 dark:hover:bg-opacity-80 focus:ring-2 focus:ring-inset focus:ring-dark dark:focus:ring-light':
                 variant === 'solid',
-            'ring-2 ring-inset ring-dark dark:ring-light hover:bg-dark dark:hover:bg-light hover:bg-opacity-20 dark:hover:bg-opacity-20 focus:ring-highlight dark:focus:ring-highlight-dark':
-                variant === 'ghost'
+            'px-8 py-4 rounded-full ring-2 ring-inset ring-dark dark:ring-light hover:bg-dark dark:hover:bg-light hover:bg-opacity-20 dark:hover:bg-opacity-20 focus:ring-highlight dark:focus:ring-highlight-dark':
+                variant === 'ghost',
+            'hover:opacity-80': variant === 'link'
         },
 
         { 'w-full': fullWidth },

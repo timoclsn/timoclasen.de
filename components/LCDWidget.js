@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { ArrowRight } from 'react-feather';
 
+import Button from '@/components/Button';
+
 export default function LCDWidget({ bgImage }) {
     return (
         <section id="life-centered-design" className="relative">
@@ -25,14 +27,14 @@ export default function LCDWidget({ bgImage }) {
                         Informationen, Ressourcen und mehr zum Thema Life
                         Centered Design
                     </p>
-                    <a
+                    <Button
+                        variant="link"
                         href="https://lifecentereddesign.net"
-                        target="_blang"
-                        rel="nooperner"
-                        className="flex items-center space-x-2 hover:opacity-80">
-                        <ArrowRight size={24} />
-                        <span className="font-bold">Zum Projekt</span>
-                    </a>
+                        target="_blank"
+                        rel="nooperner">
+                        <ArrowRight />
+                        Zum Projekt
+                    </Button>
                 </div>
             </div>
         </section>

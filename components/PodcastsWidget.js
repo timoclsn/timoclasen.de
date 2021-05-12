@@ -2,6 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'react-feather';
 
+import Button from '@/components/Button';
+
 export default function PodcastsWidget({ podcasts }) {
     return (
         <section id="podcasts">
@@ -15,10 +17,10 @@ export default function PodcastsWidget({ podcasts }) {
                 </p>
                 <div className="flex flex-col justify-end flex-none">
                     <Link href="/podcasts">
-                        <a className="flex items-center space-x-2 hover:opacity-80">
-                            <ArrowRight size={24} />
-                            <div className="font-bold">Alle Podcasts</div>
-                        </a>
+                        <Button as="a" variant="link">
+                            <ArrowRight />
+                            Alle Podcasts
+                        </Button>
                     </Link>
                 </div>
             </div>
