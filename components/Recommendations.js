@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send } from 'react-feather';
+import { Loader, Send } from 'react-feather';
 
 import Button from '@/components/Button';
 
@@ -112,11 +112,14 @@ export default function Recommendations() {
                 <div className="flex justify-end">
                     <Button
                         type="submit"
-                        disabled={serverState.submitting || !message}
-                        text="Empfehlung senden"
-                        Icon={Send}
-                        isLoading={serverState.submitting}
-                    />
+                        disabled={serverState.submitting || !message}>
+                        {serverState.submitting ? (
+                            <Loader className="animate-spin" />
+                        ) : (
+                            <Send />
+                        )}
+                        Empfehlung senden
+                    </Button>
                 </div>
                 <div className="mx-auto">
                     {serverState.submitted &&

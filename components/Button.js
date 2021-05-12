@@ -1,56 +1,50 @@
-import { Loader } from 'react-feather';
+import clsx from 'clsx';
+import { Children } from 'react';
 
 export default function Button({
-    Icon,
-    text,
-    secondary,
-    fullWidth,
+    children,
+    as = 'button',
     type = 'button',
-    onClick,
-    disabled,
-    isLoading,
-    href,
-    target
+    variant = 'solid',
+    fullWidth,
+    className,
+    ...props
 }) {
-    const Tag = href ? 'a' : 'button';
-    const className = [
+    const Element = props.href ? 'a' : as;
+
+    const styles = clsx(
         'inline-flex',
         'items-center',
         'justify-center',
-        'px-8',
-        'py-3',
         'rounded-full',
+        'px-8',
+        'py-4',
+        'icon-md',
         'font-bold',
         'space-x-2',
         'disabled:opacity-50',
         'focus:outline-none',
-        ...(!secondary
-            ? [
-                  'bg-highlight dark:bg-highlight-dark text-light dark:text-light hover:bg-opacity-90 dark:hover:bg-opacity-90'
-              ]
-            : [
-                  'border-dark dark:border-light hover:bg-dark dark:hover:bg-light hover:bg-opacity-10 dark:hover:bg-opacity-10 border-2'
-              ]),
-        ...(fullWidth ? ['w-full'] : ['w-full sm:w-auto'])
-    ].join(' ');
 
+        // Variant
+        {
+            'text-light bg-highlight dark:bg-highlight-dark hover:bg-opacity-80 dark:hover:bg-opacity-80 focus:ring-2 focus:ring-inset focus:ring-dark dark:focus:ring-light':
+                variant === 'solid',
+            'ring-2 ring-inset ring-dark dark:ring-light hover:bg-dark dark:hover:bg-light hover:bg-opacity-20 dark:hover:bg-opacity-20 focus:ring-highlight dark:focus:ring-highlight-dark':
+                variant === 'ghost'
+        },
+
+        { 'w-full': fullWidth },
+
+        className
+    );
     return (
-        <Tag
-            className={className}
-            type={Tag === 'button' ? type : undefined}
-            aria-label={Tag === 'button' ? text : undefined}
-            onClick={onClick}
-            disabled={disabled}
-            href={href}
-            target={target}
-            rel={target === '_blank' ? 'noopener noreferrer' : undefined}>
-            {Icon &&
-                (isLoading ? (
-                    <Loader size={20} className="animate-spin" />
-                ) : (
-                    <Icon size={20} />
-                ))}
-            {text && <span>{text}</span>}
-        </Tag>
+        <Element
+            type={Element === 'button' ? type : undefined}
+            className={styles}
+            {...props}>
+            {Children.map(children, (child, index) => (
+                <span key={index}>{child}</span>
+            ))}
+        </Element>
     );
 }

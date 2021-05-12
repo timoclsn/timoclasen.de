@@ -52,3 +52,10 @@
         @apply opacity-80;
     }
 }
+
+@layer utilities {
+    .icon-md svg {
+        width: 20px;
+        height: 20px;
+    }
+}
