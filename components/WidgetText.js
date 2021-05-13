@@ -16,7 +16,7 @@ export default function WidgetText({ title, text, linkText, href }) {
             </div>
             {href && (
                 <div className="flex justify-end mt-4 -mb-6 xl:-mb-12">
-                    <Link href={href}>
+                    <Link href={href} passHref>
                         <Button as="a" variant="link">
                             <ArrowRight />
                             {linkText}

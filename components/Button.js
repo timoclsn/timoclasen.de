@@ -1,15 +1,19 @@
 import clsx from 'clsx';
 import { Children } from 'react';
+import React from 'react';
 
-export default function Button({
-    children,
-    as = 'button',
-    type = 'button',
-    variant = 'solid',
-    fullWidth,
-    className,
-    ...props
-}) {
+export default React.forwardRef(function Button(
+    {
+        children,
+        as = 'button',
+        type = 'button',
+        variant = 'solid',
+        fullWidth,
+        className,
+        ...props
+    },
+    ref
+) {
     const Element = props.href ? 'a' : as;
 
     const styles = clsx(
@@ -40,10 +44,11 @@ export default function Button({
         <Element
             type={Element === 'button' ? type : undefined}
             className={styles}
+            ref={ref}
             {...props}>
             {Children.map(children, (child, index) => (
                 <span key={index}>{child}</span>
             ))}
         </Element>
     );
-}
+});

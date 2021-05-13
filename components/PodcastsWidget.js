@@ -15,8 +15,8 @@ export default function PodcastsWidget({ podcasts }) {
                     Sie sind eins meiner absoluten Lieblingsmedien. Schau dir
                     an, was ich so regelmäßig höre.
                 </p>
-                <div className="flex flex-col justify-end flex-none">
-                    <Link href="/podcasts">
+                <div className="flex-none">
+                    <Link href="/podcasts" passHref>
                         <Button as="a" variant="link">
                             <ArrowRight />
                             Alle Podcasts
