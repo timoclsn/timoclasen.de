@@ -1,8 +1,7 @@
 import clsx from 'clsx';
-import { Children } from 'react';
-import React from 'react';
+import { Children, forwardRef } from 'react';
 
-export default React.forwardRef(function Button(
+export default forwardRef(function Button(
     {
         children,
         as = 'button',

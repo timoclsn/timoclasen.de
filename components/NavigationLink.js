@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
-import React from 'react';
+import { forwardRef } from 'react';
 
-export default React.forwardRef(function NavigationLink(
+export default forwardRef(function NavigationLink(
     { children, href, ...props },
     ref
 ) {
