@@ -3,8 +3,8 @@
         "title": "99% Invisible",
         "favorite": false,
         "feed": "https://feeds.99percentinvisible.org/99percentinvisible",
-        "description": "Design is everywhere in our lives, perhaps most importantly in the places where we've just stopped noticing. 99% Invisible is a weekly exploration of the process and power of design and architecture. From award winning producer Roman Mars. Learn more at 99percentinvisible.org.  A proud member of Radiotopia, from PRX. Learn more at radiotopia.fm.\n",
-        "website": "http://99percentinvisible.org",
+        "description": "Design is everywhere in our lives, perhaps most importantly in the places where we've just stopped noticing. 99% Invisible is a weekly exploration of the process and power of design and architecture. From award winning producer Roman Mars. Learn more at 99percentinvisible.org.\n",
+        "website": "https://99percentinvisible.org",
         "hosts": "Roman Mars",
         "image": "cover--435347918.jpg"
     },
@@ -139,7 +139,7 @@
         "favorite": false,
         "feed": "https://german-aws-podcast.libsyn.com/rss",
         "description": "Der offizielle, deutschsprachige Podcast von Amazon Web Services mit Dennis Traub, Developer Advocate & Technical Evangelist bei AWS\n",
-        "website": "https://bit.ly/aws-de",
+        "website": "https://bit.ly/aws-podcast-de",
         "hosts": "Dennis Traub, Amazon Web Services",
         "image": "cover-1467301967.jpg"
     },
@@ -192,7 +192,7 @@
         "title": "Digitale Vorreiter - Vodafone Business Cases",
         "favorite": false,
         "feed": "https://digitalevorreiter.podigee.io/feed/mp3",
-        "description": "Willkommen zu DIGITALE VORREITER – deinem Digitalisierungspodcast.\n\nDas erwartet euch:\n\n*   SPANNENDE INSIGHTS rund um das Thema Digitalisierung\n*   Echte ERFOLGSGESCHICHTEN und Erfahrungsberichte von Unternehmen, die den digitalen Wandel geschafft haben\n*   Interviews mit EXPERTEN, DIGITAL-PIONIEREN und VORBILDERN der digitalen Wirtschaft\n\nDas ist uns wichtig:\n\n*   Wir möchten dich mit Best Practices INSPIRIEREN\n*   Wir möchten dir KONKRETE ANSÄTZE für dein Business liefern\n*   Wir möchten dich über aktuelle News und Trends AUF DEM LAUFENDEN HALTEN\n\nDas ist unser Host:\n\n*   Christoph Burseg beschäftigt sich schon über 15 Jahre mit TECHNOLOGIE und ENTREPRENEURSHIP\n*   Als UNTERNEHMER berät er zu Digitalisierungs- und Online Marketing Themen.\n*   Besondere Expertise besitzt er in den Bereichen Search Marketing und Video Marketing.\n\nJETZT den wöchentlichen Vodafone Business Podcast “Digitale Vorreiter” ABONNIEREN, reinhören und inspirieren lassen.\n\nSpannende Erfolgsgeschichten könnt ihr auch im Online-Magazin „Business Cases“ nachlesen: www.vodafone.de/business/featured-digitale-vorreiter/business-cases/\n\nKontaktiere uns über Instagram: www.instagram.com/vodafonebusinessde/\nEmail für Feedback: digitalevorreiter@podstars.de\n\nProduziert von Podstars by OMR.\n",
+        "description": "Willkommen zu DIGITALE VORREITER – deinem Digitalisierungspodcast.\n\nDich erwarten spannende Insights rund um das Thema Digitalisierung. Hier geht es um echte Erfolgsgeschichten und Erfahrungsberichte von Unternehmen, die den digitalen Wandel geschafft haben. Hier gibt es Interviews mit Expert:innen, Digitalpionieren und Vorbildern der digitalen Wirtschaft. Wir möchten dich mit Best Practices inspirieren, konkrete Ansätze für dein Business liefern und dich über aktuelle News und Trends auf dem laufenden halten. Unser Host Christoph Burseg beschäftigt sich schon über 15 Jahre mit Technologie und Entrepreneurship. Als Unternehmer berät er zu Digitalisierungs- und Online Marketing Themen, während er besondere Expertise in den Bereichen Search Marketing und Video Marketing besitzt. JETZT den wöchentlichen Vodafone Business Podcast “Digitale Vorreiter” ABONNIEREN, reinhören und inspirieren lassen. Spannende Erfolgsgeschichten könnt ihr auch im Online-Magazin „Business Cases“ nachlesen: www.vodafone.de/business/featured-digitale-vorreiter/business-cases/\n\nKontaktiere uns über Instagram: www.instagram.com/vodafonebusinessde/\nEmail für Feedback: digitalevorreiter@podstars.de\nProduziert von Podstars by OMR.\n",
         "website": "https://www.vodafone.de/business/featured-digitale-vorreiter/business-cases/",
         "hosts": "Christoph Burseg / Vodafone Business",
         "image": "cover--797438357.jpg"
@@ -318,7 +318,7 @@
         "title": "Ladybug Podcast",
         "favorite": false,
         "feed": "https://pinecast.com/feed/ladybug-podcast",
-        "description": "We're Emma Bostian, Sidney Buckner, Kelly Vaughn, and Ali Spittel - four seasoned software developers working in different sectors. Since there's a major lack of technical podcasts out there, we've decided to start one. Just kidding -- there's already a ton! But, we wanted to add our voices to the space and share our experiences and advice. We'll have great discussions around how to start coding, the hot technologies right now, how to get your first developer job, and more!\n",
+        "description": "We're Emma Bostian, Sidney Buckner, Kelly Vaughn, and Ali Spittel - four seasoned software developers working in different sectors. Since there's a major lack of technical podcasts out there, we've decided to start one. Just kidding -- there's already a ton! But, we wanted to add our voices to the space and share our experiences and advice. We'll have great discussions around how to start coding, the hot technologies right now, how to get your first developer job, and more!\n\nCheck out our website!\n",
         "website": "https://ladybug.dev",
         "hosts": "Emma Bostian, Sidney Buckner, Kelly Vaughn, and Ali Spittel",
         "image": "cover--1540741618.jpg"
@@ -358,6 +358,15 @@
         "website": "https://www.relay.fm/material",
         "hosts": "Relay FM",
         "image": "cover-363710791.jpg"
+    },
+    {
+        "title": "Metamuse",
+        "favorite": false,
+        "feed": "https://museapp.com/podcast.rss",
+        "description": "Tools for thought, product design, and how to have good ideas.\n",
+        "website": "https://museapp.com/podcast",
+        "hosts": "Adam Wiggins, Mark McGranaghan",
+        "image": "cover--385072737.jpg"
     },
     {
         "title": "Mit Schirm, Charme und Sensoren . . . dein IOT Podcast",
@@ -484,6 +493,15 @@
         "website": "http://www.smarteinander.de",
         "hosts": "Smarteinander",
         "image": "cover-733741497.jpg"
+    },
+    {
+        "title": "Smashing Podcast",
+        "favorite": false,
+        "feed": "https://feeds.transistor.fm/smashing",
+        "description": "An interview show from your friends at Smashing Magazine. Drew McLellan talks to design and development experts about their work on the web, as well as catching you up with the latest news and articles at Smashing Magazine. Suitable for cats.\n",
+        "website": "https://podcast.smashingmagazine.com",
+        "hosts": "Smashing Magazine",
+        "image": "cover-920516970.jpg"
     },
     {
         "title": "Stacktrace",
@@ -679,7 +697,7 @@
         "favorite": false,
         "feed": "https://feeds.resonaterecordings.com/version-one-with-maurice-cherry",
         "description": "Version One is a new podcast from CodeSandbox that dives into the product development journey of some of the web's most talked-about tools and resources. Follow along with host Maurice Cherry as he uncovers these stories from the creators who built them. You will learn about what worked, what didn't work and hear about the challenges they overcame in creating that all-important first version of their product.\n",
-        "website": "http://",
+        "website": "https://codesandbox.io/podcasts/version-one",
         "hosts": "CodeSandbox BV",
         "image": "cover-2048514391.jpg"
     },
@@ -687,7 +705,7 @@
         "title": "Waveform: The MKBHD Podcast",
         "favorite": false,
         "feed": "http://feeds.feedburner.com/WaveformWithMkbhd",
-        "description": "A tech podcast for the gadget lovers and tech heads among us from the mind of Marques Brownlee, better known as MKBHD. MKBHD has made a name for himself on YouTube reviewing everything from the newest smartphones to cameras to electric cars. Pulling from over 10 years of experience covering the tech industry, MKBHD and co-host Andrew Manganelli will keep you informed and entertained as they take a deep dive into the latest and greatest in tech and what deserves your hard earned cash.  New episodes every other week. Link to ad survey: https://bit.ly/2EcYbu4.\nFor advertising opportunities please reach out to PodcastPartnerships@studio71us.com\n",
+        "description": "A tech podcast for the gadget lovers and tech heads among us from the mind of Marques Brownlee, better known as MKBHD. MKBHD has made a name for himself on YouTube reviewing everything from the newest smartphones to cameras to electric cars. Pulling from over 10 years of experience covering the tech industry, MKBHD and co-host Andrew Manganelli will keep you informed and entertained as they take a deep dive into the latest and greatest in tech and what deserves your hard earned cash. New episodes every other week. Link to ad survey: https://bit.ly/2EcYbu4.\\\nFor advertising opportunities please reach out to PodcastPartnerships@studio71us.com\n",
         "website": "https://www.studio71.com/us/podcasts/",
         "hosts": "Studio71",
         "image": "cover-1562093234.jpg"

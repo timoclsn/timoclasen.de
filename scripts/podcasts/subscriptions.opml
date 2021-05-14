@@ -83,5 +83,7 @@
     <outline xmlUrl="https://anchor.fm/s/4548b47c/podcast/rss" text="Frontend Greatness" title="Frontend Greatness" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.resonaterecordings.com/version-one-with-maurice-cherry" text="Version One with Maurice Cherry" title="Version One with Maurice Cherry" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.resonaterecordings.com/codesandbox-podcast" text="The CodeSandbox Podcast" title="The CodeSandbox Podcast" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.transistor.fm/smashing" text="Smashing Podcast" title="Smashing Podcast" type="rss" version="RSS"/>
+    <outline xmlUrl="https://museapp.com/podcast.rss" text="Metamuse" title="Metamuse" type="rss" version="RSS"/>
   </body>
 </opml>
