@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 export default function WidgetLayout({
     children,
     separate,
@@ -16,7 +18,7 @@ export default function WidgetLayout({
         ? 'text-light dark:text-light'
         : 'text-dark dark:text-light';
 
-    const containerSyles = [
+    const containerSyles = clsx(
         'flex',
         'flex-col',
         'sm:flex-row',
@@ -24,13 +26,10 @@ export default function WidgetLayout({
         'md:space-x-16',
         'lg:space-x-24',
         textColor,
-        ...(separate ? ['space-y-12 sm:space-y-0'] : [`rounded-3xl ${bgColor}`])
-    ].join(' ');
+        separate ? 'space-y-12 sm:space-y-0' : `rounded-3xl ${bgColor}`
+    );
 
-    const widgetStyles = [
-        'flex-1',
-        ...(separate ? [`rounded-3xl ${bgColor}`] : [])
-    ].join(' ');
+    const widgetStyles = clsx('flex-1', separate && `rounded-3xl ${bgColor}`);
 
     return (
         <section className={containerSyles}>

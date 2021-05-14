@@ -27,15 +27,13 @@ export default forwardRef(function Button(
         'focus:outline-none',
 
         // Variant
-        {
-            'px-8 py-4 rounded-full text-light bg-highlight dark:bg-highlight-dark hover:bg-opacity-80 dark:hover:bg-opacity-80 focus:ring-2 focus:ring-inset focus:ring-dark dark:focus:ring-light':
-                variant === 'solid',
-            'px-8 py-4 rounded-full ring-2 ring-inset ring-dark dark:ring-light hover:bg-dark dark:hover:bg-light hover:bg-opacity-20 dark:hover:bg-opacity-20 focus:ring-highlight dark:focus:ring-highlight-dark':
-                variant === 'ghost',
-            'hover:opacity-80': variant === 'link'
-        },
+        variant === 'solid' &&
+            'px-8 py-4 rounded-full text-light bg-highlight dark:bg-highlight-dark hover:bg-opacity-80 dark:hover:bg-opacity-80 focus:ring-2 focus:ring-inset focus:ring-dark dark:focus:ring-light',
+        variant === 'ghost' &&
+            'px-8 py-4 rounded-full ring-2 ring-inset ring-dark dark:ring-light hover:bg-dark dark:hover:bg-light hover:bg-opacity-20 dark:hover:bg-opacity-20 focus:ring-highlight dark:focus:ring-highlight-dark',
+        variant === 'link' && 'hover:opacity-80',
 
-        { 'w-full': fullWidth },
+        fullWidth && 'w-full',
 
         className
     );
