@@ -32,7 +32,9 @@
 @layer base {
     p a {
         @apply underline;
-        text-underline-offset: 0.25rem;
+    }
+    a {
+        @apply underline-offset-md;
     }
 }
 
@@ -46,7 +48,7 @@
     }
 
     .text-teaser p a {
-        @apply underline text-highlight dark:text-highlight-dark;
+        @apply text-highlight dark:text-highlight-dark underline-offset-md lg:underline-offset-lg;
     }
 
     .text-teaser p a:hover {
@@ -58,5 +60,13 @@
     .icon-md svg {
         width: 20px;
         height: 20px;
+    }
+
+    .underline-offset-md {
+        text-underline-offset: 0.25rem;
+    }
+
+    .underline-offset-lg {
+        text-underline-offset: 0.5rem;
     }
 }
