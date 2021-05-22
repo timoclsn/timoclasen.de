@@ -1,7 +1,14 @@
 import { useRouter } from 'next/router';
-import { forwardRef } from 'react';
+import { forwardRef, ReactNode } from 'react';
 
-export default forwardRef(function NavigationLink(
+interface Props {
+    children: ReactNode;
+    href?: string;
+    target?: '_blank';
+    rel?: 'noopener noreferrer' | 'noopener' | 'noreferrer';
+}
+
+export default forwardRef<HTMLAnchorElement, Props>(function NavigationLink(
     { children, href, ...props },
     ref
 ) {
@@ -11,7 +18,7 @@ export default forwardRef(function NavigationLink(
             href={href}
             ref={ref}
             className={`hover:text-highlight dark:hover:text-highlight-dark ${
-                router.pathname.includes(href)
+                href && router.pathname.includes(href)
                     ? 'text-highlight dark:text-highlight-dark hover:opacity-80'
                     : ''
             }`}
