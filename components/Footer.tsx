@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import CenteredColumn from '@/components/CenteredColumn';
-import NavigationLink from '@/components/NavigationLink';
+import CenteredColumn from './CenteredColumn';
+import NavigationLink from './NavigationLink';
 
 export default function Footer() {
     return (
