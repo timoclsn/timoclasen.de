@@ -1,10 +1,14 @@
 import Link from 'next/link';
 
-import CenteredColumn from '@/components/CenteredColumn';
-import NavigationLink from '@/components/NavigationLink';
-import SwitchMode from '@/components/SwitchMode';
+import CenteredColumn from './CenteredColumn';
+import NavigationLink from './NavigationLink';
+import SwitchMode from './SwitchMode';
 
-export default function Navigation({ name }) {
+interface Props {
+    name: string;
+}
+
+export default function Navigation({ name }: Props) {
     return (
         <header className="py-4 mb-8 sticky-nav bg-light dark:bg-dark bg-opacity-80 dark:bg-opacity-80 md:py-6 md:mb-20 xl:mb-22">
             <CenteredColumn>
