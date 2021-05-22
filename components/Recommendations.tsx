@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { Loader, Send } from 'react-feather';
 
-import Button from '@/components/Button';
+import Button from './Button';
 
 export default function Recommendations() {
     const [message, setMessage] = useState('');
@@ -11,13 +11,13 @@ export default function Recommendations() {
         error: false
     });
 
-    function onChange(e) {
+    function onChange(e: ChangeEvent<HTMLTextAreaElement>) {
         setMessage(e.target.value);
     }
 
-    async function handleSubmit(e) {
+    async function handleSubmit(e: FormEvent) {
         e.preventDefault();
-        const form = e.target;
+        const form = e.target as HTMLFormElement;
         setServerState({ submitting: true, submitted: false, error: false });
 
         const response = await fetch('https://formspree.io/f/xleoyqpj', {
@@ -47,7 +47,7 @@ export default function Recommendations() {
     }
 
     const inputStyles =
-        'w-full p-4 bg-light block text-base dark:bg-dark rounded-xl placeholder-dark dark:placeholder-light placeholder-opacity-60 dark:placeholder-opacity-60 focus:outline-none focus:ring-2 focus:ring-highlight dark:focus:ring-highlight-dark';
+        'block w-full p-4 text-base bg-light dark:bg-dark rounded-xl placeholder-dark dark:placeholder-light placeholder-opacity-60 dark:placeholder-opacity-60 focus:outline-none focus:ring-2 focus:ring-highlight dark:focus:ring-highlight-dark';
 
     return (
         <div className="px-6 py-12 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-3xl xl:px-12 xl:py-20">
@@ -72,7 +72,7 @@ export default function Recommendations() {
                         className={inputStyles}
                         placeholder="Welchen Podcast (und warum) möchstest du empfehlen?"
                         aria-label="Welchen Podcast (und warun) möchstest du empfehlen?"
-                        rows="4"></textarea>
+                        rows={4}></textarea>
                 </label>
                 <label className="w-full">
                     <span className="sr-only">URL</span>
