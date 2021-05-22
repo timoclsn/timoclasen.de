@@ -1,7 +1,18 @@
 import WidgetLayout from '@/components/WidgetLayout';
 import WidgetText from '@/components/WidgetText';
 
-export default function BlogWidget({ blogPost1, blogPost2 }) {
+interface BlogPost {
+    title: string;
+    summary: string;
+    slug: string;
+}
+
+interface Props {
+    blogPost1: BlogPost;
+    blogPost2: BlogPost;
+}
+
+export default function BlogWidget({ blogPost1, blogPost2 }: Props) {
     return (
         <WidgetLayout>
             <WidgetText
