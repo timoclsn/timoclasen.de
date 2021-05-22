@@ -1,7 +1,29 @@
 import Image from 'next/image';
 import { Calendar, Clock, Feather, Twitter, User } from 'react-feather';
 
-import BlogPostLabel from '@/components/BlogPostLabel';
+import BlogPostLabel from './BlogPostLabel';
+
+interface Author {
+    name: string;
+    username: string;
+    image: {
+        url: string;
+        description: string;
+    };
+}
+
+interface Sys {
+    publishedVersion: string;
+}
+
+interface Props {
+    title: string;
+    subtitle: string;
+    date: string;
+    author: Author;
+    readingTime: string;
+    sys: Sys;
+}
 
 export default function BlogPostHeader({
     title,
@@ -10,8 +32,8 @@ export default function BlogPostHeader({
     author,
     readingTime,
     sys
-}) {
-    function isDraft(sys) {
+}: Props) {
+    function isDraft(sys: Sys) {
         return !sys.publishedVersion;
     }
 
