@@ -1,10 +1,14 @@
 import { Linkedin, Mail, Twitter } from 'react-feather';
 
-import Button from '@/components/Button';
-import WidgetLayout from '@/components/WidgetLayout';
-import WidgetText from '@/components/WidgetText';
+import Button from './Button';
+import WidgetLayout from './WidgetLayout';
+import WidgetText from './WidgetText';
 
-export default function ContactWidget({ text }) {
+interface Props {
+    text: string;
+}
+
+export default function ContactWidget({ text }: Props) {
     return (
         <WidgetLayout>
             <WidgetText title="Kontakt" text={text} />
