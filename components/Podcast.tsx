@@ -1,6 +1,15 @@
 import Image from 'next/image';
 import { Heart, User } from 'react-feather';
 
+interface Props {
+    title: string;
+    description: string;
+    hosts: string;
+    image: string;
+    link: string;
+    favorite: boolean;
+}
+
 export default function Podcast({
     title,
     description,
@@ -8,7 +17,7 @@ export default function Podcast({
     image,
     link,
     favorite
-}) {
+}: Props) {
     return (
         <div className="flex mx-auto space-x-4 max-w-prose">
             <Image
