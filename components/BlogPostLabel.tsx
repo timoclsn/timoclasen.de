@@ -3,7 +3,7 @@ import { Icon } from 'react-feather';
 interface Props {
     Icon: Icon;
     text: string;
-    href: string;
+    href?: string;
 }
 
 export default function BlogPostLabel({ Icon, text, href }: Props) {
