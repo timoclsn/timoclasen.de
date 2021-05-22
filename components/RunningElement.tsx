@@ -1,6 +1,26 @@
 import Skeleton from 'react-loading-skeleton';
+import { Icon } from 'react-feather';
 
-export default function RunningElement({ Icon, text, href, labels, nowrap }) {
+interface Label {
+    text: string;
+    description: string;
+}
+
+interface Props {
+    Icon: Icon;
+    text: string;
+    href?: string;
+    labels?: Label[];
+    nowrap?: boolean;
+}
+
+export default function RunningElement({
+    Icon,
+    text,
+    href,
+    labels,
+    nowrap
+}: Props) {
     return (
         <div className="flex items-center space-x-4">
             <div className="leading-none">
