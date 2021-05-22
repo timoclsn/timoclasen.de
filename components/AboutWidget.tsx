@@ -1,8 +1,18 @@
-import WidgetImage from '@/components/WidgetImage';
-import WidgetLayout from '@/components/WidgetLayout';
-import WidgetText from '@/components/WidgetText';
+import WidgetImage from './WidgetImage';
+import WidgetLayout from './WidgetLayout';
+import WidgetText from './WidgetText';
 
-export default function AboutWidget({ text, imageUrl, imageDescription }) {
+interface Props {
+    text: string;
+    imageUrl: string;
+    imageDescription: string;
+}
+
+export default function AboutWidget({
+    text,
+    imageUrl,
+    imageDescription
+}: Props) {
     return (
         <WidgetLayout separate highlight>
             <WidgetText
