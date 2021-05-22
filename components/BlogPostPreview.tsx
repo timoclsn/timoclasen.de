@@ -3,6 +3,19 @@ import { Calendar, Clock, Feather } from 'react-feather';
 
 import BlogPostLabel from '@/components/BlogPostLabel';
 
+interface Sys {
+    publishedVersion: string;
+}
+
+interface Props {
+    title: string;
+    subtitle: string;
+    date: string;
+    readingTime: string;
+    slug: string;
+    sys: Sys;
+}
+
 export default function BlogPostPreview({
     title,
     subtitle,
@@ -10,8 +23,8 @@ export default function BlogPostPreview({
     readingTime,
     slug,
     sys
-}) {
-    function isDraft(sys) {
+}: Props) {
+    function isDraft(sys: Sys) {
         return !sys.publishedVersion;
     }
 
