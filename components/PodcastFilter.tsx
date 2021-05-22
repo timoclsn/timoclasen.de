@@ -1,6 +1,16 @@
+import { FormEvent } from 'react';
 import { Filter } from 'react-feather';
 
-export default function PodcastFilter({ filter, handleChange }) {
+interface Filter {
+    favorites: boolean;
+}
+
+interface Props {
+    filter: Filter;
+    handleChange(e: FormEvent<HTMLInputElement>): void;
+}
+
+export default function PodcastFilter({ filter, handleChange }: Props) {
     return (
         <div className="flex space-x-4">
             <div className="flex items-center justify-center space-x-2 text-base opacity-60">
