@@ -1,5 +1,5 @@
-import WidgetLayout from '@/components/WidgetLayout';
-import WidgetText from '@/components/WidgetText';
+import WidgetLayout from './WidgetLayout';
+import WidgetText from './WidgetText';
 
 interface BlogPost {
     title: string;
