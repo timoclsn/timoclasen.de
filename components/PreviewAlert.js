@@ -11,7 +11,7 @@ export default function PreviewAlert() {
                     <p className="text-xl font-bold text-center uppercase md:text-3xl">
                         Vorschau
                     </p>
-                    <Button variant="ghost" href="/api/exit-preview">
+                    <Button as="a" variant="ghost" href="/api/exit-preview">
                         <XCircle />
                         Schließen
                     </Button>

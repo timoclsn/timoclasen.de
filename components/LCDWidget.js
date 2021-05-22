@@ -28,6 +28,7 @@ export default function LCDWidget({ bgImage }) {
                         Centered Design
                     </p>
                     <Button
+                        as="a"
                         variant="link"
                         href="https://lifecentereddesign.net"
                         target="_blank"
