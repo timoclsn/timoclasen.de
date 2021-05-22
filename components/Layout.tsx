@@ -1,11 +1,26 @@
 import Head from 'next/head';
+import { ReactNode } from 'react';
 
-import CenteredColumn from '@/components/CenteredColumn';
-import Favicons from '@/components/Favicons';
-import Footer from '@/components/Footer';
-import Navigation from '@/components/Navigation';
-import PreviewAlert from '@/components/PreviewAlert';
-import SEO from '@/components/SEO';
+import CenteredColumn from './CenteredColumn';
+import Favicons from './Favicons';
+import Footer from './Footer';
+import Navigation from './Navigation';
+import PreviewAlert from './PreviewAlert';
+import SEO from './SEO';
+
+interface PreviewImage {
+    url: string;
+    description: string;
+}
+
+interface Props {
+    children: ReactNode;
+    title: string;
+    description: string;
+    previewImage: PreviewImage;
+    slug: string;
+    preview: boolean;
+}
 
 export default function Layout({
     children,
@@ -14,7 +29,7 @@ export default function Layout({
     previewImage,
     slug,
     preview
-}) {
+}: Props) {
     const name = 'Timo Clasen';
     const pageTitle = title.includes(name) ? title : `${title}  •  ${name}`;
     slug = slug ? `/${slug}` : '';
