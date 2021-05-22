@@ -1,10 +1,24 @@
 import { useState } from 'react';
 
-import Podcast from '@/components/Podcast';
-import PodcastFilter from '@/components/PodcastFilter';
-import Search from '@/components/Search';
+import Podcast from './Podcast';
+import PodcastFilter from './PodcastFilter';
+import Search from './Search';
 
-export default function PodcastsList({ podcasts }) {
+interface Podcast {
+    title: string;
+    favorite: boolean;
+    feed: string;
+    description: string;
+    website: string;
+    hosts: string;
+    image: string;
+}
+
+interface Props {
+    podcasts: Podcast[];
+}
+
+export default function PodcastsList({ podcasts }: Props) {
     const [searchValue, setSearchValue] = useState('');
     const [filter, setFilter] = useState({
         favorites: false

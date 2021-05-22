@@ -1,4 +1,4 @@
-import { FormEvent } from 'react';
+import { ChangeEvent } from 'react';
 import { Filter } from 'react-feather';
 
 interface Filter {
@@ -7,7 +7,7 @@ interface Filter {
 
 interface Props {
     filter: Filter;
-    handleChange(e: FormEvent<HTMLInputElement>): void;
+    handleChange(e: ChangeEvent<HTMLInputElement>): void;
 }
 
 export default function PodcastFilter({ filter, handleChange }: Props) {
