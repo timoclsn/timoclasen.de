@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Calendar, Clock, Feather } from 'react-feather';
 
-import BlogPostLabel from '@/components/BlogPostLabel';
+import BlogPostLabel from './BlogPostLabel';
 
 interface Sys {
     publishedVersion: string;
