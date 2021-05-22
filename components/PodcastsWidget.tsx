@@ -2,9 +2,23 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'react-feather';
 
-import Button from '@/components/Button';
+import Button from './Button';
 
-export default function PodcastsWidget({ podcasts }) {
+interface Podcast {
+    title: string;
+    favorite: boolean;
+    feed: string;
+    description: string;
+    website: string;
+    hosts: string;
+    image: string;
+}
+
+interface Props {
+    podcasts: Podcast[];
+}
+
+export default function PodcastsWidget({ podcasts }: Props) {
     return (
         <section id="podcasts">
             <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">
