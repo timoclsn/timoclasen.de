@@ -1,6 +1,10 @@
-import TextContainer from '@/components/TextContainer';
+import TextContainer from './TextContainer';
 
-export default function TextBlock({ text }) {
+interface Props {
+    text: string;
+}
+
+export default function TextBlock({ text }: Props) {
     return (
         <TextContainer>
             <div dangerouslySetInnerHTML={{ __html: text }}></div>
