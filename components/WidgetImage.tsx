@@ -4,8 +4,8 @@ import Skeleton from 'react-loading-skeleton';
 interface Props {
     url: string;
     description: string;
-    priority: boolean;
-    unoptimized: boolean;
+    priority?: boolean;
+    unoptimized?: boolean;
 }
 
 export default function WidgetImage({

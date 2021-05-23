@@ -6,8 +6,8 @@ import Button from './Button';
 interface Props {
     title: string;
     text: string;
-    linkText: string;
-    href: string;
+    linkText?: string;
+    href?: string;
 }
 
 export default function WidgetText({ title, text, linkText, href }: Props) {

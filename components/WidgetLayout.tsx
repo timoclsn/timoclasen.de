@@ -3,9 +3,9 @@ import { ReactNode } from 'react';
 
 interface Props {
     children: [ReactNode, ReactNode];
-    separate: boolean;
-    highlight: boolean;
-    transparent: boolean;
+    separate?: boolean;
+    highlight?: boolean;
+    transparent?: boolean;
 }
 
 export default function WidgetLayout({
