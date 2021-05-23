@@ -1,5 +1,20 @@
 import Head from 'next/head';
 
+interface PreviewImage {
+    url: string;
+    description: string;
+}
+
+interface Props {
+    authorName: string;
+    readingTime: string;
+    date: string;
+    slug: string;
+    title: string;
+    description: string;
+    previewImage: PreviewImage;
+}
+
 export default function SEOBlogPost({
     authorName,
     readingTime,
@@ -8,7 +23,7 @@ export default function SEOBlogPost({
     title,
     description,
     previewImage
-}) {
+}: Props) {
     return (
         <Head>
             <meta
