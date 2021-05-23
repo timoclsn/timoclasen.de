@@ -1,6 +1,25 @@
 import Head from 'next/head';
 
-export default function SEO({ title, description, slug, previewImage, name }) {
+interface PreviewImage {
+    url: string;
+    description: string;
+}
+
+interface Props {
+    title: string;
+    description: string;
+    slug: string;
+    previewImage: PreviewImage;
+    name: string;
+}
+
+export default function SEO({
+    title,
+    description,
+    slug,
+    previewImage,
+    name
+}: Props) {
     return (
         <Head>
             <title>{title}</title>
