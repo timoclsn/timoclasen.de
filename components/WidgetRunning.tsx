@@ -8,9 +8,52 @@ import {
     TrendingUp
 } from 'react-feather';
 
-import RunningElement from '@/components/RunningElement';
+import RunningElement from './RunningElement';
 
-export default function WidgetRunning({ thisYear, lastRun }) {
+interface ThisYear {
+    distance: number;
+    fastest: number;
+    farthest: number;
+    lowest: number;
+    longest: number;
+}
+
+interface LastRun {
+    date: {
+        raw: string;
+        relative: string;
+        timezone: string;
+    };
+    distance: {
+        raw: number;
+        formatted: string;
+    };
+    avgSpeed: {
+        raw: number;
+        formatted: string;
+    };
+    time: {
+        raw: number;
+        formatted: string;
+    };
+    avgHeartrate: {
+        raw: number;
+        formatted: string;
+    };
+    map: {
+        light: string;
+        dark: string;
+    };
+    url: string;
+    kudos: number;
+}
+
+interface Props {
+    thisYear: ThisYear;
+    lastRun: LastRun;
+}
+
+export default function WidgetRunning({ thisYear, lastRun }: Props) {
     const distanceThreshold = 10000; // 10km in m
     const speedThreshold = 3.03; // ca. 5:30 /km in m/s
     const timeThreshold = 3600; // 1h in s
