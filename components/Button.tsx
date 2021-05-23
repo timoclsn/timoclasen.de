@@ -2,13 +2,13 @@ import clsx from 'clsx';
 import { Children, forwardRef, ReactNode } from 'react';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
-type Props = {
+interface Props {
     children: ReactNode;
     type?: 'button' | 'submit';
     variant?: 'solid' | 'ghost' | 'link';
     fullWidth?: boolean;
     className?: string;
-};
+}
 
 const Button = forwardRef(
     (
