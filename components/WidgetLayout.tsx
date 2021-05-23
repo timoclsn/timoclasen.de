@@ -1,11 +1,19 @@
 import clsx from 'clsx';
+import { ReactNode } from 'react';
+
+interface Props {
+    children: [ReactNode, ReactNode];
+    separate: boolean;
+    highlight: boolean;
+    transparent: boolean;
+}
 
 export default function WidgetLayout({
     children,
     separate,
     highlight,
     transparent
-}) {
+}: Props) {
     const bgColor = highlight
         ? 'bg-highlight dark:bg-highlight-dark'
         : `bg-dark dark:bg-light ${
