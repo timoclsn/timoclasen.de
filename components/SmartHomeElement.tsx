@@ -1,6 +1,13 @@
+import { Icon } from 'react-feather';
 import Skeleton from 'react-loading-skeleton';
 
-export default function SmartHomeElement({ Icon, title, value }) {
+interface Props {
+    Icon: Icon;
+    title: string;
+    value: string;
+}
+
+export default function SmartHomeElement({ Icon, title, value }: Props) {
     return (
         <div className="flex p-4 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-3xl">
             {value ? (
