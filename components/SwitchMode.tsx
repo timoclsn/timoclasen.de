@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Moon, Sun } from 'react-feather';
 
-import { ThemeContext } from '@/components/ThemeContext';
+import { ThemeContext } from './ThemeContext';
 
 export default function SwitchMode() {
     const [mounted, setMounted] = useState(false);
