@@ -1,9 +1,16 @@
 import Link from 'next/link';
 import { ArrowRight } from 'react-feather';
 
-import Button from '@/components/Button';
+import Button from './Button';
 
-export default function WidgetText({ title, text, linkText, href }) {
+interface Props {
+    title: string;
+    text: string;
+    linkText: string;
+    href: string;
+}
+
+export default function WidgetText({ title, text, linkText, href }: Props) {
     return (
         <div className="flex flex-col justify-between h-full px-6 py-12 xl:px-12 xl:py-20">
             <div>
