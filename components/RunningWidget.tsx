@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import useSWR from 'swr';
 
-import { ThemeContext } from '@/components/ThemeContext';
-import WidgetImage from '@/components/WidgetImage';
-import WidgetLayout from '@/components/WidgetLayout';
-import WidgetRunning from '@/components/WidgetRunning';
-import fetcher from '@/lib/fetcher';
+import { ThemeContext } from './ThemeContext';
+import WidgetImage from './WidgetImage';
+import WidgetLayout from './WidgetLayout';
+import WidgetRunning from './WidgetRunning';
+import fetcher from '../lib/fetcher';
 
 export default function RunningWidget() {
     const { data, error } = useSWR('/api/running', fetcher);
