@@ -10,11 +10,16 @@ import {
 } from 'react-feather';
 import useSWR from 'swr';
 
-import SmartHomeElement from '@/components/SmartHomeElement';
-import WidgetLayout from '@/components/WidgetLayout';
-import fetcher from '@/lib/fetcher';
+import SmartHomeElement from './SmartHomeElement';
+import WidgetLayout from './WidgetLayout';
+import fetcher from '../lib/fetcher';
 
-export default function SmartHomeWidget({ text, footnote }) {
+interface Props {
+    text: string;
+    footnote: string;
+}
+
+export default function SmartHomeWidget({ text, footnote }: Props) {
     const { data, error } = useSWR('/api/smarthome', fetcher);
     const errorMessage = 'Nicht erreichbar…';
 
