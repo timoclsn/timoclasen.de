@@ -1,12 +1,12 @@
 import WebSocket from 'ws';
 
-import { NodeProfile } from '@/lib/enums';
+import { NodeProfile } from '../lib/enums';
 
 const { HOMEE_ID: homeeID, HOMEE_ACCESS_TOKEN: accessToken } = process.env;
 
 export function getNodes() {
-    return new Promise((resolve, reject) => {
-        let nodes = [];
+    return new Promise<any[]>((resolve, reject) => {
+        let nodes: any[] = [];
 
         const ws = new WebSocket(
             `wss://${homeeID}.hom.ee/connection?access_token=${accessToken}`,
@@ -21,7 +21,7 @@ export function getNodes() {
             ws.send('GET:nodes');
         });
 
-        ws.on('message', (data) => {
+        ws.on('message', (data: any) => {
             data = JSON.parse(data);
 
             if (data.nodes) {
@@ -36,15 +36,15 @@ export function getNodes() {
     });
 }
 
-export function roundValue(value) {
+export function roundValue(value: number) {
     return Math.round(value * 10) / 10;
 }
 
-export function formatValue(value, unit) {
+export function formatValue(value: number, unit: string) {
     return `${roundValue(value)} ${decodeURIComponent(unit)}`;
 }
 
-export function isLight(node) {
+export function isLight(node: any) {
     if (
         node.profile === NodeProfile.DimmableColorLight ||
         node.profile === NodeProfile.DimmableExtendedColorLight ||
