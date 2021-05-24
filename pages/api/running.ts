@@ -2,17 +2,18 @@ import { formatRelative, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
 import { utcToZonedTime } from 'date-fns-tz';
 
-import { getMapURLs } from '@/lib/mapbox';
+import { getMapURLs } from '../../lib/mapbox';
 import {
     formatSpeed,
     formatTime,
     getActivities,
     roundDistance
-} from '@/lib/strava';
+} from '../../lib/strava';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async (_, res) => {
+export default async (_: NextApiRequest, res: NextApiResponse) => {
     const activites = await getActivities();
-    const runs = activites.filter((activity) => activity.type === 'Run');
+    const runs = activites.filter((activity: any) => activity.type === 'Run');
 
     const {
         distance: distanceThisYear,
@@ -21,7 +22,7 @@ export default async (_, res) => {
         longest: longestThisYear,
         lowest: lowestThisYear
     } = runs.reduce(
-        (thisYear, activity) => {
+        (thisYear: any, activity: any) => {
             return {
                 distance: thisYear.distance + activity.distance,
                 farthest:
@@ -51,7 +52,7 @@ export default async (_, res) => {
         }
     );
 
-    const lastRun = runs.reduce((lastRun, activity) => {
+    const lastRun = runs.reduce((lastRun: any, activity: any) => {
         if (!lastRun.start_date) {
             return activity;
         }
@@ -119,6 +120,6 @@ export default async (_, res) => {
     });
 };
 
-function capitalizeFirstLetter(string) {
+function capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
