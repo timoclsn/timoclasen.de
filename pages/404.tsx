@@ -1,10 +1,11 @@
-import ContactWidget from '@/components/ContactWidget';
-import Layout from '@/components/Layout';
-import TextBlock from '@/components/TextBlock';
-import { queryContent } from '@/lib/content';
-import { markdownToHTML } from '@/lib/text';
+import { GetStaticProps } from 'next';
+import ContactWidget from '../components/ContactWidget';
+import Layout from '../components/Layout';
+import TextBlock from '../components/TextBlock';
+import { queryContent } from '../lib/content';
+import { markdownToHTML } from '../lib/text';
 
-export default function Error(props) {
+export default function Error(props: any) {
     return (
         <Layout
             preview={props.preview}
@@ -18,7 +19,7 @@ export default function Error(props) {
     );
 }
 
-export async function getStaticProps({ preview = false }) {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const response = await queryContent(
         `{
             page: pageCollection(where: {slug: "404"}, limit: 1, preview: false) {
@@ -61,4 +62,4 @@ export async function getStaticProps({ preview = false }) {
             contact: await markdownToHTML(contactText)
         }
     };
-}
+};
