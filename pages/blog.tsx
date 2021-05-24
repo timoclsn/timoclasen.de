@@ -7,8 +7,9 @@ import ContactWidget from '@/components/ContactWidget';
 import Layout from '@/components/Layout';
 import { queryContent } from '@/lib/content';
 import { markdownToHTML } from '@/lib/text';
+import { GetStaticProps } from 'next';
 
-export default function Blog(props) {
+export default function Blog(props: any) {
     return (
         <Layout
             preview={props.preview}
@@ -16,7 +17,7 @@ export default function Blog(props) {
             description={props.description}
             previewImage={props.previewImage}
             slug={props.slug}>
-            {props.blogPosts.map((post) => (
+            {props.blogPosts.map((post: any) => (
                 <BlogPostPreview
                     title={post.title}
                     subtitle={post.subtitle}
@@ -32,7 +33,7 @@ export default function Blog(props) {
     );
 }
 
-export async function getStaticProps({ preview = false }) {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const response = await queryContent(
         `{
             page: pageCollection(where: {slug: "blog"}, limit: 1, preview: false) {
@@ -70,7 +71,7 @@ export async function getStaticProps({ preview = false }) {
 
     const page = response.data.page.items[0];
 
-    const blogPosts = response.data.blogPosts.items.map((blogPost) => {
+    const blogPosts = response.data.blogPosts.items.map((blogPost: any) => {
         const readingTimeObj = readingTime(blogPost.text);
         blogPost.readingTime = Math.ceil(readingTimeObj.minutes);
 
@@ -100,4 +101,4 @@ export async function getStaticProps({ preview = false }) {
             contact: await markdownToHTML(contactText)
         }
     };
-}
+};
