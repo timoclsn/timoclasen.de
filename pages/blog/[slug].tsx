@@ -1,28 +1,24 @@
 import { format, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import readingTime from 'reading-time';
 
-import BlogPostHeader from '@/components/BlogPostHeader';
-import ContactWidget from '@/components/ContactWidget';
-import Layout from '@/components/Layout';
-import SEOBlogPost from '@/components/SEOBlogPost';
-import TextBlock from '@/components/TextBlock';
-import TextPost from '@/components/TextPost';
-import { queryContent } from '@/lib/content';
-import { markdownToHTML } from '@/lib/text';
+import BlogPostHeader from '../../components/BlogPostHeader';
+import ContactWidget from '../../components/ContactWidget';
+import Layout from '../../components/Layout';
+import SEOBlogPost from '../../components/SEOBlogPost';
+import TextBlock from '../../components/TextBlock';
+import TextPost from '../../components/TextPost';
+import { queryContent } from '../../lib/content';
+import { markdownToHTML } from '../../lib/text';
 
-export default function BlogPost(props) {
+export default function BlogPost(props: any) {
     const router = useRouter();
 
     if (!router.isFallback && !props.blogPost) {
         return (
-            <Layout
-                preview=""
-                title="Error 404"
-                description="Error 404"
-                previewImage=""
-                slug="">
+            <Layout title="Error 404" description="Error 404">
                 <TextBlock text={props.error} />
                 <ContactWidget text={props.contact} />
             </Layout>
@@ -31,12 +27,7 @@ export default function BlogPost(props) {
 
     if (router.isFallback && !props.blogPost) {
         return (
-            <Layout
-                preview=""
-                title="Seite lädt…"
-                description="Seite lädt…"
-                previewImage=""
-                slug="">
+            <Layout title="Seite lädt…" description="Seite lädt…">
                 <TextBlock text={props.loading} />
                 <ContactWidget text={props.contact} />
             </Layout>
@@ -46,43 +37,44 @@ export default function BlogPost(props) {
     const date = new Date(props.blogPost.date).toISOString();
 
     return (
-        <>
-            <Layout
-                preview={props.preview}
+        <Layout
+            preview={props.preview}
+            title={props.blogPost.title}
+            description={props.blogPost.summary}
+            previewImage={props.blogPost.previewImage}
+            slug={`blog/${props.blogPost.slug}`}>
+            <SEOBlogPost
+                authorName={props.blogPost.author.name}
+                readingTime={props.blogPost.readingTime}
+                date={date}
+                slug={props.blogPost.slug}
                 title={props.blogPost.title}
                 description={props.blogPost.summary}
                 previewImage={props.blogPost.previewImage}
-                slug={`blog/${props.blogPost.slug}`}>
-                <SEOBlogPost
-                    authorName={props.blogPost.author.name}
-                    readingTime={props.blogPost.readingTime}
-                    date={date}
-                    slug={props.blogPost.slug}
+            />
+            <article className="space-y-8 md:space-y-16">
+                <BlogPostHeader
                     title={props.blogPost.title}
-                    description={props.blogPost.summary}
-                    previewImage={props.blogPost.previewImage}
+                    subtitle={props.blogPost.subtitle}
+                    date={props.blogPost.dateFormatted}
+                    author={props.blogPost.author}
+                    readingTime={props.blogPost.readingTime}
+                    sys={props.blogPost.sys}
                 />
-                <article className="space-y-8 md:space-y-16">
-                    <BlogPostHeader
-                        title={props.blogPost.title}
-                        subtitle={props.blogPost.subtitle}
-                        date={props.blogPost.dateFormatted}
-                        author={props.blogPost.author}
-                        readingTime={props.blogPost.readingTime}
-                        sys={props.blogPost.sys}
-                    />
-                    <TextPost>{props.blogPost.text}</TextPost>
-                </article>
-                <ContactWidget text={props.contact} />
-            </Layout>
-        </>
+                <TextPost>{props.blogPost.text}</TextPost>
+            </article>
+            <ContactWidget text={props.contact} />
+        </Layout>
     );
 }
 
-export async function getStaticProps({ params, preview = false }) {
+export const getStaticProps: GetStaticProps = async ({
+    params,
+    preview = false
+}) => {
     const response = await queryContent(
         `{
-            blogPost: blogPostCollection(where: {slug: "${params.slug}"}, limit: 1, preview: false) {
+            blogPost: blogPostCollection(where: {slug: "${params?.slug}"}, limit: 1, preview: false) {
                 items {
                     sys {
                         publishedVersion
@@ -142,9 +134,9 @@ export async function getStaticProps({ params, preview = false }) {
             contact: await markdownToHTML(contactText)
         }
     };
-}
+};
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
     const response = await queryContent(
         `{
             blogPosts: blogPostCollection(preview: false) {
@@ -158,7 +150,7 @@ export async function getStaticPaths() {
     const blogPosts = response.data.blogPosts.items;
 
     return {
-        paths: blogPosts.map((blogPost) => {
+        paths: blogPosts.map((blogPost: any) => {
             return {
                 params: {
                     slug: blogPost.slug
@@ -167,4 +159,4 @@ export async function getStaticPaths() {
         }),
         fallback: true
     };
-}
+};

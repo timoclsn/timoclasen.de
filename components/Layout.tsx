@@ -17,9 +17,9 @@ interface Props {
     children: ReactNode;
     title: string;
     description: string;
-    previewImage: PreviewImage;
+    previewImage?: PreviewImage;
     slug?: string;
-    preview: boolean;
+    preview?: boolean;
 }
 
 export default function Layout({
