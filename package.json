@@ -58,6 +58,7 @@
         "ws": "^7.4.5"
     },
     "devDependencies": {
+        "@types/mapbox__polyline": "^1.0.2",
         "@types/react-syntax-highlighter": "^13.5.0",
         "@types/ws": "^7.4.4",
         "cypress": "^7.3.0",

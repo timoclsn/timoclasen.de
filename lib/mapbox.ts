@@ -1,9 +1,10 @@
 import polyline from '@mapbox/polyline';
+// @ts-ignore
 import simplify from 'simplify-geojson';
 
 const mapboxAccessToken = process.env.MAPBOX_ACCESS_TOKEN;
 
-export function getMapURLs(runPolyline) {
+export function getMapURLs(runPolyline: any) {
     const geoJSONLengthLimit = 8000;
     const geoJSONBasePercision = 0.000001;
 
@@ -48,7 +49,7 @@ export function getMapURLs(runPolyline) {
     };
 }
 
-function optimizeGeoJSON(geoJSON, percision, limit) {
+function optimizeGeoJSON(geoJSON: any, percision: number, limit: number): any {
     const geoJSONLength = prepareGeoJSON(geoJSON).length;
     const overLimit = geoJSONLength > limit;
     if (overLimit) {
@@ -60,11 +61,17 @@ function optimizeGeoJSON(geoJSON, percision, limit) {
     }
 }
 
-function prepareGeoJSON(geoJSON) {
+function prepareGeoJSON(geoJSON: any) {
     return encodeURIComponent(JSON.stringify(geoJSON));
 }
 
-function getMapURL(theme, geoJSON, width, height, padding) {
+function getMapURL(
+    theme: string,
+    geoJSON: any,
+    width: number,
+    height: number,
+    padding: number
+) {
     return `https://api.mapbox.com/styles/v1/mapbox/${theme}/static/geojson(${prepareGeoJSON(
         geoJSON
     )})/auto/${width}x${height}?padding=${padding}&logo=false&access_token=${mapboxAccessToken}`;
