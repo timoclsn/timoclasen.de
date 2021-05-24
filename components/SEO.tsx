@@ -9,7 +9,7 @@ interface Props {
     title: string;
     description: string;
     slug: string;
-    previewImage: PreviewImage;
+    previewImage?: PreviewImage;
     name: string;
 }
 
@@ -46,12 +46,12 @@ export default function SEO({
             />
             <meta
                 property="og:image"
-                content={previewImage.url}
+                content={previewImage?.url}
                 key="og:image"
             />
             <meta
                 property="og:image:alt"
-                content={previewImage.description}
+                content={previewImage?.description}
                 key="og:image:alt"
             />
             <meta
