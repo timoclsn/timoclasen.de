@@ -1,12 +1,13 @@
 import Image from 'next/image';
 
-import ContactWidget from '@/components/ContactWidget';
-import Layout from '@/components/Layout';
-import TextBlock from '@/components/TextBlock';
-import { queryContent } from '@/lib/content';
-import { markdownToHTML } from '@/lib/text';
+import ContactWidget from '../components/ContactWidget';
+import Layout from '../components/Layout';
+import TextBlock from '../components/TextBlock';
+import { queryContent } from '../lib/content';
+import { markdownToHTML } from '../lib/text';
+import { GetStaticProps } from 'next';
 
-export default function About(props) {
+export default function About(props: any) {
     return (
         <Layout
             preview={props.preview}
@@ -19,7 +20,7 @@ export default function About(props) {
                     src={props.image.url}
                     layout={'fill'}
                     objectFit="cover"
-                    objectPosition="center center"
+                    objectPosition="center"
                     sizes="90vw"
                     quality={60}
                     priority
@@ -33,7 +34,7 @@ export default function About(props) {
     );
 }
 
-export async function getStaticProps({ preview = false }) {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const response = await queryContent(
         `{
             page: pageCollection(where: {slug: "ueber"}, limit: 1, preview: false) {
@@ -83,4 +84,4 @@ export async function getStaticProps({ preview = false }) {
             contact: await markdownToHTML(contactText)
         }
     };
-}
+};
