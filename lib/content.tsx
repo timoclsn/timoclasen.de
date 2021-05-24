@@ -5,7 +5,7 @@ const {
     NODE_ENV: env
 } = process.env;
 
-export async function queryContent(query, preview = false) {
+export async function queryContent(query: string, preview = false) {
     const draftContentInDevelopmentMode = true;
 
     if (draftContentInDevelopmentMode) {
