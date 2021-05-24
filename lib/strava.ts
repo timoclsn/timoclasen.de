@@ -1,6 +1,6 @@
 import { intervalToDuration, startOfYear } from 'date-fns';
 
-import fetcher from '@/lib/fetcher';
+import fetcher from '../lib/fetcher';
 
 const {
     STRAVA_CLIENT_ID: clientID,
@@ -26,7 +26,7 @@ async function getAccessToken() {
     return accessData.access_token;
 }
 
-export function formatSpeed(speedMs) {
+export function formatSpeed(speedMs: number) {
     const speedKmh = speedMs * 3.6;
     const speedMinKm = 60 / speedKmh;
     const min = Math.floor(speedMinKm);
@@ -34,7 +34,7 @@ export function formatSpeed(speedMs) {
     return `${min}:${sec >= 10 ? sec : '0' + sec} /km`;
 }
 
-export function formatTime(timeS) {
+export function formatTime(timeS: number) {
     const timeMs = timeS * 1000;
     const duration = intervalToDuration({ start: 0, end: timeMs });
     return `${duration.hours ? `${duration.hours}h ` : ''}${
@@ -42,6 +42,6 @@ export function formatTime(timeS) {
     }m ${duration.seconds}s`;
 }
 
-export function roundDistance(distance) {
+export function roundDistance(distance: number) {
     return Math.round(distance * 100) / 100;
 }
