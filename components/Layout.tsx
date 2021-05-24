@@ -18,7 +18,7 @@ interface Props {
     title: string;
     description: string;
     previewImage: PreviewImage;
-    slug: string;
+    slug?: string;
     preview: boolean;
 }
 

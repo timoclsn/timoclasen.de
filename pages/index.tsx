@@ -1,17 +1,18 @@
-import AboutWidget from '@/components/AboutWidget';
-import BlogWidget from '@/components/BlogWidget';
-import ContactWidget from '@/components/ContactWidget';
-import Layout from '@/components/Layout';
-import LCDWidget from '@/components/LCDWidget';
-import PodcastsWidget from '@/components/PodcastsWidget';
-import RunningWidget from '@/components/RunningWidget';
-import SmartHomeWidget from '@/components/SmartHomeWidget';
-import Teaser from '@/components/Teaser';
-import { queryContent } from '@/lib/content';
-import { getFavoritePodcasts } from '@/lib/podcasts';
+import AboutWidget from '../components/AboutWidget';
+import BlogWidget from '../components/BlogWidget';
+import ContactWidget from '../components/ContactWidget';
+import Layout from '../components/Layout';
+import LCDWidget from '../components/LCDWidget';
+import PodcastsWidget from '../components/PodcastsWidget';
+import RunningWidget from '../components/RunningWidget';
+import SmartHomeWidget from '../components/SmartHomeWidget';
+import Teaser from '../components/Teaser';
+import { queryContent } from '../lib/content';
+import { getFavoritePodcasts } from '../lib/podcasts';
 import { markdownToHTML, stripFirstLine, truncate } from '@/lib/text';
+import { GetStaticProps } from 'next';
 
-export default function Home(props) {
+export default function Home(props: any) {
     return (
         <Layout
             preview={props.preview}
@@ -40,7 +41,7 @@ export default function Home(props) {
     );
 }
 
-export async function getStaticProps({ preview = false }) {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const response = await queryContent(
         `{
             page: pageCollection(where: {slug: "home"}, limit: 1, preview: false) {
@@ -133,4 +134,4 @@ export async function getStaticProps({ preview = false }) {
             contact: await markdownToHTML(contactText)
         }
     };
-}
+};
