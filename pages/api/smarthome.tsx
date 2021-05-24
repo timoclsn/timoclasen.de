@@ -1,7 +1,8 @@
-import { AttributeType, NodeState } from '@/lib/enums';
-import { formatValue, getNodes, isLight } from '@/lib/homee';
+import { AttributeType, NodeState } from '../../lib/enums';
+import { formatValue, getNodes, isLight } from '../../lib/homee';
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async (_, res) => {
+export default async (_: NextApiRequest, res: NextApiResponse) => {
     const nodes = await getNodes();
 
     if (!nodes.length) {
@@ -13,55 +14,56 @@ export default async (_, res) => {
     const rainSensorId = 258;
 
     const tempAtr = nodes
-        .find((node) => node.id === climateSensorId)
+        .find((node: any) => node.id === climateSensorId)
         .attributes.find(
-            (attribute) => attribute.type === AttributeType.Temperature
+            (attribute: any) => attribute.type === AttributeType.Temperature
         );
 
     const humidityAtr = nodes
-        .find((node) => node.id === climateSensorId)
+        .find((node: any) => node.id === climateSensorId)
         .attributes.find(
-            (attribute) => attribute.type === AttributeType.RelativeHumidity
+            (attribute: any) =>
+                attribute.type === AttributeType.RelativeHumidity
         );
 
     const accumulatedEnergy = nodes
-        .flatMap((node) => {
+        .flatMap((node: any) => {
             return (
                 node.attributes.find(
-                    (attribute) =>
+                    (attribute: any) =>
                         attribute.type === AttributeType.CurrentEnergyUse
                 ) || []
             );
         })
-        .reduce((acc, attribute) => {
+        .reduce((acc: any, attribute: any) => {
             return acc + attribute.current_value;
         }, 0);
 
     const lightsOn = nodes
-        .flatMap((node) => {
+        .flatMap((node: any) => {
             if (isLight(node) && node.state === NodeState.Available) {
                 return node.attributes.find(
-                    (attribute) => attribute.type === AttributeType.OnOff
+                    (attribute: any) => attribute.type === AttributeType.OnOff
                 );
             } else {
                 return [];
             }
         })
-        .some((attribute) => {
+        .some((attribute: any) => {
             return attribute.current_value > 0;
         });
 
     const outsideTempAtr = nodes
-        .find((node) => node.id === climateSensorOutsideId)
+        .find((node: any) => node.id === climateSensorOutsideId)
         .attributes.find(
-            (attribute) => attribute.type === AttributeType.Temperature
+            (attribute: any) => attribute.type === AttributeType.Temperature
         );
 
     const isRaining =
         nodes
-            .find((node) => node.id === rainSensorId)
+            .find((node: any) => node.id === rainSensorId)
             .attributes.find(
-                (attribute) => attribute.type === AttributeType.FloodAlarm
+                (attribute: any) => attribute.type === AttributeType.FloodAlarm
             ).current_value > 0;
 
     res.setHeader(
