@@ -1,7 +1,7 @@
-const fs = require('fs');
+import fs from 'fs';
 
 export function getPodcasts() {
-    return JSON.parse(fs.readFileSync('./data/podcasts.json'));
+    return JSON.parse(fs.readFileSync('./data/podcasts.json', 'utf-8'));
 }
 
 export function getFavoritePodcasts() {
