@@ -6,5 +6,5 @@ export function getPodcasts() {
 
 export function getFavoritePodcasts() {
     const podcasts = getPodcasts();
-    return podcasts.filter((podcast) => podcast.favorite);
+    return podcasts.filter((podcast: any) => podcast.favorite);
 }
