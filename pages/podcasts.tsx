@@ -5,8 +5,9 @@ import TextBlock from '@/components/TextBlock';
 import { queryContent } from '@/lib/content';
 import { getPodcasts } from '@/lib/podcasts';
 import { markdownToHTML } from '@/lib/text';
+import { GetStaticProps } from 'next';
 
-export default function Podcasts(props) {
+export default function Podcasts(props: any) {
     return (
         <Layout
             preview={props.preview}
@@ -21,7 +22,7 @@ export default function Podcasts(props) {
     );
 }
 
-export async function getStaticProps({ preview = false }) {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const response = await queryContent(
         `{
             page: pageCollection(where: {slug: "podcasts"}, limit: 1, preview: false) {
@@ -59,4 +60,4 @@ export async function getStaticProps({ preview = false }) {
             podcastsText: await markdownToHTML(podcastsText)
         }
     };
-}
+};
