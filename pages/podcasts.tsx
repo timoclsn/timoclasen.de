@@ -1,10 +1,10 @@
-import Layout from '@/components/Layout';
-import PodcastsList from '@/components/PodcastsList';
-import Recommendations from '@/components/Recommendations';
-import TextBlock from '@/components/TextBlock';
-import { queryContent } from '@/lib/content';
-import { getPodcasts } from '@/lib/podcasts';
-import { markdownToHTML } from '@/lib/text';
+import Layout from '../components/Layout';
+import PodcastsList from '../components/PodcastsList';
+import Recommendations from '../components/Recommendations';
+import TextBlock from '../components/TextBlock';
+import { queryContent } from '../lib/content';
+import { getPodcasts } from '../lib/podcasts';
+import { markdownToHTML } from '../lib/text';
 import { GetStaticProps } from 'next';
 
 export default function Podcasts(props: any) {
