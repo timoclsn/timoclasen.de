@@ -13,6 +13,7 @@ import useSWR from 'swr';
 import SmartHomeElement from './SmartHomeElement';
 import WidgetLayout from './WidgetLayout';
 import fetcher from '../lib/fetcher';
+import { SmartHomeData } from 'pages/api/smarthome';
 
 interface Props {
     text: string;
@@ -20,7 +21,10 @@ interface Props {
 }
 
 export default function SmartHomeWidget({ text, footnote }: Props) {
-    const { data, error } = useSWR('/api/smarthome', fetcher);
+    const { data, error } = useSWR<SmartHomeData, string>(
+        '/api/smarthome',
+        fetcher
+    );
     const errorMessage = 'Nicht erreichbar…';
 
     return (

@@ -4,7 +4,7 @@ import Skeleton from 'react-loading-skeleton';
 interface Props {
     Icon: Icon;
     title: string;
-    value: string;
+    value: string | undefined;
 }
 
 export default function SmartHomeElement({ Icon, title, value }: Props) {

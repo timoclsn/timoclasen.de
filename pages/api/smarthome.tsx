@@ -1,8 +1,26 @@
 import { AttributeType, NodeState } from '../../lib/enums';
-import { formatValue, getNodes, isLight } from '../../lib/homee';
+import {
+    Attribute,
+    formatValue,
+    getNodes,
+    isLight,
+    Node
+} from '../../lib/homee';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async (_: NextApiRequest, res: NextApiResponse) => {
+export interface SmartHomeData {
+    lights: string;
+    rain: string;
+    temperature: string;
+    humidity: string;
+    energy: string;
+    outsideTemperature: string;
+}
+
+export default async (
+    _: NextApiRequest,
+    res: NextApiResponse<SmartHomeData | string>
+) => {
     const nodes = await getNodes();
 
     if (!nodes.length) {
@@ -14,57 +32,62 @@ export default async (_: NextApiRequest, res: NextApiResponse) => {
     const rainSensorId = 258;
 
     const tempAtr = nodes
-        .find((node: any) => node.id === climateSensorId)
-        .attributes.find(
-            (attribute: any) => attribute.type === AttributeType.Temperature
+        .find((node: Node) => node.id === climateSensorId)
+        ?.attributes.find(
+            (attribute: Attribute) =>
+                attribute.type === AttributeType.Temperature
         );
 
     const humidityAtr = nodes
-        .find((node: any) => node.id === climateSensorId)
-        .attributes.find(
-            (attribute: any) =>
+        .find((node: Node) => node.id === climateSensorId)
+        ?.attributes.find(
+            (attribute: Attribute) =>
                 attribute.type === AttributeType.RelativeHumidity
         );
 
     const accumulatedEnergy = nodes
-        .flatMap((node: any) => {
+        .flatMap((node: Node) => {
             return (
                 node.attributes.find(
-                    (attribute: any) =>
+                    (attribute: Attribute) =>
                         attribute.type === AttributeType.CurrentEnergyUse
                 ) || []
             );
         })
-        .reduce((acc: any, attribute: any) => {
+        .reduce((acc: number, attribute: Attribute) => {
             return acc + attribute.current_value;
         }, 0);
 
     const lightsOn = nodes
-        .flatMap((node: any) => {
+        .flatMap((node: Node) => {
             if (isLight(node) && node.state === NodeState.Available) {
                 return node.attributes.find(
-                    (attribute: any) => attribute.type === AttributeType.OnOff
+                    (attribute: Attribute) =>
+                        attribute.type === AttributeType.OnOff
                 );
             } else {
                 return [];
             }
         })
-        .some((attribute: any) => {
-            return attribute.current_value > 0;
+        .some((attribute: Attribute | undefined) => {
+            return attribute && attribute.current_value > 0;
         });
 
     const outsideTempAtr = nodes
-        .find((node: any) => node.id === climateSensorOutsideId)
-        .attributes.find(
-            (attribute: any) => attribute.type === AttributeType.Temperature
+        .find((node: Node) => node.id === climateSensorOutsideId)
+        ?.attributes.find(
+            (attribute: Attribute) =>
+                attribute.type === AttributeType.Temperature
         );
 
-    const isRaining =
-        nodes
-            .find((node: any) => node.id === rainSensorId)
-            .attributes.find(
-                (attribute: any) => attribute.type === AttributeType.FloodAlarm
-            ).current_value > 0;
+    const floodAlarmAtr = nodes
+        .find((node: Node) => node.id === rainSensorId)
+        ?.attributes.find(
+            (attribute: Attribute) =>
+                attribute.type === AttributeType.FloodAlarm
+        );
+
+    const isRaining = floodAlarmAtr ? floodAlarmAtr.current_value > 0 : false;
 
     res.setHeader(
         'Cache-Control',
@@ -73,17 +96,22 @@ export default async (_: NextApiRequest, res: NextApiResponse) => {
 
     return res.status(200).json({
         lights: lightsOn ? 'An' : 'Aus',
-        rain: isRaining
-            ? outsideTempAtr.current_value > 0
-                ? 'Es regnet'
-                : 'Es schneit'
-            : 'Kein Regen',
-        temperature: formatValue(tempAtr.current_value, tempAtr.unit),
-        humidity: formatValue(humidityAtr.current_value, humidityAtr.unit),
-        energy: formatValue(accumulatedEnergy, 'W'),
-        outsideTemperature: formatValue(
-            outsideTempAtr.current_value,
-            outsideTempAtr.unit
-        )
+        rain: outsideTempAtr
+            ? isRaining
+                ? outsideTempAtr.current_value > 0
+                    ? 'Es regnet'
+                    : 'Es schneit'
+                : 'Kein Regen'
+            : '',
+        temperature: tempAtr
+            ? formatValue(tempAtr.current_value, tempAtr.unit)
+            : '',
+        humidity: humidityAtr
+            ? formatValue(humidityAtr.current_value, humidityAtr.unit)
+            : '',
+        energy: accumulatedEnergy ? formatValue(accumulatedEnergy, 'W') : '',
+        outsideTemperature: outsideTempAtr
+            ? formatValue(outsideTempAtr.current_value, outsideTempAtr.unit)
+            : ''
     });
 };
