@@ -8,7 +8,7 @@ interface Label {
 
 interface Props {
     Icon: Icon;
-    text: string;
+    text?: string;
     href?: string;
     labels?: Label[];
     nowrap?: boolean;

@@ -2,8 +2,8 @@ import Image from 'next/image';
 import Skeleton from 'react-loading-skeleton';
 
 interface Props {
-    url: string;
-    description: string;
+    url?: string;
+    description?: string;
     priority?: boolean;
     unoptimized?: boolean;
 }

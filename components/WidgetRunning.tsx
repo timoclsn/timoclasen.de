@@ -1,3 +1,4 @@
+import { LastRun, ThisYear } from 'pages/api/running';
 import {
     ArrowRight,
     Calendar,
@@ -9,48 +10,9 @@ import {
 } from 'react-feather';
 
 import RunningElement from './RunningElement';
-
-interface ThisYear {
-    distance: number;
-    fastest: number;
-    farthest: number;
-    lowest: number;
-    longest: number;
-}
-
-interface LastRun {
-    date: {
-        raw: string;
-        relative: string;
-        timezone: string;
-    };
-    distance: {
-        raw: number;
-        formatted: string;
-    };
-    avgSpeed: {
-        raw: number;
-        formatted: string;
-    };
-    time: {
-        raw: number;
-        formatted: string;
-    };
-    avgHeartrate: {
-        raw: number;
-        formatted: string;
-    };
-    map: {
-        light: string;
-        dark: string;
-    };
-    url: string;
-    kudos: number;
-}
-
 interface Props {
-    thisYear: ThisYear;
-    lastRun: LastRun;
+    thisYear?: ThisYear;
+    lastRun?: LastRun;
 }
 
 export default function WidgetRunning({ thisYear, lastRun }: Props) {
@@ -64,16 +26,16 @@ export default function WidgetRunning({ thisYear, lastRun }: Props) {
     };
 
     const distanceLabels = [
-        ...(lastRun?.distance?.raw >= distanceThreshold
+        ...(lastRun && lastRun?.distance?.raw >= distanceThreshold
             ? [{ text: 'far', description: 'Strecke von 10 km oder mehr' }]
             : []),
-        ...(lastRun?.distance?.raw >= thisYear?.farthest
+        ...(lastRun && thisYear && lastRun?.distance?.raw >= thisYear?.farthest
             ? [yearsBestLabel]
             : [])
     ];
 
     const speedLabels = [
-        ...(lastRun?.avgSpeed?.raw > speedThreshold
+        ...(lastRun && lastRun?.avgSpeed?.raw > speedThreshold
             ? [
                   {
                       text: 'fast',
@@ -81,11 +43,13 @@ export default function WidgetRunning({ thisYear, lastRun }: Props) {
                   }
               ]
             : []),
-        ...(lastRun?.avgSpeed?.raw >= thisYear?.fastest ? [yearsBestLabel] : [])
+        ...(lastRun && thisYear && lastRun?.avgSpeed?.raw >= thisYear?.fastest
+            ? [yearsBestLabel]
+            : [])
     ];
 
     const timeLabels = [
-        ...(lastRun?.time?.raw >= timeThreshold
+        ...(lastRun && lastRun?.time?.raw >= timeThreshold
             ? [
                   {
                       text: 'long',
@@ -93,14 +57,18 @@ export default function WidgetRunning({ thisYear, lastRun }: Props) {
                   }
               ]
             : []),
-        ...(lastRun?.time?.raw >= thisYear?.longest ? [yearsBestLabel] : [])
+        ...(lastRun && thisYear && lastRun?.time?.raw >= thisYear?.longest
+            ? [yearsBestLabel]
+            : [])
     ];
 
     const heartrateLabels = [
-        ...(lastRun?.avgHeartrate?.raw < heartrateThreshold
+        ...(lastRun && lastRun?.avgHeartrate?.raw < heartrateThreshold
             ? [{ text: 'low', description: 'Puls von unter 160 bpm' }]
             : []),
-        ...(lastRun?.avgHeartrate?.raw <= thisYear?.lowest
+        ...(lastRun &&
+        thisYear &&
+        lastRun?.avgHeartrate?.raw <= thisYear?.lowest
             ? [yearsBestLabel]
             : [])
     ];
@@ -133,7 +101,7 @@ export default function WidgetRunning({ thisYear, lastRun }: Props) {
             </ul>
             <div className="flex justify-between mt-8 mb-2">
                 <h3 className="font-bold">Letzter Lauf</h3>
-                {lastRun?.kudos > 0 && (
+                {lastRun && lastRun?.kudos > 0 && (
                     <div
                         className="flex items-center space-x-1 opacity-60"
                         title={`${lastRun.kudos} Kudos für diesen Lauf auf Strava`}>

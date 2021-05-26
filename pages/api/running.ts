@@ -4,6 +4,7 @@ import { utcToZonedTime } from 'date-fns-tz';
 
 import { getMapURLs } from '../../lib/mapbox';
 import {
+    Activity,
     formatSpeed,
     formatTime,
     getActivities,
@@ -11,9 +12,54 @@ import {
 } from '../../lib/strava';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async (_: NextApiRequest, res: NextApiResponse) => {
+export interface ThisYear {
+    distance: number;
+    fastest: number;
+    farthest: number;
+    lowest: number;
+    longest: number;
+}
+
+export interface LastRun {
+    date: {
+        raw: string;
+        relative: string;
+        timezone: string;
+    };
+    distance: {
+        raw: number;
+        formatted: string;
+    };
+    avgSpeed: {
+        raw: number;
+        formatted: string;
+    };
+    time: {
+        raw: number;
+        formatted: string;
+    };
+    avgHeartrate: {
+        raw: number;
+        formatted: string;
+    };
+    map: {
+        light: string;
+        dark: string;
+    };
+    url: string;
+    kudos: number;
+}
+
+export interface RunningData {
+    thisYear: ThisYear;
+    lastRun: LastRun;
+}
+
+export default async (_: NextApiRequest, res: NextApiResponse<RunningData>) => {
     const activites = await getActivities();
-    const runs = activites.filter((activity: any) => activity.type === 'Run');
+    const runs = activites.filter(
+        (activity: Activity) => activity.type === 'Run'
+    );
 
     const {
         distance: distanceThisYear,
@@ -22,7 +68,7 @@ export default async (_: NextApiRequest, res: NextApiResponse) => {
         longest: longestThisYear,
         lowest: lowestThisYear
     } = runs.reduce(
-        (thisYear: any, activity: any) => {
+        (thisYear: ThisYear, activity: Activity) => {
             return {
                 distance: thisYear.distance + activity.distance,
                 farthest:
@@ -52,16 +98,12 @@ export default async (_: NextApiRequest, res: NextApiResponse) => {
         }
     );
 
-    const lastRun = runs.reduce((lastRun: any, activity: any) => {
-        if (!lastRun.start_date) {
-            return activity;
-        }
-
+    const lastRun = runs.reduce((lastRun: Activity, activity: Activity) => {
         return parseISO(activity.start_date).getTime() >
             parseISO(lastRun.start_date).getTime()
             ? activity
             : lastRun;
-    }, {});
+    }, runs[0]);
 
     res.setHeader(
         'Cache-Control',

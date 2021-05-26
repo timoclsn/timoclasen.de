@@ -6,9 +6,10 @@ import WidgetImage from './WidgetImage';
 import WidgetLayout from './WidgetLayout';
 import WidgetRunning from './WidgetRunning';
 import fetcher from '../lib/fetcher';
+import { RunningData } from 'pages/api/running';
 
 export default function RunningWidget() {
-    const { data, error } = useSWR('/api/running', fetcher);
+    const { data, error } = useSWR<RunningData>('/api/running', fetcher);
 
     if (error) {
         return <div>Fehler beim Laden…</div>;

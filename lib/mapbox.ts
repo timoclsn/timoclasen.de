@@ -1,10 +1,10 @@
 import polyline from '@mapbox/polyline';
-// @ts-ignore
+// @ts-expect-error
 import simplify from 'simplify-geojson';
 
 const mapboxAccessToken = process.env.MAPBOX_ACCESS_TOKEN;
 
-export function getMapURLs(runPolyline: any) {
+export function getMapURLs(runPolyline: string) {
     const geoJSONLengthLimit = 8000;
     const geoJSONBasePercision = 0.000001;
 
