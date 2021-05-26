@@ -4,6 +4,23 @@ import simplify from 'simplify-geojson';
 
 const mapboxAccessToken = process.env.MAPBOX_ACCESS_TOKEN;
 
+interface GeoJSON {
+    type: string;
+    features: [
+        {
+            type: string;
+            geometry: {
+                type: string;
+                coordinates: any[];
+            };
+            properties: {
+                stroke: string;
+                'stroke-width': number;
+            };
+        }
+    ];
+}
+
 export function getMapURLs(runPolyline: string) {
     const geoJSONLengthLimit = 8000;
     const geoJSONBasePercision = 0.000001;
@@ -19,7 +36,7 @@ export function getMapURLs(runPolyline: string) {
     const height = 1280;
     const padding = 200;
 
-    const geoJSON = {
+    const geoJSON: GeoJSON = {
         type: 'FeatureCollection',
         features: [
             {
@@ -49,7 +66,11 @@ export function getMapURLs(runPolyline: string) {
     };
 }
 
-function optimizeGeoJSON(geoJSON: any, percision: number, limit: number): any {
+function optimizeGeoJSON(
+    geoJSON: GeoJSON,
+    percision: number,
+    limit: number
+): GeoJSON {
     const geoJSONLength = prepareGeoJSON(geoJSON).length;
     const overLimit = geoJSONLength > limit;
     if (overLimit) {
@@ -61,13 +82,13 @@ function optimizeGeoJSON(geoJSON: any, percision: number, limit: number): any {
     }
 }
 
-function prepareGeoJSON(geoJSON: any) {
+function prepareGeoJSON(geoJSON: GeoJSON) {
     return encodeURIComponent(JSON.stringify(geoJSON));
 }
 
 function getMapURL(
     theme: string,
-    geoJSON: any,
+    geoJSON: GeoJSON,
     width: number,
     height: number,
     padding: number
