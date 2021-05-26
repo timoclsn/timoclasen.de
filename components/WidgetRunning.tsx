@@ -26,16 +26,16 @@ export default function WidgetRunning({ thisYear, lastRun }: Props) {
     };
 
     const distanceLabels = [
-        ...(lastRun && lastRun?.distance?.raw >= distanceThreshold
+        ...(lastRun && lastRun.distance.raw >= distanceThreshold
             ? [{ text: 'far', description: 'Strecke von 10 km oder mehr' }]
             : []),
-        ...(lastRun && thisYear && lastRun?.distance?.raw >= thisYear?.farthest
+        ...(lastRun && thisYear && lastRun.distance.raw >= thisYear.farthest
             ? [yearsBestLabel]
             : [])
     ];
 
     const speedLabels = [
-        ...(lastRun && lastRun?.avgSpeed?.raw > speedThreshold
+        ...(lastRun && lastRun.avgSpeed.raw > speedThreshold
             ? [
                   {
                       text: 'fast',
@@ -43,13 +43,13 @@ export default function WidgetRunning({ thisYear, lastRun }: Props) {
                   }
               ]
             : []),
-        ...(lastRun && thisYear && lastRun?.avgSpeed?.raw >= thisYear?.fastest
+        ...(lastRun && thisYear && lastRun.avgSpeed?.raw >= thisYear.fastest
             ? [yearsBestLabel]
             : [])
     ];
 
     const timeLabels = [
-        ...(lastRun && lastRun?.time?.raw >= timeThreshold
+        ...(lastRun && lastRun.time.raw >= timeThreshold
             ? [
                   {
                       text: 'long',
@@ -57,18 +57,16 @@ export default function WidgetRunning({ thisYear, lastRun }: Props) {
                   }
               ]
             : []),
-        ...(lastRun && thisYear && lastRun?.time?.raw >= thisYear?.longest
+        ...(lastRun && thisYear && lastRun.time.raw >= thisYear.longest
             ? [yearsBestLabel]
             : [])
     ];
 
     const heartrateLabels = [
-        ...(lastRun && lastRun?.avgHeartrate?.raw < heartrateThreshold
+        ...(lastRun && lastRun.avgHeartrate?.raw < heartrateThreshold
             ? [{ text: 'low', description: 'Puls von unter 160 bpm' }]
             : []),
-        ...(lastRun &&
-        thisYear &&
-        lastRun?.avgHeartrate?.raw <= thisYear?.lowest
+        ...(lastRun && thisYear && lastRun.avgHeartrate?.raw <= thisYear.lowest
             ? [yearsBestLabel]
             : [])
     ];
@@ -101,7 +99,7 @@ export default function WidgetRunning({ thisYear, lastRun }: Props) {
             </ul>
             <div className="flex justify-between mt-8 mb-2">
                 <h3 className="font-bold">Letzter Lauf</h3>
-                {lastRun && lastRun?.kudos > 0 && (
+                {lastRun && lastRun.kudos > 0 && (
                     <div
                         className="flex items-center space-x-1 opacity-60"
                         title={`${lastRun.kudos} Kudos für diesen Lauf auf Strava`}>
