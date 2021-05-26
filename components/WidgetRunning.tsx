@@ -1,4 +1,3 @@
-import { LastRun, ThisYear } from '../pages/api/running';
 import {
     ArrowRight,
     Calendar,
@@ -9,6 +8,7 @@ import {
     TrendingUp
 } from 'react-feather';
 
+import { LastRun, ThisYear } from '../pages/api/running';
 import RunningElement from './RunningElement';
 interface Props {
     thisYear?: ThisYear;

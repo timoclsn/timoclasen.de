@@ -1,3 +1,5 @@
+import { GetStaticProps } from 'next';
+
 import AboutWidget from '../components/AboutWidget';
 import BlogWidget from '../components/BlogWidget';
 import ContactWidget from '../components/ContactWidget';
@@ -10,7 +12,6 @@ import Teaser from '../components/Teaser';
 import { queryContent } from '../lib/content';
 import { getFavoritePodcasts } from '../lib/podcasts';
 import { markdownToHTML, stripFirstLine, truncate } from '../lib/text';
-import { GetStaticProps } from 'next';
 
 export default function Home(props: any) {
     return (

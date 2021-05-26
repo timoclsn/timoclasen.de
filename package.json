@@ -61,6 +61,8 @@
         "@types/mapbox__polyline": "^1.0.2",
         "@types/react-syntax-highlighter": "^13.5.0",
         "@types/ws": "^7.4.4",
+        "@typescript-eslint/eslint-plugin": "^4.25.0",
+        "@typescript-eslint/parser": "^4.25.0",
         "cypress": "^7.4.0",
         "dotenv": "^10.0.0",
         "eslint": "^7.27.0",

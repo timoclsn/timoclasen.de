@@ -1,5 +1,5 @@
-import Skeleton from 'react-loading-skeleton';
 import { Icon } from 'react-feather';
+import Skeleton from 'react-loading-skeleton';
 
 interface Label {
     text: string;

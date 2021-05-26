@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next';
+
 import ContactWidget from '../components/ContactWidget';
 import Layout from '../components/Layout';
 import TextBlock from '../components/TextBlock';

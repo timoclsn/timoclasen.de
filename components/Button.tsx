@@ -1,6 +1,6 @@
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
 import clsx from 'clsx';
 import { Children, forwardRef, ReactNode } from 'react';
-import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 interface Props {
     children: ReactNode;

@@ -10,10 +10,10 @@ import {
 } from 'react-feather';
 import useSWR from 'swr';
 
-import SmartHomeElement from './SmartHomeElement';
-import WidgetLayout from './WidgetLayout';
 import fetcher from '../lib/fetcher';
 import { SmartHomeData } from '../pages/api/smarthome';
+import SmartHomeElement from './SmartHomeElement';
+import WidgetLayout from './WidgetLayout';
 
 interface Props {
     text: string;

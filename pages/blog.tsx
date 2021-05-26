@@ -1,5 +1,6 @@
 import { format, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
+import { GetStaticProps } from 'next';
 import readingTime from 'reading-time';
 
 import BlogPostPreview from '../components/BlogPostPreview';
@@ -7,7 +8,6 @@ import ContactWidget from '../components/ContactWidget';
 import Layout from '../components/Layout';
 import { queryContent } from '../lib/content';
 import { markdownToHTML } from '../lib/text';
-import { GetStaticProps } from 'next';
 
 export default function Blog(props: any) {
     return (

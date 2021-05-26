@@ -1,3 +1,5 @@
+import { NextApiRequest, NextApiResponse } from 'next';
+
 import { AttributeType, NodeState } from '../../lib/enums';
 import {
     Attribute,
@@ -6,7 +8,6 @@ import {
     isLight,
     Node
 } from '../../lib/homee';
-import { NextApiRequest, NextApiResponse } from 'next';
 
 export interface SmartHomeData {
     lights: string;

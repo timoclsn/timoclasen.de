@@ -1,6 +1,7 @@
 import { formatRelative, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
 import { utcToZonedTime } from 'date-fns-tz';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 import { getMapURLs } from '../../lib/mapbox';
 import {
@@ -10,7 +11,6 @@ import {
     getActivities,
     roundDistance
 } from '../../lib/strava';
-import { NextApiRequest, NextApiResponse } from 'next';
 
 export interface ThisYear {
     distance: number;

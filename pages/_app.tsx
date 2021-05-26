@@ -1,7 +1,8 @@
+import '../styles/globals.css';
+
 import type { AppProps } from 'next/app';
 import { SkeletonTheme } from 'react-loading-skeleton';
 
-import '../styles/globals.css';
 import { ThemeProvider } from '../components/ThemeContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
