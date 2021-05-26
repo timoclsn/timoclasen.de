@@ -13,7 +13,7 @@ import useSWR from 'swr';
 import SmartHomeElement from './SmartHomeElement';
 import WidgetLayout from './WidgetLayout';
 import fetcher from '../lib/fetcher';
-import { SmartHomeData } from 'pages/api/smarthome';
+import { SmartHomeData } from '../pages/api/smarthome';
 
 interface Props {
     text: string;

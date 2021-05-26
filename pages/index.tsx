@@ -9,7 +9,7 @@ import SmartHomeWidget from '../components/SmartHomeWidget';
 import Teaser from '../components/Teaser';
 import { queryContent } from '../lib/content';
 import { getFavoritePodcasts } from '../lib/podcasts';
-import { markdownToHTML, stripFirstLine, truncate } from '@/lib/text';
+import { markdownToHTML, stripFirstLine, truncate } from '../lib/text';
 import { GetStaticProps } from 'next';
 
 export default function Home(props: any) {

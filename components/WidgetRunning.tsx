@@ -1,4 +1,4 @@
-import { LastRun, ThisYear } from 'pages/api/running';
+import { LastRun, ThisYear } from '../pages/api/running';
 import {
     ArrowRight,
     Calendar,
