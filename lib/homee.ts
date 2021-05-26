@@ -75,11 +75,11 @@ export function getNodes() {
             ws.send('GET:nodes');
         });
 
-        ws.on('message', (data: any) => {
-            data = JSON.parse(data);
+        ws.on('message', (data: string) => {
+            const dataObj: { nodes: Node[] } = JSON.parse(data);
 
-            if (data.nodes) {
-                nodes = data.nodes;
+            if (dataObj.nodes) {
+                nodes = dataObj.nodes;
                 ws.close();
             }
         });

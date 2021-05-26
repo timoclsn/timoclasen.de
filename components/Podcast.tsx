@@ -1,14 +1,9 @@
 import Image from 'next/image';
 import { Heart, User } from 'react-feather';
 
-interface Props {
-    title: string;
-    description: string;
-    hosts: string;
-    image: string;
-    link: string;
-    favorite: boolean;
-}
+import { Podcast as PodcastType } from '../lib/podcasts';
+
+type Props = PodcastType;
 
 export default function Podcast({
     title,

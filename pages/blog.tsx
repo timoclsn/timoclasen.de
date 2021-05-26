@@ -9,6 +9,19 @@ import Layout from '../components/Layout';
 import { queryContent } from '../lib/content';
 import { markdownToHTML } from '../lib/text';
 
+interface BlogPost {
+    title: string;
+    subtitle: string;
+    dateFormatted: string;
+    slug: string;
+    readingTime: string;
+    key: { sys: { id: string } };
+    sys: {
+        id: string;
+        publishedVersion: string;
+    };
+}
+
 export default function Blog(props: any) {
     return (
         <Layout
@@ -17,7 +30,7 @@ export default function Blog(props: any) {
             description={props.description}
             previewImage={props.previewImage}
             slug={props.slug}>
-            {props.blogPosts.map((post: any) => (
+            {props.blogPosts.map((post: BlogPost) => (
                 <BlogPostPreview
                     title={post.title}
                     subtitle={post.subtitle}

@@ -15,7 +15,7 @@ export default function RunningWidget() {
         return <div>Fehler beim Laden…</div>;
     }
 
-    const { darkMode } = useContext<any>(ThemeContext);
+    const { darkMode } = useContext(ThemeContext);
 
     return (
         <div id="running">

@@ -5,13 +5,13 @@ import { ThemeContext } from './ThemeContext';
 
 export default function SwitchMode() {
     const [mounted, setMounted] = useState(false);
-    const { darkMode, setDarkMode } = useContext<any>(ThemeContext);
+    const { darkMode, setDarkMode } = useContext(ThemeContext);
 
     // When mounted on client, now we can show the UI
     useEffect(() => setMounted(true), []);
 
     function handleThemeChange() {
-        setDarkMode(!darkMode);
+        setDarkMode?.(!darkMode);
     }
 
     return (

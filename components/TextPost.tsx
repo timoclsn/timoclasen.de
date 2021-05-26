@@ -41,7 +41,7 @@ const components = {
         return <p>{children}</p>;
     },
     pre: function Code({ node }: Code) {
-        const { darkMode } = useContext<any>(ThemeContext);
+        const { darkMode } = useContext(ThemeContext);
         const style = darkMode ? styleDark : styleLight;
         const code = node.children[0].children[0].value.replace(/\n$/, '');
 

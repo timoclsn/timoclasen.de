@@ -1,18 +1,18 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
 
 interface ThemeContext {
-    darkMode: boolean | null;
+    darkMode: boolean;
     setDarkMode: (value: boolean) => void;
 }
 
-export const ThemeContext = createContext<ThemeContext | null>(null);
+export const ThemeContext = createContext<Partial<ThemeContext>>({});
 
 interface ThemeProvider {
     children: ReactNode;
 }
 
 export function ThemeProvider({ children }: ThemeProvider) {
-    const [darkMode, rawSetDarkMode] = useState<boolean | null>(null);
+    const [darkMode, rawSetDarkMode] = useState<boolean>();
 
     function setDarkMode(value: boolean) {
         rawSetDarkMode(value);

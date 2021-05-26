@@ -150,7 +150,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
     const blogPosts = response.data.blogPosts.items;
 
     return {
-        paths: blogPosts.map((blogPost: any) => {
+        paths: blogPosts.map((blogPost: { slug: string }) => {
             return {
                 params: {
                     slug: blogPost.slug
