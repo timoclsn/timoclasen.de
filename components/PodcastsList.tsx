@@ -57,14 +57,7 @@ export default function PodcastsList({ podcasts }: Props) {
             <ul className="space-y-20">
                 {filteredPodcast.map((podcast) => (
                     <li key={podcast.title}>
-                        <Podcast
-                            title={podcast.title}
-                            description={podcast.description}
-                            hosts={podcast.hosts}
-                            image={podcast.image}
-                            link={podcast.website}
-                            favorite={podcast.favorite}
-                        />
+                        <Podcast podcast={podcast} />
                     </li>
                 ))}
             </ul>

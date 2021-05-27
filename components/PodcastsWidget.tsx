@@ -2,17 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'react-feather';
 
+import { Podcast } from '../lib/podcasts';
 import Button from './Button';
-
-interface Podcast {
-    title: string;
-    favorite: boolean;
-    feed: string;
-    description: string;
-    website: string;
-    hosts: string;
-    image: string;
-}
 
 interface Props {
     podcasts: Podcast[];

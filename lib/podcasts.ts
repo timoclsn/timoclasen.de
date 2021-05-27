@@ -2,11 +2,12 @@ import fs from 'fs';
 
 export interface Podcast {
     title: string;
+    favorite: boolean;
+    feed: string;
     description: string;
+    website: string;
     hosts: string;
     image: string;
-    link: string;
-    favorite: boolean;
 }
 
 export function getPodcasts(): Podcast[] {

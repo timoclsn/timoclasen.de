@@ -10,10 +10,39 @@ import RunningWidget from '../components/RunningWidget';
 import SmartHomeWidget from '../components/SmartHomeWidget';
 import Teaser from '../components/Teaser';
 import { queryContent } from '../lib/content';
-import { getFavoritePodcasts } from '../lib/podcasts';
+import { getFavoritePodcasts, Podcast } from '../lib/podcasts';
 import { markdownToHTML, stripFirstLine, truncate } from '../lib/text';
 
-export default function Home(props: any) {
+interface Props {
+    preview: boolean;
+    title: string;
+    description: string;
+    previewImage: {
+        url: string;
+        description: string;
+    };
+    header: string;
+    image: {
+        url: string;
+        description: string;
+    };
+    aboutTeaser: string;
+    blogPosts: {
+        title: string;
+        summary: string;
+        slug: string;
+    }[];
+    smartHome: string;
+    smartHomeFootnote: string;
+    favoritePodcasts: Podcast[];
+    LCDImage: {
+        url: string;
+        description: string;
+    };
+    contact: string;
+}
+
+export default function Home(props: Props) {
     return (
         <Layout
             preview={props.preview}
