@@ -1,4 +1,5 @@
 import polyline from '@mapbox/polyline';
+import { Position } from 'geojson';
 // @ts-expect-error Don't know how to fix at the moment
 import simplify from 'simplify-geojson';
 
@@ -11,7 +12,7 @@ interface GeoJSON {
             type: string;
             geometry: {
                 type: string;
-                coordinates: any[];
+                coordinates: Position[];
             };
             properties: {
                 stroke: string;
