@@ -147,7 +147,7 @@
         "title": "Design Better Podcast",
         "favorite": false,
         "feed": "https://designbetter.libsyn.com/rss",
-        "description": "The Design Better podcast delivers insights from the world’s most renowned design leaders, empowering teams to transform their practice and build remarkable products. This series is hosted by Aarron Walter and Eli Woolery and brought to you by InVision, the digital product design platform used to make the world’s best customer experiences. Discover more best practices, research, and resources at www.designbetter.com.\n",
+        "description": "The Design Better podcast delivers insights from the world’s most renowned creative leaders, empowering teams to transform their practice and build remarkable products. This series is hosted by Aarron Walter and Eli Woolery and brought to you by InVision, the digital product design platform used to make the world’s best customer experiences. Discover more best practices, research, and resources at www.designbetter.com.\n",
         "website": "http://designbetter.co/podcast",
         "hosts": "InVisionApp, Inc",
         "image": "cover-1391567702.jpg"
@@ -246,7 +246,7 @@
         "title": "Frontend Greatness",
         "favorite": false,
         "feed": "https://anchor.fm/s/4548b47c/podcast/rss",
-        "description": "A podcast that helps frontend developers go from good to great. Hosted by A-P Koponen.\n",
+        "description": "A podcast that helps frontend developers go from good to great. Hosted by Ari Koponen.\n",
         "website": "http://www.frontendgreatness.com/",
         "hosts": "Ari-Pekka Koponen",
         "image": "cover-1967909334.jpg"
@@ -309,7 +309,7 @@
         "title": "JS Party: JavaScript & Web Dev",
         "favorite": false,
         "feed": "https://changelog.com/jsparty/feed",
-        "description": "Your weekly celebration of JavaScript and the web.  This show records LIVE on Thursdays at 1pm US/Eastern time. Panelists include Jerod Santo, Feross Aboukhadijeh, Kevin Ball, Emma Bostian, Nick Nisi, Divya Sasidharan, Mikeal Rogers,  Chris Hiller, and Amal Hussein.\n\nTopics discussed include the web platform (Chrome, Safari, Edge, Firefox, Brave, etc), front-end frameworks (React, Ember, Angular, Vue, etc), Node.js, web animation, SVG, robotics, IoT, and much more. If JavaScript and/or the web touch your life, this show’s for you.\n\nSome people search for JSParty and can't find the show, so now the string JSParty is in our description too.\n",
+        "description": "Your weekly celebration of JavaScript and the web.  This show records LIVE on Thursdays at 1pm US/Eastern time. Panelists include Jerod Santo, Feross Aboukhadijeh, Kevin Ball, Emma Bostian, Nick Nisi, Divya Sasidharan, Mikeal Rogers,  Chris Hiller, and Amal Hussein. Topics discussed include the web platform (Chrome, Safari, Edge, Firefox, Brave, etc), front-end frameworks (React, Ember, Angular, Vue, etc), Node.js, web animation, SVG, robotics, IoT, and much more. If JavaScript and/or the web touch your life, this show’s for you. Some people search for JSParty and can’t find the show, so now the string JSParty is in our description too.\n",
         "website": "https://changelog.com/jsparty",
         "hosts": "Changelog Media",
         "image": "cover--601005967.jpg"
@@ -427,7 +427,7 @@
         "favorite": false,
         "feed": "https://feeds.npr.org/510289/podcast.xml",
         "description": "The economy explained. Imagine you could call up a friend and say, \"Meet me at the bar and tell me what's going on with the economy.\" Now imagine that's actually a fun evening.\n",
-        "website": "https://www.npr.org/planetmoney",
+        "website": "https://www.npr.org/podcasts/510289/planet-money",
         "hosts": "NPR",
         "image": "cover--1401915336.jpg"
     },
@@ -705,7 +705,7 @@
         "title": "Waveform: The MKBHD Podcast",
         "favorite": false,
         "feed": "http://feeds.feedburner.com/WaveformWithMkbhd",
-        "description": "A tech podcast for the gadget lovers and tech heads among us from the mind of Marques Brownlee, better known as MKBHD. MKBHD has made a name for himself on YouTube reviewing everything from the newest smartphones to cameras to electric cars. Pulling from over 10 years of experience covering the tech industry, MKBHD and co-host Andrew Manganelli will keep you informed and entertained as they take a deep dive into the latest and greatest in tech and what deserves your hard earned cash. New episodes every other week. Link to ad survey: https://bit.ly/2EcYbu4.\\\nFor advertising opportunities please reach out to PodcastPartnerships@studio71us.com\n",
+        "description": "A tech podcast for the gadget lovers and tech heads among us from the mind of Marques Brownlee, better known as MKBHD. MKBHD has made a name for himself on YouTube reviewing everything from the newest smartphones to cameras to electric cars. Pulling from over 10 years of experience covering the tech industry, MKBHD and co-host Andrew Manganelli will keep you informed and entertained as they take a deep dive into the latest and greatest in tech and what deserves your hard earned cash. New episodes every week.\n\nFor advertising opportunities please reach out to PodcastPartnerships@studio71us.com\nLink to ad survey: https://bit.ly/2EcYbu4\n",
         "website": "https://www.studio71.com/us/podcasts/",
         "hosts": "Studio71",
         "image": "cover-1562093234.jpg"
