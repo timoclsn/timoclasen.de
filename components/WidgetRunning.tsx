@@ -71,6 +71,29 @@ export default function WidgetRunning({ thisYear, lastRun }: Props) {
             : [])
     ];
 
+    function getYearProgress() {
+        const firstDayOfYear = new Date(
+            new Date().getFullYear(),
+            0,
+            1
+        ).getTime();
+
+        const firstDayOfNextYear = new Date(
+            new Date().getFullYear() + 1,
+            0,
+            1
+        ).getTime();
+        const today = new Date().getTime();
+        return Math.round(
+            ((today - firstDayOfYear) / (firstDayOfNextYear - firstDayOfYear)) *
+                100
+        );
+    }
+
+    const runningProgress = thisYear ? thisYear.distance / (1000 / 100) : 0;
+    const yearProgress = getYearProgress();
+    const yearTrend = runningProgress >= yearProgress ? '↑' : '↓';
+
     return (
         <div className="px-6 py-12 xl:px-12 xl:py-20">
             <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">
@@ -87,10 +110,8 @@ export default function WidgetRunning({ thisYear, lastRun }: Props) {
                         labels={
                             thisYear && [
                                 {
-                                    text: `${
-                                        thisYear.distance / (1000 / 100)
-                                    }%`,
-                                    description: 'Jahresziel'
+                                    text: `${runningProgress}% ${yearTrend}`,
+                                    description: `Erreichtes Jahresziel. ${yearProgress}% des Jahres sind vorbei.`
                                 }
                             ]
                         }
