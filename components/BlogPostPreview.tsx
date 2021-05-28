@@ -11,7 +11,7 @@ interface Props {
     title: string;
     subtitle: string;
     date: string;
-    readingTime: string;
+    readingTime: number;
     slug: string;
     sys: Sys;
 }

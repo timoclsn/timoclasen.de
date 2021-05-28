@@ -6,7 +6,20 @@ import TextBlock from '../components/TextBlock';
 import { queryContent } from '../lib/content';
 import { markdownToHTML } from '../lib/text';
 
-export default function Legal(props: any) {
+interface Props {
+    preview: boolean;
+    title: string;
+    description: string;
+    slug: string;
+    previewImage: {
+        url: string;
+        description: string;
+    };
+    legal: string;
+    contact: string;
+}
+
+export default function Legal(props: Props) {
     return (
         <Layout
             preview={props.preview}

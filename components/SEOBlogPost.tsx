@@ -7,7 +7,7 @@ interface PreviewImage {
 
 interface Props {
     authorName: string;
-    readingTime: string;
+    readingTime: number;
     date: string;
     slug: string;
     title: string;

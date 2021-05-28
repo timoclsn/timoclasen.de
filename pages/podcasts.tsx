@@ -5,10 +5,23 @@ import PodcastsList from '../components/PodcastsList';
 import Recommendations from '../components/Recommendations';
 import TextBlock from '../components/TextBlock';
 import { queryContent } from '../lib/content';
-import { getPodcasts } from '../lib/podcasts';
+import { getPodcasts, Podcast } from '../lib/podcasts';
 import { markdownToHTML } from '../lib/text';
 
-export default function Podcasts(props: any) {
+interface Props {
+    preview: boolean;
+    title: string;
+    description: string;
+    slug: string;
+    previewImage: {
+        url: string;
+        description: string;
+    };
+    podcastsText: string;
+    podcasts: Podcast[];
+}
+
+export default function Podcasts(props: Props) {
     return (
         <Layout
             preview={props.preview}

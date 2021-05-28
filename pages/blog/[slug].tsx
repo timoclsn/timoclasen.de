@@ -12,8 +12,17 @@ import TextBlock from '../../components/TextBlock';
 import TextPost from '../../components/TextPost';
 import { queryContent } from '../../lib/content';
 import { markdownToHTML } from '../../lib/text';
+import { BlogPost as BlogPostType } from '../blog';
 
-export default function BlogPost(props: any) {
+interface Props {
+    preview: boolean;
+    blogPost: BlogPostType;
+    loading: string;
+    error: string;
+    contact: string;
+}
+
+export default function BlogPost(props: Props) {
     const router = useRouter();
 
     if (!router.isFallback && !props.blogPost) {

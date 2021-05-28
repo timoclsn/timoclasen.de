@@ -9,20 +9,47 @@ import Layout from '../components/Layout';
 import { queryContent } from '../lib/content';
 import { markdownToHTML } from '../lib/text';
 
-interface BlogPost {
-    title: string;
-    subtitle: string;
-    dateFormatted: string;
-    slug: string;
-    readingTime: string;
-    key: { sys: { id: string } };
+export interface BlogPost {
     sys: {
         id: string;
         publishedVersion: string;
     };
+    title: string;
+    subtitle: string;
+    date: string;
+    dateFormatted: string;
+    slug: string;
+    previewImage: {
+        url: string;
+        description: string;
+    };
+    readingTime: number;
+    author: {
+        name: string;
+        username: string;
+        image: {
+            url: string;
+            description: string;
+        };
+    };
+    summary: string;
+    text: string;
+}
+interface Props {
+    preview: boolean;
+    title: string;
+    description: string;
+    slug: string;
+    previewImage: {
+        url: string;
+        description: string;
+    };
+    aboutTeaser: string;
+    blogPosts: BlogPost[];
+    contact: string;
 }
 
-export default function Blog(props: any) {
+export default function Blog(props: Props) {
     return (
         <Layout
             preview={props.preview}
@@ -84,22 +111,24 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 
     const page = response.data.page.items[0];
 
-    const blogPosts = response.data.blogPosts.items.map((blogPost: any) => {
-        const readingTimeObj = readingTime(blogPost.text);
-        blogPost.readingTime = Math.ceil(readingTimeObj.minutes);
+    const blogPosts = response.data.blogPosts.items.map(
+        (blogPost: BlogPost) => {
+            const readingTimeObj = readingTime(blogPost.text);
+            blogPost.readingTime = Math.ceil(readingTimeObj.minutes);
 
-        delete blogPost.text;
+            blogPost.text = '';
 
-        blogPost.dateFormatted = format(
-            parseISO(blogPost.date),
-            'dd. MMMM yyyy',
-            {
-                locale: de
-            }
-        );
+            blogPost.dateFormatted = format(
+                parseISO(blogPost.date),
+                'dd. MMMM yyyy',
+                {
+                    locale: de
+                }
+            );
 
-        return blogPost;
-    });
+            return blogPost;
+        }
+    );
 
     const contactText = response.data.contactSnippet.items[0].content;
 
