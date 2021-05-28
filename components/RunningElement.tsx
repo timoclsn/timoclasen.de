@@ -45,7 +45,7 @@ export default function RunningElement({
                         return (
                             <div
                                 key={label.text}
-                                className="px-3 py-1 m-1 text-xs font-bold uppercase rounded-full bg-highlight dark:bg-highlight-dark text-light"
+                                className="px-3 py-1 m-1 text-xs font-bold uppercase rounded-full whitespace-nowrap bg-highlight dark:bg-highlight-dark text-light"
                                 title={label.description}>
                                 {label.text}
                             </div>
