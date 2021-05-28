@@ -11,50 +11,62 @@ import { ThemeContext } from './ThemeContext';
 
 SyntaxHighlighter.registerLanguage('jsx', jsx);
 
-interface Paragraph {
-    node: any;
+interface ParagraphProps {
+    node: ReactNode;
     children: ReactNode;
 }
 
-interface Code {
-    node: any;
+function Paragraph({ node, children }: ParagraphProps) {
+    const domNode = node as HTMLElement;
+    if (domNode.children[0].tagName === 'image') {
+        const imageNode = domNode.children[0] as HTMLImageElement;
+        return (
+            <div className="rounded-md aspect-w-3 aspect-h-2 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10">
+                <Image
+                    src={`https:${imageNode.src}`}
+                    layout="fill"
+                    objectFit="contain"
+                    objectPosition="center"
+                    sizes="90vw"
+                    quality={60}
+                    alt={imageNode.alt}
+                />
+            </div>
+        );
+    }
+    return <p>{children}</p>;
+}
+
+interface CodeProps {
+    node: ReactNode;
+}
+
+interface CodeNode {
+    type: string;
+    value: string;
+}
+
+function Code({ node }: CodeProps) {
+    const domNode = node as HTMLElement;
+    const { darkMode } = useContext(ThemeContext);
+    const style = darkMode ? styleDark : styleLight;
+    const codeNode = domNode.children[0].children[0] as unknown as CodeNode;
+    const text = codeNode.value.replace(/\n$/, '');
+
+    return (
+        <SyntaxHighlighter style={style} language="jsx">
+            {text}
+        </SyntaxHighlighter>
+    );
 }
 
 const components = {
-    p: function Paragraph({ node, children }: Paragraph) {
-        if (node.children[0].type === 'image') {
-            const image = node.children[0];
-            return (
-                <div className="rounded-md aspect-w-3 aspect-h-2 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10">
-                    <Image
-                        src={`https:${image.url}`}
-                        layout="fill"
-                        objectFit="contain"
-                        objectPosition="center"
-                        sizes="90vw"
-                        quality={60}
-                        alt={image.alt}
-                    />
-                </div>
-            );
-        }
-        return <p>{children}</p>;
-    },
-    pre: function Code({ node }: Code) {
-        const { darkMode } = useContext(ThemeContext);
-        const style = darkMode ? styleDark : styleLight;
-        const code = node.children[0].children[0].value.replace(/\n$/, '');
-
-        return (
-            <SyntaxHighlighter style={style} language="jsx">
-                {code}
-            </SyntaxHighlighter>
-        );
-    }
+    p: Paragraph,
+    pre: Code
 };
 
 interface Props {
-    children: 'children';
+    children: string;
 }
 
 export default function TextPost({ children }: Props) {
