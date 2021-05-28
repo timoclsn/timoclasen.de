@@ -1,6 +1,5 @@
 import polyline from '@mapbox/polyline';
 import { Position } from 'geojson';
-// @ts-expect-error Don't know how to fix at the moment
 import simplify from 'simplify-geojson';
 
 const mapboxAccessToken = process.env.MAPBOX_ACCESS_TOKEN;
