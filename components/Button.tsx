@@ -5,7 +5,7 @@ import { Children, forwardRef, ReactNode } from 'react';
 interface Props {
     children: ReactNode;
     as?: 'button' | 'a';
-    type?: 'button' | 'submit';
+    type?: 'button' | 'submit' | 'reset';
     variant?: 'solid' | 'ghost' | 'link';
     fullWidth?: boolean;
     className?: string;
