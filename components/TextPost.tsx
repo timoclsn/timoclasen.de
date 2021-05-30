@@ -6,7 +6,7 @@ import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
 import styleDark from 'react-syntax-highlighter/dist/cjs/styles/prism/material-dark';
 import styleLight from 'react-syntax-highlighter/dist/cjs/styles/prism/material-light';
 
-import TextContainer from './TextContainer';
+import TextBlock from './TextBlock';
 import { ThemeContext } from './ThemeContext';
 
 SyntaxHighlighter.registerLanguage('jsx', jsx);
@@ -71,8 +71,8 @@ interface Props {
 
 export default function TextPost({ children }: Props) {
     return (
-        <TextContainer>
+        <TextBlock>
             <ReactMarkdown components={components}>{children}</ReactMarkdown>
-        </TextContainer>
+        </TextBlock>
     );
 }
