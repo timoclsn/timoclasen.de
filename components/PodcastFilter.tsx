@@ -10,7 +10,7 @@ interface Props {
     handleChange(e: ChangeEvent<HTMLInputElement>): void;
 }
 
-export default function PodcastFilter({ filter, handleChange }: Props) {
+export function PodcastFilter({ filter, handleChange }: Props) {
     return (
         <div className="flex space-x-4">
             <div className="flex items-center justify-center space-x-2 text-base opacity-60">

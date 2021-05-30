@@ -3,7 +3,7 @@ import { Moon, Sun } from 'react-feather';
 
 import { ThemeContext } from './ThemeContext';
 
-export default function SwitchMode() {
+export function SwitchMode() {
     const [mounted, setMounted] = useState(false);
     const { darkMode, setDarkMode } = useContext(ThemeContext);
 

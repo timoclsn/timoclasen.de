@@ -14,13 +14,7 @@ interface Props {
     nowrap?: boolean;
 }
 
-export default function RunningElement({
-    Icon,
-    text,
-    href,
-    labels,
-    nowrap
-}: Props) {
+export function RunningElement({ Icon, text, href, labels, nowrap }: Props) {
     return (
         <div className="flex items-center space-x-4">
             <div className="leading-none">

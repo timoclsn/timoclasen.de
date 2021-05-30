@@ -1,12 +1,12 @@
 import Head from 'next/head';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-import CenteredColumn from './CenteredColumn';
-import Favicons from './Favicons';
-import Footer from './Footer';
-import Navigation from './Navigation';
-import PreviewAlert from './PreviewAlert';
-import SEO from './SEO';
+import { CenteredColumn } from './CenteredColumn';
+import { Favicons } from './Favicons';
+import { Footer } from './Footer';
+import { Navigation } from './Navigation';
+import { PreviewAlert } from './PreviewAlert';
+import { SEO } from './SEO';
 
 interface PreviewImage {
     url: string;
@@ -22,7 +22,7 @@ interface Props {
     preview?: boolean;
 }
 
-export default function Layout({
+export function Layout({
     children,
     title,
     description,

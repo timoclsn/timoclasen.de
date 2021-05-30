@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import Podcast from './Podcast';
-import PodcastFilter from './PodcastFilter';
-import Search from './Search';
+import { Podcast } from './Podcast';
+import { PodcastFilter } from './PodcastFilter';
+import { Search } from './Search';
 
 interface Podcast {
     title: string;
@@ -18,7 +18,7 @@ interface Props {
     podcasts: Podcast[];
 }
 
-export default function PodcastsList({ podcasts }: Props) {
+export function PodcastsList({ podcasts }: Props) {
     const [searchValue, setSearchValue] = useState('');
     const [filter, setFilter] = useState({
         favorites: false

@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 interface Props {
     children: [ReactNode, ReactNode];
@@ -8,7 +8,7 @@ interface Props {
     transparent?: boolean;
 }
 
-export default function WidgetLayout({
+export function WidgetLayout({
     children,
     separate,
     highlight,

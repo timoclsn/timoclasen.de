@@ -1,9 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { Loader, Send } from 'react-feather';
 
-import Button from './Button';
+import { Button } from './Button';
 
-export default function Recommendations() {
+export function Recommendations() {
     const [message, setMessage] = useState('');
     const [serverState, setServerState] = useState({
         submitting: false,

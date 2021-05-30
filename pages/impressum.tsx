@@ -1,8 +1,8 @@
-import { GetStaticProps } from 'next';
+import type { GetStaticProps } from 'next';
 
-import ContactWidget from '../components/ContactWidget';
-import Layout from '../components/Layout';
-import TextBlock from '../components/TextBlock';
+import { ContactWidget } from '../components/ContactWidget';
+import { Layout } from '../components/Layout';
+import { TextBlock } from '../components/TextBlock';
 import { queryContent } from '../lib/content';
 import { markdownToHTML } from '../lib/text';
 

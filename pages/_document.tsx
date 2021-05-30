@@ -1,6 +1,6 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 
-import NoFlash from '../components/NoFlash';
+import { NoFlash } from '../components/NoFlash';
 
 class MyDocument extends Document {
     render() {

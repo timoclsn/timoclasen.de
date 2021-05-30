@@ -8,7 +8,7 @@ interface Props {
     unoptimized?: boolean;
 }
 
-export default function WidgetImage({
+export function WidgetImage({
     url,
     description,
     priority,

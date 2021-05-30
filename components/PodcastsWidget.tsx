@@ -3,13 +3,13 @@ import Link from 'next/link';
 import { ArrowRight } from 'react-feather';
 
 import { Podcast } from '../lib/podcasts';
-import Button from './Button';
+import { Button } from './Button';
 
 interface Props {
     podcasts: Podcast[];
 }
 
-export default function PodcastsWidget({ podcasts }: Props) {
+export function PodcastsWidget({ podcasts }: Props) {
     return (
         <section id="podcasts">
             <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">

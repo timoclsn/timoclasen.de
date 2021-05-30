@@ -13,13 +13,7 @@ interface Props {
     name: string;
 }
 
-export default function SEO({
-    title,
-    description,
-    slug,
-    previewImage,
-    name
-}: Props) {
+export function SEO({ title, description, slug, previewImage, name }: Props) {
     return (
         <Head>
             <title>{title}</title>
