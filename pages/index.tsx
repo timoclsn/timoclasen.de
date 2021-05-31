@@ -1,16 +1,17 @@
-import { GetStaticProps } from 'next';
+import type { GetStaticProps } from 'next';
 
-import AboutWidget from '../components/AboutWidget';
-import BlogWidget from '../components/BlogWidget';
-import ContactWidget from '../components/ContactWidget';
-import Layout from '../components/Layout';
-import LCDWidget from '../components/LCDWidget';
-import PodcastsWidget from '../components/PodcastsWidget';
-import RunningWidget from '../components/RunningWidget';
-import SmartHomeWidget from '../components/SmartHomeWidget';
-import Teaser from '../components/Teaser';
+import { AboutWidget } from '../components/AboutWidget';
+import { BlogWidget } from '../components/BlogWidget';
+import { ContactWidget } from '../components/ContactWidget';
+import { Layout } from '../components/Layout';
+import { LCDWidget } from '../components/LCDWidget';
+import { PodcastsWidget } from '../components/PodcastsWidget';
+import { RunningWidget } from '../components/RunningWidget';
+import { SmartHomeWidget } from '../components/SmartHomeWidget';
+import { Teaser } from '../components/Teaser';
 import { queryContent } from '../lib/content';
-import { getFavoritePodcasts, Podcast } from '../lib/podcasts';
+import type { Podcast } from '../lib/podcasts';
+import { getFavoritePodcasts } from '../lib/podcasts';
 import { markdownToHTML, stripFirstLine, truncate } from '../lib/text';
 
 interface Props {

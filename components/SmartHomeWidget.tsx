@@ -10,17 +10,17 @@ import {
 } from 'react-feather';
 import useSWR from 'swr';
 
-import fetcher from '../lib/fetcher';
-import { SmartHomeData } from '../pages/api/smarthome';
-import SmartHomeElement from './SmartHomeElement';
-import WidgetLayout from './WidgetLayout';
+import { fetcher } from '../lib/fetcher';
+import type { SmartHomeData } from '../pages/api/smarthome';
+import { SmartHomeElement } from './SmartHomeElement';
+import { WidgetLayout } from './WidgetLayout';
 
 interface Props {
     text: string;
     footnote: string;
 }
 
-export default function SmartHomeWidget({ text, footnote }: Props) {
+export function SmartHomeWidget({ text, footnote }: Props) {
     const { data, error } = useSWR<SmartHomeData, string>(
         '/api/smarthome',
         fetcher

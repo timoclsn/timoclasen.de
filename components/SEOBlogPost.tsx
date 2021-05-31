@@ -15,7 +15,7 @@ interface Props {
     previewImage: PreviewImage;
 }
 
-export default function SEOBlogPost({
+export function SEOBlogPost({
     authorName,
     readingTime,
     date,

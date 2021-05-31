@@ -1,11 +1,11 @@
 import { formatRelative, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
 import { utcToZonedTime } from 'date-fns-tz';
-import { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { getMapURLs } from '../../lib/mapbox';
+import type { Activity } from '../../lib/strava';
 import {
-    Activity,
     formatSpeed,
     formatTime,
     getActivities,

@@ -1,6 +1,7 @@
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 import clsx from 'clsx';
-import { Children, forwardRef, ReactNode } from 'react';
+import type { ReactNode } from 'react';
+import { Children, forwardRef } from 'react';
 
 interface Props {
     children: ReactNode;
@@ -10,7 +11,7 @@ interface Props {
     className?: string;
 }
 
-const Button = forwardRef(function Button(
+export const Button = forwardRef(function Button(
     {
         children,
         as: Element = 'button',
@@ -56,5 +57,3 @@ const Button = forwardRef(function Button(
         </Element>
     );
 }) as Polymorphic.ForwardRefComponent<'button', Props>;
-
-export default Button;

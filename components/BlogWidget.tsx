@@ -1,5 +1,5 @@
-import WidgetLayout from './WidgetLayout';
-import WidgetText from './WidgetText';
+import { WidgetLayout } from './WidgetLayout';
+import { WidgetText } from './WidgetText';
 
 interface BlogPost {
     title: string;
@@ -12,7 +12,7 @@ interface Props {
     blogPost2: BlogPost;
 }
 
-export default function BlogWidget({ blogPost1, blogPost2 }: Props) {
+export function BlogWidget({ blogPost1, blogPost2 }: Props) {
     return (
         <WidgetLayout>
             <WidgetText

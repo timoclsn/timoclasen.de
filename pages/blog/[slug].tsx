@@ -1,18 +1,18 @@
 import { format, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import type { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import readingTime from 'reading-time';
 
-import BlogPostHeader from '../../components/BlogPostHeader';
-import ContactWidget from '../../components/ContactWidget';
-import Layout from '../../components/Layout';
-import SEOBlogPost from '../../components/SEOBlogPost';
-import TextBlock from '../../components/TextBlock';
-import TextPost from '../../components/TextPost';
+import { BlogPostHeader } from '../../components/BlogPostHeader';
+import { ContactWidget } from '../../components/ContactWidget';
+import { Layout } from '../../components/Layout';
+import { SEOBlogPost } from '../../components/SEOBlogPost';
+import { TextBlock } from '../../components/TextBlock';
+import { TextPost } from '../../components/TextPost';
 import { queryContent } from '../../lib/content';
 import { markdownToHTML } from '../../lib/text';
-import { BlogPost as BlogPostType } from '../blog';
+import type { BlogPost as BlogPostType } from '../blog';
 
 interface Props {
     preview: boolean;

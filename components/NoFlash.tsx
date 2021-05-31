@@ -1,4 +1,4 @@
-export default function NoFlash() {
+export function NoFlash() {
     function setTheme() {
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');

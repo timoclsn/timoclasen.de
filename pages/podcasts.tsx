@@ -1,11 +1,12 @@
-import { GetStaticProps } from 'next';
+import type { GetStaticProps } from 'next';
 
-import Layout from '../components/Layout';
-import PodcastsList from '../components/PodcastsList';
-import Recommendations from '../components/Recommendations';
-import TextBlock from '../components/TextBlock';
+import { Layout } from '../components/Layout';
+import { PodcastsList } from '../components/PodcastsList';
+import { Recommendations } from '../components/Recommendations';
+import { TextBlock } from '../components/TextBlock';
 import { queryContent } from '../lib/content';
-import { getPodcasts, Podcast } from '../lib/podcasts';
+import type { Podcast } from '../lib/podcasts';
+import { getPodcasts } from '../lib/podcasts';
 import { markdownToHTML } from '../lib/text';
 
 interface Props {

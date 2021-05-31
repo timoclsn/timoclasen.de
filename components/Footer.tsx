@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import CenteredColumn from './CenteredColumn';
-import NavigationLink from './NavigationLink';
+import { CenteredColumn } from './CenteredColumn';
+import { NavigationLink } from './NavigationLink';
 
-export default function Footer() {
+export function Footer() {
     return (
         <footer className="mt-auto" data-cy="footer">
             <CenteredColumn>

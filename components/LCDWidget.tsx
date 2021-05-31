@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { ArrowRight } from 'react-feather';
 
-import Button from './Button';
+import { Button } from './Button';
 
 interface BgImage {
     url: string;
@@ -12,7 +12,7 @@ interface Props {
     bgImage: BgImage;
 }
 
-export default function LCDWidget({ bgImage }: Props) {
+export function LCDWidget({ bgImage }: Props) {
     return (
         <section id="life-centered-design" className="relative">
             <div className="aspect-w-3 sm:aspect-w-2 aspect-h-2 sm:aspect-h-1 bg-highlight dark:bg-highlight-dark rounded-3xl">

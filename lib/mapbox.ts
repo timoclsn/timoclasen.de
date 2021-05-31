@@ -1,5 +1,5 @@
 import polyline from '@mapbox/polyline';
-import { Position } from 'geojson';
+import type { Position } from 'geojson';
 import simplify from 'simplify-geojson';
 
 const mapboxAccessToken = process.env.MAPBOX_ACCESS_TOKEN;

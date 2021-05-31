@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import { Heart, User } from 'react-feather';
 
-import { Podcast as PodcastType } from '../lib/podcasts';
+import type { Podcast as PodcastType } from '../lib/podcasts';
 
 interface Props {
     podcast: PodcastType;
 }
 
-export default function Podcast({ podcast }: Props) {
+export function Podcast({ podcast }: Props) {
     return (
         <div className="flex mx-auto space-x-4 max-w-prose">
             <Image

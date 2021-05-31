@@ -1,12 +1,13 @@
 import Image from 'next/image';
-import { ReactNode, useContext } from 'react';
+import type { ReactNode } from 'react';
+import { useContext } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
 import styleDark from 'react-syntax-highlighter/dist/cjs/styles/prism/material-dark';
 import styleLight from 'react-syntax-highlighter/dist/cjs/styles/prism/material-light';
 
-import TextBlock from './TextBlock';
+import { TextBlock } from './TextBlock';
 import { ThemeContext } from './ThemeContext';
 
 SyntaxHighlighter.registerLanguage('jsx', jsx);
@@ -69,7 +70,7 @@ interface Props {
     children: string;
 }
 
-export default function TextPost({ children }: Props) {
+export function TextPost({ children }: Props) {
     return (
         <TextBlock>
             <ReactMarkdown components={components}>{children}</ReactMarkdown>

@@ -2,7 +2,7 @@ interface Props {
     text: string;
 }
 
-export default function Teaser({ text }: Props) {
+export function Teaser({ text }: Props) {
     return (
         <section
             className="text-teaser"

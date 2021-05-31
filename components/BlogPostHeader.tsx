@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Calendar, Clock, Feather, Twitter, User } from 'react-feather';
 
-import BlogPostLabel from './BlogPostLabel';
+import { BlogPostLabel } from './BlogPostLabel';
 
 interface Author {
     name: string;
@@ -25,7 +25,7 @@ interface Props {
     sys: Sys;
 }
 
-export default function BlogPostHeader({
+export function BlogPostHeader({
     title,
     subtitle,
     date,

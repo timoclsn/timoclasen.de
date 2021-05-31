@@ -1,4 +1,4 @@
-import { Icon } from 'react-feather';
+import type { Icon } from 'react-feather';
 
 interface Props {
     Icon: Icon;
@@ -6,7 +6,7 @@ interface Props {
     href?: string;
 }
 
-export default function BlogPostLabel({ Icon, text, href }: Props) {
+export function BlogPostLabel({ Icon, text, href }: Props) {
     return (
         <div className="flex items-center space-x-2">
             <Icon size={16} />

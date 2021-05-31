@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import type { ChangeEvent } from 'react';
 import { Search as SearchIcon } from 'react-feather';
 
 interface Props {
@@ -6,7 +6,7 @@ interface Props {
     handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export default function Search({ placeholder, handleChange }: Props) {
+export function Search({ placeholder, handleChange }: Props) {
     return (
         <div className="relative flex items-center w-full">
             <input

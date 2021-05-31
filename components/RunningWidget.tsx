@@ -1,14 +1,14 @@
 import { useContext } from 'react';
 import useSWR from 'swr';
 
-import fetcher from '../lib/fetcher';
-import { RunningData } from '../pages/api/running';
+import { fetcher } from '../lib/fetcher';
+import type { RunningData } from '../pages/api/running';
 import { ThemeContext } from './ThemeContext';
-import WidgetImage from './WidgetImage';
-import WidgetLayout from './WidgetLayout';
-import WidgetRunning from './WidgetRunning';
+import { WidgetImage } from './WidgetImage';
+import { WidgetLayout } from './WidgetLayout';
+import { WidgetRunning } from './WidgetRunning';
 
-export default function RunningWidget() {
+export function RunningWidget() {
     const { data, error } = useSWR<RunningData>('/api/running', fetcher);
 
     if (error) {

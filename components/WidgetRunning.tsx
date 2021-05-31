@@ -8,14 +8,14 @@ import {
     TrendingUp
 } from 'react-feather';
 
-import { LastRun, ThisYear } from '../pages/api/running';
-import RunningElement from './RunningElement';
+import type { LastRun, ThisYear } from '../pages/api/running';
+import { RunningElement } from './RunningElement';
 interface Props {
     thisYear?: ThisYear;
     lastRun?: LastRun;
 }
 
-export default function WidgetRunning({ thisYear, lastRun }: Props) {
+export function WidgetRunning({ thisYear, lastRun }: Props) {
     const distanceThreshold = 10000; // 10km in m
     const speedThreshold = 3.03; // ca. 5:30 /km in m/s
     const timeThreshold = 3600; // 1h in s

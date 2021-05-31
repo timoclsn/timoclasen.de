@@ -1,6 +1,6 @@
-import WidgetImage from './WidgetImage';
-import WidgetLayout from './WidgetLayout';
-import WidgetText from './WidgetText';
+import { WidgetImage } from './WidgetImage';
+import { WidgetLayout } from './WidgetLayout';
+import { WidgetText } from './WidgetText';
 
 interface Props {
     text: string;
@@ -8,11 +8,7 @@ interface Props {
     imageDescription: string;
 }
 
-export default function AboutWidget({
-    text,
-    imageUrl,
-    imageDescription
-}: Props) {
+export function AboutWidget({ text, imageUrl, imageDescription }: Props) {
     return (
         <WidgetLayout separate highlight>
             <WidgetText
