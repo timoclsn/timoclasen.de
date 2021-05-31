@@ -4,7 +4,6 @@ import { forwardRef } from 'react';
 
 type Props = {
     children: ReactNode;
-    href?: string;
     target?: '_blank';
     rel?: 'noopener noreferrer' | 'noopener' | 'noreferrer';
 } & JSX.IntrinsicElements['a'];
