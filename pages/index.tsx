@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next';
+import type { GetStaticProps } from 'next';
 
 import { AboutWidget } from '../components/AboutWidget';
 import { BlogWidget } from '../components/BlogWidget';
