@@ -1,4 +1,4 @@
-import { Icon } from 'react-feather';
+import type { Icon } from 'react-feather';
 import Skeleton from 'react-loading-skeleton';
 
 interface Props {

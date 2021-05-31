@@ -1,4 +1,4 @@
-import { Icon } from 'react-feather';
+import type { Icon } from 'react-feather';
 
 interface Props {
     Icon: Icon;
