@@ -1,21 +1,12 @@
 import { useState } from 'react';
 
+import type { Podcast as PodcastType } from '../lib/podcasts';
 import { Podcast } from './Podcast';
 import { PodcastFilter } from './PodcastFilter';
 import { Search } from './Search';
 
-interface Podcast {
-    title: string;
-    favorite: boolean;
-    feed: string;
-    description: string;
-    website: string;
-    hosts: string;
-    image: string;
-}
-
 interface Props {
-    podcasts: Podcast[];
+    podcasts: PodcastType[];
 }
 
 export function PodcastsList({ podcasts }: Props) {

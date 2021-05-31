@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'react-feather';
 
-import { Podcast } from '../lib/podcasts';
+import type { Podcast } from '../lib/podcasts';
 import { Button } from './Button';
 
 interface Props {

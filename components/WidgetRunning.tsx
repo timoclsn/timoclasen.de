@@ -8,7 +8,7 @@ import {
     TrendingUp
 } from 'react-feather';
 
-import { LastRun, ThisYear } from '../pages/api/running';
+import type { LastRun, ThisYear } from '../pages/api/running';
 import { RunningElement } from './RunningElement';
 interface Props {
     thisYear?: ThisYear;

@@ -4,8 +4,8 @@ import { utcToZonedTime } from 'date-fns-tz';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { getMapURLs } from '../../lib/mapbox';
+import type { Activity } from '../../lib/strava';
 import {
-    Activity,
     formatSpeed,
     formatTime,
     getActivities,

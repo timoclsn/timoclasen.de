@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react';
+import type { ChangeEvent } from 'react';
 import { Search as SearchIcon } from 'react-feather';
 
 interface Props {

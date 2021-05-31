@@ -11,7 +11,7 @@ import {
 import useSWR from 'swr';
 
 import { fetcher } from '../lib/fetcher';
-import { SmartHomeData } from '../pages/api/smarthome';
+import type { SmartHomeData } from '../pages/api/smarthome';
 import { SmartHomeElement } from './SmartHomeElement';
 import { WidgetLayout } from './WidgetLayout';
 
