@@ -3,10 +3,28 @@ import clsx from 'clsx';
 import type { ReactNode } from 'react';
 import { Children, forwardRef } from 'react';
 
+const baseStyles = [
+    'inline-flex',
+    'items-center',
+    'justify-center',
+    'icon-md',
+    'font-bold',
+    'space-x-2',
+    'cursor-pointer',
+    'disabled:opacity-50',
+    'focus:outline-none'
+];
+
+const variantStyles = {
+    solid: 'px-8 py-4 rounded-full text-light bg-highlight dark:bg-highlight-dark hover:bg-opacity-80 dark:hover:bg-opacity-80 focus:ring-2 focus:ring-inset focus:ring-dark dark:focus:ring-light',
+    ghost: 'px-8 py-4 rounded-full ring-2 ring-inset ring-dark dark:ring-light hover:bg-dark dark:hover:bg-light hover:bg-opacity-20 dark:hover:bg-opacity-20 focus:ring-highlight dark:focus:ring-highlight-dark',
+    link: 'hover:opacity-80'
+};
+
 interface Props {
     children: ReactNode;
     as?: 'button' | 'a';
-    variant?: 'solid' | 'ghost' | 'link';
+    variant?: keyof typeof variantStyles;
     fullWidth?: boolean;
     className?: string;
 }
@@ -24,25 +42,9 @@ export const Button = forwardRef(function Button(
     ref
 ) {
     const styles = clsx(
-        'inline-flex',
-        'items-center',
-        'justify-center',
-        'icon-md',
-        'font-bold',
-        'space-x-2',
-        'cursor-pointer',
-        'disabled:opacity-50',
-        'focus:outline-none',
-
-        // Variant
-        variant === 'solid' &&
-            'px-8 py-4 rounded-full text-light bg-highlight dark:bg-highlight-dark hover:bg-opacity-80 dark:hover:bg-opacity-80 focus:ring-2 focus:ring-inset focus:ring-dark dark:focus:ring-light',
-        variant === 'ghost' &&
-            'px-8 py-4 rounded-full ring-2 ring-inset ring-dark dark:ring-light hover:bg-dark dark:hover:bg-light hover:bg-opacity-20 dark:hover:bg-opacity-20 focus:ring-highlight dark:focus:ring-highlight-dark',
-        variant === 'link' && 'hover:opacity-80',
-
+        baseStyles,
+        variantStyles[variant],
         fullWidth && 'w-full',
-
         className
     );
     return (
