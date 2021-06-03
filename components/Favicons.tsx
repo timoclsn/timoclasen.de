@@ -1,7 +1,5 @@
 import Head from 'next/head';
 
-// favicon.ico in the root of website as backup
-
 export function Favicons() {
     return (
         <Head>
