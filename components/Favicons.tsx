@@ -5,6 +5,7 @@ import Head from 'next/head';
 export function Favicons() {
     return (
         <Head>
+            <link rel="icon" href="/favicons/favicon.ico" />
             <link
                 rel="icon"
                 href="/favicons/favicon.svg"
