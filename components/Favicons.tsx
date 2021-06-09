@@ -1,6 +1,11 @@
 import Head from 'next/head';
+import { useContext } from 'react';
+
+import { ThemeContext } from './ThemeContext';
 
 export function Favicons() {
+    const { darkMode } = useContext(ThemeContext);
+
     return (
         <Head>
             <link rel="icon" type="image/png" href="/favicons/favicon.png" />
@@ -14,7 +19,10 @@ export function Favicons() {
                 href="/favicons/favicon-apple-touch.png"
             />
             <link rel="manifest" href="/favicons/manifest.webmanifest" />
-            <meta name="theme-color" content="#3E51F7" />
+            <meta
+                name="theme-color"
+                content={darkMode ? '#4F5FEF' : '#3E51F7'}
+            />
         </Head>
     );
 }
