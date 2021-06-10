@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import type { TopArtist } from '../../lib/spotify';
 import { getTopArtists } from '../../lib/spotify';
 
 interface Artist {
@@ -20,7 +19,7 @@ export default async (
 ) => {
     const topArtists = await getTopArtists();
 
-    const artists = topArtists.map((artist: TopArtist) => {
+    const artists = topArtists.map((artist) => {
         const image =
             artist.images.find((image) => image.height === 640) ||
             artist.images[0];

@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import type { TopTrack } from '../../lib/spotify';
 import { getTopTracks } from '../../lib/spotify';
 
 interface Track {
@@ -21,7 +20,7 @@ export default async (
 ) => {
     const topTracks = await getTopTracks();
 
-    const tracks = topTracks.map((track: TopTrack) => {
+    const tracks = topTracks.map((track) => {
         const artist = track.artists[0];
         const image =
             track.album.images.find((image) => image.height === 640) ||
