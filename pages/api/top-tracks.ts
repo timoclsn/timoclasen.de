@@ -16,7 +16,7 @@ interface TopTrackData {
 
 export default async (
     _: NextApiRequest,
-    res: NextApiResponse<TopTrackData | string>
+    res: NextApiResponse<TopTrackData>
 ) => {
     const topTracks = await getTopTracks();
 

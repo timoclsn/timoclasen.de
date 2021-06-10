@@ -15,7 +15,7 @@ interface TopArtistsData {
 
 export default async (
     _: NextApiRequest,
-    res: NextApiResponse<TopArtistsData | string>
+    res: NextApiResponse<TopArtistsData>
 ) => {
     const topArtists = await getTopArtists();
 
