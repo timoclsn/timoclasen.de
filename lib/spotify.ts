@@ -37,7 +37,7 @@ interface NowPlaying {
         uri: string;
     };
     progress_ms: number;
-    item: Track | null;
+    item: TopTrack | null;
     currently_playing_type: string;
     actions: { disallows: { resuming: boolean } };
     is_playing: boolean;
@@ -68,7 +68,7 @@ export async function getNowPlaying(): Promise<NowPlaying | null> {
     return nowPlaying;
 }
 
-interface Artist {
+export interface TopArtist {
     external_urls: {
         spotify: string;
     };
@@ -87,19 +87,22 @@ interface Artist {
     uri: string;
 }
 
-export async function getTopArtists(): Promise<Artist[]> {
+export async function getTopArtists(): Promise<TopArtist[]> {
     const access_token = await getAccessToken();
 
-    const data = await fetcher('https://api.spotify.com/v1/me/top/artists', {
-        headers: {
-            Authorization: `Bearer ${access_token}`
+    const data = await fetcher(
+        'https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=5',
+        {
+            headers: {
+                Authorization: `Bearer ${access_token}`
+            }
         }
-    });
+    );
 
     return data.items;
 }
 
-interface Track {
+export interface TopTrack {
     album: {
         album_type: string;
         artists: [
@@ -161,14 +164,17 @@ interface Track {
     uri: string;
 }
 
-export async function getTopTracks(): Promise<Track[]> {
+export async function getTopTracks(): Promise<TopTrack[]> {
     const access_token = await getAccessToken();
 
-    const data = await fetcher('https://api.spotify.com/v1/me/top/tracks', {
-        headers: {
-            Authorization: `Bearer ${access_token}`
+    const data = await fetcher(
+        'https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=5',
+        {
+            headers: {
+                Authorization: `Bearer ${access_token}`
+            }
         }
-    });
+    );
 
     return data.items;
 }
