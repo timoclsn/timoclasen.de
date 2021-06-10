@@ -61,10 +61,6 @@ export async function getNowPlaying(): Promise<NowPlaying | null> {
 
     const nowPlaying: NowPlaying = await response.json();
 
-    if (nowPlaying.item === null) {
-        return null;
-    }
-
     return nowPlaying;
 }
 
