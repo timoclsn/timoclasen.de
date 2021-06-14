@@ -87,7 +87,7 @@ export async function getTopArtists(): Promise<TopArtist[]> {
     const access_token = await getAccessToken();
 
     const data = await fetcher(
-        'https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=5',
+        'https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=5',
         {
             headers: {
                 Authorization: `Bearer ${access_token}`
@@ -164,7 +164,7 @@ export async function getTopTracks(): Promise<TopTrack[]> {
     const access_token = await getAccessToken();
 
     const data = await fetcher(
-        'https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=5',
+        'https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=5',
         {
             headers: {
                 Authorization: `Bearer ${access_token}`
