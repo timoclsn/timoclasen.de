@@ -1,7 +1,8 @@
 import { useState } from 'react';
+import { User } from 'react-feather';
 
 import type { Podcast as PodcastType } from '../lib/podcasts';
-import { Podcast } from './Podcast';
+import { MediaPreview } from './MediaPreview';
 import { PodcastFilter } from './PodcastFilter';
 import { Search } from './Search';
 
@@ -48,7 +49,15 @@ export function PodcastsList({ podcasts }: Props) {
             <ul className="space-y-20">
                 {filteredPodcast.map((podcast) => (
                     <li key={podcast.title}>
-                        <Podcast podcast={podcast} />
+                        <MediaPreview
+                            title={podcast.title}
+                            image={`/podcasts/${podcast.image}`}
+                            BylineIcon={User}
+                            byline={podcast.hosts}
+                            subline={podcast.description}
+                            url={podcast.website}
+                            favorite={podcast.favorite}
+                        />
                     </li>
                 ))}
             </ul>

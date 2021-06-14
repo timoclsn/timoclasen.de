@@ -4,25 +4,16 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 module.exports = withBundleAnalyzer({
     images: {
-        domains: ['images.ctfassets.net', 'api.mapbox.com']
+        domains: ['images.ctfassets.net', 'api.mapbox.com', 'i.scdn.co']
     },
     future: {
         webpack5: true,
         strictPostcssConfiguration: true
     },
-    webpack: (config, { dev, isServer }) => {
+    webpack: (config, { isServer }) => {
         if (isServer) {
             require('./scripts/generate-sitemap');
             require('./scripts/generate-rss');
-        }
-
-        // Replace React with Preact only in client production build
-        if (!dev && !isServer) {
-            Object.assign(config.resolve.alias, {
-                react: 'preact/compat',
-                'react-dom/test-utils': 'preact/test-utils',
-                'react-dom': 'preact/compat'
-            });
         }
 
         return config;

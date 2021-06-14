@@ -44,6 +44,11 @@ export function Navigation({ name }: Props) {
                                 <NavigationLink>Podcasts</NavigationLink>
                             </Link>
                         </li>
+                        <li>
+                            <Link href="/musik" passHref>
+                                <NavigationLink>Musik</NavigationLink>
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
             </CenteredColumn>

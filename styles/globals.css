@@ -54,6 +54,14 @@
     .text-teaser p a:hover {
         @apply opacity-80;
     }
+
+    .tab[data-state='active'] {
+        @apply text-light bg-highlight dark:bg-highlight-dark;
+    }
+
+    .tab[data-state='inactive'] {
+        @apply text-highlight dark:text-highlight-dark;
+    }
 }
 
 @layer utilities {
