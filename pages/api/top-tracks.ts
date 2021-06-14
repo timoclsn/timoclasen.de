@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { getTopTracks } from '../../lib/spotify';
 
-interface Track {
+export interface Track {
     name: string;
     url: string;
     artistName: string;
@@ -10,7 +10,7 @@ interface Track {
     image: string;
 }
 
-interface TopTrackData {
+export interface TopTrackData {
     tracks: Track[];
 }
 

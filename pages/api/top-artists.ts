@@ -2,14 +2,14 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { getTopArtists } from '../../lib/spotify';
 
-interface Artist {
+export interface Artist {
     name: string;
     image: string;
     genres: string[];
     url: string;
 }
 
-interface TopArtistsData {
+export interface TopArtistsData {
     artists: Artist[];
 }
 
