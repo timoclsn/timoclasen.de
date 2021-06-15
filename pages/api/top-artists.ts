@@ -7,6 +7,7 @@ export interface Artist {
     image: string;
     genres: string[];
     url: string;
+    followers: number;
 }
 
 export interface TopArtistsData {
@@ -28,7 +29,8 @@ export default async (
             name: artist.name,
             image: image.url,
             genres: artist.genres,
-            url: artist.external_urls.spotify
+            url: artist.external_urls.spotify,
+            followers: artist.followers.total
         };
     });
 
