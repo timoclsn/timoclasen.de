@@ -48,7 +48,7 @@ export const TabsTab = forwardRef(function TabsTab(
     return (
         <TabsPrimitive.Tab
             className={clsx(
-                'flex items-center justify-center w-full py-2 border-2 first:border-r-0 last:border-l-0 last:rounded-l-none cursor-pointer tab border-highlight dark:border-highlight-dark first:rounded-l-2xl first:rounded-r-none last:rounded-r-2xl',
+                'flex items-center justify-center w-full py-2 border-2 first:border-r-0 last:border-l-0 last:rounded-l-none cursor-pointer tab border-highlight dark:border-highlight-dark first:rounded-l-2xl first:rounded-r-none last:rounded-r-2xl focus:outline-none',
                 className
             )}
             ref={ref}
@@ -57,4 +57,20 @@ export const TabsTab = forwardRef(function TabsTab(
     );
 }) as TabsTab;
 
-export const TabsPanel = TabsPrimitive.Panel;
+type TabsPanel = Polymorphic.ForwardRefComponent<
+    Polymorphic.IntrinsicElement<typeof TabsPrimitive.Panel>,
+    Polymorphic.OwnProps<typeof TabsPrimitive.Panel>
+>;
+
+export const TabsPanel = forwardRef(function TabsPanel(
+    { className, ...props },
+    ref
+) {
+    return (
+        <TabsPrimitive.Panel
+            className={clsx('focus:outline-none', className)}
+            ref={ref}
+            {...props}
+        />
+    );
+}) as TabsPanel;
