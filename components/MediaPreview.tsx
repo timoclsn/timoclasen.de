@@ -45,12 +45,14 @@ export function MediaPreview({
             )}
             <div className="flex-1 overflow-hidden">
                 {byline ? (
-                    <div className="flex justify-between mb-1 space-x-2 text-xs uppercase truncate sm:mb-2 text-highlight dark:text-highlight-dark">
+                    <div className="flex justify-between mb-1 space-x-2 text-xs uppercase sm:mb-2 text-highlight dark:text-highlight-dark">
                         <div className="flex items-center space-x-2 truncate">
                             {BylineIcon && (
                                 <BylineIcon size={16} className="flex-none" />
                             )}
-                            <p title={byline}>{byline}</p>
+                            <p title={byline} className="truncate">
+                                {byline}
+                            </p>
                         </div>
                         {favorite && <Heart size={16} className="flex-none" />}
                     </div>
