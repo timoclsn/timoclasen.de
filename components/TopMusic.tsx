@@ -48,7 +48,7 @@ export function TopMusic() {
                                           image={artist.image}
                                           BylineIcon={Music}
                                           byline={artist.genres.join(', ')}
-                                          subline={`Followers: ${artist.followers}`}
+                                          subline={`Follower: ${artist.followers}`}
                                           url={artist.url}
                                       />
                                   </li>
