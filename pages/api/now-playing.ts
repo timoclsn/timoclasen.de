@@ -4,11 +4,11 @@ import { getNowPlaying, getRecentlyPlayed } from '../../lib/spotify';
 
 export interface NowPlayingData {
     isPlaying: boolean;
-    name?: string;
-    url?: string;
-    artistName?: string;
-    albumName?: string;
-    image?: string;
+    name: string;
+    url: string;
+    artistName: string;
+    albumName: string;
+    image: string;
 }
 
 export default async (
