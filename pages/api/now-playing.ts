@@ -13,7 +13,7 @@ export interface NowPlayingData {
 
 export default async (
     _: NextApiRequest,
-    res: NextApiResponse<NowPlayingData | string>
+    res: NextApiResponse<NowPlayingData>
 ) => {
     res.setHeader(
         'Cache-Control',
@@ -25,21 +25,15 @@ export default async (
     if (nowPlaying === null || nowPlaying.item === null) {
         const recentlyPlayed = await getRecentlyPlayed();
 
-        if (recentlyPlayed === null || recentlyPlayed === undefined) {
-            return res.status(504).send('No Data');
-        }
-
         const track = recentlyPlayed.track;
         const artist = track.artists[0];
-        const image =
-            track.album.images.find((image) => image.height === 640) ||
-            track.album.images[0];
+        const image = track.album.images[0];
 
         return res.status(200).json({
             isPlaying: false,
             name: track.name,
             url: track.external_urls.spotify,
-            artistName: artist?.name,
+            artistName: artist.name,
             albumName: track.album.name,
             image: image.url
         });
@@ -47,15 +41,13 @@ export default async (
 
     const track = nowPlaying.item;
     const artist = track.artists[0];
-    const image =
-        track.album.images.find((image) => image.height === 640) ||
-        track.album.images[0];
+    const image = track.album.images[0];
 
     return res.status(200).json({
         isPlaying: nowPlaying.is_playing,
         name: track.name,
         url: track.external_urls.spotify,
-        artistName: artist?.name,
+        artistName: artist.name,
         albumName: track.album.name,
         image: image.url
     });

@@ -21,9 +21,7 @@ export default async (
     const topArtists = await getTopArtists();
 
     const artists = topArtists.map((artist) => {
-        const image =
-            artist.images.find((image) => image.height === 640) ||
-            artist.images[0];
+        const image = artist.images[0];
 
         return {
             name: artist.name,

@@ -22,9 +22,8 @@ export default async (
 
     const tracks = topTracks.map((track) => {
         const artist = track.artists[0];
-        const image =
-            track.album.images.find((image) => image.height === 640) ||
-            track.album.images[0];
+        const image = track.album.images[0];
+
         return {
             name: track.name,
             url: track.external_urls.spotify,
