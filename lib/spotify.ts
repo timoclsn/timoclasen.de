@@ -64,6 +64,34 @@ export async function getNowPlaying(): Promise<NowPlaying | null> {
     return nowPlaying;
 }
 
+interface RecentlyPlayed {
+    track: TopTrack;
+    played_at: string;
+    context: {
+        external_urls: {
+            spotify: string;
+        };
+        href: string;
+        type: string;
+        uri: string;
+    };
+}
+
+export async function getRecentlyPlayed(): Promise<RecentlyPlayed> {
+    const access_token = await getAccessToken();
+
+    const data = await fetcher(
+        'https://api.spotify.com/v1/me/player/recently-played?limit=1',
+        {
+            headers: {
+                Authorization: `Bearer ${access_token}`
+            }
+        }
+    );
+
+    return data.items[0];
+}
+
 export interface TopArtist {
     external_urls: {
         spotify: string;

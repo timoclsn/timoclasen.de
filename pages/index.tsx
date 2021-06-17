@@ -5,6 +5,7 @@ import { BlogWidget } from '../components/BlogWidget';
 import { ContactWidget } from '../components/ContactWidget';
 import { Layout } from '../components/Layout';
 import { LCDWidget } from '../components/LCDWidget';
+import { NowPlaying } from '../components/NowPlaying';
 import { PodcastsWidget } from '../components/PodcastsWidget';
 import { RunningWidget } from '../components/RunningWidget';
 import { SmartHomeWidget } from '../components/SmartHomeWidget';
@@ -67,6 +68,7 @@ export default function Home(props: Props) {
             />
             <RunningWidget />
             <PodcastsWidget podcasts={props.favoritePodcasts} />
+            <NowPlaying />
             <ContactWidget text={props.contact} />
         </Layout>
     );

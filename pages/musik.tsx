@@ -2,6 +2,7 @@ import type { GetStaticProps } from 'next';
 
 import { ContactWidget } from '../components/ContactWidget';
 import { Layout } from '../components/Layout';
+import { NowPlaying } from '../components/NowPlaying';
 import { TextBlock } from '../components/TextBlock';
 import { TopMusic } from '../components/TopMusic';
 import { queryContent } from '../lib/content';
@@ -30,6 +31,7 @@ export default function Music(props: Props) {
             slug={props.slug}>
             <TextBlock text={props.musicText} />
             <TopMusic />
+            <NowPlaying />
             <ContactWidget text={props.contact} />
         </Layout>
     );

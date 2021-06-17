@@ -1,8 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
-import { getNowPlaying } from '../../lib/spotify';
+import { getNowPlaying, getRecentlyPlayed } from '../../lib/spotify';
 
-interface NowPlayingData {
+export interface NowPlayingData {
     isPlaying: boolean;
     name?: string;
     url?: string;
@@ -13,13 +13,35 @@ interface NowPlayingData {
 
 export default async (
     _: NextApiRequest,
-    res: NextApiResponse<NowPlayingData>
+    res: NextApiResponse<NowPlayingData | string>
 ) => {
+    res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=60, stale-while-revalidate=30'
+    );
+
     const nowPlaying = await getNowPlaying();
 
     if (nowPlaying === null || nowPlaying.item === null) {
+        const recentlyPlayed = await getRecentlyPlayed();
+
+        if (recentlyPlayed === null || recentlyPlayed === undefined) {
+            return res.status(504).send('No Data');
+        }
+
+        const track = recentlyPlayed.track;
+        const artist = track.artists[0];
+        const image =
+            track.album.images.find((image) => image.height === 640) ||
+            track.album.images[0];
+
         return res.status(200).json({
-            isPlaying: false
+            isPlaying: false,
+            name: track.name,
+            url: track.external_urls.spotify,
+            artistName: artist?.name,
+            albumName: track.album.name,
+            image: image.url
         });
     }
 
@@ -28,11 +50,6 @@ export default async (
     const image =
         track.album.images.find((image) => image.height === 640) ||
         track.album.images[0];
-
-    res.setHeader(
-        'Cache-Control',
-        'public, s-maxage=60, stale-while-revalidate=30'
-    );
 
     return res.status(200).json({
         isPlaying: nowPlaying.is_playing,
