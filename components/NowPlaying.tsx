@@ -15,7 +15,7 @@ export function NowPlaying() {
 
     return (
         <section className="flex justify-center">
-            <div className="w-full px-6 py-6 space-y-2 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-3xl xl:px-12 xl:py-12 sm:w-auto">
+            <div className="w-full px-6 py-6 space-y-2 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-3xl xl:px-12 xl:py-12 sm:w-auto sm:min-w-[450px]">
                 <div className="flex space-x-6">
                     {data && data.image ? (
                         <div className="flex-none">
@@ -41,18 +41,24 @@ export function NowPlaying() {
                             href={data?.url}
                             target="_blank"
                             rel="noopener noreferrer">
-                            <h2 className="mb-2 font-bold truncate text-md md:text-xl lg:text-2xl hover:text-[#1DB954]">
+                            <h2
+                                className="mb-2 font-bold truncate text-md md:text-xl lg:text-2xl hover:text-[#1DB954]"
+                                title={data?.name}>
                                 {data ? data.name : <Skeleton width="300px" />}
                             </h2>
                         </a>
-                        <p className="mb-0.5 opacity-60 text-md md:text-lg lg:text-xl truncate">
+                        <p
+                            className="mb-0.5 opacity-60 text-md md:text-lg lg:text-xl truncate"
+                            title={data?.artistName}>
                             {data ? (
                                 data.artistName
                             ) : (
                                 <Skeleton width="200px" />
                             )}
                         </p>
-                        <p className="truncate opacity-60 text-md md:text-lg lg:text-xl">
+                        <p
+                            className="truncate opacity-60 text-md md:text-lg lg:text-xl"
+                            title={data?.albumName}>
                             {data ? data.albumName : <Skeleton width="200px" />}
                         </p>
                     </div>
@@ -63,8 +69,8 @@ export function NowPlaying() {
                             <Music size={16} />
                             <p className="text-base text-center">
                                 {data?.isPlaying
-                                    ? 'Höre ich gerade auf '
-                                    : 'Habe ich zuletzt gehört auf '}
+                                    ? 'Läuft gerade auf '
+                                    : 'Zuletzt gehört auf '}
                                 <a
                                     href="https://www.spotify.com"
                                     target="_blank"
