@@ -5,7 +5,7 @@ import { fetcher } from '../lib/fetcher';
 import type { Artist, TopArtistsData } from '../pages/api/top-artists';
 import type { TopTrackData, Track } from '../pages/api/top-tracks';
 import { MediaPreview } from './MediaPreview';
-import { Tabs, TabsList, TabsPanel, TabsTab } from './Tabs';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs';
 
 export function TopMusic() {
     const { data: topArtistsData, error: topArtistsError } =
@@ -33,10 +33,10 @@ export function TopMusic() {
     return (
         <Tabs defaultValue="1">
             <TabsList aria-label="Meine Lieblingsmusik">
-                <TabsTab value="1">Künstler:innen</TabsTab>
-                <TabsTab value="2">Songs</TabsTab>
+                <TabsTrigger value="1">Künstler:innen</TabsTrigger>
+                <TabsTrigger value="2">Songs</TabsTrigger>
             </TabsList>
-            <TabsPanel value="1">
+            <TabsContent value="1">
                 <ul className="space-y-20">
                     {topArtistsData
                         ? topArtistsData.artists.map(
@@ -56,8 +56,8 @@ export function TopMusic() {
                           )
                         : loadingState}
                 </ul>
-            </TabsPanel>
-            <TabsPanel value="2">
+            </TabsContent>
+            <TabsContent value="2">
                 <ul className="space-y-20">
                     {topTracksData
                         ? topTracksData.tracks.map(
@@ -77,7 +77,7 @@ export function TopMusic() {
                           )
                         : loadingState}
                 </ul>
-            </TabsPanel>
+            </TabsContent>
         </Tabs>
     );
 }

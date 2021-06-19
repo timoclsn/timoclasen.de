@@ -36,17 +36,17 @@ export const TabsList = forwardRef(function TabsList(
     );
 }) as TabsList;
 
-type TabsTab = Polymorphic.ForwardRefComponent<
-    Polymorphic.IntrinsicElement<typeof TabsPrimitive.Tab>,
-    Polymorphic.OwnProps<typeof TabsPrimitive.Tab>
+type TabsTrigger = Polymorphic.ForwardRefComponent<
+    Polymorphic.IntrinsicElement<typeof TabsPrimitive.Trigger>,
+    Polymorphic.OwnProps<typeof TabsPrimitive.Trigger>
 >;
 
-export const TabsTab = forwardRef(function TabsTab(
+export const TabsTrigger = forwardRef(function TabsTrigger(
     { className, ...props },
     ref
 ) {
     return (
-        <TabsPrimitive.Tab
+        <TabsPrimitive.Trigger
             className={clsx(
                 'flex items-center justify-center w-full py-2 border-2 first:border-r-0 last:border-l-0 last:rounded-l-none cursor-pointer tab border-highlight dark:border-highlight-dark first:rounded-l-2xl first:rounded-r-none last:rounded-r-2xl focus:outline-none',
                 className
@@ -55,22 +55,22 @@ export const TabsTab = forwardRef(function TabsTab(
             {...props}
         />
     );
-}) as TabsTab;
+}) as TabsTrigger;
 
-type TabsPanel = Polymorphic.ForwardRefComponent<
-    Polymorphic.IntrinsicElement<typeof TabsPrimitive.Panel>,
-    Polymorphic.OwnProps<typeof TabsPrimitive.Panel>
+type TabsContent = Polymorphic.ForwardRefComponent<
+    Polymorphic.IntrinsicElement<typeof TabsPrimitive.Content>,
+    Polymorphic.OwnProps<typeof TabsPrimitive.Content>
 >;
 
-export const TabsPanel = forwardRef(function TabsPanel(
+export const TabsContent = forwardRef(function TabsContent(
     { className, ...props },
     ref
 ) {
     return (
-        <TabsPrimitive.Panel
+        <TabsPrimitive.Content
             className={clsx('focus:outline-none', className)}
             ref={ref}
             {...props}
         />
     );
-}) as TabsPanel;
+}) as TabsContent;
