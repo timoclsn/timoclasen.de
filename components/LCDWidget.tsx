@@ -6,6 +6,7 @@ import { Button } from './Button';
 interface BgImage {
     url: string;
     description: string;
+    blurDataURL: string;
 }
 
 interface Props {
@@ -15,7 +16,7 @@ interface Props {
 export function LCDWidget({ bgImage }: Props) {
     return (
         <section id="life-centered-design" className="relative">
-            <div className="aspect-w-3 sm:aspect-w-2 aspect-h-2 sm:aspect-h-1 bg-highlight dark:bg-highlight-dark rounded-3xl">
+            <div className="aspect-w-3 sm:aspect-w-2 aspect-h-2 sm:aspect-h-1 rounded-3xl">
                 <Image
                     src={bgImage.url}
                     layout={'fill'}
@@ -25,6 +26,8 @@ export function LCDWidget({ bgImage }: Props) {
                     quality={60}
                     alt={bgImage.description}
                     className="rounded-3xl"
+                    blurDataURL={bgImage.blurDataURL}
+                    placeholder="blur"
                 />
             </div>
             <div className="absolute top-0 left-0 flex flex-col justify-end w-full h-full px-6 py-12 bg-gradient-to-t from-[rgba(0,0,0,0.3)] text-light xl:px-12 xl:py-20 rounded-3xl">

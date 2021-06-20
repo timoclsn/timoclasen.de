@@ -42,6 +42,7 @@ interface Props {
     LCDImage: {
         url: string;
         description: string;
+        blurDataURL: string;
     };
     contact: string;
 }
@@ -136,10 +137,13 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const headerText = response.data.headerSnippet.items[0].content;
 
     const person = response.data.person.items[0];
-    const { base64 } = await getPlaiceholder(person.image.url, {
-        size: 10
-    });
-    person.image.blurDataURL = base64;
+    const { base64: personImageBase64 } = await getPlaiceholder(
+        person.image.url,
+        {
+            size: 10
+        }
+    );
+    person.image.blurDataURL = personImageBase64;
 
     const blogPosts = response.data.blogPosts.items;
     const smartHomeText = response.data.smartHomeSnippet.items[0].content;
@@ -148,6 +152,10 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const contactText = response.data.contactSnippet.items[0].content;
     const favoritePodcasts = getFavoritePodcasts();
     const LCDImage = response.data.LCDImage.items[0];
+    const { base64: LCDImageBase64 } = await getPlaiceholder(LCDImage.url, {
+        size: 10
+    });
+    LCDImage.blurDataURL = LCDImageBase64;
 
     let aboutTeaser = person.cvText;
     aboutTeaser = stripFirstLine(aboutTeaser);
