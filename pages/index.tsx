@@ -1,4 +1,5 @@
 import type { GetStaticProps } from 'next';
+import { getPlaiceholder } from 'plaiceholder';
 
 import { AboutWidget } from '../components/AboutWidget';
 import { BlogWidget } from '../components/BlogWidget';
@@ -27,6 +28,7 @@ interface Props {
     image: {
         url: string;
         description: string;
+        blurDataURL: string;
     };
     aboutTeaser: string;
     blogPosts: {
@@ -52,11 +54,7 @@ export default function Home(props: Props) {
             description={props.description}
             previewImage={props.previewImage}>
             <Teaser text={props.header} />
-            <AboutWidget
-                text={props.aboutTeaser}
-                imageUrl={props.image.url}
-                imageDescription={props.image.description}
-            />
+            <AboutWidget text={props.aboutTeaser} image={props.image} />
             <BlogWidget
                 blogPost1={props.blogPosts[0]}
                 blogPost2={props.blogPosts[1]}
@@ -136,7 +134,13 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 
     const page = response.data.page.items[0];
     const headerText = response.data.headerSnippet.items[0].content;
+
     const person = response.data.person.items[0];
+    const { base64 } = await getPlaiceholder(person.image.url, {
+        size: 10
+    });
+    person.image.blurDataURL = base64;
+
     const blogPosts = response.data.blogPosts.items;
     const smartHomeText = response.data.smartHomeSnippet.items[0].content;
     const smartHomeFootnoteText =
