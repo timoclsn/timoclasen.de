@@ -27,7 +27,7 @@ export function WidgetImage({
     }
 
     return (
-        <div className="relative h-full overflow-hidden aspect-w-1 aspect-h-1 sm:aspect-w-none sm:aspect-h-none rounded-3xl">
+        <div className="relative h-full overflow-hidden aspect-w-1 aspect-h-1 sm:aspect-w-none sm:aspect-h-none rounded-3xl bg-light dark:bg-dark">
             {/* @ts-expect-error: Next.js typings broken? */}
             <Image
                 src={url}
