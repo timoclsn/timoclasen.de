@@ -14,10 +14,10 @@ export interface TopTrackData {
     tracks: Track[];
 }
 
-export default async (
+export default async function topTracks(
     _: NextApiRequest,
     res: NextApiResponse<TopTrackData>
-) => {
+) {
     const topTracks = await getTopTracks();
 
     const tracks = topTracks.map((track) => {
@@ -41,4 +41,4 @@ export default async (
     return res.status(200).json({
         tracks
     });
-};
+}

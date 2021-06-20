@@ -6,13 +6,15 @@ interface Props {
     description?: string;
     priority?: boolean;
     unoptimized?: boolean;
+    blurDataURL?: string;
 }
 
 export function WidgetImage({
     url,
     description,
     priority,
-    unoptimized
+    unoptimized,
+    blurDataURL
 }: Props) {
     if (!url) {
         return (
@@ -25,10 +27,11 @@ export function WidgetImage({
     }
 
     return (
-        <div className="relative h-full overflow-hidden aspect-w-1 aspect-h-1 sm:aspect-w-none sm:aspect-h-none rounded-3xl">
+        <div className="relative h-full overflow-hidden aspect-w-1 aspect-h-1 sm:aspect-w-none sm:aspect-h-none rounded-3xl bg-light dark:bg-dark">
+            {/* @ts-expect-error: Next.js typings broken? */}
             <Image
                 src={url}
-                layout={'fill'}
+                layout="fill"
                 objectFit="cover"
                 objectPosition="center"
                 sizes="(min-width: 640px) 45vw, 90vw"
@@ -36,6 +39,8 @@ export function WidgetImage({
                 priority={priority}
                 alt={description}
                 unoptimized={unoptimized}
+                placeholder={blurDataURL ? 'blur' : undefined}
+                blurDataURL={blurDataURL}
             />
         </div>
     );

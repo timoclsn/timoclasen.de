@@ -11,11 +11,11 @@ import { WidgetRunning } from './WidgetRunning';
 export function RunningWidget() {
     const { data, error } = useSWR<RunningData>('/api/running', fetcher);
 
+    const { darkMode } = useContext(ThemeContext);
+
     if (error) {
         return <div>Fehler beim Laden…</div>;
     }
-
-    const { darkMode } = useContext(ThemeContext);
 
     return (
         <div id="running">

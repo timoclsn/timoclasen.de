@@ -20,25 +20,14 @@
         "es6": true // Enables ES6 globals like Promise
     },
     "extends": [
-        "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:jsx-a11y/recommended",
         "plugin:cypress/recommended",
+        "next",
+        "next/core-web-vitals",
         "plugin:prettier/recommended" // Make this the last element so prettier config overrides other formatting rules
     ],
     "rules": {
         "prettier/prettier": ["error", {}, { "usePrettierrc": true }], // Use our .prettierrc file as source
-        "react/react-in-jsx-scope": "off", // Needed for nextjs
-        "react/prop-types": "off", // Needed for nextjs
-        "jsx-a11y/anchor-is-valid": [
-            // Needed for nextjs
-            "error",
-            {
-                "components": ["Link"],
-                "specialLink": ["hrefLeft", "hrefRight"],
-                "aspects": ["invalidHref", "preferButton"]
-            }
-        ],
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/explicit-module-boundary-types": "off",

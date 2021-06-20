@@ -14,10 +14,10 @@ export interface TopArtistsData {
     artists: Artist[];
 }
 
-export default async (
+export default async function topArtists(
     _: NextApiRequest,
     res: NextApiResponse<TopArtistsData>
-) => {
+) {
     const topArtists = await getTopArtists();
 
     const artists = topArtists.map((artist) => {
@@ -40,4 +40,4 @@ export default async (
     return res.status(200).json({
         artists
     });
-};
+}

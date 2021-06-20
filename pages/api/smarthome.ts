@@ -12,10 +12,10 @@ export interface SmartHomeData {
     outsideTemperature: string;
 }
 
-export default async (
+export default async function smartHome(
     _: NextApiRequest,
     res: NextApiResponse<SmartHomeData | string>
-) => {
+) {
     const nodes = await getNodes();
 
     if (!nodes.length) {
@@ -109,4 +109,4 @@ export default async (
             ? formatValue(outsideTempAtr.current_value, outsideTempAtr.unit)
             : ''
     });
-};
+}

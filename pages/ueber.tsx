@@ -1,5 +1,6 @@
 import type { GetStaticProps } from 'next';
 import Image from 'next/image';
+import { getPlaiceholder } from 'plaiceholder';
 
 import { ContactWidget } from '../components/ContactWidget';
 import { Layout } from '../components/Layout';
@@ -19,6 +20,7 @@ interface Props {
     image: {
         url: string;
         description: string;
+        blurDataURL: string;
     };
     about: string;
     contact: string;
@@ -32,7 +34,7 @@ export default function About(props: Props) {
             description={props.description}
             previewImage={props.previewImage}
             slug={props.slug}>
-            <div className="aspect-w-2 aspect-h-1 bg-highlight dark:bg-highlight-dark rounded-3xl">
+            <div className="aspect-w-2 aspect-h-1 rounded-3xl">
                 <Image
                     src={props.image.url}
                     layout={'fill'}
@@ -43,6 +45,8 @@ export default function About(props: Props) {
                     priority
                     alt={props.image.description}
                     className="rounded-3xl"
+                    blurDataURL={props.image.blurDataURL}
+                    placeholder="blur"
                 />
             </div>
             <TextBlock text={props.about} />
@@ -87,6 +91,11 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 
     const page = response.data.page.items[0];
     const person = response.data.person.items[0];
+    const image = person.imagesCollection.items[0];
+    const { base64 } = await getPlaiceholder(image.url, {
+        size: 10
+    });
+    image.blurDataURL = base64;
     const contactText = response.data.contactSnippet.items[0].content;
 
     return {
@@ -96,7 +105,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
             description: page.description,
             previewImage: page.previewImage,
             slug: page.slug,
-            image: person.imagesCollection.items[0],
+            image: image,
             about: await markdownToHTML(person.cvText),
             contact: await markdownToHTML(contactText)
         }

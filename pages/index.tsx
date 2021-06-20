@@ -1,4 +1,5 @@
 import type { GetStaticProps } from 'next';
+import { getPlaiceholder } from 'plaiceholder';
 
 import { AboutWidget } from '../components/AboutWidget';
 import { BlogWidget } from '../components/BlogWidget';
@@ -27,6 +28,7 @@ interface Props {
     image: {
         url: string;
         description: string;
+        blurDataURL: string;
     };
     aboutTeaser: string;
     blogPosts: {
@@ -40,6 +42,7 @@ interface Props {
     LCDImage: {
         url: string;
         description: string;
+        blurDataURL: string;
     };
     contact: string;
 }
@@ -52,11 +55,7 @@ export default function Home(props: Props) {
             description={props.description}
             previewImage={props.previewImage}>
             <Teaser text={props.header} />
-            <AboutWidget
-                text={props.aboutTeaser}
-                imageUrl={props.image.url}
-                imageDescription={props.image.description}
-            />
+            <AboutWidget text={props.aboutTeaser} image={props.image} />
             <BlogWidget
                 blogPost1={props.blogPosts[0]}
                 blogPost2={props.blogPosts[1]}
@@ -136,7 +135,16 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 
     const page = response.data.page.items[0];
     const headerText = response.data.headerSnippet.items[0].content;
+
     const person = response.data.person.items[0];
+    const { base64: personImageBase64 } = await getPlaiceholder(
+        person.image.url,
+        {
+            size: 10
+        }
+    );
+    person.image.blurDataURL = personImageBase64;
+
     const blogPosts = response.data.blogPosts.items;
     const smartHomeText = response.data.smartHomeSnippet.items[0].content;
     const smartHomeFootnoteText =
@@ -144,6 +152,10 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const contactText = response.data.contactSnippet.items[0].content;
     const favoritePodcasts = getFavoritePodcasts();
     const LCDImage = response.data.LCDImage.items[0];
+    const { base64: LCDImageBase64 } = await getPlaiceholder(LCDImage.url, {
+        size: 10
+    });
+    LCDImage.blurDataURL = LCDImageBase64;
 
     let aboutTeaser = person.cvText;
     aboutTeaser = stripFirstLine(aboutTeaser);

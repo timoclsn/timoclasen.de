@@ -7,7 +7,6 @@ module.exports = withBundleAnalyzer({
         domains: ['images.ctfassets.net', 'api.mapbox.com', 'i.scdn.co']
     },
     future: {
-        webpack5: true,
         strictPostcssConfiguration: true
     },
     webpack: (config, { isServer }) => {

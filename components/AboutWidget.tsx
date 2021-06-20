@@ -4,11 +4,14 @@ import { WidgetText } from './WidgetText';
 
 interface Props {
     text: string;
-    imageUrl: string;
-    imageDescription: string;
+    image: {
+        url: string;
+        description: string;
+        blurDataURL?: string;
+    };
 }
 
-export function AboutWidget({ text, imageUrl, imageDescription }: Props) {
+export function AboutWidget({ text, image }: Props) {
     return (
         <WidgetLayout separate highlight>
             <WidgetText
@@ -18,8 +21,9 @@ export function AboutWidget({ text, imageUrl, imageDescription }: Props) {
                 href="/ueber"
             />
             <WidgetImage
-                url={imageUrl}
-                description={imageDescription}
+                url={image.url}
+                description={image.description}
+                blurDataURL={image.blurDataURL}
                 priority
             />
         </WidgetLayout>
