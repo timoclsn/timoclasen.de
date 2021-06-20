@@ -11,10 +11,10 @@ export interface NowPlayingData {
     image: string;
 }
 
-export default async (
+export default async function nowPlaying(
     _: NextApiRequest,
     res: NextApiResponse<NowPlayingData>
-) => {
+) {
     res.setHeader(
         'Cache-Control',
         'public, s-maxage=60, stale-while-revalidate=30'
@@ -51,4 +51,4 @@ export default async (
         albumName: track.album.name,
         image: image.url
     });
-};
+}

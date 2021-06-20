@@ -55,7 +55,10 @@ export interface RunningData {
     lastRun: LastRun;
 }
 
-export default async (_: NextApiRequest, res: NextApiResponse<RunningData>) => {
+export default async function running(
+    _: NextApiRequest,
+    res: NextApiResponse<RunningData>
+) {
     const activites = await getActivities();
     const runs = activites.filter(
         (activity: Activity) => activity.type === 'Run'
@@ -160,7 +163,7 @@ export default async (_: NextApiRequest, res: NextApiResponse<RunningData>) => {
             kudos: lastRun.kudos_count
         }
     });
-};
+}
 
 function capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
