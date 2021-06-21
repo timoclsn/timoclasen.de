@@ -42,7 +42,7 @@ export function NowPlaying() {
                             target="_blank"
                             rel="noopener noreferrer">
                             <h2
-                                className="mb-2 font-bold truncate text-md md:text-xl lg:text-2xl hover:text-[#1DB954]"
+                                className="mb-2 font-bold truncate text-md md:text-xl lg:text-2xl hover:text-[#116E32] dark:hover:text-[#1DB954]"
                                 title={data?.name}>
                                 {data ? data.name : <Skeleton width="300px" />}
                             </h2>
@@ -63,7 +63,7 @@ export function NowPlaying() {
                         </p>
                     </div>
                 </div>
-                <div className="flex items-center justify-center space-x-2 text-[#1DB954]">
+                <div className="flex items-center justify-center space-x-2 text-[#116E32] dark:text-[#1DB954]">
                     {data ? (
                         <>
                             <Music size={16} />
