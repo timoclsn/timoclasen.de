@@ -1,5 +1,6 @@
 import type { Icon } from 'react-feather';
-import Skeleton from 'react-loading-skeleton';
+
+import { Skeleton } from './Skeleton';
 
 interface Props {
     Icon: Icon;
@@ -15,15 +16,15 @@ export function SmartHomeElement({ Icon, title, value }: Props) {
                     <Icon size={36} />
                 </div>
             ) : (
-                <Skeleton circle={true} height={60} width={60} />
+                <Skeleton circle height="64px" width="64px" />
             )}
 
             <div className="flex flex-col justify-center pl-4">
                 <h3 className="font-bold pb-0.5">
-                    {value ? title : <Skeleton width={150} />}
+                    {value ? title : <Skeleton width="150px" />}
                 </h3>
                 <p className="opacity-60">
-                    {value ? value : <Skeleton width={75} />}
+                    {value ? value : <Skeleton width="75px" />}
                 </p>
             </div>
         </div>

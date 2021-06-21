@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import { Music } from 'react-feather';
-import Skeleton from 'react-loading-skeleton';
 import useSWR from 'swr';
 
 import { fetcher } from '../lib/fetcher';
 import type { NowPlayingData } from '../pages/api/now-playing';
+import { Skeleton } from './Skeleton';
 
 export function NowPlaying() {
     const { data, error } = useSWR<NowPlayingData>('/api/now-playing', fetcher);
@@ -31,9 +31,11 @@ export function NowPlaying() {
                         </div>
                     ) : (
                         <div>
-                            <div className="overflow-hidden leading-none rounded-2xl">
-                                <Skeleton width="100px" height="100px" />
-                            </div>
+                            <Skeleton
+                                width="100px"
+                                height="100px"
+                                borderRadius="1rem"
+                            />
                         </div>
                     )}
                     <div className="overflow-hidden">

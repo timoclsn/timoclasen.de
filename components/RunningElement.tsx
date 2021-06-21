@@ -1,6 +1,6 @@
 import type { Icon } from 'react-feather';
-import Skeleton from 'react-loading-skeleton';
 
+import { Skeleton } from './Skeleton';
 interface Label {
     text: string;
     description: string;
@@ -21,7 +21,7 @@ export function RunningElement({ Icon, text, href, labels, nowrap }: Props) {
                 {text ? (
                     <Icon size={22} />
                 ) : (
-                    <Skeleton circle={true} height={20} width={20} />
+                    <Skeleton circle height="20px" width="20px" />
                 )}
             </div>
             <p className={'my-2' + (nowrap ? ' whitespace-nowrap' : '')}>
@@ -30,7 +30,7 @@ export function RunningElement({ Icon, text, href, labels, nowrap }: Props) {
                         {text}
                     </a>
                 ) : (
-                    text || <Skeleton width={200} />
+                    text || <Skeleton width="200px" />
                 )}
             </p>
             {labels && (

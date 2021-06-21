@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import Skeleton from 'react-loading-skeleton';
+
+import { Skeleton } from './Skeleton';
 
 interface Props {
     url?: string;
@@ -18,11 +19,13 @@ export function WidgetImage({
 }: Props) {
     if (!url) {
         return (
-            <div className="flex overflow-hidden aspect-w-1 aspect-h-1 rounded-3xl">
-                <div className="flex-1 leading-none">
-                    <Skeleton width="100%" height="100%" />
-                </div>
-            </div>
+            <Skeleton
+                width="100%"
+                height="100%"
+                borderRadius="1.5rem"
+                lineHeight="normal"
+                className="aspect-w-1 aspect-h-1"
+            />
         );
     }
 
