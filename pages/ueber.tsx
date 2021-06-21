@@ -34,7 +34,7 @@ export default function About(props: Props) {
             description={props.description}
             previewImage={props.previewImage}
             slug={props.slug}>
-            <div className="aspect-w-2 aspect-h-1 rounded-3xl">
+            <div className="overflow-hidden aspect-w-2 aspect-h-1 rounded-3xl">
                 <Image
                     src={props.image.url}
                     layout={'fill'}
@@ -44,7 +44,6 @@ export default function About(props: Props) {
                     quality={60}
                     priority
                     alt={props.image.description}
-                    className="rounded-3xl"
                     blurDataURL={props.image.blurDataURL}
                     placeholder="blur"
                 />

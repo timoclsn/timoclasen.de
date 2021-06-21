@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import type { Icon } from 'react-feather';
 import { Heart } from 'react-feather';
-import Skeleton from 'react-loading-skeleton';
+
+import { Skeleton } from './Skeleton';
 
 interface Props {
     title?: string;
@@ -37,11 +38,7 @@ export function MediaPreview({
                     height={80}
                 />
             ) : (
-                <div>
-                    <div className="overflow-hidden leading-none rounded-2xl">
-                        <Skeleton width={80} height={80} />
-                    </div>
-                </div>
+                <Skeleton width="80px" height="80px" borderRadius="1rem" />
             )}
             <div className="flex-1 overflow-hidden">
                 <div className="flex justify-between mb-1 space-x-2 text-xs uppercase sm:mb-2 text-highlight dark:text-highlight-dark">
