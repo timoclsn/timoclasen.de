@@ -30,13 +30,11 @@ export function NowPlaying() {
                             />
                         </div>
                     ) : (
-                        <div>
-                            <Skeleton
-                                width="100px"
-                                height="100px"
-                                borderRadius="1rem"
-                            />
-                        </div>
+                        <Skeleton
+                            width="100px"
+                            height="100px"
+                            borderRadius="1rem"
+                        />
                     )}
                     <div className="overflow-hidden">
                         <a
