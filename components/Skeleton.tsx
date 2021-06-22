@@ -30,7 +30,7 @@ export function Skeleton({
                     ? '9999px'
                     : borderRadius
                     ? borderRadius
-                    : '0.25rem;',
+                    : '0.25rem',
                 lineHeight: lineHeight ? lineHeight : '1'
             }}>
             &zwnj;
