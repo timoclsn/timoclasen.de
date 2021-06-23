@@ -12,10 +12,10 @@ const publicAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
     const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
 
     const pages = await globby([
-        'pages/**/*js',
-        '!pages/_*.js',
-        '!pages/404.js',
-        '!pages/blog/*.js',
+        'pages/**/*tsx',
+        '!pages/_*.tsx',
+        '!pages/404.tsx',
+        '!pages/blog/*.tsx',
         '!pages/api'
     ]);
 
@@ -32,7 +32,7 @@ const publicAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
     const blogPosts = response.data.blogPosts.items;
 
     blogPosts.forEach((blogPost) => {
-        pages.push(`pages/blog/${blogPost.slug}.js`);
+        pages.push(`pages/blog/${blogPost.slug}.tsx`);
     });
 
     const sitemap = `
@@ -40,10 +40,7 @@ const publicAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
             ${pages
                 .map((page) => {
-                    const path = page
-                        .replace('pages', '')
-                        .replace('.js', '')
-                        .replace('.mdx', '');
+                    const path = page.replace('pages', '').replace('.tsx', '');
                     const route = path === '/index' ? '' : path;
 
                     return `
