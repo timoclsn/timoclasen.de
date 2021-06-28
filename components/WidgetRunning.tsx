@@ -71,25 +71,6 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
             : [])
     ];
 
-    function getYearProgress() {
-        const firstDayOfYear = new Date(
-            new Date().getFullYear(),
-            0,
-            1
-        ).getTime();
-
-        const firstDayOfNextYear = new Date(
-            new Date().getFullYear() + 1,
-            0,
-            1
-        ).getTime();
-        const today = new Date().getTime();
-        return Math.round(
-            ((today - firstDayOfYear) / (firstDayOfNextYear - firstDayOfYear)) *
-                100
-        );
-    }
-
     const runningProgress = thisYear ? thisYear.distance / (1000 / 100) : 0;
     const yearProgress = getYearProgress();
     const yearTrend = runningProgress >= yearProgress ? '↑' : '↓';
@@ -172,5 +153,19 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
                 </li>
             </ul>
         </div>
+    );
+}
+
+function getYearProgress() {
+    const firstDayOfYear = new Date(new Date().getFullYear(), 0, 1).getTime();
+
+    const firstDayOfNextYear = new Date(
+        new Date().getFullYear() + 1,
+        0,
+        1
+    ).getTime();
+    const today = new Date().getTime();
+    return Math.round(
+        ((today - firstDayOfYear) / (firstDayOfNextYear - firstDayOfYear)) * 100
     );
 }
