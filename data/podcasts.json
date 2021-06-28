@@ -63,6 +63,15 @@
         "image": "cover--655790613.jpg"
     },
     {
+        "title": "ByteTalk",
+        "favorite": false,
+        "feed": "https://feeds.transistor.fm/bytetalk",
+        "description": "A podcast where Jonni Lundy and Zeno Rocha interview the most productive people in tech. We discuss tooling, setups, open source, startups, and big tech.\n",
+        "website": "https://bytetalkpodcast.com",
+        "hosts": "Jonni Lundy & Zeno Rocha",
+        "image": "cover--1802982924.jpg"
+    },
+    {
         "title": "Cautionary Tales with Tim Harford",
         "favorite": false,
         "feed": "https://feeds.megaphone.fm/cautionarytales",
@@ -111,7 +120,7 @@
         "title": "Connected",
         "favorite": false,
         "feed": "https://www.relay.fm/connected/feed",
-        "description": "Connected is a weekly panel discussion on Apple and the impact of technology on our lives. With each co-host having a unique background — and accent — Connected provides a perspective that no other show can. Hosted by Federico Viticci, Myke Hurley, and Stephen Hackett.\n",
+        "description": "Connected is a weekly panel discussion on Apple and the impact of technology on our lives. With each co-host having a unique background — and accent — Connected provides a perspective that no other show can. Hosted by Federico Viticci, Stephen Hackett, and Myke Hurley.\n",
         "website": "https://www.relay.fm/connected",
         "hosts": "Relay FM",
         "image": "cover-1424757481.jpg"
@@ -180,6 +189,15 @@
         "image": "cover-924896390.jpg"
     },
     {
+        "title": "Developer Experience",
+        "favorite": false,
+        "feed": "https://feeds.buzzsprout.com/1806381.rss",
+        "description": "Developer Experience is a podcast brought to you by Algolia. We chat with guests who build products for developers about their developer experience strategy, what it means for them and why it’s important.\n",
+        "website": "http://",
+        "hosts": "Algolia",
+        "image": "cover--1622607936.jpg"
+    },
+    {
         "title": "digital kompakt | Business & Digitalisierung von Startup bis Corporate",
         "favorite": false,
         "feed": "https://digitalkompakt.podigee.io/feed/mp3",
@@ -189,13 +207,22 @@
         "image": "cover-1122955532.jpg"
     },
     {
-        "title": "Digitale Vorreiter - Vodafone Business Cases",
+        "title": "Digitale Leute",
+        "favorite": false,
+        "feed": "https://feeds.soundcloud.com/users/soundcloud:users:421183616/sounds.rss",
+        "description": "ÜBER DEN PODCAST - see englisch Version below\nDL Insights ist der Podcast für Passionate Product People. Wir interviewen Top-Produktentwickler aus Deutschland und aus aller Welt und werfen einen tiefen Blick auf die Tools, Taktiken und Methoden digitaler Professionals und Unternehmen.\nDie Hosts: Thomas Riedel, Stefan Voßkötter, Tim Herbig, Oliver Thylmann und Christoph Bresler.\n\nIn unserem Magazin Digitale Leute porträtieren wir Persönlichkeiten, die digitale Produkte kreieren, gestalten, entwickeln und vermarkten.\nhttps://www.digitale-leute.de\n\nUnsere jährliche Konferenz zur Entwicklung digitaler Produkte \"Digitale Leute Summit\" findet am 9.+10. November 2020 in Köln statt.\nhttps://www.digitale-leute.de/summit/\n\nABOUT THE PODCAST\nDL Insights is the podcast for Passionate Product People. We interview top product developers from Germany and around the world and take a deep look at the tools, tactics and methods of digital professionals and companies.\nThe hosts: Thomas Riedel, Stefan Voßkötter, Tim Herbig, Oliver Thylmann and Christoph Bresler\n\nIn our online magazine Digitale Leute we portray personalities who create, design, develop and market digital products.\nhttps://www.digitale-leute.de\n\nOur annual conference on the development of digital products, the \"Digital People Summit\", will take place on November 9-10, 2020 in Cologne.\nhttps://www.digitale-leute.de/summit/\n",
+        "website": "https://www.digitale-leute.de",
+        "hosts": "Digitale Leute",
+        "image": "cover--923700998.jpg"
+    },
+    {
+        "title": "Digitale Vorreiter:innen - Business Cases",
         "favorite": false,
         "feed": "https://digitalevorreiter.podigee.io/feed/mp3",
-        "description": "Willkommen zu DIGITALE VORREITER – deinem Digitalisierungspodcast.\n\nDich erwarten spannende Insights rund um das Thema Digitalisierung. Hier geht es um echte Erfolgsgeschichten und Erfahrungsberichte von Unternehmen, die den digitalen Wandel geschafft haben. Hier gibt es Interviews mit Expert:innen, Digitalpionieren und Vorbildern der digitalen Wirtschaft. Wir möchten dich mit Best Practices inspirieren, konkrete Ansätze für dein Business liefern und dich über aktuelle News und Trends auf dem laufenden halten. Unser Host Christoph Burseg beschäftigt sich schon über 15 Jahre mit Technologie und Entrepreneurship. Als Unternehmer berät er zu Digitalisierungs- und Online Marketing Themen, während er besondere Expertise in den Bereichen Search Marketing und Video Marketing besitzt. JETZT den wöchentlichen Vodafone Business Podcast “Digitale Vorreiter” ABONNIEREN, reinhören und inspirieren lassen. Spannende Erfolgsgeschichten könnt ihr auch im Online-Magazin „Business Cases“ nachlesen: www.vodafone.de/business/featured-digitale-vorreiter/business-cases/\n\nKontaktiere uns über Instagram: www.instagram.com/vodafonebusinessde/\nEmail für Feedback: digitalevorreiter@podstars.de\nProduziert von Podstars by OMR.\n",
+        "description": "Willkommen zu DIGITALE VORREITER:INNEN – deinem Digitalisierungspodcast von Vodafone Business.\n\nDich erwarten spannende Insights rund um das Thema Digitalisierung. Hier geht es um echte Erfolgsgeschichten und Erfahrungsberichte von Unternehmen, die den digitalen Wandel geschafft haben. Hier gibt es Interviews mit Expert:innen, Digitalpionieren und Vorbildern der digitalen Wirtschaft. Wir möchten dich mit Best Practices inspirieren, konkrete Ansätze für dein Business liefern und dich über aktuelle News und Trends auf dem laufenden halten. Unser Host Christoph Burseg beschäftigt sich schon über 15 Jahre mit Technologie und Entrepreneurship. Als Unternehmer berät er zu Digitalisierungs- und Online Marketing Themen, während er besondere Expertise in den Bereichen Search Marketing und Video Marketing besitzt. JETZT den wöchentlichen Vodafone Business Podcast “Digitale Vorreiter” ABONNIEREN, reinhören und inspirieren lassen. Spannende Erfolgsgeschichten könnt ihr auch im Online-Magazin „Business Cases“ nachlesen: www.vodafone.de/business/featured-digitale-vorreiter/business-cases/\n\nKontaktiere uns über Instagram: www.instagram.com/vodafonebusinessde/\nEmail für Feedback: digitalevorreiter@podstars.de\nProduziert von Podstars by OMR.\n",
         "website": "https://www.vodafone.de/business/featured-digitale-vorreiter/business-cases/",
         "hosts": "Christoph Burseg / Vodafone Business",
-        "image": "cover--797438357.jpg"
+        "image": "cover--1335083507.jpg"
     },
     {
         "title": "Does Not Compute",
@@ -306,13 +333,13 @@
         "image": "cover--29776260.jpg"
     },
     {
-        "title": "JS Party: JavaScript & Web Dev",
+        "title": "JS Party: JavaScript, CSS, Web Development",
         "favorite": false,
         "feed": "https://changelog.com/jsparty/feed",
         "description": "Your weekly celebration of JavaScript and the web.  This show records LIVE on Thursdays at 1pm US/Eastern time. Panelists include Jerod Santo, Feross Aboukhadijeh, Kevin Ball, Emma Bostian, Nick Nisi, Divya Sasidharan, Mikeal Rogers,  Chris Hiller, and Amal Hussein. Topics discussed include the web platform (Chrome, Safari, Edge, Firefox, Brave, etc), front-end frameworks (React, Ember, Angular, Vue, etc), Node.js, web animation, SVG, robotics, IoT, and much more. If JavaScript and/or the web touch your life, this show’s for you. Some people search for JSParty and can’t find the show, so now the string JSParty is in our description too.\n",
         "website": "https://changelog.com/jsparty",
         "hosts": "Changelog Media",
-        "image": "cover--601005967.jpg"
+        "image": "cover-1632017582.jpg"
     },
     {
         "title": "Ladybug Podcast",
@@ -525,19 +552,28 @@
         "title": "Techmeme Ride Home",
         "favorite": false,
         "feed": "https://rss.art19.com/techmeme-ridehome",
-        "description": "The day's tech news, every day at 5pm. From Techmeme.com, Silicon Valley's most-read news source. 15 minutes and you're up to date. \n",
+        "description": "The day's tech news, every day at 5pm. From Techmeme.com, Silicon Valley's most-read news source. 15 minutes and you're up to date.\n",
         "website": "https://www.ridehome.info/show/techmeme-ride-home/",
         "hosts": "Ride Home Media",
         "image": "cover-1410345037.jpg"
     },
     {
-        "title": "The Changelog: Software Dev & Open Source",
+        "title": "The Big Switch",
+        "favorite": false,
+        "feed": "https://thebigswitch.libsyn.com/rss",
+        "description": "To slow climate change, we need to transform our homes, buildings, cars, and economy quickly. \"The Big Switch\" explains how to rebuild the energy systems all around us. Dr. Melissa Lott of Columbia University brings together historical examples, current events, and incisive analysis to give listeners a deep understanding of the solutions to climate change.\n",
+        "website": "http://thebigswitch.libsyn.com/",
+        "hosts": "Dr. Melissa Lott",
+        "image": "cover-1869557187.jpg"
+    },
+    {
+        "title": "The Changelog: Software Development, Open Source",
         "favorite": false,
         "feed": "https://changelog.com/podcast/feed",
         "description": "Conversations with the hackers, leaders, and innovators of the software world.  Hosts Adam Stacoviak and Jerod Santo face their imposter syndrome so you don’t have to. Expect in-depth interviews with the best and brightest in software engineering, open source, and leadership. This is a polyglot podcast. All programming languages, platforms, and communities are welcome. Open source moves fast. Keep up.\n",
         "website": "https://changelog.com/podcast",
         "hosts": "Changelog Media",
-        "image": "cover-518079806.jpg"
+        "image": "cover-1747476176.jpg"
     },
     {
         "title": "The Clearleft Podcast",
@@ -577,7 +613,7 @@
     },
     {
         "title": "The Internet of Things Podcast - Stacey On IoT",
-        "favorite": false,
+        "favorite": true,
         "feed": "https://iotpodcast.com/feed/podcast/",
         "description": "Stacey Higginbotham (formerly Sr. Editor at Fortune) and co-host Kevin Tofel discuss the latest news and analysis of the Internet of Things. Covers Consumer IoT, Industrial IoT and Enterprise IoT.  Guests include Vint Cerf, Om Malik, and people from Amazon.com, AT\\&T, IBM Watson and more.\n",
         "website": "https://iotpodcast.com",
@@ -678,7 +714,7 @@
         "title": "Upgrade",
         "favorite": false,
         "feed": "https://www.relay.fm/upgrade/feed",
-        "description": "Upgrade looks at how technology shapes our lives, from the devices in our hands and pockets to the streaming services that keep us entertained. Hosted by Myke Hurley and Jason Snell.\n",
+        "description": "Upgrade looks at how technology shapes our lives, from the devices in our hands and pockets to the streaming services that keep us entertained. Hosted by Jason Snell and Myke Hurley.\n",
         "website": "https://www.relay.fm/upgrade",
         "hosts": "Relay FM",
         "image": "cover-1433481724.jpg"

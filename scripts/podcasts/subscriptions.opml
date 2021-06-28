@@ -42,7 +42,7 @@
     <outline xmlUrl="https://podcast.cloudonaut.io/feed/aac" text="cloudonaut" title="cloudonaut" type="rss" version="RSS"/>
     <outline xmlUrl="http://feeds.feedburner.com/WaveformWithMkbhd" text="Waveform: The MKBHD Podcast" title="Waveform: The MKBHD Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.transistor.fm/rework" text="Rework" title="Rework" type="rss" version="RSS"/>
-    <outline xmlUrl="https://digitalevorreiter.podigee.io/feed/mp3" text="Digitale Vorreiter - Vodafone Business Cases" title="Digitale Vorreiter - Vodafone Business Cases" type="rss" version="RSS"/>
+    <outline xmlUrl="https://digitalevorreiter.podigee.io/feed/mp3" text="Digitale Vorreiter:innen - Business Cases" title="Digitale Vorreiter:innen - Business Cases" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.theincomparable.com/theincomparable" text="The Incomparable" title="The Incomparable" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.megaphone.fm/cautionarytales" text="Cautionary Tales with Tim Harford" title="Cautionary Tales with Tim Harford" type="rss" version="RSS"/>
     <outline xmlUrl="https://layout.fm/rss" text="Layout" title="Layout" type="rss" version="RSS"/>
@@ -64,8 +64,8 @@
     <outline xmlUrl="https://feeds.transistor.fm/full-stack-radio" text="Full Stack Radio" title="Full Stack Radio" type="rss" version="RSS"/>
     <outline xmlUrl="https://stackoverflow.blog/podcast/?feed=podcast" text="The Stack Overflow Podcast" title="The Stack Overflow Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://pinecast.com/feed/ladybug-podcast" text="Ladybug Podcast" title="Ladybug Podcast" type="rss" version="RSS"/>
-    <outline xmlUrl="https://changelog.com/podcast/feed" text="The Changelog: Software Dev &amp; Open Source" title="The Changelog: Software Dev &amp; Open Source" type="rss" version="RSS"/>
-    <outline xmlUrl="https://changelog.com/jsparty/feed" text="JS Party: JavaScript &amp; Web Dev" title="JS Party: JavaScript &amp; Web Dev" type="rss" version="RSS"/>
+    <outline xmlUrl="https://changelog.com/podcast/feed" text="The Changelog: Software Development, Open Source" title="The Changelog: Software Development, Open Source" type="rss" version="RSS"/>
+    <outline xmlUrl="https://changelog.com/jsparty/feed" text="JS Party: JavaScript, CSS, Web Development" title="JS Party: JavaScript, CSS, Web Development" type="rss" version="RSS"/>
     <outline xmlUrl="https://anchor.fm/s/4a19bfdc/podcast/rss" text="Smarteinander - der Smart Home Podcast" title="Smarteinander - der Smart Home Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://rss.art19.com/techmeme-ridehome" text="Techmeme Ride Home" title="Techmeme Ride Home" type="rss" version="RSS"/>
     <outline xmlUrl="https://anchor.fm/s/149e69d4/podcast/rss" text="Inside Shopify UX" title="Inside Shopify UX" type="rss" version="RSS"/>
@@ -85,5 +85,9 @@
     <outline xmlUrl="https://feeds.resonaterecordings.com/codesandbox-podcast" text="The CodeSandbox Podcast" title="The CodeSandbox Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.transistor.fm/smashing" text="Smashing Podcast" title="Smashing Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://museapp.com/podcast.rss" text="Metamuse" title="Metamuse" type="rss" version="RSS"/>
+    <outline xmlUrl="https://thebigswitch.libsyn.com/rss" text="The Big Switch" title="The Big Switch" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.transistor.fm/bytetalk" text="ByteTalk" title="ByteTalk" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.soundcloud.com/users/soundcloud:users:421183616/sounds.rss" text="Digitale Leute" title="Digitale Leute" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.buzzsprout.com/1806381.rss" text="Developer Experience" title="Developer Experience" type="rss" version="RSS"/>
   </body>
 </opml>
