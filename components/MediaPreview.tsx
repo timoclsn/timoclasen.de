@@ -58,13 +58,13 @@ export function MediaPreview({
                         title={title}>
                         {no && (
                             <span className="opacity-60 group-hover:opacity-100">
-                                {no}.{' '}
+                                {`${no}. `}
                             </span>
                         )}
                         {title ? title : <Skeleton width="100%" />}
                     </h2>
                 </a>
-                <p className="text-base md:text-md lg:text-lg xl:text-xl opacity-60 line-clamp-2">
+                <p className="text-base md:text-md lg:text-lg xl:text-xl text-opacity-60 line-clamp-2">
                     {subline ? subline : <Skeleton width="50%" />}
                 </p>
             </div>
