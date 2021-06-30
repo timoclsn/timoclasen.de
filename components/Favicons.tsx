@@ -21,7 +21,7 @@ export function Favicons() {
             <link rel="manifest" href="/favicons/manifest.webmanifest" />
             <meta
                 name="theme-color"
-                content={darkMode ? '#4F5FEF' : '#3E51F7'}
+                content={darkMode ? '#000000' : '#FFFFFF'}
             />
         </Head>
     );
