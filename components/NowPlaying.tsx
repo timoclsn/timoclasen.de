@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import { Music } from 'react-feather';
 import useSWR from 'swr';
 
 import { fetcher } from '../lib/fetcher';
 import type { NowPlayingData } from '../pages/api/now-playing';
 import { Skeleton } from './Skeleton';
+import { SoundBars } from './SoundBars';
 
 export function NowPlaying() {
     const { data, error } = useSWR<NowPlayingData>('/api/now-playing', fetcher);
@@ -66,7 +66,10 @@ export function NowPlaying() {
                 <div className="flex items-center justify-center space-x-2 text-[#116E32] dark:text-[#1DB954]">
                     {data ? (
                         <>
-                            <Music size={16} />
+                            <SoundBars
+                                isPlaying={data?.isPlaying}
+                                color="bg-[#116E32] dark:bg-[#1DB954]"
+                            />
                             <p className="text-base text-center">
                                 {data?.isPlaying
                                     ? 'Läuft gerade auf '
