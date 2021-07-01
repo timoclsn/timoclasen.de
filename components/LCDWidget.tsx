@@ -16,7 +16,7 @@ interface Props {
 export function LCDWidget({ bgImage }: Props) {
     return (
         <section id="life-centered-design" className="relative">
-            <div className="aspect-w-3 sm:aspect-w-2 aspect-h-2 sm:aspect-h-1 rounded-3xl">
+            <div className="overflow-hidden aspect-w-3 sm:aspect-w-2 aspect-h-2 sm:aspect-h-1 rounded-3xl">
                 <Image
                     src={bgImage.url}
                     layout={'fill'}
