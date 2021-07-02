@@ -61,7 +61,7 @@
     "devDependencies": {
         "@types/mapbox__polyline": "^1.0.2",
         "@types/react-syntax-highlighter": "^13.5.1",
-        "@types/ws": "^7.4.5",
+        "@types/ws": "^7.4.6",
         "@typescript-eslint/eslint-plugin": "^4.28.1",
         "@typescript-eslint/parser": "^4.28.1",
         "cypress": "^7.6.0",
@@ -73,11 +73,11 @@
         "eslint-plugin-prettier": "^3.4.0",
         "eslint-plugin-simple-import-sort": "^7.0.0",
         "globby": "^11.0.4",
-        "husky": "^6.0.0",
+        "husky": "^7.0.0",
         "lint-staged": "^11.0.0",
         "node-fetch": "^2.6.1",
         "prettier": "^2.3.2",
-        "typescript": "^4.3.4"
+        "typescript": "^4.3.5"
     },
     "husky": {
         "hooks": {
