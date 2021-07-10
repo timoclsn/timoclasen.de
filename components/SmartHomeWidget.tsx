@@ -159,7 +159,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                                 Hinterlasse mir einen Gruß und schalte meine
                                 Balkonbeleuchtung in eine Farbe deiner Wahl:
                             </p>
-                            <div className="space-x-4">
+                            <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
                                 <Button
                                     size="small"
                                     onClick={() => controlLight('red')}>
