@@ -21,14 +21,14 @@ import { ThemeContext } from './ThemeContext';
 import { WidgetLayout } from './WidgetLayout';
 
 const lightToast = {
-    minWidth: '200px',
+    minWidth: '300px',
     borderRadius: '1rem',
     background: '#FFFFFF',
     color: '#000000'
 };
 
 const darkToast = {
-    minWidth: '200px',
+    minWidth: '300px',
     borderRadius: '1rem',
     background: '#333333',
     color: '#FFFFFF'
@@ -38,6 +38,14 @@ interface Props {
     text: string;
     footnote: string;
 }
+
+type BalconyColors = Record<string, string>;
+
+const balconyColors: BalconyColors = {
+    red: '#fa0501',
+    green: '#03d304',
+    blue: '#002dfb'
+};
 
 export function SmartHomeWidget({ text, footnote }: Props) {
     const { darkMode } = useContext(ThemeContext);
@@ -58,12 +66,17 @@ export function SmartHomeWidget({ text, footnote }: Props) {
             }),
             {
                 loading: 'Schalten...',
-                success: <b>Balkon ist an!</b>,
+                success: <b>Balkon wurde geschaltet!</b>,
                 error: <b>Hat nicht funktioniert.</b>
             },
             { style: darkMode ? darkToast : lightToast }
         );
-        mutate('/api/smarthome');
+
+        mutate(
+            '/api/smarthome',
+            { ...data, balconyColor: balconyColors[color] },
+            false
+        );
     }
 
     return (
