@@ -150,3 +150,13 @@ export function isLight(node: Node) {
 
     return false;
 }
+
+export function getHexColor(number: number) {
+    let hexString = number.toString(16);
+
+    while (hexString.length < 6) {
+        hexString = '0' + hexString;
+    }
+
+    return '#' + hexString;
+}
