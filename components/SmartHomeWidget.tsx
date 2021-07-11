@@ -86,7 +86,12 @@ export function SmartHomeWidget({ text, footnote }: Props) {
             { ...data, balconyColor: balconyColors[color], balconyOnOff: 'An' },
             false
         );
+
         setDisableButtons(false);
+
+        splitbee.track('Balcony Light Control', {
+            color: `${emoji} ${color}`
+        });
     }
 
     return (
