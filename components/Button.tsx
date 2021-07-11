@@ -8,7 +8,6 @@ const baseStyles = [
     'items-center',
     'justify-center',
     'icon-md',
-    'font-bold',
     'space-x-2',
     'cursor-pointer',
     'disabled:opacity-50',
@@ -22,7 +21,7 @@ const variantStyles = {
 };
 
 const sizeStyles = {
-    normal: 'px-8 py-4',
+    normal: 'px-8 py-4 font-bold',
     small: 'px-4 py-2'
 };
 
