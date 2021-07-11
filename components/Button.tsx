@@ -8,7 +8,6 @@ const baseStyles = [
     'items-center',
     'justify-center',
     'icon-md',
-    'font-bold',
     'space-x-2',
     'cursor-pointer',
     'disabled:opacity-50',
@@ -16,15 +15,21 @@ const baseStyles = [
 ];
 
 const variantStyles = {
-    solid: 'px-8 py-4 rounded-full text-light bg-highlight dark:bg-highlight-dark hover:bg-opacity-80 dark:hover:bg-opacity-80 focus:ring-2 focus:ring-inset focus:ring-dark dark:focus:ring-light',
-    ghost: 'px-8 py-4 rounded-full ring-2 ring-inset ring-dark dark:ring-light hover:bg-dark dark:hover:bg-light hover:bg-opacity-20 dark:hover:bg-opacity-20 focus:ring-highlight dark:focus:ring-highlight-dark',
+    solid: 'rounded-full text-light bg-highlight dark:bg-highlight-dark hover:bg-opacity-80 dark:hover:bg-opacity-80 focus:ring-2 focus:ring-inset focus:ring-dark dark:focus:ring-light',
+    ghost: 'rounded-full ring-2 ring-inset ring-dark dark:ring-light hover:bg-dark dark:hover:bg-light hover:bg-opacity-20 dark:hover:bg-opacity-20 focus:ring-highlight dark:focus:ring-highlight-dark',
     link: 'hover:opacity-80'
+};
+
+const sizeStyles = {
+    normal: 'px-8 py-4 font-bold',
+    small: 'px-4 py-2'
 };
 
 interface Props {
     children: ReactNode;
     as?: 'button' | 'a';
     variant?: keyof typeof variantStyles;
+    size?: keyof typeof sizeStyles;
     fullWidth?: boolean;
     className?: string;
 }
@@ -35,6 +40,7 @@ export const Button = forwardRef(function Button(
         as: Element = 'button',
         type = 'button',
         variant = 'solid',
+        size = 'normal',
         fullWidth,
         className,
         ...props
@@ -44,6 +50,7 @@ export const Button = forwardRef(function Button(
     const styles = clsx(
         baseStyles,
         variantStyles[variant],
+        sizeStyles[size],
         fullWidth && 'w-full',
         className
     );

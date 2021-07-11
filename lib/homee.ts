@@ -90,6 +90,18 @@ export function getNodes() {
     });
 }
 
+export async function playHomeegram(homeegramID: number) {
+    return await fetch(
+        `https://${homeeID}.hom.ee/api/v2/homeegrams/${homeegramID}?play=1`,
+        {
+            method: 'PUT',
+            headers: {
+                Cookie: accessToken || ''
+            }
+        }
+    );
+}
+
 export function roundValue(value: number) {
     return Math.round(value * 10) / 10;
 }
@@ -137,4 +149,14 @@ export function isLight(node: Node) {
     }
 
     return false;
+}
+
+export function getHexColor(number: number) {
+    let hexString = number.toString(16);
+
+    while (hexString.length < 6) {
+        hexString = '0' + hexString;
+    }
+
+    return '#' + hexString;
 }
