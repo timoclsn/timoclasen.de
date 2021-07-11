@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import {
     CloudSnow,
     Droplet,
@@ -49,6 +49,7 @@ const balconyColors: BalconyColors = {
 
 export function SmartHomeWidget({ text, footnote }: Props) {
     const { darkMode } = useContext(ThemeContext);
+    const [disableButtons, setDisableButtons] = useState(false);
 
     const { data, error } = useSWR<SmartHomeData, string>(
         '/api/smarthome',
@@ -56,7 +57,9 @@ export function SmartHomeWidget({ text, footnote }: Props) {
     );
     const errorMessage = 'Nicht erreichbar…';
 
-    async function controlLight(color: string) {
+    async function controlLight(color: string, emoji: string) {
+        setDisableButtons(true);
+
         await toast.promise(
             fetch('/api/smarthome', {
                 method: 'PUT',
@@ -66,17 +69,24 @@ export function SmartHomeWidget({ text, footnote }: Props) {
             }),
             {
                 loading: 'Schalten...',
-                success: <b>Balkon wurde geschaltet!</b>,
+                success: <b>Balkon wurde eingeschaltet!</b>,
                 error: <b>Hat nicht funktioniert.</b>
             },
-            { style: darkMode ? darkToast : lightToast }
+            {
+                style: darkMode ? darkToast : lightToast,
+                success: {
+                    duration: 5000,
+                    icon: emoji
+                }
+            }
         );
 
         mutate(
             '/api/smarthome',
-            { ...data, balconyColor: balconyColors[color] },
+            { ...data, balconyColor: balconyColors[color], balconyOnOff: 'An' },
             false
         );
+        setDisableButtons(false);
     }
 
     return (
@@ -138,11 +148,15 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                     <div className="flex space-x-6">
                         {data ? (
                             <div
-                                className="flex items-center justify-center flex-none"
+                                className="flex items-center justify-center flex-none font-bold"
                                 style={{
                                     width: '100px',
                                     height: '100px',
                                     borderRadius: '9999px',
+                                    boxShadow:
+                                        data.balconyOnOff === 'Aus'
+                                            ? 'none'
+                                            : `0 0 50px ${data?.balconyColor}`,
                                     backgroundColor:
                                         data.balconyOnOff === 'Aus'
                                             ? darkMode
@@ -174,19 +188,25 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                             </p>
                             <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
                                 <Button
+                                    variant="ghost"
                                     size="small"
-                                    onClick={() => controlLight('red')}>
-                                    Rot
+                                    onClick={() => controlLight('red', '🔥')}
+                                    disabled={disableButtons}>
+                                    <span>🔥</span>Rot
                                 </Button>
                                 <Button
+                                    variant="ghost"
                                     size="small"
-                                    onClick={() => controlLight('green')}>
-                                    Grün
+                                    onClick={() => controlLight('green', '🌿')}
+                                    disabled={disableButtons}>
+                                    <span>🌿</span>Grün
                                 </Button>
                                 <Button
+                                    variant="ghost"
                                     size="small"
-                                    onClick={() => controlLight('blue')}>
-                                    Blau
+                                    onClick={() => controlLight('blue', '🌊')}
+                                    disabled={disableButtons}>
+                                    <span>🌊</span>Blau
                                 </Button>
                             </div>
                         </div>
