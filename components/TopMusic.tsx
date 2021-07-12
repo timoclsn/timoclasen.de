@@ -33,8 +33,24 @@ export function TopMusic() {
     return (
         <Tabs defaultValue="1">
             <TabsList aria-label="Meine Lieblingsmusik">
-                <TabsTrigger value="1">Künstler:innen</TabsTrigger>
-                <TabsTrigger value="2">Songs</TabsTrigger>
+                <TabsTrigger
+                    value="1"
+                    onClick={() => {
+                        splitbee.track('Tabs Control', {
+                            tab: 'Artists'
+                        });
+                    }}>
+                    Künstler:innen
+                </TabsTrigger>
+                <TabsTrigger
+                    value="2"
+                    onClick={() => {
+                        splitbee.track('Tabs Control', {
+                            tab: 'Songs'
+                        });
+                    }}>
+                    Songs
+                </TabsTrigger>
             </TabsList>
             <TabsContent value="1">
                 <ul className="space-y-20">

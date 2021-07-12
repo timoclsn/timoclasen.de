@@ -35,15 +35,23 @@ export function PodcastsList({ podcasts }: Props) {
                 <Search
                     placeholder="Podcasts durchsuchen"
                     handleChange={(e) => setSearchValue(e.target.value)}
+                    handleBlur={() => {
+                        splitbee.track('Podcast Search', {
+                            search: searchValue
+                        });
+                    }}
                 />
             </div>
 
             <div className="mx-auto mb-16 max-w-prose">
                 <PodcastFilter
                     filter={filter}
-                    handleChange={(e) =>
-                        setFilter({ favorites: e.target.checked })
-                    }
+                    handleChange={(e) => {
+                        setFilter({ favorites: e.target.checked });
+                        splitbee.track('Podcast Filter', {
+                            favorites: filter.favorites
+                        });
+                    }}
                 />
             </div>
             <ul className="space-y-20">

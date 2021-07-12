@@ -12,6 +12,9 @@ export function SwitchMode() {
 
     function handleThemeChange() {
         setDarkMode?.(!darkMode);
+        splitbee.track('Switch Theme', {
+            theme: darkMode ? 'dark' : 'light'
+        });
     }
 
     return (
