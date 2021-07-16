@@ -211,7 +211,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                                 Hinterlasse mir einen Gruß und schalte meine
                                 Balkonbeleuchtung in eine Farbe deiner Wahl:
                             </p>
-                            <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+                            <div className="flex flex-col mb-4 space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
                                 <Button
                                     variant="ghost"
                                     size="small"
@@ -237,7 +237,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                         </div>
                     </div>
                     <div className="flex justify-center">
-                        <p className="mt-4 text-base text-center opacity-60">
+                        <p className="text-sm opacity-60">
                             {countData ? (
                                 `Zähler: Rot ${countData.red} | Grün ${countData.green} | Blau ${countData.blue}`
                             ) : (
