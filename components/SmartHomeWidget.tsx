@@ -13,6 +13,7 @@ import toast from 'react-hot-toast';
 import useSWR, { mutate } from 'swr';
 
 import { fetcher } from '../lib/fetcher';
+import type { Counts } from '../pages/api/control-count';
 import type { SmartHomeData } from '../pages/api/smarthome';
 import { Button } from './Button';
 import { Skeleton } from './Skeleton';
@@ -55,6 +56,12 @@ export function SmartHomeWidget({ text, footnote }: Props) {
         '/api/smarthome',
         fetcher
     );
+
+    const { data: countData } = useSWR<Counts, string>(
+        '/api/control-count',
+        fetcher
+    );
+
     const errorMessage = 'Nicht erreichbar…';
 
     async function controlLight(color: string, emoji: string) {
@@ -84,6 +91,19 @@ export function SmartHomeWidget({ text, footnote }: Props) {
         mutate(
             '/api/smarthome',
             { ...data, balconyColor: balconyColors[color], balconyOnOff: 'An' },
+            false
+        );
+
+        mutate(
+            '/api/control-count',
+            async () => {
+                return await fetcher('/api/control-count', {
+                    method: 'PUT',
+                    body: JSON.stringify({
+                        color: color
+                    })
+                });
+            },
             false
         );
 
@@ -215,6 +235,15 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                                 </Button>
                             </div>
                         </div>
+                    </div>
+                    <div className="flex justify-center">
+                        <p className="mt-4 text-base text-center opacity-60">
+                            {countData ? (
+                                `Zähler: Rot ${countData.red} | Grün ${countData.green} | Blau ${countData.blue}`
+                            ) : (
+                                <Skeleton width="250px" />
+                            )}
+                        </p>
                     </div>
                 </div>
             </div>
