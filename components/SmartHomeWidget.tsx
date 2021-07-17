@@ -269,7 +269,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                     </div>
                     {!countError && (
                         <div className="flex justify-center">
-                            <p className="text-sm opacity-60">
+                            <p className="text-sm opacity-60 whitespace-nowrap">
                                 {countData ? (
                                     `Zähler: Rot ${countData.red} | Grün ${countData.green} | Blau ${countData.blue}`
                                 ) : (
