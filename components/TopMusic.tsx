@@ -1,7 +1,6 @@
 import { Music, User } from 'react-feather';
 import useSWR from 'swr';
 
-import { fetcher } from '../lib/fetcher';
 import type { Artist, TopArtistsData } from '../pages/api/top-artists';
 import type { TopTrackData, Track } from '../pages/api/top-tracks';
 import { MediaPreview } from './MediaPreview';
@@ -9,12 +8,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs';
 
 export function TopMusic() {
     const { data: topArtistsData, error: topArtistsError } =
-        useSWR<TopArtistsData>('/api/top-artists', fetcher);
+        useSWR<TopArtistsData>('/api/top-artists');
 
-    const { data: topTracksData, error: topTracksError } = useSWR<TopTrackData>(
-        '/api/top-tracks',
-        fetcher
-    );
+    const { data: topTracksData, error: topTracksError } =
+        useSWR<TopTrackData>('/api/top-tracks');
 
     if (topArtistsError || topTracksError) {
         return <div>Fehler beim Laden…</div>;

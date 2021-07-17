@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import useSWR from 'swr';
 
-import { fetcher } from '../lib/fetcher';
 import type { RunningData } from '../pages/api/running';
 import { ThemeContext } from './ThemeContext';
 import { WidgetImage } from './WidgetImage';
@@ -9,7 +8,7 @@ import { WidgetLayout } from './WidgetLayout';
 import { WidgetRunning } from './WidgetRunning';
 
 export function RunningWidget() {
-    const { data, error } = useSWR<RunningData>('/api/running', fetcher);
+    const { data, error } = useSWR<RunningData>('/api/running');
 
     const { darkMode } = useContext(ThemeContext);
 

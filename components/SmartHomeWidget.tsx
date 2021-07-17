@@ -52,14 +52,10 @@ export function SmartHomeWidget({ text, footnote }: Props) {
     const { darkMode } = useContext(ThemeContext);
     const [disableButtons, setDisableButtons] = useState(false);
 
-    const { data, error } = useSWR<SmartHomeData, string>(
-        '/api/smarthome',
-        fetcher
-    );
+    const { data, error } = useSWR<SmartHomeData, string>('/api/smarthome');
 
     const { data: countData, error: countError } = useSWR<Counts, string>(
-        '/api/control-count',
-        fetcher
+        '/api/control-count'
     );
 
     const errorMessage = 'Nicht erreichbar…';
