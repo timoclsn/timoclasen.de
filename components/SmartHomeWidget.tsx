@@ -57,7 +57,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
         fetcher
     );
 
-    const { data: countData } = useSWR<Counts, string>(
+    const { data: countData, error: countError } = useSWR<Counts, string>(
         '/api/control-count',
         fetcher
     );
@@ -236,15 +236,17 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                             </div>
                         </div>
                     </div>
-                    <div className="flex justify-center">
-                        <p className="text-sm opacity-60">
-                            {countData ? (
-                                `Zähler: Rot ${countData.red} | Grün ${countData.green} | Blau ${countData.blue}`
-                            ) : (
-                                <Skeleton width="250px" />
-                            )}
-                        </p>
-                    </div>
+                    {!countError && (
+                        <div className="flex justify-center">
+                            <p className="text-sm opacity-60">
+                                {countData ? (
+                                    `Zähler: Rot ${countData.red} | Grün ${countData.green} | Blau ${countData.blue}`
+                                ) : (
+                                    <Skeleton width="250px" />
+                                )}
+                            </p>
+                        </div>
+                    )}
                 </div>
             </div>
         </section>
