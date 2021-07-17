@@ -10,7 +10,7 @@ import {
     Zap
 } from 'react-feather';
 import toast from 'react-hot-toast';
-import useSWR, { mutate } from 'swr';
+import useSWR from 'swr';
 
 import { fetcher } from '../lib/fetcher';
 import type { Counts } from '../pages/api/control-count';
@@ -52,11 +52,19 @@ export function SmartHomeWidget({ text, footnote }: Props) {
     const { darkMode } = useContext(ThemeContext);
     const [disableButtons, setDisableButtons] = useState(false);
 
-    const { data, error } = useSWR<SmartHomeData, string>('/api/smarthome');
+    const smartHomeApi = '/api/smarthome';
+    const {
+        data: smartHomeData,
+        error: smartHomeError,
+        mutate: mutateSmartHome
+    } = useSWR<SmartHomeData, string>(smartHomeApi);
 
-    const { data: countData, error: countError } = useSWR<Counts, string>(
-        '/api/control-count'
-    );
+    const countApi = '/api/control-count';
+    const {
+        data: countData,
+        error: countError,
+        mutate: mutateCount
+    } = useSWR<Counts, string>(countApi);
 
     const errorMessage = 'Nicht erreichbar…';
 
@@ -64,7 +72,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
         setDisableButtons(true);
 
         await toast.promise(
-            fetch('/api/smarthome', {
+            fetch(smartHomeApi, {
                 method: 'PUT',
                 body: JSON.stringify({
                     balconyColor: color
@@ -84,24 +92,25 @@ export function SmartHomeWidget({ text, footnote }: Props) {
             }
         );
 
-        mutate(
-            '/api/smarthome',
-            { ...data, balconyColor: balconyColors[color], balconyOnOff: 'An' },
-            false
-        );
+        if (smartHomeData) {
+            mutateSmartHome(
+                {
+                    ...smartHomeData,
+                    balconyColor: balconyColors[color],
+                    balconyOnOff: 'An'
+                },
+                false
+            );
+        }
 
-        mutate(
-            '/api/control-count',
-            async () => {
-                return await fetcher('/api/control-count', {
-                    method: 'PUT',
-                    body: JSON.stringify({
-                        color: color
-                    })
-                });
-            },
-            false
-        );
+        mutateCount(async () => {
+            return await fetcher(countApi, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    color: color
+                })
+            });
+        }, false);
 
         setDisableButtons(false);
 
@@ -123,40 +132,66 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                     <SmartHomeElement
                         Icon={Thermometer}
                         title="Raumtemperatur"
-                        value={error ? errorMessage : data?.temperature}
+                        value={
+                            smartHomeError
+                                ? errorMessage
+                                : smartHomeData?.temperature
+                        }
                     />
                     <SmartHomeElement
                         Icon={Droplet}
                         title="Luftfeuchtigkeit"
-                        value={error ? errorMessage : data?.humidity}
+                        value={
+                            smartHomeError
+                                ? errorMessage
+                                : smartHomeData?.humidity
+                        }
                     />
                     <SmartHomeElement
                         Icon={Zap}
                         title="Energieverbrauch"
-                        value={error ? errorMessage : data?.energy}
+                        value={
+                            smartHomeError
+                                ? errorMessage
+                                : smartHomeData?.energy
+                        }
                     />
                 </div>
                 <div className="-mt-6 space-y-6 sm:space-y-8 sm:mt-0">
                     <SmartHomeElement
-                        Icon={data?.lights === 'An' ? ToggleRight : ToggleLeft}
+                        Icon={
+                            smartHomeData?.lights === 'An'
+                                ? ToggleRight
+                                : ToggleLeft
+                        }
                         title="Lichter"
-                        value={error ? errorMessage : data?.lights}
+                        value={
+                            smartHomeError
+                                ? errorMessage
+                                : smartHomeData?.lights
+                        }
                     />
                     <SmartHomeElement
                         Icon={Thermometer}
                         title="Außentemperatur"
-                        value={error ? errorMessage : data?.outsideTemperature}
+                        value={
+                            smartHomeError
+                                ? errorMessage
+                                : smartHomeData?.outsideTemperature
+                        }
                     />
                     <SmartHomeElement
                         Icon={
-                            data?.rain === 'Es regnet'
+                            smartHomeData?.rain === 'Es regnet'
                                 ? Umbrella
-                                : data?.rain === 'Es schneit'
+                                : smartHomeData?.rain === 'Es schneit'
                                 ? CloudSnow
                                 : Sun
                         }
                         title="Regensensor"
-                        value={error ? errorMessage : data?.rain}
+                        value={
+                            smartHomeError ? errorMessage : smartHomeData?.rain
+                        }
                     />
                 </div>
             </WidgetLayout>
@@ -167,7 +202,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
             <div className="flex justify-center">
                 <div className="w-full max-w-screen-sm px-6 py-6 space-y-2 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-3xl xl:px-12 xl:py-12">
                     <div className="flex space-x-6">
-                        {data ? (
+                        {smartHomeData ? (
                             <div
                                 className="flex items-center justify-center flex-none font-bold"
                                 style={{
@@ -175,20 +210,20 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                                     height: '100px',
                                     borderRadius: '9999px',
                                     boxShadow:
-                                        data.balconyOnOff === 'Aus'
+                                        smartHomeData.balconyOnOff === 'Aus'
                                             ? 'none'
-                                            : `0 0 50px ${data?.balconyColor}`,
+                                            : `0 0 50px ${smartHomeData?.balconyColor}`,
                                     backgroundColor:
-                                        data.balconyOnOff === 'Aus'
+                                        smartHomeData.balconyOnOff === 'Aus'
                                             ? darkMode
                                                 ? '#000000'
                                                 : '#FFFFFF'
-                                            : data?.balconyColor
+                                            : smartHomeData?.balconyColor
                                 }}>
                                 <span>
-                                    {data &&
-                                        data.balconyOnOff === 'Aus' &&
-                                        data.balconyOnOff}
+                                    {smartHomeData &&
+                                        smartHomeData.balconyOnOff === 'Aus' &&
+                                        smartHomeData.balconyOnOff}
                                 </span>
                             </div>
                         ) : (
