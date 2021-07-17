@@ -71,7 +71,7 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
             : [])
     ];
 
-    const runningProgress = thisYear ? thisYear.distance / (1000 / 100) : 0;
+    const runningProgress = thisYear ? thisYear.distance / (800 / 100) : 0;
     const yearProgress = getYearProgress();
     const yearTrend = runningProgress >= yearProgress ? '↑' : '↓';
 
@@ -86,7 +86,7 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
                         Icon={TrendingUp}
                         text={
                             thisYear &&
-                            `${thisYear.distance} von 1000 km pro Jahr`
+                            `${thisYear.distance} von 800 km pro Jahr`
                         }
                         labels={
                             thisYear && [
