@@ -6,7 +6,7 @@ const supabase = createClient(
     process.env.SUPABASE_ANON_KEY || ''
 );
 
-export interface Counts {
+export interface Counts extends Record<string, number> {
     red: number;
     green: number;
     blue: number;
@@ -29,17 +29,23 @@ export default async function controlCount(
         return res.status(401).send(countsError.message);
     }
 
-    const counts: Counts = {
-        red: countsData?.find((count) => count.color === 'red')?.count || 0,
-        green: countsData?.find((count) => count.color === 'green')?.count || 0,
-        blue: countsData?.find((count) => count.color === 'blue')?.count || 0
-    };
+    if (!countsData) {
+        return res.status(401).send('No Data');
+    }
+
+    const counts = countsData.reduce(
+        (acc, count) => {
+            acc[count.color] = count.count;
+            return acc;
+        },
+        { red: 0, green: 0, blue: 0 } as Counts
+    );
 
     if (req.method === 'PUT') {
         const body: { color: 'red' | 'green' | 'blue' } = JSON.parse(req.body);
 
         const { data: updateData, error: updateError } = await supabase
-            .from('balcony-control')
+            .from<Count>('balcony-control')
             .update({ count: counts[body.color] + 1 })
             .match({ color: body.color });
 
@@ -47,17 +53,21 @@ export default async function controlCount(
             return res.status(401).send(updateError.message);
         }
 
-        const newCounts: Counts = {
-            red:
-                updateData?.find((count) => count.color === 'red')?.count ||
-                counts.red,
-            green:
-                updateData?.find((count) => count.color === 'green')?.count ||
-                counts.green,
-            blue:
-                updateData?.find((count) => count.color === 'blue')?.count ||
-                counts.blue
-        };
+        if (!updateData) {
+            return res.status(401).send('No Data');
+        }
+
+        const newCounts = updateData.reduce(
+            (acc, count) => {
+                acc[count.color] = count.count;
+                return acc;
+            },
+            {
+                red: counts.red,
+                green: counts.green,
+                blue: counts.blue
+            } as Counts
+        );
 
         return res.status(200).json(newCounts);
     } else {
