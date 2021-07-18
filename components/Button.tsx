@@ -17,7 +17,7 @@ const baseStyles = [
 const variantStyles = {
     solid: 'rounded-full text-light bg-highlight dark:bg-highlight-dark hover:bg-opacity-80 dark:hover:bg-opacity-80 focus:ring-2 focus:ring-inset focus:ring-dark dark:focus:ring-light',
     ghost: 'rounded-full ring-2 ring-inset ring-dark dark:ring-light hover:bg-dark dark:hover:bg-light hover:bg-opacity-20 dark:hover:bg-opacity-20 focus:ring-highlight dark:focus:ring-highlight-dark',
-    link: 'hover:opacity-80'
+    link: 'hover:opacity-80 focus:underline'
 };
 
 const sizeStyles = {

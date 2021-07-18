@@ -20,11 +20,11 @@ export function PodcastFilter({ filter, handleChange }: Props) {
             <label
                 className={`flex items-center justify-center cursor-pointer select-none px-2 py-0.5 text-base rounded-lg focus:outline-none ring-2 ring-highlight dark:ring-highlight-dark ${
                     filter.favorites
-                        ? 'text-light bg-highlight dark:bg-highlight-dark'
-                        : 'text-highlight dark:text-highlight-dark'
+                        ? 'text-light bg-highlight dark:bg-highlight-dark focus-within:ring-dark dark:focus-within:ring-light'
+                        : 'text-highlight dark:text-highlight-dark focus-within:ring-dark dark:focus-within:ring-light'
                 }`}>
                 <input
-                    className="hidden"
+                    className="w-0 h-0 opacity-0"
                     type="checkbox"
                     checked={filter.favorites}
                     onChange={handleChange}
