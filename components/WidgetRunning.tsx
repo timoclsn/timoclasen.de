@@ -71,7 +71,9 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
             : [])
     ];
 
-    const runningProgress = thisYear ? thisYear.distance / (800 / 100) : 0;
+    const runningProgress = thisYear
+        ? Math.round(thisYear.distance / (800 / 100))
+        : 0;
     const yearProgress = getYearProgress();
     const yearTrend = runningProgress >= yearProgress ? '↑' : '↓';
 
