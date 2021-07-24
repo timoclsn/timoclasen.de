@@ -1,10 +1,10 @@
-const fs = require('fs');
-const fetch = require('node-fetch');
-const parser = require('fast-xml-parser');
-const sharp = require('sharp');
-var he = require('he');
-const remark = require('remark');
-const strip = require('remark-strip-html');
+import parser from 'fast-xml-parser';
+import fs from 'fs';
+import he from 'he';
+import fetch from 'node-fetch';
+import remark from 'remark';
+import strip from 'remark-strip-html';
+import sharp from 'sharp';
 
 const favs = [
     'Accidental Tech Podcast',
