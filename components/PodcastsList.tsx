@@ -1,3 +1,4 @@
+import { matchSorter } from 'match-sorter';
 import { useState } from 'react';
 import { User } from 'react-feather';
 
@@ -16,18 +17,11 @@ export function PodcastsList({ podcasts }: Props) {
         favorites: false
     });
 
-    const filteredPodcast = podcasts
-        .filter((podcast) => {
-            const search = searchValue.toLowerCase();
-            return (
-                podcast.title.toLowerCase().includes(search) ||
-                podcast.hosts.toLowerCase().includes(search) ||
-                podcast.description.toLowerCase().includes(search)
-            );
-        })
-        .filter((podcast) => {
-            return filter.favorites ? podcast.favorite : true;
-        });
+    const filteredPodcast = matchSorter(podcasts, searchValue, {
+        keys: ['title', 'hosts', 'description']
+    }).filter((podcast) => {
+        return filter.favorites ? podcast.favorite : true;
+    });
 
     return (
         <div>
