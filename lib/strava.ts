@@ -1,6 +1,6 @@
 import { intervalToDuration, startOfYear } from 'date-fns';
 
-import { fetcher } from '../lib/fetcher';
+import { fetcher } from './fetcher';
 
 const {
     STRAVA_CLIENT_ID: clientID,
