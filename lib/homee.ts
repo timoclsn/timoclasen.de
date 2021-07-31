@@ -111,44 +111,36 @@ export function formatValue(value: number, unit: string) {
 }
 
 export function isLight(node: Node) {
-    if (
-        node.profile === NodeProfile.DimmableColorLight ||
-        node.profile === NodeProfile.DimmableExtendedColorLight ||
-        node.profile === NodeProfile.DimmableColorTemperatureLight ||
-        node.profile === NodeProfile.DimmableLight ||
-        node.profile === NodeProfile.DimmableLightWithBrightnessSensor ||
-        node.profile ===
-            NodeProfile.DimmableLightWithBrightnessAndPresenceSensor ||
-        node.profile === NodeProfile.DimmableLightWithPresenceSensor ||
-        node.profile === NodeProfile.DimmableRGBWLight
-    ) {
-        return true;
-    }
-
-    if (
-        node.profile === NodeProfile.DimmableMeteringSwitch ||
-        node.profile === NodeProfile.MeteringSwitch ||
-        node.profile === NodeProfile.DimmableSwitch ||
-        node.profile === NodeProfile.OnOffSwitch ||
-        node.profile === NodeProfile.DoubleOnOffSwitch ||
-        node.profile === NodeProfile.DimmableColorMeteringPlug ||
-        node.profile === NodeProfile.OnOffSwitchWithBinaryInput ||
-        node.profile === NodeProfile.DoubleMeteringSwitch ||
-        node.profile === NodeProfile.OnOffPlug ||
-        node.profile === NodeProfile.MeteringPlug ||
-        node.profile === NodeProfile.DimmablePlug ||
-        node.profile === NodeProfile.DimmableMeteringPlug ||
-        node.profile === NodeProfile.DoubleOnOffPlug ||
-        node.profile === NodeProfile.ImpulsePlug
-    ) {
-        if (node.image.includes('bulb') || node.image.includes('xmas')) {
+    switch (node.profile) {
+        case NodeProfile.DimmableColorLight:
+        case NodeProfile.DimmableExtendedColorLight:
+        case NodeProfile.DimmableColorTemperatureLight:
+        case NodeProfile.DimmableLight:
+        case NodeProfile.DimmableLightWithBrightnessSensor:
+        case NodeProfile.DimmableLightWithBrightnessAndPresenceSensor:
+        case NodeProfile.DimmableLightWithPresenceSensor:
+        case NodeProfile.DimmableRGBWLight:
             return true;
-        }
-
-        return false;
+        case NodeProfile.DimmableMeteringSwitch:
+        case NodeProfile.MeteringSwitch:
+        case NodeProfile.DimmableSwitch:
+        case NodeProfile.OnOffSwitch:
+        case NodeProfile.DoubleOnOffSwitch:
+        case NodeProfile.DimmableColorMeteringPlug:
+        case NodeProfile.OnOffSwitchWithBinaryInput:
+        case NodeProfile.DoubleMeteringSwitch:
+        case NodeProfile.OnOffPlug:
+        case NodeProfile.MeteringPlug:
+        case NodeProfile.DimmablePlug:
+        case NodeProfile.DimmableMeteringPlug:
+        case NodeProfile.DoubleOnOffPlug:
+        case NodeProfile.ImpulsePlug:
+            return node.image.includes('bulb') || node.image.includes('xmas')
+                ? true
+                : false;
+        default:
+            return false;
     }
-
-    return false;
 }
 
 export function getHexColor(number: number) {
