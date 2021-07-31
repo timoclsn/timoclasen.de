@@ -1,3 +1,5 @@
+import { fetcher } from './fetcher';
+
 const {
     CONTENTFUL_SPACE_ID: spaceId,
     CONTENTFUL_ACCESS_TOKEN: publicAccessToken,
@@ -16,7 +18,7 @@ export async function queryContent(query: string, preview = false) {
         query = query.replace(/preview: false/g, 'preview: true');
     }
 
-    return fetch(
+    return fetcher(
         `https://graphql.contentful.com/content/v1/spaces/${spaceId}`,
         {
             method: 'POST',
@@ -28,5 +30,5 @@ export async function queryContent(query: string, preview = false) {
             },
             body: JSON.stringify({ query })
         }
-    ).then((response) => response.json());
+    );
 }
