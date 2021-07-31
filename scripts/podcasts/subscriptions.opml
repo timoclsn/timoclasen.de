@@ -89,5 +89,6 @@
     <outline xmlUrl="https://feeds.transistor.fm/bytetalk" text="ByteTalk" title="ByteTalk" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.soundcloud.com/users/soundcloud:users:421183616/sounds.rss" text="Digitale Leute" title="Digitale Leute" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.buzzsprout.com/1806381.rss" text="Developer Experience" title="Developer Experience" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.fireside.fm/podrocket/rss" text="PodRocket - A web development podcast from LogRocket" title="PodRocket - A web development podcast from LogRocket" type="rss" version="RSS"/>
   </body>
 </opml>

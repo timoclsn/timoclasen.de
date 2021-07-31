@@ -14,7 +14,8 @@ const favs = [
     'OMR Podcast',
     'The Smart Home Show',
     'The Vergecast',
-    'This is Product Management'
+    'This is Product Management',
+    'The Internet of Things Podcast - Stacey On IoT'
 ];
 
 const coversDir = './public/podcasts';

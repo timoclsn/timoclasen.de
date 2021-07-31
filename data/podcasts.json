@@ -459,6 +459,15 @@
         "image": "cover--1401915336.jpg"
     },
     {
+        "title": "PodRocket - A web development podcast from LogRocket",
+        "favorite": false,
+        "feed": "https://feeds.fireside.fm/podrocket/rss",
+        "description": "PodRocket covers everything you need to know about frontend web development on a weekly basis. Join LogRocket cofounder Ben Edelstein, Director of Content Brian Neville-O'Neill, and PodRocket producer Kate Trahan, as they interview experienced developers about all the libraries, frameworks, and tech industry issues they deal with every day.\n",
+        "website": "http://podrocket.logrocket.com",
+        "hosts": "LogRocket",
+        "image": "cover--1221539832.jpg"
+    },
+    {
         "title": "Presentable",
         "favorite": false,
         "feed": "https://www.relay.fm/presentable/feed",
@@ -498,7 +507,7 @@
         "title": "Rework",
         "favorite": false,
         "feed": "https://feeds.transistor.fm/rework",
-        "description": "A podcast by Basecamp about the better way to work and run your business. We bring you stories and unconventional wisdom from Basecamp’s co-founders and other business owners.\n",
+        "description": "A podcast by Basecamp about the better way to work and run your business. In Season 2, we're going through Rework (the book) chapter by chapter and talking with authors, Jason Fried and David Heinemeier Hansson, about what's changed in the world of business over the last eleven years since the book was published.\n",
         "website": "https://rework.fm",
         "hosts": "Basecamp",
         "image": "cover--1850445852.jpg"
@@ -633,7 +642,7 @@
         "title": "The Stack Overflow Podcast",
         "favorite": false,
         "feed": "https://stackoverflow.blog/podcast/?feed=podcast",
-        "description": "The Stack Overflow podcast is a weekly conversation about working in software development, learning to code, and the art and culture of computer programming. Hosted by Sara Chipps, Paul Ford, and Ben Popper, the series will feature questions from our community, interviews with fascinating guests, and hot takes on what’s happening in tech.\nAbout Stack Overflow\nFounded in 2008, Stack Overflow is the largest, most trusted online community for developers to learn, share their knowledge, and build their careers. More than 50 million professional and aspiring programmers visit Stack Overflow each month to help solve coding problems, develop new skills, and find job opportunities.\n",
+        "description": "The Stack Overflow podcast is a weekly conversation about working in software development, learning to code, and the art and culture of computer programming. Hosted by Paul Ford and Ben Popper, the series features questions from our community, interviews with fascinating guests, and hot takes on what’s happening in tech. Founded in 2008, Stack Overflow is empowering the world to develop technology through collective knowledge. It’s best known for being the largest, most trusted online community for developers and technologists. More than 100 million people come to Stack Overflow every month to ask questions, help solve coding problems, and develop new skills.\n",
         "website": "https://stackoverflow.blog/podcast/",
         "hosts": "The Stack Overflow Podcast",
         "image": "cover-972139597.jpg"
@@ -723,7 +732,7 @@
         "title": "User Defenders – UX Design & Personal Growth",
         "favorite": false,
         "feed": "https://userdefenders.libsyn.com/rss",
-        "description": "Being a great UX designer begins and ends with being a great human.\n\nEver since I can remember, I’ve been fascinated by superheroes. Early on, it was their amazing superpowers that drew me in. As I grew older, it was the realization of a very tangible connection between us and them.\n\nSuperheroes typically possess a strong moral code, including a willingness to risk one’s own safety in the service of good without expectation of reward. Even though they still fall and fail often, they always get back up, learn, and continue to make things better.\n\nSound a little like UX?\n\nI also discovered this little-known, world-changing link between UX Design and personal growth after beginning my own personal growth journey in 2015 (just before starting this podcast & community) that quite literally changed my life.\n\nThe reality is, we cannot pour an empty cup into another. There’s a reason why on every flight we’re told to put our oxygen mask on first…we can’t help others unless we first help ourselves. We can’t lead others where we are not.\n\nWhat the world needs now is not just love, but especially more empathy. We live in some of the most divided times in human history. It’s true empathy isn’t everything, but please don’t design or ship a product or experience meant for other human beings without it!\n\nThis UX podcast will help you become the best, most powerful UX designer (and human) you can be.\n\nAs you listen to the most inspiring and influential UX superheroes in the world tell impactful stories, reveal their design superpowers/kryptonite and offer game-changing advice–you’ll be moved and inspired to unleash your growth mindset, grow in your empathy for others, all while being enlightened, informed and even entertained as you learn about the most important issues facing our UX community today.\n\nYes, you’ll discover how-to’s, but much more importantly you’ll discover why-to’s\n\nEvery episode is sure to inspire and equip you on how to better fight for your users and business, and dare I say change the world (even if only for one human at a time) in a much deeper and more tangible way than you ever thought possible.\n",
+        "description": "Being a great UX designer begins and ends with being a great human. We can't pour an empty cup into another. We can’t lead others where we are not.\n\nThis UX podcast helps UX’ers become the best, most powerful designers (and humans) they can be. Yes, you'll discover how-to’s, but much more importantly you'll discover why-to’s.\n\nEvery episode is sure to inspire and equip you on how to better fight for your users and business, and dare I say change the world (even if only for one human at a time) in a much deeper and more tangible way than you ever thought possible.\n",
         "website": "https://userdefenders.com/",
         "hosts": "Jason Ogle",
         "image": "cover-1815355830.jpg"
@@ -741,7 +750,7 @@
         "title": "Waveform: The MKBHD Podcast",
         "favorite": false,
         "feed": "http://feeds.feedburner.com/WaveformWithMkbhd",
-        "description": "A tech podcast for the gadget lovers and tech heads among us from the mind of Marques Brownlee, better known as MKBHD. MKBHD has made a name for himself on YouTube reviewing everything from the newest smartphones to cameras to electric cars. Pulling from over 10 years of experience covering the tech industry, MKBHD and co-host Andrew Manganelli will keep you informed and entertained as they take a deep dive into the latest and greatest in tech and what deserves your hard earned cash. New episodes every week.\n\nFor advertising opportunities please reach out to PodcastPartnerships@studio71us.com\nLink to ad survey: https://bit.ly/2EcYbu4\n",
+        "description": "A tech podcast for the gadget lovers and tech heads among us from the mind of Marques Brownlee, better known as MKBHD. MKBHD has made a name for himself on YouTube reviewing everything from the newest smartphones to cameras to electric cars. Pulling from over 10 years of experience covering the tech industry, MKBHD and co-host Andrew Manganelli will keep you informed and entertained as they take a deep dive into the latest and greatest in tech and what deserves your hard earned cash. New episodes every week.\n\nWe wanna make the podcast even better, help us learn how we can: https://bit.ly/2EcYbu4  \nFor advertising opportunities please email PodcastPartnerships@Studio71us.com   \nPrivacy Policy: https://www.studio71.com/terms-and-conditions-use/#Privacy%20Policy\n",
         "website": "https://www.studio71.com/us/podcasts/",
         "hosts": "Studio71",
         "image": "cover-1562093234.jpg"
