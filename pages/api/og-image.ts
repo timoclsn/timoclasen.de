@@ -43,7 +43,7 @@ export default async function OGImageAPI(
             height
         }
     });
-    await page.setContent(html);
+    await page.setContent(html, { waitUntil: 'networkidle' });
 
     const data = await page.screenshot({
         type: 'jpeg',
