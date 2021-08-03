@@ -23,7 +23,9 @@ export function OGImage({ name, title, subtitle, image }: Props) {
                     padding: '2rem',
                     display: 'flex',
                     flexDirection: 'column',
-                    justifyContent: 'space-between'
+                    justifyContent: 'space-between',
+                    width: '728px',
+                    height: '630px'
                 }}>
                 <div>
                     <p
