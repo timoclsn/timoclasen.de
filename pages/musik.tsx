@@ -45,10 +45,6 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
                     title
                     slug
                     description
-                    previewImage {
-                        url
-                        description
-                    }
                 }
             }
             musicSnippet: textSnippetCollection(where: {title: "Music"}, limit: 1, preview: false) {
@@ -69,12 +65,20 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const musicText = response.data.musicSnippet.items[0].content;
     const contactText = response.data.contactSnippet.items[0].content;
 
+    const previewImage = {
+        url: `https://timoclasen.de/api/og-image?name=${encodeURIComponent(
+            'Musik • Timo Clasen'
+        )}`,
+        description:
+            'Teasertext der Seite "Musik" und Profilfoto von Timo Clasen'
+    };
+
     return {
         props: {
             preview,
             title: page.title,
             description: page.description,
-            previewImage: page.previewImage,
+            previewImage,
             slug: page.slug,
             musicText: await markdownToHTML(musicText),
             contact: await markdownToHTML(contactText)

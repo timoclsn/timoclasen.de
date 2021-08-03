@@ -81,10 +81,6 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
                     title
                     slug
                     description
-                    previewImage {
-                        url
-                        description
-                    }
                 }
             }
             headerSnippet: textSnippetCollection(where: {title: "Frontpage Header"}, limit: 1, preview: false) {
@@ -162,12 +158,19 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     aboutTeaser = truncate(aboutTeaser, 400, true);
     aboutTeaser = await markdownToHTML(aboutTeaser);
 
+    const previewImage = {
+        url: `https://timoclasen.de/api/og-image?name=${encodeURIComponent(
+            'Timo Clasen'
+        )}`,
+        description: 'Teasertext der Startseite und Profilfoto von Timo Clasen'
+    };
+
     return {
         props: {
             preview,
             title: page.title,
             description: page.description,
-            previewImage: page.previewImage,
+            previewImage,
             header: await markdownToHTML(headerText),
             image: person.image,
             aboutTeaser,

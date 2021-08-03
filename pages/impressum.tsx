@@ -41,10 +41,6 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
                     title
                     slug
                     description
-                    previewImage {
-                        url
-                        description
-                    }
                 }
             }
             legalSnippet: textSnippetCollection(where: {title: "Impressum & Datenschutz"}, limit: 1, preview: false) {
@@ -65,12 +61,20 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const legalText = response.data.legalSnippet.items[0].content;
     const contactText = response.data.contactSnippet.items[0].content;
 
+    const previewImage = {
+        url: `https://timoclasen.de/api/og-image?name=${encodeURIComponent(
+            'Impressum • Timo Clasen'
+        )}`,
+        description:
+            'Teasertext der Seite "Impressum" und Profilfoto von Timo Clasen'
+    };
+
     return {
         props: {
             preview,
             title: page.title,
             description: page.description,
-            previewImage: page.previewImage,
+            previewImage,
             slug: page.slug,
             legal: await markdownToHTML(legalText),
             contact: await markdownToHTML(contactText)

@@ -16,6 +16,10 @@ import type { BlogPost as BlogPostType } from '../blog';
 
 interface Props {
     preview: boolean;
+    previewImage: {
+        url: string;
+        description: string;
+    };
     blogPost: BlogPostType;
     loading: string;
     error: string;
@@ -50,7 +54,7 @@ export default function BlogPost(props: Props) {
             preview={props.preview}
             title={props.blogPost.title}
             description={props.blogPost.summary}
-            previewImage={props.blogPost.previewImage}
+            previewImage={props.previewImage}
             slug={`blog/${props.blogPost.slug}`}>
             <SEOBlogPost
                 authorName={props.blogPost.author.name}
@@ -59,7 +63,7 @@ export default function BlogPost(props: Props) {
                 slug={props.blogPost.slug}
                 title={props.blogPost.title}
                 description={props.blogPost.summary}
-                previewImage={props.blogPost.previewImage}
+                previewImage={props.previewImage}
             />
             <article className="space-y-8 md:space-y-16">
                 <BlogPostHeader
@@ -91,10 +95,6 @@ export const getStaticProps: GetStaticProps = async ({
                     title
                     subtitle
                     slug
-                    previewImage {
-                        url
-                        description
-                    }
                     date
                     author {
                         name
@@ -134,10 +134,23 @@ export const getStaticProps: GetStaticProps = async ({
     const errorText = response.data.errorSnippet.items[0].content;
     const contactText = response.data.contactSnippet.items[0].content;
 
+    const previewImage = {
+        url: `https://timoclasen.de/api/og-image?name=${encodeURIComponent(
+            'Blog • Timo Clasen'
+        )}&title=${encodeURIComponent(
+            blogPost.title
+        )}&subtitle=${encodeURIComponent(
+            `${blogPost.dateFormatted} • ${blogPost.readingTime} Min`
+        )}`,
+        description:
+            'Teasertext der Seite "Blog" und Profilfoto von Timo Clasen'
+    };
+
     return {
         props: {
             preview,
             blogPost,
+            previewImage,
             error: await markdownToHTML(errorText),
             loading: await markdownToHTML('# Seite lädt…'),
             contact: await markdownToHTML(contactText)
