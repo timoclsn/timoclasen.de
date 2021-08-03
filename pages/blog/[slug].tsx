@@ -135,7 +135,7 @@ export const getStaticProps: GetStaticProps = async ({
     const contactText = response.data.contactSnippet.items[0].content;
 
     const previewImage = {
-        url: `https://timoclasen-de-git-og-image-timoclsn.vercel.app/api/og-image?name=${encodeURIComponent(
+        url: `https://timoclasen.de/api/og-image?name=${encodeURIComponent(
             'Blog • Timo Clasen'
         )}&title=${encodeURIComponent(
             blogPost.title
