@@ -63,10 +63,9 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 
     const previewImage = {
         url: `https://timoclasen.de/api/og-image?name=${encodeURIComponent(
-            'Impressum • Timo Clasen'
+            `${page.title} • Timo Clasen`
         )}`,
-        description:
-            'Teasertext der Seite "Impressum" und Profilfoto von Timo Clasen'
+        description: `Teasertext der Seite "${page.title}" und Profilfoto von Timo Clasen`
     };
 
     return {
