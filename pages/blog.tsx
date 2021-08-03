@@ -81,10 +81,6 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
                     title
                     slug
                     description
-                    previewImage {
-                        url
-                        description
-                    }
                 }
             }
             blogPosts: blogPostCollection(order: [date_DESC], preview: false) {
@@ -132,12 +128,20 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 
     const contactText = response.data.contactSnippet.items[0].content;
 
+    const previewImage = {
+        url: `https://timoclasen.de/api/og-image?name=${encodeURIComponent(
+            'Blog • Timo Clasen'
+        )}`,
+        description:
+            'Teasertext der Seite "Blog" und Profilfoto von Timo Clasen'
+    };
+
     return {
         props: {
             preview,
             title: page.title,
             description: page.description,
-            previewImage: page.previewImage,
+            previewImage,
             slug: page.slug,
             blogPosts,
             contact: await markdownToHTML(contactText)

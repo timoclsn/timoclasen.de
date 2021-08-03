@@ -45,10 +45,6 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
                     title
                     slug
                     description
-                    previewImage {
-                        url
-                        description
-                    }
                 }
             }
             podcastsSnippet: textSnippetCollection(where: {title: "Podcasts"}, limit: 1, preview: false) {
@@ -64,12 +60,20 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const podcastsText = response.data.podcastsSnippet.items[0].content;
     const podcasts = getPodcasts();
 
+    const previewImage = {
+        url: `https://timoclasen.de/api/og-image?name=${encodeURIComponent(
+            'Podcasts • Timo Clasen'
+        )}`,
+        description:
+            'Teasertext der Seite "Podcasts" und Profilfoto von Timo Clasen'
+    };
+
     return {
         props: {
             preview,
             title: page.title,
             description: page.description,
-            previewImage: page.previewImage,
+            previewImage,
             slug: page.slug,
             podcasts,
             podcastsText: await markdownToHTML(podcastsText)
