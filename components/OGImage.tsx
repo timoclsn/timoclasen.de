@@ -3,7 +3,7 @@ import { Globe, Twitter } from 'react-feather';
 
 interface Props {
     name: string;
-    title: string;
+    title?: string;
     subtitle?: string;
     image: string;
 }
