@@ -27,3 +27,9 @@ export function truncate(str: string, n: number, useWordBoundary: boolean) {
 export function stripFirstLine(text: string) {
     return text.substring(text.indexOf('\n') + 1);
 }
+
+export function objToUrlParams(params: Record<string, string>) {
+    return Object.entries(params)
+        .map(([key, val]) => `${key}=${encodeURIComponent(val)}`)
+        .join('&');
+}

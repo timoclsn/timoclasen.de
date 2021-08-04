@@ -11,7 +11,7 @@ import { SEOBlogPost } from '../../components/SEOBlogPost';
 import { TextBlock } from '../../components/TextBlock';
 import { TextPost } from '../../components/TextPost';
 import { queryContent } from '../../lib/content';
-import { markdownToHTML } from '../../lib/text';
+import { markdownToHTML, objToUrlParams } from '../../lib/text';
 import type { BlogPost as BlogPostType } from '../blog';
 
 interface Props {
@@ -135,13 +135,11 @@ export const getStaticProps: GetStaticProps = async ({
     const contactText = response.data.contactSnippet.items[0].content;
 
     const previewImage = {
-        url: `https://timoclasen.de/api/og-image?name=${encodeURIComponent(
-            'Blog • Timo Clasen'
-        )}&title=${encodeURIComponent(
-            blogPost.title
-        )}&subtitle=${encodeURIComponent(
-            `${blogPost.dateFormatted} • ${blogPost.readingTime} Min`
-        )}`,
+        url: `https://timoclasen.de/api/og-image?${objToUrlParams({
+            name: 'Blog • Timo Clasen',
+            title: blogPost.title,
+            subtitle: `${blogPost.dateFormatted} • ${blogPost.readingTime} Min`
+        })}`,
         description:
             'Teasertext der Seite "Blog" und Profilfoto von Timo Clasen'
     };

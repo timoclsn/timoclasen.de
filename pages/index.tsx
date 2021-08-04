@@ -14,7 +14,12 @@ import { Teaser } from '../components/Teaser';
 import { queryContent } from '../lib/content';
 import type { Podcast } from '../lib/podcasts';
 import { getFavoritePodcasts } from '../lib/podcasts';
-import { markdownToHTML, stripFirstLine, truncate } from '../lib/text';
+import {
+    markdownToHTML,
+    objToUrlParams,
+    stripFirstLine,
+    truncate
+} from '../lib/text';
 
 interface Props {
     preview: boolean;
@@ -159,9 +164,9 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     aboutTeaser = await markdownToHTML(aboutTeaser);
 
     const previewImage = {
-        url: `https://timoclasen.de/api/og-image?name=${encodeURIComponent(
-            'Timo Clasen'
-        )}`,
+        url: `https://timoclasen.de/api/og-image?${objToUrlParams({
+            name: 'Timo Clasen'
+        })}`,
         description: 'Teasertext der Startseite und Profilfoto von Timo Clasen'
     };
 

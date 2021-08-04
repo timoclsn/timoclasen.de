@@ -4,7 +4,7 @@ import { ContactWidget } from '../components/ContactWidget';
 import { Layout } from '../components/Layout';
 import { TextBlock } from '../components/TextBlock';
 import { queryContent } from '../lib/content';
-import { markdownToHTML } from '../lib/text';
+import { markdownToHTML, objToUrlParams } from '../lib/text';
 
 interface Props {
     preview: boolean;
@@ -62,9 +62,9 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const contactText = response.data.contactSnippet.items[0].content;
 
     const previewImage = {
-        url: `https://timoclasen.de/api/og-image?name=${encodeURIComponent(
-            `${page.title} • Timo Clasen`
-        )}`,
+        url: `https://timoclasen.de/api/og-image?${objToUrlParams({
+            name: `${page.title} • Timo Clasen`
+        })}`,
         description: `Teasertext der Seite "${page.title}" und Profilfoto von Timo Clasen`
     };
 

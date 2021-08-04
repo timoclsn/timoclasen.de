@@ -7,7 +7,7 @@ import { TextBlock } from '../components/TextBlock';
 import { queryContent } from '../lib/content';
 import type { Podcast } from '../lib/podcasts';
 import { getPodcasts } from '../lib/podcasts';
-import { markdownToHTML } from '../lib/text';
+import { markdownToHTML, objToUrlParams } from '../lib/text';
 
 interface Props {
     preview: boolean;
@@ -61,9 +61,9 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const podcasts = getPodcasts();
 
     const previewImage = {
-        url: `https://timoclasen.de/api/og-image?name=${encodeURIComponent(
-            `${page.title} • Timo Clasen`
-        )}`,
+        url: `https://timoclasen.de/api/og-image?${objToUrlParams({
+            name: `${page.title} • Timo Clasen`
+        })}`,
         description: `Teasertext der Seite "${page.title}" und Profilfoto von Timo Clasen`
     };
 
