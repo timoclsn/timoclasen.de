@@ -10,7 +10,7 @@ interface Props {
 
 export function OGImage({ name, title, subtitle, image }: Props) {
     return (
-        <div
+        <section
             style={{
                 display: 'flex',
                 flexDirection: 'row',
@@ -28,23 +28,24 @@ export function OGImage({ name, title, subtitle, image }: Props) {
                     height: '630px'
                 }}>
                 <div>
-                    <p
+                    <h1
                         style={{
                             fontSize: '3rem',
                             fontWeight: 'bold',
                             marginBottom: '60px'
                         }}>
                         {name}
-                    </p>
+                    </h1>
                     {title ? (
-                        <p
+                        <h2
                             style={{
                                 fontSize: '3rem',
+                                fontWeight: 'normal',
                                 marginBottom: '1rem',
                                 color: '#3E51F7'
                             }}>
                             {title}
-                        </p>
+                        </h2>
                     ) : (
                         <p
                             style={{
@@ -70,7 +71,7 @@ export function OGImage({ name, title, subtitle, image }: Props) {
                         </p>
                     )}
                 </div>
-                <div
+                <footer
                     style={{
                         display: 'flex',
                         flexDirection: 'row',
@@ -105,7 +106,7 @@ export function OGImage({ name, title, subtitle, image }: Props) {
                         />
                         <p>@timoclsn</p>
                     </div>
-                </div>
+                </footer>
             </div>
             <div
                 style={{
@@ -120,6 +121,6 @@ export function OGImage({ name, title, subtitle, image }: Props) {
                     unoptimized
                 />
             </div>
-        </div>
+        </section>
     );
 }
