@@ -66,10 +66,14 @@ export default async function OGImageAPI(
 
 function getHtmlData(body: string) {
     return `<!DOCTYPE html>
-    <head>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-    <meta charset="utf-8"><style>*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif}</style>
-    </head>
-    <body style="display:inline-block">
-    ${body}`;
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+            <style>*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,sans-serif}</style>
+        </head>
+        <body>
+            ${body}
+        </body>
+    </html>`;
 }
