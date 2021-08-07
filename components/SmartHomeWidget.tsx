@@ -71,17 +71,57 @@ export function SmartHomeWidget({ text, footnote }: Props) {
     async function controlLight(color: string, emoji: string) {
         setDisableButtons(true);
 
-        await toast.promise(
-            fetch(smartHomeApi, {
+        const controlLightRequest = new Promise(async (resolve, reject) => {
+            const response = await fetch(smartHomeApi, {
                 method: 'PUT',
                 body: JSON.stringify({
                     balconyColor: color
                 })
-            }),
+            });
+
+            if (response.status >= 400) {
+                reject(response);
+            } else {
+                resolve(response);
+            }
+        });
+
+        await toast.promise(
+            controlLightRequest,
             {
                 loading: 'Schalten...',
-                success: <b>Balkon wurde eingeschaltet!</b>,
-                error: <b>Hat nicht funktioniert.</b>
+                success: () => {
+                    if (smartHomeData) {
+                        mutateSmartHome(
+                            {
+                                ...smartHomeData,
+                                balconyColor: balconyColors[color],
+                                balconyOnOff: 'An'
+                            },
+                            false
+                        );
+                    }
+                    mutateCount(async () => {
+                        return await fetcher(countApi, {
+                            method: 'PUT',
+                            body: JSON.stringify({
+                                color: color
+                            })
+                        });
+                    }, false);
+
+                    setDisableButtons(false);
+
+                    splitbee.track('Balcony Light Control', {
+                        color: `${emoji} ${color}`
+                    });
+
+                    return 'Balkon wurde eingeschaltet!';
+                },
+                error: () => {
+                    setDisableButtons(false);
+                    return 'Hat nicht funktioniert.';
+                }
             },
             {
                 style: darkMode ? darkToast : lightToast,
@@ -91,32 +131,6 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                 }
             }
         );
-
-        if (smartHomeData) {
-            mutateSmartHome(
-                {
-                    ...smartHomeData,
-                    balconyColor: balconyColors[color],
-                    balconyOnOff: 'An'
-                },
-                false
-            );
-        }
-
-        mutateCount(async () => {
-            return await fetcher(countApi, {
-                method: 'PUT',
-                body: JSON.stringify({
-                    color: color
-                })
-            });
-        }, false);
-
-        setDisableButtons(false);
-
-        splitbee.track('Balcony Light Control', {
-            color: `${emoji} ${color}`
-        });
     }
 
     return (
