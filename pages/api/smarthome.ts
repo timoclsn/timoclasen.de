@@ -9,6 +9,7 @@ import {
     isLight,
     playHomeegram
 } from '../../lib/homee';
+import { rateLimit } from '../../lib/rate-limit';
 
 export interface SmartHomeData {
     lights: string;
@@ -23,24 +24,35 @@ export interface SmartHomeData {
 
 type ColorHomeegramIds = Record<string, number>;
 
+const limiter = rateLimit({
+    interval: 60 * 1000, // 60 seconds
+    uniqueTokenPerInterval: 500 // Cache Size
+});
+
 export default async function smartHome(
     req: NextApiRequest,
     res: NextApiResponse<SmartHomeData | string>
 ) {
     if (req.method === 'PUT') {
-        const colorHomeegramIds: ColorHomeegramIds = {
-            red: 239,
-            green: 240,
-            blue: 241
-        };
+        try {
+            await limiter.check(res, 10, 'CACHE_SMART_HOME'); // 10 requests per minute
 
-        const body = JSON.parse(req.body);
-        const homeegramId = colorHomeegramIds[body.balconyColor];
-        const response = await playHomeegram(homeegramId);
+            const colorHomeegramIds: ColorHomeegramIds = {
+                red: 239,
+                green: 240,
+                blue: 241
+            };
 
-        await waitFor(2000); // Delay needed because HG also has a delay of 1 sec.
+            const body = JSON.parse(req.body);
+            const homeegramId = colorHomeegramIds[body.balconyColor];
+            const response = await playHomeegram(homeegramId);
 
-        return res.status(response.status).send('homee response');
+            await waitFor(2000); // Delay needed because HG also has a delay of 1 sec.
+
+            return res.status(response.status).send('homee response');
+        } catch {
+            return res.status(429).send('Rate limit exceeded');
+        }
     } else {
         const nodes = await getNodes();
 
