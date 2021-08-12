@@ -59,7 +59,7 @@
         "remark-strip-html": "^1.0.2",
         "sharp": "^0.28.3",
         "simplify-geojson": "^1.0.4",
-        "strip-markdown": "^4.1.0",
+        "strip-markdown": "^5.0.0",
         "swr": "^0.5.6",
         "tailwindcss": "^2.2.7",
         "ws": "^8.1.0"
