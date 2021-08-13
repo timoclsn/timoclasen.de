@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import * as playwright from 'playwright-aws-lambda';
+import { launchChromium } from 'playwright-aws-lambda';
 import { createElement } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 
@@ -36,7 +36,7 @@ export default async function OGImageAPI(
     const width = 1200;
     const height = 630;
 
-    const browser = await playwright.launchChromium({ headless: true });
+    const browser = await launchChromium({ headless: true });
     const page = await browser.newPage({
         viewport: {
             width,
