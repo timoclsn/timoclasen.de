@@ -25,6 +25,15 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
         description: 'Bester Wert des Jahres in dieser Kategorie'
     };
 
+    const dateLabels = lastRun?.stroller
+        ? [
+              {
+                  text: 'Stroller',
+                  description: 'Lauf mit Kinderwagen'
+              }
+          ]
+        : [];
+
     const distanceLabels = [
         ...(lastRun && lastRun.distance.raw >= distanceThreshold
             ? [{ text: 'far', description: 'Strecke von 10 km oder mehr' }]
@@ -118,6 +127,7 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
                         Icon={Calendar}
                         text={lastRun?.date?.relative}
                         href={lastRun?.url}
+                        labels={dateLabels}
                         nowrap
                     />
                 </li>
