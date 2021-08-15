@@ -48,6 +48,7 @@ export interface LastRun {
     };
     url: string;
     kudos: number;
+    stroller: boolean;
 }
 
 export interface RunningData {
@@ -160,7 +161,8 @@ export default async function running(
             },
             map: getMapURLs(lastRun.map.summary_polyline),
             url: `https://www.strava.com/activities/${lastRun.id}`,
-            kudos: lastRun.kudos_count
+            kudos: lastRun.kudos_count,
+            stroller: lastRun.name.includes('Kinderwagen')
         }
     });
 }
