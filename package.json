@@ -42,7 +42,7 @@
         "he": "^1.2.0",
         "lru-cache": "^6.0.0",
         "match-sorter": "^6.3.0",
-        "next": "11.0.1",
+        "next": "11.1.0",
         "plaiceholder": "^2.0.1",
         "playwright-aws-lambda": "^0.7.0",
         "playwright-core": "^1.13.1",
