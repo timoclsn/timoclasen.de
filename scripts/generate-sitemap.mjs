@@ -1,9 +1,10 @@
-const fs = require('fs');
-const globby = require('globby');
-const prettier = require('prettier');
-const fetch = require('node-fetch');
+import dotenv from 'dotenv';
+import { writeFileSync } from 'fs';
+import { globby } from 'globby';
+import fetch from 'node-fetch';
+import prettier from 'prettier';
 
-require('dotenv').config();
+dotenv.config();
 
 const spaceId = process.env.CONTENTFUL_SPACE_ID;
 const publicAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
@@ -58,7 +59,7 @@ const publicAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
         parser: 'html'
     });
 
-    fs.writeFileSync('./public/sitemap.xml', formatted);
+    writeFileSync('./public/sitemap.xml', formatted);
 })();
 
 async function queryContent(query) {

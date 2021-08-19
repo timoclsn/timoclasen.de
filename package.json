@@ -16,6 +16,7 @@
         "dev": "next dev -p 3000",
         "inspect": "NODE_OPTIONS='--inspect' next dev -p 3000",
         "build": "next build",
+        "postbuild": "node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
         "analyze": "ANALYZE=true next build",
         "start": "next start -p 3000",
         "cypress:open": "cypress open",
