@@ -1,10 +1,11 @@
-const fs = require('fs');
-const fetch = require('node-fetch');
-const Feed = require('feed').Feed;
-const remark = require('remark');
-const html = require('remark-html');
+import dotenv from 'dotenv';
+import { Feed } from 'feed';
+import { writeFileSync } from 'fs';
+import fetch from 'node-fetch';
+import { remark } from 'remark';
+import html from 'remark-html';
 
-require('dotenv').config();
+dotenv.config();
 
 const spaceId = process.env.CONTENTFUL_SPACE_ID;
 const publicAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
@@ -74,7 +75,7 @@ const email = 'timo@timoclasen.de';
         });
     }
 
-    fs.writeFileSync('./public/rss.xml', feed.rss2());
+    writeFileSync('./public/rss.xml', feed.rss2());
 })();
 
 async function queryContent(query) {

@@ -3,19 +3,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 module.exports = withBundleAnalyzer({
+    experimental: { esmExternals: true },
     images: {
         domains: ['images.ctfassets.net', 'api.mapbox.com', 'i.scdn.co']
-    },
-    future: {
-        strictPostcssConfiguration: true
-    },
-    webpack: (config, { isServer }) => {
-        if (isServer) {
-            require('./scripts/generate-sitemap');
-            require('./scripts/generate-rss');
-        }
-
-        return config;
     },
     async rewrites() {
         return [

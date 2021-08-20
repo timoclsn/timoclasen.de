@@ -1,10 +1,10 @@
-const fs = require('fs');
-const fetch = require('node-fetch');
-const parser = require('fast-xml-parser');
-const sharp = require('sharp');
-var he = require('he');
-const remark = require('remark');
-const strip = require('remark-strip-html');
+import parser from 'fast-xml-parser';
+import { existsSync, mkdirSync, rmdirSync, writeFileSync } from 'fs';
+import he from 'he';
+import fetch from 'node-fetch';
+import remark from 'remark';
+import strip from 'remark-strip-html';
+import sharp from 'sharp';
 
 const favs = [
     'Accidental Tech Podcast',
@@ -20,11 +20,11 @@ const favs = [
 
 const coversDir = './public/podcasts';
 
-if (fs.existsSync(coversDir)) {
-    fs.rmdirSync(coversDir, { recursive: true });
+if (existsSync(coversDir)) {
+    rmdirSync(coversDir, { recursive: true });
 }
 
-fs.mkdirSync(coversDir);
+mkdirSync(coversDir);
 
 (async () => {
     const subsXML = fs
@@ -101,7 +101,7 @@ fs.mkdirSync(coversDir);
         .flat()
         .sort((a, b) => a.title.localeCompare(b.title));
 
-    fs.writeFileSync('./data/podcasts.json', JSON.stringify(podcastsSorted));
+    writeFileSync('./data/podcasts.json', JSON.stringify(podcastsSorted));
 })();
 
 function hashString(string) {
