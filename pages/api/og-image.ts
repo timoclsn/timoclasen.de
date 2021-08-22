@@ -16,19 +16,26 @@ export default async function OGImageAPI(
 
     const response = await queryContent(
         `{
-            image: assetCollection(where: {title: "OG-Image"}, limit: 1, preview: false) {
+            person: personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
                 items {
-                    url
+                    profileImageCollection {
+                        items {
+                            url
+                        }
+                    }
                 }
             }
         }`
     );
 
+    const person = response.data.person.items[0];
+    const fallbackImage = person.profileImageCollection.items[1];
+
     const reactElement = createElement(OGImage, {
         name: name as string,
         title: title as string,
         subtitle: subtitle as string,
-        image: (image as string) || (response.data.image.items[0].url as string)
+        image: (image as string) || (fallbackImage.url as string)
     });
     const body = renderToStaticMarkup(reactElement);
     const html = getHtmlData(body);

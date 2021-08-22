@@ -86,7 +86,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 
     const page = response.data.page.items[0];
     const person = response.data.person.items[0];
-    const image = person.imagesCollection.items[0];
+    const image = person.imagesCollection.items[2];
     const { base64 } = await getPlaiceholder(image.url, {
         size: 10
     });

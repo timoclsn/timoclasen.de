@@ -96,9 +96,11 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
             person: personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
                 items {
                     cvText
-                    image {
-                        url
-                        description
+                    profileImageCollection {
+                        items {
+                            url
+                            description
+                        }
                     }
                 }
             }
@@ -138,13 +140,11 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     const headerText = response.data.headerSnippet.items[0].content;
 
     const person = response.data.person.items[0];
-    const { base64: personImageBase64 } = await getPlaiceholder(
-        person.image.url,
-        {
-            size: 10
-        }
-    );
-    person.image.blurDataURL = personImageBase64;
+    const image = person.profileImageCollection.items[1];
+    const { base64: personImageBase64 } = await getPlaiceholder(image.url, {
+        size: 10
+    });
+    image.blurDataURL = personImageBase64;
 
     const blogPosts = response.data.blogPosts.items;
     const smartHomeText = response.data.smartHomeSnippet.items[0].content;
@@ -177,7 +177,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
             description: page.description,
             previewImage,
             header: await markdownToHTML(headerText),
-            image: person.image,
+            image: image,
             aboutTeaser,
             blogPosts,
             smartHome: await markdownToHTML(smartHomeText),

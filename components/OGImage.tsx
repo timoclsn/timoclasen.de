@@ -110,12 +110,17 @@ export function OGImage({ name, title, subtitle, image }: Props) {
             </div>
             <div
                 style={{
-                    flex: 'none'
+                    flex: 'none',
+                    width: '460px',
+                    height: '630px',
+                    overflow: 'hidden',
+                    position: 'relative'
                 }}>
                 <Image
                     src={image}
-                    width="472"
-                    height="630"
+                    layout="fill"
+                    objectFit="cover"
+                    objectPosition="center"
                     alt="Image"
                     priority
                     unoptimized
