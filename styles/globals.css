@@ -36,6 +36,9 @@
     a {
         @apply underline-offset-md;
     }
+    address {
+        @apply not-italic;
+    }
 }
 
 @layer components {
