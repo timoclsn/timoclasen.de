@@ -30,11 +30,19 @@
 }
 
 @layer base {
+    a {
+        transition: text-underline-offset 300ms;
+        @apply underline-offset-md;
+    }
+    a:hover {
+        @apply underline-offset-lg;
+    }
     p a {
         @apply underline;
     }
-    a {
-        @apply underline-offset-md;
+    p a:hover,
+    ul a:hover {
+        @apply opacity-80;
     }
     address {
         @apply not-italic;
@@ -51,11 +59,11 @@
     }
 
     .text-teaser p a {
-        @apply text-highlight dark:text-highlight-dark underline-offset-md lg:underline-offset-lg;
+        @apply text-highlight dark:text-highlight-dark underline-offset-md lg:underline-offset-xl;
     }
 
     .text-teaser p a:hover {
-        @apply opacity-80;
+        @apply underline-offset-xl lg:underline-offset-2xl;
     }
 
     .tab[data-state='active'] {
@@ -114,6 +122,14 @@
     }
 
     .underline-offset-lg {
+        text-underline-offset: 0.35rem;
+    }
+
+    .underline-offset-xl {
         text-underline-offset: 0.5rem;
+    }
+
+    .underline-offset-2xl {
+        text-underline-offset: 0.75rem;
     }
 }
