@@ -99,9 +99,11 @@ export const getStaticProps: GetStaticProps = async ({
                     author {
                         name
                         username
-                        image {
-                            url
-                            description
+                        profileImageCollection {
+                            items {
+                                url
+                                description
+                            }
                         }
                     }
                     summary
@@ -123,6 +125,9 @@ export const getStaticProps: GetStaticProps = async ({
     );
 
     const blogPost = response.data.blogPost.items[0];
+
+    blogPost.author.image = blogPost.author.profileImageCollection.items[1];
+    delete blogPost.author.profileImageCollection;
 
     const readingTimeObj = readingTime(blogPost.text);
     blogPost.readingTime = Math.ceil(readingTimeObj.minutes);
