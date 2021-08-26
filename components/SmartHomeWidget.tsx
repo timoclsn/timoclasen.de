@@ -262,21 +262,21 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                                     size="small"
                                     onClick={() => controlLight('red', '🔥')}
                                     disabled={disableButtons}>
-                                    <span>🔥</span>Rot
+                                    🔥 Rot
                                 </Button>
                                 <Button
                                     variant="ghost"
                                     size="small"
                                     onClick={() => controlLight('green', '🌿')}
                                     disabled={disableButtons}>
-                                    <span>🌿</span>Grün
+                                    🌿 Grün
                                 </Button>
                                 <Button
                                     variant="ghost"
                                     size="small"
                                     onClick={() => controlLight('blue', '🌊')}
                                     disabled={disableButtons}>
-                                    <span>🌊</span>Blau
+                                    🌊 Blau
                                 </Button>
                             </div>
                         </div>
