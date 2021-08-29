@@ -56,7 +56,7 @@
         "strip-markdown": "^5.0.0",
         "swr": "^1.0.0",
         "tailwindcss": "^2.2.8",
-        "ws": "^8.2.0"
+        "ws": "^8.2.1"
     },
     "devDependencies": {
         "@radix-ui/react-polymorphic": "^0.0.13",
