@@ -128,7 +128,6 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
                         text={lastRun?.date?.relative}
                         href={lastRun?.url}
                         labels={dateLabels}
-                        nowrap
                     />
                 </li>
                 <li>
