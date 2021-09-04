@@ -1,4 +1,3 @@
-import type * as Polymorphic from '@radix-ui/react-polymorphic';
 import clsx from 'clsx';
 import type { ReactNode } from 'react';
 import { Children, forwardRef } from 'react';
@@ -25,44 +24,67 @@ const sizeStyles = {
     small: 'px-4 py-2'
 };
 
-interface Props {
+interface CommmonProps {
     children: ReactNode;
-    as?: 'button' | 'a';
     variant?: keyof typeof variantStyles;
     size?: keyof typeof sizeStyles;
     fullWidth?: boolean;
     className?: string;
 }
 
-export const Button = forwardRef(function Button(
-    {
-        children,
-        as: Element = 'button',
-        type = 'button',
-        variant = 'solid',
-        size = 'normal',
-        fullWidth,
-        className,
-        ...props
-    },
-    ref
-) {
-    const styles = clsx(
-        baseStyles,
-        variantStyles[variant],
-        sizeStyles[size],
-        fullWidth && 'w-full',
-        className
-    );
-    return (
-        <Element
-            type={Element === 'button' ? type : undefined}
-            className={styles}
-            ref={ref}
-            {...props}>
-            {Children.map(children, (child, index) => (
-                <span key={index}>{child}</span>
-            ))}
-        </Element>
-    );
-}) as Polymorphic.ForwardRefComponent<'button', Props>;
+type ElementProps =
+    | {
+          as?: 'button';
+          type?: 'button' | 'submit' | 'reset';
+          onClick?: () => void;
+          disabled?: boolean;
+          href?: never;
+          target?: never;
+          rel?: never;
+      }
+    | {
+          as?: 'a';
+          href?: string;
+          target?: '_blank';
+          rel?: 'noopener noreferrer' | 'noopener';
+          type?: never;
+          onClick?: never;
+          disabled?: never;
+      };
+
+type Props = CommmonProps & ElementProps;
+
+export const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, Props>(
+    function Button(
+        {
+            children,
+            as: Element = 'button',
+            type = 'button',
+            variant = 'solid',
+            size = 'normal',
+            fullWidth,
+            className,
+            ...props
+        },
+        ref
+    ) {
+        const styles = clsx(
+            baseStyles,
+            variantStyles[variant],
+            sizeStyles[size],
+            fullWidth && 'w-full',
+            className
+        );
+        return (
+            <Element
+                type={Element === 'button' ? type : undefined}
+                className={styles}
+                ref={ref}
+                {...props}>
+                {Children.map(children, (child, index) => (
+                    <span key={index}>{child}</span>
+                ))}
+            </Element>
+        );
+    }
+);
