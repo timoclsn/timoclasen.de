@@ -1,8 +1,8 @@
 import parser from 'fast-xml-parser';
-import { existsSync, mkdirSync, rmdirSync, writeFileSync } from 'fs';
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'fs';
 import he from 'he';
 import fetch from 'node-fetch';
-import remark from 'remark';
+import { remark } from 'remark';
 import strip from 'remark-strip-html';
 import sharp from 'sharp';
 
@@ -21,15 +21,15 @@ const favs = [
 const coversDir = './public/podcasts';
 
 if (existsSync(coversDir)) {
-    rmdirSync(coversDir, { recursive: true });
+    rmSync(coversDir, { recursive: true });
 }
 
 mkdirSync(coversDir);
 
 (async () => {
-    const subsXML = fs
-        .readFileSync('./scripts/podcasts/subscriptions.opml')
-        .toString();
+    const subsXML = readFileSync(
+        './scripts/podcasts/subscriptions.opml'
+    ).toString();
 
     const subsJSObj = parser.parse(
         subsXML,
@@ -83,7 +83,7 @@ mkdirSync(coversDir);
                         .toFile(`${coversDir}/${podcastObj.image}`);
                 } catch (e) {
                     console.log(
-                        `❌ (parse feed) ${podcast.title} (${podcast.xmlUrl})`
+                        `❌ (parse feed) ${podcast.title} (${podcast.xmlUrl}): ${e.message}`
                     );
                     return [];
                 }
