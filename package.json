@@ -27,9 +27,9 @@
     "dependencies": {
         "@mapbox/polyline": "^1.1.1",
         "@next/bundle-analyzer": "11.1.2",
-        "@radix-ui/react-id": "0.0.6",
-        "@radix-ui/react-tabs": "0.0.16",
-        "@supabase/supabase-js": "^1.22.4",
+        "@radix-ui/react-id": "0.1.0",
+        "@radix-ui/react-tabs": "0.1.0",
+        "@supabase/supabase-js": "^1.22.5",
         "@tailwindcss/aspect-ratio": "^0.2.1",
         "@tailwindcss/line-clamp": "^0.2.1",
         "@tailwindcss/typography": "^0.4.1",
@@ -48,15 +48,15 @@
         "react-hot-toast": "^2.1.1",
         "react-markdown": "^7.0.1",
         "react-syntax-highlighter": "^15.4.4",
-        "reading-time": "^1.4.0",
+        "reading-time": "^1.5.0",
         "remark": "^14.0.1",
-        "remark-html": "^14.0.0",
+        "remark-html": "^14.0.1",
         "remark-strip-html": "^1.0.2",
         "simplify-geojson": "^1.0.4",
         "strip-markdown": "^5.0.0",
         "swr": "^1.0.0",
-        "tailwindcss": "^2.2.9",
-        "ws": "^8.2.1"
+        "tailwindcss": "^2.2.15",
+        "ws": "^8.2.2"
     },
     "devDependencies": {
         "@types/lru-cache": "^5.1.1",
@@ -64,8 +64,8 @@
         "@types/react-dom": "^17.0.9",
         "@types/react-syntax-highlighter": "^13.5.2",
         "@types/ws": "^7.4.7",
-        "@typescript-eslint/eslint-plugin": "^4.30.0",
-        "@typescript-eslint/parser": "^4.30.0",
+        "@typescript-eslint/eslint-plugin": "^4.31.0",
+        "@typescript-eslint/parser": "^4.31.0",
         "autoprefixer": "^10.3.4",
         "cypress": "^8.3.1",
         "dotenv": "^10.0.0",
@@ -75,7 +75,7 @@
         "eslint-plugin-cypress": "^2.11.3",
         "eslint-plugin-prettier": "^4.0.0",
         "eslint-plugin-simple-import-sort": "^7.0.0",
-        "fast-xml-parser": "^3.19.0",
+        "fast-xml-parser": "^3.20.0",
         "feed": "^4.2.2",
         "globby": "^12.0.2",
         "he": "^1.2.0",
@@ -83,9 +83,9 @@
         "lint-staged": "^11.1.2",
         "node-fetch": "^3.0.0",
         "postcss": "^8.3.6",
-        "prettier": "^2.3.2",
-        "sharp": "^0.29.0",
-        "typescript": "^4.4.2"
+        "prettier": "^2.4.0",
+        "sharp": "^0.29.1",
+        "typescript": "^4.4.3"
     },
     "husky": {
         "hooks": {
