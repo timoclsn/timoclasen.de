@@ -29,7 +29,7 @@
         "@next/bundle-analyzer": "11.1.2",
         "@radix-ui/react-id": "0.1.0",
         "@radix-ui/react-tabs": "0.1.0",
-        "@supabase/supabase-js": "^1.22.5",
+        "@supabase/supabase-js": "^1.22.6",
         "@tailwindcss/aspect-ratio": "^0.2.1",
         "@tailwindcss/line-clamp": "^0.2.1",
         "@tailwindcss/typography": "^0.4.1",
