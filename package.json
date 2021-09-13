@@ -54,7 +54,7 @@
         "remark-strip-html": "^1.0.2",
         "simplify-geojson": "^1.0.4",
         "strip-markdown": "^5.0.0",
-        "swr": "^1.0.0",
+        "swr": "^1.0.1",
         "tailwindcss": "^2.2.15",
         "ws": "^8.2.2"
     },
