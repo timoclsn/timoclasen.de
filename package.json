@@ -65,7 +65,7 @@
         "@types/react-syntax-highlighter": "^13.5.2",
         "@types/ws": "^7.4.7",
         "@typescript-eslint/eslint-plugin": "^4.31.1",
-        "@typescript-eslint/parser": "^4.31.1",
+        "@typescript-eslint/parser": "^4.31.2",
         "autoprefixer": "^10.3.4",
         "cypress": "^8.4.1",
         "dotenv": "^10.0.0",
