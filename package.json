@@ -56,7 +56,7 @@
         "strip-markdown": "^5.0.0",
         "swr": "^1.0.1",
         "tailwindcss": "^2.2.16",
-        "ws": "^8.2.2"
+        "ws": "^8.2.3"
     },
     "devDependencies": {
         "@types/lru-cache": "^5.1.1",
