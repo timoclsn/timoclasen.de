@@ -27,8 +27,8 @@
     "dependencies": {
         "@mapbox/polyline": "^1.1.1",
         "@next/bundle-analyzer": "11.1.2",
-        "@radix-ui/react-id": "0.1.0",
-        "@radix-ui/react-tabs": "0.1.0",
+        "@radix-ui/react-id": "0.1.1",
+        "@radix-ui/react-tabs": "0.1.1",
         "@supabase/supabase-js": "^1.24.0",
         "@tailwindcss/aspect-ratio": "^0.3.0",
         "@tailwindcss/line-clamp": "^0.2.2",
@@ -55,7 +55,7 @@
         "simplify-geojson": "^1.0.4",
         "strip-markdown": "^5.0.0",
         "swr": "^1.0.1",
-        "tailwindcss": "^2.2.16",
+        "tailwindcss": "^2.2.17",
         "ws": "^8.2.3"
     },
     "devDependencies": {
@@ -64,12 +64,12 @@
         "@types/react-dom": "^17.0.9",
         "@types/react-syntax-highlighter": "^13.5.2",
         "@types/ws": "^8.2.0",
-        "@typescript-eslint/eslint-plugin": "^4.33.0",
-        "@typescript-eslint/parser": "^4.33.0",
+        "@typescript-eslint/eslint-plugin": "^5.0.0",
+        "@typescript-eslint/parser": "^5.0.0",
         "autoprefixer": "^10.3.7",
-        "cypress": "^8.5.0",
+        "cypress": "^8.6.0",
         "dotenv": "^10.0.0",
-        "eslint": "^7.32.0",
+        "eslint": "^8.0.1",
         "eslint-config-next": "11.1.2",
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-cypress": "^2.12.1",
@@ -80,12 +80,12 @@
         "globby": "^12.0.2",
         "he": "^1.2.0",
         "husky": "^7.0.2",
-        "lint-staged": "^11.2.0",
+        "lint-staged": "^11.2.3",
         "node-fetch": "^3.0.0",
         "postcss": "^8.3.9",
         "prettier": "^2.4.1",
         "sharp": "^0.29.1",
-        "typescript": "^4.4.3"
+        "typescript": "^4.4.4"
     },
     "husky": {
         "hooks": {
