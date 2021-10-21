@@ -2,7 +2,7 @@
     {
         "title": "99% Invisible",
         "favorite": false,
-        "feed": "https://feeds.99percentinvisible.org/99percentinvisible",
+        "feed": "https://feeds.simplecast.com/BqbsxVfO",
         "description": "Design is everywhere in our lives, perhaps most importantly in the places where we've just stopped noticing. 99% Invisible is a weekly exploration of the process and power of design and architecture. From award winning producer Roman Mars. Learn more at 99percentinvisible.org.\n",
         "website": "https://99percentinvisible.org",
         "hosts": "Roman Mars",
@@ -25,6 +25,15 @@
         "website": "https://awfnr.podigee.io/",
         "hosts": "Joko Winterscheidt und Paul Ripke",
         "image": "cover--1543448174.jpg"
+    },
+    {
+        "title": "alphalist.CTO Podcast - For CTOs and Technical Leaders",
+        "favorite": false,
+        "feed": "https://alphalist.podigee.io/feed/mp3",
+        "description": "This podcast features interviews of CTOs and other technical leadership figures and topics range from technology to management.\\\nGuests from leading tech companies share their best practices and knowledge.\nThe goal is to support other CTOs on their journey through tech and engineering, inspire and allow a sneak-peek into other successful companies to understand how they think and act. Get awesome insights into the world‘s top tech companies, personalities with this podcast brought to you by Tobias Schlottke.\n",
+        "website": "https://alphalist.com",
+        "hosts": "Tobias Schlottke - OMR",
+        "image": "cover-589103181.jpg"
     },
     {
         "title": "AppStories",
@@ -99,13 +108,13 @@
         "image": "cover--77072098.jpg"
     },
     {
-        "title": "CLEANELECTRIC Podcast",
+        "title": "CleanElectric",
         "favorite": false,
         "feed": "https://www.cleanelectric.de/feed/mp3/",
-        "description": "Der Podcast rund um das Thema Elektromobilität\n",
+        "description": "Der E-Mobility Podcast\n",
         "website": "https://www.cleanelectric.de",
-        "hosts": "CLEANELECTRIC",
-        "image": "cover--1209386230.jpg"
+        "hosts": "CleanElectric",
+        "image": "cover--1316510106.jpg"
     },
     {
         "title": "cloudonaut",
@@ -147,9 +156,9 @@
         "title": "Der AWS-Podcast auf Deutsch",
         "favorite": false,
         "feed": "https://german-aws-podcast.libsyn.com/rss",
-        "description": "Der offizielle, deutschsprachige Podcast von Amazon Web Services mit Dennis Traub, Developer Advocate & Technical Evangelist bei AWS\n",
-        "website": "https://bit.ly/aws-podcast-de",
-        "hosts": "Dennis Traub, Amazon Web Services",
+        "description": "Der offizielle, deutschsprachige Podcast von Amazon Web Services mit Dennis Traub, Developer Advocate & Technical Evangelist bei AWS.\n",
+        "website": "https://aws.amazon.com/de/podcasts/aws-podcast-auf-deutsch",
+        "hosts": "Dennis Traub",
         "image": "cover-1467301967.jpg"
     },
     {
@@ -246,7 +255,7 @@
         "title": "F1 Nation",
         "favorite": false,
         "feed": "https://audioboom.com/channels/5024396.rss",
-        "description": "F1 Nation is a weekly podcast aiming to unite like-minded fans from around the world. Join Tom Clarkson, Damon Hill and Natalie Pinkham as they bring you a slice of light-hearted F1 chat, with guests, debates and plenty of laughs…\n",
+        "description": "F1 Nation is a weekly podcast uniting fans from around the world. Join Tom Clarkson, Damon Hill and Natalie Pinkham as they bring you a slice of light-hearted F1 chat, with guests, debates and plenty of laughs…\n",
         "website": "https://audioboom.com/channels/5024396",
         "hosts": "Formula 1",
         "image": "cover--1807838084.jpg"
@@ -319,8 +328,8 @@
         "favorite": false,
         "feed": "https://anchor.fm/s/149e69d4/podcast/rss",
         "description": "Shopify is building the future of commerce, but who are the people building it? Inside Shopify UX introduces some of the leaders of our UX team and asks them to explain the big commerce problem their team is trying to solve.\n\nListen to learn more about the meaty UX challenges our team is solving and how we're making it easier for independent businesses to thrive.\n",
-        "website": "http://ux.shopify.com",
-        "hosts": "Gene Shannon",
+        "website": "https://ux.shopify.com",
+        "hosts": "Jen Shaw",
         "image": "cover-394007393.jpg"
     },
     {
@@ -336,7 +345,7 @@
         "title": "JS Party: JavaScript, CSS, Web Development",
         "favorite": false,
         "feed": "https://changelog.com/jsparty/feed",
-        "description": "Your weekly celebration of JavaScript and the web.  This show records LIVE on Thursdays at 1pm US/Eastern time. Panelists include Jerod Santo, Feross Aboukhadijeh, Kevin Ball, Emma Bostian, Nick Nisi, Divya Sasidharan, Mikeal Rogers,  Chris Hiller, and Amal Hussein. Topics discussed include the web platform (Chrome, Safari, Edge, Firefox, Brave, etc), front-end frameworks (React, Ember, Angular, Vue, etc), Node.js, web animation, SVG, robotics, IoT, and much more. If JavaScript and/or the web touch your life, this show’s for you. Some people search for JSParty and can’t find the show, so now the string JSParty is in our description too.\n",
+        "description": "Your weekly celebration of JavaScript and the web.  This show records LIVE on Thursdays at 1pm US/Eastern time. Panelists include Jerod Santo, Feross Aboukhadijeh, Kevin Ball, Amelia Wattenberger, Nick Nisi, Divya Sasidharan, Mikeal Rogers,  Chris Hiller, and Amal Hussein. Topics discussed include the web platform (Chrome, Safari, Edge, Firefox, Brave, etc), front-end frameworks (React, Ember, Angular, Vue, etc), Node.js, web animation, SVG, robotics, IoT, and much more. If JavaScript and/or the web touch your life, this show’s for you. Some people search for JSParty and can’t find the show, so now the string JSParty is in our description too.\n",
         "website": "https://changelog.com/jsparty",
         "hosts": "Changelog Media",
         "image": "cover-1632017582.jpg"
@@ -360,6 +369,15 @@
         "image": "cover-1464195409.jpg"
     },
     {
+        "title": "Land of the Giants",
+        "favorite": false,
+        "feed": "https://feeds.megaphone.fm/landofthegiants",
+        "description": "Big tech is transforming every aspect of our world. But how? And at what cost? In the latest season of Land of the Giants, “The Apple Revolution,” Recode’s Peter Kafka explores how the original FAANG company developed its world-changing products - and changed itself along the way. New episodes every Wednesday.\nFrom Recode and the Vox Media Podcast Network.\n",
+        "website": "https://www.vox.com/recode-podcasts",
+        "hosts": "Recode",
+        "image": "cover-1254509201.jpg"
+    },
+    {
         "title": "Layout",
         "favorite": false,
         "feed": "https://layout.fm/rss",
@@ -367,6 +385,15 @@
         "website": "https://layout.fm",
         "hosts": "Kevin Clark and Rafael Conde",
         "image": "cover--2025855158.jpg"
+    },
+    {
+        "title": "Logbuch:Netzpolitik",
+        "favorite": false,
+        "feed": "https://feeds.metaebene.me/lnp/m4a",
+        "description": "Einblicke und Ausblicke in das netzpolitische Geschehen\n",
+        "website": "https://logbuch-netzpolitik.de",
+        "hosts": "Metaebene Personal Media - Tim Pritlove",
+        "image": "cover-2093808831.jpg"
     },
     {
         "title": "Mac Power Users",
@@ -391,7 +418,7 @@
         "favorite": false,
         "feed": "https://museapp.com/podcast.rss",
         "description": "Tools for thought, product design, and how to have good ideas.\n",
-        "website": "https://museapp.com/podcast",
+        "website": "https://museapp.com/podcast/",
         "hosts": "Adam Wiggins, Mark McGranaghan",
         "image": "cover--385072737.jpg"
     },
@@ -495,6 +522,15 @@
         "image": "cover--934227677.jpg"
     },
     {
+        "title": "Relay Chain",
+        "favorite": false,
+        "feed": "https://feeds.fireside.fm/relaychain/rss",
+        "description": "Relay Chain is a podcast covering blockchain development and building the decentralized web. We focus on the cutting edge of blockchain tech, including Substrate (https://parity.io/substrate) and Polkadot (https://polkadot.network).\nBrought to you by Parity Technologies (https://parity.io), a core blockchain infrastructure company. Parity is creating an open-source creative commons that will enable people to create better institutions through technology.\nFollow us at @paritytech (https://twitter.com/paritytech) and @relaychain (https://twitter.com/relaychain).\nTo be informed of new episodes, subscribe to the podcast and our newsletter (https://parity.io/newsletter).\n",
+        "website": "https://relaychain.fm",
+        "hosts": "Parity Technologies",
+        "image": "cover-918139954.jpg"
+    },
+    {
         "title": "Release Notes",
         "favorite": false,
         "feed": "https://releasenotes.tv/feed/podcast/",
@@ -558,6 +594,15 @@
         "image": "cover--747382577.jpg"
     },
     {
+        "title": "Tech Can't Save Us",
+        "favorite": false,
+        "feed": "https://audioboom.com/channels/5044088.rss",
+        "description": "Tech Can't Save Us is a tech for good podcast from Literal Humans, a creative marketing agency. Hosted by Paul David, the Co-Founder of Literal Humans, Tech Can't Save Us is all about the good, the bad and the ugly of the tech for good sector.\n\nPaul will invite guests on to every podcast episode to talk about how tech makes us better people and how it can enhance life on earth for all creatures - but also about how tech can harm society, and what we can do to fix it.\n\nThrough open conversations with representatives from Adidas, Google, Buffer, Facebook and smaller emerging companies like myNexus and The Black Men's Book Club, Tech Can't Save Us aims to give an honest insight into the Tech for Good sector - what it's doing well, and what could be improved.\n\nFind out more about Literal Humans and our work with mission-driven brands, tech for good start-ups and non-profits at http://literalhumans.com.\n",
+        "website": "https://audioboom.com/channels/5044088",
+        "hosts": "Literal Humans",
+        "image": "cover--784871436.jpg"
+    },
+    {
         "title": "Techmeme Ride Home",
         "favorite": false,
         "feed": "https://rss.art19.com/techmeme-ridehome",
@@ -606,9 +651,9 @@
         "title": "The Energy Gang",
         "favorite": false,
         "feed": "https://rss.art19.com/the-energy-gang",
-        "description": "Looking to understand the fast-changing world of energy? Every week, we debate and discuss the latest trends in energy, cleantech, renewables, and the environment. Join us as we explore the forces transforming energy markets in America and around the world.\n",
+        "description": "Looking to understand the fast-changing world of energy? Every week, we debate and discuss the latest trends in energy, cleantech, renewables, and the environment. Join us as we explore the forces transforming energy markets in America and around the world. A Wood Mackenzie production. \n",
         "website": "https://art19.com/shows/the-energy-gang",
-        "hosts": "Greentech Media",
+        "hosts": "Wood Mackenzie",
         "image": "cover-1098415452.jpg"
     },
     {
@@ -619,6 +664,15 @@
         "website": "https://www.theincomparable.com/theincomparable/",
         "hosts": "Jason Snell",
         "image": "cover-1802851150.jpg"
+    },
+    {
+        "title": "The Index",
+        "favorite": false,
+        "feed": "https://theindex.libsyn.com/rss",
+        "description": "Plugin as we explore the future of Web3 with leading experts in crypto, blockchain, and technology.  Hosted by Alex Kehaya and brought to you by TheGraph.com. New episodes every other Wednesday.\n",
+        "website": "http://www.indexpodcast.com",
+        "hosts": "Index Studios",
+        "image": "cover--208186333.jpg"
     },
     {
         "title": "The Internet of Things Podcast - Stacey On IoT",
@@ -678,7 +732,7 @@
         "title": "The Vergecast",
         "favorite": true,
         "feed": "https://feeds.megaphone.fm/vergecast",
-        "description": "Hello! This is The Vergecast, the flagship podcast of The Verge... and your life. Every Friday, Nilay Patel and Dieter Bohn make sense of the week's tech news with help from our wide-ranging staff. And on Tuesdays, Nilay hosts in-depth, one-on-one interviews with major technology leaders. Join us every week for a fun, deeply nerdy, often off-the-rails conversation about what's happening now (and next) in technology and gadgets.\n",
+        "description": "Hello! This is The Vergecast, the flagship podcast of The Verge... and your life. Every Friday, Nilay Patel and Dieter Bohn make sense of the week's tech news with help from our wide-ranging staff. Join us every week for a fun, deeply nerdy, often off-the-rails conversation about what's happening now (and next) in technology and gadgets.\n",
         "website": "https://www.theverge.com/the-vergecast",
         "hosts": "The Verge",
         "image": "cover--1184021167.jpg"
@@ -749,10 +803,10 @@
     {
         "title": "Waveform: The MKBHD Podcast",
         "favorite": false,
-        "feed": "http://feeds.feedburner.com/WaveformWithMkbhd",
-        "description": "A tech podcast for the gadget lovers and tech heads among us from the mind of Marques Brownlee, better known as MKBHD. MKBHD has made a name for himself on YouTube reviewing everything from the newest smartphones to cameras to electric cars. Pulling from over 10 years of experience covering the tech industry, MKBHD and co-host Andrew Manganelli will keep you informed and entertained as they take a deep dive into the latest and greatest in tech and what deserves your hard earned cash. New episodes every week.\n\nWe wanna make the podcast even better, help us learn how we can: https://bit.ly/2EcYbu4  \nFor advertising opportunities please email PodcastPartnerships@Studio71us.com   \nPrivacy Policy: https://www.studio71.com/terms-and-conditions-use/#Privacy%20Policy\n",
-        "website": "https://www.studio71.com/us/podcasts/",
-        "hosts": "Studio71",
+        "feed": "https://feeds.megaphone.fm/STU4418364045",
+        "description": "A tech podcast for the gadget lovers and tech heads among us from the mind of Marques Brownlee, better known as MKBHD. MKBHD has made a name for himself on YouTube reviewing everything from the newest smartphones to cameras to electric cars. Pulling from over 10 years of experience covering the tech industry, MKBHD and co-host Andrew Manganelli will keep you informed and entertained as they take a deep dive into the latest and greatest in tech and what deserves your hard earned cash. New episodes every week. Waveform is part of the Vox Media Podcast Network.\nWe wanna make the podcast even better, help us learn how we can: https://bit.ly/2EcYbu4\n",
+        "website": "https://www.youtube.com/c/Waveform",
+        "hosts": "Vox Media Podcast Network",
         "image": "cover-1562093234.jpg"
     },
     {

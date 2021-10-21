@@ -26,7 +26,7 @@
     <outline xmlUrl="https://designbetter.libsyn.com/rss" text="Design Better Podcast" title="Design Better Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://alphaux.libsyn.com/rss" text="This is Product Management" title="This is Product Management" type="rss" version="RSS"/>
     <outline xmlUrl="https://workingdraft.de/?feed=podcast" text="Working Draft" title="Working Draft" type="rss" version="RSS"/>
-    <outline xmlUrl="https://www.cleanelectric.de/feed/mp3/" text="CLEANELECTRIC Podcast" title="CLEANELECTRIC Podcast" type="rss" version="RSS"/>
+    <outline xmlUrl="https://www.cleanelectric.de/feed/mp3/" text="CleanElectric" title="CleanElectric" type="rss" version="RSS"/>
     <outline xmlUrl="https://audioboom.com/channels/4949565.rss" text="WTF1 Podcast" title="WTF1 Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="Http://feeds.feedburner.com/ipadpros" text="iPad Pros" title="iPad Pros" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.megaphone.fm/pivot" text="Pivot" title="Pivot" type="rss" version="RSS"/>
@@ -40,7 +40,6 @@
     <outline xmlUrl="https://schirm-charme-sensoren.libsyn.com/rss" text="Mit Schirm, Charme und Sensoren . . . dein IOT Podcast" title="Mit Schirm, Charme und Sensoren . . . dein IOT Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://digitalkompakt.podigee.io/feed/mp3" text="digital kompakt" title="digital kompakt" type="rss" version="RSS"/>
     <outline xmlUrl="https://podcast.cloudonaut.io/feed/aac" text="cloudonaut" title="cloudonaut" type="rss" version="RSS"/>
-    <outline xmlUrl="http://feeds.feedburner.com/WaveformWithMkbhd" text="Waveform: The MKBHD Podcast" title="Waveform: The MKBHD Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.transistor.fm/rework" text="Rework" title="Rework" type="rss" version="RSS"/>
     <outline xmlUrl="https://digitalevorreiter.podigee.io/feed/mp3" text="Digitale Vorreiter:innen - Business Cases" title="Digitale Vorreiter:innen - Business Cases" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.theincomparable.com/theincomparable" text="The Incomparable" title="The Incomparable" type="rss" version="RSS"/>
@@ -50,7 +49,6 @@
     <outline xmlUrl="https://feeds.npr.org/510289/podcast.xml" text="Planet Money" title="Planet Money" type="rss" version="RSS"/>
     <outline xmlUrl="https://audioboom.com/channels/5024396.rss" text="F1 Nation" title="F1 Nation" type="rss" version="RSS"/>
     <outline xmlUrl="https://financefwd.podigee.io/feed/mp3" text="Finance Forward &#x2013; der Podcast f&#xFC;r die neue Finanzwelt" title="Finance Forward &#x2013; der Podcast f&#xFC;r die neue Finanzwelt" type="rss" version="RSS"/>
-    <outline xmlUrl="https://feeds.99percentinvisible.org/99percentinvisible" text="99% Invisible" title="99% Invisible" type="rss" version="RSS"/>
     <outline xmlUrl="https://gettingthingsdone.libsyn.com/rss" text="Getting Things Done" title="Getting Things Done" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.simplecast.com/ETk2QA__" text="Does Not Compute" title="Does Not Compute" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.simplecast.com/eew_vyNL" text="Design Details" title="Design Details" type="rss" version="RSS"/>
@@ -90,5 +88,13 @@
     <outline xmlUrl="https://feeds.soundcloud.com/users/soundcloud:users:421183616/sounds.rss" text="Digitale Leute" title="Digitale Leute" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.buzzsprout.com/1806381.rss" text="Developer Experience" title="Developer Experience" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.fireside.fm/podrocket/rss" text="PodRocket - A web development podcast from LogRocket" title="PodRocket - A web development podcast from LogRocket" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.megaphone.fm/STU4418364045" text="Waveform: The MKBHD Podcast" title="Waveform: The MKBHD Podcast" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.simplecast.com/BqbsxVfO" text="99% Invisible" title="99% Invisible" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.fireside.fm/relaychain/rss" text="Relay Chain" title="Relay Chain" type="rss" version="RSS"/>
+    <outline xmlUrl="https://theindex.libsyn.com/rss" text="The Index" title="The Index" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.metaebene.me/lnp/m4a" text="Logbuch:Netzpolitik" title="Logbuch:Netzpolitik" type="rss" version="RSS"/>
+    <outline xmlUrl="https://alphalist.podigee.io/feed/mp3" text="alphalist.CTO Podcast - For CTOs and Technical Leaders" title="alphalist.CTO Podcast - For CTOs and Technical Leaders" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.megaphone.fm/landofthegiants" text="Land of the Giants" title="Land of the Giants" type="rss" version="RSS"/>
+    <outline xmlUrl="https://audioboom.com/channels/5044088.rss" text="Tech Can't Save Us" title="Tech Can't Save Us" type="rss" version="RSS"/>
   </body>
 </opml>
