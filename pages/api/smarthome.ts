@@ -62,7 +62,7 @@ export default async function smartHome(
 
         const climateSensorId = 69;
         const climateSensorOutsideId = 72;
-        const rainSensorId = 258;
+        const rainSensorId = 96;
         const balconyLightId = 257;
 
         const tempAtr = nodes
