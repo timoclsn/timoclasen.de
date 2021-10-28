@@ -3,26 +3,27 @@ import type { ReactNode } from 'react';
 import { forwardRef } from 'react';
 
 type Props = {
-    children: ReactNode;
-    target?: '_blank';
-    rel?: 'noopener noreferrer' | 'noopener' | 'noreferrer';
+  children: ReactNode;
+  target?: '_blank';
+  rel?: 'noopener noreferrer' | 'noopener' | 'noreferrer';
 } & JSX.IntrinsicElements['a'];
 
 export const NavigationLink = forwardRef<HTMLAnchorElement, Props>(
-    function NavigationLink({ children, href, ...props }, ref) {
-        const router = useRouter();
-        return (
-            <a
-                href={href}
-                ref={ref}
-                className={`hover:text-highlight dark:hover:text-highlight-dark ${
-                    href && router.pathname.includes(href)
-                        ? 'text-highlight dark:text-highlight-dark hover:opacity-80'
-                        : ''
-                }`}
-                {...props}>
-                {children}
-            </a>
-        );
-    }
+  function NavigationLink({ children, href, ...props }, ref) {
+    const router = useRouter();
+    return (
+      <a
+        href={href}
+        ref={ref}
+        className={`hover:text-highlight dark:hover:text-highlight-dark ${
+          href && router.pathname.includes(href)
+            ? 'text-highlight dark:text-highlight-dark hover:opacity-80'
+            : ''
+        }`}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  }
 );

@@ -7,15 +7,15 @@ import { OGImage } from '../../components/OGImage';
 import { queryContent } from '../../lib/content';
 
 export default async function OGImageAPI(
-    req: NextApiRequest,
-    res: NextApiResponse
+  req: NextApiRequest,
+  res: NextApiResponse
 ) {
-    const {
-        query: { name, title, subtitle, image }
-    } = req;
+  const {
+    query: { name, title, subtitle, image },
+  } = req;
 
-    const response = await queryContent(
-        `{
+  const response = await queryContent(
+    `{
             person: personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
                 items {
                     profileImageCollection {
@@ -26,53 +26,53 @@ export default async function OGImageAPI(
                 }
             }
         }`
-    );
+  );
 
-    const person = response.data.person.items[0];
-    const fallbackImage = person.profileImageCollection.items[1];
+  const person = response.data.person.items[0];
+  const fallbackImage = person.profileImageCollection.items[1];
 
-    const reactElement = createElement(OGImage, {
-        name: name as string,
-        title: title as string,
-        subtitle: subtitle as string,
-        image: (image as string) || (fallbackImage.url as string)
-    });
-    const body = renderToStaticMarkup(reactElement);
-    const html = getHtmlData(body);
+  const reactElement = createElement(OGImage, {
+    name: name as string,
+    title: title as string,
+    subtitle: subtitle as string,
+    image: (image as string) || (fallbackImage.url as string),
+  });
+  const body = renderToStaticMarkup(reactElement);
+  const html = getHtmlData(body);
 
-    const width = 1200;
-    const height = 630;
+  const width = 1200;
+  const height = 630;
 
-    const browser = await launchChromium({ headless: true });
-    const page = await browser.newPage({
-        viewport: {
-            width,
-            height
-        }
-    });
-    await page.setContent(html, { waitUntil: 'networkidle' });
+  const browser = await launchChromium({ headless: true });
+  const page = await browser.newPage({
+    viewport: {
+      width,
+      height,
+    },
+  });
+  await page.setContent(html, { waitUntil: 'networkidle' });
 
-    const data = await page.screenshot({
-        type: 'jpeg',
-        clip: {
-            x: 0,
-            y: 0,
-            width,
-            height
-        },
-        omitBackground: true
-    });
+  const data = await page.screenshot({
+    type: 'jpeg',
+    clip: {
+      x: 0,
+      y: 0,
+      width,
+      height,
+    },
+    omitBackground: true,
+  });
 
-    await browser.close();
+  await browser.close();
 
-    res.setHeader('Cache-Control', 's-maxage=31536000, stale-while-revalidate');
-    res.setHeader('Content-Type', 'image/jpeg');
+  res.setHeader('Cache-Control', 's-maxage=31536000, stale-while-revalidate');
+  res.setHeader('Content-Type', 'image/jpeg');
 
-    res.end(data);
+  res.end(data);
 }
 
 function getHtmlData(body: string) {
-    return `<!DOCTYPE html>
+  return `<!DOCTYPE html>
     <html>
         <head>
             <meta charset="utf-8">

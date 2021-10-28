@@ -15,78 +15,79 @@ import { markdownToHTML, objToUrlParams } from '../../lib/text';
 import type { BlogPost as BlogPostType } from '../blog';
 
 interface Props {
-    preview: boolean;
-    previewImage: {
-        url: string;
-        description: string;
-    };
-    blogPost: BlogPostType;
-    loading: string;
-    error: string;
-    contact: string;
+  preview: boolean;
+  previewImage: {
+    url: string;
+    description: string;
+  };
+  blogPost: BlogPostType;
+  loading: string;
+  error: string;
+  contact: string;
 }
 
 export default function BlogPost(props: Props) {
-    const router = useRouter();
+  const router = useRouter();
 
-    if (!router.isFallback && !props.blogPost) {
-        return (
-            <Layout title="Error 404" description="Error 404">
-                <TextBlock text={props.error} />
-                <ContactWidget text={props.contact} />
-            </Layout>
-        );
-    }
-
-    if (router.isFallback && !props.blogPost) {
-        return (
-            <Layout title="Seite lädt…" description="Seite lädt…">
-                <TextBlock text={props.loading} />
-                <ContactWidget text={props.contact} />
-            </Layout>
-        );
-    }
-
-    const date = new Date(props.blogPost.date).toISOString();
-
+  if (!router.isFallback && !props.blogPost) {
     return (
-        <Layout
-            preview={props.preview}
-            title={props.blogPost.title}
-            description={props.blogPost.summary}
-            previewImage={props.previewImage}
-            slug={`blog/${props.blogPost.slug}`}>
-            <SEOBlogPost
-                authorName={props.blogPost.author.name}
-                readingTime={props.blogPost.readingTime}
-                date={date}
-                slug={props.blogPost.slug}
-                title={props.blogPost.title}
-                description={props.blogPost.summary}
-                previewImage={props.previewImage}
-            />
-            <article className="space-y-8 md:space-y-16">
-                <BlogPostHeader
-                    title={props.blogPost.title}
-                    subtitle={props.blogPost.subtitle}
-                    date={props.blogPost.dateFormatted}
-                    author={props.blogPost.author}
-                    readingTime={props.blogPost.readingTime}
-                    sys={props.blogPost.sys}
-                />
-                <TextPost>{props.blogPost.text}</TextPost>
-            </article>
-            <ContactWidget text={props.contact} />
-        </Layout>
+      <Layout title="Error 404" description="Error 404">
+        <TextBlock text={props.error} />
+        <ContactWidget text={props.contact} />
+      </Layout>
     );
+  }
+
+  if (router.isFallback && !props.blogPost) {
+    return (
+      <Layout title="Seite lädt…" description="Seite lädt…">
+        <TextBlock text={props.loading} />
+        <ContactWidget text={props.contact} />
+      </Layout>
+    );
+  }
+
+  const date = new Date(props.blogPost.date).toISOString();
+
+  return (
+    <Layout
+      preview={props.preview}
+      title={props.blogPost.title}
+      description={props.blogPost.summary}
+      previewImage={props.previewImage}
+      slug={`blog/${props.blogPost.slug}`}
+    >
+      <SEOBlogPost
+        authorName={props.blogPost.author.name}
+        readingTime={props.blogPost.readingTime}
+        date={date}
+        slug={props.blogPost.slug}
+        title={props.blogPost.title}
+        description={props.blogPost.summary}
+        previewImage={props.previewImage}
+      />
+      <article className="space-y-8 md:space-y-16">
+        <BlogPostHeader
+          title={props.blogPost.title}
+          subtitle={props.blogPost.subtitle}
+          date={props.blogPost.dateFormatted}
+          author={props.blogPost.author}
+          readingTime={props.blogPost.readingTime}
+          sys={props.blogPost.sys}
+        />
+        <TextPost>{props.blogPost.text}</TextPost>
+      </article>
+      <ContactWidget text={props.contact} />
+    </Layout>
+  );
 }
 
 export const getStaticProps: GetStaticProps = async ({
-    params,
-    preview = false
+  params,
+  preview = false,
 }) => {
-    const response = await queryContent(
-        `{
+  const response = await queryContent(
+    `{
             blogPost: blogPostCollection(where: {slug: "${params?.slug}"}, limit: 1, preview: false) {
                 items {
                     sys {
@@ -121,67 +122,66 @@ export const getStaticProps: GetStaticProps = async ({
                 }
             }
         }`,
-        preview
-    );
+    preview
+  );
 
-    const blogPost = response.data.blogPost.items[0];
+  const blogPost = response.data.blogPost.items[0];
 
-    blogPost.author.image = blogPost.author.profileImageCollection.items[1];
-    delete blogPost.author.profileImageCollection;
+  blogPost.author.image = blogPost.author.profileImageCollection.items[1];
+  delete blogPost.author.profileImageCollection;
 
-    const readingTimeObj = readingTime(blogPost.text);
-    blogPost.readingTime = Math.ceil(readingTimeObj.minutes);
+  const readingTimeObj = readingTime(blogPost.text);
+  blogPost.readingTime = Math.ceil(readingTimeObj.minutes);
 
-    blogPost.dateFormatted = format(parseISO(blogPost.date), 'dd. MMMM yyyy', {
-        locale: de
-    });
+  blogPost.dateFormatted = format(parseISO(blogPost.date), 'dd. MMMM yyyy', {
+    locale: de,
+  });
 
-    const errorText = response.data.errorSnippet.items[0].content;
-    const contactText = response.data.contactSnippet.items[0].content;
+  const errorText = response.data.errorSnippet.items[0].content;
+  const contactText = response.data.contactSnippet.items[0].content;
 
-    const previewImage = {
-        url: `https://timoclasen.de/api/og-image?${objToUrlParams({
-            name: 'Blog • Timo Clasen',
-            title: blogPost.title,
-            subtitle: `${blogPost.dateFormatted} • ${blogPost.readingTime} Min`
-        })}`,
-        description:
-            'Teasertext der Seite "Blog" und Profilfoto von Timo Clasen'
-    };
+  const previewImage = {
+    url: `https://timoclasen.de/api/og-image?${objToUrlParams({
+      name: 'Blog • Timo Clasen',
+      title: blogPost.title,
+      subtitle: `${blogPost.dateFormatted} • ${blogPost.readingTime} Min`,
+    })}`,
+    description: 'Teasertext der Seite "Blog" und Profilfoto von Timo Clasen',
+  };
 
-    return {
-        props: {
-            preview,
-            blogPost,
-            previewImage,
-            error: await markdownToHTML(errorText),
-            loading: await markdownToHTML('# Seite lädt…'),
-            contact: await markdownToHTML(contactText)
-        }
-    };
+  return {
+    props: {
+      preview,
+      blogPost,
+      previewImage,
+      error: await markdownToHTML(errorText),
+      loading: await markdownToHTML('# Seite lädt…'),
+      contact: await markdownToHTML(contactText),
+    },
+  };
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const response = await queryContent(
-        `{
+  const response = await queryContent(
+    `{
             blogPosts: blogPostCollection(preview: false) {
                 items {
                     slug
                 }
             }
         }`
-    );
+  );
 
-    const blogPosts = response.data.blogPosts.items;
+  const blogPosts = response.data.blogPosts.items;
 
-    return {
-        paths: blogPosts.map((blogPost: { slug: string }) => {
-            return {
-                params: {
-                    slug: blogPost.slug
-                }
-            };
-        }),
-        fallback: true
-    };
+  return {
+    paths: blogPosts.map((blogPost: { slug: string }) => {
+      return {
+        params: {
+          slug: blogPost.slug,
+        },
+      };
+    }),
+    fallback: true,
+  };
 };

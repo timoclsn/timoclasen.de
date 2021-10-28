@@ -1,5 +1,5 @@
 describe('The About Page', () => {
-    it('successfully loads', () => {
-        cy.visit('/ueber');
-    });
+  it('successfully loads', () => {
+    cy.visit('/ueber');
+  });
 });

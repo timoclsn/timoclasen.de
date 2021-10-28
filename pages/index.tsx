@@ -15,72 +15,73 @@ import { queryContent } from '../lib/content';
 import type { Podcast } from '../lib/podcasts';
 import { getFavoritePodcasts } from '../lib/podcasts';
 import {
-    markdownToHTML,
-    objToUrlParams,
-    stripFirstLine,
-    truncate
+  markdownToHTML,
+  objToUrlParams,
+  stripFirstLine,
+  truncate,
 } from '../lib/text';
 
 interface Props {
-    preview: boolean;
-    title: string;
+  preview: boolean;
+  title: string;
+  description: string;
+  previewImage: {
+    url: string;
     description: string;
-    previewImage: {
-        url: string;
-        description: string;
-    };
-    header: string;
-    image: {
-        url: string;
-        description: string;
-        blurDataURL: string;
-    };
-    aboutTeaser: string;
-    blogPosts: {
-        title: string;
-        summary: string;
-        slug: string;
-    }[];
-    smartHome: string;
-    smartHomeFootnote: string;
-    favoritePodcasts: Podcast[];
-    LCDImage: {
-        url: string;
-        description: string;
-        blurDataURL: string;
-    };
-    contact: string;
+  };
+  header: string;
+  image: {
+    url: string;
+    description: string;
+    blurDataURL: string;
+  };
+  aboutTeaser: string;
+  blogPosts: {
+    title: string;
+    summary: string;
+    slug: string;
+  }[];
+  smartHome: string;
+  smartHomeFootnote: string;
+  favoritePodcasts: Podcast[];
+  LCDImage: {
+    url: string;
+    description: string;
+    blurDataURL: string;
+  };
+  contact: string;
 }
 
 export default function Home(props: Props) {
-    return (
-        <Layout
-            preview={props.preview}
-            title={props.title}
-            description={props.description}
-            previewImage={props.previewImage}>
-            <Teaser text={props.header} />
-            <AboutWidget text={props.aboutTeaser} image={props.image} />
-            <BlogWidget
-                blogPost1={props.blogPosts[0]}
-                blogPost2={props.blogPosts[1]}
-            />
-            <LCDWidget bgImage={props.LCDImage} />
-            <SmartHomeWidget
-                text={props.smartHome}
-                footnote={props.smartHomeFootnote}
-            />
-            <RunningWidget />
-            <PodcastsWidget podcasts={props.favoritePodcasts} />
-            <NowPlaying />
-            <ContactWidget text={props.contact} />
-        </Layout>
-    );
+  return (
+    <Layout
+      preview={props.preview}
+      title={props.title}
+      description={props.description}
+      previewImage={props.previewImage}
+    >
+      <Teaser text={props.header} />
+      <AboutWidget text={props.aboutTeaser} image={props.image} />
+      <BlogWidget
+        blogPost1={props.blogPosts[0]}
+        blogPost2={props.blogPosts[1]}
+      />
+      <LCDWidget bgImage={props.LCDImage} />
+      <SmartHomeWidget
+        text={props.smartHome}
+        footnote={props.smartHomeFootnote}
+      />
+      <RunningWidget />
+      <PodcastsWidget podcasts={props.favoritePodcasts} />
+      <NowPlaying />
+      <ContactWidget text={props.contact} />
+    </Layout>
+  );
 }
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-    const response = await queryContent(
-        `{
+  const response = await queryContent(
+    `{
             page: pageCollection(where: {slug: "home"}, limit: 1, preview: false) {
                 items {
                     title
@@ -133,58 +134,58 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
                 }
             }
         }`,
-        preview
-    );
+    preview
+  );
 
-    const page = response.data.page.items[0];
-    const headerText = response.data.headerSnippet.items[0].content;
+  const page = response.data.page.items[0];
+  const headerText = response.data.headerSnippet.items[0].content;
 
-    const person = response.data.person.items[0];
-    const image = person.profileImageCollection.items[1];
-    const { base64: personImageBase64 } = await getPlaiceholder(image.url, {
-        size: 10
-    });
-    image.blurDataURL = personImageBase64;
+  const person = response.data.person.items[0];
+  const image = person.profileImageCollection.items[1];
+  const { base64: personImageBase64 } = await getPlaiceholder(image.url, {
+    size: 10,
+  });
+  image.blurDataURL = personImageBase64;
 
-    const blogPosts = response.data.blogPosts.items;
-    const smartHomeText = response.data.smartHomeSnippet.items[0].content;
-    const smartHomeFootnoteText =
-        response.data.smartHomeFootnoteSnippet.items[0].content;
-    const contactText = response.data.contactSnippet.items[0].content;
-    const favoritePodcasts = getFavoritePodcasts();
-    const LCDImage = response.data.LCDImage.items[0];
-    const { base64: LCDImageBase64 } = await getPlaiceholder(LCDImage.url, {
-        size: 10
-    });
-    LCDImage.blurDataURL = LCDImageBase64;
+  const blogPosts = response.data.blogPosts.items;
+  const smartHomeText = response.data.smartHomeSnippet.items[0].content;
+  const smartHomeFootnoteText =
+    response.data.smartHomeFootnoteSnippet.items[0].content;
+  const contactText = response.data.contactSnippet.items[0].content;
+  const favoritePodcasts = getFavoritePodcasts();
+  const LCDImage = response.data.LCDImage.items[0];
+  const { base64: LCDImageBase64 } = await getPlaiceholder(LCDImage.url, {
+    size: 10,
+  });
+  LCDImage.blurDataURL = LCDImageBase64;
 
-    let aboutTeaser = person.cvText;
-    aboutTeaser = stripFirstLine(aboutTeaser);
-    aboutTeaser = truncate(aboutTeaser, 400, true);
-    aboutTeaser = await markdownToHTML(aboutTeaser);
+  let aboutTeaser = person.cvText;
+  aboutTeaser = stripFirstLine(aboutTeaser);
+  aboutTeaser = truncate(aboutTeaser, 400, true);
+  aboutTeaser = await markdownToHTML(aboutTeaser);
 
-    const previewImage = {
-        url: `https://timoclasen.de/api/og-image?${objToUrlParams({
-            name: 'Timo Clasen'
-        })}`,
-        description: 'Teasertext der Startseite und Profilfoto von Timo Clasen'
-    };
+  const previewImage = {
+    url: `https://timoclasen.de/api/og-image?${objToUrlParams({
+      name: 'Timo Clasen',
+    })}`,
+    description: 'Teasertext der Startseite und Profilfoto von Timo Clasen',
+  };
 
-    return {
-        props: {
-            preview,
-            title: page.title,
-            description: page.description,
-            previewImage,
-            header: await markdownToHTML(headerText),
-            image: image,
-            aboutTeaser,
-            blogPosts,
-            smartHome: await markdownToHTML(smartHomeText),
-            smartHomeFootnote: await markdownToHTML(smartHomeFootnoteText),
-            favoritePodcasts,
-            LCDImage,
-            contact: await markdownToHTML(contactText)
-        }
-    };
+  return {
+    props: {
+      preview,
+      title: page.title,
+      description: page.description,
+      previewImage,
+      header: await markdownToHTML(headerText),
+      image: image,
+      aboutTeaser,
+      blogPosts,
+      smartHome: await markdownToHTML(smartHomeText),
+      smartHomeFootnote: await markdownToHTML(smartHomeFootnoteText),
+      favoritePodcasts,
+      LCDImage,
+      contact: await markdownToHTML(contactText),
+    },
+  };
 };
