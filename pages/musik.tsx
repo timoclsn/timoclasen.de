@@ -9,37 +9,38 @@ import { queryContent } from '../lib/content';
 import { markdownToHTML, objToUrlParams } from '../lib/text';
 
 interface Props {
-    preview: boolean;
-    title: string;
+  preview: boolean;
+  title: string;
+  description: string;
+  slug: string;
+  previewImage: {
+    url: string;
     description: string;
-    slug: string;
-    previewImage: {
-        url: string;
-        description: string;
-    };
-    musicText: string;
-    contact: string;
+  };
+  musicText: string;
+  contact: string;
 }
 
 export default function Music(props: Props) {
-    return (
-        <Layout
-            preview={props.preview}
-            title={props.title}
-            description={props.description}
-            previewImage={props.previewImage}
-            slug={props.slug}>
-            <TextBlock text={props.musicText} />
-            <TopMusic />
-            <NowPlaying />
-            <ContactWidget text={props.contact} />
-        </Layout>
-    );
+  return (
+    <Layout
+      preview={props.preview}
+      title={props.title}
+      description={props.description}
+      previewImage={props.previewImage}
+      slug={props.slug}
+    >
+      <TextBlock text={props.musicText} />
+      <TopMusic />
+      <NowPlaying />
+      <ContactWidget text={props.contact} />
+    </Layout>
+  );
 }
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-    const response = await queryContent(
-        `{
+  const response = await queryContent(
+    `{
             page: pageCollection(where: {slug: "musik"}, limit: 1, preview: false) {
                 items {
                     title
@@ -58,29 +59,29 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
                 }
             }
         }`,
-        preview
-    );
+    preview
+  );
 
-    const page = response.data.page.items[0];
-    const musicText = response.data.musicSnippet.items[0].content;
-    const contactText = response.data.contactSnippet.items[0].content;
+  const page = response.data.page.items[0];
+  const musicText = response.data.musicSnippet.items[0].content;
+  const contactText = response.data.contactSnippet.items[0].content;
 
-    const previewImage = {
-        url: `https://timoclasen.de/api/og-image?${objToUrlParams({
-            name: `${page.title} • Timo Clasen`
-        })}`,
-        description: `Teasertext der Seite "${page.title}" und Profilfoto von Timo Clasen`
-    };
+  const previewImage = {
+    url: `https://timoclasen.de/api/og-image?${objToUrlParams({
+      name: `${page.title} • Timo Clasen`,
+    })}`,
+    description: `Teasertext der Seite "${page.title}" und Profilfoto von Timo Clasen`,
+  };
 
-    return {
-        props: {
-            preview,
-            title: page.title,
-            description: page.description,
-            previewImage,
-            slug: page.slug,
-            musicText: await markdownToHTML(musicText),
-            contact: await markdownToHTML(contactText)
-        }
-    };
+  return {
+    props: {
+      preview,
+      title: page.title,
+      description: page.description,
+      previewImage,
+      slug: page.slug,
+      musicText: await markdownToHTML(musicText),
+      contact: await markdownToHTML(contactText),
+    },
+  };
 };

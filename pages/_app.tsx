@@ -9,19 +9,20 @@ import { ThemeProvider } from '../components/ThemeContext';
 import { fetcher } from '../lib/fetcher';
 
 function MyApp({ Component, pageProps }: AppProps) {
-    return (
-        <IdProvider>
-            <ThemeProvider>
-                <SWRConfig
-                    value={{
-                        fetcher: fetcher
-                    }}>
-                    <Component {...pageProps} />
-                    <Toaster position="bottom-center" />
-                </SWRConfig>
-            </ThemeProvider>
-        </IdProvider>
-    );
+  return (
+    <IdProvider>
+      <ThemeProvider>
+        <SWRConfig
+          value={{
+            fetcher: fetcher,
+          }}
+        >
+          <Component {...pageProps} />
+          <Toaster position="bottom-center" />
+        </SWRConfig>
+      </ThemeProvider>
+    </IdProvider>
+  );
 }
 
 export default MyApp;

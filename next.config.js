@@ -1,32 +1,33 @@
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-    enabled: process.env.ANALYZE === 'true'
+  enabled: process.env.ANALYZE === 'true',
 });
 
 module.exports = withBundleAnalyzer({
-    experimental: { esmExternals: true },
-    images: {
-        domains: ['images.ctfassets.net', 'api.mapbox.com', 'i.scdn.co']
-    },
-    async rewrites() {
-        return [
-            {
-                source: '/bee.js',
-                destination: 'https://cdn.splitbee.io/sb.js'
-            },
-            {
-                source: '/_hive/:slug',
-                destination: 'https://hive.splitbee.io/:slug'
-            }
-        ];
-    },
-    async headers() {
-        return [
-            {
-                source: '/(.*)',
-                headers: securityHeaders
-            }
-        ];
-    }
+  experimental: { esmExternals: true },
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    domains: ['images.ctfassets.net', 'api.mapbox.com', 'i.scdn.co'],
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/bee.js',
+        destination: 'https://cdn.splitbee.io/sb.js',
+      },
+      {
+        source: '/_hive/:slug',
+        destination: 'https://hive.splitbee.io/:slug',
+      },
+    ];
+  },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: securityHeaders,
+      },
+    ];
+  },
 });
 
 // https://securityheaders.com
@@ -42,40 +43,40 @@ const ContentSecurityPolicy = `
 `;
 
 const securityHeaders = [
-    // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
-    {
-        key: 'Content-Security-Policy',
-        value: ContentSecurityPolicy.replace(/\n/g, '')
-    },
-    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
-    {
-        key: 'Referrer-Policy',
-        value: 'origin-when-cross-origin'
-    },
-    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
-    {
-        key: 'X-Frame-Options',
-        value: 'DENY'
-    },
-    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
-    {
-        key: 'X-Content-Type-Options',
-        value: 'nosniff'
-    },
-    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control
-    {
-        key: 'X-DNS-Prefetch-Control',
-        value: 'on'
-    },
-    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
-    {
-        key: 'Strict-Transport-Security',
-        value: 'max-age=31536000; includeSubDomains; preload'
-    },
-    // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
-    // Opt-out of Google FLoC: https://amifloced.org/
-    {
-        key: 'Permissions-Policy',
-        value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()'
-    }
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
+  {
+    key: 'Content-Security-Policy',
+    value: ContentSecurityPolicy.replace(/\n/g, ''),
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
+  {
+    key: 'Referrer-Policy',
+    value: 'origin-when-cross-origin',
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
+  {
+    key: 'X-Frame-Options',
+    value: 'DENY',
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
+  {
+    key: 'X-Content-Type-Options',
+    value: 'nosniff',
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control
+  {
+    key: 'X-DNS-Prefetch-Control',
+    value: 'on',
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
+  {
+    key: 'Strict-Transport-Security',
+    value: 'max-age=31536000; includeSubDomains; preload',
+  },
+  // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
+  // Opt-out of Google FLoC: https://amifloced.org/
+  {
+    key: 'Permissions-Policy',
+    value: 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+  },
 ];

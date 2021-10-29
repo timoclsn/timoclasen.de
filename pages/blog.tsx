@@ -10,72 +10,73 @@ import { queryContent } from '../lib/content';
 import { markdownToHTML, objToUrlParams } from '../lib/text';
 
 export interface BlogPost {
-    sys: {
-        id: string;
-        publishedVersion: string;
+  sys: {
+    id: string;
+    publishedVersion: string;
+  };
+  title: string;
+  subtitle: string;
+  date: string;
+  dateFormatted: string;
+  slug: string;
+  previewImage: {
+    url: string;
+    description: string;
+  };
+  readingTime: number;
+  author: {
+    name: string;
+    username: string;
+    image: {
+      url: string;
+      description: string;
     };
-    title: string;
-    subtitle: string;
-    date: string;
-    dateFormatted: string;
-    slug: string;
-    previewImage: {
-        url: string;
-        description: string;
-    };
-    readingTime: number;
-    author: {
-        name: string;
-        username: string;
-        image: {
-            url: string;
-            description: string;
-        };
-    };
-    summary: string;
-    text: string;
+  };
+  summary: string;
+  text: string;
 }
 interface Props {
-    preview: boolean;
-    title: string;
+  preview: boolean;
+  title: string;
+  description: string;
+  slug: string;
+  previewImage: {
+    url: string;
     description: string;
-    slug: string;
-    previewImage: {
-        url: string;
-        description: string;
-    };
-    aboutTeaser: string;
-    blogPosts: BlogPost[];
-    contact: string;
+  };
+  aboutTeaser: string;
+  blogPosts: BlogPost[];
+  contact: string;
 }
 
 export default function Blog(props: Props) {
-    return (
-        <Layout
-            preview={props.preview}
-            title={props.title}
-            description={props.description}
-            previewImage={props.previewImage}
-            slug={props.slug}>
-            {props.blogPosts.map((post: BlogPost) => (
-                <BlogPostPreview
-                    title={post.title}
-                    subtitle={post.subtitle}
-                    date={post.dateFormatted}
-                    slug={post.slug}
-                    readingTime={post.readingTime}
-                    key={post.sys.id}
-                    sys={post.sys}
-                />
-            ))}
-            <ContactWidget text={props.contact} />
-        </Layout>
-    );
+  return (
+    <Layout
+      preview={props.preview}
+      title={props.title}
+      description={props.description}
+      previewImage={props.previewImage}
+      slug={props.slug}
+    >
+      {props.blogPosts.map((post: BlogPost) => (
+        <BlogPostPreview
+          title={post.title}
+          subtitle={post.subtitle}
+          date={post.dateFormatted}
+          slug={post.slug}
+          readingTime={post.readingTime}
+          key={post.sys.id}
+          sys={post.sys}
+        />
+      ))}
+      <ContactWidget text={props.contact} />
+    </Layout>
+  );
 }
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-    const response = await queryContent(
-        `{
+  const response = await queryContent(
+    `{
             page: pageCollection(where: {slug: "blog"}, limit: 1, preview: false) {
                 items {
                     title
@@ -102,48 +103,42 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
                 }
             }
         }`,
-        preview
-    );
+    preview
+  );
 
-    const page = response.data.page.items[0];
+  const page = response.data.page.items[0];
 
-    const blogPosts = response.data.blogPosts.items.map(
-        (blogPost: BlogPost) => {
-            const readingTimeObj = readingTime(blogPost.text);
-            blogPost.readingTime = Math.ceil(readingTimeObj.minutes);
+  const blogPosts = response.data.blogPosts.items.map((blogPost: BlogPost) => {
+    const readingTimeObj = readingTime(blogPost.text);
+    blogPost.readingTime = Math.ceil(readingTimeObj.minutes);
 
-            blogPost.text = '';
+    blogPost.text = '';
 
-            blogPost.dateFormatted = format(
-                parseISO(blogPost.date),
-                'dd. MMMM yyyy',
-                {
-                    locale: de
-                }
-            );
+    blogPost.dateFormatted = format(parseISO(blogPost.date), 'dd. MMMM yyyy', {
+      locale: de,
+    });
 
-            return blogPost;
-        }
-    );
+    return blogPost;
+  });
 
-    const contactText = response.data.contactSnippet.items[0].content;
+  const contactText = response.data.contactSnippet.items[0].content;
 
-    const previewImage = {
-        url: `https://timoclasen.de/api/og-image?${objToUrlParams({
-            name: `${page.title} • Timo Clasen`
-        })}`,
-        description: `Teasertext der Seite "${page.title}" und Profilfoto von Timo Clasen`
-    };
+  const previewImage = {
+    url: `https://timoclasen.de/api/og-image?${objToUrlParams({
+      name: `${page.title} • Timo Clasen`,
+    })}`,
+    description: `Teasertext der Seite "${page.title}" und Profilfoto von Timo Clasen`,
+  };
 
-    return {
-        props: {
-            preview,
-            title: page.title,
-            description: page.description,
-            previewImage,
-            slug: page.slug,
-            blogPosts,
-            contact: await markdownToHTML(contactText)
-        }
-    };
+  return {
+    props: {
+      preview,
+      title: page.title,
+      description: page.description,
+      previewImage,
+      slug: page.slug,
+      blogPosts,
+      contact: await markdownToHTML(contactText),
+    },
+  };
 };

@@ -7,35 +7,36 @@ import { queryContent } from '../lib/content';
 import { markdownToHTML, objToUrlParams } from '../lib/text';
 
 interface Props {
-    preview: boolean;
-    title: string;
+  preview: boolean;
+  title: string;
+  description: string;
+  slug: string;
+  previewImage: {
+    url: string;
     description: string;
-    slug: string;
-    previewImage: {
-        url: string;
-        description: string;
-    };
-    error: string;
-    contact: string;
+  };
+  error: string;
+  contact: string;
 }
 
 export default function Error(props: Props) {
-    return (
-        <Layout
-            preview={props.preview}
-            title={props.title}
-            description={props.description}
-            previewImage={props.previewImage}
-            slug={props.slug}>
-            <TextBlock text={props.error} />
-            <ContactWidget text={props.contact} />
-        </Layout>
-    );
+  return (
+    <Layout
+      preview={props.preview}
+      title={props.title}
+      description={props.description}
+      previewImage={props.previewImage}
+      slug={props.slug}
+    >
+      <TextBlock text={props.error} />
+      <ContactWidget text={props.contact} />
+    </Layout>
+  );
 }
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-    const response = await queryContent(
-        `{
+  const response = await queryContent(
+    `{
             page: pageCollection(where: {slug: "404"}, limit: 1, preview: false) {
                 items {
                     title
@@ -54,29 +55,29 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
                 }
             }
         }`,
-        preview
-    );
+    preview
+  );
 
-    const page = response.data.page.items[0];
-    const errorText = response.data.errorSnippet.items[0].content;
-    const contactText = response.data.contactSnippet.items[0].content;
+  const page = response.data.page.items[0];
+  const errorText = response.data.errorSnippet.items[0].content;
+  const contactText = response.data.contactSnippet.items[0].content;
 
-    const previewImage = {
-        url: `https://timoclasen.de/api/og-image?${objToUrlParams({
-            name: `${page.title} • Timo Clasen`
-        })}`,
-        description: `Teasertext der Seite "${page.title}" und Profilfoto von Timo Clasen`
-    };
+  const previewImage = {
+    url: `https://timoclasen.de/api/og-image?${objToUrlParams({
+      name: `${page.title} • Timo Clasen`,
+    })}`,
+    description: `Teasertext der Seite "${page.title}" und Profilfoto von Timo Clasen`,
+  };
 
-    return {
-        props: {
-            preview,
-            title: page.title,
-            description: page.description,
-            previewImage,
-            slug: page.slug,
-            error: await markdownToHTML(errorText),
-            contact: await markdownToHTML(contactText)
-        }
-    };
+  return {
+    props: {
+      preview,
+      title: page.title,
+      description: page.description,
+      previewImage,
+      slug: page.slug,
+      error: await markdownToHTML(errorText),
+      contact: await markdownToHTML(contactText),
+    },
+  };
 };

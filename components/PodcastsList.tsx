@@ -8,64 +8,64 @@ import { PodcastFilter } from './PodcastFilter';
 import { Search } from './Search';
 
 interface Props {
-    podcasts: PodcastType[];
+  podcasts: PodcastType[];
 }
 
 export function PodcastsList({ podcasts }: Props) {
-    const [searchValue, setSearchValue] = useState('');
-    const [filter, setFilter] = useState({
-        favorites: false
-    });
+  const [searchValue, setSearchValue] = useState('');
+  const [filter, setFilter] = useState({
+    favorites: false,
+  });
 
-    const filteredPodcast = matchSorter(podcasts, searchValue, {
-        keys: ['title', 'hosts', 'description']
-    }).filter((podcast) => {
-        return filter.favorites ? podcast.favorite : true;
-    });
+  const filteredPodcast = matchSorter(podcasts, searchValue, {
+    keys: ['title', 'hosts', 'description'],
+  }).filter((podcast) => {
+    return filter.favorites ? podcast.favorite : true;
+  });
 
-    return (
-        <div>
-            <div className="mx-auto mb-6 max-w-prose">
-                <Search
-                    placeholder="Podcasts durchsuchen"
-                    handleChange={(e) => setSearchValue(e.target.value)}
-                    handleBlur={() => {
-                        splitbee.track('Podcast Search', {
-                            search: searchValue
-                        });
-                    }}
-                />
-            </div>
+  return (
+    <div>
+      <div className="mx-auto mb-6 max-w-prose">
+        <Search
+          placeholder="Podcasts durchsuchen"
+          handleChange={(e) => setSearchValue(e.target.value)}
+          handleBlur={() => {
+            splitbee.track('Podcast Search', {
+              search: searchValue,
+            });
+          }}
+        />
+      </div>
 
-            <div className="mx-auto mb-16 max-w-prose">
-                <PodcastFilter
-                    filter={filter}
-                    handleChange={(e) => {
-                        setFilter({ favorites: e.target.checked });
-                        splitbee.track('Podcast Filter', {
-                            favorites: filter.favorites
-                        });
-                    }}
-                />
-            </div>
-            <ul className="space-y-20">
-                {filteredPodcast.map((podcast) => (
-                    <li key={podcast.title}>
-                        <MediaPreview
-                            title={podcast.title}
-                            image={`/podcasts/${podcast.image}`}
-                            BylineIcon={User}
-                            byline={podcast.hosts}
-                            subline={podcast.description}
-                            url={podcast.website}
-                            favorite={podcast.favorite}
-                        />
-                    </li>
-                ))}
-            </ul>
-            {!filteredPodcast.length && (
-                <p className="mx-auto max-w-prose">Keinen Podcast gefunden…</p>
-            )}
-        </div>
-    );
+      <div className="mx-auto mb-16 max-w-prose">
+        <PodcastFilter
+          filter={filter}
+          handleChange={(e) => {
+            setFilter({ favorites: e.target.checked });
+            splitbee.track('Podcast Filter', {
+              favorites: filter.favorites,
+            });
+          }}
+        />
+      </div>
+      <ul className="space-y-20">
+        {filteredPodcast.map((podcast) => (
+          <li key={podcast.title}>
+            <MediaPreview
+              title={podcast.title}
+              image={`/podcasts/${podcast.image}`}
+              BylineIcon={User}
+              byline={podcast.hosts}
+              subline={podcast.description}
+              url={podcast.website}
+              favorite={podcast.favorite}
+            />
+          </li>
+        ))}
+      </ul>
+      {!filteredPodcast.length && (
+        <p className="mx-auto max-w-prose">Keinen Podcast gefunden…</p>
+      )}
+    </div>
+  );
 }

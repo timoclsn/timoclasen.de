@@ -1,102 +1,102 @@
 {
-    "name": "timoclasen.de",
-    "description": "My personal website.",
-    "version": "2.16.0",
-    "private": true,
-    "author": {
-        "name": "Timo Clasen",
-        "email": "timo@timoclasen.de",
-        "url": "https://timoclasen.de"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/timoclsn/timoclasen.de.git"
-    },
-    "scripts": {
-        "dev": "next dev -p 3000",
-        "inspect": "NODE_OPTIONS='--inspect' next dev -p 3000",
-        "build": "next build",
-        "postbuild": "node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
-        "analyze": "ANALYZE=true next build",
-        "start": "next start -p 3000",
-        "cypress:open": "cypress open",
-        "cypress:run": "cypress run",
-        "lint": "next lint",
-        "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
-    },
-    "dependencies": {
-        "@mapbox/polyline": "^1.1.1",
-        "@next/bundle-analyzer": "11.1.2",
-        "@radix-ui/react-id": "0.1.1",
-        "@radix-ui/react-tabs": "0.1.1",
-        "@supabase/supabase-js": "^1.25.0",
-        "@tailwindcss/aspect-ratio": "^0.3.0",
-        "@tailwindcss/line-clamp": "^0.2.2",
-        "@tailwindcss/typography": "^0.4.1",
-        "clsx": "^1.1.1",
-        "date-fns": "^2.25.0",
-        "date-fns-tz": "^1.1.6",
-        "lru-cache": "^6.0.0",
-        "match-sorter": "^6.3.1",
-        "next": "11.1.2",
-        "plaiceholder": "^2.0.1",
-        "playwright-aws-lambda": "^0.7.0",
-        "playwright-core": "^1.16.1",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2",
-        "react-feather": "^2.0.9",
-        "react-hot-toast": "^2.1.1",
-        "react-markdown": "^7.1.0",
-        "react-syntax-highlighter": "^15.4.4",
-        "reading-time": "^1.5.0",
-        "remark": "^14.0.1",
-        "remark-html": "^15.0.0",
-        "remark-strip-html": "^1.0.2",
-        "simplify-geojson": "^1.0.4",
-        "strip-markdown": "^5.0.0",
-        "swr": "^1.0.1",
-        "tailwindcss": "^2.2.17",
-        "ws": "^8.2.3"
-    },
-    "devDependencies": {
-        "@types/lru-cache": "^5.1.1",
-        "@types/mapbox__polyline": "^1.0.2",
-        "@types/react-dom": "^17.0.10",
-        "@types/react-syntax-highlighter": "^13.5.2",
-        "@types/ws": "^8.2.0",
-        "@typescript-eslint/eslint-plugin": "^5.1.0",
-        "@typescript-eslint/parser": "^5.1.0",
-        "autoprefixer": "^10.3.7",
-        "cypress": "^8.6.0",
-        "dotenv": "^10.0.0",
-        "eslint": "^7.23.0",
-        "eslint-config-next": "^11.1.2",
-        "eslint-config-prettier": "^8.3.0",
-        "eslint-plugin-cypress": "^2.12.1",
-        "eslint-plugin-prettier": "^4.0.0",
-        "eslint-plugin-simple-import-sort": "^7.0.0",
-        "fast-xml-parser": "^3.20.3",
-        "feed": "^4.2.2",
-        "globby": "^12.0.2",
-        "he": "^1.2.0",
-        "husky": "^7.0.4",
-        "lint-staged": "^11.2.3",
-        "node-fetch": "^3.0.0",
-        "postcss": "^8.3.11",
-        "prettier": "^2.4.1",
-        "sharp": "^0.29.2",
-        "typescript": "^4.4.4"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "./**/*.{js,jsx,ts,tsx, json}": [
-            "npm run format",
-            "eslint --fix .",
-            "git add"
-        ]
+  "name": "timoclasen.de",
+  "description": "My personal website.",
+  "version": "2.16.0",
+  "private": true,
+  "author": {
+    "name": "Timo Clasen",
+    "email": "timo@timoclasen.de",
+    "url": "https://timoclasen.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timoclsn/timoclasen.de.git"
+  },
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "inspect": "NODE_OPTIONS='--inspect' next dev -p 3000",
+    "build": "next build",
+    "postbuild": "node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
+    "analyze": "ANALYZE=true next build",
+    "start": "next start -p 3000",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
+    "lint": "next lint",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+  },
+  "dependencies": {
+    "@mapbox/polyline": "^1.1.1",
+    "@next/bundle-analyzer": "12.0.1",
+    "@radix-ui/react-id": "0.1.1",
+    "@radix-ui/react-tabs": "0.1.1",
+    "@supabase/supabase-js": "^1.25.1",
+    "@tailwindcss/aspect-ratio": "^0.3.0",
+    "@tailwindcss/line-clamp": "^0.2.2",
+    "@tailwindcss/typography": "^0.4.1",
+    "clsx": "^1.1.1",
+    "date-fns": "^2.25.0",
+    "date-fns-tz": "^1.1.6",
+    "lru-cache": "^6.0.0",
+    "match-sorter": "^6.3.1",
+    "next": "12.0.1",
+    "plaiceholder": "^2.2.0",
+    "playwright-aws-lambda": "^0.7.0",
+    "playwright-core": "^1.16.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-feather": "^2.0.9",
+    "react-hot-toast": "^2.1.1",
+    "react-markdown": "^7.1.0",
+    "react-syntax-highlighter": "^15.4.4",
+    "reading-time": "^1.5.0",
+    "remark": "^14.0.1",
+    "remark-html": "^15.0.0",
+    "remark-strip-html": "^1.0.2",
+    "simplify-geojson": "^1.0.4",
+    "strip-markdown": "^5.0.0",
+    "swr": "^1.0.1",
+    "tailwindcss": "^2.2.17",
+    "ws": "^8.2.3"
+  },
+  "devDependencies": {
+    "@types/lru-cache": "^5.1.1",
+    "@types/mapbox__polyline": "^1.0.2",
+    "@types/react-dom": "^17.0.10",
+    "@types/react-syntax-highlighter": "^13.5.2",
+    "@types/ws": "^8.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "autoprefixer": "^10.4.0",
+    "cypress": "^8.7.0",
+    "dotenv": "^10.0.0",
+    "eslint": "^7.23.0",
+    "eslint-config-next": "^12.0.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "fast-xml-parser": "^3.21.0",
+    "feed": "^4.2.2",
+    "globby": "^12.0.2",
+    "he": "^1.2.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
+    "node-fetch": "^3.0.0",
+    "postcss": "^8.3.11",
+    "prettier": "^2.4.1",
+    "sharp": "^0.29.2",
+    "typescript": "^4.4.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "./**/*.{js,jsx,ts,tsx, json}": [
+      "npm run format",
+      "eslint --fix .",
+      "git add"
+    ]
+  }
 }
