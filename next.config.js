@@ -5,6 +5,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = withBundleAnalyzer({
   experimental: { esmExternals: true },
   images: {
+    formats: ['image/avif', 'image/webp'],
     domains: ['images.ctfassets.net', 'api.mapbox.com', 'i.scdn.co'],
   },
   async rewrites() {
