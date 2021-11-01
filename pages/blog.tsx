@@ -77,32 +77,32 @@ export default function Blog(props: Props) {
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const response = await queryContent(
     `{
-            page: pageCollection(where: {slug: "blog"}, limit: 1, preview: false) {
-                items {
-                    title
-                    slug
-                    description
-                }
+        page: pageCollection(where: {slug: "blog"}, limit: 1, preview: false) {
+            items {
+                title
+                slug
+                description
             }
-            blogPosts: blogPostCollection(order: [date_DESC], preview: false) {
-                items {
-                    sys {
-                        id
-                        publishedVersion
-                    }
-                    title
-                    subtitle
-                    slug
-                    date
-                    text
+        }
+        blogPosts: blogPostCollection(order: [date_DESC], preview: false) {
+            items {
+                sys {
+                    id
+                    publishedVersion
                 }
+                title
+                subtitle
+                slug
+                date
+                text
             }
-            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
-                items {
-                    content
-                }
+        }
+        contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
+            items {
+                content
             }
-        }`,
+        }
+    }`,
     preview
   );
 

@@ -58,30 +58,30 @@ export default function About(props: Props) {
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const response = await queryContent(
     `{
-            page: pageCollection(where: {slug: "ueber"}, limit: 1, preview: false) {
-                items {
-                    title
-                    slug
-                    description
-                }
+        page: pageCollection(where: {slug: "ueber"}, limit: 1, preview: false) {
+            items {
+                title
+                slug
+                description
             }
-            person: personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
-                items {
-                    cvText
-                    imagesCollection {
-                        items {
-                            url
-                            description
-                        }
+        }
+        person: personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
+            items {
+                cvText
+                imagesCollection {
+                    items {
+                        url
+                        description
                     }
                 }
             }
-            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
-                items {
-                    content
-                }
+        }
+        contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
+            items {
+                content
             }
-        }`,
+        }
+    }`,
     preview
   );
 

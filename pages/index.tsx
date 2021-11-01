@@ -82,58 +82,58 @@ export default function Home(props: Props) {
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const response = await queryContent(
     `{
-            page: pageCollection(where: {slug: "home"}, limit: 1, preview: false) {
-                items {
-                    title
-                    slug
-                    description
-                }
+        page: pageCollection(where: {slug: "home"}, limit: 1, preview: false) {
+            items {
+                title
+                slug
+                description
             }
-            headerSnippet: textSnippetCollection(where: {title: "Frontpage Header"}, limit: 1, preview: false) {
-                items {
-                    content
-                }
+        }
+        headerSnippet: textSnippetCollection(where: {title: "Frontpage Header"}, limit: 1, preview: false) {
+            items {
+                content
             }
-            person: personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
-                items {
-                    cvText
-                    profileImageCollection {
-                        items {
-                            url
-                            description
-                        }
+        }
+        person: personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
+            items {
+                cvText
+                profileImageCollection {
+                    items {
+                        url
+                        description
                     }
                 }
             }
-            blogPosts: blogPostCollection(order: [date_DESC], limit: 2, preview: false) {
-                items {
-                    title
-                    summary
-                    slug
-                }
+        }
+        blogPosts: blogPostCollection(order: [date_DESC], limit: 2, preview: false) {
+            items {
+                title
+                summary
+                slug
             }
-            smartHomeSnippet: textSnippetCollection(where: {title: "Smart Home Widget"}, limit: 1, preview: false) {
-                items {
-                    content
-                }
+        }
+        smartHomeSnippet: textSnippetCollection(where: {title: "Smart Home Widget"}, limit: 1, preview: false) {
+            items {
+                content
             }
-            smartHomeFootnoteSnippet: textSnippetCollection(where: {title: "Smart Home Widget Footnote"}, limit: 1, preview: false) {
-                items {
-                    content
-                }
+        }
+        smartHomeFootnoteSnippet: textSnippetCollection(where: {title: "Smart Home Widget Footnote"}, limit: 1, preview: false) {
+            items {
+                content
             }
-            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
-                items {
-                    content
-                }
+        }
+        contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
+            items {
+                content
             }
-            LCDImage: assetCollection(where: {title: "Life Centered Design.Net"}, limit: 1, preview: false) {
-                items {
-                    url
-                    description
-                }
+        }
+        LCDImage: assetCollection(where: {title: "Life Centered Design.Net"}, limit: 1, preview: false) {
+            items {
+                url
+                description
             }
-        }`,
+        }
+    }`,
     preview
   );
 

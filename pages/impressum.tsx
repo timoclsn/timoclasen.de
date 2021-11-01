@@ -37,24 +37,24 @@ export default function Legal(props: Props) {
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const response = await queryContent(
     `{
-            page: pageCollection(where: {slug: "impressum"}, limit: 1, preview: false) {
-                items {
-                    title
-                    slug
-                    description
-                }
+        page: pageCollection(where: {slug: "impressum"}, limit: 1, preview: false) {
+            items {
+                title
+                slug
+                description
             }
-            legalSnippet: textSnippetCollection(where: {title: "Impressum & Datenschutz"}, limit: 1, preview: false) {
-                items {
-                    content
-                }
+        }
+        legalSnippet: textSnippetCollection(where: {title: "Impressum & Datenschutz"}, limit: 1, preview: false) {
+            items {
+                content
             }
-            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
-                items {
-                    content
-                }
+        }
+        contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
+            items {
+                content
             }
-        }`,
+        }
+    }`,
     preview
   );
 

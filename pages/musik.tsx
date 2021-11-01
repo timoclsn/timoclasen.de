@@ -41,24 +41,24 @@ export default function Music(props: Props) {
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const response = await queryContent(
     `{
-            page: pageCollection(where: {slug: "musik"}, limit: 1, preview: false) {
-                items {
-                    title
-                    slug
-                    description
-                }
+        page: pageCollection(where: {slug: "musik"}, limit: 1, preview: false) {
+            items {
+                title
+                slug
+                description
             }
-            musicSnippet: textSnippetCollection(where: {title: "Music"}, limit: 1, preview: false) {
-                items {
-                    content
-                }
+        }
+        musicSnippet: textSnippetCollection(where: {title: "Music"}, limit: 1, preview: false) {
+            items {
+                content
             }
-            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
-                items {
-                    content
-                }
+        }
+        contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
+            items {
+                content
             }
-        }`,
+        }
+    }`,
     preview
   );
 

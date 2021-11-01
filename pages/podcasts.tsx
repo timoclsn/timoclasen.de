@@ -41,19 +41,19 @@ export default function Podcasts(props: Props) {
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const response = await queryContent(
     `{
-            page: pageCollection(where: {slug: "podcasts"}, limit: 1, preview: false) {
-                items {
-                    title
-                    slug
-                    description
-                }
+        page: pageCollection(where: {slug: "podcasts"}, limit: 1, preview: false) {
+            items {
+                title
+                slug
+                description
             }
-            podcastsSnippet: textSnippetCollection(where: {title: "Podcasts"}, limit: 1, preview: false) {
-                items {
-                    content
-                }
+        }
+        podcastsSnippet: textSnippetCollection(where: {title: "Podcasts"}, limit: 1, preview: false) {
+            items {
+                content
             }
-        }`,
+        }
+    }`,
     preview
   );
 

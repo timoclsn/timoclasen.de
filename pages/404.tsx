@@ -37,24 +37,24 @@ export default function Error(props: Props) {
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const response = await queryContent(
     `{
-            page: pageCollection(where: {slug: "404"}, limit: 1, preview: false) {
-                items {
-                    title
-                    slug
-                    description
-                }
+        page: pageCollection(where: {slug: "404"}, limit: 1, preview: false) {
+            items {
+                title
+                slug
+                description
             }
-            errorSnippet: textSnippetCollection(where: {title: "Error 404"}, limit: 1, preview: false) {
-                items {
-                    content
-                }
+        }
+        errorSnippet: textSnippetCollection(where: {title: "Error 404"}, limit: 1, preview: false) {
+            items {
+                content
             }
-            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
-                items {
-                    content
-                }
+        }
+        contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
+            items {
+                content
             }
-        }`,
+        }
+    }`,
     preview
   );
 
