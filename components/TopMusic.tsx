@@ -6,12 +6,22 @@ import type { TopTrackData, Track } from '../pages/api/top-tracks';
 import { MediaPreview } from './MediaPreview';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs';
 
+const apiSecret = process.env.NEXT_PUBLIC_API_SECRET || '';
+
+const fetchObj = {
+  headers: {
+    'api-secret': apiSecret,
+  },
+};
+
 export function TopMusic() {
   const { data: topArtistsData, error: topArtistsError } =
-    useSWR<TopArtistsData>('/api/top-artists');
+    useSWR<TopArtistsData>(['/api/top-artists', fetchObj]);
 
-  const { data: topTracksData, error: topTracksError } =
-    useSWR<TopTrackData>('/api/top-tracks');
+  const { data: topTracksData, error: topTracksError } = useSWR<TopTrackData>([
+    '/api/top-tracks',
+    fetchObj,
+  ]);
 
   if (topArtistsError || topTracksError) {
     return <div>Fehler beim Laden…</div>;

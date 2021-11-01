@@ -5,8 +5,19 @@ import type { NowPlayingData } from '../pages/api/now-playing';
 import { Skeleton } from './Skeleton';
 import { SoundBars } from './SoundBars';
 
+const apiSecret = process.env.NEXT_PUBLIC_API_SECRET || '';
+
+const fetchObj = {
+  headers: {
+    'api-secret': apiSecret,
+  },
+};
+
 export function NowPlaying() {
-  const { data, error } = useSWR<NowPlayingData>('/api/now-playing');
+  const { data, error } = useSWR<NowPlayingData>([
+    '/api/now-playing',
+    fetchObj,
+  ]);
 
   if (error) {
     return <div>Fehler beim Laden…</div>;
