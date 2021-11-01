@@ -21,6 +21,14 @@ import { SmartHomeElement } from './SmartHomeElement';
 import { ThemeContext } from './ThemeContext';
 import { WidgetLayout } from './WidgetLayout';
 
+const apiSecret = process.env.NEXT_PUBLIC_API_SECRET || '';
+
+const fetchObj = {
+  headers: {
+    'api-secret': apiSecret,
+  },
+};
+
 const lightToast = {
   minWidth: '300px',
   borderRadius: '1rem',
@@ -57,14 +65,14 @@ export function SmartHomeWidget({ text, footnote }: Props) {
     data: smartHomeData,
     error: smartHomeError,
     mutate: mutateSmartHome,
-  } = useSWR<SmartHomeData, string>(smartHomeApi);
+  } = useSWR<SmartHomeData, string>([smartHomeApi, fetchObj]);
 
   const countApi = '/api/control-count';
   const {
     data: countData,
     error: countError,
     mutate: mutateCount,
-  } = useSWR<Counts, string>(countApi);
+  } = useSWR<Counts, string>([countApi, fetchObj]);
 
   const errorMessage = 'Nicht erreichbar…';
 
@@ -74,6 +82,9 @@ export function SmartHomeWidget({ text, footnote }: Props) {
     const controlLightRequest = new Promise(async (resolve, reject) => {
       const response = await fetch(smartHomeApi, {
         method: 'PUT',
+        headers: {
+          'api-secret': apiSecret,
+        },
         body: JSON.stringify({
           balconyColor: color,
         }),
@@ -104,6 +115,9 @@ export function SmartHomeWidget({ text, footnote }: Props) {
           mutateCount(async () => {
             return await fetcher(countApi, {
               method: 'PUT',
+              headers: {
+                'api-secret': apiSecret,
+              },
               body: JSON.stringify({
                 color: color,
               }),
