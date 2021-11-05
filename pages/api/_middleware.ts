@@ -7,6 +7,7 @@ export function middleware(request: NextRequest) {
   const headerKey = request.headers.get('api-secret');
   const { pathname } = request.nextUrl;
 
+  // List APIs that require authentication
   if (
     pathname.includes('smarthome') ||
     pathname.includes('control-count') ||
