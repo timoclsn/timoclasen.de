@@ -49,6 +49,7 @@ export interface LastRun {
   url: string;
   kudos: number;
   stroller: boolean;
+  race: boolean;
 }
 
 export interface RunningData {
@@ -160,6 +161,7 @@ export default async function running(
       url: `https://www.strava.com/activities/${lastRun.id}`,
       kudos: lastRun.kudos_count,
       stroller: lastRun.name.includes('Kinderwagen'),
+      race: lastRun.workout_type === 1 ? true : false,
     },
   });
 }

@@ -17,7 +17,7 @@ export interface Activity {
   elapsed_time: number;
   total_elevation_gain: number;
   type: string;
-  workout_type: string | null;
+  workout_type: number | null;
   id: number;
   external_id: string;
   upload_id: number;
