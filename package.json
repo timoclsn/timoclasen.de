@@ -24,7 +24,7 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "lint": "eslint --ignore-path .gitignore",
-    "check-types": "tsc",
+    "typecheck": "tsc",
     "prettier": "prettier --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,css,md,json}'",
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --list-different",
