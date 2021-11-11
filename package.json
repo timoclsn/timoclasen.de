@@ -16,13 +16,19 @@
     "dev": "next dev -p 3000",
     "inspect": "NODE_OPTIONS='--inspect' next dev -p 3000",
     "build": "next build",
-    "postbuild": "node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
+    "generate-rss": "node ./scripts/generate-rss.mjs",
+    "generate-sitemap": "node ./scripts/generate-sitemap.mjs",
+    "postbuild": "npm-run-all --parallel generate-rss generate-sitemap",
     "analyze": "ANALYZE=true next build",
     "start": "next start -p 3000",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "lint": "next lint",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "lint": "eslint --ignore-path .gitignore",
+    "check-types": "tsc",
+    "prettier": "prettier --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,css,md,json}'",
+    "format": "npm run prettier -- --write",
+    "check-format": "npm run prettier -- --list-different",
+    "validate": "npm-run-all --parallel check-types check-format lint"
   },
   "dependencies": {
     "@mapbox/polyline": "^1.1.1",
@@ -82,6 +88,7 @@
     "husky": "^7.0.4",
     "lint-staged": "^11.2.6",
     "node-fetch": "^3.0.0",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
     "sharp": "^0.29.2",
@@ -89,13 +96,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run check-types && lint-staged"
     }
   },
   "lint-staged": {
     "./**/*.{js,jsx,ts,tsx, json}": [
       "npm run format",
-      "eslint --fix .",
+      "npm run lint --fix .",
       "git add"
     ]
   }
