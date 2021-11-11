@@ -16,20 +16,26 @@
     "dev": "next dev -p 3000",
     "inspect": "NODE_OPTIONS='--inspect' next dev -p 3000",
     "build": "next build",
-    "postbuild": "node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
+    "generate-rss": "node ./scripts/generate-rss.mjs",
+    "generate-sitemap": "node ./scripts/generate-sitemap.mjs",
+    "postbuild": "npm-run-all --parallel generate-rss generate-sitemap",
     "analyze": "ANALYZE=true next build",
     "start": "next start -p 3000",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "lint": "next lint",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "lint": "eslint --ignore-path .gitignore",
+    "typecheck": "tsc",
+    "prettier": "prettier --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,css,md,json}'",
+    "format": "npm run prettier -- --write",
+    "check-format": "npm run prettier -- --list-different",
+    "validate": "npm-run-all --parallel check-types check-format lint"
   },
   "dependencies": {
     "@mapbox/polyline": "^1.1.1",
     "@next/bundle-analyzer": "12.0.3",
     "@radix-ui/react-id": "0.1.1",
     "@radix-ui/react-tabs": "0.1.1",
-    "@supabase/supabase-js": "^1.25.2",
+    "@supabase/supabase-js": "^1.27.0",
     "@tailwindcss/aspect-ratio": "^0.3.0",
     "@tailwindcss/line-clamp": "^0.2.2",
     "@tailwindcss/typography": "^0.4.1",
@@ -64,10 +70,10 @@
     "@types/react-dom": "^17.0.11",
     "@types/react-syntax-highlighter": "^13.5.2",
     "@types/ws": "^8.2.0",
-    "@typescript-eslint/eslint-plugin": "^5.3.0",
-    "@typescript-eslint/parser": "^5.3.0",
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
     "autoprefixer": "^10.4.0",
-    "cypress": "^8.7.0",
+    "cypress": "^9.0.0",
     "dotenv": "^10.0.0",
     "eslint": "^7.23.0",
     "eslint-config-next": "^12.0.3",
@@ -81,7 +87,8 @@
     "he": "^1.2.0",
     "husky": "^7.0.4",
     "lint-staged": "^11.2.6",
-    "node-fetch": "^3.0.0",
+    "node-fetch": "^3.1.0",
+    "npm-run-all": "^4.1.5",
     "postcss": "^8.3.11",
     "prettier": "^2.4.1",
     "sharp": "^0.29.2",
@@ -89,13 +96,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "npm run check-types && lint-staged"
     }
   },
   "lint-staged": {
     "./**/*.{js,jsx,ts,tsx, json}": [
       "npm run format",
-      "eslint --fix .",
+      "npm run lint --fix .",
       "git add"
     ]
   }
