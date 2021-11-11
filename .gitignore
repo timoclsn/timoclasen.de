@@ -6,3 +6,4 @@ node_modules
 public/sitemap.xml
 public/rss.xml
 .vercel
+tsconfig.tsbuildinfo
