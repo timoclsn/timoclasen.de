@@ -2,17 +2,17 @@ import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  // const { pathname } = request.nextUrl;
 
-  // Rewrites
-  if (pathname === '/bee.js') {
-    return NextResponse.rewrite('https://cdn.splitbee.io/sb.js');
-  }
+  // // Rewrites
+  // if (pathname === '/bee.js') {
+  //   return NextResponse.rewrite('https://cdn.splitbee.io/sb.js');
+  // }
 
-  if (pathname.includes('_hive/')) {
-    const params = pathname.split('_hive/')[1];
-    return NextResponse.rewrite(`https://hive.splitbee.io/${params}`);
-  }
+  // if (pathname.includes('_hive/')) {
+  //   const params = pathname.split('_hive/')[1];
+  //   return NextResponse.rewrite(`https://hive.splitbee.io/${params}`);
+  // }
 
   // Security headers
   const ContentSecurityPolicy = `
