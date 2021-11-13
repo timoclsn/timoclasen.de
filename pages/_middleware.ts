@@ -1,25 +1,12 @@
-import type { NextRequest } from 'next/server';
+import type { NextFetchEvent, NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  // Rewrites
-  if (pathname === '/bee.js') {
-    return NextResponse.rewrite('https://cdn.splitbee.io/sb.js');
-  }
-
-  if (pathname.includes('_hive/')) {
-    const params = pathname.split('_hive/')[1];
-    return NextResponse.rewrite(`https://hive.splitbee.io/${params}`);
-  }
-
-  // Security headers
+export function middleware(req: NextRequest, ev: NextFetchEvent) {
   const ContentSecurityPolicy = `
     default-src 'self';
-    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com;
+    script-src 'self' 'unsafe-eval' 'unsafe-inline' *.youtube.com *.twitter.com cdn.usefathom.com;
     child-src *.youtube.com *.google.com *.twitter.com;
-    style-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline' *.googleapis.com;
     img-src * blob: data:;
     media-src 'none';
     connect-src *;
@@ -35,7 +22,7 @@ export function middleware(request: NextRequest) {
   response.headers.set('Referrer-Policy', 'origin-when-cross-origin');
   response.headers.set(
     'Permissions-Policy',
-    'camera=(), microphone=(), geolocation=(), interest-cohort=()'
+    'camera=(), microphone=(), geolocation=()'
   );
   response.headers.set(
     'Strict-Transport-Security',
