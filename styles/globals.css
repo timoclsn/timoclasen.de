@@ -29,6 +29,27 @@
   transition: background-color 0.1 ease-in-out;
 }
 
+.menuIcon {
+  position: relative;
+}
+
+.menuIcon svg {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin: auto;
+  transform: scale(1);
+  opacity: 1;
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.menuIcon svg[data-hide='true'] {
+  opacity: 0;
+  transform: scale(0);
+}
+
 @layer base {
   a {
     transition: text-underline-offset 300ms;

@@ -64,7 +64,7 @@ export function Navigation({ name }: Props) {
           <div className="flex justify-end flex-1 sm:flex-initial sm:hidden">
             <button
               type="button"
-              className="flex items-center justify-center w-8 h-8 focus:outline-none"
+              className="w-8 h-8 focus:outline-none menuIcon"
               aria-controls="mobile-menu"
               aria-expanded={menuOpen ? 'true' : 'false'}
               onClick={() => setMenuOpen(!menuOpen)}
@@ -72,7 +72,8 @@ export function Navigation({ name }: Props) {
               <span className="sr-only">
                 {menuOpen ? 'Menü schließen' : 'Menü öffnen'}
               </span>
-              {menuOpen ? <X /> : <Menu />}
+              <Menu data-hide={menuOpen} />
+              <X data-hide={!menuOpen} />
             </button>
           </div>
         </nav>
