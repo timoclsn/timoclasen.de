@@ -132,4 +132,12 @@
   .underline-offset-2xl {
     text-underline-offset: 0.75rem;
   }
+
+  .scroll-snap-x {
+    scroll-snap-type: x;
+  }
+
+  .scroll-snap-center {
+    scroll-snap-align: center;
+  }
 }
