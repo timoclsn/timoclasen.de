@@ -22,7 +22,7 @@ export function PodcastsWidget({ podcasts }: Props) {
         </p>
         <div className="flex-none">
           <Link href="/podcasts" passHref>
-            <Button as="a" variant="link">
+            <Button as="a" variant="link" animate>
               <ArrowRight />
               Alle Podcasts
             </Button>
