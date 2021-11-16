@@ -2,6 +2,8 @@ import clsx from 'clsx';
 import type { ReactNode } from 'react';
 import { Children, forwardRef } from 'react';
 
+import buttonStyles from './Button.module.css';
+
 const baseStyles = [
   'inline-flex',
   'items-center',
@@ -31,6 +33,7 @@ interface CommmonProps {
   variant?: keyof typeof variantStyles;
   size?: keyof typeof sizeStyles;
   fullWidth?: boolean;
+  animate?: boolean;
   className?: string;
 }
 
@@ -65,6 +68,7 @@ export const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, Props>(
       variant = 'solid',
       size = 'normal',
       fullWidth,
+      animate,
       className,
       ...props
     },
@@ -75,6 +79,7 @@ export const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, Props>(
       variantStyles[variant],
       sizeStyles[size],
       fullWidth && 'w-full',
+      animate && buttonStyles.animation,
       className
     );
     return (
