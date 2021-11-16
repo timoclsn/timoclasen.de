@@ -2,6 +2,8 @@ import * as TabsPrimitive from '@radix-ui/react-tabs';
 import clsx from 'clsx';
 import type { ComponentProps } from 'react';
 
+import styles from './Tabs.module.css';
+
 export function Tabs({
   className,
   ...props
@@ -33,7 +35,8 @@ export function TabsTrigger({
   return (
     <TabsPrimitive.Trigger
       className={clsx(
-        'flex items-center justify-center w-full py-2 border-2 first:border-r-0 last:border-l-0 last:rounded-l-none cursor-pointer tab border-highlight dark:border-highlight-dark first:rounded-l-2xl first:rounded-r-none last:rounded-r-2xl focus:outline-none focus:ring-2 focus:ring-dark dark:focus:ring-light',
+        'flex items-center justify-center w-full py-2 border-2 first:border-r-0 last:border-l-0 last:rounded-l-none cursor-pointer border-highlight dark:border-highlight-dark first:rounded-l-2xl first:rounded-r-none last:rounded-r-2xl focus:outline-none focus:ring-2 focus:ring-dark dark:focus:ring-light',
+        styles.tab,
         className
       )}
       {...props}

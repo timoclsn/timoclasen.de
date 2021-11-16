@@ -13,122 +13,33 @@
       U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
       U+2215, U+FEFF, U+FFFD;
   }
-}
 
-#__next {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+  #__next {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
 
-.sticky-nav {
-  position: sticky;
-  z-index: 10;
-  top: 0;
-  backdrop-filter: saturate(180%) blur(20px);
-  transition: background-color 0.1 ease-in-out;
-}
-
-.menuIcon {
-  position: relative;
-}
-
-.menuIcon svg {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  margin: auto;
-  transform: scale(1);
-  opacity: 1;
-  transition: opacity 300ms ease, transform 300ms ease;
-}
-
-.menuIcon svg[data-hide='true'] {
-  opacity: 0;
-  transform: scale(0);
-}
-
-@layer base {
   a {
     transition: text-underline-offset 300ms;
     @apply underline-offset-md;
   }
+
   a:hover {
     @apply underline-offset-lg;
   }
+
   p a {
-    @apply underline;
+    text-decoration: underline;
   }
+
   p a:hover,
   ul a:hover {
     @apply opacity-80;
   }
+
   address {
-    @apply not-italic;
-  }
-}
-
-@layer components {
-  .text-teaser {
-    @apply text-2xl sm:text-3xl md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight;
-  }
-
-  .text-teaser h2 {
-    @apply mb-4 font-bold md:mb-6;
-  }
-
-  .text-teaser p a {
-    @apply text-highlight dark:text-highlight-dark underline-offset-md lg:underline-offset-xl;
-  }
-
-  .text-teaser p a:hover {
-    @apply underline-offset-xl lg:underline-offset-2xl;
-  }
-
-  .tab[data-state='active'] {
-    @apply text-light bg-highlight dark:bg-highlight-dark;
-  }
-
-  .tab[data-state='inactive'] {
-    @apply text-highlight dark:text-highlight-dark;
-  }
-
-  .soundBars.isPlaying {
-    height: 100%;
-    transform-origin: bottom;
-    animation: soundBars 2.2s ease infinite alternate;
-  }
-
-  .soundBars:nth-of-type(2) {
-    animation-delay: -2.2s;
-  }
-
-  .soundBars:nth-of-type(3) {
-    animation-delay: -3.7s;
-  }
-
-  @keyframes soundBars {
-    10% {
-      transform: scaleY(0.3);
-    }
-
-    30% {
-      transform: scaleY(1);
-    }
-
-    60% {
-      transform: scaleY(0.5);
-    }
-
-    80% {
-      transform: scaleY(0.75);
-    }
-
-    100% {
-      transform: scaleY(0.6);
-    }
+    font-style: normal;
   }
 }
 
