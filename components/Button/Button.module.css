@@ -1,0 +1,7 @@
+.animation svg {
+  transition: transform 200ms ease;
+}
+
+.animation:hover svg {
+  transform: translateX(4px);
+}

@@ -1,0 +1,15 @@
+.textTeaser {
+  @apply text-2xl sm:text-3xl md:text-4xl md:leading-tight lg:text-5xl lg:leading-tight xl:text-6xl xl:leading-tight;
+}
+
+.textTeaser h2 {
+  @apply mb-4 font-bold md:mb-6;
+}
+
+.textTeaser p a {
+  @apply text-highlight dark:text-highlight-dark underline-offset-md lg:underline-offset-xl;
+}
+
+.textTeaser p a:hover {
+  @apply underline-offset-xl lg:underline-offset-2xl;
+}

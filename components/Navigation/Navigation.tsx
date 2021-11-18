@@ -1,10 +1,12 @@
+import clsx from 'clsx';
 import Link from 'next/link';
 import { useState } from 'react';
 import { Menu, X } from 'react-feather';
 
-import { CenteredColumn } from './CenteredColumn';
-import { NavigationLink } from './NavigationLink';
-import { SwitchMode } from './SwitchMode';
+import { CenteredColumn } from '../CenteredColumn';
+import { NavigationLink } from '../NavigationLink';
+import { SwitchMode } from '../SwitchMode';
+import styles from './Navigation.module.css';
 
 interface Props {
   name: string;
@@ -14,7 +16,12 @@ export function Navigation({ name }: Props) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="py-4 mb-8 sticky-nav bg-light dark:bg-dark bg-opacity-80 dark:bg-opacity-80 md:py-6 md:mb-20 xl:mb-22">
+    <header
+      className={clsx(
+        'py-4 mb-8 bg-light dark:bg-dark bg-opacity-80 dark:bg-opacity-80 md:py-6 md:mb-20 xl:mb-22',
+        styles.stickyNav
+      )}
+    >
       <CenteredColumn>
         <nav
           role="navigation"
@@ -64,7 +71,7 @@ export function Navigation({ name }: Props) {
           <div className="flex justify-end flex-1 sm:flex-initial sm:hidden">
             <button
               type="button"
-              className="flex items-center justify-center w-8 h-8 focus:outline-none"
+              className={clsx('w-8 h-8 focus:outline-none', styles.menuIcon)}
               aria-controls="mobile-menu"
               aria-expanded={menuOpen ? 'true' : 'false'}
               onClick={() => setMenuOpen(!menuOpen)}
@@ -72,7 +79,8 @@ export function Navigation({ name }: Props) {
               <span className="sr-only">
                 {menuOpen ? 'Menü schließen' : 'Menü öffnen'}
               </span>
-              {menuOpen ? <X /> : <Menu />}
+              <Menu data-hide={menuOpen} />
+              <X data-hide={!menuOpen} />
             </button>
           </div>
         </nav>

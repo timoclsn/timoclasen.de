@@ -1,5 +1,7 @@
 import clsx from 'clsx';
 
+import styles from './SoundBars.module.css';
+
 interface Props {
   isPlaying?: boolean;
   color?: string;
@@ -9,8 +11,8 @@ export function SoundBars({ isPlaying, color }: Props) {
   const barStyles = clsx(
     'w-[3px]',
     'rounded-sm',
-    'soundBars',
-    isPlaying && 'isPlaying',
+    styles.soundBars,
+    isPlaying && styles.isPlaying,
     color ? color : 'bg-highlight dark:bg-highlight-dark'
   );
 

@@ -22,16 +22,16 @@ export function PodcastsWidget({ podcasts }: Props) {
         </p>
         <div className="flex-none">
           <Link href="/podcasts" passHref>
-            <Button as="a" variant="link">
+            <Button as="a" variant="link" animate>
               <ArrowRight />
               Alle Podcasts
             </Button>
           </Link>
         </div>
       </div>
-      <ul className="flex justify-between space-x-4 overflow-x-auto">
+      <ul className="flex justify-between space-x-4 overflow-x-auto scroll-snap-x">
         {podcasts.map((podcast) => (
-          <li key={podcast.title}>
+          <li key={podcast.title} className="scroll-snap-center">
             <a
               href={podcast.website}
               target="_blank"

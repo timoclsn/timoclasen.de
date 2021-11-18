@@ -1,0 +1,35 @@
+.isPlaying {
+  height: 100%;
+  transform-origin: bottom;
+  animation: soundBars 2.2s ease infinite alternate;
+}
+
+.soundBars:nth-of-type(2) {
+  animation-delay: -2.2s;
+}
+
+.soundBars:nth-of-type(3) {
+  animation-delay: -3.7s;
+}
+
+@keyframes soundBars {
+  10% {
+    transform: scaleY(0.3);
+  }
+
+  30% {
+    transform: scaleY(1);
+  }
+
+  60% {
+    transform: scaleY(0.5);
+  }
+
+  80% {
+    transform: scaleY(0.75);
+  }
+
+  100% {
+    transform: scaleY(0.6);
+  }
+}
