@@ -18,6 +18,7 @@
     "build": "next build",
     "generate-rss": "node ./scripts/generate-rss.mjs",
     "generate-sitemap": "node ./scripts/generate-sitemap.mjs",
+    "generate-podcasts": "node ./scripts/podcasts/index.mjs",
     "postbuild": "npm-run-all --parallel generate-rss generate-sitemap",
     "analyze": "ANALYZE=true next build",
     "start": "next start -p 3000",

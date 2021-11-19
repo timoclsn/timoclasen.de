@@ -48,7 +48,7 @@
     "title": "Automators",
     "favorite": false,
     "feed": "https://www.relay.fm/automators/feed",
-    "description": "Automation makes your life easier and everyone can do it. We tell you how.  Hosted by David Sparks and Rosemary Orchard.\n",
+    "description": "Automation makes your life easier and everyone can do it. We tell you how.  Hosted by David  Sparks and Rosemary  Orchard.\n",
     "website": "https://www.relay.fm/automators",
     "hosts": "Relay FM",
     "image": "cover--1957296097.jpg"
@@ -129,7 +129,7 @@
     "title": "Connected",
     "favorite": false,
     "feed": "https://www.relay.fm/connected/feed",
-    "description": "Connected is a weekly panel discussion on Apple and the impact of technology on our lives. With each co-host having a unique background — and accent — Connected provides a perspective that no other show can. Hosted by Federico Viticci, Stephen Hackett, and Myke Hurley.\n",
+    "description": "Connected is a weekly panel discussion on Apple and the impact of technology on our lives. With each co-host having a unique background — and accent — Connected provides a perspective that no other show can. Hosted by Federico  Viticci, Stephen  Hackett, and Myke  Hurley.\n",
     "website": "https://www.relay.fm/connected",
     "hosts": "Relay FM",
     "image": "cover-1424757481.jpg"
@@ -138,14 +138,14 @@
     "title": "Cortex",
     "favorite": false,
     "feed": "https://www.relay.fm/cortex/feed",
-    "description": "CGP Grey and Myke Hurley are both independent content creators. Each episode, they get together to discuss their working lives. Hosted by CGP Grey and Myke Hurley.\n",
+    "description": "CGP Grey and Myke Hurley are both independent content creators. Each episode, they get together to discuss their working lives. Hosted by CGP  Grey and Myke  Hurley.\n",
     "website": "https://www.relay.fm/cortex",
     "hosts": "Relay FM",
     "image": "cover-2024174849.jpg"
   },
   {
     "title": "Decoder with Nilay Patel",
-    "favorite": false,
+    "favorite": true,
     "feed": "https://feeds.megaphone.fm/recodedecode",
     "description": "Decoder is a new show from The Verge about big ideas — and other problems. Verge editor-in-chief Nilay Patel talks to a diverse cast of innovators and policymakers at the frontiers of business and technology to reveal how they’re navigating an ever-changing landscape, what keeps them up at night, and what it all means for our shared future.\n",
     "website": "https://theverge.com",
@@ -306,6 +306,15 @@
     "image": "cover--896659839.jpg"
   },
   {
+    "title": "Hebammensalon",
+    "favorite": false,
+    "feed": "https://hebammensalon.podigee.io/feed/mp3",
+    "description": "Der Podcast für deine Schwangerschaft und Babyzeit – mit den Hebammen Sissi Rasche und Kareen Dannhauer.\n",
+    "website": "https://hebammensalon.podigee.io/",
+    "hosts": "Kareen Dannhauer, Sissi Rasche",
+    "image": "cover--1436517640.jpg"
+  },
+  {
     "title": "How to Save a Planet",
     "favorite": true,
     "feed": "https://feeds.megaphone.fm/howtosaveaplanet",
@@ -329,7 +338,7 @@
     "feed": "https://anchor.fm/s/149e69d4/podcast/rss",
     "description": "Shopify is building the future of commerce, but who are the people building it? Inside Shopify UX introduces some of the leaders of our UX team and asks them to explain the big commerce problem their team is trying to solve.\n\nListen to learn more about the meaty UX challenges our team is solving and how we're making it easier for independent businesses to thrive.\n",
     "website": "https://ux.shopify.com",
-    "hosts": "Jen Shaw",
+    "hosts": "Lola Oyelayo-Pearson",
     "image": "cover-394007393.jpg"
   },
   {
@@ -399,7 +408,7 @@
     "title": "Mac Power Users",
     "favorite": false,
     "feed": "https://www.relay.fm/mpu/feed",
-    "description": "Learn about getting the most from your Apple technology with focused topics and workflow guests. Creating Mac Power Users, one geek at a time since 2009. Hosted by David Sparks and Stephen Hackett.\n",
+    "description": "Learn about getting the most from your Apple technology with focused topics and workflow guests. Creating Mac Power Users, one geek at a time since 2009. Hosted by David  Sparks and Stephen  Hackett.\n",
     "website": "https://www.relay.fm/mpu",
     "hosts": "Relay FM",
     "image": "cover--203172484.jpg"
@@ -408,7 +417,7 @@
     "title": "Material",
     "favorite": false,
     "feed": "https://www.relay.fm/material/feed",
-    "description": "Material is a weekly discussion about the Google and Android universe. Your intrepid hosts try to answer the question, “What holds up the digital world?” The answer, so far, is that it’s Google all the way down. Hosted by Andy Ihnatko and Florence Ion.\n",
+    "description": "Material is a weekly discussion about the Google and Android universe. Your intrepid hosts try to answer the question, “What holds up the digital world?” The answer, so far, is that it’s Google all the way down. Hosted by Andy  Ihnatko and Florence  Ion.\n",
     "website": "https://www.relay.fm/material",
     "hosts": "Relay FM",
     "image": "cover-363710791.jpg"
@@ -471,8 +480,8 @@
     "title": "Pivot",
     "favorite": false,
     "feed": "https://feeds.megaphone.fm/pivot",
-    "description": "Every Tuesday and Friday, Recode’s Kara Swisher and NYU Professor Scott Galloway offer sharp, unfiltered insights into the biggest stories in tech, business, and politics. They make bold predictions, pick winners and losers, and bicker and banter like no one else. After all, with great power comes great scrutiny. From New York Magazine and the Vox Media Podcast Network.\n",
-    "website": "https://www.vox.com/pivot-with-kara-swisher-and-scott-galloway",
+    "description": "Every Tuesday and Friday, tech journalist Kara Swisher and NYU Professor Scott Galloway offer sharp, unfiltered insights into the biggest stories in tech, business, and politics. They make bold predictions, pick winners and losers, and bicker and banter like no one else. After all, with great power comes great scrutiny. From New York Magazine and the Vox Media Podcast Network.\n",
+    "website": "http://nymag.com/pivot",
     "hosts": "New York Magazine",
     "image": "cover-77126690.jpg"
   },
@@ -498,7 +507,7 @@
     "title": "Presentable",
     "favorite": false,
     "feed": "https://www.relay.fm/presentable/feed",
-    "description": "The Presentable Podcast focuses on how we design and build the products that are shaping our digital future. We'll track the tools, trends, and methods being used by teams from the biggest companies and latest startups. In each episode, Jeff will bring over two decades of experience as a designer, developer, entrepreneur, and investor as he chats with guests about how design is changing the world. Hosted by Jeff Veen.\n",
+    "description": "The Presentable Podcast focuses on how we design and build the products that are shaping our digital future. We'll track the tools, trends, and methods being used by teams from the biggest companies and latest startups. In each episode, Jeff will bring over two decades of experience as a designer, developer, entrepreneur, and investor as he chats with guests about how design is changing the world. Hosted by Jeff  Veen.\n",
     "website": "https://www.relay.fm/presentable",
     "hosts": "Relay FM",
     "image": "cover-443408501.jpg"
@@ -651,7 +660,7 @@
     "title": "The Energy Gang",
     "favorite": false,
     "feed": "https://rss.art19.com/the-energy-gang",
-    "description": "Looking to understand the fast-changing world of energy? Every week, we debate and discuss the latest trends in energy, cleantech, renewables, and the environment. Join us as we explore the forces transforming energy markets in America and around the world. A Wood Mackenzie production. \n",
+    "description": "Weekly discussions about the latest trends in energy, cleantech, renewables, and the environment from Wood Mackenzie.\n",
     "website": "https://art19.com/shows/the-energy-gang",
     "hosts": "Wood Mackenzie",
     "image": "cover-1098415452.jpg"
@@ -768,7 +777,7 @@
     "title": "Under the Radar",
     "favorite": false,
     "feed": "https://www.relay.fm/radar/feed",
-    "description": "From development and design to marketing and support, Under the Radar is all about independent app development. It's never longer than 30 minutes.  Hosted by Marco Arment and David Smith.\n",
+    "description": "From development and design to marketing and support, Under the Radar is all about independent app development. It's never longer than 30 minutes.  Hosted by Marco  Arment and David  Smith.\n",
     "website": "https://www.relay.fm/radar",
     "hosts": "Relay FM",
     "image": "cover-1796181775.jpg"
@@ -777,7 +786,7 @@
     "title": "Upgrade",
     "favorite": false,
     "feed": "https://www.relay.fm/upgrade/feed",
-    "description": "Upgrade looks at how technology shapes our lives, from the devices in our hands and pockets to the streaming services that keep us entertained. Hosted by Jason Snell and Myke Hurley.\n",
+    "description": "Upgrade looks at how technology shapes our lives, from the devices in our hands and pockets to the streaming services that keep us entertained. Hosted by Jason  Snell and Myke  Hurley.\n",
     "website": "https://www.relay.fm/upgrade",
     "hosts": "Relay FM",
     "image": "cover-1433481724.jpg"
