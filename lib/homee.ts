@@ -96,7 +96,7 @@ export async function playHomeegram(homeegramID: number) {
     {
       method: 'PUT',
       headers: {
-        Cookie: accessToken || '',
+        Cookie: accessToken ?? '',
       },
     }
   );

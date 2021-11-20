@@ -7,7 +7,7 @@ import { WidgetImage } from './WidgetImage';
 import { WidgetLayout } from './WidgetLayout';
 import { WidgetRunning } from './WidgetRunning';
 
-const apiSecret = process.env.NEXT_PUBLIC_API_SECRET || '';
+const apiSecret = process.env.NEXT_PUBLIC_API_SECRET ?? '';
 
 const fetchObj = {
   headers: {

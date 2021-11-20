@@ -21,7 +21,7 @@ import { SmartHomeElement } from './SmartHomeElement';
 import { ThemeContext } from './ThemeContext';
 import { WidgetLayout } from './WidgetLayout';
 
-const apiSecret = process.env.NEXT_PUBLIC_API_SECRET || '';
+const apiSecret = process.env.NEXT_PUBLIC_API_SECRET ?? '';
 
 const fetchObj = {
   headers: {

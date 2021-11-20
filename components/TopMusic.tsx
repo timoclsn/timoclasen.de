@@ -6,7 +6,7 @@ import type { TopTrackData, Track } from '../pages/api/top-tracks';
 import { MediaPreview } from './MediaPreview';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs';
 
-const apiSecret = process.env.NEXT_PUBLIC_API_SECRET || '';
+const apiSecret = process.env.NEXT_PUBLIC_API_SECRET ?? '';
 
 const fetchObj = {
   headers: {
