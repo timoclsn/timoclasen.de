@@ -8,9 +8,9 @@ interface Props {
 
 export function CV({ entries }: Props) {
   return (
-    <section className="mx-auto space-y-8 max-w-prose" id="cv">
-      <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">
-        Meine Stationen
+    <section className="mx-auto max-w-prose" id="cv">
+      <h2 className="mb-6 text-2xl font-bold lg:mb-8 lg:text-3xl xl:text-4xl">
+        Stationen
       </h2>
       <ol className="space-y-6 sm:space-y-8">
         {entries.map((entry, index) => (
@@ -29,9 +29,8 @@ export function CV({ entries }: Props) {
                 height={80}
               />
             </div>
-
-            <div className="flex flex-col justify-center pl-4">
-              <h3 className="font-bold pb-0.5">{entry.title}</h3>
+            <div className="flex flex-col justify-center ml-4">
+              <h3 className="font-bold mb-0.5">{entry.title}</h3>
               <a
                 href={entry.company.url}
                 target="_blank"

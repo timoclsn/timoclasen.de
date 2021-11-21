@@ -38,6 +38,7 @@ interface Props {
   };
   about: string;
   cvEntries: CVEntry[];
+  linkCollection: string;
   contact: string;
 }
 
@@ -66,6 +67,7 @@ export default function About(props: Props) {
       </div>
       <TextBlock text={props.about} />
       <CV entries={props.cvEntries} />
+      <TextBlock text={props.linkCollection} />
       <ContactWidget text={props.contact} />
     </Layout>
   );
@@ -90,6 +92,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
                         description
                     }
                 }
+                linkCollection
             }
         }
         cvEntries: cvEntryCollection(order: [order_DESC], preview: false) {
@@ -142,6 +145,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       image: image,
       about: await markdownToHTML(person.cvText),
       cvEntries,
+      linkCollection: await markdownToHTML(person.linkCollection),
       contact: await markdownToHTML(contactText),
     },
   };
