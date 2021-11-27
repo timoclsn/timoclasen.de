@@ -1,12 +1,14 @@
 import type { ReactNode } from 'react';
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 interface ThemeContext {
   darkMode: boolean;
   setDarkMode: (value: boolean) => void;
 }
 
-export const ThemeContext = createContext<Partial<ThemeContext>>({});
+const ThemeContext = createContext<Partial<ThemeContext>>({});
+
+export const useTheme = () => useContext(ThemeContext);
 
 interface ThemeProvider {
   children: ReactNode;

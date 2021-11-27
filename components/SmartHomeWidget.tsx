@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import {
   CloudSnow,
   Droplet,
@@ -18,7 +18,7 @@ import type { SmartHomeData } from '../pages/api/smarthome';
 import { Button } from './Button';
 import { Skeleton } from './Skeleton';
 import { SmartHomeElement } from './SmartHomeElement';
-import { ThemeContext } from './ThemeContext';
+import { useTheme } from './ThemeContext';
 import { WidgetLayout } from './WidgetLayout';
 
 const apiSecret = process.env.NEXT_PUBLIC_API_SECRET ?? '';
@@ -57,7 +57,7 @@ const balconyColors: BalconyColors = {
 };
 
 export function SmartHomeWidget({ text, footnote }: Props) {
-  const { darkMode } = useContext(ThemeContext);
+  const { darkMode } = useTheme();
   const [disableButtons, setDisableButtons] = useState(false);
 
   const smartHomeApi = '/api/smarthome';
