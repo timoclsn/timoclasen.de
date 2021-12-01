@@ -135,9 +135,7 @@ export function isLight(node: Node) {
     case NodeProfile.DimmableMeteringPlug:
     case NodeProfile.DoubleOnOffPlug:
     case NodeProfile.ImpulsePlug:
-      return node.image.includes('bulb') || node.image.includes('xmas')
-        ? true
-        : false;
+      return node.image.includes('bulb') || node.image.includes('xmas');
     default:
       return false;
   }
