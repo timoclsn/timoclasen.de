@@ -1,4 +1,4 @@
-import fs from 'fs';
+import { readFileSync } from 'fs';
 
 export interface Podcast {
   title: string;
@@ -11,7 +11,7 @@ export interface Podcast {
 }
 
 export function getPodcasts(): Podcast[] {
-  return JSON.parse(fs.readFileSync('./data/podcasts.json', 'utf-8'));
+  return JSON.parse(readFileSync('./data/podcasts.json', 'utf-8'));
 }
 
 export function getFavoritePodcasts() {

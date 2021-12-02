@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import type { ReactNode } from 'react';
-import { useContext } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
@@ -8,7 +7,7 @@ import styleDark from 'react-syntax-highlighter/dist/cjs/styles/prism/material-d
 import styleLight from 'react-syntax-highlighter/dist/cjs/styles/prism/material-light';
 
 import { TextBlock } from './TextBlock';
-import { ThemeContext } from './ThemeContext';
+import { useTheme } from './ThemeContext';
 
 SyntaxHighlighter.registerLanguage('jsx', jsx);
 
@@ -49,7 +48,7 @@ interface CodeNode {
 
 function Code({ node }: CodeProps) {
   const domNode = node as HTMLElement;
-  const { darkMode } = useContext(ThemeContext);
+  const { darkMode } = useTheme();
   const style = darkMode ? styleDark : styleLight;
   const codeNode = domNode.children[0].children[0] as unknown as CodeNode;
   const text = codeNode.value.replace(/\n$/, '');

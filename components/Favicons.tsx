@@ -1,10 +1,9 @@
 import Head from 'next/head';
-import { useContext } from 'react';
 
-import { ThemeContext } from './ThemeContext';
+import { useTheme } from './ThemeContext';
 
 export function Favicons() {
-  const { darkMode } = useContext(ThemeContext);
+  const { darkMode } = useTheme();
 
   return (
     <Head>

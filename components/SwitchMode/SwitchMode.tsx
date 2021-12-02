@@ -1,13 +1,13 @@
 import clsx from 'clsx';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'react-feather';
 
-import { ThemeContext } from '../ThemeContext';
+import { useTheme } from '../ThemeContext';
 import styles from './SwitchMode.module.css';
 
 export function SwitchMode() {
   const [mounted, setMounted] = useState(false);
-  const { darkMode, setDarkMode } = useContext(ThemeContext);
+  const { darkMode, setDarkMode } = useTheme();
 
   // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), []);

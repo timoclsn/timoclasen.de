@@ -15,84 +15,81 @@ const url = 'https://timoclasen.de';
 const email = 'timo@timoclasen.de';
 
 (async () => {
-    const response = await queryContent(
-        `{
-            blogPosts: blogPostCollection(order: [date_DESC]) {
-                items {
-                    sys {
-                        id
-                    }
-                    title
-                    summary
-                    slug
-                    date
-                    text
-                    author {
-                        name
-                        email
-                        website
-                    }
-                }
-            }
-        }`
-    );
-
-    const blogPosts = response.data.blogPosts.items;
-
-    const feed = new Feed({
-        title: `${name} • Blog`,
-        description: 'Mein persönlicher Blog',
-        id: url,
-        link: url,
-        language: 'de',
-        favicon: `${url}/favicons/favicon.ico`,
-        copyright: name,
-        feedLinks: {
-            rss: `${url}/rss.xml`
-        },
-        author: {
-            name: name,
-            email: email,
-            link: url
+  const response = await queryContent(
+    `{
+      blogPosts: blogPostCollection(order: [date_DESC]) {
+        items {
+          sys {
+            id
+          }
+          title
+          summary
+          slug
+          date
+          text
+          author {
+            name
+            email
+            website
+          }
         }
+      }
+    }`
+  );
+
+  const blogPosts = response.data.blogPosts.items;
+
+  const feed = new Feed({
+    title: `${name} • Blog`,
+    description: 'Mein persönlicher Blog',
+    id: url,
+    link: url,
+    language: 'de',
+    favicon: `${url}/favicons/favicon.ico`,
+    copyright: name,
+    feedLinks: {
+      rss: `${url}/rss.xml`,
+    },
+    author: {
+      name: name,
+      email: email,
+      link: url,
+    },
+  });
+
+  for (const post of blogPosts) {
+    feed.addItem({
+      title: post.title,
+      id: `${url}/blog/${post.slug}`,
+      link: `${url}/blog/${post.slug}`,
+      description: post.summary,
+      content: await markdownToHTML(post.text),
+      author: [
+        {
+          name: post.author.name,
+          email: post.author.email,
+          link: post.author.website,
+        },
+      ],
+      date: new Date(post.date),
     });
+  }
 
-    for (const post of blogPosts) {
-        feed.addItem({
-            title: post.title,
-            id: `${url}/blog/${post.slug}`,
-            link: `${url}/blog/${post.slug}`,
-            description: post.summary,
-            content: await markdownToHTML(post.text),
-            author: [
-                {
-                    name: post.author.name,
-                    email: post.author.email,
-                    link: post.author.website
-                }
-            ],
-            date: new Date(post.date)
-        });
-    }
-
-    writeFileSync('./public/rss.xml', feed.rss2());
+  writeFileSync('./public/rss.xml', feed.rss2());
 })();
 
 async function queryContent(query) {
-    return fetch(
-        `https://graphql.contentful.com/content/v1/spaces/${spaceId}`,
-        {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${publicAccessToken}`
-            },
-            body: JSON.stringify({ query })
-        }
-    ).then((response) => response.json());
+  return fetch(`https://graphql.contentful.com/content/v1/spaces/${spaceId}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${publicAccessToken}`,
+    },
+    body: JSON.stringify({ query }),
+  }).then((response) => response.json());
 }
 
 async function markdownToHTML(markdown) {
-    const result = await remark().use(html).process(markdown);
-    return result.toString();
+  const result = await remark().use(html).process(markdown);
+  return result.toString();
 }

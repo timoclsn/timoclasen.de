@@ -3,10 +3,10 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { rateLimit } from '../../lib/rate-limit';
 
-const supabase = createClient(
-  process.env.SUPABASE_URL || '',
-  process.env.SUPABASE_ANON_KEY || ''
-);
+const { SUPABASE_URL: supaBaseUrl, SUPABASE_ANON_KEY: supabaseAnonKey } =
+  process.env;
+
+const supabase = createClient(supaBaseUrl ?? '', supabaseAnonKey ?? '');
 
 export interface Counts extends Record<string, number> {
   red: number;

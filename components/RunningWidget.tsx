@@ -1,13 +1,12 @@
-import { useContext } from 'react';
 import useSWR from 'swr';
 
 import type { RunningData } from '../pages/api/running';
-import { ThemeContext } from './ThemeContext';
+import { useTheme } from './ThemeContext';
 import { WidgetImage } from './WidgetImage';
 import { WidgetLayout } from './WidgetLayout';
 import { WidgetRunning } from './WidgetRunning';
 
-const apiSecret = process.env.NEXT_PUBLIC_API_SECRET || '';
+const apiSecret = process.env.NEXT_PUBLIC_API_SECRET ?? '';
 
 const fetchObj = {
   headers: {
@@ -18,7 +17,7 @@ const fetchObj = {
 export function RunningWidget() {
   const { data, error } = useSWR<RunningData>(['/api/running', fetchObj]);
 
-  const { darkMode } = useContext(ThemeContext);
+  const { darkMode } = useTheme();
 
   if (error) {
     return <div>Fehler beim Laden…</div>;

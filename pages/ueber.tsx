@@ -3,10 +3,24 @@ import Image from 'next/image';
 import { getPlaiceholder } from 'plaiceholder';
 
 import { ContactWidget } from '../components/ContactWidget';
+import { CV } from '../components/CV';
 import { Layout } from '../components/Layout';
 import { TextBlock } from '../components/TextBlock';
 import { queryContent } from '../lib/content';
 import { markdownToHTML, objToUrlParams } from '../lib/text';
+
+export interface CVEntry {
+  title: string;
+  timespan: string;
+  company: {
+    name: string;
+    url: string;
+    image: {
+      url: string;
+      description: string;
+    };
+  };
+}
 
 interface Props {
   preview: boolean;
@@ -23,6 +37,8 @@ interface Props {
     blurDataURL: string;
   };
   about: string;
+  cvEntries: CVEntry[];
+  linkCollection: string;
   contact: string;
 }
 
@@ -50,6 +66,8 @@ export default function About(props: Props) {
         />
       </div>
       <TextBlock text={props.about} />
+      <CV entries={props.cvEntries} />
+      <TextBlock text={props.linkCollection} />
       <ContactWidget text={props.contact} />
     </Layout>
   );
@@ -74,7 +92,22 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
                         description
                     }
                 }
+                linkCollection
             }
+        }
+        cvEntries: cvEntryCollection(order: [order_DESC], preview: false) {
+          items {
+            title
+            timespan
+            company {
+              name
+              url
+              image {
+                url
+                description
+              }
+            }
+          }
         }
         contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
             items {
@@ -92,6 +125,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     size: 10,
   });
   image.blurDataURL = base64;
+  const cvEntries = response.data.cvEntries.items;
   const contactText = response.data.contactSnippet.items[0].content;
 
   const previewImage = {
@@ -110,6 +144,8 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       slug: page.slug,
       image: image,
       about: await markdownToHTML(person.cvText),
+      cvEntries,
+      linkCollection: await markdownToHTML(person.linkCollection),
       contact: await markdownToHTML(contactText),
     },
   };

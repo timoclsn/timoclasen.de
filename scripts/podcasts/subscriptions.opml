@@ -96,5 +96,6 @@
     <outline xmlUrl="https://alphalist.podigee.io/feed/mp3" text="alphalist.CTO Podcast - For CTOs and Technical Leaders" title="alphalist.CTO Podcast - For CTOs and Technical Leaders" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.megaphone.fm/landofthegiants" text="Land of the Giants" title="Land of the Giants" type="rss" version="RSS"/>
     <outline xmlUrl="https://audioboom.com/channels/5044088.rss" text="Tech Can't Save Us" title="Tech Can't Save Us" type="rss" version="RSS"/>
+    <outline xmlUrl="https://hebammensalon.podigee.io/feed/mp3" text="Hebammensalon" title="Hebammensalon" type="rss" version="RSS"/>
   </body>
 </opml>

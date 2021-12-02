@@ -2,7 +2,7 @@ import polyline from '@mapbox/polyline';
 import type { Position } from 'geojson';
 import simplify from 'simplify-geojson';
 
-const mapboxAccessToken = process.env.MAPBOX_ACCESS_TOKEN;
+const mapboxAccessToken = process.env.MAPBOX_ACCESS_TOKEN ?? '';
 
 interface GeoJSON {
   type: string;
