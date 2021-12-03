@@ -1,5 +1,7 @@
+import { Web3Provider } from '@ethersproject/providers';
 import { formatEther } from '@ethersproject/units';
 import { useWeb3React } from '@web3-react/core';
+import { Web3ReactProvider } from '@web3-react/core';
 import { InjectedConnector } from '@web3-react/injected-connector';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -7,6 +9,10 @@ import toast from 'react-hot-toast';
 import { Button } from './Button';
 
 const injected = new InjectedConnector({ supportedChainIds: [1, 5] });
+
+function getLibrary(provider: any): Web3Provider {
+  return new Web3Provider(provider);
+}
 
 function Balance() {
   const { account, library, chainId } = useWeb3React();
@@ -91,6 +97,14 @@ function EnsName() {
 }
 
 export function Web3Widget() {
+  return (
+    <Web3ReactProvider getLibrary={getLibrary}>
+      <Web3WidgetContent />
+    </Web3ReactProvider>
+  );
+}
+
+function Web3WidgetContent() {
   const { activate, deactivate, active, account } = useWeb3React();
 
   const onConnect = async () => {
