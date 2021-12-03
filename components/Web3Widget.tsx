@@ -100,6 +100,7 @@ export function Web3Widget() {
       );
       console.error(error.message);
     });
+    splitbee.track('Wallet Connected');
   };
 
   const onDisconnect = () => {
