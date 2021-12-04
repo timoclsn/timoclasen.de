@@ -63,7 +63,6 @@ export function Web3Widget() {
       );
       console.error(error.message);
     });
-    toast.success('Wallet-Verbindung erfolgreich hergestellt.');
     splitbee.track('Wallet Connected');
   };
 
