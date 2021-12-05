@@ -1,7 +1,7 @@
 {
   "name": "timoclasen.de",
   "description": "My personal website.",
-  "version": "2.19.0",
+  "version": "2.20.0",
   "private": true,
   "author": {
     "name": "Timo Clasen",
@@ -40,9 +40,12 @@
     "@tailwindcss/aspect-ratio": "^0.3.0",
     "@tailwindcss/line-clamp": "^0.2.2",
     "@tailwindcss/typography": "^0.4.1",
+    "@web3-react/core": "^6.1.9",
+    "@web3-react/injected-connector": "^6.0.7",
     "clsx": "^1.1.1",
     "date-fns": "^2.27.0",
     "date-fns-tz": "^1.1.6",
+    "ethers": "^5.5.2",
     "lru-cache": "^6.0.0",
     "match-sorter": "^6.3.1",
     "next": "12.0.2",
