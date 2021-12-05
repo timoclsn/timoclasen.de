@@ -48,7 +48,7 @@
     "ethers": "^5.5.2",
     "lru-cache": "^6.0.0",
     "match-sorter": "^6.3.1",
-    "next": "12.0.2",
+    "next": "12.0.7",
     "plaiceholder": "^2.2.0",
     "playwright-aws-lambda": "^0.7.0",
     "playwright-core": "^1.17.0",
