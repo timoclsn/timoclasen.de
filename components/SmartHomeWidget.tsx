@@ -29,20 +29,6 @@ const fetchObj = {
   },
 };
 
-const lightToast = {
-  minWidth: '300px',
-  borderRadius: '1rem',
-  background: '#FFFFFF',
-  color: '#000000',
-};
-
-const darkToast = {
-  minWidth: '300px',
-  borderRadius: '1rem',
-  background: '#333333',
-  color: '#FFFFFF',
-};
-
 interface Props {
   text: string;
   footnote: string;
@@ -138,7 +124,6 @@ export function SmartHomeWidget({ text, footnote }: Props) {
         },
       },
       {
-        style: darkMode ? darkToast : lightToast,
         success: {
           duration: 5000,
           icon: emoji,

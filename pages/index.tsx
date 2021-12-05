@@ -11,6 +11,7 @@ import { PodcastsWidget } from '../components/PodcastsWidget';
 import { RunningWidget } from '../components/RunningWidget';
 import { SmartHomeWidget } from '../components/SmartHomeWidget';
 import { Teaser } from '../components/Teaser';
+import { Web3Widget } from '../components/Web3Widget';
 import { queryContent } from '../lib/content';
 import type { Podcast } from '../lib/podcasts';
 import { getFavoritePodcasts } from '../lib/podcasts';
@@ -73,6 +74,7 @@ export default function Home(props: Props) {
       />
       <RunningWidget />
       <PodcastsWidget podcasts={props.favoritePodcasts} />
+      <Web3Widget />
       <NowPlaying />
       <ContactWidget text={props.contact} />
     </Layout>
