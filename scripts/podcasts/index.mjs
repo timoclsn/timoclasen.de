@@ -9,6 +9,7 @@ import sharp from 'sharp';
 
 const favs = [
   'Accidental Tech Podcast',
+  'Decoder with Nilay Patel',
   'Design Details',
   'Full Stack Radio',
   'How to Save a Planet',

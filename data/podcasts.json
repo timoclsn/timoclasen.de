@@ -207,13 +207,13 @@
     "image": "cover--1622607936.jpg"
   },
   {
-    "title": "digital kompakt | Business & Digitalisierung von Startup bis Corporate",
+    "title": "digital kompakt | Digitale Strategien für morgen",
     "favorite": false,
     "feed": "https://digitalkompakt.podigee.io/feed/mp3",
-    "description": "Spannende Interviews aus der Digitalwirtschaft, hochwertiges Tiefenwissen von erfolgreichen Geschäftsleuten und echte Einblicke aus der Unternehmerpraxis – dafür steht digital kompakt. Dazu spricht Digitalexperte Joel Kaczmarek auf unterhaltsame Weise mit bekannten Unternehmern, Investoren und Experten.\n",
+    "description": "digital kompakt ist ein Wissensnetzwerk zu Digitalisierung, das Führungskräften dabei hilft, ihre Lernkurve massiv zu verkürzen. Mit uns können sich Entscheider\\* trotz fehlender Zeit mit digitalem Tiefenwissen auseinandersetzen, um ihr Wachstum relevant zu beschleunigen.\n\nDazu bieten wir in unserem Podcast spannende Interviews aus der Digitalwirtschaft: Digitalunternehmer Joel Kaczmarek spricht mit bekannten Unternehmern\\*, Top-Managern\\*, Investoren\\* und Experten\\* über digitalen Geschäftserfolg. Mit seinen Gästen zeichnet er digitale Geschäftsmodelle und Strategien nach, um Best Practises und Erfolgsprinzipien abzuleiten.\n\nSo profitieren unsere Hörer\\* von den Learnings und Tools erfolgreicher Macher\\*. Gleichzeitig schafft digital kompakt eine Bewegung von digitalen Führungskräften, die sich gegenseitig Mut machen, inspirieren und befähigen, die Potenziale der Digitalisierung schneller und effektiver zu erschließen.\n\nMit nur einem Klick auf „Abonnieren“ begleitest du uns also als Entdecker\\*, Navigator\\* und Wegbereiter\\* der digitalen Welt. Wir freuen uns auf dich! 😊\n\n\\#Digitalisierung #Change #Acceleration #Networking #BestSelf #Leadership\n\n☝🏻 One more thing: Wir haben den Anspruch, dass eine Podcast-Episode so viel Wissen wie ein halbes Semester Business Studium enthalten soll. Wenn du Ideen hast, wie uns das noch besser gelingt, schreib uns jederzeit an redaktion \\[at] digitalkompakt.de\n\n\\*Wir bemühen uns um die Verwendung einer geschlechtsneutralen Sprache, haben um der besseren Lesbarkeit willen hier aber auf die gegenderten Schreibweisen verzichtet. Natürlich gelten aber sämtliche Personenbezeichnungen für alle Geschlechter! 💪🏻\n",
     "website": "https://www.digitalkompakt.de/",
     "hosts": "Joel Kaczmarek",
-    "image": "cover-1122955532.jpg"
+    "image": "cover--1895943346.jpg"
   },
   {
     "title": "Digitale Leute",
@@ -245,9 +245,9 @@
   {
     "title": "Exponent",
     "favorite": false,
-    "feed": "http://exponent.fm/feed/",
+    "feed": "https://exponent.fm/feed/",
     "description": "A podcast about tech and society, hosted by Ben Thompson and James Allworth\n",
-    "website": "http://exponent.fm",
+    "website": "https://exponent.fm",
     "hosts": "Ben Thompson / James Allworth",
     "image": "cover--1861525809.jpg"
   },
@@ -714,7 +714,7 @@
     "title": "The Talk Show With John Gruber",
     "favorite": false,
     "feed": "https://daringfireball.net/thetalkshow/rss",
-    "description": "The director’s commentary track for Daring Fireball.\n",
+    "description": "The director’s commentary track for Daring Fireball. Long digressions on Apple, technology, design, movies, and more.\n",
     "website": "https://daringfireball.net/thetalkshow",
     "hosts": "Daring Fireball / John Gruber",
     "image": "cover-2099220318.jpg"

@@ -4,7 +4,6 @@
     <title>Castro Podcast Feeds</title>
   </head>
   <body>
-    <outline xmlUrl="http://exponent.fm/feed/" text="Exponent" title="Exponent" type="rss" version="RSS"/>
     <outline xmlUrl="https://www.relay.fm/connected/feed" text="Connected" title="Connected" type="rss" version="RSS"/>
     <outline xmlUrl="http://feeds.feedburner.com/soundcloud/scvz" text="The Smart Home Show" title="The Smart Home Show" type="rss" version="RSS"/>
     <outline xmlUrl="https://www.relay.fm/presentable/feed" text="Presentable" title="Presentable" type="rss" version="RSS"/>
@@ -97,5 +96,6 @@
     <outline xmlUrl="https://feeds.megaphone.fm/landofthegiants" text="Land of the Giants" title="Land of the Giants" type="rss" version="RSS"/>
     <outline xmlUrl="https://audioboom.com/channels/5044088.rss" text="Tech Can't Save Us" title="Tech Can't Save Us" type="rss" version="RSS"/>
     <outline xmlUrl="https://hebammensalon.podigee.io/feed/mp3" text="Hebammensalon" title="Hebammensalon" type="rss" version="RSS"/>
+    <outline xmlUrl="https://exponent.fm/feed/" text="Exponent" title="Exponent" type="rss" version="RSS"/>
   </body>
 </opml>
