@@ -29,9 +29,9 @@ export function PodcastsWidget({ podcasts }: Props) {
           </Link>
         </div>
       </div>
-      <ul className="flex justify-between space-x-4 overflow-x-auto scroll-snap-x">
+      <ul className="flex justify-between space-x-4 overflow-x-auto snap-x">
         {podcasts.map((podcast) => (
-          <li key={podcast.title} className="scroll-snap-center">
+          <li key={podcast.title} className="snap-center">
             <a
               href={podcast.website}
               target="_blank"

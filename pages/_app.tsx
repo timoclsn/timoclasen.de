@@ -1,6 +1,5 @@
 import '../styles/globals.css';
 
-import { IdProvider } from '@radix-ui/react-id';
 import { Web3ReactProvider } from '@web3-react/core';
 import { ethers } from 'ethers';
 import type { AppProps } from 'next/app';
@@ -17,18 +16,16 @@ const getLibrary = (provider: any) =>
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Web3ReactProvider getLibrary={getLibrary}>
-      <IdProvider>
-        <ThemeProvider>
-          <SWRConfig
-            value={{
-              fetcher: fetcher,
-            }}
-          >
-            <Component {...pageProps} />
-            <ToastProvider />
-          </SWRConfig>
-        </ThemeProvider>
-      </IdProvider>
+      <ThemeProvider>
+        <SWRConfig
+          value={{
+            fetcher: fetcher,
+          }}
+        >
+          <Component {...pageProps} />
+          <ToastProvider />
+        </SWRConfig>
+      </ThemeProvider>
     </Web3ReactProvider>
   );
 }
