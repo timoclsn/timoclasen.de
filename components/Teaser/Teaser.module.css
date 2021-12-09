@@ -7,9 +7,9 @@
 }
 
 .textTeaser p a {
-  @apply text-highlight dark:text-highlight-dark underline-offset-md lg:underline-offset-xl;
+  @apply text-highlight dark:text-highlight-dark underline-offset-4 lg:underline-offset-8;
 }
 
 .textTeaser p a:hover {
-  @apply underline-offset-xl lg:underline-offset-2xl;
+  @apply underline-offset-8 lg:underline-offset-[12px];
 }

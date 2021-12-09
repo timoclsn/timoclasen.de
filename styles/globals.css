@@ -22,15 +22,15 @@
 
   a {
     transition: text-underline-offset 300ms;
-    @apply underline-offset-md;
+    @apply underline-offset-4;
   }
 
   a:hover {
-    @apply underline-offset-lg;
+    @apply underline-offset-[6px];
   }
 
   p a {
-    text-decoration: underline;
+    @apply underline;
   }
 
   p a:hover,
@@ -39,7 +39,7 @@
   }
 
   address {
-    font-style: normal;
+    @apply font-normal;
   }
 }
 
@@ -47,29 +47,5 @@
   .icon-md svg {
     width: 20px;
     height: 20px;
-  }
-
-  .underline-offset-md {
-    text-underline-offset: 0.25rem;
-  }
-
-  .underline-offset-lg {
-    text-underline-offset: 0.35rem;
-  }
-
-  .underline-offset-xl {
-    text-underline-offset: 0.5rem;
-  }
-
-  .underline-offset-2xl {
-    text-underline-offset: 0.75rem;
-  }
-
-  .scroll-snap-x {
-    scroll-snap-type: x;
-  }
-
-  .scroll-snap-center {
-    scroll-snap-align: center;
   }
 }
