@@ -44,7 +44,6 @@ export function LCDWidget({ bgImage }: Props) {
             href="https://lifecentereddesign.net"
             target="_blank"
             rel="noopener"
-            animate
           >
             <ArrowRight />
             Zum Projekt
