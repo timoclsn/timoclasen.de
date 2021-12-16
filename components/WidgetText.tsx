@@ -25,7 +25,7 @@ export function WidgetText({ title, text, linkText, href }: Props) {
       {href && (
         <div className="flex justify-end mt-4 -mb-6 xl:-mb-12">
           <Link href={href} passHref>
-            <Button as="a" variant="link" animate>
+            <Button as="a" variant="link">
               <ArrowRight />
               {linkText}
             </Button>
