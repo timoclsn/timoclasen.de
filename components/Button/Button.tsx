@@ -4,15 +4,18 @@ import { Children, forwardRef } from 'react';
 
 import buttonStyles from './Button.module.css';
 
-const baseStyles = [
+const baseStylesWrapper = [
+  'cursor-pointer',
+  'disabled:opacity-50',
+  'focus:outline-none',
+];
+
+const baseStylesContent = [
   'inline-flex',
   'items-center',
   'justify-center',
   'icon-md',
   'space-x-2',
-  'cursor-pointer',
-  'disabled:opacity-50',
-  'focus:outline-none',
 ];
 
 const variantStyles = {
@@ -72,25 +75,31 @@ export const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, Props>(
     },
     ref
   ) {
-    const styles = clsx(
-      baseStyles,
+    const wrapperStyles = clsx(
+      baseStylesWrapper,
+      fullWidth && 'w-full',
+      variant === 'solid' && buttonStyles.solidAnimation,
+      variant === 'link' && buttonStyles.linkAnimation
+    );
+    const contentStyles = clsx(
+      baseStylesContent,
       variantStyles[variant],
       sizeStyles[size],
       fullWidth && 'w-full',
-      variant === 'solid' && buttonStyles.solidAnimation,
-      variant === 'link' && buttonStyles.linkAnimation,
       className
     );
     return (
       <Element
         type={Element === 'button' ? type : undefined}
-        className={styles}
         ref={ref}
+        className={wrapperStyles}
         {...props}
       >
-        {Children.map(children, (child, index) => (
-          <span key={index}>{child}</span>
-        ))}
+        <span className={contentStyles}>
+          {Children.map(children, (child, index) => (
+            <span key={index}>{child}</span>
+          ))}
+        </span>
       </Element>
     );
   }

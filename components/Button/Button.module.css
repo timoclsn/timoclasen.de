@@ -1,14 +1,30 @@
-.solidAnimation {
-  transition: transform 200ms ease, box-shadow 200ms ease;
+.solidAnimation > span {
+  transition: transform 200ms ease;
 }
 
-.solidAnimation:hover {
-  transform: translateY(-2px) scale(1.02);
+.solidAnimation > span::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
   --shadow-color: 0deg 0% 0%;
   box-shadow: 0.3px 0.5px 0.7px hsl(var(--shadow-color) / 0.11),
     0.8px 1.6px 2px -0.8px hsl(var(--shadow-color) / 0.11),
     2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.11),
     5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.11);
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.solidAnimation:hover > span {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.solidAnimation:hover > span::after {
+  opacity: 1;
 }
 
 .linkAnimation svg {
