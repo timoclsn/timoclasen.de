@@ -236,6 +236,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                   size="small"
                   onClick={() => controlLight('red', '🔥')}
                   disabled={disableButtons}
+                  fullWidth
                 >
                   🔥 Rot
                 </Button>
@@ -244,6 +245,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                   size="small"
                   onClick={() => controlLight('green', '🌿')}
                   disabled={disableButtons}
+                  fullWidth
                 >
                   🌿 Grün
                 </Button>
@@ -252,6 +254,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                   size="small"
                   onClick={() => controlLight('blue', '🌊')}
                   disabled={disableButtons}
+                  fullWidth
                 >
                   🌊 Blau
                 </Button>
