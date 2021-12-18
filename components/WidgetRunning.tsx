@@ -108,10 +108,10 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
       if (typeof window !== 'undefined' && runningProgress >= 100 && visible) {
         emojisplosion({
           emojis: ['🏆', '🏃‍♂️', '🏃', '🏃‍♀️'],
-          emojiCount: runningProgress,
+          emojiCount: 30,
           position: {
             x: window.innerWidth / 2,
-            y: window.innerHeight / 2,
+            y: window.innerHeight / 3,
           },
         });
       }
