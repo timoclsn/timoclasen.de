@@ -4,26 +4,22 @@ import { Children, forwardRef } from 'react';
 
 import buttonStyles from './Button.module.css';
 
-const baseStylesWrapper = [
-  'cursor-pointer',
-  'disabled:opacity-50',
-  'focus:outline-none',
-];
-
-const baseStylesContent = [
+const baseStyles = [
   'inline-flex',
   'items-center',
   'justify-center',
   'icon-md',
   'space-x-2',
+  'cursor-pointer',
+  'group-disabled:opacity-50',
 ];
 
 const variantStyles = {
   solid:
-    'rounded-full text-light bg-highlight dark:bg-highlight-dark focus:ring-2 focus:ring-inset focus:ring-dark dark:focus:ring-light',
+    'rounded-full text-light bg-highlight dark:bg-highlight-dark group-focus:ring-2 group-focus:ring-inset group-focus:ring-dark dark:group-focus:ring-light',
   ghost:
-    'rounded-full ring-2 ring-inset ring-dark dark:ring-light hover:bg-dark dark:hover:bg-light hover:bg-opacity-20 dark:hover:bg-opacity-20 focus:ring-highlight dark:focus:ring-highlight-dark',
-  link: 'hover:opacity-80 focus:underline !p-0',
+    'rounded-full ring-2 ring-inset ring-dark dark:ring-light group-hover:bg-dark dark:group-hover:bg-light group-hover:bg-opacity-20 dark:group-hover:bg-opacity-20 group-focus:ring-highlight dark:group-focus:ring-highlight-dark',
+  link: 'group-hover:opacity-80 group-focus:underline !p-0',
 };
 
 const sizeStyles = {
@@ -76,13 +72,14 @@ export const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, Props>(
     ref
   ) {
     const wrapperStyles = clsx(
-      baseStylesWrapper,
+      'group',
+      'focus:outline-none',
       fullWidth && 'w-full',
       variant === 'solid' && buttonStyles.solidAnimation,
       variant === 'link' && buttonStyles.linkAnimation
     );
     const contentStyles = clsx(
-      baseStylesContent,
+      baseStyles,
       variantStyles[variant],
       sizeStyles[size],
       fullWidth && 'w-full',

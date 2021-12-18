@@ -1,3 +1,7 @@
+.solidAnimation {
+  position: relative;
+}
+
 .solidAnimation > span {
   transition: transform 200ms ease;
 }
