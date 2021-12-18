@@ -1,4 +1,4 @@
-import { emojisplosion } from 'emojisplosion';
+import JSConfetti from 'js-confetti';
 import { useEffect, useRef } from 'react';
 import {
   ArrowRight,
@@ -13,6 +13,9 @@ import {
 import type { LastRun, ThisYear } from '../pages/api/running';
 import { RunningElement } from './RunningElement';
 import { useOnScreen } from './useOnScreen';
+
+const jsConfetti = typeof window !== 'undefined' ? new JSConfetti() : null;
+
 interface Props {
   thisYear?: ThisYear;
   lastRun?: LastRun;
@@ -105,14 +108,10 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (typeof window !== 'undefined' && runningProgress >= 100 && visible) {
-        emojisplosion({
+      if (jsConfetti && runningProgress >= 100 && visible) {
+        jsConfetti.addConfetti({
           emojis: ['🏆', '🏃‍♂️', '🏃', '🏃‍♀️'],
-          emojiCount: 30,
-          position: {
-            x: window.innerWidth / 2,
-            y: window.innerHeight / 3,
-          },
+          confettiNumber: runningProgress,
         });
       }
     }, 4000);
