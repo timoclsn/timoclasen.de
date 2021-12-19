@@ -107,16 +107,22 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
   const visible = useOnScreen(ref, '0px');
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      if (jsConfetti && runningProgress >= 100 && visible) {
-        jsConfetti.addConfetti({
-          emojis: ['🏆', '🏃‍♂️', '🏃', '🏃‍♀️'],
-          confettiNumber: runningProgress,
-        });
-      }
-    }, 4000);
+    let timer: ReturnType<typeof setTimeout> | undefined;
 
-    return () => clearTimeout(timer);
+    if (visible) {
+      timer = setTimeout(() => {
+        if (jsConfetti && runningProgress >= 100 && visible) {
+          jsConfetti.addConfetti({
+            emojis: ['🏆', '🏃‍♂️', '🏃', '🏃‍♀️'],
+            confettiNumber: runningProgress,
+          });
+        }
+      }, 3000);
+    } else {
+      timer && clearTimeout(timer);
+    }
+
+    return () => timer && clearTimeout(timer);
   }, [visible, runningProgress]);
 
   return (

@@ -11,10 +11,7 @@ export function useOnScreen<T extends Element>(
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(entry.isIntersecting);
-          currentElement && observer.unobserve(currentElement);
-        }
+        setIsVisible(entry.isIntersecting);
       },
       {
         rootMargin,
