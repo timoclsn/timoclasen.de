@@ -35,5 +35,11 @@ export function CountUpAnimation({ children, duration = 2000, play }: Props) {
     return () => counter && clearInterval(counter);
   }, [countTo, duration, play]);
 
-  return <span>{play ? Math.floor(count) : countTo}</span>;
+  return (
+    <>
+      {play
+        ? Math.floor(count).toString().padStart(countTo.toString().length, '0')
+        : countTo}
+    </>
+  );
 }

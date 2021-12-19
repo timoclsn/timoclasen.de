@@ -2,7 +2,7 @@ import { RefObject, useEffect, useState } from 'react';
 
 export function useOnScreen<T extends Element>(
   ref: RefObject<T>,
-  rootMargin: string
+  rootMargin = 0
 ) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -14,7 +14,7 @@ export function useOnScreen<T extends Element>(
         setIsVisible(entry.isIntersecting);
       },
       {
-        rootMargin,
+        rootMargin: `${rootMargin}px`,
       }
     );
 

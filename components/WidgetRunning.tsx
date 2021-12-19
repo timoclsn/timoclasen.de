@@ -104,14 +104,14 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
 
   // Emoji explosion if running progress is over 100%
   const ref = useRef<HTMLDivElement>(null);
-  const visible = useOnScreen(ref, '0px');
+  const visible = useOnScreen(ref);
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | undefined;
 
     if (visible) {
       timer = setTimeout(() => {
-        if (jsConfetti && runningProgress >= 100 && visible) {
+        if (jsConfetti && runningProgress >= 100) {
           jsConfetti.addConfetti({
             emojis: ['🏆', '🏃‍♂️', '🏃', '🏃‍♀️'],
             confettiNumber: runningProgress,

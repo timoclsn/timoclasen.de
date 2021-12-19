@@ -27,7 +27,7 @@ export function RunningElement({
   animateLabelNumber,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const visible = useOnScreen(ref, '0px');
+  const visible = useOnScreen(ref);
   return (
     <div className="flex items-center space-x-4" ref={ref}>
       <div className="leading-none">
