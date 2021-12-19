@@ -1,3 +1,5 @@
+import JSConfetti from 'js-confetti';
+import { useEffect, useRef } from 'react';
 import {
   ArrowRight,
   Calendar,
@@ -10,6 +12,10 @@ import {
 
 import type { LastRun, ThisYear } from '../pages/api/running';
 import { RunningElement } from './RunningElement';
+import { useOnScreen } from './useOnScreen';
+
+const jsConfetti = typeof window !== 'undefined' ? new JSConfetti() : null;
+
 interface Props {
   thisYear?: ThisYear;
   lastRun?: LastRun;
@@ -96,8 +102,31 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
   const yearProgress = getYearProgress();
   const yearTrend = runningProgress >= yearProgress ? '↑' : '↓';
 
+  // Emoji explosion if running progress is over 100%
+  const ref = useRef<HTMLDivElement>(null);
+  const visible = useOnScreen(ref);
+
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | undefined;
+
+    if (visible) {
+      timer = setTimeout(() => {
+        if (jsConfetti && runningProgress >= 100) {
+          jsConfetti.addConfetti({
+            emojis: ['🏆', '🏃‍♂️', '🏃', '🏃‍♀️'],
+            confettiNumber: runningProgress,
+          });
+        }
+      }, 3000);
+    } else {
+      timer && clearTimeout(timer);
+    }
+
+    return () => timer && clearTimeout(timer);
+  }, [visible, runningProgress]);
+
   return (
-    <div className="px-6 py-12 xl:px-12 xl:py-20">
+    <div className="px-6 py-12 xl:px-12 xl:py-20" ref={ref}>
       <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">Laufen</h2>
       <ul>
         <li>
@@ -112,6 +141,7 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
                 },
               ]
             }
+            animateLabelNumber
           />
         </li>
       </ul>
