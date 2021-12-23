@@ -2,7 +2,7 @@ import { useWeb3React } from '@web3-react/core';
 import { InjectedConnector } from '@web3-react/injected-connector';
 import { ethers } from 'ethers';
 import { useEffect, useState } from 'react';
-import { Copy } from 'react-feather';
+import { Copy, XCircle } from 'react-feather';
 import toast from 'react-hot-toast';
 
 import { Button } from './Button';
@@ -180,19 +180,21 @@ export function Web3Widget() {
           {active ? (
             <div className="flex flex-col space-y-4">
               <Button variant="ghost" size="small" onClick={onDisconnect}>
-                ❌ Wallet trennen
+                <XCircle />
+                Wallet trennen
               </Button>
               <Button
                 variant="solid"
                 size="small"
-                onClick={() => sendETH(0.0005)}
+                onClick={() => sendETH(0.001)}
+                title="0.001 ETH senden"
               >
-                💸 Sende mir 0,0005 ETH
+                ☕️ Buy me a coffee
               </Button>
             </div>
           ) : (
             <Button variant="ghost" size="small" onClick={onConnect}>
-              🤑 Wallet verbinden
+              Wallet verbinden
             </Button>
           )}
         </div>

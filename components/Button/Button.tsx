@@ -32,6 +32,7 @@ interface CommmonProps {
   variant?: keyof typeof variantStyles;
   size?: keyof typeof sizeStyles;
   fullWidth?: boolean;
+  title?: string;
   className?: string;
 }
 
