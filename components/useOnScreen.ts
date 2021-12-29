@@ -2,7 +2,8 @@ import { RefObject, useEffect, useState } from 'react';
 
 export function useOnScreen<T extends Element>(
   ref: RefObject<T>,
-  rootMargin = 0
+  rootMargin = 0,
+  fireOnce = false
 ) {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -11,7 +12,14 @@ export function useOnScreen<T extends Element>(
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setIsVisible(entry.isIntersecting);
+        if (fireOnce) {
+          if (entry.isIntersecting) {
+            setIsVisible(entry.isIntersecting);
+            currentElement && observer.unobserve(currentElement);
+          }
+        } else {
+          setIsVisible(entry.isIntersecting);
+        }
       },
       {
         rootMargin: `${rootMargin}px`,
@@ -23,7 +31,7 @@ export function useOnScreen<T extends Element>(
     return () => {
       currentElement && observer.unobserve(currentElement);
     };
-  }, [ref, rootMargin]);
+  }, [ref, rootMargin, fireOnce]);
 
   return isVisible;
 }
