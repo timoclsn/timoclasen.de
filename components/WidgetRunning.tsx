@@ -22,6 +22,7 @@ interface Props {
 }
 
 export function WidgetRunning({ thisYear, lastRun }: Props) {
+  const yearlyRunningGoal = 1200; // 1000 km
   const distanceThreshold = 10000; // 10km in m
   const speedThreshold = 3.03; // ca. 5:30 /km in m/s
   const timeThreshold = 3600; // 1h in s
@@ -97,7 +98,7 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
   ];
 
   const runningProgress = thisYear
-    ? Math.round(thisYear.distance / (1000 / 100))
+    ? Math.round(thisYear.distance / (yearlyRunningGoal / 100))
     : 0;
   const yearProgress = getYearProgress();
   const yearTrend = runningProgress >= yearProgress ? '↑' : '↓';
@@ -132,7 +133,10 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
         <li>
           <RunningElement
             Icon={TrendingUp}
-            text={thisYear && `${thisYear.distance} von 1000 km pro Jahr`}
+            text={
+              thisYear &&
+              `${thisYear.distance} von ${yearlyRunningGoal} km pro Jahr`
+            }
             labels={
               thisYear && [
                 {
@@ -141,7 +145,6 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
                 },
               ]
             }
-            animateLabelNumber
           />
         </li>
       </ul>
