@@ -1,16 +1,14 @@
 import clsx from 'clsx';
-import { useEffect, useState } from 'react';
 import { Moon, Sun } from 'react-feather';
 
 import { useTheme } from '../ThemeContext';
+import { useIsMounted } from '../useIsMounted';
 import styles from './SwitchMode.module.css';
 
 export function SwitchMode() {
-  const [mounted, setMounted] = useState(false);
   const { darkMode, setDarkMode } = useTheme();
 
-  // When mounted on client, now we can show the UI
-  useEffect(() => setMounted(true), []);
+  const isMounted = useIsMounted();
 
   function handleThemeChange() {
     setDarkMode?.(!darkMode);
@@ -30,7 +28,7 @@ export function SwitchMode() {
       onClick={handleThemeChange}
       title={`Farbschema zu ${darkMode ? 'hell' : 'dunkel'} welchseln`}
     >
-      {mounted && (
+      {isMounted && (
         <>
           <Sun size={16} data-hide={!darkMode} className={styles.sun} />
           <Moon size={16} data-hide={darkMode} className={styles.moon} />

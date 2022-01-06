@@ -10,8 +10,10 @@ import {
 } from 'wagmi';
 
 import { Button } from './Button';
+import { useIsMounted } from './useIsMounted';
 
 export function Web3Widget() {
+  const isMounted = useIsMounted();
   const [{ data: connectData }, connect] = useConnect();
   const [{ data: accountData }, disconnect] = useAccount({
     fetchEns: true,
@@ -22,7 +24,7 @@ export function Web3Widget() {
   const [{ data: feeData, loading: feeLoading }] = useFeeData({
     formatUnits: 'ether',
   });
-  const [, sendTransaction] = useTransaction();
+  const [{ loading: transactionLoading }, sendTransaction] = useTransaction();
 
   const sendETH = async () => {
     const { error } = await sendTransaction({
@@ -33,7 +35,7 @@ export function Web3Widget() {
     });
 
     if (error) {
-      toast.error('Leider nicht genügend ETH im Wallet.');
+      toast.error('Es ist ein Fehler aufgetreten.');
     }
   };
 
@@ -79,7 +81,7 @@ export function Web3Widget() {
                   copyAddress(
                     accountData.ens?.name
                       ? accountData.ens?.name
-                      : shortenedAddress(accountData.address)
+                      : accountData.address
                   )
                 }
               >
@@ -92,16 +94,16 @@ export function Web3Widget() {
               title={`${balanceData?.formatted} ${balanceData?.symbol}`}
             >
               <span className="">Kontostand: </span>
-              {balanceLoading
-                ? 'Lädt…'
-                : `${balanceData?.formatted} ${balanceData?.symbol}`}
+              {!balanceLoading
+                ? `${balanceData?.formatted} ${balanceData?.symbol}`
+                : 'Lädt…'}
             </p>
             <p
               className="truncate text-md md:text-lg opacity-60 lg:text-xl"
               title={`${feeData?.formatted?.gasPrice} ETH`}
             >
               <span className="">Gas Preis: </span>
-              {feeLoading ? 'Lädt…' : `${feeData?.formatted?.gasPrice} ETH`}
+              {!feeLoading ? `${feeData?.formatted?.gasPrice} ETH` : 'Lädt…'}
             </p>
           </>
         ) : (
@@ -137,6 +139,7 @@ export function Web3Widget() {
                   variant="solid"
                   size="small"
                   onClick={() => sendETH()}
+                  disabled={transactionLoading}
                   title="0.001 ETH senden"
                 >
                   ☕️ Buy me a coffee
@@ -147,12 +150,22 @@ export function Web3Widget() {
                 <Button
                   variant="ghost"
                   size="small"
-                  disabled={!connector.ready}
+                  disabled={isMounted ? !connector.ready : false}
                   key={connector.id}
                   onClick={() => connect(connector)}
                 >
-                  {`${connector.name}${
-                    !connector.ready ? ' (nicht unterstützt)' : ''
+                  {`${
+                    isMounted
+                      ? connector.name
+                      : connector.id === 'injected'
+                      ? connector.id
+                      : connector.name
+                  }${
+                    isMounted
+                      ? !connector.ready
+                        ? ' (nicht unterstützt)'
+                        : ''
+                      : ''
                   }`}
                 </Button>
               ))
