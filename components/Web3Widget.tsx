@@ -154,19 +154,13 @@ export function Web3Widget() {
                   key={connector.id}
                   onClick={() => connect(connector)}
                 >
-                  {`${
-                    isMounted
-                      ? connector.name
-                      : connector.id === 'injected'
-                      ? connector.id
+                  {isMounted
+                    ? connector.name === 'Injected'
+                      ? 'Injected (z.B. MetaMask)'
                       : connector.name
-                  }${
-                    isMounted
-                      ? !connector.ready
-                        ? ' (nicht unterstützt)'
-                        : ''
-                      : ''
-                  }`}
+                    : connector.id === 'injected'
+                    ? connector.id
+                    : connector.name}
                 </Button>
               ))
             )}
