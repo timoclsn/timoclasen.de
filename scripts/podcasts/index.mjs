@@ -1,4 +1,4 @@
-import parser from 'fast-xml-parser';
+import { XMLParser } from 'fast-xml-parser';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'fs';
 import he from 'he';
 import fetch from 'node-fetch';
@@ -6,6 +6,12 @@ import prettier from 'prettier';
 import { remark } from 'remark';
 import strip from 'remark-strip-html';
 import sharp from 'sharp';
+
+const parser = new XMLParser({
+  ignoreAttributes: false,
+  attributeNamePrefix: '',
+  attributesGroupName: false,
+});
 
 const favs = [
   'Accidental Tech Podcast',
@@ -30,19 +36,9 @@ mkdirSync(coversDir);
 
 (async () => {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js');
-  const subsXML = readFileSync(
-    './scripts/podcasts/subscriptions.opml'
-  ).toString();
+  const subsXML = readFileSync('./scripts/podcasts/subscriptions.opml');
 
-  const subsJSObj = parser.parse(
-    subsXML,
-    {
-      attributeNamePrefix: '',
-      attrNodeName: false,
-      ignoreAttributes: false,
-    },
-    true
-  ).opml.body.outline;
+  const subsJSObj = parser.parse(subsXML).opml.body.outline;
 
   const podcasts = await Promise.all(
     subsJSObj.map(async (podcast) => {
@@ -52,15 +48,7 @@ mkdirSync(coversDir);
       if (response.ok) {
         const podcastXML = await response.text();
         try {
-          const podcastJSObj = parser.parse(
-            podcastXML,
-            {
-              attributeNamePrefix: '',
-              attrNodeName: false,
-              ignoreAttributes: false,
-            },
-            true
-          ).rss.channel;
+          const podcastJSObj = parser.parse(podcastXML).rss.channel;
 
           podcastObj.title = he.decode(podcastJSObj.title);
           podcastObj.favorite = favs.includes(podcastObj.title);

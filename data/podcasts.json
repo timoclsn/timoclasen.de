@@ -32,7 +32,7 @@
     "feed": "https://alphalist.podigee.io/feed/mp3",
     "description": "This podcast features interviews of CTOs and other technical leadership figures and topics range from technology to management.\\\nGuests from leading tech companies share their best practices and knowledge.\nThe goal is to support other CTOs on their journey through tech and engineering, inspire and allow a sneak-peek into other successful companies to understand how they think and act. Get awesome insights into the world‘s top tech companies, personalities with this podcast brought to you by Tobias Schlottke.\n",
     "website": "https://alphalist.com",
-    "hosts": "Tobias Schlottke - OMR",
+    "hosts": "Tobias Schlottke - alphalist CTO Podcast",
     "image": "cover-589103181.jpg"
   },
   {
@@ -48,7 +48,7 @@
     "title": "Automators",
     "favorite": false,
     "feed": "https://www.relay.fm/automators/feed",
-    "description": "Automation makes your life easier and everyone can do it. We tell you how.  Hosted by David  Sparks and Rosemary  Orchard.\n",
+    "description": "Automation makes your life easier and everyone can do it. We tell you how.  Hosted by David Sparks and Rosemary Orchard.\n",
     "website": "https://www.relay.fm/automators",
     "hosts": "Relay FM",
     "image": "cover--1957296097.jpg"
@@ -129,7 +129,7 @@
     "title": "Connected",
     "favorite": false,
     "feed": "https://www.relay.fm/connected/feed",
-    "description": "Connected is a weekly panel discussion on Apple and the impact of technology on our lives. With each co-host having a unique background — and accent — Connected provides a perspective that no other show can. Hosted by Federico  Viticci, Stephen  Hackett, and Myke  Hurley.\n",
+    "description": "Connected is a weekly panel discussion on Apple and the impact of technology on our lives. With each co-host having a unique background — and accent — Connected provides a perspective that no other show can. Hosted by Federico Viticci, Stephen Hackett, and Myke Hurley.\n",
     "website": "https://www.relay.fm/connected",
     "hosts": "Relay FM",
     "image": "cover-1424757481.jpg"
@@ -202,7 +202,7 @@
     "favorite": false,
     "feed": "https://feeds.buzzsprout.com/1806381.rss",
     "description": "Developer Experience is a podcast brought to you by Algolia. We chat with guests who build products for developers about their developer experience strategy, what it means for them and why it’s important.\n",
-    "website": "http://",
+    "website": "https://developerexperience.buzzsprout.com",
     "hosts": "Algolia",
     "image": "cover--1622607936.jpg"
   },
@@ -336,7 +336,7 @@
     "title": "Inside Shopify UX",
     "favorite": false,
     "feed": "https://anchor.fm/s/149e69d4/podcast/rss",
-    "description": "Shopify is building the future of commerce, but who are the people building it? Inside Shopify UX introduces some of the leaders of our UX team and asks them to explain the big commerce problem their team is trying to solve.\n\nListen to learn more about the meaty UX challenges our team is solving and how we're making it easier for independent businesses to thrive.\n",
+    "description": "Shopify is building the future of commerce, but who are the people building it? Inside Shopify UX introduces some of the leaders and crafters on our UX team and asks them to explain the big commerce problem their team is trying to solve, and tackle some of the industry's challenges and questions.\n\nListen to learn more about the meaty UX challenges our team is solving and how we're making it easier for independent businesses to thrive.\n",
     "website": "https://ux.shopify.com",
     "hosts": "Lola Oyelayo-Pearson",
     "image": "cover-394007393.jpg"
@@ -408,7 +408,7 @@
     "title": "Mac Power Users",
     "favorite": false,
     "feed": "https://www.relay.fm/mpu/feed",
-    "description": "Learn about getting the most from your Apple technology with focused topics and workflow guests. Creating Mac Power Users, one geek at a time since 2009. Hosted by David  Sparks and Stephen  Hackett.\n",
+    "description": "Learn about getting the most from your Apple technology with focused topics and workflow guests. Creating Mac Power Users, one geek at a time since 2009. Hosted by David Sparks and Stephen Hackett.\n",
     "website": "https://www.relay.fm/mpu",
     "hosts": "Relay FM",
     "image": "cover--203172484.jpg"
@@ -417,7 +417,7 @@
     "title": "Material",
     "favorite": false,
     "feed": "https://www.relay.fm/material/feed",
-    "description": "Material is a weekly discussion about the Google and Android universe. Your intrepid hosts try to answer the question, “What holds up the digital world?” The answer, so far, is that it’s Google all the way down. Hosted by Andy  Ihnatko and Florence  Ion.\n",
+    "description": "Material is a weekly discussion about the Google and Android universe. Your intrepid hosts try to answer the question, “What holds up the digital world?” The answer, so far, is that it’s Google all the way down. Hosted by Andy Ihnatko and Florence Ion.\n",
     "website": "https://www.relay.fm/material",
     "hosts": "Relay FM",
     "image": "cover-363710791.jpg"
@@ -432,13 +432,13 @@
     "image": "cover--385072737.jpg"
   },
   {
-    "title": "Mit Schirm, Charme und Sensoren . . . dein IOT Podcast",
+    "title": "Mit Schirm, Charme und Sensoren . . . dein IoT Podcast",
     "favorite": false,
     "feed": "https://schirm-charme-sensoren.libsyn.com/rss",
     "description": "In diesem Podcast geht es um das Internet der Dinge, Daten und Algorithmen und vor allem um deren praktische Anwendung.\n\nWir liefern dir konkrete Praxisbeispiele, Erfolgsgeschichten sowie kaufmännische und technische Hintergründe. Alle zwei Wochen findest du bei uns neue Geschichten rund um das Internet der Dinge.\nWir geben einen Einblick in industrielle IoT-Lösungen, die sich heute auf die Unternehmen auswirken. Unser Ziel ist es, einen Einblick in die Projektierung und Implementierung von IoT-Systemen zu geben, von neuen Geschäftsmodellen über die Auswahl der Technologiearchitektur bis hin zu Datenbesitz und Sicherheit.\n",
     "website": "http://schirm-charme-sensoren.libsyn.com/website",
-    "hosts": "Elisabeth Schloten und Robert Jänisch",
-    "image": "cover-1893267276.jpg"
+    "hosts": "Elisabeth Schloten",
+    "image": "cover--100197588.jpg"
   },
   {
     "title": "Modern Web",
@@ -507,7 +507,7 @@
     "title": "Presentable",
     "favorite": false,
     "feed": "https://www.relay.fm/presentable/feed",
-    "description": "The Presentable Podcast focuses on how we design and build the products that are shaping our digital future. We'll track the tools, trends, and methods being used by teams from the biggest companies and latest startups. In each episode, Jeff will bring over two decades of experience as a designer, developer, entrepreneur, and investor as he chats with guests about how design is changing the world. Hosted by Jeff  Veen.\n",
+    "description": "The Presentable Podcast focuses on how we design and build the products that are shaping our digital future. We'll track the tools, trends, and methods being used by teams from the biggest companies and latest startups. In each episode, Jeff will bring over two decades of experience as a designer, developer, entrepreneur, and investor as he chats with guests about how design is changing the world. Hosted by Jeff Veen.\n",
     "website": "https://www.relay.fm/presentable",
     "hosts": "Relay FM",
     "image": "cover-443408501.jpg"
@@ -669,7 +669,7 @@
     "title": "The Incomparable",
     "favorite": false,
     "feed": "https://feeds.theincomparable.com/theincomparable",
-    "description": "The Incomparable is a weekly dive into geeky media we love, including movies, books, TV, comics, and more, featuring a rotating panel of guests and hosted by Jason Snell.\n",
+    "description": "The Incomparable is all about geeky media we love, including movies, books, TV, and more, featuring a rotating panel of guests and hosted by Jason Snell.\n",
     "website": "https://www.theincomparable.com/theincomparable/",
     "hosts": "Jason Snell",
     "image": "cover-1802851150.jpg"
@@ -768,7 +768,7 @@
     "title": "TOMorrow - der Business & Style Podcast",
     "favorite": false,
     "feed": "https://tomorrow.podigee.io/feed/aac",
-    "description": "TOMorrow ist das Instagram der Podcasts. Hier kommen die Stars und Love-Brands zusammen, die wir liken und die uns inspirieren.\n\nWillkommen in der Welt des Luxury Lifestyles.\n\nAls GQ-Chefredakteur und Gastgeber der legendären GQ Men Of The Year Awards hat Tom Junkersdorf die spannendsten Persönlichkeiten unserer Zeit kennengelernt. In TOMorrow spricht er mit den Stars, CEOs, Designern und Disruptor der berühmtesten Luxusmarken der Welt über ihr außergewöhnliches Leben. Wie sich ihr Business verändert, was Style heute ausmacht und darüber, was Luxus wirklich bedeutet.\n\nExklusive Einblicke und Interviews über die wichtigsten Trends aus Fashion, Watches, Automotive, Movie, Musik, Sport und Style –  ab jetzt jede Woche montags neu in TOMorrow.\n",
+    "description": "TOMorrow ist das Instagram der Podcasts. Hier kommen die Stars und Love-Brands zusammen, die wir liken und die uns inspirieren.\n\nWillkommen in der Welt des Luxury Lifestyles.\n\nAls GQ-Chefredakteur und Gastgeber der legendären GQ Men Of The Year Awards hat Tom Junkersdorf die spannendsten Persönlichkeiten unserer Zeit kennengelernt. In TOMorrow spricht er mit den Stars, CEOs, Designern und Disruptor der berühmtesten Luxusmarken der Welt über ihr außergewöhnliches Leben. Wie sich ihr Business verändert, was Style heute ausmacht und darüber, was Luxus wirklich bedeutet.\n\nExklusive Einblicke und Interviews über die wichtigsten Trends aus Fashion, Watches, Automotive, Movie, Musik, Sport und Style –  ab jetzt jede Woche montags neu in TOMorrow.\n\nTomorrow ist Partner von CUPRA\n",
     "website": "https://tomorrow.podigee.io/",
     "hosts": "Tom Junkersdorf",
     "image": "cover--1736755912.jpg"
@@ -777,7 +777,7 @@
     "title": "Under the Radar",
     "favorite": false,
     "feed": "https://www.relay.fm/radar/feed",
-    "description": "From development and design to marketing and support, Under the Radar is all about independent app development. It's never longer than 30 minutes.  Hosted by Marco  Arment and David  Smith.\n",
+    "description": "From development and design to marketing and support, Under the Radar is all about independent app development. It's never longer than 30 minutes.  Hosted by Marco Arment and David Smith.\n",
     "website": "https://www.relay.fm/radar",
     "hosts": "Relay FM",
     "image": "cover-1796181775.jpg"
@@ -786,7 +786,7 @@
     "title": "Upgrade",
     "favorite": false,
     "feed": "https://www.relay.fm/upgrade/feed",
-    "description": "Upgrade looks at how technology shapes our lives, from the devices in our hands and pockets to the streaming services that keep us entertained. Hosted by Jason  Snell and Myke  Hurley.\n",
+    "description": "Upgrade looks at how technology shapes our lives, from the devices in our hands and pockets to the streaming services that keep us entertained. Hosted by Jason Snell and Myke Hurley.\n",
     "website": "https://www.relay.fm/upgrade",
     "hosts": "Relay FM",
     "image": "cover-1433481724.jpg"
@@ -822,9 +822,9 @@
     "title": "Working Draft",
     "favorite": false,
     "feed": "https://workingdraft.de/?feed=podcast",
-    "description": "Der wöchentliche News-Podcast für Webdesigner und -entwickler.\nSupported uns bei Patreon: https://patreon.com/workingdraft\n",
+    "description": "Der wöchentliche Podcast für Webdesigner:innen und -entwickler:innen.\nSupported uns bei Patreon: https://patreon.com/workingdraft\n",
     "website": "https://workingdraft.de",
-    "hosts": "Vanessa Böhner, Peter Kröner, Hans Christian Reinl, Rodney Rehm, Stefan Baumgartner, Kahlil Lechelt und Christian Schaefer",
+    "hosts": "Vanessa Otto, Peter Kröner, Hans Christian Reinl, Stefan Baumgartner und Christian Schaefer",
     "image": "cover--1021636686.jpg"
   },
   {
