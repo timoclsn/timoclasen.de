@@ -1,21 +1,28 @@
 import '../styles/globals.css';
 
-import { Web3ReactProvider } from '@web3-react/core';
-import { ethers } from 'ethers';
 import type { AppProps } from 'next/app';
 import React from 'react';
 import { SWRConfig } from 'swr';
+import { InjectedConnector, Provider, WalletConnectConnector } from 'wagmi';
 
 import { ThemeProvider } from '../components/ThemeContext';
 import { ToastProvider } from '../components/ToastProvider';
 import { fetcher } from '../lib/fetcher';
 
-const getLibrary = (provider: any) =>
-  new ethers.providers.Web3Provider(provider);
+const connectors = () => {
+  return [
+    new InjectedConnector(),
+    new WalletConnectConnector({
+      options: {
+        qrcode: true,
+      },
+    }),
+  ];
+};
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Web3ReactProvider getLibrary={getLibrary}>
+    <Provider autoConnect connectors={connectors}>
       <ThemeProvider>
         <SWRConfig
           value={{
@@ -26,7 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <ToastProvider />
         </SWRConfig>
       </ThemeProvider>
-    </Web3ReactProvider>
+    </Provider>
   );
 }
 

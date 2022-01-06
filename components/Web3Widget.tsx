@@ -1,99 +1,46 @@
-import { useWeb3React } from '@web3-react/core';
-import { InjectedConnector } from '@web3-react/injected-connector';
-import { ethers } from 'ethers';
-import { useEffect, useState } from 'react';
+import { BigNumber } from 'ethers';
 import { Copy, XCircle } from 'react-feather';
 import toast from 'react-hot-toast';
+import {
+  useAccount,
+  useBalance,
+  useConnect,
+  useFeeData,
+  useTransaction,
+} from 'wagmi';
 
 import { Button } from './Button';
-
-const injected = new InjectedConnector({ supportedChainIds: [1, 5] });
+import { useIsMounted } from './useIsMounted';
 
 export function Web3Widget() {
-  const { activate, deactivate, active, account, library, chainId } =
-    useWeb3React();
+  const isMounted = useIsMounted();
+  const [{ data: connectData }, connect] = useConnect();
+  const [{ data: accountData }, disconnect] = useAccount({
+    fetchEns: true,
+  });
+  const [{ data: balanceData, loading: balanceLoading }] = useBalance({
+    addressOrName: accountData?.address,
+  });
+  const [{ data: feeData, loading: feeLoading }] = useFeeData({
+    formatUnits: 'ether',
+  });
+  const [{ loading: transactionLoading }, sendTransaction] = useTransaction();
 
-  const signer = library?.getSigner();
-
-  const [balance, setBalance] = useState<number | null>();
-  const [ensName, setEnsName] = useState<string | null>();
-  const [gasPrice, setGasPrice] = useState<string | null>();
-
-  useEffect(() => {
-    if (account && library) {
-      library
-        .getBalance(account)
-        .then((balance: any) => {
-          setBalance(balance);
-        })
-        .catch(() => {
-          setBalance(null);
-        });
-
-      library
-        .lookupAddress(account)
-        .then((account: any) => {
-          setEnsName(account);
-        })
-        .catch(() => {
-          setEnsName(null);
-        });
-
-      library
-        .getGasPrice()
-        .then((gasPrice: any) => {
-          setGasPrice(gasPrice);
-        })
-        .catch(() => {
-          setGasPrice(null);
-        });
-    }
-
-    return () => {
-      setBalance(undefined);
-      setEnsName(undefined);
-      setEnsName(undefined);
-    };
-  }, [account, library, chainId]);
-
-  const onConnect = async () => {
-    await activate(injected, (error) => {
-      toast.error(
-        'Verbinden fehlgeschlagen. Hast du ein Ethereum Wallet installiert und entsperrt?'
-      );
-      console.error(error.message);
+  const sendETH = async () => {
+    const { error } = await sendTransaction({
+      request: {
+        to: 'timoclasen.eth',
+        value: BigNumber.from('1000000000000000'), // 0,001 ETH in WEI
+      },
     });
-    splitbee.track('Wallet Connected');
-  };
 
-  const onDisconnect = () => {
-    deactivate();
-    toast.success('Wallet-Verbindung erfolgreich getrennt.');
-  };
-
-  const sendETH = (amount: number) => {
-    if (
-      balance &&
-      gasPrice &&
-      ethers.utils.formatEther(balance) >
-        ethers.utils.formatEther(gasPrice) + amount
-    ) {
-      signer
-        .sendTransaction({
-          to: 'timoclasen.eth',
-          value: ethers.utils.parseEther(amount.toString()),
-        })
-        .then((transaction: any) => {
-          toast.success('Erfolgreich gesendet – Dankeschön!');
-          console.dir(transaction);
-        });
-    } else {
-      toast.error('Leider nicht genügend ETH im Wallet.');
+    if (error) {
+      toast.error('Es ist ein Fehler aufgetreten.');
     }
   };
 
-  const copyAddress = () => {
-    navigator.clipboard.writeText((ensName ? ensName : account) || '').then(
+  const copyAddress = (adress: string) => {
+    navigator.clipboard.writeText(adress).then(
       () => {
         toast.success('Adresse in Zwischenablage kopiert.');
       },
@@ -103,30 +50,40 @@ export function Web3Widget() {
     );
   };
 
-  const shortenedAddress = (account: any) =>
-    account
-      ? `${account.substring(0, 10)}...${account.substring(
-          account.length - 10
-        )}`
-      : 'Lädt…';
+  const shortenedAddress = (adress: string) =>
+    `${adress.substring(0, 10)}...${adress.substring(adress.length - 10)}`;
 
   return (
     <div className="flex justify-center">
       <div className="w-full max-w-screen-sm px-6 py-6 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-3xl xl:px-12 xl:py-12">
         <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">Web3</h2>
-        {account ? (
+        {accountData ? (
           <>
             <div className="flex justify-between">
               <p
                 className="truncate text-md md:text-lg opacity-60 lg:text-xl"
-                title={ensName ? ensName : account}
+                title={
+                  accountData.ens?.name
+                    ? accountData.ens?.name
+                    : accountData.address
+                }
               >
-                <span className="">{ensName ? 'ENS Name: ' : 'Adresse: '}</span>
-                {ensName ? ensName : shortenedAddress(account)}
+                <span className="">
+                  {accountData.ens?.name ? 'ENS Name: ' : 'Adresse: '}
+                </span>
+                {accountData.ens?.name
+                  ? accountData.ens?.name
+                  : shortenedAddress(accountData.address)}
               </p>
               <button
                 className="opacity-60 hover:text-highlight dark:hover:text-highlight-dark"
-                onClick={() => copyAddress()}
+                onClick={() =>
+                  copyAddress(
+                    accountData.ens?.name
+                      ? accountData.ens?.name
+                      : accountData.address
+                  )
+                }
               >
                 <Copy size={20} />
                 <span className="sr-only">In Zwischenablage kopieren</span>
@@ -134,25 +91,19 @@ export function Web3Widget() {
             </div>
             <p
               className="truncate text-md md:text-lg opacity-60 lg:text-xl"
-              title={balance ? `${ethers.utils.formatEther(balance)} ETH` : ''}
+              title={`${balanceData?.formatted} ${balanceData?.symbol}`}
             >
               <span className="">Kontostand: </span>
-              {balance
-                ? `${
-                    Math.round(
-                      (ethers.utils.formatEther(balance) as any) * 1e4
-                    ) / 1e4
-                  } ETH`
+              {!balanceLoading
+                ? `${balanceData?.formatted} ${balanceData?.symbol}`
                 : 'Lädt…'}
             </p>
             <p
               className="truncate text-md md:text-lg opacity-60 lg:text-xl"
-              title={
-                gasPrice ? `${ethers.utils.formatEther(gasPrice)} ETH` : ''
-              }
+              title={`${feeData?.formatted?.gasPrice} ETH`}
             >
               <span className="">Gas Preis: </span>
-              {gasPrice ? `${ethers.utils.formatEther(gasPrice)} ETH` : 'Lädt…'}
+              {!feeLoading ? `${feeData?.formatted?.gasPrice} ETH` : 'Lädt…'}
             </p>
           </>
         ) : (
@@ -177,26 +128,43 @@ export function Web3Widget() {
           </p>
         )}
         <div className="flex justify-center mt-8">
-          {active ? (
-            <div className="flex flex-col space-y-4">
-              <Button variant="ghost" size="small" onClick={onDisconnect}>
-                <XCircle />
-                Wallet trennen
-              </Button>
-              <Button
-                variant="solid"
-                size="small"
-                onClick={() => sendETH(0.001)}
-                title="0.001 ETH senden"
-              >
-                ☕️ Buy me a coffee
-              </Button>
-            </div>
-          ) : (
-            <Button variant="ghost" size="small" onClick={onConnect}>
-              Wallet verbinden
-            </Button>
-          )}
+          <div className="flex flex-col space-y-4">
+            {accountData ? (
+              <>
+                <Button variant="ghost" size="small" onClick={disconnect}>
+                  <XCircle />
+                  Wallet trennen
+                </Button>
+                <Button
+                  variant="solid"
+                  size="small"
+                  onClick={() => sendETH()}
+                  disabled={transactionLoading}
+                  title="0.001 ETH senden"
+                >
+                  ☕️ Buy me a coffee
+                </Button>
+              </>
+            ) : (
+              connectData.connectors.map((connector) => (
+                <Button
+                  variant="ghost"
+                  size="small"
+                  disabled={isMounted ? !connector.ready : false}
+                  key={connector.id}
+                  onClick={() => connect(connector)}
+                >
+                  {isMounted
+                    ? connector.name === 'Injected'
+                      ? 'Injected (z.B. MetaMask)'
+                      : connector.name
+                    : connector.id === 'injected'
+                    ? connector.id
+                    : connector.name}
+                </Button>
+              ))
+            )}
+          </div>
         </div>
       </div>
     </div>
