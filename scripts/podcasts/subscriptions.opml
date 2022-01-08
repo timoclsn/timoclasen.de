@@ -36,7 +36,7 @@
     <outline xmlUrl="https://atp.fm/episodes?format=rss" text="Accidental Tech Podcast" title="Accidental Tech Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://omr.podigee.io/feed/mp3" text="OMR Podcast" title="OMR Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://feed.syntax.fm/rss" text="Syntax - Tasty Web Development Treats" title="Syntax - Tasty Web Development Treats" type="rss" version="RSS"/>
-    <outline xmlUrl="https://schirm-charme-sensoren.libsyn.com/rss" text="Mit Schirm, Charme und Sensoren . . . dein IOT Podcast" title="Mit Schirm, Charme und Sensoren . . . dein IOT Podcast" type="rss" version="RSS"/>
+    <outline xmlUrl="https://schirm-charme-sensoren.libsyn.com/rss" text="Mit Schirm, Charme und Sensoren . . . dein IoT Podcast" title="Mit Schirm, Charme und Sensoren . . . dein IoT Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://digitalkompakt.podigee.io/feed/mp3" text="digital kompakt" title="digital kompakt" type="rss" version="RSS"/>
     <outline xmlUrl="https://podcast.cloudonaut.io/feed/aac" text="cloudonaut" title="cloudonaut" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.transistor.fm/rework" text="Rework" title="Rework" type="rss" version="RSS"/>
@@ -97,5 +97,6 @@
     <outline xmlUrl="https://audioboom.com/channels/5044088.rss" text="Tech Can't Save Us" title="Tech Can't Save Us" type="rss" version="RSS"/>
     <outline xmlUrl="https://hebammensalon.podigee.io/feed/mp3" text="Hebammensalon" title="Hebammensalon" type="rss" version="RSS"/>
     <outline xmlUrl="https://exponent.fm/feed/" text="Exponent" title="Exponent" type="rss" version="RSS"/>
+    <outline xmlUrl="https://hotelmatze.podigee.io/feed/mp3" text="Hotel Matze" title="Hotel Matze" type="rss" version="RSS"/>
   </body>
 </opml>

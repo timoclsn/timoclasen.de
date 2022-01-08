@@ -147,7 +147,7 @@
     "title": "Decoder with Nilay Patel",
     "favorite": true,
     "feed": "https://feeds.megaphone.fm/recodedecode",
-    "description": "Decoder is a new show from The Verge about big ideas — and other problems. Verge editor-in-chief Nilay Patel talks to a diverse cast of innovators and policymakers at the frontiers of business and technology to reveal how they’re navigating an ever-changing landscape, what keeps them up at night, and what it all means for our shared future.\n",
+    "description": "Decoder is a show from The Verge about big ideas — and other problems. Verge editor-in-chief Nilay Patel talks to a diverse cast of innovators and policymakers at the frontiers of business and technology to reveal how they’re navigating an ever-changing landscape, what keeps them up at night, and what it all means for our shared future.\n",
     "website": "https://theverge.com",
     "hosts": "The Verge",
     "image": "cover--1906039915.jpg"
@@ -313,6 +313,15 @@
     "website": "https://hebammensalon.podigee.io/",
     "hosts": "Kareen Dannhauer, Sissi Rasche",
     "image": "cover--1436517640.jpg"
+  },
+  {
+    "title": "Hotel Matze",
+    "favorite": false,
+    "feed": "https://hotelmatze.podigee.io/feed/mp3",
+    "description": "Mein Name ist Matze Hielscher und das ist der Interview-Podcast von Mit Vergnügen. Ich treffe mich hier mit spannenden Künstler*innen, mit smarten Unternehmer*innen und schlauen Typen und versuche herauszufinden wie die so ticken.\n",
+    "website": "https://mitvergnuegen.com/hotelmatze/",
+    "hosts": "Mit Vergnügen",
+    "image": "cover--2094378273.jpg"
   },
   {
     "title": "How to Save a Planet",
