@@ -8,6 +8,7 @@ export interface Podcast {
   website: string;
   hosts: string;
   image: string;
+  categories: string[];
 }
 
 export function getPodcasts(): Podcast[] {
