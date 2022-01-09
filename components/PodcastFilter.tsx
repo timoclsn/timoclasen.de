@@ -3,6 +3,7 @@ import { Filter } from 'react-feather';
 
 interface Filter {
   favorites: boolean;
+  categories: { [key: string]: boolean };
 }
 
 interface Props {
@@ -17,22 +18,43 @@ export function PodcastFilter({ filter, handleChange }: Props) {
         <Filter size={16} />
         <span>Filter:</span>
       </div>
-      <label
-        className={`flex items-center justify-center cursor-pointer select-none px-2 py-0.5 text-base rounded-lg focus:outline-none ring-2 ring-highlight dark:ring-highlight-dark ${
-          filter.favorites
-            ? 'text-light bg-highlight dark:bg-highlight-dark focus-within:ring-dark dark:focus-within:ring-light'
-            : 'text-highlight dark:text-highlight-dark focus-within:ring-dark dark:focus-within:ring-light'
-        }`}
-      >
-        <input
-          className="w-0 h-0 opacity-0"
-          type="checkbox"
-          checked={filter.favorites}
-          onChange={handleChange}
-          name="Meine Favoriten"
-        />
-        Meine Favoriten
-      </label>
+      <div className="flex p-2 space-x-4 overflow-x-auto">
+        <label
+          className={`whitespace-nowrap sflex items-center justify-center cursor-pointer select-none px-2 py-0.5 text-base rounded-lg focus:outline-none ring-2 ring-highlight dark:ring-highlight-dark ${
+            filter.favorites
+              ? 'text-light bg-highlight dark:bg-highlight-dark focus-within:ring-dark dark:focus-within:ring-light'
+              : 'text-highlight dark:text-highlight-dark focus-within:ring-dark dark:focus-within:ring-light'
+          }`}
+        >
+          <input
+            className="w-0 h-0 opacity-0"
+            type="checkbox"
+            checked={filter.favorites}
+            onChange={handleChange}
+            name="Meine Favoriten"
+          />
+          Meine Favoriten
+        </label>
+        {Object.keys(filter.categories).map((category, index) => (
+          <label
+            key={index}
+            className={`whitespace-nowrap sflex items-center justify-center cursor-pointer select-none px-2 py-0.5 text-base rounded-lg focus:outline-none ring-2 ring-highlight dark:ring-highlight-dark ${
+              filter.categories[category]
+                ? 'text-light bg-highlight dark:bg-highlight-dark focus-within:ring-dark dark:focus-within:ring-light'
+                : 'text-highlight dark:text-highlight-dark focus-within:ring-dark dark:focus-within:ring-light'
+            }`}
+          >
+            <input
+              className="w-0 h-0 opacity-0"
+              type="checkbox"
+              checked={filter.categories[category]}
+              onChange={handleChange}
+              name={category}
+            />
+            {category}
+          </label>
+        ))}
+      </div>
     </div>
   );
 }

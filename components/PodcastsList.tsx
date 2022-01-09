@@ -12,15 +12,57 @@ interface Props {
 }
 
 export function PodcastsList({ podcasts }: Props) {
+  const categories = [
+    ...Array.from(new Set(podcasts.flatMap((podcast) => podcast.categories))),
+  ];
+
+  const sortedCategories = categories.sort((a, b) => a.localeCompare(b));
+
+  const categoriesObj = sortedCategories.reduce(
+    (acc, category) => ({ ...acc, [category]: false }),
+    {} as { [key: string]: boolean }
+  );
+
   const [searchValue, setSearchValue] = useState('');
   const [filter, setFilter] = useState({
     favorites: false,
+    categories: categoriesObj,
   });
 
   const filteredPodcast = matchSorter(podcasts, searchValue, {
     keys: ['title', 'hosts', 'description'],
   }).filter((podcast) => {
-    return filter.favorites ? podcast.favorite : true;
+    const filteredCategories = [];
+
+    for (const category in filter.categories) {
+      if (filter.categories[category]) {
+        filteredCategories.push(category);
+      }
+    }
+
+    if (!filter.favorites && !filteredCategories.length) {
+      return true;
+    }
+
+    if (filter.favorites && !filteredCategories.length) {
+      return filter.favorites === podcast.favorite;
+    }
+
+    if (filteredCategories.length) {
+      let showPodcast = false;
+
+      filteredCategories.every((category) => {
+        if (podcast.categories.includes(category)) {
+          showPodcast = true;
+          return false;
+        }
+        return true;
+      });
+
+      return filter.favorites ? showPodcast && podcast.favorite : showPodcast;
+    }
+
+    return false;
   });
 
   return (
@@ -41,10 +83,22 @@ export function PodcastsList({ podcasts }: Props) {
         <PodcastFilter
           filter={filter}
           handleChange={(e) => {
-            setFilter({ favorites: e.target.checked });
-            splitbee.track('Podcast Filter', {
-              favorites: filter.favorites,
-            });
+            if (e.target.name.includes('Favoriten')) {
+              setFilter({
+                ...filter,
+                favorites: e.target.checked,
+              });
+            } else {
+              setFilter({
+                favorites: filter.favorites,
+                categories: {
+                  ...filter.categories,
+                  [e.target.name]: e.target.checked,
+                },
+              });
+            }
+
+            splitbee.track('Podcast Filter', filter);
           }}
         />
       </div>
