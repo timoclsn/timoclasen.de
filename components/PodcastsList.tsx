@@ -49,15 +49,9 @@ export function PodcastsList({ podcasts }: Props) {
     }
 
     if (filteredCategories.length) {
-      let showPodcast = false;
-
-      filteredCategories.every((category) => {
-        if (podcast.categories.includes(category)) {
-          showPodcast = true;
-          return false;
-        }
-        return true;
-      });
+      const showPodcast = filteredCategories.every((category) =>
+        podcast.categories.includes(category)
+      );
 
       return filter.favorites ? showPodcast && podcast.favorite : showPodcast;
     }
