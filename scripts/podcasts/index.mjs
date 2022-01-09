@@ -58,9 +58,9 @@ mkdirSync(coversDir);
           );
           podcastObj.website = addHTTP(podcastJSObj.link);
           podcastObj.hosts = he.decode(podcastJSObj['itunes:author']);
-          // podcastObj.category =
-          //     podcastJSObj['media:category'] ||
-          //     podcastJSObj['itunes:category'];
+          podcastObj.categories = findCategories(
+            podcastJSObj['itunes:category']
+          );
           podcastObj.image = `cover-${hashString(podcastObj.title)}.jpg`;
           const imageUrl = podcastJSObj.image
             ? podcastJSObj.image.url
@@ -119,4 +119,37 @@ async function stripHTML(html) {
 
 function addHTTP(url) {
   return url.includes('://') ? url : `http://${url}`;
+}
+
+const isObject = (value) => {
+  return !!(value && typeof value === 'object' && !Array.isArray(value));
+};
+
+function findCategories(categoryObj, keyToMatch = 'text') {
+  const categories = [];
+
+  if (Array.isArray(categoryObj)) {
+    categoryObj.forEach((category) => {
+      categories.push(...findCategories(category));
+    });
+  } else if (isObject(categoryObj)) {
+    const entries = Object.entries(categoryObj);
+
+    for (let i = 0; i < entries.length; i += 1) {
+      const [objectKey, objectValue] = entries[i];
+
+      if (objectKey === keyToMatch) {
+        categories.push(objectValue);
+      }
+
+      if (isObject(objectValue) || Array.isArray(objectValue)) {
+        categories.push(...findCategories(objectValue, keyToMatch));
+      }
+    }
+  }
+
+  const uniqCategories = [...new Set(categories)];
+  const sortedCategories = uniqCategories.sort((a, b) => a.localeCompare(b));
+
+  return sortedCategories;
 }
