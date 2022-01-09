@@ -100,6 +100,12 @@ export function PodcastsList({ podcasts }: Props) {
 
             splitbee.track('Podcast Filter', filter);
           }}
+          clearFilter={() => {
+            setFilter({
+              favorites: false,
+              categories: categoriesObj,
+            });
+          }}
         />
       </div>
       <ul className="space-y-20">

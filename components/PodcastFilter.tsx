@@ -1,5 +1,5 @@
 import type { ChangeEvent } from 'react';
-import { Filter } from 'react-feather';
+import { Filter, XCircle } from 'react-feather';
 
 interface Filter {
   favorites: boolean;
@@ -9,16 +9,25 @@ interface Filter {
 interface Props {
   filter: Filter;
   handleChange(e: ChangeEvent<HTMLInputElement>): void;
+  clearFilter(): void;
 }
 
-export function PodcastFilter({ filter, handleChange }: Props) {
+export function PodcastFilter({ filter, handleChange, clearFilter }: Props) {
+  const filteredCategories = [];
+
+  for (const category in filter.categories) {
+    if (filter.categories[category]) {
+      filteredCategories.push(category);
+    }
+  }
+
   return (
     <div className="flex space-x-4">
       <div className="flex items-center justify-center space-x-2 text-base opacity-60">
         <Filter size={16} />
         <span>Filter:</span>
       </div>
-      <div className="flex p-2 space-x-4 overflow-x-auto">
+      <div className="flex px-1 py-4 -my-4 space-x-4 overflow-x-auto">
         <label
           className={`whitespace-nowrap sflex items-center justify-center cursor-pointer select-none px-2 py-0.5 text-base rounded-lg focus:outline-none ring-2 ring-highlight dark:ring-highlight-dark ${
             filter.favorites
@@ -55,6 +64,17 @@ export function PodcastFilter({ filter, handleChange }: Props) {
           </label>
         ))}
       </div>
+      <button
+        title="Filter löschen"
+        className="text-highlight dark:text-highlight-dark disabled:opacity-60"
+        onClick={() => {
+          clearFilter();
+        }}
+        disabled={!filter.favorites && !filteredCategories.length}
+      >
+        <XCircle size={24} />
+        <span className="sr-only">Filter löschen</span>
+      </button>
     </div>
   );
 }
