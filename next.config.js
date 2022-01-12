@@ -3,7 +3,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 module.exports = withBundleAnalyzer({
-  swcMinify: false,
+  swcMinify: true,
   images: {
     formats: ['image/avif', 'image/webp'],
     domains: ['images.ctfassets.net', 'api.mapbox.com', 'i.scdn.co'],
