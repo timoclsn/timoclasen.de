@@ -65,7 +65,7 @@
     "feed": "https://baywatch-berlin.podigee.io/feed/mp3",
     "description": "Das Beautiful Mind Klaas Heufer-Umlauf probiert in diesem Podcast nach über 10 Jahren weltfremden Jet Set Spaß Kontakt zur echten Welt aufzunehmen.\nWie einst in der Weihnachtsgeschichte wird er dabei von seinen Freunden Thomas Schmitt und Jakob Lundt an die Hand genommen und langsam wieder mit den Themen des wahren Lebens in Kontakt gebracht. Tauchen Sie ein und seien Sie die Kugel im Flipperautomaten „Baywatch Berlin“!\n",
     "website": "https://baywatch-berlin.podigee.io/",
-    "hosts": "Klaas Heufer-Umlauf, Thomas Schmitt und Jakob Lundt",
+    "hosts": "Klaas Heufer-Umlauf, Thomas Schmitt, Jakob Lundt & Studio Bummens",
     "categories": ["Comedy", "Society & Culture", "TV & Film"],
     "image": "cover--936846035.jpg"
   },
@@ -220,6 +220,16 @@
     "image": "cover-924896390.jpg"
   },
   {
+    "title": "Deutschland3000 - 'ne gute Stunde mit Eva Schulz",
+    "favorite": false,
+    "feed": "https://rss.nexx.cloud/BY3027EHVZ5ODH",
+    "description": "Wenn man jemand anderen kennenlernt, erfährt man immer auch was Neues über sich selbst. Deshalb trifft Eva Schulz hier jede Woche Menschen aus ganz verschiedenen Bereichen, irgendwo zwischen Pop und Politik, zum Interview - und macht sich so ihre Gedanken.\n\n\\+++ Ausgezeichnet als bester Deutscher Interview-Podcast 2020 +++\n",
+    "website": "http://",
+    "hosts": "Junge ARD-Programme & funk",
+    "categories": ["Documentary", "Society & Culture"],
+    "image": "cover--1096053636.jpg"
+  },
+  {
     "title": "Developer Experience",
     "favorite": false,
     "feed": "https://feeds.buzzsprout.com/1806381.rss",
@@ -308,6 +318,16 @@
     "hosts": "Niklas Wirminghaus und Caspar Schlenk | Finance FWD",
     "categories": ["Business", "Entrepreneurship", "Investing", "Management"],
     "image": "cover-413214548.jpg"
+  },
+  {
+    "title": "Frontend First",
+    "favorite": false,
+    "feed": "https://feeds.simplecast.com/sOJAMohP",
+    "description": "A podcast about modern UI development on the web. Hosted by Sam Selikoff and Ryan Toronto.\n",
+    "website": "https://frontendfirst.fm",
+    "hosts": "Sam Selikoff, Ryan Toronto",
+    "categories": ["Technology"],
+    "image": "cover-15203106.jpg"
   },
   {
     "title": "Frontend Greatness",
