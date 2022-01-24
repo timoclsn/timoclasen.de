@@ -22,7 +22,7 @@ export function SwitchMode() {
       aria-label="Farbschema wechseln"
       type="button"
       className={clsx(
-        'flex-none w-8 h-8 text-highlight dark:text-highlight-dark bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-xl focus:outline-none focus:ring-2 focus:ring-highlight dark:focus:ring-highlight-dark',
+        'h-8 w-8 flex-none rounded-xl bg-dark bg-opacity-10 text-highlight focus:outline-none focus:ring-2 focus:ring-highlight dark:bg-light dark:bg-opacity-10 dark:text-highlight-dark dark:focus:ring-highlight-dark',
         styles.switchMode
       )}
       onClick={handleThemeChange}

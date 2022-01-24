@@ -15,7 +15,7 @@ export function CV({ entries }: Props) {
       <ol className="space-y-6 sm:space-y-8">
         {entries.map((entry, index) => (
           <li
-            className="flex p-4 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-3xl"
+            className="flex rounded-3xl bg-dark bg-opacity-10 p-4 dark:bg-light dark:bg-opacity-10"
             key={index}
           >
             <div className="flex-none">
@@ -29,8 +29,8 @@ export function CV({ entries }: Props) {
                 height={80}
               />
             </div>
-            <div className="flex flex-col justify-center ml-4">
-              <h3 className="font-bold mb-0.5">{entry.title}</h3>
+            <div className="ml-4 flex flex-col justify-center">
+              <h3 className="mb-0.5 font-bold">{entry.title}</h3>
               <a
                 href={entry.company.url}
                 target="_blank"

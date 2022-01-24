@@ -30,7 +30,7 @@ export function WidgetImage({
   }
 
   return (
-    <div className="relative h-full overflow-hidden aspect-w-1 aspect-h-1 sm:aspect-w-none sm:aspect-h-none rounded-3xl bg-light dark:bg-dark">
+    <div className="sm:aspect-w-none sm:aspect-h-none aspect-w-1 aspect-h-1 relative h-full overflow-hidden rounded-3xl bg-light dark:bg-dark">
       <Image
         src={url}
         layout="fill"

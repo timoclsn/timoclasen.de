@@ -20,7 +20,7 @@ export function Skeleton({
   return (
     <span
       className={clsx(
-        'inline-block leading-none animate-pulse bg-dark/25 dark:bg-light/25',
+        'inline-block animate-pulse bg-dark/25 leading-none dark:bg-light/25',
         className
       )}
       style={{

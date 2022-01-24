@@ -27,16 +27,16 @@ export function PodcastFilter({ filter, handleChange, clearFilter }: Props) {
         <Filter size={16} />
         <span>Filter:</span>
       </div>
-      <div className="flex px-1 py-4 -my-4 space-x-4 overflow-x-auto">
+      <div className="-my-4 flex space-x-4 overflow-x-auto px-1 py-4">
         <label
-          className={`whitespace-nowrap sflex items-center justify-center cursor-pointer select-none px-2 py-0.5 text-base rounded-lg focus:outline-none ring-2 ring-highlight dark:ring-highlight-dark ${
+          className={`sflex cursor-pointer select-none items-center justify-center whitespace-nowrap rounded-lg px-2 py-0.5 text-base ring-2 ring-highlight focus:outline-none dark:ring-highlight-dark ${
             filter.favorites
-              ? 'text-light bg-highlight dark:bg-highlight-dark focus-within:ring-dark dark:focus-within:ring-light'
-              : 'text-highlight dark:text-highlight-dark focus-within:ring-dark dark:focus-within:ring-light'
+              ? 'bg-highlight text-light focus-within:ring-dark dark:bg-highlight-dark dark:focus-within:ring-light'
+              : 'text-highlight focus-within:ring-dark dark:text-highlight-dark dark:focus-within:ring-light'
           }`}
         >
           <input
-            className="w-0 h-0 opacity-0"
+            className="h-0 w-0 opacity-0"
             type="checkbox"
             checked={filter.favorites}
             onChange={handleChange}
@@ -47,14 +47,14 @@ export function PodcastFilter({ filter, handleChange, clearFilter }: Props) {
         {Object.keys(filter.categories).map((category, index) => (
           <label
             key={index}
-            className={`whitespace-nowrap sflex items-center justify-center cursor-pointer select-none px-2 py-0.5 text-base rounded-lg focus:outline-none ring-2 ring-highlight dark:ring-highlight-dark ${
+            className={`sflex cursor-pointer select-none items-center justify-center whitespace-nowrap rounded-lg px-2 py-0.5 text-base ring-2 ring-highlight focus:outline-none dark:ring-highlight-dark ${
               filter.categories[category]
-                ? 'text-light bg-highlight dark:bg-highlight-dark focus-within:ring-dark dark:focus-within:ring-light'
-                : 'text-highlight dark:text-highlight-dark focus-within:ring-dark dark:focus-within:ring-light'
+                ? 'bg-highlight text-light focus-within:ring-dark dark:bg-highlight-dark dark:focus-within:ring-light'
+                : 'text-highlight focus-within:ring-dark dark:text-highlight-dark dark:focus-within:ring-light'
             }`}
           >
             <input
-              className="w-0 h-0 opacity-0"
+              className="h-0 w-0 opacity-0"
               type="checkbox"
               checked={filter.categories[category]}
               onChange={handleChange}
@@ -66,7 +66,7 @@ export function PodcastFilter({ filter, handleChange, clearFilter }: Props) {
       </div>
       <button
         title="Filter löschen"
-        className="text-highlight dark:text-highlight-dark disabled:opacity-60"
+        className="text-highlight disabled:opacity-60 dark:text-highlight-dark"
         onClick={() => {
           clearFilter();
         }}

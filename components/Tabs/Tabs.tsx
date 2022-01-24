@@ -22,7 +22,7 @@ export function TabsList({
 }: ComponentProps<typeof TabsPrimitive.List>) {
   return (
     <TabsPrimitive.List
-      className={clsx('flex flex-row mb-16', className)}
+      className={clsx('mb-16 flex flex-row', className)}
       {...props}
     />
   );
@@ -35,7 +35,7 @@ export function TabsTrigger({
   return (
     <TabsPrimitive.Trigger
       className={clsx(
-        'flex items-center justify-center w-full py-2 border-2 first:border-r-0 last:border-l-0 last:rounded-l-none cursor-pointer border-highlight dark:border-highlight-dark first:rounded-l-2xl first:rounded-r-none last:rounded-r-2xl focus:outline-none focus:ring-2 focus:ring-dark dark:focus:ring-light',
+        'flex w-full cursor-pointer items-center justify-center border-2 border-highlight py-2 first:rounded-l-2xl first:rounded-r-none first:border-r-0 last:rounded-l-none last:rounded-r-2xl last:border-l-0 focus:outline-none focus:ring-2 focus:ring-dark dark:border-highlight-dark dark:focus:ring-light',
         styles.tab,
         className
       )}

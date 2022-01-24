@@ -17,7 +17,7 @@ export function SoundBars({ isPlaying, color }: Props) {
   );
 
   return (
-    <div className="relative flex items-end justify-between w-[15px] h-[15px]">
+    <div className="relative flex h-[15px] w-[15px] items-end justify-between">
       <div className={`${barStyles} h-[5px]`} />
       <div className={`${barStyles} h-[15px]`} />
       <div className={`${barStyles} h-[10px]`} />

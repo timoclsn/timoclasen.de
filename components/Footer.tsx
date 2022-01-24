@@ -7,7 +7,7 @@ export function Footer() {
   return (
     <footer className="mt-auto" data-cy="footer">
       <CenteredColumn>
-        <ul className="flex flex-col mt-12 mb-12 space-y-6 text-center sm:space-y-0 sm:text-left sm:flex-row md:mt-16 xl:mt-24">
+        <ul className="mt-12 mb-12 flex flex-col space-y-6 text-center sm:flex-row sm:space-y-0 sm:text-left md:mt-16 xl:mt-24">
           <li className="mr-0 sm:mr-8">
             <NavigationLink
               href="https://twitter.com/timoclsn"

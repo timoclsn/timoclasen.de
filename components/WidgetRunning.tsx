@@ -148,7 +148,7 @@ export function WidgetRunning({ thisYear, lastRun }: Props) {
           />
         </li>
       </ul>
-      <div className="flex justify-between mt-8 mb-2">
+      <div className="mt-8 mb-2 flex justify-between">
         <h3 className="font-bold">Letzter Lauf</h3>
         {lastRun && lastRun.kudos > 0 && (
           <div

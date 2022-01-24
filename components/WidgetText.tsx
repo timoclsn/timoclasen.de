@@ -12,7 +12,7 @@ interface Props {
 
 export function WidgetText({ title, text, linkText, href }: Props) {
   return (
-    <div className="flex flex-col justify-between h-full px-6 py-12 xl:px-12 xl:py-20">
+    <div className="flex h-full flex-col justify-between px-6 py-12 xl:px-12 xl:py-20">
       <div>
         <h2 className="mb-4 text-xl font-bold md:text-2xl lg:text-3xl">
           {title}
@@ -23,7 +23,7 @@ export function WidgetText({ title, text, linkText, href }: Props) {
         ></div>
       </div>
       {href && (
-        <div className="flex justify-end mt-4 -mb-6 xl:-mb-12">
+        <div className="mt-4 -mb-6 flex justify-end xl:-mb-12">
           <Link href={href} passHref>
             <Button as="a" variant="link">
               <ArrowRight />

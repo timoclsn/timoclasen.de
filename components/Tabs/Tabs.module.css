@@ -1,5 +1,5 @@
 .tab[data-state='active'] {
-  @apply text-light bg-highlight dark:bg-highlight-dark;
+  @apply bg-highlight text-light dark:bg-highlight-dark;
 }
 
 .tab[data-state='inactive'] {

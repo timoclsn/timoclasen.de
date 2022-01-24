@@ -17,7 +17,7 @@ export const NavigationLink = forwardRef<HTMLAnchorElement, Props>(
         ref={ref}
         className={`hover:text-highlight dark:hover:text-highlight-dark ${
           href && router.pathname.includes(href)
-            ? 'text-highlight dark:text-highlight-dark hover:opacity-80'
+            ? 'text-highlight hover:opacity-80 dark:text-highlight-dark'
             : ''
         }`}
         {...props}

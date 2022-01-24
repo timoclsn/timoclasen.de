@@ -15,7 +15,7 @@ export function PodcastsWidget({ podcasts }: Props) {
       <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">
         Podcasts
       </h2>
-      <div className="flex flex-col justify-between mb-8 space-x-0 space-y-4 sm:space-x-4 sm:space-y-0 sm:flex-row">
+      <div className="mb-8 flex flex-col justify-between space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
         <p>
           Sie sind eins meiner absoluten Lieblingsmedien. Schau dir an, was ich
           so regelmäßig höre.
@@ -29,7 +29,7 @@ export function PodcastsWidget({ podcasts }: Props) {
           </Link>
         </div>
       </div>
-      <ul className="flex justify-between space-x-4 overflow-x-auto snap-x">
+      <ul className="flex snap-x justify-between space-x-4 overflow-x-auto">
         {podcasts.map((podcast) => (
           <li key={podcast.title} className="snap-center">
             <a

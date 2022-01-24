@@ -18,7 +18,7 @@ export function Navigation({ name }: Props) {
   return (
     <header
       className={clsx(
-        'py-4 mb-8 bg-light dark:bg-dark bg-opacity-80 dark:bg-opacity-80 md:py-6 md:mb-20 xl:mb-22',
+        'xl:mb-22 mb-8 bg-light bg-opacity-80 py-4 dark:bg-dark dark:bg-opacity-80 md:mb-20 md:py-6',
         styles.stickyNav
       )}
     >
@@ -31,11 +31,11 @@ export function Navigation({ name }: Props) {
           <a href="#skip" className="sr-only">
             Zu Inhalt springen
           </a>
-          <div className="flex items-center flex-1 space-x-2 sm:flex-initial md:space-x-4">
+          <div className="flex flex-1 items-center space-x-2 sm:flex-initial md:space-x-4">
             <Link href="/">
               <a
                 title="Home"
-                className="hover:text-highlight dark:hover:text-highlight-dark whitespace-nowrap"
+                className="whitespace-nowrap hover:text-highlight dark:hover:text-highlight-dark"
               >
                 <h1>{name}</h1>
               </a>
@@ -45,7 +45,7 @@ export function Navigation({ name }: Props) {
           <ul
             className={`${
               menuOpen ? 'flex' : 'hidden'
-            } flex-col sm:flex-row sm:space-y-0 sm:space-x-4 sm:flex md:space-x-8 mt-16 sm:mt-0 space-y-8 items-center pb-8 sm:pb-0 flex-1 sm:flex-initial`}
+            } mt-16 flex-1 flex-col items-center space-y-8 pb-8 sm:mt-0 sm:flex sm:flex-initial sm:flex-row sm:space-y-0 sm:space-x-4 sm:pb-0 md:space-x-8`}
           >
             <li>
               <Link href="/ueber" passHref>
@@ -68,10 +68,10 @@ export function Navigation({ name }: Props) {
               </Link>
             </li>
           </ul>
-          <div className="flex justify-end flex-1 sm:flex-initial sm:hidden">
+          <div className="flex flex-1 justify-end sm:hidden sm:flex-initial">
             <button
               type="button"
-              className={clsx('w-8 h-8 focus:outline-none', styles.menuIcon)}
+              className={clsx('h-8 w-8 focus:outline-none', styles.menuIcon)}
               aria-controls="mobile-menu"
               aria-expanded={menuOpen ? 'true' : 'false'}
               onClick={() => setMenuOpen(!menuOpen)}

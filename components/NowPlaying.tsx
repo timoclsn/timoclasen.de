@@ -25,7 +25,7 @@ export function NowPlaying() {
 
   return (
     <section className="flex justify-center">
-      <div className="w-full px-6 py-6 space-y-2 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-3xl xl:px-12 xl:py-12 sm:w-auto sm:min-w-[450px]">
+      <div className="w-full space-y-2 rounded-3xl bg-dark bg-opacity-10 px-6 py-6 dark:bg-light dark:bg-opacity-10 sm:w-auto sm:min-w-[450px] xl:px-12 xl:py-12">
         <div className="flex space-x-6">
           {data && data.image ? (
             <div className="flex-none">
@@ -45,20 +45,20 @@ export function NowPlaying() {
           <div className="overflow-hidden">
             <a href={data?.url} target="_blank" rel="noopener noreferrer">
               <h2
-                className="mb-2 font-bold truncate text-md md:text-xl lg:text-2xl hover:text-[#116E32] dark:hover:text-[#1DB954]"
+                className="text-md mb-2 truncate font-bold hover:text-[#116E32] dark:hover:text-[#1DB954] md:text-xl lg:text-2xl"
                 title={data?.name}
               >
                 {data ? data.name : <Skeleton width="300px" />}
               </h2>
             </a>
             <p
-              className="mb-0.5 opacity-60 text-md md:text-lg lg:text-xl truncate"
+              className="text-md mb-0.5 truncate opacity-60 md:text-lg lg:text-xl"
               title={data?.artistName}
             >
               {data ? data.artistName : <Skeleton width="200px" />}
             </p>
             <p
-              className="truncate opacity-60 text-md md:text-lg lg:text-xl"
+              className="text-md truncate opacity-60 md:text-lg lg:text-xl"
               title={data?.albumName}
             >
               {data ? data.albumName : <Skeleton width="200px" />}
@@ -72,7 +72,7 @@ export function NowPlaying() {
                 isPlaying={data?.isPlaying}
                 color="bg-[#116E32] dark:bg-[#1DB954]"
               />
-              <p className="text-base text-center">
+              <p className="text-center text-base">
                 {data?.isPlaying ? 'Läuft gerade auf ' : 'Zuletzt gehört auf '}
                 <a
                   href="https://www.spotify.com"

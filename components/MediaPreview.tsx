@@ -26,7 +26,7 @@ export function MediaPreview({
   favorite,
 }: Props) {
   return (
-    <div className="flex mx-auto space-x-4 max-w-prose">
+    <div className="mx-auto flex max-w-prose space-x-4">
       {image ? (
         <Image
           className="rounded-2xl"
@@ -41,7 +41,7 @@ export function MediaPreview({
         <Skeleton width="80px" height="80px" borderRadius="1rem" />
       )}
       <div className="flex-1 overflow-hidden">
-        <div className="flex justify-between mb-1 space-x-2 text-xs uppercase sm:mb-2 text-highlight dark:text-highlight-dark">
+        <div className="mb-1 flex justify-between space-x-2 text-xs uppercase text-highlight dark:text-highlight-dark sm:mb-2">
           <div className="flex items-center space-x-2 truncate">
             {BylineIcon && <BylineIcon size={16} className="flex-none" />}
             <p title={byline} className="truncate">
@@ -52,7 +52,7 @@ export function MediaPreview({
         </div>
         <a href={url} target="_blank" rel="noopener noreferrer">
           <h2
-            className="mb-2 text-lg font-bold truncate group sm:text-xl md:text-2xl lg:text-3xl hover:text-highlight dark:hover:text-highlight-dark md:mb-4"
+            className="group mb-2 truncate text-lg font-bold hover:text-highlight dark:hover:text-highlight-dark sm:text-xl md:mb-4 md:text-2xl lg:text-3xl"
             title={title}
           >
             {no && (
@@ -63,7 +63,7 @@ export function MediaPreview({
             {title ? title : <Skeleton width="100%" />}
           </h2>
         </a>
-        <p className="text-base md:text-md lg:text-lg xl:text-xl text-opacity-60 line-clamp-2">
+        <p className="md:text-md text-base text-opacity-60 line-clamp-2 lg:text-lg xl:text-xl">
           {subline ? subline : <Skeleton width="50%" />}
         </p>
       </div>

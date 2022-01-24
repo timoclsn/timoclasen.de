@@ -39,17 +39,17 @@ export function BlogPostHeader({
 
   return (
     <header className="mx-auto max-w-prose">
-      <h1 className="mb-2 text-3xl font-bold sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl md:mb-4">
+      <h1 className="mb-2 text-3xl font-bold sm:text-4xl md:mb-4 md:text-5xl lg:text-6xl xl:text-7xl">
         {title}
       </h1>
 
-      <h2 className="mb-4 text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl opacity-60 md:mb-8">
+      <h2 className="mb-4 text-base opacity-60 sm:text-lg md:mb-8 md:text-xl lg:text-2xl xl:text-3xl">
         {subtitle}
       </h2>
 
-      <div className="flex flex-col justify-between space-y-2 text-xs uppercase sm:flex-row sm:space-y-0 sm:text-sm text-highlight dark:text-highlight-dark">
+      <div className="flex flex-col justify-between space-y-2 text-xs uppercase text-highlight dark:text-highlight-dark sm:flex-row sm:space-y-0 sm:text-sm">
         <div className="flex">
-          <div className="hidden mr-6 -mb-1 sm:block">
+          <div className="mr-6 -mb-1 hidden sm:block">
             <Image
               src={author.image.url}
               width={32}

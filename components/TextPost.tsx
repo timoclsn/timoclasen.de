@@ -21,7 +21,7 @@ function Paragraph({ node, children }: ParagraphProps) {
   if (domNode.children[0].tagName === 'image') {
     const imageNode = domNode.children[0] as HTMLImageElement;
     return (
-      <div className="rounded-md aspect-w-3 aspect-h-2 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10">
+      <div className="aspect-w-3 aspect-h-2 rounded-md bg-dark bg-opacity-10 dark:bg-light dark:bg-opacity-10">
         <Image
           src={`https:${imageNode.src}`}
           layout="fill"

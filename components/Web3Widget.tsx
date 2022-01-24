@@ -55,13 +55,13 @@ export function Web3Widget() {
 
   return (
     <div className="flex justify-center">
-      <div className="w-full max-w-screen-sm px-6 py-6 bg-dark dark:bg-light bg-opacity-10 dark:bg-opacity-10 rounded-3xl xl:px-12 xl:py-12">
+      <div className="w-full max-w-screen-sm rounded-3xl bg-dark bg-opacity-10 px-6 py-6 dark:bg-light dark:bg-opacity-10 xl:px-12 xl:py-12">
         <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">Web3</h2>
         {accountData ? (
           <>
             <div className="flex justify-between">
               <p
-                className="truncate text-md md:text-lg opacity-60 lg:text-xl"
+                className="text-md truncate opacity-60 md:text-lg lg:text-xl"
                 title={
                   accountData.ens?.name
                     ? accountData.ens?.name
@@ -90,7 +90,7 @@ export function Web3Widget() {
               </button>
             </div>
             <p
-              className="truncate text-md md:text-lg opacity-60 lg:text-xl"
+              className="text-md truncate opacity-60 md:text-lg lg:text-xl"
               title={`${balanceData?.formatted} ${balanceData?.symbol}`}
             >
               <span className="">Kontostand: </span>
@@ -99,7 +99,7 @@ export function Web3Widget() {
                 : 'Lädt…'}
             </p>
             <p
-              className="truncate text-md md:text-lg opacity-60 lg:text-xl"
+              className="text-md truncate opacity-60 md:text-lg lg:text-xl"
               title={`${feeData?.formatted?.gasPrice} ETH`}
             >
               <span className="">Gas Preis: </span>
@@ -107,7 +107,7 @@ export function Web3Widget() {
             </p>
           </>
         ) : (
-          <p className="opacity-60 text-md md:text-lg lg:text-xl">
+          <p className="text-md opacity-60 md:text-lg lg:text-xl">
             Mein kleiner Crypto-Spielplatz. Verbinde dein{' '}
             <a
               href="https://ethereum.org/en/"
@@ -127,7 +127,7 @@ export function Web3Widget() {
             ) und lass dir einige Daten anzeigen.
           </p>
         )}
-        <div className="flex justify-center mt-8">
+        <div className="mt-8 flex justify-center">
           <div className="flex flex-col space-y-4">
             {accountData ? (
               <>

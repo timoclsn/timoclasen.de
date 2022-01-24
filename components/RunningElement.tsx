@@ -55,7 +55,7 @@ export function RunningElement({
             return (
               <div
                 key={label.text}
-                className="px-3 py-1 m-1 text-xs font-bold uppercase rounded-full whitespace-nowrap bg-highlight dark:bg-highlight-dark text-light"
+                className="m-1 whitespace-nowrap rounded-full bg-highlight px-3 py-1 text-xs font-bold uppercase text-light dark:bg-highlight-dark"
                 title={label.description}
               >
                 {animateLabelNumber ? (
