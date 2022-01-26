@@ -46,7 +46,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
   const { darkMode } = useTheme();
   const [disableButtons, setDisableButtons] = useState(false);
 
-  const smartHomeApi = '/api/smarthome';
+  const smartHomeApi = '/api/smarthome?cached=true';
   const {
     data: smartHomeData,
     error: smartHomeError,

@@ -54,6 +54,10 @@ export default async function smartHome(
       return res.status(429).send('Rate limit exceeded');
     }
   } else {
+    if (req.query.cached) {
+      return res.status(200).json(cache);
+    }
+
     const nodes = await getNodes();
 
     if (!nodes.length) {
@@ -169,3 +173,14 @@ async function waitFor(duration: number) {
     setTimeout(resolve, duration);
   });
 }
+
+const cache = {
+  lights: 'An',
+  rain: 'Kein Regen',
+  temperature: '21.8 °C',
+  humidity: '45.6 %',
+  energy: '11.9 W',
+  outsideTemperature: '3.2 °C',
+  balconyOnOff: 'An',
+  balconyColor: '#fa0501',
+};
