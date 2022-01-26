@@ -103,7 +103,7 @@ export default async function running(
     }
   );
 
-  const lastRun = runs.reduce((lastRun: Activity, activity: Activity) => {
+  const lastRun = runs.reduce((lastRun, activity) => {
     return parseISO(activity.start_date).getTime() >
       parseISO(lastRun.start_date).getTime()
       ? activity

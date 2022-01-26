@@ -1,7 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { AttributeType, NodeState } from '../../lib/enums';
-import type { Attribute, Node } from '../../lib/homee';
 import {
   formatValue,
   getHexColor,
@@ -70,70 +69,64 @@ export default async function smartHome(
     const balconyLightId = 257;
 
     const tempAtr = nodes
-      .find((node: Node) => node.id === climateSensorId)
+      .find((node) => node.id === climateSensorId)
       ?.attributes.find(
-        (attribute: Attribute) => attribute.type === AttributeType.Temperature
+        (attribute) => attribute.type === AttributeType.Temperature
       );
 
     const humidityAtr = nodes
-      .find((node: Node) => node.id === climateSensorId)
+      .find((node) => node.id === climateSensorId)
       ?.attributes.find(
-        (attribute: Attribute) =>
-          attribute.type === AttributeType.RelativeHumidity
+        (attribute) => attribute.type === AttributeType.RelativeHumidity
       );
 
     const accumulatedEnergy = nodes
-      .flatMap((node: Node) => {
+      .flatMap((node) => {
         return (
           node.attributes.find(
-            (attribute: Attribute) =>
-              attribute.type === AttributeType.CurrentEnergyUse
+            (attribute) => attribute.type === AttributeType.CurrentEnergyUse
           ) || []
         );
       })
-      .reduce((acc: number, attribute: Attribute) => {
+      .reduce((acc: number, attribute) => {
         return acc + attribute.current_value;
       }, 0);
 
     const lightsOn = nodes
-      .flatMap((node: Node) => {
+      .flatMap((node) => {
         if (isLight(node) && node.state === NodeState.Available) {
           return node.attributes.find(
-            (attribute: Attribute) => attribute.type === AttributeType.OnOff
+            (attribute) => attribute.type === AttributeType.OnOff
           );
         } else {
           return [];
         }
       })
-      .some((attribute: Attribute | undefined) => {
+      .some((attribute) => {
         return attribute && attribute.current_value > 0;
       });
 
     const outsideTempAtr = nodes
-      .find((node: Node) => node.id === climateSensorOutsideId)
+      .find((node) => node.id === climateSensorOutsideId)
       ?.attributes.find(
-        (attribute: Attribute) => attribute.type === AttributeType.Temperature
+        (attribute) => attribute.type === AttributeType.Temperature
       );
 
     const floodAlarmAtr = nodes
-      .find((node: Node) => node.id === rainSensorId)
+      .find((node) => node.id === rainSensorId)
       ?.attributes.find(
-        (attribute: Attribute) => attribute.type === AttributeType.FloodAlarm
+        (attribute) => attribute.type === AttributeType.FloodAlarm
       );
 
     const isRaining = floodAlarmAtr ? floodAlarmAtr.current_value > 0 : false;
 
     const balconyOnOffAtr = nodes
-      .find((node: Node) => node.id === balconyLightId)
-      ?.attributes.find(
-        (attribute: Attribute) => attribute.type === AttributeType.OnOff
-      );
+      .find((node) => node.id === balconyLightId)
+      ?.attributes.find((attribute) => attribute.type === AttributeType.OnOff);
 
     const balconyColorAtr = nodes
-      .find((node: Node) => node.id === balconyLightId)
-      ?.attributes.find(
-        (attribute: Attribute) => attribute.type === AttributeType.Color
-      );
+      .find((node) => node.id === balconyLightId)
+      ?.attributes.find((attribute) => attribute.type === AttributeType.Color);
 
     res.setHeader(
       'Cache-Control',
