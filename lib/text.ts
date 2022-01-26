@@ -16,10 +16,10 @@ export function truncate(str: string, n: number, useWordBoundary: boolean) {
   if (str.length <= n) {
     return str;
   }
-  const subString = str.substr(0, n - 1);
+  const subString = str.substring(0, n - 1);
   return (
     (useWordBoundary
-      ? subString.substr(0, subString.lastIndexOf(' '))
+      ? subString.substring(0, subString.lastIndexOf(' '))
       : subString) + '&hellip;'
   );
 }
