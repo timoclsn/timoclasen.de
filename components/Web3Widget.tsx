@@ -54,7 +54,7 @@ export function Web3Widget() {
     `${adress.substring(0, 10)}...${adress.substring(adress.length - 10)}`;
 
   return (
-    <div className="flex justify-center">
+    <div id="web3" className="flex justify-center">
       <div className="w-full max-w-screen-sm rounded-3xl bg-dark bg-opacity-10 px-6 py-6 dark:bg-light dark:bg-opacity-10 xl:px-12 xl:py-12">
         <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">Web3</h2>
         {accountData ? (
