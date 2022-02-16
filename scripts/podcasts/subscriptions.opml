@@ -100,5 +100,7 @@
     <outline xmlUrl="https://hotelmatze.podigee.io/feed/mp3" text="Hotel Matze" title="Hotel Matze" type="rss" version="RSS"/>
     <outline xmlUrl="https://rss.nexx.cloud/BY3027EHVZ5ODH" text="Deutschland3000 - 'ne gute Stunde mit Eva Schulz" title="Deutschland3000 - 'ne gute Stunde mit Eva Schulz" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.simplecast.com/sOJAMohP" text="Frontend First" title="Frontend First" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.viertausendhertz.de/reflektor" text="Reflektor" title="Reflektor" type="rss" version="RSS"/>
+    <outline xmlUrl="https://doppelgaenger.podigee.io/feed/mp3" text="Doppelg&#xE4;nger Tech Talk" title="Doppelg&#xE4;nger Tech Talk" type="rss" version="RSS"/>
   </body>
 </opml>

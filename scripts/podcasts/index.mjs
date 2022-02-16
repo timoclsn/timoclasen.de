@@ -64,10 +64,12 @@ mkdirSync(coversDir);
           podcastObj.image = `cover-${hashString(podcastObj.title)}.jpg`;
           const imageUrl = podcastJSObj.image
             ? podcastJSObj.image.url
+              ? podcastJSObj.image.url
+              : podcastJSObj.image.href
             : podcastJSObj['itunes:image'].href;
           const imageResponse = await fetch(imageUrl);
-          const imageBuffer = await imageResponse.buffer();
-          sharp(imageBuffer)
+          const imageBuffer = await imageResponse.arrayBuffer();
+          sharp(Buffer.from(imageBuffer))
             .resize(1000)
             .toFile(`${coversDir}/${podcastObj.image}`);
         } catch (e) {

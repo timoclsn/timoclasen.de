@@ -23,9 +23,9 @@
     "title": "Alle Wege führen nach Ruhm - AWFNR",
     "favorite": false,
     "feed": "https://awfnr.podigee.io/feed/mp3",
-    "description": "Der Karrierepodcast für Berufsjugendliche\n",
+    "description": "Der Paul Ripke Podcast\n",
     "website": "https://awfnr.podigee.io/",
-    "hosts": "Joko Winterscheidt und Paul Ripke",
+    "hosts": "Paul Ripke",
     "categories": ["Society & Culture", "TV & Film"],
     "image": "cover--1543448174.jpg"
   },
@@ -33,7 +33,7 @@
     "title": "alphalist.CTO Podcast - For CTOs and Technical Leaders",
     "favorite": false,
     "feed": "https://alphalist.podigee.io/feed/mp3",
-    "description": "This podcast features interviews of CTOs and other technical leadership figures and topics range from technology to management.\\\nGuests from leading tech companies share their best practices and knowledge.\nThe goal is to support other CTOs on their journey through tech and engineering, inspire and allow a sneak-peek into other successful companies to understand how they think and act. Get awesome insights into the world‘s top tech companies, personalities with this podcast brought to you by Tobias Schlottke.\n",
+    "description": "This podcast features interviews of CTOs and other technical leadership figures and topics range from technology (AI, blockchain, cyber, DevOps, Web Architecture, etc.) to management (e.g. scaling, structuring teams, mentoring, technical recruiting, product  etc.).\\\nGuests from leading tech companies share their best practices and knowledge.\nThe goal is to support other CTOs on their journey through tech and engineering, inspire and allow a sneak-peek into other successful companies to understand how they think and act. Get awesome insights into the world‘s top tech companies, personalities with this podcast brought to you by Tobias Schlottke.\n",
     "website": "https://alphalist.com",
     "hosts": "Tobias Schlottke - alphalist CTO Podcast",
     "categories": ["Business", "Management", "Technology"],
@@ -153,7 +153,7 @@
     "title": "Cortex",
     "favorite": false,
     "feed": "https://www.relay.fm/cortex/feed",
-    "description": "CGP Grey and Myke Hurley are both independent content creators. Each episode, they get together to discuss their working lives. Hosted by CGP  Grey and Myke  Hurley.\n",
+    "description": "CGP Grey and Myke Hurley are both independent content creators. Each episode, they get together to discuss their working lives. Hosted by CGP Grey and Myke Hurley.\n",
     "website": "https://www.relay.fm/cortex",
     "hosts": "Relay FM",
     "categories": ["Technology"],
@@ -278,6 +278,16 @@
     "hosts": "Sean Washington, Rockwell Schrock",
     "categories": ["Technology"],
     "image": "cover-687976611.jpg"
+  },
+  {
+    "title": "Doppelgänger Tech Talk",
+    "favorite": false,
+    "feed": "https://doppelgaenger.podigee.io/feed/mp3",
+    "description": "Mehr als 30.000 Menschen lauschen zweimal wöchentlich, wenn die Tech-Experten Philipp Glöckler & Philipp “Pip” Klöckner aktuelle Ereignisse aus den Themen Innovation, Marketing, Produkt und Führung der relevantesten Technologie-Unternehmen besprechen. Tiefgründig und unterhaltsam analysieren sie Geschäftsmodelle, Strategie und die neuesten Trends.\n\nDie Themen reichen von GAFAM (Google Apple Facebook Amazon Microsoft) und Antitrust über Aktien, Börse, Geldanlage bis zu Digital Marketing, Cloud Software, Crypto & Blockchain, Creator und App Economy.\n\nPhilipp Gloeckler (@gloeckler) ist Co-Founder der Podcast Recording App Yo Cast, Ex AvocadoStore & why own it Gründer.\n\nPhilipp Kloeckner (@pip\\_net) ist Investor & Advisor Marketing/Growth/Product für Startups, Wachstumsunternehmen und Private Equity Firmen, Ex Idealo & Rocket Internet, bekannt aus dem OMR Podcast, Ohne Aktien wirds schwer (OAWS) und Alles auf Aktien (AAA).\n\nHaftungsausschluss: https://www.doppelgaenger.io/disclaimer/ Auch wenn es schwer wird, bitte unbedingt lesen bevor ihr Aktien oder andere Wertpapiere ohne eigene Analyse kauft!\n",
+    "website": "https://www.doppelgaenger.io",
+    "hosts": "Philipp Glöckler, Philipp Klöckner",
+    "categories": ["Business", "Entrepreneurship", "Marketing"],
+    "image": "cover--1873135381.jpg"
   },
   {
     "title": "Exponent",
@@ -533,8 +543,8 @@
     "title": "My Climate Journey",
     "favorite": false,
     "feed": "https://feeds.simplecast.com/XFfCG1w8",
-    "description": "A podcast about a recovering software entrepreneur (me!), and my quest to reorient my career around helping solve climate change for this next chapter and beyond. Includes interviews with people in the thick of tackling this problem, and commentary from yours truly. I'm glad you are here!\n",
-    "website": "https://my-climate-journey.simplecast.com",
+    "description": "A growing body of knowledge about climate change and potential solutions. This series traverses disciplines, industries, and opinions with hundreds of deep-dive conversations with science, technology, and climate leaders. Hosted by Jason Jacobs.\n",
+    "website": "https://www.mcjcollective.com/media/podcast",
     "hosts": "Jason Jacobs",
     "categories": ["Business", "Science", "Technology"],
     "image": "cover-7818289.jpg"
@@ -573,7 +583,7 @@
     "title": "Planet Money",
     "favorite": false,
     "feed": "https://feeds.npr.org/510289/podcast.xml",
-    "description": "The economy explained. Imagine you could call up a friend and say, \"Meet me at the bar and tell me what's going on with the economy.\" Now imagine that's actually a fun evening.\n",
+    "description": "The economy explained. Imagine you could call up a friend and say, \"Meet me at the bar and tell me what's going on with the economy.\" Now imagine that's actually a fun evening.Want to really power up your fandom? Try Planet Money Plus. Your subscription supports the show and unlocks a sponsor-free feed. Learn more at plus.npr.org/planetmoney\n",
     "website": "https://www.npr.org/podcasts/510289/planet-money",
     "hosts": "NPR",
     "categories": ["Business", "News"],
@@ -618,6 +628,23 @@
     "hosts": "Michael Chan",
     "categories": ["Technology"],
     "image": "cover--934227677.jpg"
+  },
+  {
+    "title": "Reflektor",
+    "favorite": false,
+    "feed": "https://feeds.viertausendhertz.de/reflektor",
+    "description": "Darf Punk erfolgreich sein? Wie passen Pop und Wahrhaftigkeit zusammen? Was geschieht nach der Verwandlung zum Weltstar? „Reflektor“ hat sich zum Ziel gesetzt, substanzielle Gespräche mit Musiker*innen zu führen. Das Talkformat setzt sich bewusst von dem üblichen Frage-Antwort-Schema eines Interviews ab und sucht das persönliche Gespräch, in dem das Leben und Werk der Gäste reflektiert wird. Jan Müller ist seit über 25 Jahren Mitglied der Band Tocotronic. Er ist mit dem Format des Interviews bestens vertraut und kann sich als Fragender gut in die Perspektive seiner Gäste hineinversetzen. Die persönliche Auswahl seiner Gesprächspartner*innen bildet die Grundlage für authentische Gespräche, die stets von Interesse und Respekt geprägt sind. Mit “Reflektor” startet Jan seinen ersten Podcast. | Eine Produktion von Viertausendhertz.\n",
+    "website": "https://viertausendhertz.de/",
+    "hosts": "Viertausendhertz",
+    "categories": [
+      "Arts",
+      "Documentary",
+      "Music",
+      "Music Interviews",
+      "Performing Arts",
+      "Society & Culture"
+    ],
+    "image": "cover-1267395640.jpg"
   },
   {
     "title": "Relay Chain",
@@ -783,10 +810,10 @@
     "title": "The Index",
     "favorite": false,
     "feed": "https://theindex.libsyn.com/rss",
-    "description": "Plugin as we explore the future of Web3 with leading experts in crypto, blockchain, and technology.  Hosted by Alex Kehaya and brought to you by TheGraph.com. New episodes every other Wednesday.\n",
+    "description": "We explore the future of Web3, crypto, and the metaverse with leading experts in blockchain and technology.  Hosted by Alex Kehaya and brought to you by TheGraph.com. New episodes every other Wednesday.\n",
     "website": "http://www.indexpodcast.com",
     "hosts": "Index Studios",
-    "categories": ["Business", "Investing", "Technology"],
+    "categories": ["Business", "Technology"],
     "image": "cover--208186333.jpg"
   },
   {
@@ -813,7 +840,7 @@
     "title": "The Stack Overflow Podcast",
     "favorite": false,
     "feed": "https://stackoverflow.blog/podcast/?feed=podcast",
-    "description": "The Stack Overflow podcast is a weekly conversation about working in software development, learning to code, and the art and culture of computer programming. Hosted by Paul Ford and Ben Popper, the series features questions from our community, interviews with fascinating guests, and hot takes on what’s happening in tech. Founded in 2008, Stack Overflow is empowering the world to develop technology through collective knowledge. It’s best known for being the largest, most trusted online community for developers and technologists. More than 100 million people come to Stack Overflow every month to ask questions, help solve coding problems, and develop new skills.\n",
+    "description": "For more than a dozen years, the Stack Overflow Podcast has been exploring what it means to be a developer and how the art and practice of software programming is changing our world. From Rails to React, from Java to Node.js, we host important conversations and fascinating guests that will help you understand how technology is made and where it’s headed. Hosted by Ben Popper, Cassidy Williams, and Ceora Ford, the Stack Overflow Podcast is your home for all things code.\n",
     "website": "https://stackoverflow.blog/podcast/",
     "hosts": "The Stack Overflow Podcast",
     "categories": ["Business", "Management", "Society & Culture", "Technology"],
