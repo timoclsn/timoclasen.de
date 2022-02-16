@@ -1,3 +1,4 @@
+import type { NextPage } from 'next';
 import type { GetStaticProps } from 'next';
 
 import { Layout } from '../components/Layout';
@@ -22,7 +23,7 @@ interface Props {
   podcasts: Podcast[];
 }
 
-export default function Podcasts(props: Props) {
+const Podcasts: NextPage<Props> = function (props) {
   return (
     <Layout
       preview={props.preview}
@@ -36,7 +37,9 @@ export default function Podcasts(props: Props) {
       <Recommendations />
     </Layout>
   );
-}
+};
+
+export default Podcasts;
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const response = await queryContent(

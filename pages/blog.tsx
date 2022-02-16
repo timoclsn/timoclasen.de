@@ -1,5 +1,6 @@
 import { format, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
+import type { NextPage } from 'next';
 import type { GetStaticProps } from 'next';
 import readingTime from 'reading-time';
 
@@ -49,7 +50,7 @@ interface Props {
   contact: string;
 }
 
-export default function Blog(props: Props) {
+const Blog: NextPage<Props> = function (props) {
   return (
     <Layout
       preview={props.preview}
@@ -72,7 +73,9 @@ export default function Blog(props: Props) {
       <ContactWidget text={props.contact} />
     </Layout>
   );
-}
+};
+
+export default Blog;
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const response = await queryContent(
