@@ -29,3 +29,16 @@ jobs:
 
       - name: Type check
         run: npm run typecheck
+
+  test:
+    name: Jest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Download deps
+        uses: bahmutov/npm-install@v1
+
+      - name: Test
+        run: npm run test
