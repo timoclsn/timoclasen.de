@@ -9,7 +9,7 @@ interface Options {
 export function rateLimit(options: Options) {
   const tokenCache = new LRU({
     max: options.uniqueTokenPerInterval,
-    maxAge: options.interval,
+    ttl: options.interval,
   });
 
   return {
