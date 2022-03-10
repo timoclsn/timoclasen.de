@@ -33,11 +33,8 @@ export function Navigation({ name }: Props) {
           </a>
           <div className="flex flex-1 items-center space-x-2 sm:flex-initial md:space-x-4">
             <Link href="/">
-              <a
-                title="Home"
-                className="whitespace-nowrap hover:text-highlight dark:hover:text-highlight-dark"
-              >
-                <h1>{name}</h1>
+              <a title="Home" className="whitespace-nowrap">
+                <h1 className={styles.name}>{name}</h1>
               </a>
             </Link>
             <SwitchMode />
