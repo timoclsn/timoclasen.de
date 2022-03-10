@@ -32,7 +32,8 @@
     "prettier": "prettier --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,css,md,json}'",
     "format": "npm run prettier -- --write",
     "check-format": "npm run prettier -- --list-different",
-    "validate": "npm-run-all --parallel typecheck check-format lint"
+    "validate": "npm-run-all --parallel typecheck check-format lint",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@mapbox/polyline": "^1.1.1",
