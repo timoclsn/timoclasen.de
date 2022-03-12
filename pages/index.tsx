@@ -7,6 +7,7 @@ import { BlogWidget } from '../components/BlogWidget';
 import { ContactWidget } from '../components/ContactWidget';
 import { Layout } from '../components/Layout';
 import { LCDWidget } from '../components/LCDWidget';
+import { MLWidget } from '../components/MLWidget';
 import { NowPlaying } from '../components/NowPlaying';
 import { PodcastsWidget } from '../components/PodcastsWidget';
 import { RunningWidget } from '../components/RunningWidget';
@@ -51,6 +52,11 @@ interface Props {
     description: string;
     blurDataURL: string;
   };
+  MLImage: {
+    url: string;
+    description: string;
+    blurDataURL: string;
+  };
   contact: string;
 }
 
@@ -76,6 +82,7 @@ const Home: NextPage<Props> = function (props) {
       <RunningWidget />
       <PodcastsWidget podcasts={props.favoritePodcasts} />
       <Web3Widget />
+      <MLWidget bgImage={props.MLImage} />
       <NowPlaying />
       <ContactWidget text={props.contact} />
     </Layout>
@@ -138,6 +145,12 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
                 description
             }
         }
+        MLImage: assetCollection(where: {title: "Makersleague.de"}, limit: 1, preview: false) {
+          items {
+              url
+              description
+          }
+      }
     }`,
     preview
   );
@@ -163,6 +176,11 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
     size: 10,
   });
   LCDImage.blurDataURL = LCDImageBase64;
+  const MLImage = response.data.MLImage.items[0];
+  const { base64: MLImageBase64 } = await getPlaiceholder(MLImage.url, {
+    size: 10,
+  });
+  MLImage.blurDataURL = MLImageBase64;
 
   let aboutTeaser = person.cvText;
   aboutTeaser = stripFirstLine(aboutTeaser);
@@ -190,6 +208,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       smartHomeFootnote: await markdownToHTML(smartHomeFootnoteText),
       favoritePodcasts,
       LCDImage,
+      MLImage,
       contact: await markdownToHTML(contactText),
     },
   };
