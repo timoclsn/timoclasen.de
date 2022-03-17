@@ -20,7 +20,7 @@ export function MLWidget({ bgImage }: Props) {
         <div className="hidden sm:block">
           <Image
             src={bgImage.url}
-            layout={'fill'}
+            layout="fill"
             objectFit="cover"
             objectPosition="center"
             sizes="90vw"
@@ -34,12 +34,9 @@ export function MLWidget({ bgImage }: Props) {
       </div>
       <div className="absolute top-0 left-0 flex h-full w-full flex-col justify-end rounded-3xl px-6 py-12 text-dark xl:px-12 xl:py-20">
         <div>
-          <h2 className="mb-1 text-2xl font-bold sm:text-3xl md:mb-2 md:text-4xl lg:text-5xl">
+          <h2 className="mb-2 text-2xl font-bold sm:text-3xl md:mb-2 md:text-4xl lg:text-5xl">
             Makers League e. V.
           </h2>
-          <p className="mb-2 text-sm sm:text-base md:mb-4 md:text-lg lg:text-xl xl:text-2xl">
-            Die Gemeinschaft für Macher*innen in Esslingen
-          </p>
           <Button
             as="a"
             variant="link"
