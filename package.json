@@ -75,7 +75,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.4",
-    "@types/lru-cache": "^7.4.0",
+    "@types/lru-cache": "^7.5.0",
     "@types/mapbox__polyline": "^1.0.2",
     "@types/react-dom": "^17.0.13",
     "@types/react-syntax-highlighter": "^13.5.2",
