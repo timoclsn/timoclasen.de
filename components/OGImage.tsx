@@ -57,11 +57,10 @@ export function OGImage({ name, title, subtitle, image }: Props) {
                 marginBottom: '1rem',
               }}
             >
-              Ich arbeite <span style={{ fontWeight: 'bold' }}>mit</span>{' '}
-              <span style={{ color: '#3E51F7' }}>Menschen</span>{' '}
-              <span style={{ fontWeight: 'bold' }}>an</span>{' '}
-              <span style={{ color: '#3E51F7' }}>Software</span> und beschäftige
-              mich mit allem, was so dazugehört.
+              <span style={{ color: '#3E51F7' }}>Designer</span> und
+              <span style={{ color: '#3E51F7' }}>Entwickler</span> mit
+              Leidenschaft für gut gemachte,{' '}
+              <span style={{ fontWeight: 'bold' }}>digitale Produkte</span>.
             </p>
           )}
 
