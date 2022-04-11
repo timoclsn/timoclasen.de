@@ -90,7 +90,7 @@
     <outline xmlUrl="https://feeds.megaphone.fm/STU4418364045" text="Waveform: The MKBHD Podcast" title="Waveform: The MKBHD Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.simplecast.com/BqbsxVfO" text="99% Invisible" title="99% Invisible" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.fireside.fm/relaychain/rss" text="Relay Chain" title="Relay Chain" type="rss" version="RSS"/>
-    <outline xmlUrl="https://theindex.libsyn.com/rss" text="The Index" title="The Index" type="rss" version="RSS"/>
+    <outline xmlUrl="https://theindex.libsyn.com/rss" text="The Index Podcast" title="The Index Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.metaebene.me/lnp/m4a" text="Logbuch:Netzpolitik" title="Logbuch:Netzpolitik" type="rss" version="RSS"/>
     <outline xmlUrl="https://alphalist.podigee.io/feed/mp3" text="alphalist.CTO Podcast - For CTOs and Technical Leaders" title="alphalist.CTO Podcast - For CTOs and Technical Leaders" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.megaphone.fm/landofthegiants" text="Land of the Giants" title="Land of the Giants" type="rss" version="RSS"/>
@@ -102,5 +102,10 @@
     <outline xmlUrl="https://feeds.simplecast.com/sOJAMohP" text="Frontend First" title="Frontend First" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.viertausendhertz.de/reflektor" text="Reflektor" title="Reflektor" type="rss" version="RSS"/>
     <outline xmlUrl="https://doppelgaenger.podigee.io/feed/mp3" text="Doppelg&#xE4;nger Tech Talk" title="Doppelg&#xE4;nger Tech Talk" type="rss" version="RSS"/>
+    <outline xmlUrl="https://formel-schmidt.podigee.io/feed/mp3" text="Formel Schmidt" title="Formel Schmidt" type="rss" version="RSS"/>
+    <outline xmlUrl="https://tax2tech.podigee.io/feed/mp3" text="Tax2Tech - Der TaxTech Podcast" title="Tax2Tech - Der TaxTech Podcast" type="rss" version="RSS"/>
+    <outline xmlUrl="https://www.relay.fm/backmarkers/feed" text="The Backmarkers" title="The Backmarkers" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.soundcloud.com/users/soundcloud:users:473431884/sounds.rss" text="deutsche-startups.de-Podcast" title="deutsche-startups.de-Podcast" type="rss" version="RSS"/>
+    <outline xmlUrl="https://anchor.fm/s/7e0ce6ac/podcast/rss" text="Design System Office Hours" title="Design System Office Hours" type="rss" version="RSS"/>
   </body>
 </opml>

@@ -23,7 +23,7 @@
     "title": "Alle Wege führen nach Ruhm - AWFNR",
     "favorite": false,
     "feed": "https://awfnr.podigee.io/feed/mp3",
-    "description": "Der Paul Ripke Podcast\n",
+    "description": "AWFNR - Der Paul Ripke Podcast ist seichte Unterhaltung. Du lauschst zwei Menschen beim Telefonat, die darüber labern, was bei ihnen in der letzten Zeit so los ist. Einmal im Monat kommt Marteria als Stammgast vorbei, während in den anderen Folgen interessante Freund\\*innen aus Pauls Telefonbuch zu Wort kommen.\n\nDeine Aufgabe: Lass dich beim Sport, auf dem Weg zur Arbeit, unter der Dusche, beim Kuscheln mit deiner Katze oder auch beim Sex berieseln.\n\nKein Interview-Podcast. Keine Lästereien.\nEinfach AWFNR. Denn alle Wege führen nach Ruhm.\n",
     "website": "https://awfnr.podigee.io/",
     "hosts": "Paul Ripke",
     "categories": ["Society & Culture", "TV & Film"],
@@ -93,7 +93,7 @@
     "title": "Cautionary Tales with Tim Harford",
     "favorite": false,
     "feed": "https://feeds.megaphone.fm/cautionarytales",
-    "description": "We tell our children unsettling fairy tales to teach them valuable life lessons, but these Cautionary Tales are for the education of the grown ups – and they are all true. Tim Harford (Financial Times, BBC, author of “The Data Detective”) brings you stories of awful human error, tragic catastrophes, and hilarious fiascos. They'll delight you, scare you, but also make you wiser. iHeartMedia is the exclusive podcast partner of Pushkin Industries.\n",
+    "description": "We tell our children unsettling fairy tales to teach them valuable life lessons, but these Cautionary Tales are for the education of the grown ups – and they are all true. Tim Harford (Financial Times, BBC, author of “The Data Detective”) brings you stories of awful human error, tragic catastrophes, and hilarious fiascos. They'll delight you, scare you, but also make you wiser.  New episodes every other Friday.\niHeartMedia is the exclusive podcast partner of Pushkin Industries.\n",
     "website": "https://www.pushkin.fm",
     "hosts": "Pushkin Industries",
     "categories": ["History", "Society & Culture"],
@@ -210,6 +210,16 @@
     "image": "cover--1800126491.jpg"
   },
   {
+    "title": "Design System Office Hours",
+    "favorite": false,
+    "feed": "https://anchor.fm/s/7e0ce6ac/podcast/rss",
+    "description": "Davy and PJ, design system practitioners talk about design-led product ownership, scaling and adoption, community and engagement, design system team models, and much more.\n",
+    "website": "https://anchor.fm/designsystemofficehours",
+    "hosts": "Davy Fung + PJ Onori",
+    "categories": ["Arts", "Design"],
+    "image": "cover-1552206234.jpg"
+  },
+  {
     "title": "Design Systems Podcast",
     "favorite": false,
     "feed": "https://feeds.buzzsprout.com/887923.rss",
@@ -218,6 +228,16 @@
     "hosts": "Knapsack",
     "categories": ["Technology"],
     "image": "cover-924896390.jpg"
+  },
+  {
+    "title": "deutsche-startups.de-Podcast",
+    "favorite": false,
+    "feed": "https://feeds.soundcloud.com/users/soundcloud:users:473431884/sounds.rss",
+    "description": "Der deutsche-startups.de-Podcast besteht derzeit aus den Formaten #Insider, #Interview, #StartupRadar und #Startup101.\n",
+    "website": "https://www.deutsche-startups.de",
+    "hosts": "deutsche-startups.de",
+    "categories": ["Business"],
+    "image": "cover-471989584.jpg"
   },
   {
     "title": "Deutschland3000 - 'ne gute Stunde mit Eva Schulz",
@@ -330,6 +350,16 @@
     "image": "cover-413214548.jpg"
   },
   {
+    "title": "Formel Schmidt",
+    "favorite": false,
+    "feed": "https://formel-schmidt.podigee.io/feed/mp3",
+    "description": "Die auto, motor und sport-Formel 1 Experten Michael Schmidt, Tobias Grüner und Andreas Haupt sind bekannt für ihr Youtube-Format Formel Schmidt.\nJetzt gibt es die Formel Schmidt auch für die Podcast Liebhaber unter euch.\n\nNach jedem Rennen analysieren sie die wichtigsten Fakten und Hintergründe - und wenn einmal kein Rennen ansteht, sprechen sie mit den Größen aus der Formel 1.\n\nAbonniert Formel Schmidt in einem Podcastplayer eurer Wahl, um keine Folge mehr zu verpassen.\n\nWeitere interessante Themen rund um die Formel 1 findet ihr\nauf der Website www.auto-motor-und-sport.de/ und auf unserem Instagram Kanal automotorundsport.formel1/\n",
+    "website": "https://www.auto-motor-und-sport.de/podcast",
+    "hosts": "auto motor und sport",
+    "categories": ["Automotive", "Leisure", "News", "Sports", "Sports News"],
+    "image": "cover--1083150193.jpg"
+  },
+  {
     "title": "Frontend First",
     "favorite": false,
     "feed": "https://feeds.simplecast.com/sOJAMohP",
@@ -375,7 +405,7 @@
     "feed": "https://hebammensalon.podigee.io/feed/mp3",
     "description": "Der Podcast für deine Schwangerschaft und Babyzeit – mit den Hebammen Sissi Rasche und Kareen Dannhauer.\n",
     "website": "https://hebammensalon.podigee.io/",
-    "hosts": "Kareen Dannhauer, Sissi Rasche",
+    "hosts": "Kareen Dannhauer, Sissi Rasche | Studio LAUDA",
     "categories": ["Kids & Family", "Parenting"],
     "image": "cover--1436517640.jpg"
   },
@@ -727,6 +757,16 @@
     "image": "cover--747382577.jpg"
   },
   {
+    "title": "Tax2Tech - Der TaxTech Podcast",
+    "favorite": false,
+    "feed": "https://tax2tech.podigee.io/feed/mp3",
+    "description": "In diesem Podcast diskutieren wir alle Bewegungen und News rund um den TaxTech-Markt. Gab es neue Fundingrunden? Von wem? Welche Trends gibt es im Bereich Steuer und Technologie? Welche Geschäftsmodelle gibt es in der Branche? Gibt es neue Gesetze oder Regeln, die den TaxTech Markt betreffen?\n\nDiese Fragen beantworten die beiden Hosts Melchior Neumann (Gründer Kontist Steuerservice) und Christopher Plantener (Gründer Kontist) mit wechselnden Gästen aus der Branche.\n\nIm Mai 2022 treffen wir uns persönlich in Berlin mit vielen anderen Köpfen der Branche.\n",
+    "website": "https://tax2tech.io/",
+    "hosts": "Melchior Neumann, Christopher Plantener",
+    "categories": ["Business", "Entrepreneurship", "Management", "Technology"],
+    "image": "cover--1245676224.jpg"
+  },
+  {
     "title": "Tech Can't Save Us",
     "favorite": false,
     "feed": "https://audioboom.com/channels/5044088.rss",
@@ -745,6 +785,16 @@
     "hosts": "Ride Home Media",
     "categories": ["Daily News", "News", "Tech News", "Technology"],
     "image": "cover-1410345037.jpg"
+  },
+  {
+    "title": "The Backmarkers",
+    "favorite": false,
+    "feed": "https://www.relay.fm/backmarkers/feed",
+    "description": "An F1 Podcast for new fans, by new fans. Austin and Myke may not have decades of experience with the sport, but they have a lot of heart – just like those at the back of the pack. Listen to their LIVE reactions to each and every race of the F1 season. Hosted by Austin Evans and Myke Hurley.\n",
+    "website": "https://www.relay.fm/backmarkers",
+    "hosts": "Relay FM",
+    "categories": ["News", "Sports", "Sports News"],
+    "image": "cover-878942019.jpg"
   },
   {
     "title": "The Big Switch",
@@ -807,14 +857,14 @@
     "image": "cover-1802851150.jpg"
   },
   {
-    "title": "The Index",
+    "title": "The Index Podcast",
     "favorite": false,
     "feed": "https://theindex.libsyn.com/rss",
-    "description": "We explore the decentralized future of Web3 and the metaverse with leading experts in blockchain and technology.  Hosted by Alex Kehaya and brought to you by TheGraph.com. New episodes every other Wednesday.\n",
+    "description": "Who's on The Index this week? We talk with industry pioneers and developers behind the Web3 revolution. Find out what's new in blockchain technology, DeFi, the metaverse, NFTs, and more.  Hosted by Alex Kehaya, CEO of Holaplex and brought to you by the Graph. The Graph, known as the Google of blockchain, is a decentralized indexing protocol for organizing blockchain data.\n",
     "website": "http://www.indexpodcast.com",
     "hosts": "Index Studios",
     "categories": ["Business", "Technology"],
-    "image": "cover--208186333.jpg"
+    "image": "cover-1838168039.jpg"
   },
   {
     "title": "The Internet of Things Podcast - Stacey On IoT",
@@ -886,7 +936,7 @@
     "title": "The Vergecast",
     "favorite": true,
     "feed": "https://feeds.megaphone.fm/vergecast",
-    "description": "Hello! This is The Vergecast, the flagship podcast of The Verge... and your life. Every Friday, Nilay Patel and Dieter Bohn make sense of the week's tech news with help from our wide-ranging staff. Join us every week for a fun, deeply nerdy, often off-the-rails conversation about what's happening now (and next) in technology and gadgets.\n",
+    "description": "Hello! This is The Vergecast, the flagship podcast of The Verge... and your life. Every Friday, Nilay Patel makes sense of the week's tech news with help from our wide-ranging staff. Join us every week for a fun, deeply nerdy, often off-the-rails conversation about what's happening now (and next) in technology and gadgets.\n",
     "website": "https://www.theverge.com/the-vergecast",
     "hosts": "The Verge",
     "categories": ["News", "Tech News", "Technology"],
@@ -907,8 +957,8 @@
     "favorite": false,
     "feed": "https://feeds.theoutline.com/tomorrow",
     "description": "Tomorrow is a podcast hosted by Joshua Topolsky and Ryan Houlihan about what's happening right now — and next — in the world of culture, technology and the internet, music, movies, politics, and more. Whether it's dissecting the news of the day or having an in-depth conversation with a creator, deep thinker, or artist, Tomorrow will be the best hour of funny, weird, and wonderful you'll get all week.\n",
-    "website": "http://www.inputmag.com",
-    "hosts": "Input",
+    "website": "http://joshuatopolsky.com",
+    "hosts": "Joshua Topolsky",
     "categories": ["News", "Society & Culture", "Tech News", "Technology"],
     "image": "cover--972528859.jpg"
   },
