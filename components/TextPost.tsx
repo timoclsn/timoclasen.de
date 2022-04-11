@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import type { ReactNode } from 'react';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown, { Components } from 'react-markdown';
+import type { Element } from 'react-markdown/lib/ast-to-react';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
 import styleDark from 'react-syntax-highlighter/dist/cjs/styles/prism/material-dark';
@@ -12,12 +13,12 @@ import { useTheme } from './ThemeContext';
 SyntaxHighlighter.registerLanguage('jsx', jsx);
 
 interface ParagraphProps {
-  node: ReactNode;
+  node: Element;
   children: ReactNode;
 }
 
 function Paragraph({ node, children }: ParagraphProps) {
-  const domNode = node as HTMLElement;
+  const domNode = node as unknown as HTMLElement;
   if (domNode.children[0].tagName === 'image') {
     const imageNode = domNode.children[0] as HTMLImageElement;
     return (
@@ -38,7 +39,7 @@ function Paragraph({ node, children }: ParagraphProps) {
 }
 
 interface CodeProps {
-  node: ReactNode;
+  node: Element;
 }
 
 interface CodeNode {
@@ -47,7 +48,7 @@ interface CodeNode {
 }
 
 function Code({ node }: CodeProps) {
-  const domNode = node as HTMLElement;
+  const domNode = node as unknown as HTMLElement;
   const { darkMode } = useTheme();
   const style = darkMode ? styleDark : styleLight;
   const codeNode = domNode.children[0].children[0] as unknown as CodeNode;
@@ -60,7 +61,7 @@ function Code({ node }: CodeProps) {
   );
 }
 
-const components = {
+const components: Components = {
   p: Paragraph,
   pre: Code,
 };

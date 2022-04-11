@@ -1,5 +1,5 @@
 import { matchSorter } from 'match-sorter';
-import { useState } from 'react';
+import { startTransition, useState } from 'react';
 import { User } from 'react-feather';
 
 import type { Podcast as PodcastType } from '../lib/podcasts';
@@ -23,13 +23,14 @@ export function PodcastsList({ podcasts }: Props) {
     {} as { [key: string]: boolean }
   );
 
-  const [searchValue, setSearchValue] = useState('');
+  const [inputValue, setInputValue] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [filter, setFilter] = useState({
     favorites: false,
     categories: categoriesObj,
   });
 
-  const filteredPodcast = matchSorter(podcasts, searchValue, {
+  const filteredPodcast = matchSorter(podcasts, searchQuery, {
     keys: ['title', 'hosts', 'description'],
   }).filter((podcast) => {
     const filteredCategories = [];
@@ -64,10 +65,15 @@ export function PodcastsList({ podcasts }: Props) {
       <div className="mx-auto mb-6 max-w-prose">
         <Search
           placeholder="Podcasts durchsuchen"
-          handleChange={(e) => setSearchValue(e.target.value)}
+          handleChange={(e) => {
+            setInputValue(e.target.value);
+            startTransition(() => {
+              setSearchQuery(e.target.value);
+            });
+          }}
           handleBlur={() => {
             splitbee.track('Podcast Search', {
-              search: searchValue,
+              search: inputValue,
             });
           }}
         />
