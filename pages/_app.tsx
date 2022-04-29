@@ -3,7 +3,7 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import React from 'react';
 import { SWRConfig } from 'swr';
-import { Provider } from 'wagmi';
+import { createClient, Provider } from 'wagmi';
 import { InjectedConnector } from 'wagmi/connectors/injected';
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect';
 
@@ -22,9 +22,14 @@ const connectors = () => {
   ];
 };
 
+const client = createClient({
+  autoConnect: true,
+  connectors,
+});
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Provider autoConnect connectors={connectors}>
+    <Provider client={client}>
       <ThemeProvider>
         <SWRConfig
           value={{

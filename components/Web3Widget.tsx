@@ -5,8 +5,10 @@ import {
   useAccount,
   useBalance,
   useConnect,
+  useDisconnect,
+  useEnsName,
   useFeeData,
-  useTransaction,
+  useSendTransaction,
 } from 'wagmi';
 
 import { Button } from './Button';
@@ -14,30 +16,27 @@ import { useIsMounted } from './useIsMounted';
 
 export function Web3Widget() {
   const isMounted = useIsMounted();
-  const [{ data: connectData }, connect] = useConnect();
-  const [{ data: accountData }, disconnect] = useAccount({
-    fetchEns: true,
-  });
-  const [{ data: balanceData, loading: balanceLoading }] = useBalance({
+  const { connectors, connectAsync } = useConnect();
+  const { data: accountData } = useAccount();
+  const { data: ensName } = useEnsName({ address: accountData?.address });
+  const { disconnect } = useDisconnect();
+  const { data: balanceData, isLoading: balanceLoading } = useBalance({
     addressOrName: accountData?.address,
   });
-  const [{ data: feeData, loading: feeLoading }] = useFeeData({
+  const { data: feeData, isLoading: feeLoading } = useFeeData({
     formatUnits: 'ether',
   });
-  const [{ loading: transactionLoading }, sendTransaction] = useTransaction();
 
-  const sendETH = async () => {
-    const { error } = await sendTransaction({
+  const { isLoading: transactionLoading, sendTransactionAsync } =
+    useSendTransaction();
+
+  const sendETH = async () =>
+    await sendTransactionAsync({
       request: {
         to: 'timoclasen.eth',
         value: BigNumber.from('1000000000000000'), // 0,001 ETH in WEI
       },
     });
-
-    if (error) {
-      toast.error('Es ist ein Fehler aufgetreten.');
-    }
-  };
 
   const copyAddress = (adress: string) => {
     navigator.clipboard.writeText(adress).then(
@@ -62,27 +61,17 @@ export function Web3Widget() {
             <div className="flex justify-between">
               <p
                 className="text-md truncate opacity-60 md:text-lg lg:text-xl"
-                title={
-                  accountData.ens?.name
-                    ? accountData.ens?.name
-                    : accountData.address
-                }
+                title={ensName ? ensName : accountData.address}
               >
-                <span className="">
-                  {accountData.ens?.name ? 'ENS Name: ' : 'Adresse: '}
-                </span>
-                {accountData.ens?.name
-                  ? accountData.ens?.name
-                  : shortenedAddress(accountData.address)}
+                <span className="">{ensName ? 'ENS Name: ' : 'Adresse: '}</span>
+                {ensName
+                  ? ensName
+                  : shortenedAddress(accountData.address || '')}
               </p>
               <button
                 className="opacity-60 hover:text-highlight dark:hover:text-highlight-dark"
                 onClick={() =>
-                  copyAddress(
-                    accountData.ens?.name
-                      ? accountData.ens?.name
-                      : accountData.address
-                  )
+                  copyAddress(ensName ? ensName : accountData.address || '')
                 }
               >
                 <Copy size={20} />
@@ -146,13 +135,13 @@ export function Web3Widget() {
                 </Button>
               </>
             ) : (
-              connectData.connectors.map((connector) => (
+              connectors.map((connector) => (
                 <Button
                   variant="ghost"
                   size="small"
                   disabled={isMounted ? !connector.ready : false}
                   key={connector.id}
-                  onClick={() => connect(connector)}
+                  onClick={() => connectAsync(connector)}
                 >
                   {isMounted
                     ? connector.name === 'Injected'
