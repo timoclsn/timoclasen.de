@@ -39,24 +39,25 @@ const wagmiClient = createClient({
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <WagmiProvider client={wagmiClient}>
-      <RainbowKitProvider
-        chains={chains}
-        coolMode
-        theme={{
-          lightMode: lightTheme({
-            accentColor: '#3E51F7',
-            accentColorForeground: 'white',
-            fontStack: 'rounded',
-          }),
-          darkMode: midnightTheme({
-            accentColor: '#4F5FEF',
-            accentColorForeground: 'white',
-            fontStack: 'rounded',
-          }),
-        }}
-      >
-        <ThemeProvider>
+    <ThemeProvider>
+      <WagmiProvider client={wagmiClient}>
+        <RainbowKitProvider
+          chains={chains}
+          showRecentTransactions
+          coolMode
+          theme={{
+            lightMode: lightTheme({
+              accentColor: '#3E51F7',
+              accentColorForeground: 'white',
+              fontStack: 'rounded',
+            }),
+            darkMode: midnightTheme({
+              accentColor: '#4F5FEF',
+              accentColorForeground: 'white',
+              fontStack: 'rounded',
+            }),
+          }}
+        >
           <SWRConfig
             value={{
               fetcher: fetcher,
@@ -65,9 +66,9 @@ function MyApp({ Component, pageProps }: AppProps) {
             <Component {...pageProps} />
             <ToastProvider />
           </SWRConfig>
-        </ThemeProvider>
-      </RainbowKitProvider>
-    </WagmiProvider>
+        </RainbowKitProvider>
+      </WagmiProvider>
+    </ThemeProvider>
   );
 }
 
