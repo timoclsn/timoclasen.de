@@ -1,25 +1,20 @@
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { BigNumber } from 'ethers';
-import { Copy, XCircle } from 'react-feather';
+import { Copy } from 'react-feather';
 import toast from 'react-hot-toast';
 import {
   useAccount,
   useBalance,
-  useConnect,
-  useDisconnect,
   useEnsName,
   useFeeData,
   useSendTransaction,
 } from 'wagmi';
 
 import { Button } from './Button';
-import { useIsMounted } from './useIsMounted';
 
 export function Web3Widget() {
-  const isMounted = useIsMounted();
-  const { connectors, connectAsync } = useConnect();
   const { data: accountData } = useAccount();
   const { data: ensName } = useEnsName({ address: accountData?.address });
-  const { disconnect } = useDisconnect();
   const { data: balanceData, isLoading: balanceLoading } = useBalance({
     addressOrName: accountData?.address,
   });
@@ -55,7 +50,10 @@ export function Web3Widget() {
   return (
     <div id="web3" className="flex justify-center">
       <div className="w-full max-w-screen-sm rounded-3xl bg-dark bg-opacity-10 px-6 py-6 dark:bg-light dark:bg-opacity-10 xl:px-12 xl:py-12">
-        <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">Web3</h2>
+        <h2 className="mb-4 text-xl font-bold md:text-2xl lg:text-3xl">Web3</h2>
+        <div className="mb-4">
+          <ConnectButton accountStatus="avatar" chainStatus="full" />
+        </div>
         {accountData ? (
           <>
             <div className="flex justify-between">
@@ -118,40 +116,16 @@ export function Web3Widget() {
         )}
         <div className="mt-8 flex justify-center">
           <div className="flex flex-col space-y-4">
-            {accountData ? (
-              <>
-                <Button variant="ghost" size="small" onClick={disconnect}>
-                  <XCircle />
-                  Wallet trennen
-                </Button>
-                <Button
-                  variant="solid"
-                  size="small"
-                  onClick={() => sendETH()}
-                  disabled={transactionLoading}
-                  title="0.001 ETH senden"
-                >
-                  ☕️ Buy me a coffee
-                </Button>
-              </>
-            ) : (
-              connectors.map((connector) => (
-                <Button
-                  variant="ghost"
-                  size="small"
-                  disabled={isMounted ? !connector.ready : false}
-                  key={connector.id}
-                  onClick={() => connectAsync(connector)}
-                >
-                  {isMounted
-                    ? connector.name === 'Injected'
-                      ? 'Injected (z.B. MetaMask)'
-                      : connector.name
-                    : connector.id === 'injected'
-                    ? connector.id
-                    : connector.name}
-                </Button>
-              ))
+            {accountData && (
+              <Button
+                variant="solid"
+                size="small"
+                onClick={() => sendETH()}
+                disabled={transactionLoading}
+                title="0.001 ETH senden"
+              >
+                ☕️ Buy me a coffee
+              </Button>
             )}
           </div>
         </div>
