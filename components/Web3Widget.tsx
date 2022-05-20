@@ -43,7 +43,7 @@ export function Web3Widget() {
           </p>
         )}
         <div className="flex justify-center">
-          <ConnectButton />
+          <ConnectButton label="Wallet verbinden" />
         </div>
         {accountData && (
           <div className="flex flex-col items-center justify-center space-y-4">
