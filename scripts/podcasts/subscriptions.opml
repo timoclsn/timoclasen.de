@@ -16,7 +16,6 @@
     <outline xmlUrl="https://www.relay.fm/mpu/feed" text="Mac Power Users" title="Mac Power Users" type="rss" version="RSS"/>
     <outline xmlUrl="https://appstories.net/episodes/feed/" text="AppStories" title="AppStories" type="rss" version="RSS"/>
     <outline xmlUrl="https://daringfireball.net/thetalkshow/rss" text="The Talk Show With John Gruber" title="The Talk Show With John Gruber" type="rss" version="RSS"/>
-    <outline xmlUrl="https://uie.fm/shows/uie/feed" text="The UIE Podcast" title="The UIE Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.theoutline.com/tomorrow" text="Tomorrow" title="Tomorrow" type="rss" version="RSS"/>
     <outline xmlUrl="https://www1.wdr.de/mediathek/video/podcast/channel-quarks-und-co-100.podcast" text="Quarks" title="Quarks" type="rss" version="RSS"/>
     <outline xmlUrl="http://chaosradio.ccc.de/chaosradio-latest.rss" text="Chaosradio" title="Chaosradio" type="rss" version="RSS"/>
@@ -42,7 +41,6 @@
     <outline xmlUrl="https://feeds.transistor.fm/rework" text="Rework" title="Rework" type="rss" version="RSS"/>
     <outline xmlUrl="https://digitalevorreiter.podigee.io/feed/mp3" text="Digitale Vorreiter:innen - Business Cases" title="Digitale Vorreiter:innen - Business Cases" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.theincomparable.com/theincomparable" text="The Incomparable" title="The Incomparable" type="rss" version="RSS"/>
-    <outline xmlUrl="https://feeds.megaphone.fm/cautionarytales" text="Cautionary Tales with Tim Harford" title="Cautionary Tales with Tim Harford" type="rss" version="RSS"/>
     <outline xmlUrl="https://layout.fm/rss" text="Layout" title="Layout" type="rss" version="RSS"/>
     <outline xmlUrl="https://newwork.podigee.io/feed/mp3" text="On the Way to New Work - Der Podcast &#xFC;ber neue Arbeit" title="On the Way to New Work - Der Podcast &#xFC;ber neue Arbeit" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.npr.org/510289/podcast.xml" text="Planet Money" title="Planet Money" type="rss" version="RSS"/>
@@ -83,7 +81,6 @@
     <outline xmlUrl="https://feeds.transistor.fm/smashing" text="Smashing Podcast" title="Smashing Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://museapp.com/podcast.rss" text="Metamuse" title="Metamuse" type="rss" version="RSS"/>
     <outline xmlUrl="https://thebigswitch.libsyn.com/rss" text="The Big Switch" title="The Big Switch" type="rss" version="RSS"/>
-    <outline xmlUrl="https://feeds.transistor.fm/bytetalk" text="ByteTalk" title="ByteTalk" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.soundcloud.com/users/soundcloud:users:421183616/sounds.rss" text="Digitale Leute" title="Digitale Leute" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.buzzsprout.com/1806381.rss" text="Developer Experience" title="Developer Experience" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.fireside.fm/podrocket/rss" text="PodRocket - A web development podcast from LogRocket" title="PodRocket - A web development podcast from LogRocket" type="rss" version="RSS"/>
@@ -107,5 +104,10 @@
     <outline xmlUrl="https://www.relay.fm/backmarkers/feed" text="The Backmarkers" title="The Backmarkers" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.soundcloud.com/users/soundcloud:users:473431884/sounds.rss" text="deutsche-startups.de-Podcast" title="deutsche-startups.de-Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://anchor.fm/s/7e0ce6ac/podcast/rss" text="Design System Office Hours" title="Design System Office Hours" type="rss" version="RSS"/>
+    <outline xmlUrl="https://rss.art19.com/smartless" text="SmartLess" title="SmartLess" type="rss" version="RSS"/>
+    <outline xmlUrl="https://ohneaktienwirdschwer.podigee.io/feed/mp3" text="OHNE AKTIEN WIRD SCHWER - T&#xE4;gliche B&#xF6;rsen-News" title="OHNE AKTIEN WIRD SCHWER - T&#xE4;gliche B&#xF6;rsen-News" type="rss" version="RSS"/>
+    <outline xmlUrl="https://rss.art19.com/schneller-schlau" text="Schneller schlau - Der kurze Wissenspodcast von P.M." title="Schneller schlau - Der kurze Wissenspodcast von P.M." type="rss" version="RSS"/>
+    <outline xmlUrl="https://omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/C0AE8C6E-22F0-4E9B-AC1C-AE390037AC53/7F5A4714-6B10-4CCF-A424-AE390037AC70/podcast.rss" text="Cautionary Tales with Tim Harford" title="Cautionary Tales with Tim Harford" type="rss" version="RSS"/>
+    <outline xmlUrl="https://jung-naiv.podigee.io/feed/mp3" text="Jung &amp; Naiv" title="Jung &amp; Naiv" type="rss" version="RSS"/>
   </body>
 </opml>
