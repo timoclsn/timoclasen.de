@@ -38,6 +38,14 @@ export function Web3Widget() {
               rel="noopener noreferrer"
             >
               MetaMask
+            </a>{' '}
+            oder{' '}
+            <a
+              href="https://rainbow.me"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Rainbow
             </a>
             ) und lass dir einige Daten anzeigen.
           </p>
