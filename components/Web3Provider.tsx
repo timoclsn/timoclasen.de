@@ -1,10 +1,11 @@
 import '@rainbow-me/rainbowkit/styles.css';
 
 import {
-  getDefaultWallets,
+  connectorsForWallets,
   lightTheme,
   midnightTheme,
   RainbowKitProvider,
+  wallet,
 } from '@rainbow-me/rainbowkit';
 import type { ReactNode } from 'react';
 import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
@@ -21,10 +22,16 @@ const { chains, provider } = configureChains(
   ]
 );
 
-const { connectors } = getDefaultWallets({
-  appName: 'timoclasen.de',
-  chains,
-});
+const connectors = connectorsForWallets([
+  {
+    groupName: 'Recommended',
+    wallets: [
+      wallet.rainbow({ chains }),
+      wallet.metaMask({ chains }),
+      wallet.walletConnect({ chains }),
+    ],
+  },
+]);
 
 const wagmiClient = createClient({
   autoConnect: true,

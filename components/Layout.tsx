@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Script from 'next/script';
 import type { ReactNode } from 'react';
+import { Suspense } from 'react';
 
 import { CenteredColumn } from './CenteredColumn';
 import { Favicons } from './Favicons';
@@ -57,11 +58,17 @@ export function Layout({
       <Favicons />
       {preview && <PreviewAlert />}
       <div className="flex min-h-screen flex-col text-base antialiased lg:text-lg xl:text-xl">
-        <Navigation name={name} />
-        <main id="skip">
-          <CenteredColumn>{children}</CenteredColumn>
-        </main>
-        <Footer />
+        <Suspense fallback={null}>
+          <Navigation name={name} />
+        </Suspense>
+        <Suspense fallback={null}>
+          <main id="skip">
+            <CenteredColumn>{children}</CenteredColumn>
+          </main>
+        </Suspense>
+        <Suspense fallback={null}>
+          <Footer />
+        </Suspense>
       </div>
     </>
   );
