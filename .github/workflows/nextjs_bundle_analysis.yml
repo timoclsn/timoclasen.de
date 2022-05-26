@@ -16,14 +16,10 @@ jobs:
   analyze:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
       - uses: actions/checkout@v2
 
-      - name: Set up node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-
-      - name: Install dependencies
+      - name: Download deps
         uses: bahmutov/npm-install@v1
 
       - name: Restore next build
