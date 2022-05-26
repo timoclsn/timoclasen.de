@@ -120,10 +120,5 @@
       "npm run lint -- --fix .",
       "git add"
     ]
-  },
-  "nextBundleAnalysis": {
-    "budget": null,
-    "budgetPercentIncreaseRed": 20,
-    "showDetails": true
   }
 }
