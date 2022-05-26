@@ -1,23 +1,23 @@
 import '@rainbow-me/rainbowkit/styles.css';
 
 import {
-  apiProvider,
-  configureChains,
   getDefaultWallets,
   lightTheme,
   midnightTheme,
   RainbowKitProvider,
 } from '@rainbow-me/rainbowkit';
 import type { ReactNode } from 'react';
-import { chain, createClient, WagmiProvider } from 'wagmi';
+import { chain, configureChains, createClient, WagmiConfig } from 'wagmi';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
 
 import { useTheme } from './ThemeContext';
 
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
   [
-    apiProvider.alchemy(process.env.NEXT_PUBLIC_ALCHEMY_ID),
-    apiProvider.fallback(),
+    alchemyProvider({ alchemyId: process.env.NEXT_PUBLIC_ALCHEMY_ID }),
+    publicProvider(),
   ]
 );
 
@@ -40,7 +40,7 @@ export function Web3Provider({ children }: Props) {
   const { darkMode } = useTheme();
 
   return (
-    <WagmiProvider client={wagmiClient}>
+    <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider
         chains={chains}
         showRecentTransactions
@@ -61,6 +61,6 @@ export function Web3Provider({ children }: Props) {
       >
         {children}
       </RainbowKitProvider>
-    </WagmiProvider>
+    </WagmiConfig>
   );
 }
