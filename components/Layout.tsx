@@ -57,19 +57,15 @@ export function Layout({
       />
       <Favicons />
       {preview && <PreviewAlert />}
-      <div className="flex min-h-screen flex-col text-base antialiased lg:text-lg xl:text-xl">
-        <Suspense fallback={null}>
+      <Suspense fallback={null}>
+        <div className="flex min-h-screen flex-col text-base antialiased lg:text-lg xl:text-xl">
           <Navigation name={name} />
-        </Suspense>
-        <Suspense fallback={null}>
           <main id="skip">
             <CenteredColumn>{children}</CenteredColumn>
           </main>
-        </Suspense>
-        <Suspense fallback={null}>
           <Footer />
-        </Suspense>
-      </div>
+        </div>
+      </Suspense>
     </>
   );
 }
