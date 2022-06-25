@@ -3,14 +3,17 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 /** @type {import('next').NextConfig} */
-module.exports = withBundleAnalyzer({
+const config = {
   swcMinify: true,
   experimental: {
     legacyBrowsers: false,
     browsersListForSwc: true,
+    scrollRestoration: true,
   },
   images: {
     formats: ['image/avif', 'image/webp'],
     domains: ['images.ctfassets.net', 'api.mapbox.com', 'i.scdn.co'],
   },
-});
+};
+
+module.exports = withBundleAnalyzer(config);
