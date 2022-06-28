@@ -5,7 +5,7 @@ import { useAccount, useSendTransaction } from 'wagmi';
 import { Button } from './Button';
 
 export function Web3Widget() {
-  const { data: accountData } = useAccount();
+  const { address } = useAccount();
   const { isLoading: transactionLoading, sendTransactionAsync } =
     useSendTransaction();
 
@@ -21,7 +21,7 @@ export function Web3Widget() {
     <div id="web3" className="flex justify-center">
       <div className="flex w-full max-w-screen-sm flex-col space-y-4 rounded-3xl bg-dark bg-opacity-10 px-6 py-6 dark:bg-light dark:bg-opacity-10 xl:px-12 xl:py-12">
         <h2 className="text-xl font-bold md:text-2xl lg:text-3xl">Web3</h2>
-        {!accountData && (
+        {!address && (
           <p className="text-md opacity-60 md:text-lg lg:text-xl">
             Mein kleiner Crypto-Spielplatz. Verbinde dein{' '}
             <a
@@ -53,7 +53,7 @@ export function Web3Widget() {
         <div className="flex justify-center">
           <ConnectButton label="Wallet verbinden" />
         </div>
-        {accountData && (
+        {address && (
           <div className="flex flex-col items-center justify-center space-y-4">
             <Button
               variant="solid"
@@ -68,7 +68,7 @@ export function Web3Widget() {
               as="a"
               variant="ghost"
               size="small"
-              href={`https://etherscan.io/address/${accountData?.address}`}
+              href={`https://etherscan.io/address/${address}`}
               target="_blank"
               rel="noopener noreferrer"
             >
