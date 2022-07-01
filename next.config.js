@@ -10,6 +10,9 @@ const config = {
     legacyBrowsers: false,
     browsersListForSwc: true,
     scrollRestoration: true,
+    images: {
+      allowFutureImage: true,
+    },
   },
   images: {
     formats: ['image/avif', 'image/webp'],

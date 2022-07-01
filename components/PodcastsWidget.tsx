@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/future/image';
 import Link from 'next/link';
 import { ArrowRight } from 'react-feather';
 
@@ -29,9 +29,9 @@ export function PodcastsWidget({ podcasts }: Props) {
           </Link>
         </div>
       </div>
-      <ul className="flex snap-x justify-between space-x-4 overflow-x-auto">
+      <ul className="flex snap-x justify-between space-x-4 overflow-x-scroll">
         {podcasts.map((podcast) => (
-          <li key={podcast.title} className="snap-center">
+          <li key={podcast.title} className="flex-none snap-center">
             <a
               href={podcast.website}
               target="_blank"
@@ -44,9 +44,7 @@ export function PodcastsWidget({ podcasts }: Props) {
                 src={`/podcasts/${podcast.image}`}
                 quality={60}
                 alt={`Podcast cover von ${podcast.title}`}
-                layout="fixed"
-                width={160}
-                height={160}
+                style={{ width: '160px', height: '160px' }}
               />
             </a>
           </li>

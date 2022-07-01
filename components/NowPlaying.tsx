@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/future/image';
 import useSWR from 'swr';
 
 import type { NowPlayingData } from '../pages/api/now-playing';
@@ -25,20 +25,17 @@ export function NowPlaying() {
 
   return (
     <section className="flex justify-center">
-      <div className="w-full space-y-2 rounded-3xl bg-dark bg-opacity-10 px-6 py-6 dark:bg-light dark:bg-opacity-10 sm:w-auto sm:min-w-[450px] xl:px-12 xl:py-12">
+      <div className="w-full space-y-4 rounded-3xl bg-dark bg-opacity-10 px-6 py-6 dark:bg-light dark:bg-opacity-10 sm:w-auto sm:min-w-[450px] xl:px-12 xl:py-12">
         <div className="flex space-x-6">
           {data && data.image ? (
-            <div className="flex-none">
-              <Image
-                className="rounded-2xl"
-                src={data.image}
-                quality={60}
-                alt={data.albumName}
-                layout="fixed"
-                width={100}
-                height={100}
-              />
-            </div>
+            <Image
+              className="flex-none rounded-2xl"
+              src={data.image}
+              quality={60}
+              alt={data.albumName}
+              width={100}
+              height={100}
+            />
           ) : (
             <Skeleton width="100px" height="100px" borderRadius="1rem" />
           )}

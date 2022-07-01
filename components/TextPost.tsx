@@ -1,5 +1,4 @@
-import Image from 'next/image';
-import type { ReactNode } from 'react';
+import NextImage from 'next/future/image';
 import ReactMarkdown, { Components } from 'react-markdown';
 import type { Element } from 'react-markdown/lib/ast-to-react';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -12,30 +11,20 @@ import { useTheme } from './ThemeContext';
 
 SyntaxHighlighter.registerLanguage('jsx', jsx);
 
-interface ParagraphProps {
-  node: Element;
-  children: ReactNode;
+interface ImageProps {
+  node: any;
 }
 
-function Paragraph({ node, children }: ParagraphProps) {
-  const domNode = node as unknown as HTMLElement;
-  if (domNode.children[0].tagName === 'image') {
-    const imageNode = domNode.children[0] as HTMLImageElement;
-    return (
-      <div className="aspect-w-3 aspect-h-2 rounded-md bg-dark bg-opacity-10 dark:bg-light dark:bg-opacity-10">
-        <Image
-          src={`https:${imageNode.src}`}
-          layout="fill"
-          objectFit="contain"
-          objectPosition="center"
-          sizes="90vw"
-          quality={60}
-          alt={imageNode.alt}
-        />
-      </div>
-    );
-  }
-  return <p>{children}</p>;
+function Image({ node }: ImageProps) {
+  return (
+    <NextImage
+      src={`https:${node.properties.src}`}
+      sizes="90vw"
+      quality={60}
+      alt={node.properties.alt}
+      className="rounded-3xl"
+    />
+  );
 }
 
 interface CodeProps {
@@ -62,8 +51,8 @@ function Code({ node }: CodeProps) {
 }
 
 const components: Components = {
-  p: Paragraph,
   pre: Code,
+  img: Image,
 };
 
 interface Props {

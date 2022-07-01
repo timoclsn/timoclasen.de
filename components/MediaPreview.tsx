@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/future/image';
 import type { Icon } from 'react-feather';
 import { Heart } from 'react-feather';
 
@@ -29,11 +29,10 @@ export function MediaPreview({
     <div className="mx-auto flex max-w-prose space-x-4">
       {image ? (
         <Image
-          className="rounded-2xl"
+          className="h-[80px] w-[80px] rounded-2xl"
           src={image}
           quality={60}
           alt={title}
-          layout="fixed"
           width={80}
           height={80}
         />

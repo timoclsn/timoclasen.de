@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/future/image';
 
 import type { CVEntry } from '../pages/ueber';
 
@@ -20,11 +20,10 @@ export function CV({ entries }: Props) {
           >
             <div className="flex-none">
               <Image
-                className="rounded-2xl"
+                className="block rounded-2xl"
                 src={entry.company.image.url}
                 quality={60}
                 alt={entry.company.image.description}
-                layout="fixed"
                 width={80}
                 height={80}
               />

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/future/image';
 import { Calendar, Clock, Feather, Twitter, User } from 'react-feather';
 
 import { BlogPostLabel } from './BlogPostLabel';
@@ -54,10 +54,9 @@ export function BlogPostHeader({
               src={author.image.url}
               width={32}
               height={32}
-              layout="fixed"
               alt={author.image.description}
               quality={60}
-              className="rounded-full"
+              className="block rounded-full"
             />
           </div>
           <div className="flex space-x-6">

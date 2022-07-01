@@ -1,6 +1,5 @@
-import type { NextPage } from 'next';
-import type { GetStaticProps } from 'next';
-import Image from 'next/image';
+import type { GetStaticProps, NextPage } from 'next';
+import Image from 'next/future/image';
 import { getPlaiceholder } from 'plaiceholder';
 
 import { ContactWidget } from '../components/ContactWidget';
@@ -55,9 +54,6 @@ const About: NextPage<Props> = function (props) {
       <div className="aspect-w-2 aspect-h-1 overflow-hidden rounded-3xl">
         <Image
           src={props.image.url}
-          layout={'fill'}
-          objectFit="cover"
-          objectPosition="center"
           sizes="90vw"
           quality={60}
           priority

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/future/image';
 import { Globe, Twitter } from 'react-feather';
 
 interface Props {
@@ -115,25 +115,19 @@ export function OGImage({ name, title, subtitle, image }: Props) {
           </div>
         </footer>
       </div>
-      <div
+      <Image
+        src={image}
+        alt="Image"
+        priority
+        unoptimized
         style={{
-          flex: 'none',
-          width: '460px',
           height: '630px',
-          overflow: 'hidden',
-          position: 'relative',
+          width: '460px',
+          flex: 'none',
+          objectFit: 'cover',
+          objectPosition: 'center',
         }}
-      >
-        <Image
-          src={image}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-          alt="Image"
-          priority
-          unoptimized
-        />
-      </div>
+      />
     </section>
   );
 }

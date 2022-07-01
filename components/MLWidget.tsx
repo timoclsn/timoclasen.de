@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/future/image';
 import { ArrowRight } from 'react-feather';
 
 import { Button } from './Button';
@@ -17,20 +17,15 @@ export function MLWidget({ bgImage }: Props) {
   return (
     <section id="makers-league" className="relative rounded-3xl bg-[#E5F0F2]">
       <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-3xl sm:aspect-w-2 sm:aspect-h-1">
-        <div className="hidden sm:block">
-          <Image
-            src={bgImage.url}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-            sizes="90vw"
-            quality={90}
-            alt={bgImage.description}
-            className="rounded-3xl"
-            blurDataURL={bgImage.blurDataURL}
-            placeholder="blur"
-          />
-        </div>
+        <Image
+          src={bgImage.url}
+          sizes="90vw"
+          quality={90}
+          alt={bgImage.description}
+          className="hidden rounded-3xl sm:block"
+          blurDataURL={bgImage.blurDataURL}
+          placeholder="blur"
+        />
       </div>
       <div className="absolute top-0 left-0 flex h-full w-full flex-col justify-end rounded-3xl px-6 py-12 text-dark xl:px-12 xl:py-20">
         <div>

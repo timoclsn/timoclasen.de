@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/future/image';
 import { ArrowRight } from 'react-feather';
 
 import { Button } from './Button';
@@ -19,13 +19,9 @@ export function LCDWidget({ bgImage }: Props) {
       <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-3xl sm:aspect-w-2 sm:aspect-h-1">
         <Image
           src={bgImage.url}
-          layout={'fill'}
-          objectFit="cover"
-          objectPosition="center"
           sizes="90vw"
           quality={60}
           alt={bgImage.description}
-          className="rounded-3xl"
           blurDataURL={bgImage.blurDataURL}
           placeholder="blur"
         />
