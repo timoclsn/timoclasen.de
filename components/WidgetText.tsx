@@ -24,7 +24,7 @@ export function WidgetText({ title, text, linkText, href }: Props) {
       </div>
       {href && (
         <div className="mt-4 -mb-6 flex justify-end xl:-mb-12">
-          <Link href={href} passHref>
+          <Link href={href} passHref legacyBehavior>
             <Button as="a" variant="link">
               <ArrowRight />
               {linkText}

@@ -21,7 +21,7 @@ export function PodcastsWidget({ podcasts }: Props) {
           so regelmäßig höre.
         </p>
         <div className="flex-none">
-          <Link href="/podcasts" passHref>
+          <Link href="/podcasts" passHref legacyBehavior>
             <Button as="a" variant="link">
               <ArrowRight />
               Alle Podcasts

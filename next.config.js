@@ -13,6 +13,7 @@ const config = {
     images: {
       allowFutureImage: true,
     },
+    newNextLinkBehavior: true,
   },
   images: {
     formats: ['image/avif', 'image/webp'],

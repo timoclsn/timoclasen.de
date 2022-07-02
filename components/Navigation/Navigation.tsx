@@ -32,10 +32,8 @@ export function Navigation({ name }: Props) {
             Zu Inhalt springen
           </a>
           <div className="flex flex-1 items-center space-x-2 sm:flex-initial md:space-x-4">
-            <Link href="/">
-              <a title="Home" className="whitespace-nowrap">
-                <h1 className={styles.name}>{name}</h1>
-              </a>
+            <Link href="/" title="Home" className="whitespace-nowrap">
+              <h1 className={styles.name}>{name}</h1>
             </Link>
             <SwitchMode />
           </div>
@@ -45,22 +43,22 @@ export function Navigation({ name }: Props) {
             } mt-16 flex-1 flex-col items-center space-y-8 pb-8 sm:mt-0 sm:flex sm:flex-initial sm:flex-row sm:space-y-0 sm:space-x-4 sm:pb-0 md:space-x-8`}
           >
             <li>
-              <Link href="/ueber" passHref>
+              <Link href="/ueber" passHref legacyBehavior>
                 <NavigationLink>Über</NavigationLink>
               </Link>
             </li>
             <li>
-              <Link href="/blog" passHref>
+              <Link href="/blog" passHref legacyBehavior>
                 <NavigationLink>Blog</NavigationLink>
               </Link>
             </li>
             <li>
-              <Link href="/podcasts" passHref>
+              <Link href="/podcasts" passHref legacyBehavior>
                 <NavigationLink>Podcasts</NavigationLink>
               </Link>
             </li>
             <li>
-              <Link href="/musik" passHref>
+              <Link href="/musik" passHref legacyBehavior>
                 <NavigationLink>Musik</NavigationLink>
               </Link>
             </li>

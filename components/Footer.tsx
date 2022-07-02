@@ -48,7 +48,7 @@ export function Footer() {
             <NavigationLink href="/rss.xml">RSS</NavigationLink>
           </li>
           <li className="ml-0 sm:ml-auto">
-            <Link href="/impressum" passHref>
+            <Link href="/impressum" passHref legacyBehavior>
               <NavigationLink>Impressum & Datenschutz</NavigationLink>
             </Link>
           </li>
