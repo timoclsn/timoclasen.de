@@ -17,13 +17,17 @@ interface ImageProps {
 
 function Image({ node }: ImageProps) {
   return (
-    <NextImage
-      src={`https:${node.properties.src}`}
-      sizes="90vw"
-      quality={60}
-      alt={node.properties.alt}
-      className="rounded-3xl"
-    />
+    <span className="not-prose aspect-w-3 aspect-h-2 block rounded-md bg-dark bg-opacity-10 dark:bg-light dark:bg-opacity-10">
+      <NextImage
+        src={`https:${node.properties.src}`}
+        width="2200"
+        height="2200"
+        sizes="90vw"
+        quality={60}
+        alt={node.properties.alt}
+        className="object-contain object-center"
+      />
+    </span>
   );
 }
 

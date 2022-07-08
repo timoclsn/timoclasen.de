@@ -19,6 +19,8 @@ export function LCDWidget({ bgImage }: Props) {
       <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-3xl sm:aspect-w-2 sm:aspect-h-1">
         <Image
           src={bgImage.url}
+          width="2200"
+          height="1100"
           sizes="90vw"
           quality={60}
           alt={bgImage.description}

@@ -33,6 +33,8 @@ export function WidgetImage({
     <div className="sm:aspect-w-none sm:aspect-h-none aspect-w-1 aspect-h-1 relative h-full overflow-hidden rounded-3xl bg-light dark:bg-dark">
       <Image
         src={url}
+        width="1000"
+        height="1000"
         sizes="(min-width: 640px) 45vw, 90vw"
         quality={60}
         priority={priority}
