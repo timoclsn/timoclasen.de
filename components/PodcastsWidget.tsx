@@ -42,6 +42,8 @@ export function PodcastsWidget({ podcasts }: Props) {
               <Image
                 className="rounded-2xl"
                 src={`/podcasts/${podcast.image}`}
+                width="160"
+                height="160"
                 quality={60}
                 alt={`Podcast cover von ${podcast.title}`}
                 style={{ width: '160px', height: '160px' }}

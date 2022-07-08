@@ -54,6 +54,8 @@ const About: NextPage<Props> = function (props) {
       <div className="aspect-w-2 aspect-h-1 overflow-hidden rounded-3xl">
         <Image
           src={props.image.url}
+          width="2200"
+          height="1100"
           sizes="90vw"
           quality={60}
           priority
