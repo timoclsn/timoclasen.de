@@ -93,7 +93,7 @@
     "eslint-plugin-cypress": "2.12.1",
     "eslint-plugin-prettier": "4.2.1",
     "eslint-plugin-simple-import-sort": "7.0.0",
-    "fast-xml-parser": "4.0.8",
+    "fast-xml-parser": "4.0.9",
     "feed": "4.2.2",
     "globby": "13.1.2",
     "he": "1.2.0",
