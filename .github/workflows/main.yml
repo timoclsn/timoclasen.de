@@ -13,8 +13,6 @@ jobs:
 
       - name: Download deps
         uses: bahmutov/npm-install@v1
-          with:
-            install-command: npm i --force
 
       - name: Lint
         run: npm run lint
@@ -28,8 +26,6 @@ jobs:
 
       - name: Download deps
         uses: bahmutov/npm-install@v1
-        with:
-            install-command: npm i --force
 
       - name: Type check
         run: npm run typecheck
@@ -43,8 +39,6 @@ jobs:
 
       - name: Download deps
         uses: bahmutov/npm-install@v1
-        with:
-            install-command: npm i --force
 
       - name: Test
         run: npm run test
