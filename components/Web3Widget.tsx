@@ -13,7 +13,7 @@ export function Web3Widget() {
   const { config } = usePrepareSendTransaction({
     request: {
       to: 'timoclasen.eth',
-      value: BigNumber.from('1000000000000000'), // 0,001 ETH in WEI
+      value: BigNumber.from('2000000000000000'), // 0,002 ETH in WEI
     },
   });
   const { isLoading: transactionLoading, sendTransaction } =
