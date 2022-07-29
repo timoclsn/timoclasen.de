@@ -1,21 +1,25 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { BigNumber } from 'ethers';
-import { useAccount, useSendTransaction } from 'wagmi';
+import {
+  useAccount,
+  usePrepareSendTransaction,
+  useSendTransaction,
+} from 'wagmi';
 
 import { Button } from './Button';
 
 export function Web3Widget() {
   const { address } = useAccount();
-  const { isLoading: transactionLoading, sendTransactionAsync } =
-    useSendTransaction();
+  const { config } = usePrepareSendTransaction({
+    request: {
+      to: 'timoclasen.eth',
+      value: BigNumber.from('1000000000000000'), // 0,001 ETH in WEI
+    },
+  });
+  const { isLoading: transactionLoading, sendTransaction } =
+    useSendTransaction(config);
 
-  const sendETH = async () =>
-    await sendTransactionAsync({
-      request: {
-        to: 'timoclasen.eth',
-        value: BigNumber.from('1000000000000000'), // 0,001 ETH in WEI
-      },
-    });
+  const sendETH = async () => sendTransaction?.();
 
   return (
     <div id="web3" className="flex justify-center">

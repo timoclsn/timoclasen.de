@@ -17,7 +17,7 @@ import { useTheme } from './ThemeContext';
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
   [
-    alchemyProvider({ alchemyId: process.env.NEXT_PUBLIC_ALCHEMY_ID }),
+    alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID }),
     publicProvider(),
   ]
 );
