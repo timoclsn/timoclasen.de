@@ -1,4 +1,4 @@
-import querystring from 'querystring';
+import { string, z } from 'zod';
 
 import { fetcher } from './fetcher';
 
@@ -10,111 +10,52 @@ const {
 
 const basic = Buffer.from(`${clientID}:${clientSecret}`).toString('base64');
 
-async function getAccessToken(): Promise<string> {
-  const accessData = await fetcher('https://accounts.spotify.com/api/token', {
-    method: 'POST',
-    headers: {
-      Authorization: `Basic ${basic}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: querystring.stringify({
-      grant_type: 'refresh_token',
-      refresh_token: refreshToken,
-    }),
+const accessDataSchema = z.object({
+  access_token: z.string(),
+});
+
+async function getAccessToken() {
+  const searchParams = new URLSearchParams({
+    grant_type: 'refresh_token',
+    refresh_token: refreshToken || '',
   });
+
+  const accessDataJson = await fetcher(
+    'https://accounts.spotify.com/api/token',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Basic ${basic}`,
+      },
+      body: searchParams,
+    }
+  );
+
+  const accessData = accessDataSchema.parse(accessDataJson);
 
   return accessData.access_token;
 }
 
-interface NowPlaying {
-  timestamp: number;
-  context: {
-    external_urls: {
-      spotify: string;
-    };
-    href: string;
-    type: string;
-    uri: string;
-  };
-  progress_ms: number;
-  item: TopTrack | null;
-  currently_playing_type: string;
-  actions: { disallows: { resuming: boolean } };
-  is_playing: boolean;
-}
+const topArtistSchema = z.object({
+  name: z.string(),
+  external_urls: z.object({
+    spotify: z.string().url(),
+  }),
+  genres: z.array(z.string()),
+  images: z.array(
+    z.object({
+      url: z.string().url(),
+    })
+  ),
+  followers: z.object({
+    total: z.number(),
+  }),
+});
 
-export async function getNowPlaying(): Promise<NowPlaying | null> {
+export async function getTopArtists() {
   const access_token = await getAccessToken();
 
-  const response = await fetch(
-    'https://api.spotify.com/v1/me/player/currently-playing',
-    {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    }
-  );
-
-  if (response.status === 204 || response.status > 400) {
-    return null;
-  }
-
-  const nowPlaying: NowPlaying = await response.json();
-
-  return nowPlaying;
-}
-
-interface RecentlyPlayed {
-  track: TopTrack;
-  played_at: string;
-  context: {
-    external_urls: {
-      spotify: string;
-    };
-    href: string;
-    type: string;
-    uri: string;
-  };
-}
-
-export async function getRecentlyPlayed(): Promise<RecentlyPlayed> {
-  const access_token = await getAccessToken();
-
-  const data = await fetcher(
-    'https://api.spotify.com/v1/me/player/recently-played?limit=1',
-    {
-      headers: {
-        Authorization: `Bearer ${access_token}`,
-      },
-    }
-  );
-
-  return data.items[0];
-}
-
-export interface TopArtist {
-  external_urls: {
-    spotify: string;
-  };
-  followers: { href: string | null; total: number };
-  genres: string[];
-  href: string;
-  id: string;
-  images: {
-    height: number;
-    url: string;
-    width: number;
-  }[];
-  name: string;
-  popularity: number;
-  type: string;
-  uri: string;
-}
-
-export async function getTopArtists(): Promise<TopArtist[]> {
-  const access_token = await getAccessToken();
-
-  const data = await fetcher(
+  const responseJson = await fetcher(
     'https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=5',
     {
       headers: {
@@ -123,75 +64,39 @@ export async function getTopArtists(): Promise<TopArtist[]> {
     }
   );
 
-  return data.items;
+  const response = z
+    .object({
+      items: z.array(topArtistSchema),
+    })
+    .parse(responseJson);
+
+  return response.items;
 }
 
-export interface TopTrack {
-  album: {
-    album_type: string;
-    artists: [
-      {
-        external_urls: {
-          spotify: string;
-        };
-        href: string;
-        id: string;
-        name: string;
-        type: string;
-        uri: string;
-      }
-    ];
-    available_markets: string[];
-    external_urls: {
-      spotify: string;
-    };
-    href: string;
-    id: string;
-    images: {
-      height: number;
-      url: string;
-      width: number;
-    }[];
-    name: string;
-    release_date: string;
-    release_date_precision: string;
-    total_tracks: number;
-    type: string;
-    uri: string;
-  };
-  artists: {
-    external_urls: {
-      spotify: string;
-    };
-    href: string;
-    id: string;
-    name: string;
-    type: string;
-    uri: string;
-  }[];
-  available_markets: string[];
-  disc_number: number;
-  duration_ms: number;
-  explicit: boolean;
-  external_ids: { isrc: string };
-  external_urls: {
-    spotify: string;
-  };
-  href: string;
-  id: string;
-  is_local: boolean;
-  name: string;
-  popularity: number;
-  preview_url: string;
-  track_number: number;
-  type: string;
-  uri: string;
-}
+const topTrackSchema = z.object({
+  name: z.string(),
+  external_urls: z.object({
+    spotify: z.string().url(),
+  }),
+  album: z.object({
+    name: z.string(),
+    images: z.array(
+      z.object({
+        url: z.string().url(),
+      })
+    ),
+  }),
+  artists: z.array(
+    z.object({
+      name: string(),
+    })
+  ),
+});
 
-export async function getTopTracks(): Promise<TopTrack[]> {
+export async function getTopTracks() {
   const access_token = await getAccessToken();
 
-  const data = await fetcher(
+  const responseJson = await fetcher(
     'https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=5',
     {
       headers: {
@@ -200,5 +105,65 @@ export async function getTopTracks(): Promise<TopTrack[]> {
     }
   );
 
-  return data.items;
+  const response = z
+    .object({
+      items: topTrackSchema.array(),
+    })
+    .parse(responseJson);
+
+  return response.items;
+}
+
+const nowPlayingSchema = z.object({
+  context: z.object({
+    external_urls: z.object({
+      spotify: z.string().url(),
+    }),
+  }),
+  item: topTrackSchema.nullable(),
+  is_playing: z.boolean(),
+});
+
+export async function getNowPlaying() {
+  const access_token = await getAccessToken();
+
+  const nowPlayingJson = await fetcher(
+    'https://api.spotify.com/v1/me/player/currently-playing',
+    {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    }
+  );
+
+  if (!nowPlayingJson) {
+    return null;
+  }
+
+  return nowPlayingSchema.parse(nowPlayingJson);
+}
+
+const recentlyPlayedSchema = z.object({
+  track: topTrackSchema,
+});
+
+export async function getRecentlyPlayed() {
+  const access_token = await getAccessToken();
+
+  const responseJson = await fetcher(
+    'https://api.spotify.com/v1/me/player/recently-played?limit=1',
+    {
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+    }
+  );
+
+  const response = z
+    .object({
+      items: z.array(recentlyPlayedSchema),
+    })
+    .parse(responseJson);
+
+  return response.items[0];
 }

@@ -1,4 +1,6 @@
 import { intervalToDuration, startOfYear } from 'date-fns';
+import ky from 'ky';
+import { z } from 'zod';
 
 import { fetcher } from './fetcher';
 
@@ -8,79 +10,55 @@ const {
   STRAVA_REFRESH_TOKEN: refreshToken,
 } = process.env;
 
-export interface Activity {
-  resource_state: number;
-  athlete: { id: number; resource_state: number };
-  name: string;
-  distance: number;
-  moving_time: number;
-  elapsed_time: number;
-  total_elevation_gain: number;
-  type: string;
-  workout_type: number | null;
-  id: number;
-  external_id: string;
-  upload_id: number;
-  start_date: string;
-  start_date_local: string;
-  timezone: string;
-  utc_offset: number;
-  start_latlng: [number, number];
-  end_latlng: [number, number];
-  location_city: string | null;
-  location_state: string | null;
-  location_country: string | null;
-  start_latitude: number;
-  start_longitude: number;
-  achievement_count: number;
-  kudos_count: number;
-  comment_count: number;
-  athlete_count: number;
-  photo_count: number;
-  map: {
-    id: string;
-    summary_polyline: string;
-    resource_state: number;
-  };
-  trainer: boolean;
-  commute: boolean;
-  manual: boolean;
-  private: boolean;
-  visibility: string;
-  flagged: boolean;
-  gear_id: string;
-  from_accepted_tag: boolean;
-  upload_id_str: string;
-  average_speed: number;
-  max_speed: number;
-  has_heartrate: boolean;
-  average_heartrate: number;
-  max_heartrate: number;
-  heartrate_opt_out: boolean;
-  display_hide_heartrate_option: boolean;
-  elev_high: number;
-  elev_low: number;
-  pr_count: number;
-  total_photo_count: number;
-  has_kudoed: boolean;
-}
+const accessDataSchema = z.object({
+  access_token: z.string(),
+});
 
-export async function getActivities(): Promise<Activity[]> {
-  const timestamp = startOfYear(new Date()).getTime() / 1000;
-  return await fetcher(
-    `https://www.strava.com/api/v3/athlete/activities?per_page=200&after=${timestamp}&access_token=${await getAccessToken()}`
-  );
-}
+async function getAccessToken() {
+  const searchParams = new URLSearchParams({
+    grant_type: 'refresh_token',
+    client_id: clientID || '',
+    client_secret: clientSecret || '',
+    refresh_token: refreshToken || '',
+  });
 
-async function getAccessToken(): Promise<string> {
-  const accessData = await fetcher(
-    `https://www.strava.com/oauth/token?client_id=${clientID}&client_secret=${clientSecret}&refresh_token=${refreshToken}&grant_type=refresh_token`,
-    {
-      method: 'POST',
-    }
-  );
+  const accessDataJson = await fetcher('https://www.strava.com/oauth/token', {
+    method: 'POST',
+    body: searchParams,
+  });
 
+  const accessData = accessDataSchema.parse(accessDataJson);
   return accessData.access_token;
+}
+
+const activitySchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  type: z.string(),
+  workout_type: z.number().optional().nullable(),
+  start_date: z.string(),
+  timezone: z.string(),
+  distance: z.number(),
+  moving_time: z.number(),
+  average_speed: z.number(),
+  average_heartrate: z.number(),
+  map: z.object({
+    summary_polyline: z.string(),
+  }),
+  kudos_count: z.number(),
+});
+
+export async function getActivities() {
+  const timestamp = startOfYear(new Date()).getTime() / 1000;
+  const accessToken = await getAccessToken();
+
+  const activitiesResponse = await ky(
+    `https://www.strava.com/api/v3/athlete/activities?per_page=200&after=${timestamp}&access_token=${accessToken}`
+  );
+
+  const activitiesJson = await activitiesResponse.json();
+
+  return z.array(activitySchema).parse(activitiesJson);
 }
 
 export function formatSpeed(speedMs: number) {

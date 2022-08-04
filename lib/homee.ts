@@ -1,66 +1,29 @@
+import ky from 'ky';
 import WebSocket from 'ws';
+import { z } from 'zod';
 
-import {
-  AttributeBasedOn,
-  AttributeChangedBy,
-  AttributeState,
-  AttributeType,
-  CubeType,
-  NodeProfile,
-  NodeProtocol,
-  NodeState,
-} from '../lib/enums';
+import { AttributeType, NodeProfile, NodeState } from '../lib/enums';
 
 const { HOMEE_ID: homeeID, HOMEE_ACCESS_TOKEN: accessToken } = process.env;
 
-export interface Node {
-  id: number;
-  name: string;
-  profile: NodeProfile;
-  image: string;
-  favorite: number;
-  order: number;
-  protocol: NodeProtocol;
-  routing: number;
-  state: NodeState;
-  state_changed: number;
-  added: number;
-  history: number;
-  cube_type: CubeType;
-  note: string;
-  services: number;
-  phonetic_name: string;
-  owner: number;
-  security: number;
-  attributes: Attribute[];
-}
+const attributeSchema = z.object({
+  type: z.nativeEnum(AttributeType),
+  current_value: z.number(),
+  unit: z.string(),
+});
 
-export interface Attribute {
-  id: number;
-  node_id: number;
-  instance: number;
-  minimum: number;
-  maximum: number;
-  current_value: number;
-  target_value: number;
-  last_value: number;
-  unit: string;
-  step_value: number;
-  editable: number;
-  type: AttributeType;
-  state: AttributeState;
-  last_changed: number;
-  changed_by: AttributeChangedBy;
-  changed_by_id: number;
-  based_on: AttributeBasedOn;
-  data: string;
-  name: string;
-  options: unknown;
-}
+const nodeSchema = z.object({
+  id: z.number(),
+  profile: z.nativeEnum(NodeProfile),
+  state: z.nativeEnum(NodeState),
+  image: z.string(),
+  attributes: z.array(attributeSchema),
+});
+type Node = z.infer<typeof nodeSchema>;
 
 export function getNodes() {
-  return new Promise<Node[]>((resolve, reject) => {
-    let nodes: Node[] = [];
+  return new Promise<Array<Node>>((resolve, reject) => {
+    let nodes: Array<Node> = [];
 
     const ws = new WebSocket(
       `wss://${homeeID}.hom.ee/connection?access_token=${accessToken}`,
@@ -76,10 +39,10 @@ export function getNodes() {
     });
 
     ws.on('message', (data: string) => {
-      const dataObj: { nodes: Node[] } = JSON.parse(data);
+      const dataJson = JSON.parse(data);
 
-      if (dataObj.nodes) {
-        nodes = dataObj.nodes;
+      if (dataJson.nodes) {
+        nodes = z.array(nodeSchema).parse(dataJson.nodes);
         ws.close();
       }
     });
@@ -91,7 +54,7 @@ export function getNodes() {
 }
 
 export async function playHomeegram(homeegramID: number) {
-  return await fetch(
+  return await ky(
     `https://${homeeID}.hom.ee/api/v2/homeegrams/${homeegramID}?play=1`,
     {
       method: 'PUT',
