@@ -1,6 +1,3 @@
-type Enum<T> = T[keyof T];
-
-export type NodeProfile = Enum<typeof NodeProfile>;
 export const NodeProfile = {
   None: 0,
   Homee: 1,
@@ -130,7 +127,6 @@ export const NodeProfile = {
   Dishwasher: 6002,
 } as const;
 
-export type NodeState = Enum<typeof NodeState>;
 export const NodeState = {
   None: 0,
   Available: 1,
@@ -148,7 +144,6 @@ export const NodeState = {
   RemoteNodeDeleted: 13,
 } as const;
 
-export type AttributeType = Enum<typeof AttributeType>;
 export const AttributeType = {
   None: 0,
   OnOff: 1,
@@ -450,10 +445,65 @@ export const AttributeType = {
   BrieflyOpenImpulse: 327,
   PermanentlyOpenImpulse: 328,
   WindThreshold: 329,
+  MotorBlockedAlarm: 330,
+  FreezeProtection: 331,
+  FlyScreen: 332,
+  SunProtection: 333,
+  Memo: 334,
   SlatRotationImpulse: 337,
+  WindMonitoringState: 338,
+  HVACOperatingState: 339,
+  ExternalTemperatureOffset: 340,
+  FloorTemperatureOffset: 341,
+  DisplayBrightnessActive: 342,
+  DisplayBrightnessDimmed: 343,
+  ButtonBrightnessActive: 344,
+  ButtonBrightnessDimmed: 345,
+  DisplayTemperatureSelection: 346,
+  ResetMeter: 347,
+  AutomaticRuntimeCalculation: 348,
+  DownPosition: 349,
+  DownSlatPosition: 350,
+  FirmwareUpdateable: 351,
+  COValue: 354,
+  TargetTemperatureType: 355,
+  SetBackMode: 356,
+  SystemAlarm: 357,
+  HealthAlarm: 358,
+  AccessControlAlarm: 359,
+  SecurityAlarm: 360,
+  EmergencyAlarm: 361,
+  ClockAlarm: 362,
+  ApplianceAlarm: 363,
+  WaterValveAlarm: 364,
+  WeatherAlarm: 365,
+  IrrigationAlarm: 366,
+  GasAlarm: 367,
+  PestAlarm: 368,
+  LightAlarm: 369,
+  WaterQualityAlarm: 370,
+  AntiTheftRestricted: 371,
+  UnknownMeteringValue: 372,
+  ColorExpert: 373,
+  SwitchMultilevelExpert: 375,
+  UnknownSensorValue: 376,
+  DoorLockExpert: 377,
+  VOCLevel: 352,
+  VOCValue: 353,
+  VentilateImpulse: 378,
+  VibrationOnOff: 379,
+  SoundOnOff: 380,
+  VirtualVolantPostion: 381,
+  FabricUntensioning: 382,
+  AutomaticReversing: 383,
+  Locked: 384,
+  WatchdogOnOff: 385,
+  IPAddress: 386,
+  GasAlarmState: 387,
+  GasConcentration: 388,
+  Hostname: 389,
 } as const;
 
-export type AttributeState = Enum<typeof NodeProfile>;
 export const AttributeState = {
   None: 0,
   Normal: 1,
@@ -465,7 +515,6 @@ export const AttributeState = {
   Unavailable: 7,
 } as const;
 
-export type AttributeChangedBy = Enum<typeof NodeProfile>;
 export const AttributeChangedBy = {
   None: 0,
   Itself: 1,
@@ -474,14 +523,12 @@ export const AttributeChangedBy = {
   AI: 6,
 } as const;
 
-export type AttributeBasedOn = Enum<typeof AttributeBasedOn>;
 export const AttributeBasedOn = {
   Events: 1 << 0,
   Interval: 1 << 1,
   Polling: 1 << 2,
 } as const;
 
-export type NodeProtocol = Enum<typeof NodeProtocol>;
 export const NodeProtocol = {
   ZWave: 1,
   ZigBee: 2,
@@ -500,7 +547,6 @@ export const NodeProtocol = {
   HTTPMyStrom: 24,
 } as const;
 
-export type CubeType = Enum<typeof CubeType>;
 export const CubeType = {
   none: 0,
   homeeZWave: 1,

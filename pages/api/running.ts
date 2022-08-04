@@ -4,7 +4,6 @@ import { utcToZonedTime } from 'date-fns-tz';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import { getMapURLs } from '../../lib/mapbox';
-import type { Activity } from '../../lib/strava';
 import {
   formatSpeed,
   formatTime,
@@ -62,9 +61,7 @@ export default async function running(
   res: NextApiResponse<RunningData>
 ) {
   const activites = await getActivities();
-  const runs = activites.filter(
-    (activity: Activity) => activity.type === 'Run'
-  );
+  const runs = activites.filter((activity) => activity.type === 'Run');
 
   const {
     distance: distanceThisYear,
@@ -73,7 +70,7 @@ export default async function running(
     longest: longestThisYear,
     lowest: lowestThisYear,
   } = runs.reduce(
-    (thisYear: ThisYear, activity: Activity) => {
+    (thisYear: ThisYear, activity) => {
       return {
         distance: thisYear.distance + activity.distance,
         farthest:
@@ -161,7 +158,7 @@ export default async function running(
       url: `https://www.strava.com/activities/${lastRun.id}`,
       kudos: lastRun.kudos_count,
       stroller: lastRun.name.includes('Kinderwagen'),
-      race: lastRun.workout_type === 1 ? true : false,
+      race: lastRun.workout_type === 1,
     },
   });
 }

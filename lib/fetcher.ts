@@ -1,5 +1,6 @@
-export async function fetcher(...args: [RequestInfo, RequestInit?]) {
-  const res = await fetch(...args);
+import ky from 'ky';
+import type { Input, Options } from 'ky/distribution/types/options';
 
-  return res.json();
+export async function fetcher<TResponse>(url: Input, options?: Options) {
+  return await ky(url, options).json<TResponse>();
 }
