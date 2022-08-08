@@ -51,7 +51,7 @@
     "ethers": "5.6.9",
     "js-confetti": "0.10.2",
     "ky": "0.31.1",
-    "lru-cache": "7.13.1",
+    "lru-cache": "7.13.2",
     "match-sorter": "6.3.1",
     "next": "12.2.4-canary.8",
     "plaiceholder": "2.4.0",
