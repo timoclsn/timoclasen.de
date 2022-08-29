@@ -82,7 +82,7 @@
     "@types/mapbox__polyline": "1.0.2",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
-    "@types/react-syntax-highlighter": "15.5.4",
+    "@types/react-syntax-highlighter": "15.5.5",
     "@types/ws": "8.5.3",
     "@typescript-eslint/eslint-plugin": "5.33.1",
     "@typescript-eslint/parser": "5.33.1",
