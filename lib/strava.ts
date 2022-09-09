@@ -43,7 +43,7 @@ const activitySchema = z.object({
   average_speed: z.number(),
   average_heartrate: z.number(),
   map: z.object({
-    summary_polyline: z.string(),
+    summary_polyline: z.string().nullable(),
   }),
   kudos_count: z.number(),
 });

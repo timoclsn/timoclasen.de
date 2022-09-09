@@ -154,7 +154,7 @@ export default async function running(
         raw: lastRun.average_heartrate,
         formatted: `${Math.round(lastRun.average_heartrate)} bpm`,
       },
-      map: getMapURLs(lastRun.map.summary_polyline),
+      map: getMapURLs(lastRun.map.summary_polyline ?? ''),
       url: `https://www.strava.com/activities/${lastRun.id}`,
       kudos: lastRun.kudos_count,
       stroller: lastRun.name.includes('Kinderwagen'),
