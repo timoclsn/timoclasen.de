@@ -32,7 +32,7 @@ export function MediaPreview({
           className="h-[80px] w-[80px] rounded-2xl"
           src={image}
           quality={60}
-          alt={title}
+          alt={title ?? ''}
           width={80}
           height={80}
         />

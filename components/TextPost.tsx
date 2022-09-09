@@ -42,7 +42,7 @@ export function TextPost({ children }: Props) {
             height="2200"
             sizes="90vw"
             quality={60}
-            alt={alt}
+            alt={alt ?? ''}
             className="object-contain object-center"
           />
         </span>
