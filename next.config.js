@@ -10,9 +10,6 @@ const config = {
     legacyBrowsers: false,
     browsersListForSwc: true,
     scrollRestoration: true,
-    images: {
-      allowFutureImage: true,
-    },
     newNextLinkBehavior: true,
   },
   images: {
