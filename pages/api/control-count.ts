@@ -52,7 +52,7 @@ export default async function controlCount(
     try {
       await limiter.check(res, 10, 'CACHE_CONTROL_COUNT'); // 10 requests per minute
 
-      const body: { color: 'red' | 'green' | 'blue' } = JSON.parse(req.body);
+      const body: { color: 'red' | 'green' | 'blue' } = req.body;
 
       const { data: updateData, error: updateError } = await supabase
         .from<Count>('balcony-control')

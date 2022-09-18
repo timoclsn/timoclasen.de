@@ -42,7 +42,7 @@ export default async function smartHome(
         blue: 241,
       };
 
-      const body = JSON.parse(req.body);
+      const body = req.body;
       const homeegramId = colorHomeegramIds[body.balconyColor];
       const response = await playHomeegram(homeegramId);
 
