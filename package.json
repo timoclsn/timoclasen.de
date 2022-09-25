@@ -78,10 +78,13 @@
   "devDependencies": {
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
+    "@types/geojson": "7946.0.10",
+    "@types/jest": "29.0.3",
     "@types/mapbox__polyline": "1.0.2",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
     "@types/react-syntax-highlighter": "15.5.5",
+    "@types/testing-library__jest-dom": "5.14.5",
     "@types/ws": "8.5.3",
     "@typescript-eslint/eslint-plugin": "5.38.0",
     "@typescript-eslint/parser": "5.38.0",
