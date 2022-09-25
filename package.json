@@ -121,6 +121,5 @@
       "npm run lint -- --fix .",
       "git add"
     ]
-  },
-  "packageManager": "pnpm@7.12.2"
+  }
 }
