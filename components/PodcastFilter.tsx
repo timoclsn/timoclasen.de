@@ -1,13 +1,10 @@
 import type { ChangeEvent } from 'react';
 import { Filter, XCircle } from 'react-feather';
 
-interface Filter {
-  favorites: boolean;
-  categories: { [key: string]: boolean };
-}
+import type { PodcastsListFilter } from './PodcastsList';
 
 interface Props {
-  filter: Filter;
+  filter: PodcastsListFilter;
   handleChange(e: ChangeEvent<HTMLInputElement>): void;
   clearFilter(): void;
 }

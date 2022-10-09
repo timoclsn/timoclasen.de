@@ -1,11 +1,57 @@
 import { matchSorter } from 'match-sorter';
-import { startTransition, useState } from 'react';
+import { startTransition, useReducer } from 'react';
 import { User } from 'react-feather';
 
 import type { Podcast as PodcastType } from '../lib/podcasts';
 import { MediaPreview } from './MediaPreview';
 import { PodcastFilter } from './PodcastFilter';
 import { Search } from './Search';
+
+export type PodcastsListFilter = {
+  favorites: boolean;
+  categories: {
+    [key: string]: boolean;
+  };
+};
+
+interface State {
+  inputValue: string;
+  searchQuery: string;
+  filter: PodcastsListFilter;
+}
+
+type Action =
+  | { type: 'changeInputValue'; payload: { inputValue: string } }
+  | { type: 'search' }
+  | { type: 'filter'; payload: { filter: PodcastsListFilter } }
+  | { type: 'resetFilter'; payload: { initialFilter: PodcastsListFilter } };
+
+const reducer = (state: State, action: Action): State => {
+  switch (action.type) {
+    case 'changeInputValue':
+      return {
+        ...state,
+        inputValue: action.payload.inputValue,
+      };
+    case 'search':
+      return {
+        ...state,
+        searchQuery: state.inputValue,
+      };
+    case 'filter':
+      return {
+        ...state,
+        filter: action.payload.filter,
+      };
+    case 'resetFilter':
+      return {
+        ...state,
+        filter: action.payload.initialFilter,
+      };
+    default:
+      throw new Error('Unknown action type');
+  }
+};
 
 interface Props {
   podcasts: PodcastType[];
@@ -23,12 +69,17 @@ export function PodcastsList({ podcasts }: Props) {
     {} as { [key: string]: boolean }
   );
 
-  const [inputValue, setInputValue] = useState('');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filter, setFilter] = useState({
-    favorites: false,
-    categories: categoriesObj,
-  });
+  const initialState: State = {
+    inputValue: '',
+    searchQuery: '',
+    filter: {
+      favorites: false,
+      categories: categoriesObj,
+    },
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { filter, inputValue, searchQuery } = state;
 
   const filteredPodcast = matchSorter(podcasts, searchQuery, {
     keys: ['title', 'hosts', 'description'],
@@ -66,9 +117,16 @@ export function PodcastsList({ podcasts }: Props) {
         <Search
           placeholder="Podcasts durchsuchen"
           handleChange={(e) => {
-            setInputValue(e.target.value);
+            dispatch({
+              type: 'changeInputValue',
+              payload: {
+                inputValue: e.target.value,
+              },
+            });
             startTransition(() => {
-              setSearchQuery(e.target.value);
+              dispatch({
+                type: 'search',
+              });
             });
           }}
           handleBlur={() => {
@@ -84,16 +142,26 @@ export function PodcastsList({ podcasts }: Props) {
           filter={filter}
           handleChange={(e) => {
             if (e.target.name.includes('Favoriten')) {
-              setFilter({
-                ...filter,
-                favorites: e.target.checked,
+              dispatch({
+                type: 'filter',
+                payload: {
+                  filter: {
+                    ...filter,
+                    favorites: e.target.checked,
+                  },
+                },
               });
             } else {
-              setFilter({
-                favorites: filter.favorites,
-                categories: {
-                  ...filter.categories,
-                  [e.target.name]: e.target.checked,
+              dispatch({
+                type: 'filter',
+                payload: {
+                  filter: {
+                    favorites: filter.favorites,
+                    categories: {
+                      ...filter.categories,
+                      [e.target.name]: e.target.checked,
+                    },
+                  },
                 },
               });
             }
@@ -101,9 +169,11 @@ export function PodcastsList({ podcasts }: Props) {
             splitbee.track('Podcast Filter', filter);
           }}
           clearFilter={() => {
-            setFilter({
-              favorites: false,
-              categories: categoriesObj,
+            dispatch({
+              type: 'resetFilter',
+              payload: {
+                initialFilter: initialState.filter,
+              },
             });
           }}
         />
