@@ -9,6 +9,17 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
       - name: Run cypress
         uses: cypress-io/github-action@v4
         env:

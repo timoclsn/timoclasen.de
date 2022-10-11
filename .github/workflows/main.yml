@@ -11,11 +11,22 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Download deps
-        uses: bahmutov/npm-install@v1
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Lint
-        run: npm run lint
+        run: pnpm lint
 
   typecheck:
     name: TypeScript
@@ -24,11 +35,22 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Download deps
-        uses: bahmutov/npm-install@v1
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Type check
-        run: npm run typecheck
+        run: pnpm typecheck
 
   test:
     name: Jest
@@ -37,8 +59,19 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
 
-      - name: Download deps
-        uses: bahmutov/npm-install@v1
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
 
       - name: Test
-        run: npm run test
+        run: pnpm test
