@@ -30,8 +30,8 @@
     "test:coverage": "jest --coverage",
     "typecheck": "tsc",
     "prettier": "prettier --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,css,md,json}'",
-    "format": "npm run prettier -- --write",
-    "check-format": "npm run prettier -- --list-different",
+    "format": "pnpm  prettier -- --write",
+    "check-format": "pnpm  prettier -- --list-different",
     "validate": "npm-run-all --parallel typecheck check-format lint",
     "prepare": "husky install"
   },
@@ -112,13 +112,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run typecheck && lint-staged"
+      "pre-commit": "pnpm typecheck && lint-staged"
     }
   },
   "lint-staged": {
     "./**/*.{js,jsx,ts,tsx, json}": [
-      "npm run format",
-      "npm run lint -- --fix .",
+      "pnpm format",
+      "pnpm lint -- --fix .",
       "git add"
     ]
   }
