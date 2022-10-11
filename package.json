@@ -30,8 +30,8 @@
     "test:coverage": "jest --coverage",
     "typecheck": "tsc",
     "prettier": "prettier --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,css,md,json}'",
-    "format": "pnpm  prettier -- --write",
-    "check-format": "pnpm  prettier -- --list-different",
+    "format": "npm run prettier -- --write",
+    "check-format": "npm run prettier -- --list-different",
     "validate": "npm-run-all --parallel typecheck check-format lint",
     "prepare": "husky install"
   },
@@ -77,11 +77,14 @@
   "devDependencies": {
     "@testing-library/jest-dom": "5.16.5",
     "@testing-library/react": "13.4.0",
+    "@types/geojson": "7946.0.10",
+    "@types/jest": "29.1.2",
     "@types/lru-cache": "7.10.10",
     "@types/mapbox__polyline": "1.0.2",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
     "@types/react-syntax-highlighter": "15.5.5",
+    "@types/testing-library__jest-dom": "5.14.5",
     "@types/ws": "8.5.3",
     "@typescript-eslint/eslint-plugin": "5.39.0",
     "@typescript-eslint/parser": "5.39.0",
@@ -112,13 +115,13 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pnpm typecheck && lint-staged"
+      "pre-commit": "npm run typecheck && lint-staged"
     }
   },
   "lint-staged": {
     "./**/*.{js,jsx,ts,tsx, json}": [
-      "pnpm format",
-      "pnpm lint -- --fix .",
+      "npm run format",
+      "npm run lint -- --fix .",
       "git add"
     ]
   }

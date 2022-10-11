@@ -11,11 +11,14 @@ specifiers:
   '@tailwindcss/typography': 0.5.7
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0
+  '@types/geojson': 7946.0.10
+  '@types/jest': 29.1.2
   '@types/lru-cache': 7.10.10
   '@types/mapbox__polyline': 1.0.2
   '@types/react': 18.0.21
   '@types/react-dom': 18.0.6
   '@types/react-syntax-highlighter': 15.5.5
+  '@types/testing-library__jest-dom': 5.14.5
   '@types/ws': 8.5.3
   '@typescript-eslint/eslint-plugin': 5.39.0
   '@typescript-eslint/parser': 5.39.0
@@ -115,11 +118,14 @@ dependencies:
 devDependencies:
   '@testing-library/jest-dom': 5.16.5
   '@testing-library/react': 13.4.0_biqbaboplfbrettd7655fr4n2y
+  '@types/geojson': 7946.0.10
+  '@types/jest': 29.1.2
   '@types/lru-cache': 7.10.10
   '@types/mapbox__polyline': 1.0.2
   '@types/react': 18.0.21
   '@types/react-dom': 18.0.6
   '@types/react-syntax-highlighter': 15.5.5
+  '@types/testing-library__jest-dom': 5.14.5
   '@types/ws': 8.5.3
   '@typescript-eslint/eslint-plugin': 5.39.0_cfd7h3iktziq6hcwahu2qxhjhy
   '@typescript-eslint/parser': 5.39.0_z4bbprzjrhnsfa24uvmcbu7f5q
@@ -1929,8 +1935,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.1.1:
-    resolution: {integrity: sha512-U9Ey07dGWl6fUFaIaUQUKWG5NoKi/zizeVQCGV8s4nSU0jPgqphVZvS64+8BtWYvrc3ZGw6wo943NSYPxkrp/g==}
+  /@types/jest/29.1.2:
+    resolution: {integrity: sha512-y+nlX0h87U0R+wsGn6EBuoRWYyv3KFtwRNP3QWp9+k2tJ2/bqcGS3UxD7jgT+tiwJWWq3UsyV4Y+T6rsMT4XMg==}
     dependencies:
       expect: 29.1.2
       pretty-format: 29.1.2
@@ -2054,7 +2060,7 @@ packages:
   /@types/testing-library__jest-dom/5.14.5:
     resolution: {integrity: sha512-SBwbxYoyPIvxHbeHxTZX2Pe/74F/tX2/D3mMvzabdeJ25bBojfW0TyB8BHrbq/9zaaKICJZjLP+8r6AeZMFCuQ==}
     dependencies:
-      '@types/jest': 29.1.1
+      '@types/jest': 29.1.2
     dev: true
 
   /@types/tough-cookie/4.0.2:
