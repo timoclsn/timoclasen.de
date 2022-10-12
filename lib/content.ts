@@ -1,4 +1,4 @@
-import ky from 'ky';
+import { fetcher } from './fetcher';
 
 const {
   CONTENTFUL_SPACE_ID: spaceId,
@@ -18,18 +18,17 @@ export async function queryContent(query: string, preview = false) {
     query = query.replace(/preview: false/g, 'preview: true');
   }
 
-  const response = await ky(
+  return fetcher(
     `https://graphql.contentful.com/content/v1/spaces/${spaceId}`,
     {
       method: 'POST',
       headers: {
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${
           preview ? previewAccessToken : publicAccessToken
         }`,
       },
-      json: { query },
+      body: JSON.stringify({ query }),
     }
   );
-
-  return await response.json<any>();
 }
