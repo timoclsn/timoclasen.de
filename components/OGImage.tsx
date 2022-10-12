@@ -17,6 +17,7 @@ export function OGImage({ name, title, subtitle, image }: Props) {
         width: '1200px',
         height: '630px',
         fontFamily: 'Inter',
+        background: '#FFFFFF',
       }}
     >
       <div
