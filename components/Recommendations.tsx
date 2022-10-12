@@ -1,4 +1,3 @@
-import ky from 'ky';
 import type { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
 import { Loader, Send } from 'react-feather';
@@ -22,9 +21,12 @@ export function Recommendations() {
     const form = e.target as HTMLFormElement;
     setServerState({ submitting: true, submitted: false, error: false });
 
-    const response = await ky('https://formspree.io/f/xleoyqpj', {
+    const response = await fetch('https://formspree.io/f/xleoyqpj', {
       method: 'POST',
       body: new FormData(form),
+      headers: {
+        Accept: 'application/json',
+      },
     });
 
     if (response.ok) {
@@ -36,10 +38,12 @@ export function Recommendations() {
       form.reset();
       setMessage('');
     } else {
+      const data = await response.json();
+
       setServerState({
         submitting: false,
         submitted: true,
-        error: true,
+        error: data.error,
       });
     }
   }

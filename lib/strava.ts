@@ -1,14 +1,19 @@
 import { intervalToDuration, startOfYear } from 'date-fns';
-import ky from 'ky';
 import { z } from 'zod';
 
 import { fetcher } from './fetcher';
+
+const envSchema = z.object({
+  STRAVA_CLIENT_ID: z.string(),
+  STRAVA_CLIENT_SECRET: z.string(),
+  STRAVA_REFRESH_TOKEN: z.string(),
+});
 
 const {
   STRAVA_CLIENT_ID: clientID,
   STRAVA_CLIENT_SECRET: clientSecret,
   STRAVA_REFRESH_TOKEN: refreshToken,
-} = process.env;
+} = envSchema.parse(process.env);
 
 const accessDataSchema = z.object({
   access_token: z.string(),
@@ -17,9 +22,9 @@ const accessDataSchema = z.object({
 async function getAccessToken() {
   const searchParams = new URLSearchParams({
     grant_type: 'refresh_token',
-    client_id: clientID || '',
-    client_secret: clientSecret || '',
-    refresh_token: refreshToken || '',
+    client_id: clientID,
+    client_secret: clientSecret,
+    refresh_token: refreshToken,
   });
 
   const accessDataJson = await fetcher('https://www.strava.com/oauth/token', {
@@ -52,11 +57,9 @@ export async function getActivities() {
   const timestamp = startOfYear(new Date()).getTime() / 1000;
   const accessToken = await getAccessToken();
 
-  const activitiesResponse = await ky(
+  const activitiesJson = await fetcher(
     `https://www.strava.com/api/v3/athlete/activities?per_page=200&after=${timestamp}&access_token=${accessToken}`
   );
-
-  const activitiesJson = await activitiesResponse.json();
 
   return z.array(activitySchema).parse(activitiesJson);
 }

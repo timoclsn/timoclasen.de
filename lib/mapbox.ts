@@ -1,8 +1,9 @@
 import polyline from '@mapbox/polyline';
 import type { Position } from 'geojson';
 import simplify from 'simplify-geojson';
+import { z } from 'zod';
 
-const mapboxAccessToken = process.env.MAPBOX_ACCESS_TOKEN ?? '';
+const mapboxAccessToken = z.string().parse(process.env.MAPBOX_ACCESS_TOKEN);
 
 interface GeoJSON {
   type: string;

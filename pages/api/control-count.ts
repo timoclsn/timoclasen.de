@@ -1,12 +1,18 @@
 import { createClient } from '@supabase/supabase-js';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { z } from 'zod';
 
 import { rateLimit } from '../../lib/rate-limit';
 
-const { SUPABASE_URL: supaBaseUrl, SUPABASE_ANON_KEY: supabaseAnonKey } =
-  process.env;
+const envSchema = z.object({
+  SUPABASE_URL: z.string(),
+  SUPABASE_ANON_KEY: z.string(),
+});
 
-const supabase = createClient(supaBaseUrl ?? '', supabaseAnonKey ?? '');
+const { SUPABASE_URL: supaBaseUrl, SUPABASE_ANON_KEY: supabaseAnonKey } =
+  envSchema.parse(process.env);
+
+const supabase = createClient(supaBaseUrl, supabaseAnonKey);
 
 export interface Counts extends Record<string, number> {
   red: number;
@@ -52,7 +58,7 @@ export default async function controlCount(
     try {
       await limiter.check(res, 10, 'CACHE_CONTROL_COUNT'); // 10 requests per minute
 
-      const body: { color: 'red' | 'green' | 'blue' } = req.body;
+      const body: { color: 'red' | 'green' | 'blue' } = JSON.parse(req.body);
 
       const { data: updateData, error: updateError } = await supabase
         .from<Count>('balcony-control')

@@ -1,10 +1,16 @@
-import ky from 'ky';
 import WebSocket from 'ws';
 import { z } from 'zod';
 
 import { AttributeType, NodeProfile, NodeState } from '../lib/enums';
 
-const { HOMEE_ID: homeeID, HOMEE_ACCESS_TOKEN: accessToken } = process.env;
+const envSchema = z.object({
+  HOMEE_ID: z.string(),
+  HOMEE_ACCESS_TOKEN: z.string(),
+});
+
+const { HOMEE_ID: homeeID, HOMEE_ACCESS_TOKEN: accessToken } = envSchema.parse(
+  process.env
+);
 
 const attributeSchema = z.object({
   type: z.nativeEnum(AttributeType),
@@ -54,12 +60,12 @@ export function getNodes() {
 }
 
 export async function playHomeegram(homeegramID: number) {
-  return await ky(
+  return await fetch(
     `https://${homeeID}.hom.ee/api/v2/homeegrams/${homeegramID}?play=1`,
     {
       method: 'PUT',
       headers: {
-        Cookie: accessToken ?? '',
+        Cookie: accessToken,
       },
     }
   );

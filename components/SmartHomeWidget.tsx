@@ -1,4 +1,3 @@
-import ky from 'ky';
 import { useState } from 'react';
 import {
   CloudSnow,
@@ -67,14 +66,14 @@ export function SmartHomeWidget({ text, footnote }: Props) {
     setDisableButtons(true);
 
     const controlLightRequest = new Promise(async (resolve, reject) => {
-      const response = await ky(smartHomeApi, {
+      const response = await fetch(smartHomeApi, {
         method: 'PUT',
         headers: {
           'api-secret': apiSecret,
         },
-        json: {
+        body: JSON.stringify({
           balconyColor: color,
-        },
+        }),
       });
 
       if (response.status >= 400) {
@@ -105,9 +104,9 @@ export function SmartHomeWidget({ text, footnote }: Props) {
               headers: {
                 'api-secret': apiSecret,
               },
-              json: {
+              body: JSON.stringify({
                 color: color,
-              },
+              }),
             });
           }, false);
 

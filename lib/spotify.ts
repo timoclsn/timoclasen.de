@@ -1,12 +1,18 @@
-import { string, z } from 'zod';
+import { z } from 'zod';
 
 import { fetcher } from './fetcher';
+
+const envSchema = z.object({
+  SPOTIFY_CLIENT_ID: z.string(),
+  SPOTIFY_CLIENT_SECRET: z.string(),
+  SPOTIFY_REFRESH_TOKEN: z.string(),
+});
 
 const {
   SPOTIFY_CLIENT_ID: clientID,
   SPOTIFY_CLIENT_SECRET: clientSecret,
   SPOTIFY_REFRESH_TOKEN: refreshToken,
-} = process.env;
+} = envSchema.parse(process.env);
 
 const basic = Buffer.from(`${clientID}:${clientSecret}`).toString('base64');
 
@@ -17,7 +23,7 @@ const accessDataSchema = z.object({
 async function getAccessToken() {
   const searchParams = new URLSearchParams({
     grant_type: 'refresh_token',
-    refresh_token: refreshToken || '',
+    refresh_token: refreshToken,
   });
 
   const accessDataJson = await fetcher(
@@ -26,8 +32,9 @@ async function getAccessToken() {
       method: 'POST',
       headers: {
         Authorization: `Basic ${basic}`,
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: searchParams,
+      body: searchParams.toString(),
     }
   );
 
@@ -88,7 +95,7 @@ const topTrackSchema = z.object({
   }),
   artists: z.array(
     z.object({
-      name: string(),
+      name: z.string(),
     })
   ),
 });
@@ -127,7 +134,7 @@ const nowPlayingSchema = z.object({
 export async function getNowPlaying() {
   const access_token = await getAccessToken();
 
-  const nowPlayingJson = await fetcher(
+  const response = await fetch(
     'https://api.spotify.com/v1/me/player/currently-playing',
     {
       headers: {
@@ -136,9 +143,11 @@ export async function getNowPlaying() {
     }
   );
 
-  if (!nowPlayingJson) {
+  if (response.status === 204 || response.status > 400) {
     return null;
   }
+
+  const nowPlayingJson = await response.json();
 
   return nowPlayingSchema.parse(nowPlayingJson);
 }
