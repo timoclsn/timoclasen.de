@@ -39,7 +39,6 @@ export function OGImage({ name, title, subtitle, image }: Props) {
           <h1
             style={{
               fontSize: '48px',
-              fontWeight: 'bold',
               marginBottom: '60px',
             }}
           >
@@ -48,7 +47,7 @@ export function OGImage({ name, title, subtitle, image }: Props) {
           <h2
             style={{
               fontSize: '48px',
-              fontWeight: 'bold',
+              fontWeight: 'normal',
               marginBottom: '16px',
               color: '#3E51F7',
             }}
