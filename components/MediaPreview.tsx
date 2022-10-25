@@ -1,4 +1,4 @@
-import Image from 'next/future/image';
+import Image from 'next/image';
 import type { Icon } from 'react-feather';
 import { Heart } from 'react-feather';
 

@@ -5,12 +5,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
-  swcMinify: true,
   experimental: {
-    legacyBrowsers: false,
-    browsersListForSwc: true,
     scrollRestoration: true,
-    newNextLinkBehavior: true,
   },
   images: {
     formats: ['image/avif', 'image/webp'],

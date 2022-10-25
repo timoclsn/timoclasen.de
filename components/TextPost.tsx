@@ -1,4 +1,4 @@
-import NextImage from 'next/future/image';
+import NextImage from 'next/image';
 import ReactMarkdown, { Components } from 'react-markdown';
 import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
 import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';

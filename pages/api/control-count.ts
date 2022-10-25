@@ -12,17 +12,42 @@ const envSchema = z.object({
 const { SUPABASE_URL: supaBaseUrl, SUPABASE_ANON_KEY: supabaseAnonKey } =
   envSchema.parse(process.env);
 
-const supabase = createClient(supaBaseUrl, supabaseAnonKey);
+export interface Database {
+  public: {
+    Tables: {
+      'balcony-control': {
+        Row: {
+          color: string;
+          count: number | null;
+        };
+        Insert: {
+          color: string;
+          count?: number | null;
+        };
+        Update: {
+          color?: string;
+          count?: number | null;
+        };
+      };
+    };
+    Views: {
+      [_ in never]: never;
+    };
+    Functions: {
+      [_ in never]: never;
+    };
+    Enums: {
+      [_ in never]: never;
+    };
+  };
+}
+
+const supabase = createClient<Database>(supaBaseUrl, supabaseAnonKey);
 
 export interface Counts extends Record<string, number> {
   red: number;
   green: number;
   blue: number;
-}
-
-interface Count {
-  color: string;
-  count: number;
 }
 
 const limiter = rateLimit({
@@ -35,8 +60,8 @@ export default async function controlCount(
   res: NextApiResponse<Counts | string>
 ) {
   const { data: countsData, error: countsError } = await supabase
-    .from<Count>('balcony-control')
-    .select('*');
+    .from('balcony-control')
+    .select();
 
   if (countsError) {
     return res.status(401).send(countsError.message);
@@ -48,7 +73,7 @@ export default async function controlCount(
 
   const counts = countsData.reduce(
     (acc, count) => {
-      acc[count.color] = count.count;
+      acc[count.color] = count.count || 0;
       return acc;
     },
     { red: 0, green: 0, blue: 0 } as Counts
@@ -61,9 +86,10 @@ export default async function controlCount(
       const body: { color: 'red' | 'green' | 'blue' } = JSON.parse(req.body);
 
       const { data: updateData, error: updateError } = await supabase
-        .from<Count>('balcony-control')
+        .from('balcony-control')
         .update({ count: counts[body.color] + 1 })
-        .match({ color: body.color });
+        .eq('color', body.color)
+        .select();
 
       if (updateError) {
         return res.status(401).send(updateError.message);
@@ -75,7 +101,7 @@ export default async function controlCount(
 
       const newCounts = updateData.reduce(
         (acc, count) => {
-          acc[count.color] = count.count;
+          acc[count.color] = count.count || 0;
           return acc;
         },
         {
