@@ -1,4 +1,4 @@
-import Image from 'next/future/image';
+import Image from 'next/image';
 import useSWR from 'swr';
 
 import type { NowPlayingData } from '../pages/api/now-playing';
