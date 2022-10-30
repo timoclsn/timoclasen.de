@@ -1,21 +1,11 @@
-import useSWR from 'swr';
-
-import type { RunningData } from '../pages/api/running';
+import { trpc } from '../utils/trpc';
 import { useTheme } from './ThemeContext';
 import { WidgetImage } from './WidgetImage';
 import { WidgetLayout } from './WidgetLayout';
 import { WidgetRunning } from './WidgetRunning';
 
-const apiSecret = process.env.NEXT_PUBLIC_API_SECRET ?? '';
-
-const fetchObj = {
-  headers: {
-    'api-secret': apiSecret,
-  },
-};
-
 export function RunningWidget() {
-  const { data, error } = useSWR<RunningData>(['/api/running', fetchObj]);
+  const { data, error } = trpc.sports.jogging.useQuery();
 
   const { darkMode } = useTheme();
 

@@ -7,6 +7,7 @@ import { SWRConfig } from 'swr';
 import { ThemeProvider } from '../components/ThemeContext';
 import { ToastProvider } from '../components/ToastProvider';
 import { fetcher } from '../lib/fetcher';
+import { trpc } from '../utils/trpc';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -23,4 +24,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default trpc.withTRPC(MyApp);
