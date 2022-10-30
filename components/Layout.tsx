@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Script from 'next/script';
 import type { ReactNode } from 'react';
-import { Suspense } from 'react';
 
 import { CenteredColumn } from './CenteredColumn';
 import { Favicons } from './Favicons';
