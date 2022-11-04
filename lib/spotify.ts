@@ -1,7 +1,5 @@
 import { z } from 'zod';
 
-import { fetcher } from './fetcher';
-
 const envSchema = z.object({
   SPOTIFY_CLIENT_ID: z.string(),
   SPOTIFY_CLIENT_SECRET: z.string(),
@@ -26,20 +24,17 @@ async function getAccessToken() {
     refresh_token: refreshToken,
   });
 
-  const accessDataJson = await fetcher(
-    'https://accounts.spotify.com/api/token',
-    {
-      method: 'POST',
-      headers: {
-        Authorization: `Basic ${basic}`,
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: searchParams.toString(),
-    }
-  );
+  const res = await fetch('https://accounts.spotify.com/api/token', {
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${basic}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: searchParams.toString(),
+  });
 
-  const accessData = accessDataSchema.parse(accessDataJson);
-
+  const data = await res.json();
+  const accessData = accessDataSchema.parse(data);
   return accessData.access_token;
 }
 
@@ -62,7 +57,7 @@ const topArtistSchema = z.object({
 export async function getTopArtists() {
   const access_token = await getAccessToken();
 
-  const responseJson = await fetcher(
+  const res = await fetch(
     'https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=5',
     {
       headers: {
@@ -71,11 +66,13 @@ export async function getTopArtists() {
     }
   );
 
+  const data = await res.json();
+
   const response = z
     .object({
       items: z.array(topArtistSchema),
     })
-    .parse(responseJson);
+    .parse(data);
 
   return response.items;
 }
@@ -103,7 +100,7 @@ const topTrackSchema = z.object({
 export async function getTopTracks() {
   const access_token = await getAccessToken();
 
-  const responseJson = await fetcher(
+  const res = await fetch(
     'https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=5',
     {
       headers: {
@@ -112,11 +109,13 @@ export async function getTopTracks() {
     }
   );
 
+  const data = await res.json();
+
   const response = z
     .object({
       items: topTrackSchema.array(),
     })
-    .parse(responseJson);
+    .parse(data);
 
   return response.items;
 }
@@ -134,7 +133,7 @@ const nowPlayingSchema = z.object({
 export async function getNowPlaying() {
   const access_token = await getAccessToken();
 
-  const response = await fetch(
+  const res = await fetch(
     'https://api.spotify.com/v1/me/player/currently-playing',
     {
       headers: {
@@ -143,13 +142,13 @@ export async function getNowPlaying() {
     }
   );
 
-  if (response.status === 204 || response.status > 400) {
+  if (res.status === 204 || res.status > 400) {
     return null;
   }
 
-  const nowPlayingJson = await response.json();
+  const data = await res.json();
 
-  return nowPlayingSchema.parse(nowPlayingJson);
+  return nowPlayingSchema.parse(data);
 }
 
 const recentlyPlayedSchema = z.object({
@@ -159,7 +158,7 @@ const recentlyPlayedSchema = z.object({
 export async function getRecentlyPlayed() {
   const access_token = await getAccessToken();
 
-  const responseJson = await fetcher(
+  const res = await fetch(
     'https://api.spotify.com/v1/me/player/recently-played?limit=1',
     {
       headers: {
@@ -168,11 +167,13 @@ export async function getRecentlyPlayed() {
     }
   );
 
+  const data = await res.json();
+
   const response = z
     .object({
       items: z.array(recentlyPlayedSchema),
     })
-    .parse(responseJson);
+    .parse(data);
 
   return response.items[0];
 }

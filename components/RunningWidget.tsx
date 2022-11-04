@@ -5,7 +5,7 @@ import { WidgetLayout } from './WidgetLayout';
 import { WidgetRunning } from './WidgetRunning';
 
 export function RunningWidget() {
-  const { data, error } = trpc.sports.jogging.useQuery();
+  const { data, error } = trpc.sports.getRunning.useQuery();
 
   const { darkMode } = useTheme();
 
@@ -21,7 +21,7 @@ export function RunningWidget() {
   return (
     <div id="running">
       <WidgetLayout separate>
-        <WidgetRunning thisYear={data?.thisYear} lastRun={data?.lastRun} />
+        <WidgetRunning runningData={data} />
         <WidgetImage
           url={darkMode ? data?.lastRun?.map?.dark : data?.lastRun?.map?.light}
           description="Kartenansicht des letzten Laufes von Timo"

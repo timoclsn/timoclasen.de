@@ -1,8 +1,6 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-const apiSecret = process.env.NEXT_PUBLIC_API_SECRET;
-
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -14,23 +12,6 @@ export function middleware(request: NextRequest) {
   if (pathname.includes('_hive/')) {
     const params = pathname.split('_hive/')[1];
     return NextResponse.rewrite(`https://hive.splitbee.io/${params}`);
-  }
-
-  if (pathname.startsWith('/api')) {
-    // List APIs that require authentication
-    if (
-      pathname.includes('smarthome') ||
-      pathname.includes('control-count') ||
-      pathname.includes('running') ||
-      pathname.includes('now-playing') ||
-      pathname.includes('top-artists') ||
-      pathname.includes('top-tracks')
-    ) {
-      const headerKey = request.headers.get('api-secret');
-      if (headerKey !== apiSecret) {
-        return new Response(null, { status: 401 });
-      }
-    }
   }
 
   // Security headers

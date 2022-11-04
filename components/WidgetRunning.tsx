@@ -1,3 +1,4 @@
+import type { inferProcedureOutput } from '@trpc/server';
 import JSConfetti from 'js-confetti';
 import { useEffect, useRef } from 'react';
 import {
@@ -10,18 +11,21 @@ import {
   TrendingUp,
 } from 'react-feather';
 
-import type { LastRun, ThisYear } from '../pages/api/running';
+import type { AppRouter } from '../server/routers/_app';
 import { RunningElement } from './RunningElement';
 import { useOnScreen } from './useOnScreen';
 
 const jsConfetti = typeof window !== 'undefined' ? new JSConfetti() : null;
 
+type RunningData = inferProcedureOutput<AppRouter['sports']['getRunning']>;
+
 interface Props {
-  thisYear?: ThisYear;
-  lastRun?: LastRun;
+  runningData?: RunningData;
 }
 
-export function WidgetRunning({ thisYear, lastRun }: Props) {
+export function WidgetRunning({ runningData }: Props) {
+  const thisYear = runningData?.thisYear;
+  const lastRun = runningData?.lastRun;
   const yearlyRunningGoal = 500; // 500 km
   const distanceThreshold = 10000; // 10km in m
   const speedThreshold = 3.03; // ca. 5:30 /km in m/s

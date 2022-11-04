@@ -12,7 +12,7 @@ import {
 import { publicProcedure, router } from '../trpc';
 
 export const sportsRouter = router({
-  jogging: publicProcedure.query(async () => {
+  getRunning: publicProcedure.query(async () => {
     const activites = await getActivities();
     const runs = activites.filter((activity) => activity.type === 'Run');
 

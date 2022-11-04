@@ -10,123 +10,71 @@ import {
   Zap,
 } from 'react-feather';
 import toast from 'react-hot-toast';
-import useSWR from 'swr';
 
-import { fetcher } from '../lib/fetcher';
-import type { Counts } from '../pages/api/control-count';
-import type { SmartHomeData } from '../pages/api/smarthome';
+import { trpc } from '../utils/trpc';
 import { Button } from './Button';
 import { Skeleton } from './Skeleton';
 import { SmartHomeElement } from './SmartHomeElement';
 import { useTheme } from './ThemeContext';
 import { WidgetLayout } from './WidgetLayout';
 
-const apiSecret = process.env.NEXT_PUBLIC_API_SECRET ?? '';
-
-const fetchObj = {
-  headers: {
-    'api-secret': apiSecret,
-  },
-};
-
 interface Props {
   text: string;
   footnote: string;
 }
 
-type BalconyColors = Record<string, string>;
-
-const balconyColors: BalconyColors = {
-  red: '#fa0501',
-  green: '#03d304',
-  blue: '#002dfb',
-};
-
 export function SmartHomeWidget({ text, footnote }: Props) {
   const { darkMode } = useTheme();
   const [disableButtons, setDisableButtons] = useState(false);
 
-  const smartHomeApi = '/api/smarthome';
-  const {
-    data: smartHomeData,
-    error: smartHomeError,
-    mutate: mutateSmartHome,
-  } = useSWR<SmartHomeData, string>([smartHomeApi, fetchObj]);
+  const utils = trpc.useContext();
 
-  const countApi = '/api/control-count';
-  const {
-    data: countData,
-    error: countError,
-    mutate: mutateCount,
-  } = useSWR<Counts, string>([countApi, fetchObj]);
+  const { data: smartHomeData, error: smartHomeError } =
+    trpc.smarthome.getSmarthome.useQuery();
+
+  const mutateSmartHome = trpc.smarthome.putSmarthome.useMutation();
+
+  const { data: countData, error: countError } =
+    trpc.smarthome.getControlCount.useQuery();
+
+  const mutateCount = trpc.smarthome.putControlCount.useMutation({
+    onSuccess: () => {
+      utils.smarthome.getControlCount.invalidate();
+    },
+  });
 
   const errorMessage = 'Nicht erreichbar…';
 
-  async function controlLight(color: string, emoji: string) {
+  async function controlLight(color: 'red' | 'green' | 'blue', emoji: string) {
     setDisableButtons(true);
 
-    const controlLightRequest = new Promise(async (resolve, reject) => {
-      const response = await fetch(smartHomeApi, {
-        method: 'PUT',
-        headers: {
-          'api-secret': apiSecret,
-        },
-        body: JSON.stringify({
-          balconyColor: color,
-        }),
-      });
-
-      if (response.status >= 400) {
-        reject(response);
-      } else {
-        resolve(response);
-      }
-    });
-
-    await toast.promise(
-      controlLightRequest,
+    const toastId = toast.loading('Schalten...');
+    mutateSmartHome.mutate(
+      { balconyColor: color },
       {
-        loading: 'Schalten...',
-        success: () => {
-          if (smartHomeData) {
-            mutateSmartHome(
-              {
-                ...smartHomeData,
-                balconyColor: balconyColors[color],
-                balconyOnOff: 'An',
+        onSuccess: () => {
+          toast.remove(toastId);
+          toast.success('Balkon wurde eingeschaltet!', {
+            icon: emoji,
+            duration: 5000,
+          });
+          utils.smarthome.getSmarthome.invalidate();
+          mutateCount.mutate(
+            { color },
+            {
+              onSuccess: () => {
+                setDisableButtons(false);
               },
-              false
-            );
-          }
-          mutateCount(async () => {
-            return await fetcher(countApi, {
-              method: 'PUT',
-              headers: {
-                'api-secret': apiSecret,
-              },
-              body: JSON.stringify({
-                color: color,
-              }),
-            });
-          }, false);
-
-          setDisableButtons(false);
-
+            }
+          );
           splitbee.track('Balcony Light Control', {
             color: `${emoji} ${color}`,
           });
-
-          return 'Balkon wurde eingeschaltet!';
         },
-        error: () => {
+        onError: () => {
+          toast.remove(toastId);
+          toast.error('Hat nicht funktioniert.');
           setDisableButtons(false);
-          return 'Hat nicht funktioniert.';
-        },
-      },
-      {
-        success: {
-          duration: 5000,
-          icon: emoji,
         },
       }
     );
@@ -265,7 +213,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
             <div className="flex justify-center">
               <p className="whitespace-nowrap text-sm opacity-60">
                 {countData ? (
-                  `Zähler: Rot ${countData.red} | Grün ${countData.green} | Blau ${countData.blue}`
+                  `Zähler: Rot ${countData.red} | Grün ${countData.green} | Blau ${countData.blue}`
                 ) : (
                   <Skeleton width="250px" />
                 )}

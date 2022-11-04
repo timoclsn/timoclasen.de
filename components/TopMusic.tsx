@@ -1,27 +1,15 @@
 import { Music, User } from 'react-feather';
-import useSWR from 'swr';
 
-import type { Artist, TopArtistsData } from '../pages/api/top-artists';
-import type { TopTrackData, Track } from '../pages/api/top-tracks';
+import { trpc } from '../utils/trpc';
 import { MediaPreview } from './MediaPreview';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs';
 
-const apiSecret = process.env.NEXT_PUBLIC_API_SECRET ?? '';
-
-const fetchObj = {
-  headers: {
-    'api-secret': apiSecret,
-  },
-};
-
 export function TopMusic() {
   const { data: topArtistsData, error: topArtistsError } =
-    useSWR<TopArtistsData>(['/api/top-artists', fetchObj]);
+    trpc.music.getTopArtists.useQuery();
 
-  const { data: topTracksData, error: topTracksError } = useSWR<TopTrackData>([
-    '/api/top-tracks',
-    fetchObj,
-  ]);
+  const { data: topTracksData, error: topTracksError } =
+    trpc.music.getTopTracks.useQuery();
 
   if (topArtistsError || topTracksError) {
     return <div>Fehler beim Laden…</div>;
@@ -64,7 +52,7 @@ export function TopMusic() {
       <TabsContent value="1">
         <ul className="space-y-20">
           {topArtistsData
-            ? topArtistsData.artists.map((artist: Artist, index: number) => (
+            ? topArtistsData.artists.map((artist, index: number) => (
                 <li key={index}>
                   <MediaPreview
                     title={artist.name}
@@ -83,7 +71,7 @@ export function TopMusic() {
       <TabsContent value="2">
         <ul className="space-y-20">
           {topTracksData
-            ? topTracksData.tracks.map((track: Track, index: number) => (
+            ? topTracksData.tracks.map((track, index: number) => (
                 <li key={index}>
                   <MediaPreview
                     title={track.name}

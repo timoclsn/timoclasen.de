@@ -1,8 +1,6 @@
 import { intervalToDuration, startOfYear } from 'date-fns';
 import { z } from 'zod';
 
-import { fetcher } from './fetcher';
-
 const envSchema = z.object({
   STRAVA_CLIENT_ID: z.string(),
   STRAVA_CLIENT_SECRET: z.string(),
@@ -27,12 +25,14 @@ async function getAccessToken() {
     refresh_token: refreshToken,
   });
 
-  const accessDataJson = await fetcher('https://www.strava.com/oauth/token', {
+  const res = await fetch('https://www.strava.com/oauth/token', {
     method: 'POST',
     body: searchParams,
   });
 
-  const accessData = accessDataSchema.parse(accessDataJson);
+  const data = await res.json();
+
+  const accessData = accessDataSchema.parse(data);
   return accessData.access_token;
 }
 
@@ -57,11 +57,13 @@ export async function getActivities() {
   const timestamp = startOfYear(new Date()).getTime() / 1000;
   const accessToken = await getAccessToken();
 
-  const activitiesJson = await fetcher(
+  const res = await fetch(
     `https://www.strava.com/api/v3/athlete/activities?per_page=200&after=${timestamp}&access_token=${accessToken}`
   );
 
-  return z.array(activitySchema).parse(activitiesJson);
+  const data = await res.json();
+
+  return z.array(activitySchema).parse(data);
 }
 
 export function formatSpeed(speedMs: number) {
