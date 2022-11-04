@@ -13,8 +13,7 @@ export default trpcNext.createNextApiHandler({
     const isQuery = type === 'query';
 
     if (allOk && isQuery) {
-      if (!paths) return {};
-
+      console.log(paths);
       const path = paths?.at(0);
 
       if (path === 'music.getNowPlaying') {
