@@ -1,21 +1,11 @@
-import useSWR from 'swr';
-
-import type { RunningData } from '../pages/api/running';
+import { trpc } from '../utils/trpc';
 import { useTheme } from './ThemeContext';
 import { WidgetImage } from './WidgetImage';
 import { WidgetLayout } from './WidgetLayout';
 import { WidgetRunning } from './WidgetRunning';
 
-const apiSecret = process.env.NEXT_PUBLIC_API_SECRET ?? '';
-
-const fetchObj = {
-  headers: {
-    'api-secret': apiSecret,
-  },
-};
-
 export function RunningWidget() {
-  const { data, error } = useSWR<RunningData>(['/api/running', fetchObj]);
+  const { data, error } = trpc.sports.getRunning.useQuery();
 
   const { darkMode } = useTheme();
 
@@ -31,7 +21,7 @@ export function RunningWidget() {
   return (
     <div id="running">
       <WidgetLayout separate>
-        <WidgetRunning thisYear={data?.thisYear} lastRun={data?.lastRun} />
+        <WidgetRunning runningData={data} />
         <WidgetImage
           url={darkMode ? data?.lastRun?.map?.dark : data?.lastRun?.map?.light}
           description="Kartenansicht des letzten Laufes von Timo"

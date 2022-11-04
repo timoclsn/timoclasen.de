@@ -1,23 +1,11 @@
 import Image from 'next/image';
-import useSWR from 'swr';
 
-import type { NowPlayingData } from '../pages/api/now-playing';
+import { trpc } from '../utils/trpc';
 import { Skeleton } from './Skeleton';
 import { SoundBars } from './SoundBars';
 
-const apiSecret = process.env.NEXT_PUBLIC_API_SECRET ?? '';
-
-const fetchObj = {
-  headers: {
-    'api-secret': apiSecret,
-  },
-};
-
 export function NowPlaying() {
-  const { data, error } = useSWR<NowPlayingData>([
-    '/api/now-playing',
-    fetchObj,
-  ]);
+  const { data, error } = trpc.music.getNowPlaying.useQuery();
 
   if (error) {
     return <div>Fehler beim Laden…</div>;
