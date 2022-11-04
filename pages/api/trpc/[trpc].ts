@@ -13,10 +13,7 @@ export default trpcNext.createNextApiHandler({
     const isQuery = type === 'query';
 
     if (allOk && isQuery) {
-      console.log(paths);
-      const path = paths?.at(0);
-
-      if (path === 'music.getNowPlaying') {
+      if (paths?.some((path) => path === 'music.getNowPlaying')) {
         return {
           headers: {
             'cache-control': 's-maxage=60, stale-while-revalidate=30',
@@ -24,7 +21,7 @@ export default trpcNext.createNextApiHandler({
         };
       }
 
-      if (path === 'smarthome.getSmarthome') {
+      if (paths?.some((path) => path === 'smarthome.getSmarthome')) {
         return {
           headers: {
             'cache-control': 's-maxage=600, stale-while-revalidate=1200',
@@ -32,7 +29,7 @@ export default trpcNext.createNextApiHandler({
         };
       }
 
-      if (path === 'sports.getRunning') {
+      if (paths?.some((path) => path === 'sports.getRunning')) {
         return {
           headers: {
             'cache-control': 's-maxage=3600, stale-while-revalidate=86400',
@@ -40,7 +37,12 @@ export default trpcNext.createNextApiHandler({
         };
       }
 
-      if (path === 'music.getTopArtists' || path === 'music.getTopArtists') {
+      if (
+        paths?.some(
+          (path) =>
+            path === 'music.getTopArtists' || path === 'music.getTopArtists'
+        )
+      ) {
         return {
           headers: {
             'cache-control': 's-maxage=86400, stale-while-revalidate=43200',
