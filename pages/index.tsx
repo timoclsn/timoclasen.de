@@ -1,5 +1,4 @@
-import type { NextPage } from 'next';
-import type { GetStaticProps } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import { getPlaiceholder } from 'plaiceholder';
 
 import { AboutWidget } from '../components/AboutWidget';
@@ -13,8 +12,6 @@ import { PodcastsWidget } from '../components/PodcastsWidget';
 import { RunningWidget } from '../components/RunningWidget';
 import { SmartHomeWidget } from '../components/SmartHomeWidget';
 import { Teaser } from '../components/Teaser';
-import { Web3Provider } from '../components/Web3Provider';
-import { Web3Widget } from '../components/Web3Widget';
 import { queryContent } from '../lib/content';
 import type { Podcast } from '../lib/podcasts';
 import { getFavoritePodcasts } from '../lib/podcasts';
@@ -82,9 +79,6 @@ const Home: NextPage<Props> = function (props) {
       />
       <RunningWidget />
       <PodcastsWidget podcasts={props.favoritePodcasts} />
-      <Web3Provider>
-        <Web3Widget />
-      </Web3Provider>
       <MLWidget bgImage={props.MLImage} />
       <NowPlaying />
       <ContactWidget text={props.contact} />
