@@ -5,7 +5,7 @@ import { Skeleton } from './Skeleton';
 import { SoundBars } from './SoundBars';
 
 export function NowPlaying() {
-  const { data, error } = trpc.music.getNowPlaying.useQuery();
+  const { data, error } = trpc.music.nowPlaying.useQuery();
 
   if (error) {
     return <div>Fehler beim Laden…</div>;

@@ -7,7 +7,7 @@ import {
 import { publicProcedure, router } from '../trpc';
 
 export const musicRouter = router({
-  getNowPlaying: publicProcedure.query(async () => {
+  nowPlaying: publicProcedure.query(async () => {
     const nowPlaying = await getNowPlaying();
 
     if (nowPlaying === null || nowPlaying.item === null) {
@@ -40,7 +40,7 @@ export const musicRouter = router({
       image: image.url,
     };
   }),
-  getTopArtists: publicProcedure.query(async () => {
+  topArtists: publicProcedure.query(async () => {
     const topArtists = await getTopArtists();
 
     const artists = topArtists.map((artist) => {
@@ -59,7 +59,7 @@ export const musicRouter = router({
       artists,
     };
   }),
-  getTopTracks: publicProcedure.query(async () => {
+  topTracks: publicProcedure.query(async () => {
     const topTracks = await getTopTracks();
 
     const tracks = topTracks.map((track) => {

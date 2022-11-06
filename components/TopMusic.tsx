@@ -6,10 +6,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs';
 
 export function TopMusic() {
   const { data: topArtistsData, error: topArtistsError } =
-    trpc.music.getTopArtists.useQuery();
+    trpc.music.topArtists.useQuery();
 
   const { data: topTracksData, error: topTracksError } =
-    trpc.music.getTopTracks.useQuery();
+    trpc.music.topTracks.useQuery();
 
   if (topArtistsError || topTracksError) {
     return <div>Fehler beim Laden…</div>;

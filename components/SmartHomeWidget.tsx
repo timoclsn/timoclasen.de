@@ -30,16 +30,16 @@ export function SmartHomeWidget({ text, footnote }: Props) {
   const utils = trpc.useContext();
 
   const { data: smartHomeData, error: smartHomeError } =
-    trpc.smarthome.getSmarthome.useQuery();
+    trpc.smarthome.smarthome.useQuery();
 
-  const mutateSmartHome = trpc.smarthome.putSmarthome.useMutation();
+  const mutateSmartHome = trpc.smarthome.turnOnBalcony.useMutation();
 
   const { data: countData, error: countError } =
-    trpc.smarthome.getControlCount.useQuery();
+    trpc.smarthome.controlCount.useQuery();
 
-  const mutateCount = trpc.smarthome.putControlCount.useMutation({
+  const mutateCount = trpc.smarthome.updateControlCount.useMutation({
     onSuccess: () => {
-      utils.smarthome.getControlCount.invalidate();
+      utils.smarthome.controlCount.invalidate();
     },
   });
 
@@ -58,7 +58,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
             icon: emoji,
             duration: 5000,
           });
-          utils.smarthome.getSmarthome.invalidate();
+          utils.smarthome.smarthome.invalidate();
           mutateCount.mutate(
             { color },
             {

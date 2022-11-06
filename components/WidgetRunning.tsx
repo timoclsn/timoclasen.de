@@ -17,7 +17,7 @@ import { useOnScreen } from './useOnScreen';
 
 const jsConfetti = typeof window !== 'undefined' ? new JSConfetti() : null;
 
-type RunningData = inferProcedureOutput<AppRouter['sports']['getRunning']>;
+type RunningData = inferProcedureOutput<AppRouter['sports']['running']>;
 
 interface Props {
   runningData?: RunningData;

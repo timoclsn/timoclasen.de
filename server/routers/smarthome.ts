@@ -91,7 +91,7 @@ const getControlCount = async () => {
 };
 
 export const smarthomeRouter = router({
-  getSmarthome: publicProcedure
+  smarthome: publicProcedure
     .input(
       z
         .object({
@@ -208,7 +208,7 @@ export const smarthomeRouter = router({
           : '',
       };
     }),
-  putSmarthome: publicProcedure
+  turnOnBalcony: publicProcedure
     .input(
       z.object({
         balconyColor: colorSchema,
@@ -228,11 +228,11 @@ export const smarthomeRouter = router({
 
       return response.status;
     }),
-  getControlCount: publicProcedure.query(async () => {
+  controlCount: publicProcedure.query(async () => {
     const counts = await getControlCount();
     return counts;
   }),
-  putControlCount: publicProcedure
+  updateControlCount: publicProcedure
     .input(
       z.object({
         color: colorSchema,
