@@ -1,4 +1,3 @@
-import { createClient } from '@supabase/supabase-js';
 import { TRPCError } from '@trpc/server';
 import { z } from 'zod';
 
@@ -10,47 +9,10 @@ import {
   isLight,
   playHomeegram,
 } from '../../lib/homee';
+import { prisma } from '../../lib/prisma';
 import { publicProcedure, router } from '../trpc';
 
 type ColorHomeegramIds = Record<string, number>;
-
-const envSchema = z.object({
-  SUPABASE_URL: z.string(),
-  SUPABASE_ANON_KEY: z.string(),
-});
-
-const { SUPABASE_URL: supaBaseUrl, SUPABASE_ANON_KEY: supabaseAnonKey } =
-  envSchema.parse(process.env);
-
-interface Database {
-  public: {
-    Tables: {
-      'balcony-control': {
-        Row: {
-          color: string;
-          count: number | null;
-        };
-        Insert: {
-          color: string;
-          count?: number | null;
-        };
-        Update: {
-          color?: string;
-          count?: number | null;
-        };
-      };
-    };
-    Views: {
-      [_ in never]: never;
-    };
-    Functions: {
-      [_ in never]: never;
-    };
-    Enums: {
-      [_ in never]: never;
-    };
-  };
-}
 
 interface Counts extends Record<string, number> {
   red: number;
@@ -60,17 +22,8 @@ interface Counts extends Record<string, number> {
 
 const colorSchema = z.enum(['red', 'green', 'blue']);
 
-const supabase = createClient<Database>(supaBaseUrl, supabaseAnonKey);
-
 const getControlCount = async () => {
-  const { data, error } = await supabase.from('balcony-control').select();
-
-  if (error) {
-    throw new TRPCError({
-      code: 'INTERNAL_SERVER_ERROR',
-      message: error.message,
-    });
-  }
+  const data = await prisma.balcony_control.findMany();
 
   if (!data) {
     throw new TRPCError({
@@ -241,18 +194,12 @@ export const smarthomeRouter = router({
     .mutation(async ({ input }) => {
       const counts = await getControlCount();
 
-      const { data, error } = await supabase
-        .from('balcony-control')
-        .update({ count: counts[input.color] + 1 })
-        .eq('color', input.color)
-        .select();
-
-      if (error) {
-        throw new TRPCError({
-          code: 'INTERNAL_SERVER_ERROR',
-          message: error.message,
-        });
-      }
+      const data = await prisma.balcony_control.update({
+        where: { color: input.color },
+        data: {
+          count: counts[input.color] + 1,
+        },
+      });
 
       if (!data) {
         throw new TRPCError({
@@ -261,19 +208,10 @@ export const smarthomeRouter = router({
         });
       }
 
-      const newCounts = data.reduce(
-        (acc, count) => {
-          acc[count.color] = count.count || 0;
-          return acc;
-        },
-        {
-          red: counts.red,
-          green: counts.green,
-          blue: counts.blue,
-        } as Counts
-      );
-
-      return newCounts;
+      return {
+        ...counts,
+        [data.color]: data.count,
+      };
     }),
 });
 
