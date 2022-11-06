@@ -14,34 +14,7 @@ import { publicProcedure, router } from '../trpc';
 
 type ColorHomeegramIds = Record<string, number>;
 
-interface Counts extends Record<string, number> {
-  red: number;
-  green: number;
-  blue: number;
-}
-
 const colorSchema = z.enum(['red', 'green', 'blue']);
-
-const getControlCount = async () => {
-  const data = await prisma.balcony_control.findMany();
-
-  if (!data) {
-    throw new TRPCError({
-      code: 'INTERNAL_SERVER_ERROR',
-      message: 'No data',
-    });
-  }
-
-  const counts = data.reduce(
-    (acc, count) => {
-      acc[count.color] = count.count || 0;
-      return acc;
-    },
-    { red: 0, green: 0, blue: 0 } as Counts
-  );
-
-  return counts;
-};
 
 export const smarthomeRouter = router({
   smarthome: publicProcedure
@@ -182,8 +155,16 @@ export const smarthomeRouter = router({
       return response.status;
     }),
   controlCount: publicProcedure.query(async () => {
-    const counts = await getControlCount();
-    return counts;
+    const rawCounts = await prisma.balcony_control.findMany();
+
+    return rawCounts.reduce(
+      (acc, count) => ({ ...acc, [count.color]: count.count }),
+      {
+        red: 0,
+        green: 0,
+        blue: 0,
+      }
+    );
   }),
   updateControlCount: publicProcedure
     .input(
@@ -192,25 +173,27 @@ export const smarthomeRouter = router({
       })
     )
     .mutation(async ({ input }) => {
-      const counts = await getControlCount();
+      const rawCounts = await prisma.balcony_control.findMany();
 
-      const data = await prisma.balcony_control.update({
+      const counts = rawCounts.reduce(
+        (acc, count) => ({ ...acc, [count.color]: count.count }),
+        {
+          red: 0,
+          green: 0,
+          blue: 0,
+        }
+      );
+
+      const rawCount = await prisma.balcony_control.update({
         where: { color: input.color },
         data: {
           count: counts[input.color] + 1,
         },
       });
 
-      if (!data) {
-        throw new TRPCError({
-          code: 'INTERNAL_SERVER_ERROR',
-          message: 'No data.',
-        });
-      }
-
       return {
         ...counts,
-        [data.color]: data.count,
+        [rawCount.color]: rawCount.count,
       };
     }),
 });
