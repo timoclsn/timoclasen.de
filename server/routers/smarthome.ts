@@ -173,28 +173,18 @@ export const smarthomeRouter = router({
       })
     )
     .mutation(async ({ input }) => {
-      const rawCounts = await prisma.balcony_control.findMany();
-
-      const counts = rawCounts.reduce(
-        (acc, count) => ({ ...acc, [count.color]: count.count }),
-        {
-          red: 0,
-          green: 0,
-          blue: 0,
-        }
-      );
-
-      const rawCount = await prisma.balcony_control.update({
-        where: { color: input.color },
+      await prisma.balcony_control.update({
+        where: {
+          color: input.color,
+        },
         data: {
-          count: counts[input.color] + 1,
+          count: {
+            increment: 1,
+          },
         },
       });
 
-      return {
-        ...counts,
-        [rawCount.color]: rawCount.count,
-      };
+      return;
     }),
 });
 
