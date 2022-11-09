@@ -173,7 +173,7 @@ export const smarthomeRouter = router({
       })
     )
     .mutation(async ({ input }) => {
-      await prisma.balcony_control.update({
+      const data = await prisma.balcony_control.update({
         where: {
           color: input.color,
         },
@@ -184,7 +184,7 @@ export const smarthomeRouter = router({
         },
       });
 
-      return;
+      return data;
     }),
 });
 
