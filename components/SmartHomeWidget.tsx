@@ -37,7 +37,23 @@ export function SmartHomeWidget({ text, footnote }: Props) {
   const { data: countData, error: countError } =
     trpc.smarthome.controlCount.useQuery();
 
-  const mutateCount = trpc.smarthome.updateControlCount.useMutation();
+  const mutateCount = trpc.smarthome.updateControlCount.useMutation({
+    onMutate: ({ color }) => {
+      const oldData = utils.smarthome.controlCount.getData();
+      if (!oldData) return { oldData };
+
+      const newData = {
+        ...oldData,
+        [color]: oldData[color] + 1,
+      };
+      utils.smarthome.controlCount.setData(undefined, newData);
+
+      return { oldData };
+    },
+    onError: (error, input, context) => {
+      utils.smarthome.controlCount.setData(undefined, context?.oldData);
+    },
+  });
 
   const errorMessage = 'Nicht erreichbar…';
 
@@ -58,15 +74,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
           mutateCount.mutate(
             { color },
             {
-              onSuccess: (data) => {
-                utils.smarthome.controlCount.setData((oldData) =>
-                  oldData
-                    ? {
-                        ...oldData,
-                        [data.color]: data.count,
-                      }
-                    : oldData
-                );
+              onSuccess: () => {
                 setDisableButtons(false);
               },
             }
