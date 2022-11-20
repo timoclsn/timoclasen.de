@@ -1,7 +1,7 @@
 import { router } from '../trpc';
 import { musicRouter } from './music';
-import { sportsRouter } from './sports';
 import { smarthomeRouter } from './smarthome';
+import { sportsRouter } from './sports';
 
 export const appRouter = router({
   sports: sportsRouter,
