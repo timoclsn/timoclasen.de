@@ -7,7 +7,7 @@ import { OGImage } from '../../components/OGImage';
 import { queryContent } from '../../lib/content';
 
 export const config = {
-  runtime: 'experimental-edge',
+  runtime: 'edge',
 };
 
 const fontRegular = fetch(
