@@ -11,7 +11,7 @@
   },
   {
     "title": "Accidental Tech Podcast",
-    "favorite": true,
+    "favorite": false,
     "feed": "https://atp.fm/episodes?format=rss",
     "description": "Three nerds discussing tech, Apple, programming, and loosely related matters.\n",
     "website": "https://atp.fm/",
@@ -34,9 +34,9 @@
     "favorite": false,
     "feed": "https://alphalist.podigee.io/feed/mp3",
     "description": "This podcast features interviews of CTOs and other technical leadership figures and topics range from technology (AI, blockchain, cyber, DevOps, Web Architecture, etc.) to management (e.g. scaling, structuring teams, mentoring, technical recruiting, product  etc.).\\\nGuests from leading tech companies share their best practices and knowledge.\nThe goal is to support other CTOs on their journey through tech and engineering, inspire and allow a sneak-peek into other successful companies to understand how they think and act. Get awesome insights into the world‘s top tech companies, personalities with this podcast brought to you by Tobias Schlottke.\n",
-    "website": "https://alphalist.com",
+    "website": "https://alphalist.com/podcast",
     "hosts": "Tobias Schlottke - alphalist CTO Podcast",
-    "categories": ["Business", "Management", "Technology"],
+    "categories": ["Business", "Entrepreneurship", "Management", "Technology"],
     "image": "cover-589103181.jpg"
   },
   {
@@ -71,7 +71,7 @@
   },
   {
     "title": "Baywatch Berlin",
-    "favorite": false,
+    "favorite": true,
     "feed": "https://baywatch-berlin.podigee.io/feed/mp3",
     "description": "Das Beautiful Mind Klaas Heufer-Umlauf probiert in diesem Podcast nach über 10 Jahren weltfremden Jet Set Spaß Kontakt zur echten Welt aufzunehmen.\nWie einst in der Weihnachtsgeschichte wird er dabei von seinen Freunden Thomas Schmitt und Jakob Lundt an die Hand genommen und langsam wieder mit den Themen des wahren Lebens in Kontakt gebracht. Tauchen Sie ein und seien Sie die Kugel im Flipperautomaten „Baywatch Berlin“!\n\nDu möchtest mehr über unsere Werbepartner erfahren? Hier findest du alle Infos & Rabatte: https://linktr.ee/BaywatchBerlin\n",
     "website": "https://baywatch-berlin.podigee.io/",
@@ -93,7 +93,7 @@
     "title": "Cautionary Tales with Tim Harford",
     "favorite": false,
     "feed": "https://omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/C0AE8C6E-22F0-4E9B-AC1C-AE390037AC53/7F5A4714-6B10-4CCF-A424-AE390037AC70/podcast.rss",
-    "description": "We tell our children unsettling fairy tales to teach them valuable lessons, but these Cautionary Tales are for the education of the grown ups – and they are all true. Tim Harford (Financial Times, BBC, author of “The Data Detective”) brings you stories of awful human error, tragic catastrophes, and hilarious fiascos. They'll delight you, scare you, but also make you wiser. New episodes every other Friday. iHeartMedia is the exclusive podcast partner of Pushkin Industries. \n",
+    "description": "We tell our children unsettling fairy tales to teach them valuable lessons, but these Cautionary Tales are for the education of the grown ups – and they are all true. Tim Harford (Financial Times, BBC, author of “The Data Detective”) brings you stories of awful human error, tragic catastrophes, and hilarious fiascos. They'll delight you, scare you, but also make you wiser. New episodes every other Friday.\n",
     "website": "https://www.pushkin.fm/",
     "hosts": "Pushkin Industries",
     "categories": ["History", "Society & Culture"],
@@ -191,7 +191,7 @@
   },
   {
     "title": "Design Details",
-    "favorite": true,
+    "favorite": false,
     "feed": "https://feeds.simplecast.com/eew_vyNL",
     "description": "A weekly conversation about design process and culture. Hosted by Marshall Bock and Brian Lovin.\n",
     "website": "https://designdetails.fm",
@@ -260,10 +260,26 @@
     "image": "cover--1622607936.jpg"
   },
   {
+    "title": "devtools.fm",
+    "favorite": true,
+    "feed": "https://feeds.buzzsprout.com/1772992.rss",
+    "description": "A podcast about developer tools and the people who make them. Join us as we embark on a journey to explore modern developer tooling and interview the people who make it possible.\n",
+    "website": "https://devtools.fm",
+    "hosts": "Andrew Lisowski, Justin Bennett",
+    "categories": [
+      "Business",
+      "Entrepreneurship",
+      "News",
+      "Tech News",
+      "Technology"
+    ],
+    "image": "cover--1488487217.jpg"
+  },
+  {
     "title": "digital kompakt | Digitale Strategien für morgen",
     "favorite": false,
     "feed": "https://digitalkompakt.podigee.io/feed/mp3",
-    "description": "digital kompakt ist ein Podcast zu Digitalisierung, das Führungskräften dabei hilft, ihre Lernkurve massiv zu verkürzen. Mit uns können sich Entscheider\\* trotz fehlender Zeit mit digitalem Tiefenwissen auseinandersetzen, um ihr Wachstum relevant zu beschleunigen.\n\nDazu bieten wir in unserem Podcast spannende Interviews aus der Digitalwirtschaft: Digitalunternehmer Joel Kaczmarek spricht mit bekannten Unternehmern\\*, Top-Managern\\*, Investoren\\* und Experten\\* über digitalen Geschäftserfolg. Mit seinen Gästen zeichnet er digitale Geschäftsmodelle und Strategien nach, um Best Practises und Erfolgsprinzipien abzuleiten.\n\nSo profitieren unsere Hörer\\* von den Learnings und Tools erfolgreicher Macher\\*. Gleichzeitig schafft digital kompakt eine Bewegung von digitalen Führungskräften, die sich gegenseitig Mut machen, inspirieren und befähigen, die Potenziale der Digitalisierung schneller und effektiver zu erschließen.\n\nMit nur einem Klick auf „Abonnieren“ begleitest du uns also als Entdecker\\*, Navigator\\* und Wegbereiter\\* der digitalen Welt. Wir freuen uns auf dich! 😊\n\n\\#Digitalisierung #Change #Acceleration #Networking #BestSelf #Leadership\n\n☝🏻 One more thing: Wir haben den Anspruch, dass eine Podcast-Episode so viel Wissen wie ein halbes Semester Business Studium enthalten soll. Wenn du Ideen hast, wie uns das noch besser gelingt, schreib uns jederzeit an redaktion \\[at] digitalkompakt.de\n\n\\*Wir bemühen uns um die Verwendung einer geschlechtsneutralen Sprache, haben um der besseren Lesbarkeit willen hier aber auf die gegenderten Schreibweisen verzichtet. Natürlich gelten aber sämtliche Personenbezeichnungen für alle Geschlechter! 💪🏻\n",
+    "description": "Bist du eine Führungskraft, die das Gefühl hat, immer hinterher zu sein? In unserer schnelllebigen Wirtschaft ist es wichtiger denn je, über die neuesten digitalen Trends und Strategien auf dem Laufenden zu sein. Aber wer hat schon die Zeit, sich durch den ganzen Wust an Informationen zu wühlen? Genau hier kommen wir ins Spiel.\n\ndigital kompakt ist ein Podcast für Führungskräfte, der das wichtigste Wissen über Strategien, Trends, Best Practices und Erfolgsprinzipien vermittelt. Mit anderen Worten: Wir halten dich auf dem Laufenden, was in der Welt passiert, damit du deiner Konkurrenz einen Schritt voraus sein kannst. Und weil wir wissen, dass nicht jeder die Zeit hat, sich einen Podcast anzuhören, halten wir unsere Episoden kurz und bündig, damit du sie leicht in deinen vollen Terminkalender einbauen kannst.\n\nWie wir dies tun? Unser Moderator Joel Kaczmarek interviewt die wichtigsten Führungskräfte der Digitalwirtschaft und lässt dich an ihren Erkenntnissen und ihrem Wissen teilhaben. Also: Abonniere jetzt unseren Podcast und vertiefe dein Wissen, um immer vorne mit dabei zu sein.\n",
     "website": "https://www.digitalkompakt.de/",
     "hosts": "Joel Kaczmarek",
     "categories": ["Business", "Entrepreneurship", "Technology"],
@@ -301,9 +317,9 @@
   },
   {
     "title": "Doppelgänger Tech Talk",
-    "favorite": false,
+    "favorite": true,
     "feed": "https://doppelgaenger.podigee.io/feed/mp3",
-    "description": "Mehr als 40.000 Menschen lauschen zweimal wöchentlich, wenn die Tech-Experten Philipp Glöckler & Philipp “Pip” Klöckner aktuelle Ereignisse aus den Themen Innovation, Marketing, Produkt und Führung der relevantesten Technologie-Unternehmen besprechen. Tiefgründig und unterhaltsam analysieren sie Geschäftsmodelle, Strategie und die neuesten Trends.\n\nDie Themen reichen von GAFAM (Google Apple Facebook Amazon Microsoft) und Antitrust über Aktien, Börse, Geldanlage bis zu Digital Marketing, Cloud Software, Crypto & Blockchain, Creator und App Economy.\n\nPhilipp Gloeckler (@gloeckler) ist Co-Founder des Podcast Marketing Marktplatzes Lollipod.de, Ex AvocadoStore & why own it Gründer.\n\nPhilipp Kloeckner (@pip\\_net) ist Investor & Advisor Marketing/Growth/Product für Startups, Wachstumsunternehmen und Private Equity Firmen, Ex Idealo & Rocket Internet, bekannt aus dem OMR Podcast, Ohne Aktien wirds schwer (OAWS) und Alles auf Aktien (AAA).\n\nHaftungsausschluss: https://www.doppelgaenger.io/disclaimer/ Auch wenn es schwer wird, bitte unbedingt lesen bevor ihr Aktien oder andere Wertpapiere ohne eigene Analyse kauft!\n",
+    "description": "Mehr als 50.000 Menschen lauschen zweimal wöchentlich, wenn die Tech-Experten Philipp Glöckler & Philipp “Pip” Klöckner aktuelle Ereignisse aus den Themen Innovation, Marketing, Produkt und Führung der relevantesten Technologie-Unternehmen besprechen. Tiefgründig und unterhaltsam analysieren sie Geschäftsmodelle, Strategie, die neuesten Trends und deren Auswirkung auf die Gesellschaft.\n\nDie Themen reichen von GAFAM (Google Apple Facebook Amazon Microsoft) und Antitrust über Aktien, Börse, Geldanlage bis zu Digital Marketing, Cloud Software, Crypto & Blockchain, Creator und App Economy.\n\nPhilipp Gloeckler (@gloeckler) ist Co-Founder des Podcast Marketing Marktplatzes Lollipod.de, Ex AvocadoStore & why own it Gründer.\n\nPhilipp Kloeckner (@pip\\_net) ist Investor & Advisor Marketing/Growth/Product für Startups, Wachstumsunternehmen und Private Equity Firmen, Ex Idealo & Rocket Internet, bekannt aus dem OMR Podcast, Ohne Aktien wirds schwer (OAWS) und Alles auf Aktien (AAA).\n\nHaftungsausschluss: https://www.doppelgaenger.io/disclaimer/ Auch wenn es schwer wird, bitte unbedingt lesen bevor ihr Aktien oder andere Wertpapiere ohne eigene Analyse kauft!\n",
     "website": "https://www.doppelgaenger.io",
     "hosts": "Philipp Glöckler, Philipp Klöckner",
     "categories": ["Business", "Entrepreneurship", "Marketing"],
@@ -323,20 +339,20 @@
     "title": "F1 Nation",
     "favorite": false,
     "feed": "https://audioboom.com/channels/5024396.rss",
-    "description": "Formula 1 fans from every nation, welcome to F1 Nation! 1996 World Champion Damon Hill and globe-trotting racing reporters Tom Clarkson and Natalie Pinkham bring you weekly F1 chat with big guests, expert racing insight and behind-the-scenes stories.\n\nHit the follow button for the fastest way to get new episodes.\n",
-    "website": "https://audioboom.com/channels/5024396",
+    "description": "F1 fans from every nation, welcome to F1 Nation! Expect big guests, expert F1 insight and behind-the-scenes stories.\n\nHit the follow button for the fastest way to get new episodes.\n",
+    "website": "https://audioboom.com/channels/5024396-f1-nation",
     "hosts": "Formula 1",
     "categories": ["Sports"],
     "image": "cover--1807838084.jpg"
   },
   {
     "title": "F1: Beyond The Grid",
-    "favorite": false,
+    "favorite": true,
     "feed": "https://audioboom.com/channels/4964339.rss",
     "description": "Formula 1's fastest stars slow down and open up, sharing untold stories and unrivalled insight. Tom Clarkson brings you revealing, feature-length interviews and amazing anecdotes from F1’s biggest names. Expect superstar drivers, team bosses, tech geniuses and racing legends.\n\nHit the follow button for the fastest way to get new episodes.\n",
     "website": "https://audioboom.com/channel/beyond-the-grid",
     "hosts": "Formula 1",
-    "categories": ["Automotive", "Leisure", "Sports"],
+    "categories": ["Automotive", "Leisure", "Motorsport", "Sports"],
     "image": "cover--546450571.jpg"
   },
   {
@@ -345,7 +361,7 @@
     "feed": "https://financefwd.podigee.io/feed/mp3",
     "description": "Fintechs, Insurtechs, Robo-Advisor oder Kryptowährungen: Die Finanzwelt ist im Umbruch. Wir sprechen mit den wichtigsten Köpfen aus Fintech-, Banken- und Blockchainszene. Kritisch, unabhängig, unterhaltsam – und in 30 Minuten auf den Punkt.\n\nProduziert von Podstars by OMR.\n",
     "website": "https://financefwd.com/de/",
-    "hosts": "Niklas Wirminghaus und Caspar Schlenk | Finance FWD",
+    "hosts": "Caspar Schlenk | Finance FWD",
     "categories": ["Business", "Entrepreneurship", "Investing", "Management"],
     "image": "cover-413214548.jpg"
   },
@@ -381,7 +397,7 @@
   },
   {
     "title": "Full Stack Radio",
-    "favorite": true,
+    "favorite": false,
     "feed": "https://feeds.transistor.fm/full-stack-radio",
     "description": "A podcast for developers interested in building great software products. Every episode, Adam Wathan is joined by a guest to talk about everything from product design and user experience to unit testing and system administration.\n",
     "website": "http://fullstackradio.com",
@@ -390,10 +406,20 @@
     "image": "cover-1194151986.jpg"
   },
   {
+    "title": "Full Stack Whatever",
+    "favorite": false,
+    "feed": "https://feeds.simplecast.com/NLc_9EWn",
+    "description": "Full Stack Whatever is a series of conversations with creatives and technologists about the work behind the work.\n\nTechnology, design, and art are all subjects powered by an immeasurable amount of time invested by humans. And too often, we find ourselves only talking about the superficial aspects; job titles, launches, campaigns, etc.\n\nWith these conversations, I want to dig deeper and uncover the lessons, insights, and motivations of some of the best and brightest in our industries. I hope to illustrate that the journey is the reward, and that the stories shared will resonate and support some of you.\n",
+    "website": "https://full-stack-whatever.simplecast.com",
+    "hosts": "Maykel Loomans",
+    "categories": ["Arts", "Business", "Careers", "Design", "Technology"],
+    "image": "cover-1733467723.jpg"
+  },
+  {
     "title": "FUTURE MOVES - New Mobility Podcast",
     "favorite": false,
     "feed": "https://future-moves.podigee.io/feed/mp3",
-    "description": "Im Podcast von FUTURE MOVES sprechen wir jede Woche mit Vordenker:innen und Macher:innen der Mobilität der Zukunft. Hier bekommst du inspirierende und exklusive Insights zu wegweisenden New-Mobility-Projekten.\n\nJede Menge weitere spannende Stories zur findest du auf https://futuremoves.com/\n\nFUTURE MOVES ist ein Projekt von OMR und Hamburg Messe und Congress\n",
+    "description": "Im Podcast von FUTURE MOVES sprechen wir jede Woche mit Vordenker:innen und Macher:innen der Mobilität der Zukunft. Hier bekommst du inspirierende und exklusive Insights zu wegweisenden New-Mobility-Projekten.\n\nFUTURE MOVES ist ein Projekt von OMR und Hamburg Messe und Congress\n",
     "website": "https://futuremoves.com/podcast",
     "hosts": "Christian Cohrs | FUTURE MOVES",
     "categories": ["Business", "News", "Tech News", "Technology"],
@@ -420,6 +446,16 @@
     "image": "cover--1436517640.jpg"
   },
   {
+    "title": "HEINLEIN & WEIGERT – sagt JA zum Leben!",
+    "favorite": false,
+    "feed": "https://heinlein-weigert.podigee.io/feed/mp3",
+    "description": "Herzlich Willkommen zum wohl lebensbejahendsten Podcast Deutschlands.\nTretet ein, in eine Welt voller Fantasie und positiven Vibes.\nIhr habt Probleme im Leben, findet euch selbst auch echt Kacke und habt eigentlich schon längst aufgegeben? Dann sagen wir: „Halt Stopp, Jetzt reden wir“.\n\n„Am Ende des Tunnels ist immer Licht“ ist bei uns nicht nur eine dumme Phrase, sondern ein Lebensmotto.\nTaucht mit uns ein, in ein freundliches Universum ohne Sorgen und Tabus.\n\nDu möchtest mehr über unsere Werbepartner erfahren? Hier findest du alle Infos & Rabatte: https://linktr.ee/heinleinundweigert\n",
+    "website": "https://heinlein-weigert.podigee.io/",
+    "hosts": "Basti Heinlein, Evelyn Weigert",
+    "categories": ["Comedy"],
+    "image": "cover--1294786899.jpg"
+  },
+  {
     "title": "Hotel Matze",
     "favorite": false,
     "feed": "https://hotelmatze.podigee.io/feed/mp3",
@@ -438,6 +474,16 @@
     "hosts": "Gimlet",
     "categories": ["News", "Science", "Society & Culture"],
     "image": "cover--2132882811.jpg"
+  },
+  {
+    "title": "Index Podcast",
+    "favorite": false,
+    "feed": "https://feeds.buzzsprout.com/2092514.rss",
+    "description": "Discover the cutting-edge technologies of Web3, blockchain, AI, and open-source development with The Index podcast. Join host Alex Kehaya as he talks with the pioneers shaping the future of the Internet. Sponsored by The Graph, the Google of Blockchain.\n",
+    "website": "http://www.indexpodcast.com",
+    "hosts": "Index Studios",
+    "categories": ["Business", "Education", "Entrepreneurship", "Technology"],
+    "image": "cover--1555620490.jpg"
   },
   {
     "title": "Information Lovers Podcast",
@@ -462,12 +508,22 @@
   {
     "title": "iPad Pros",
     "favorite": false,
-    "feed": "Http://feeds.feedburner.com/ipadpros",
-    "description": "Learn how to get the most out of your iPad Pro by listening to the pros using the iPad. Our GDPR privacy policy was updated on August 8, 2022. Visit acast.com/privacy for more information.\n",
+    "feed": "https://feeds.feedburner.com/ipadpros",
+    "description": "Learn how to get the most out of your iPad Pro by listening to the pros using the iPad. Hosted on Acast. See acast.com/privacy for more information.\n",
     "website": "https://www.ipadpros.net",
     "hosts": "Tim Chaten",
     "categories": ["Software How-To", "Technology"],
     "image": "cover--29776260.jpg"
+  },
+  {
+    "title": "JavaScript Jabber",
+    "favorite": true,
+    "feed": "https://feeds.redcircle.com/a4faed6e-afe0-4a65-b4e7-de790ee67d4b",
+    "description": "A weekly discussion by top-end JavaScript developers on the technology and skills needed to level up on your JavaScript journey.\n",
+    "website": "https://redcircle.com/shows/javascript-jabber",
+    "hosts": "AJ ONeal, Charles Max Wood, Aimee Knight, Dan Shappir, Steve Edwards, Christopher Buecheler, Dave Smith, JC Hiatt, Chris Ferdinandi, Steve Emmerich, Joe Eames, Aaron Frost, Tim Caswell, Cory House, Christian Liebel, Ward Bell, Tracy Lee, Jamison D...",
+    "categories": ["Business", "Careers", "Education", "How To", "Technology"],
+    "image": "cover--1472427881.jpg"
   },
   {
     "title": "JS Party: JavaScript, CSS, Web Development",
@@ -523,9 +579,9 @@
     "title": "Land of the Giants",
     "favorite": false,
     "feed": "https://feeds.megaphone.fm/landofthegiants",
-    "description": "Big tech is transforming every aspect of our world. But how? And at what cost? In the latest season of Land of the Giants: The Facebook/ Meta Disruption, Recode senior reporter Shirin Ghaffary and The Verge deputy editor Alex Heath bring us inside the company that’s determined how the world interacts and communicates online. How has Meta shaped our relationships, and what’s in store for us as the company undergoes an unprecedented transition? New episodes every Wednesday starting July 13th.\nFrom Recode, The Verge and the Vox Media Podcast Network.\n",
+    "description": "Big tech is transforming every aspect of our world. But how? And at what cost? In Land of the Giants: Dating Games, The Verge and New York Magazine's The Cut trace the evolution of the multi-billion dollar dating app industry. Hosts Sangeeta Singh Kurtz and Lakshmi Rengarajan explore the modern dating landscape forged by companies like Tinder, Bumble, and Hinge, and their impact on our hopes for connection. Through conversations with industry leaders, experts, and users, this series will look at the past decade of dating and ask the question: are the business goals of dating app companies aligned with users' romantic aspirations?\nNew episodes every Wednesday. From The Verge, The Cut and the Vox Media Podcast Network.\n",
     "website": "https://www.vox.com/recode-podcasts",
-    "hosts": "Recode & The Verge",
+    "hosts": "The Cut & The Verge",
     "categories": ["Business", "Technology"],
     "image": "cover-1254509201.jpg"
   },
@@ -606,14 +662,14 @@
     "description": "In diesem Podcast geht es um das Internet der Dinge, Daten und Algorithmen und vor allem um deren praktische Anwendung.\n\nWir liefern dir konkrete Praxisbeispiele, Erfolgsgeschichten sowie kaufmännische und technische Hintergründe. Alle zwei Wochen findest du bei uns neue Geschichten rund um das Internet der Dinge.\nWir geben einen Einblick in industrielle IoT-Lösungen, die sich heute auf die Unternehmen auswirken. Unser Ziel ist es, einen Einblick in die Projektierung und Implementierung von IoT-Systemen zu geben, von neuen Geschäftsmodellen über die Auswahl der Technologiearchitektur bis hin zu Datenbesitz und Sicherheit.\n",
     "website": "http://schirm-charme-sensoren.libsyn.com/website",
     "hosts": "Elisabeth Schloten",
-    "categories": ["Business", "Technology"],
+    "categories": ["Technology"],
     "image": "cover--100197588.jpg"
   },
   {
     "title": "Modern Web",
     "favorite": false,
     "feed": "https://modernweb.podbean.com/feed.xml",
-    "description": "Modern Web is a podcast that explores next generation frameworks, standards, and techniques. Follow us on Twitter: @ModernDotWeb\n",
+    "description": "The modern web is changing fast. Front-end frameworks evolve quickly, standards are emerging and old ones are fading out of favor. There are a lot of things to learn, but knowing the right thing is more critical than learning them all. Modern Web Podcast is an interview-style show where we learn about modern web development from industry experts. We’re committed to making it easy to digest lots of useful information!\n",
     "website": "https://modernweb.podbean.com",
     "hosts": "Modern Web",
     "categories": ["Technology"],
@@ -623,9 +679,9 @@
     "title": "My Climate Journey",
     "favorite": false,
     "feed": "https://feeds.simplecast.com/XFfCG1w8",
-    "description": "A growing body of knowledge about climate change and potential solutions. This series traverses disciplines, industries, and opinions with hundreds of deep-dive conversations with science, technology, and climate leaders. Hosted by Jason Jacobs and Cody Simms.\n",
+    "description": "A growing body of knowledge about climate change and potential solutions. This series traverses disciplines, industries, and opinions with hundreds of deep-dive conversations with science, technology, and climate leaders. Hosted by Jason Jacobs, Yin Lu, and Cody Simms.\n",
     "website": "https://www.mcjcollective.com/media/podcast",
-    "hosts": "Jason Jacobs, Cody Simms",
+    "hosts": "Jason Jacobs, Cody Simms, Yin Lu",
     "categories": ["Business", "Science", "Technology"],
     "image": "cover-7818289.jpg"
   },
@@ -633,7 +689,7 @@
     "title": "OHNE AKTIEN WIRD SCHWER - Tägliche Börsen-News",
     "favorite": false,
     "feed": "https://ohneaktienwirdschwer.podigee.io/feed/mp3",
-    "description": "OHNE AKTIEN WIRD SCHWER ist der Börsenpodcast von OMR. Montag bis Freitag jeden Morgen kompakt erfahren, was gerade an den Börsen los ist: Noah Leidinger und diverse Experten reden über die Märkte und haben jeden Tag spannende Stories über interessante Unternehmen, kontroverse Meinungen oder faszinierende Leute. Dazu viel nützliches Wissen zum Investieren, Handeln und Sparen an der Börse. Der Podcast wird unterstützt von Trade Republic.\n",
+    "description": "OHNE AKTIEN WIRD SCHWER ist der Börsenpodcast von OMR. Montag bis Freitag jeden Morgen kompakt erfahren, was gerade an den Börsen los ist: Noah Leidinger und diverse Experten reden über die Märkte und haben jeden Tag spannende Stories über interessante Unternehmen, kontroverse Meinungen oder faszinierende Leute. Dazu viel nützliches Wissen zum Investieren, Handeln und Sparen an der Börse.\n\nDen Podcast als Newsletter kriegen? Komm in die Gruppe: http://bit.ly/oaws-nl\n",
     "website": "https://ohneaktienwirdschwer.podigee.io/",
     "hosts": "Noah Leidinger, OMR",
     "categories": ["Business", "Investing", "News"],
@@ -643,7 +699,7 @@
     "title": "OMR Podcast",
     "favorite": true,
     "feed": "https://omr.podigee.io/feed/mp3",
-    "description": "Der OMR Podcast beschäftigt sich mit einigen der spannendsten Menschen aus der Digital- und Wirtschaftswelt. Von Milliarden-Unternehmen über Sportphänomene bis zu Wirtschaftslegenden ist alles dabei. Jeden Mittwoch und Sonntag neu!\n\nDu suchst unseren OMR Education Podcast? Hier entlang: https://askomr.podigee.io/\n\nProduziert von Podstars by OMR.\n",
+    "description": "Der OMR Podcast beschäftigt sich mit einigen der spannendsten Menschen aus der Digital- und Wirtschaftswelt. Von Milliarden-Unternehmen über Sportphänomene bis zu Wirtschaftslegenden ist alles dabei. Jeden Mittwoch und Sonntag neu!\n\nZum OMR Podcast gibt es einen Whatsapp-Newsletter. Hier anmelden: https://bit.ly/omr-podcast-whatsapp\n\nDu suchst unseren OMR Education Podcast? Hier entlang: https://askomr.podigee.io/\n\nProduziert von Podstars by OMR.\n",
     "website": "http://www.omr.com/podcast",
     "hosts": "Philipp Westermeyer - OMR",
     "categories": ["Business", "Careers", "Management", "Marketing"],
@@ -660,6 +716,16 @@
     "image": "cover-1074266260.jpg"
   },
   {
+    "title": "P1 with Matt and Tommy",
+    "favorite": false,
+    "feed": "https://feeds.acast.com/public/shows/63e24225436c36001119fc66",
+    "description": "Matt Gallagher and Tom Bellingham are two diehard F1 fans, here to bring you all the latest news, reaction, predictions and opinions from the best sport in the world. From every Ferrari strategy blunder to spicy off-track controversies, we’ll be in your ears keeping you up to speed. Hosted on Acast. See acast.com/privacy for more information.\n",
+    "website": "http://lnk.to/p1podcast",
+    "hosts": "Stak",
+    "categories": ["Automotive", "Leisure", "News", "Sports", "Sports News"],
+    "image": "cover--1884037436.jpg"
+  },
+  {
     "title": "Pivot",
     "favorite": false,
     "feed": "https://feeds.megaphone.fm/pivot",
@@ -673,7 +739,7 @@
     "title": "Planet Money",
     "favorite": false,
     "feed": "https://feeds.npr.org/510289/podcast.xml",
-    "description": "The economy explained. Imagine you could call up a friend and say, \"Meet me at the bar and tell me what's going on with the economy.\" Now imagine that's actually a fun evening.Got money on your mind? Try Planet Money+ — a new way to support the show you love, get a sponsor-free feed of the podcast, *and* get access to bonus content. A subscription also gets you access to The Indicator and Planet Money Summer School, both without ads. Learn more at plus.npr.org/planetmoney.\n",
+    "description": "Wanna see a trick? Give us any topic and we can tie it back to the economy. At Planet Money, we explore the forces that shape our lives and bring you along for the ride. Don't just understand the economy – understand the world.Wanna go deeper? Subscribe to Planet Money+ and get sponsor-free episodes of Planet Money, The Indicator, and Planet Money Summer School. Plus access to bonus content. It's a new way to support the show you love. Learn more at plus.npr.org/planetmoney.\n",
     "website": "https://www.npr.org/podcasts/510289/planet-money",
     "hosts": "NPR",
     "categories": ["Business", "News"],
@@ -700,6 +766,16 @@
     "image": "cover-443408501.jpg"
   },
   {
+    "title": "programmier.bar – der Podcast für App- und Webentwicklung",
+    "favorite": false,
+    "feed": "https://feeds.buzzsprout.com/176239.rss",
+    "description": "Die programmier.bar lädt regelmäßig spannende Gäste aus der Welt der App- und Webentwicklung zum Gespräch ein. Es geht um neue Technologien, unsere liebsten Tools und unsere Erfahrungen aus dem Entwickler-Alltag mit all seinen Problemen und Lösungswegen. Euer Input ist uns wichtig! Schreibt uns eure Themenwünsche und Feedback per Mail an podcast@programmier.bar oder auf Twitter (@programmierbar), Instagram (@programmier.bar) oder Facebook (facebook.com/programmier.bar). Wir sind Full-Stack-Spieleentwickler bekannter Apps wie 4 Bilder 1 Wort, Quiz Planet und Word Blitz. https://www.programmier.bar/impressum\n",
+    "website": "http://www.programmier.bar",
+    "hosts": "programmier.bar",
+    "categories": ["Technology"],
+    "image": "cover--1890139694.jpg"
+  },
+  {
     "title": "Quarks",
     "favorite": false,
     "feed": "https://www1.wdr.de/mediathek/video/podcast/channel-quarks-und-co-100.podcast",
@@ -715,7 +791,7 @@
     "feed": "https://feeds.simplecast.com/hEI_f9Dx",
     "description": "Exploring React Native Together\n",
     "website": "https://www.reactnativeradio.com",
-    "hosts": "Jamon Holmgren, Robin Heinze, Adhithi Ravichandran, Harris Robin Kalash, Jon Major Condon",
+    "hosts": "Jamon Holmgren, Robin Heinze, Mazen Chami",
     "categories": ["Education", "How To", "Technology"],
     "image": "cover-1791723475.jpg"
   },
@@ -730,12 +806,22 @@
     "image": "cover--934227677.jpg"
   },
   {
+    "title": "React Round Up",
+    "favorite": false,
+    "feed": "https://feeds.redcircle.com/0b80be0d-f0c2-4d12-9f23-d31d3bbde618",
+    "description": "Stay current on the latest innovations and technologies in the React community by listening to our panel of React and Web Development Experts.\n",
+    "website": "https://redcircle.com/shows/react-round-up",
+    "hosts": "Carl Mungazi, Jack Herrington , Paige Niedringhaus, TJ VanToll",
+    "categories": ["Business", "Careers", "Education", "How To", "Technology"],
+    "image": "cover-791229518.jpg"
+  },
+  {
     "title": "Reflektor",
     "favorite": false,
-    "feed": "https://feeds.viertausendhertz.de/reflektor",
-    "description": "Darf Punk erfolgreich sein? Wie passen Pop und Wahrhaftigkeit zusammen? Was geschieht nach der Verwandlung zum Weltstar? „Reflektor“ hat sich zum Ziel gesetzt, substanzielle Gespräche mit Musiker*innen zu führen. Das Talkformat setzt sich bewusst von dem üblichen Frage-Antwort-Schema eines Interviews ab und sucht das persönliche Gespräch, in dem das Leben und Werk der Gäste reflektiert wird. Jan Müller ist seit über 25 Jahren Mitglied der Band Tocotronic. Er ist mit dem Format des Interviews bestens vertraut und kann sich als Fragender gut in die Perspektive seiner Gäste hineinversetzen. Die persönliche Auswahl seiner Gesprächspartner*innen bildet die Grundlage für authentische Gespräche, die stets von Interesse und Respekt geprägt sind. Mit “Reflektor” startet Jan seinen ersten Podcast. | Eine Produktion von Viertausendhertz.\n",
-    "website": "https://viertausendhertz.de/",
-    "hosts": "Viertausendhertz",
+    "feed": "https://reflektor-podcast.podigee.io/feed/mp3",
+    "description": "Ob Pop, Rock, Rap, Punk oder Klassik – Musik ist immer einzigartig. So wie die Künstler*innen, die sie erschaffen. Was macht einen guten Song aus? Wie politisch darf oder sollte Pop sein? Und wie geht man mit plötzlichem Ruhm oder dem unvermeidlichen Absturz um? In „Reflektor“ sucht Jan Müller, selbst Musiker und seit nahezu 30 Jahren Bassist der Band Tocotronic, authentische Gespräche mit jenen, die es am Besten wissen müssen: Die Musiker*innen selbst. Geprägt von gegenseitigem Interesse und Respekt spricht er mit seinen Gästen über ihre Karriere, ihre größten Hits und die schmerzhaftesten Rückschläge. Immer auf Augenhöhe, immer überraschend.\n\nNeue Episoden von Reflektor erscheinen alle zwei Wochen - immer freitags.\n",
+    "website": "https://studio-bummens.de/",
+    "hosts": "Jan Müller & Studio Bummens",
     "categories": [
       "Arts",
       "Documentary",
@@ -780,7 +866,7 @@
     "title": "Schneller schlau - Der kurze Wissenspodcast von P.M.",
     "favorite": false,
     "feed": "https://rss.art19.com/schneller-schlau",
-    "description": "„Neugierig auf Morgen\": Das ist der Claim des Wissensmagazins P.M. und so sind auch die Frauen und Männer in der Redaktion. Alle haben ihre Expertise und fragen sich gegenseitig Löcher in den Bauch: Wo gibt es heißes Eis und wie wird man Sternenstaubjäger? Wer baut Laserschwerter und was steht im Vertrag von Versailles? Ihr könnt den Redakteuren jetzt zuhören, wie sie spannende Fragen beantworten, knackig-kurz. Es geht um kuriose Phänomene in Natur und Wissenschaft, Amüsantes aus der Gesellschaft und Relevantes aus Politik und Geschichte. Habt Ihr Anmerkungen oder Fragen, die wir beantworten sollen? Schreibt uns unter: schlau@pm-magazin.de\n",
+    "description": "„Neugierig auf Morgen\": Das ist der Claim des Wissensmagazins P.M. und so sind auch die Frauen und Männer in der Redaktion. Alle haben ihre Expertise und fragen sich gegenseitig Löcher in den Bauch: Wo gibt es heißes Eis und wie wird man Sternenstaubjäger? Wer baut Laserschwerter und was steht im Vertrag von Versailles? Ihr könnt den Redakteur*innen jetzt zuhören, wie sie spannende Fragen beantworten, knackig-kurz. Es geht um kuriose Phänomene in Natur und Wissenschaft, Amüsantes aus der Gesellschaft und Relevantes aus Politik und Geschichte. Habt Ihr Anmerkungen oder Fragen, die wir beantworten sollen? Schreibt uns unter: schlau@pm-magazin.de\n",
     "website": "https://art19.com/shows/schneller-schlau",
     "hosts": "P.M. / Audio Alliance",
     "categories": [
@@ -815,8 +901,8 @@
     "title": "SmartLess",
     "favorite": false,
     "feed": "https://rss.art19.com/smartless",
-    "description": "New episodes come out every Monday for free, with 1-week early access when you join Amazon Music or 1-week early and ad-free for Wondery+ subscribers\"SmartLess\" with Jason Bateman, Sean Hayes, & Will Arnett is a podcast that connects and unites people from all walks of life to learn about shared experiences through thoughtful dialogue and organic hilarity. A nice surprise: in each episode of SmartLess, one of the hosts reveals his mystery guest to the other two. What ensues is a genuinely improvised and authentic conversation filled with laughter and newfound knowledge to feed the SmartLess mind.\n",
-    "website": "http://wondery.com/shows/smartless",
+    "description": "\"SmartLess\" with Jason Bateman, Sean Hayes, & Will Arnett is a podcast that connects and unites people from all walks of life to learn about shared experiences through thoughtful dialogue and organic hilarity. A nice surprise: in each episode of SmartLess, one of the hosts reveals his mystery guest to the other two. What ensues is a genuinely improvised and authentic conversation filled with laughter and newfound knowledge to feed the SmartLess mind.New episodes on Mondays for free. Listen 1-week early and to all episodes ad-free with Wondery+ or Amazon Music with a Prime membership or Amazon Music Unlimited subscription.\n",
+    "website": "https://wondery.com/shows/smartless/?utm_source=rss",
     "hosts": "Jason Bateman, Sean Hayes, Will Arnett",
     "categories": ["Comedy", "Education", "Society & Culture"],
     "image": "cover-559660770.jpg"
@@ -905,7 +991,7 @@
     "title": "The Changelog: Software Development, Open Source",
     "favorite": false,
     "feed": "https://changelog.com/podcast/feed",
-    "description": "Conversations with the hackers, leaders, and innovators of the software world.  Hosts Adam Stacoviak and Jerod Santo face their imposter syndrome so you don’t have to. Expect in-depth interviews with the best and brightest in software engineering, open source, and leadership. This is a polyglot podcast. All programming languages, platforms, and communities are welcome. Open source moves fast. Keep up.\n",
+    "description": "Conversations with the hackers, leaders, and innovators of the software world.  On Mondays: The software world moves fast. Keep up with our brief News roundup episodes. On Fridays: Adam Stacoviak and Jerod Santo face their imposter syndrome so you don’t have to. Expect in-depth interviews with the best and brightest in software engineering, open source & leadership. This is a polyglot podcast. All programming languages, platforms & communities are welcome.\n",
     "website": "https://changelog.com/podcast",
     "hosts": "Changelog Media",
     "categories": ["Software How-To", "Tech News", "Technology"],
@@ -942,6 +1028,16 @@
     "image": "cover-1098415452.jpg"
   },
   {
+    "title": "The Fast And The Curious",
+    "favorite": false,
+    "feed": "https://feeds.acast.com/public/shows/63ef44ce479d5000119ce798",
+    "description": "Team Principal Greg James has signed up sports presenter Betty Glover, broadcast journalist and lifelong F1 fanatic Christian Hewgill and a rolling cast of some of the biggest drivers in the world. It’s a podcast for die-hard fans as well as those who are curious to find out more about this fascinating world and the characters that inhabit it.  Hosted on Acast. See acast.com/privacy for more information.\n",
+    "website": "https://feeds.acast.com/public/shows/the-fast-and-the-curious",
+    "hosts": "Greg James",
+    "categories": ["Automotive", "Leisure", "Sports"],
+    "image": "cover-82001783.jpg"
+  },
+  {
     "title": "The Incomparable Mothership",
     "favorite": false,
     "feed": "https://feeds.theincomparable.com/theincomparable",
@@ -952,18 +1048,8 @@
     "image": "cover--588718159.jpg"
   },
   {
-    "title": "The Index Podcast",
-    "favorite": false,
-    "feed": "https://theindex.libsyn.com/rss",
-    "description": "Who's on The Index this week? We talk with industry pioneers and developers behind the Web3 revolution. Find out what's new in blockchain technology, DeFi, the metaverse, NFTs, and more.  Hosted by Alex Kehaya, CEO of Holaplex and brought to you by the Graph. The Graph, known as the Google of blockchain, is a decentralized indexing protocol for organizing blockchain data.\n",
-    "website": "http://www.indexpodcast.com",
-    "hosts": "Index Studios",
-    "categories": ["Business", "Technology"],
-    "image": "cover-1838168039.jpg"
-  },
-  {
     "title": "The Internet of Things Podcast - Stacey On IoT",
-    "favorite": true,
+    "favorite": false,
     "feed": "https://iotpodcast.com/feed/podcast/",
     "description": "Stacey Higginbotham (formerly Sr. Editor at Fortune) and co-host Kevin Tofel discuss the latest news and analysis of the Internet of Things. Covers Consumer IoT, Industrial IoT and Enterprise IoT.  Guests include Vint Cerf, Om Malik, and people from Amazon.com, AT\\&T, IBM Watson and more.\n",
     "website": "https://iotpodcast.com/",
@@ -973,8 +1059,8 @@
   },
   {
     "title": "The Smart Home Show",
-    "favorite": true,
-    "feed": "http://feeds.feedburner.com/soundcloud/scvz",
+    "favorite": false,
+    "feed": "https://feeds.feedburner.com/soundcloud/scvz",
     "description": "Join hosts Adam Justice and Richard Gunther as they explore the smart home universe. The Smart Home Show features interviews with smart home leaders, analysis of the latest smart home news and the occasional Q and A and product review. All smart home, all the time.\n",
     "website": "http://smarthome.fm/",
     "hosts": "Richard Gunther and Adam Justice",
@@ -1085,7 +1171,7 @@
     "title": "Waveform: The MKBHD Podcast",
     "favorite": false,
     "feed": "https://feeds.megaphone.fm/STU4418364045",
-    "description": "A tech podcast for the gadget lovers and tech heads among us from the mind of Marques Brownlee, better known as MKBHD. MKBHD has made a name for himself on YouTube reviewing everything from the newest smartphones to cameras to electric cars. Pulling from over 10 years of experience covering the tech industry, MKBHD and co-host Andrew Manganelli will keep you informed and entertained as they take a deep dive into the latest and greatest in tech and what deserves your hard earned cash. New episodes every week. Waveform is part of the Vox Media Podcast Network.\nWe wanna make the podcast even better, help us learn how we can: https://bit.ly/2EcYbu4\n",
+    "description": "A tech podcast for the gadget lovers and tech heads among us from the mind of Marques Brownlee, better known as MKBHD. MKBHD has made a name for himself on YouTube reviewing everything from the newest smartphones to cameras to electric cars. Pulling from over 10 years of experience covering the tech industry, MKBHD and co-hosts Andrew Manganelli and David Imel will keep you informed and entertained as they take a deep dive into the latest and greatest in tech and what deserves your hard earned cash. New episodes every week. Waveform is part of the Vox Media Podcast Network.\nWe wanna make the podcast even better, help us learn how we can: https://bit.ly/2EcYbu4\n",
     "website": "https://www.youtube.com/c/Waveform",
     "hosts": "Vox Media Podcast Network",
     "categories": ["Hobbies", "Leisure", "News", "Tech News", "Technology"],
@@ -1106,7 +1192,7 @@
     "favorite": false,
     "feed": "https://audioboom.com/channels/4949565.rss",
     "description": "The F1 Podcast by fans, for fans. The WTF1 Podcast covers all the latest news, races, incidents and controversy. Who was at fault for the crash? Who needs to step up their game before they get the sack? What can be guaranteed… there will be arguments and there will be memes. What more could you possibly ask for?\n",
-    "website": "https://audioboom.com/channels/4949565",
+    "website": "https://audioboom.com/channels/4949565-wtf1-podcast",
     "hosts": "WTF1 Podcast",
     "categories": ["Motorsport", "Sports"],
     "image": "cover--322322676.jpg"

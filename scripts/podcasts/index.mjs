@@ -14,16 +14,16 @@ const parser = new XMLParser({
 });
 
 const favs = [
-  'Accidental Tech Podcast',
-  'Decoder with Nilay Patel',
-  'Design Details',
-  'Full Stack Radio',
-  'How to Save a Planet',
-  'OMR Podcast',
-  'The Smart Home Show',
   'The Vergecast',
+  'Decoder with Nilay Patel',
+  'Doppelgänger Tech Talk',
+  'OMR Podcast',
+  'JavaScript Jabber',
+  'devtools.fm',
   'This is Product Management',
-  'The Internet of Things Podcast - Stacey On IoT',
+  'How to Save a Planet',
+  'F1: Beyond The Grid',
+  'Baywatch Berlin',
 ];
 
 const coversDir = './public/podcasts';

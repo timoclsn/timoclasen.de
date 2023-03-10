@@ -5,7 +5,6 @@
   </head>
   <body>
     <outline xmlUrl="https://www.relay.fm/connected/feed" text="Connected" title="Connected" type="rss" version="RSS"/>
-    <outline xmlUrl="http://feeds.feedburner.com/soundcloud/scvz" text="The Smart Home Show" title="The Smart Home Show" type="rss" version="RSS"/>
     <outline xmlUrl="https://www.relay.fm/presentable/feed" text="Presentable" title="Presentable" type="rss" version="RSS"/>
     <outline xmlUrl="https://www.relay.fm/radar/feed" text="Under the Radar" title="Under the Radar" type="rss" version="RSS"/>
     <outline xmlUrl="http://www.bitsundso.de/feed/" text="Bits und so" title="Bits und so" type="rss" version="RSS"/>
@@ -26,7 +25,6 @@
     <outline xmlUrl="https://workingdraft.de/?feed=podcast" text="Working Draft" title="Working Draft" type="rss" version="RSS"/>
     <outline xmlUrl="https://www.cleanelectric.de/feed/mp3/" text="CleanElectric" title="CleanElectric" type="rss" version="RSS"/>
     <outline xmlUrl="https://audioboom.com/channels/4949565.rss" text="WTF1 Podcast" title="WTF1 Podcast" type="rss" version="RSS"/>
-    <outline xmlUrl="Http://feeds.feedburner.com/ipadpros" text="iPad Pros" title="iPad Pros" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.megaphone.fm/pivot" text="Pivot" title="Pivot" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.megaphone.fm/recodedecode" text="Decoder with Nilay Patel" title="Decoder with Nilay Patel" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.megaphone.fm/vergecast" text="The Vergecast" title="The Vergecast" type="rss" version="RSS"/>
@@ -84,7 +82,6 @@
     <outline xmlUrl="https://feeds.megaphone.fm/STU4418364045" text="Waveform: The MKBHD Podcast" title="Waveform: The MKBHD Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.simplecast.com/BqbsxVfO" text="99% Invisible" title="99% Invisible" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.fireside.fm/relaychain/rss" text="Relay Chain" title="Relay Chain" type="rss" version="RSS"/>
-    <outline xmlUrl="https://theindex.libsyn.com/rss" text="The Index Podcast" title="The Index Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.metaebene.me/lnp/m4a" text="Logbuch:Netzpolitik" title="Logbuch:Netzpolitik" type="rss" version="RSS"/>
     <outline xmlUrl="https://alphalist.podigee.io/feed/mp3" text="alphalist.CTO Podcast - For CTOs and Technical Leaders" title="alphalist.CTO Podcast - For CTOs and Technical Leaders" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.megaphone.fm/landofthegiants" text="Land of the Giants" title="Land of the Giants" type="rss" version="RSS"/>
@@ -94,7 +91,6 @@
     <outline xmlUrl="https://hotelmatze.podigee.io/feed/mp3" text="Hotel Matze" title="Hotel Matze" type="rss" version="RSS"/>
     <outline xmlUrl="https://rss.nexx.cloud/BY3027EHVZ5ODH" text="Deutschland3000 - 'ne gute Stunde mit Eva Schulz" title="Deutschland3000 - 'ne gute Stunde mit Eva Schulz" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.simplecast.com/sOJAMohP" text="Frontend First" title="Frontend First" type="rss" version="RSS"/>
-    <outline xmlUrl="https://feeds.viertausendhertz.de/reflektor" text="Reflektor" title="Reflektor" type="rss" version="RSS"/>
     <outline xmlUrl="https://doppelgaenger.podigee.io/feed/mp3" text="Doppelg&#xE4;nger Tech Talk" title="Doppelg&#xE4;nger Tech Talk" type="rss" version="RSS"/>
     <outline xmlUrl="https://formel-schmidt.podigee.io/feed/mp3" text="Formel Schmidt" title="Formel Schmidt" type="rss" version="RSS"/>
     <outline xmlUrl="https://tax2tech.podigee.io/feed/mp3" text="Tax2Tech - Der TaxTech Podcast" title="Tax2Tech - Der TaxTech Podcast" type="rss" version="RSS"/>
@@ -114,5 +110,17 @@
     <outline xmlUrl="https://shoptalkshow.com/feed/podcast/" text="ShopTalk" title="ShopTalk" type="rss" version="RSS"/>
     <outline xmlUrl="https://anchor.fm/s/5fc9bae4/podcast/rss" text="mauerstrassenwetten Podcast" title="mauerstrassenwetten Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://stacktracepodcast.fm/feed.rss" text="Stacktrace" title="Stacktrace" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.feedburner.com/ipadpros" text="iPad Pros" title="iPad Pros" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.feedburner.com/soundcloud/scvz" text="The Smart Home Show" title="The Smart Home Show" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.buzzsprout.com/2092514.rss" text="Index Podcast" title="Index Podcast" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.redcircle.com/0b80be0d-f0c2-4d12-9f23-d31d3bbde618" text="React Round Up" title="React Round Up" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.redcircle.com/a4faed6e-afe0-4a65-b4e7-de790ee67d4b" text="JavaScript Jabber" title="JavaScript Jabber" type="rss" version="RSS"/>
+    <outline xmlUrl="https://heinlein-weigert.podigee.io/feed/mp3" text="HEINLEIN &amp; WEIGERT &#x2013; sagt JA zum Leben!" title="HEINLEIN &amp; WEIGERT &#x2013; sagt JA zum Leben!" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.buzzsprout.com/1772992.rss" text="devtools.fm" title="devtools.fm" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.acast.com/public/shows/63e24225436c36001119fc66" text="P1 with Matt and Tommy" title="P1 with Matt and Tommy" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.buzzsprout.com/176239.rss" text="programmier.bar &#x2013; der Podcast f&#xFC;r App- und Webentwicklung" title="programmier.bar &#x2013; der Podcast f&#xFC;r App- und Webentwicklung" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.simplecast.com/NLc_9EWn" text="Full Stack Whatever" title="Full Stack Whatever" type="rss" version="RSS"/>
+    <outline xmlUrl="https://reflektor-podcast.podigee.io/feed/mp3" text="Reflektor" title="Reflektor" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.acast.com/public/shows/63ef44ce479d5000119ce798" text="The Fast And The Curious" title="The Fast And The Curious" type="rss" version="RSS"/>
   </body>
 </opml>
