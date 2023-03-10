@@ -3,7 +3,7 @@
 }
 
 .solidAnimation > span {
-  transition: transform 200ms ease;
+  transition: transform 100ms ease;
 }
 
 .solidAnimation > span::after {
@@ -20,19 +20,23 @@
     2.1px 4.1px 5.2px -1.7px hsl(var(--shadow-color) / 0.11),
     5px 10px 12.6px -2.5px hsl(var(--shadow-color) / 0.11);
   opacity: 0;
-  transition: opacity 200ms ease-in-out;
+  transition: opacity 100ms ease-in-out;
 }
 
 .solidAnimation:hover > span {
   transform: translateY(-2px) scale(1.02);
 }
 
+/* .solidAnimation:active > span {
+  transform: scale(0.98);
+} */
+
 .solidAnimation:hover > span::after {
   opacity: 1;
 }
 
 .linkAnimation svg {
-  transition: transform 200ms ease;
+  transition: transform 100ms ease;
 }
 
 .linkAnimation:hover svg {

@@ -26,7 +26,7 @@ export function PodcastFilter({ filter, handleChange, clearFilter }: Props) {
       </div>
       <div className="-my-4 flex space-x-4 overflow-x-auto px-1 py-4">
         <label
-          className={`sflex cursor-pointer select-none items-center justify-center whitespace-nowrap rounded-lg px-2 py-0.5 text-base ring-2 ring-highlight focus:outline-none dark:ring-highlight-dark ${
+          className={`sflex cursor-pointer select-none items-center justify-center whitespace-nowrap rounded-lg px-2 py-0.5 text-base ring-2 ring-highlight focus-visible:outline-none dark:ring-highlight-dark ${
             filter.favorites
               ? 'bg-highlight text-light focus-within:ring-dark dark:bg-highlight-dark dark:focus-within:ring-light'
               : 'text-highlight focus-within:ring-dark dark:text-highlight-dark dark:focus-within:ring-light'
@@ -44,7 +44,7 @@ export function PodcastFilter({ filter, handleChange, clearFilter }: Props) {
         {Object.keys(filter.categories).map((category, index) => (
           <label
             key={index}
-            className={`sflex cursor-pointer select-none items-center justify-center whitespace-nowrap rounded-lg px-2 py-0.5 text-base ring-2 ring-highlight focus:outline-none dark:ring-highlight-dark ${
+            className={`sflex cursor-pointer select-none items-center justify-center whitespace-nowrap rounded-lg px-2 py-0.5 text-base ring-2 ring-highlight focus-visible:outline-none dark:ring-highlight-dark ${
               filter.categories[category]
                 ? 'bg-highlight text-light focus-within:ring-dark dark:bg-highlight-dark dark:focus-within:ring-light'
                 : 'text-highlight focus-within:ring-dark dark:text-highlight-dark dark:focus-within:ring-light'

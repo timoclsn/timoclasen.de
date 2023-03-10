@@ -66,7 +66,10 @@ export function Navigation({ name }: Props) {
           <div className="flex flex-1 justify-end sm:hidden sm:flex-initial">
             <button
               type="button"
-              className={clsx('h-8 w-8 focus:outline-none', styles.menuIcon)}
+              className={clsx(
+                'h-8 w-8 focus-visible:outline-none',
+                styles.menuIcon
+              )}
               aria-controls="mobile-menu"
               aria-expanded={menuOpen ? 'true' : 'false'}
               onClick={() => setMenuOpen(!menuOpen)}
