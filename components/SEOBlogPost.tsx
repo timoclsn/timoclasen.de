@@ -67,7 +67,7 @@ export function SEOBlogPost({
                         "@context": "https://schema.org",
                         "@type": "Article",
                         "mainEntityOfPage": {
-                            "@type": "WebPage",
+                            "@type": "BlogPosting",
                             "@id": "https://timoclasen.de/blog/${slug}"
                         },
                         "headline": "${title}",
