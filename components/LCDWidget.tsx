@@ -16,7 +16,7 @@ interface Props {
 export function LCDWidget({ bgImage }: Props) {
   return (
     <section id="life-centered-design" className="relative">
-      <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-3xl sm:aspect-w-2 sm:aspect-h-1">
+      <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-3xl sm:aspect-w-2 sm:aspect-h-1 relative">
         <Image
           src={bgImage.url}
           width="2200"
@@ -26,6 +26,7 @@ export function LCDWidget({ bgImage }: Props) {
           alt={bgImage.description}
           blurDataURL={bgImage.blurDataURL}
           placeholder="blur"
+          className="object-cover"
         />
       </div>
       <div className="absolute top-0 left-0 flex h-full w-full flex-col justify-end rounded-3xl bg-gradient-to-t from-[rgba(0,0,0,0.3)] px-6 py-12 text-light xl:px-12 xl:py-20">
