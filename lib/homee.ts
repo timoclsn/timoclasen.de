@@ -13,15 +13,15 @@ const { HOMEE_ID: homeeID, HOMEE_ACCESS_TOKEN: accessToken } = envSchema.parse(
 );
 
 const attributeSchema = z.object({
-  type: z.nativeEnum(AttributeType),
+  type: z.nativeEnum(AttributeType).or(z.unknown()),
   current_value: z.number(),
   unit: z.string(),
 });
 
 const nodeSchema = z.object({
   id: z.number(),
-  profile: z.nativeEnum(NodeProfile),
-  state: z.nativeEnum(NodeState),
+  profile: z.nativeEnum(NodeProfile).or(z.unknown()),
+  state: z.nativeEnum(NodeState).or(z.unknown()),
   image: z.string(),
   attributes: z.array(attributeSchema),
 });
