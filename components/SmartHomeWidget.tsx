@@ -30,7 +30,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
   const utils = trpc.useContext();
 
   const { data: smartHomeData, error: smartHomeError } =
-    trpc.smarthome.smarthome.useQuery({ cached: true });
+    trpc.smarthome.smarthome.useQuery();
 
   const mutateSmartHome = trpc.smarthome.turnOnBalcony.useMutation();
 
