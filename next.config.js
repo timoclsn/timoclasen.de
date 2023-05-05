@@ -5,9 +5,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
-  experimental: {
-    scrollRestoration: true,
-  },
   images: {
     formats: ['image/avif', 'image/webp'],
     domains: ['images.ctfassets.net', 'api.mapbox.com', 'i.scdn.co'],
