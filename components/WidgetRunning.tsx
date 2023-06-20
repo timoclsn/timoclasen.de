@@ -26,7 +26,7 @@ interface Props {
 export function WidgetRunning({ runningData }: Props) {
   const thisYear = runningData?.thisYear;
   const lastRun = runningData?.lastRun;
-  const yearlyRunningGoal = 500; // 500 km
+  const yearlyRunningGoal = 130; // 130 km
   const distanceThreshold = 10000; // 10km in m
   const speedThreshold = 3.03; // ca. 5:30 /km in m/s
   const timeThreshold = 3600; // 1h in s
