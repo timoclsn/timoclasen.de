@@ -216,10 +216,10 @@ function getYearProgress() {
   const firstDayOfNextYear = new Date(
     new Date().getFullYear() + 1,
     0,
-    1
+    1,
   ).getTime();
   const today = new Date().getTime();
   return Math.round(
-    ((today - firstDayOfYear) / (firstDayOfNextYear - firstDayOfYear)) * 100
+    ((today - firstDayOfYear) / (firstDayOfNextYear - firstDayOfYear)) * 100,
   );
 }

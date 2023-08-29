@@ -9,7 +9,7 @@ const envSchema = z.object({
 });
 
 const { HOMEE_ID: homeeID, HOMEE_ACCESS_TOKEN: accessToken } = envSchema.parse(
-  process.env
+  process.env,
 );
 
 const attributeSchema = z.object({
@@ -33,7 +33,7 @@ export function getNodes() {
 
     const ws = new WebSocket(
       `wss://${homeeID}.hom.ee/connection?access_token=${accessToken}`,
-      'v2'
+      'v2',
     );
 
     ws.on('error', () => {
@@ -67,7 +67,7 @@ export async function playHomeegram(homeegramID: number) {
       headers: {
         Cookie: accessToken,
       },
-    }
+    },
   );
 }
 

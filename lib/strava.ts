@@ -58,7 +58,7 @@ export async function getActivities() {
   const accessToken = await getAccessToken();
 
   const res = await fetch(
-    `https://www.strava.com/api/v3/athlete/activities?per_page=200&after=${timestamp}&access_token=${accessToken}`
+    `https://www.strava.com/api/v3/athlete/activities?per_page=200&after=${timestamp}&access_token=${accessToken}`,
   );
 
   const data = await res.json();

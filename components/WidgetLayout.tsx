@@ -34,7 +34,7 @@ export function WidgetLayout({
     'md:space-x-16',
     'lg:space-x-24',
     textColor,
-    separate ? 'space-y-12 sm:space-y-0' : `rounded-3xl ${bgColor}`
+    separate ? 'space-y-12 sm:space-y-0' : `rounded-3xl ${bgColor}`,
   );
 
   const widgetStyles = clsx('flex-1', separate && `rounded-3xl ${bgColor}`);

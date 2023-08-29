@@ -19,7 +19,7 @@ export const sportsRouter = router({
         .object({
           cached: z.boolean(),
         })
-        .optional()
+        .optional(),
     )
     .query(async ({ input }) => {
       if (input?.cached) {
@@ -63,7 +63,7 @@ export const sportsRouter = router({
           fastest: 0,
           longest: 0,
           lowest: 1000,
-        }
+        },
       );
 
       const lastRun = runs.reduce((lastRun, activity) => {
@@ -88,14 +88,14 @@ export const sportsRouter = router({
               formatRelative(
                 utcToZonedTime(
                   parseISO(lastRun.start_date),
-                  lastRun.timezone.split(' ')[1]
+                  lastRun.timezone.split(' ')[1],
                 ),
                 utcToZonedTime(new Date(), lastRun.timezone.split(' ')[1]),
                 {
                   locale: de,
                   weekStartsOn: 1, // Monday
-                }
-              )
+                },
+              ),
             ),
             timezone: lastRun.timezone,
           },

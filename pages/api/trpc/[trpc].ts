@@ -40,7 +40,7 @@ export default trpcNext.createNextApiHandler({
       if (
         paths?.some(
           (path) =>
-            path === 'music.getTopArtists' || path === 'music.getTopArtists'
+            path === 'music.getTopArtists' || path === 'music.getTopArtists',
         )
       ) {
         return {

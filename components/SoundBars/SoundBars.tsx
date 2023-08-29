@@ -13,7 +13,7 @@ export function SoundBars({ isPlaying, color }: Props) {
     'rounded-sm',
     styles.soundBars,
     isPlaying && styles.isPlaying,
-    color ? color : 'bg-highlight dark:bg-highlight-dark'
+    color ? color : 'bg-highlight dark:bg-highlight-dark',
   );
 
   return (

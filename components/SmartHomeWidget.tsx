@@ -77,7 +77,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
               onSuccess: () => {
                 setDisableButtons(false);
               },
-            }
+            },
           );
           splitbee.track('Balcony Light Control', {
             color: `${emoji} ${color}`,
@@ -88,7 +88,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
           toast.error('Hat nicht funktioniert.');
           setDisableButtons(false);
         },
-      }
+      },
     );
   }
 

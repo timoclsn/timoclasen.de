@@ -21,7 +21,7 @@ export function Skeleton({
     <span
       className={clsx(
         'inline-block animate-pulse bg-dark/25 leading-none dark:bg-light/25',
-        className
+        className,
       )}
       style={{
         width: width ? width : '100%',

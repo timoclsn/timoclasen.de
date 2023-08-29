@@ -10,7 +10,8 @@
   bottom: 0px;
   margin: auto;
   opacity: 1;
-  transition: opacity 200ms ease-out,
+  transition:
+    opacity 200ms ease-out,
     transform 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 

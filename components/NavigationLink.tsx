@@ -25,5 +25,5 @@ export const NavigationLink = forwardRef<HTMLAnchorElement, Props>(
         {children}
       </a>
     );
-  }
+  },
 );

@@ -19,7 +19,7 @@ export function Navigation({ name }: Props) {
     <header
       className={clsx(
         'xl:mb-22 mb-8 bg-light bg-opacity-80 py-4 dark:bg-dark dark:bg-opacity-80 md:mb-20 md:py-6',
-        styles.stickyNav
+        styles.stickyNav,
       )}
     >
       <CenteredColumn>
@@ -68,7 +68,7 @@ export function Navigation({ name }: Props) {
               type="button"
               className={clsx(
                 'h-8 w-8 focus-visible:outline-none',
-                styles.menuIcon
+                styles.menuIcon,
               )}
               aria-controls="mobile-menu"
               aria-expanded={menuOpen ? 'true' : 'false'}

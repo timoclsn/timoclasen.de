@@ -19,7 +19,9 @@
   margin: auto;
   transform: scale(1);
   opacity: 1;
-  transition: opacity 300ms ease, transform 300ms ease;
+  transition:
+    opacity 300ms ease,
+    transform 300ms ease;
 }
 
 .menuIcon svg[data-hide='true'] {

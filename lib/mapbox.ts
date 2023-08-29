@@ -18,7 +18,7 @@ interface GeoJSON {
         stroke: string;
         'stroke-width': number;
       };
-    }
+    },
   ];
 }
 
@@ -54,7 +54,7 @@ export function getMapURLs(runPolyline: string) {
   const optimizedGeoJSON = optimizeGeoJSON(
     geoJSON,
     geoJSONBasePercision,
-    geoJSONLengthLimit
+    geoJSONLengthLimit,
   );
 
   const geoJSONLight = { ...optimizedGeoJSON };
@@ -70,7 +70,7 @@ export function getMapURLs(runPolyline: string) {
 function optimizeGeoJSON(
   geoJSON: GeoJSON,
   percision: number,
-  limit: number
+  limit: number,
 ): GeoJSON {
   const geoJSONLength = prepareGeoJSON(geoJSON).length;
   const overLimit = geoJSONLength > limit;
@@ -92,9 +92,9 @@ function getMapURL(
   geoJSON: GeoJSON,
   width: number,
   height: number,
-  padding: number
+  padding: number,
 ) {
   return `https://api.mapbox.com/styles/v1/mapbox/${theme}/static/geojson(${prepareGeoJSON(
-    geoJSON
+    geoJSON,
   )})/auto/${width}x${height}?padding=${padding}&logo=false&access_token=${mapboxAccessToken}`;
 }
