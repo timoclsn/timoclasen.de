@@ -5,7 +5,9 @@ import { WidgetLayout } from './WidgetLayout';
 import { WidgetRunning } from './WidgetRunning';
 
 export function RunningWidget() {
-  const { data, error } = trpc.sports.running.useQuery();
+  const { data, error } = trpc.sports.running.useQuery({
+    cached: false,
+  });
 
   const { darkMode } = useTheme();
 

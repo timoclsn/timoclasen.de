@@ -66,7 +66,7 @@ export function PodcastsList({ podcasts }: Props) {
 
   const categoriesObj = sortedCategories.reduce(
     (acc, category) => ({ ...acc, [category]: false }),
-    {} as { [key: string]: boolean }
+    {} as { [key: string]: boolean },
   );
 
   const initialState: State = {
@@ -102,7 +102,7 @@ export function PodcastsList({ podcasts }: Props) {
 
     if (filteredCategories.length) {
       const showPodcast = filteredCategories.every((category) =>
-        podcast.categories.includes(category)
+        podcast.categories.includes(category),
       );
 
       return filter.favorites ? showPodcast && podcast.favorite : showPodcast;

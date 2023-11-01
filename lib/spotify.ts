@@ -47,7 +47,7 @@ const topArtistSchema = z.object({
   images: z.array(
     z.object({
       url: z.string().url(),
-    })
+    }),
   ),
   followers: z.object({
     total: z.number(),
@@ -63,7 +63,7 @@ export async function getTopArtists() {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
-    }
+    },
   );
 
   const data = await res.json();
@@ -87,13 +87,13 @@ const topTrackSchema = z.object({
     images: z.array(
       z.object({
         url: z.string().url(),
-      })
+      }),
     ),
   }),
   artists: z.array(
     z.object({
       name: z.string(),
-    })
+    }),
   ),
 });
 
@@ -106,7 +106,7 @@ export async function getTopTracks() {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
-    }
+    },
   );
 
   const data = await res.json();
@@ -139,7 +139,7 @@ export async function getNowPlaying() {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
-    }
+    },
   );
 
   if (res.status === 204 || res.status > 400) {
@@ -164,7 +164,7 @@ export async function getRecentlyPlayed() {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
-    }
+    },
   );
 
   const data = await res.json();

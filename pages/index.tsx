@@ -1,5 +1,4 @@
 import type { GetStaticProps, NextPage } from 'next';
-import { getPlaiceholder } from 'plaiceholder';
 
 import { AboutWidget } from '../components/AboutWidget';
 import { BlogWidget } from '../components/BlogWidget';
@@ -13,6 +12,7 @@ import { RunningWidget } from '../components/RunningWidget';
 import { SmartHomeWidget } from '../components/SmartHomeWidget';
 import { Teaser } from '../components/Teaser';
 import { queryContent } from '../lib/content';
+import { getPlaceholder } from '../lib/placeholder';
 import type { Podcast } from '../lib/podcasts';
 import { getFavoritePodcasts } from '../lib/podcasts';
 import {
@@ -149,7 +149,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
           }
       }
     }`,
-    preview
+    preview,
   );
 
   const page = response.data.page.items[0];
@@ -157,9 +157,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
 
   const person = response.data.person.items[0];
   const image = person.profileImageCollection.items[1];
-  const { base64: personImageBase64 } = await getPlaiceholder(image.url, {
-    size: 10,
-  });
+  const { base64: personImageBase64 } = await getPlaceholder(image.url);
   image.blurDataURL = personImageBase64;
 
   const blogPosts = response.data.blogPosts.items;
@@ -169,14 +167,10 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const contactText = response.data.contactSnippet.items[0].content;
   const favoritePodcasts = getFavoritePodcasts();
   const LCDImage = response.data.LCDImage.items[0];
-  const { base64: LCDImageBase64 } = await getPlaiceholder(LCDImage.url, {
-    size: 10,
-  });
+  const { base64: LCDImageBase64 } = await getPlaceholder(LCDImage.url);
   LCDImage.blurDataURL = LCDImageBase64;
   const MLImage = response.data.MLImage.items[0];
-  const { base64: MLImageBase64 } = await getPlaiceholder(MLImage.url, {
-    size: 10,
-  });
+  const { base64: MLImageBase64 } = await getPlaceholder(MLImage.url);
   MLImage.blurDataURL = MLImageBase64;
 
   let aboutTeaser = person.cvText;

@@ -19,7 +19,7 @@ export function Navigation({ name }: Props) {
     <header
       className={clsx(
         'xl:mb-22 mb-8 bg-light bg-opacity-80 py-4 dark:bg-dark dark:bg-opacity-80 md:mb-20 md:py-6',
-        styles.stickyNav
+        styles.stickyNav,
       )}
     >
       <CenteredColumn>
@@ -32,8 +32,12 @@ export function Navigation({ name }: Props) {
             Zu Inhalt springen
           </a>
           <div className="flex flex-1 items-center space-x-2 sm:flex-initial md:space-x-4">
-            <Link href="/" title="Home" className="whitespace-nowrap">
-              <h1 className={styles.name}>{name}</h1>
+            <Link
+              href="/"
+              title="Home"
+              className="whitespace-nowrap hover:text-highlight dark:hover:text-highlight-dark"
+            >
+              <h1>{name}</h1>
             </Link>
             <SwitchMode />
           </div>
@@ -68,7 +72,7 @@ export function Navigation({ name }: Props) {
               type="button"
               className={clsx(
                 'h-8 w-8 focus-visible:outline-none',
-                styles.menuIcon
+                styles.menuIcon,
               )}
               aria-controls="mobile-menu"
               aria-expanded={menuOpen ? 'true' : 'false'}

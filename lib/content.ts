@@ -27,7 +27,7 @@ export async function queryContent(query: string, preview = false) {
         }`,
       },
       body: JSON.stringify({ query }),
-    }
+    },
   );
   return await res.json();
 }

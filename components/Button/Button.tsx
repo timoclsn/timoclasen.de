@@ -22,7 +22,7 @@ const buttonWrapper = cva(
         true: 'w-full',
       },
     },
-  }
+  },
 );
 
 const buttonContent = cva(
@@ -44,7 +44,7 @@ const buttonContent = cva(
         true: 'w-full',
       },
     },
-  }
+  },
 );
 
 type ButtonProps = VariantProps<typeof buttonContent>;
@@ -89,7 +89,7 @@ export const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, Props>(
       className,
       ...props
     },
-    ref
+    ref,
   ) {
     return (
       <Element
@@ -112,5 +112,5 @@ export const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, Props>(
         </span>
       </Element>
     );
-  }
+  },
 );

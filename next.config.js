@@ -7,7 +7,20 @@ const config = {
   reactStrictMode: true,
   images: {
     formats: ['image/avif', 'image/webp'],
-    domains: ['images.ctfassets.net', 'api.mapbox.com', 'i.scdn.co'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.ctfassets.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'api.mapbox.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'i.scdn.co',
+      },
+    ],
   },
 };
 

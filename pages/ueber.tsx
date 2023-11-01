@@ -1,12 +1,12 @@
 import type { GetStaticProps, NextPage } from 'next';
 import Image from 'next/image';
-import { getPlaiceholder } from 'plaiceholder';
 
 import { ContactWidget } from '../components/ContactWidget';
 import { CV } from '../components/CV';
 import { Layout } from '../components/Layout';
 import { TextBlock } from '../components/TextBlock';
 import { queryContent } from '../lib/content';
+import { getPlaceholder } from '../lib/placeholder';
 import { markdownToHTML, objToUrlParams } from '../lib/text';
 
 export interface CVEntry {
@@ -116,15 +116,13 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
             }
         }
     }`,
-    preview
+    preview,
   );
 
   const page = response.data.page.items[0];
   const person = response.data.person.items[0];
   const image = person.imagesCollection.items[2];
-  const { base64 } = await getPlaiceholder(image.url, {
-    size: 10,
-  });
+  const { base64 } = await getPlaceholder(image.url);
   image.blurDataURL = base64;
   const cvEntries = response.data.cvEntries.items;
   const contactText = response.data.contactSnippet.items[0].content;

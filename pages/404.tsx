@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
             }
         }
     }`,
-    preview
+    preview,
   );
 
   const page = response.data.page.items[0];

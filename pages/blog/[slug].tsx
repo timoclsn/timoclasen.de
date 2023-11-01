@@ -122,7 +122,7 @@ export const getStaticProps: GetStaticProps = async ({
                 }
             }
         }`,
-    preview
+    preview,
   );
 
   const blogPost = response.data.blogPost.items[0];
@@ -169,7 +169,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
                     slug
                 }
             }
-        }`
+        }`,
   );
 
   const blogPosts = response.data.blogPosts.items;

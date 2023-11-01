@@ -11,11 +11,11 @@ export const config = {
 };
 
 const fontRegular = fetch(
-  new URL('../../public/fonts/Inter-Regular.woff', import.meta.url)
+  new URL('../../public/fonts/Inter-Regular.woff', import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 const fontBold = fetch(
-  new URL('../../public/fonts/Inter-Bold.woff', import.meta.url)
+  new URL('../../public/fonts/Inter-Bold.woff', import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 export default async function OGImageAPI(req: NextRequest) {
@@ -39,7 +39,7 @@ export default async function OGImageAPI(req: NextRequest) {
           }
         }
       }
-    }`
+    }`,
   );
 
   const person = response.data.person.items[0];

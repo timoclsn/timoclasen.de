@@ -23,7 +23,7 @@ export const smarthomeRouter = router({
         .object({
           cached: z.boolean(),
         })
-        .optional()
+        .optional(),
     )
     .query(async ({ input }) => {
       if (input?.cached) {
@@ -47,20 +47,20 @@ export const smarthomeRouter = router({
       const tempAtr = nodes
         .find((node) => node.id === climateSensorId)
         ?.attributes.find(
-          (attribute) => attribute.type === AttributeType.Temperature
+          (attribute) => attribute.type === AttributeType.Temperature,
         );
 
       const humidityAtr = nodes
         .find((node) => node.id === climateSensorId)
         ?.attributes.find(
-          (attribute) => attribute.type === AttributeType.RelativeHumidity
+          (attribute) => attribute.type === AttributeType.RelativeHumidity,
         );
 
       const accumulatedEnergy = nodes
         .flatMap((node) => {
           return (
             node.attributes.find(
-              (attribute) => attribute.type === AttributeType.CurrentEnergyUse
+              (attribute) => attribute.type === AttributeType.CurrentEnergyUse,
             ) || []
           );
         })
@@ -72,7 +72,7 @@ export const smarthomeRouter = router({
         .flatMap((node) => {
           if (isLight(node) && node.state === NodeState.Available) {
             return node.attributes.find(
-              (attribute) => attribute.type === AttributeType.OnOff
+              (attribute) => attribute.type === AttributeType.OnOff,
             );
           } else {
             return [];
@@ -85,13 +85,13 @@ export const smarthomeRouter = router({
       const outsideTempAtr = nodes
         .find((node) => node.id === climateSensorOutsideId)
         ?.attributes.find(
-          (attribute) => attribute.type === AttributeType.Temperature
+          (attribute) => attribute.type === AttributeType.Temperature,
         );
 
       const floodAlarmAtr = nodes
         .find((node) => node.id === rainSensorId)
         ?.attributes.find(
-          (attribute) => attribute.type === AttributeType.FloodAlarm
+          (attribute) => attribute.type === AttributeType.FloodAlarm,
         );
 
       const isRaining = floodAlarmAtr ? floodAlarmAtr.current_value > 0 : false;
@@ -99,13 +99,13 @@ export const smarthomeRouter = router({
       const balconyOnOffAtr = nodes
         .find((node) => node.id === balconyLightId)
         ?.attributes.find(
-          (attribute) => attribute.type === AttributeType.OnOff
+          (attribute) => attribute.type === AttributeType.OnOff,
         );
 
       const balconyColorAtr = nodes
         .find((node) => node.id === balconyLightId)
         ?.attributes.find(
-          (attribute) => attribute.type === AttributeType.Color
+          (attribute) => attribute.type === AttributeType.Color,
         );
 
       return {
@@ -138,7 +138,7 @@ export const smarthomeRouter = router({
     .input(
       z.object({
         balconyColor: colorSchema,
-      })
+      }),
     )
     .mutation(async ({ input }) => {
       const colorHomeegramIds: ColorHomeegramIds = {
@@ -163,14 +163,14 @@ export const smarthomeRouter = router({
         red: 0,
         green: 0,
         blue: 0,
-      }
+      },
     );
   }),
   updateControlCount: publicProcedure
     .input(
       z.object({
         color: colorSchema,
-      })
+      }),
     )
     .mutation(async ({ input }) => {
       const data = await prisma.balcony_control.update({
