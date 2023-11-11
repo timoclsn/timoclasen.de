@@ -1,4 +1,5 @@
-import type { GetStaticProps, NextPage } from 'next';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { z } from 'zod';
 
 import { AboutWidget } from '../components/AboutWidget';
 import { BlogWidget } from '../components/BlogWidget';
@@ -11,9 +12,8 @@ import { PodcastsWidget } from '../components/PodcastsWidget';
 import { RunningWidget } from '../components/RunningWidget';
 import { SmartHomeWidget } from '../components/SmartHomeWidget';
 import { Teaser } from '../components/Teaser';
-import { queryContent } from '../lib/content';
+import { queryContentSave } from '../lib/content';
 import { getPlaceholder } from '../lib/placeholder';
-import type { Podcast } from '../lib/podcasts';
 import { getFavoritePodcasts } from '../lib/podcasts';
 import {
   markdownToHTML,
@@ -22,43 +22,7 @@ import {
   truncate,
 } from '../lib/text';
 
-interface Props {
-  preview: boolean;
-  title: string;
-  description: string;
-  previewImage: {
-    url: string;
-    description: string;
-  };
-  header: string;
-  image: {
-    url: string;
-    description: string;
-    blurDataURL: string;
-  };
-  aboutTeaser: string;
-  blogPosts: {
-    title: string;
-    summary: string;
-    slug: string;
-  }[];
-  smartHome: string;
-  smartHomeFootnote: string;
-  favoritePodcasts: Podcast[];
-  LCDImage: {
-    url: string;
-    description: string;
-    blurDataURL: string;
-  };
-  MLImage: {
-    url: string;
-    description: string;
-    blurDataURL: string;
-  };
-  contact: string;
-}
-
-const Home: NextPage<Props> = function (props) {
+const Home = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout
       preview={props.preview}
@@ -88,90 +52,253 @@ const Home: NextPage<Props> = function (props) {
 
 export default Home;
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const response = await queryContent(
+export const getStaticProps = (async ({ preview = false }) => {
+  const pageData = await queryContentSave(
     `{
-        page: pageCollection(where: {slug: "home"}, limit: 1, preview: false) {
-            items {
-                title
-                slug
-                description
-            }
+      pageCollection(where: {slug: "home"}, limit: 1, preview: false) {
+        items {
+          title
+          slug
+          description
         }
-        headerSnippet: textSnippetCollection(where: {title: "Frontpage Header"}, limit: 1, preview: false) {
-            items {
-                content
-            }
-        }
-        person: personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
-            items {
-                cvText
-                profileImageCollection {
-                    items {
-                        url
-                        description
-                    }
-                }
-            }
-        }
-        blogPosts: blogPostCollection(order: [date_DESC], limit: 2, preview: false) {
-            items {
-                title
-                summary
-                slug
-            }
-        }
-        smartHomeSnippet: textSnippetCollection(where: {title: "Smart Home Widget"}, limit: 1, preview: false) {
-            items {
-                content
-            }
-        }
-        smartHomeFootnoteSnippet: textSnippetCollection(where: {title: "Smart Home Widget Footnote"}, limit: 1, preview: false) {
-            items {
-                content
-            }
-        }
-        contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
-            items {
-                content
-            }
-        }
-        LCDImage: assetCollection(where: {title: "Life Centered Design.Net"}, limit: 1, preview: false) {
-            items {
-                url
-                description
-            }
-        }
-        MLImage: assetCollection(where: {title: "Makersleague.de"}, limit: 1, preview: false) {
-          items {
-              url
-              description
-          }
       }
     }`,
-    preview,
+    z.object({
+      data: z.object({
+        pageCollection: z.object({
+          items: z.array(
+            z.object({
+              title: z.string(),
+              slug: z.string(),
+              description: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
   );
 
-  const page = response.data.page.items[0];
-  const headerText = response.data.headerSnippet.items[0].content;
+  const page = pageData.data.pageCollection.items[0];
 
-  const person = response.data.person.items[0];
+  const headerSnippetData = await queryContentSave(
+    `{
+      textSnippetCollection(where: {title: "Frontpage Header"}, limit: 1, preview: false) {
+        items {
+          content
+        }
+      }
+    }`,
+    z.object({
+      data: z.object({
+        textSnippetCollection: z.object({
+          items: z.array(
+            z.object({
+              content: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const headerText =
+    headerSnippetData.data.textSnippetCollection.items[0].content;
+
+  const personData = await queryContentSave(
+    `{
+      personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
+        items {
+          cvText
+          profileImageCollection {
+            items {
+              url
+              description
+            }
+          }
+        }
+      }
+  }`,
+    z.object({
+      data: z.object({
+        personCollection: z.object({
+          items: z.array(
+            z.object({
+              cvText: z.string(),
+              profileImageCollection: z.object({
+                items: z.array(
+                  z.object({
+                    url: z.string().url(),
+                    description: z.string(),
+                  }),
+                ),
+              }),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const person = personData.data.personCollection.items[0];
+
   const image = person.profileImageCollection.items[1];
   const { base64: personImageBase64 } = await getPlaceholder(image.url);
-  image.blurDataURL = personImageBase64;
+  const enhancedImage = { ...image, blurDataURL: personImageBase64 };
 
-  const blogPosts = response.data.blogPosts.items;
-  const smartHomeText = response.data.smartHomeSnippet.items[0].content;
+  const blogPostsData = await queryContentSave(
+    `{
+      blogPostCollection(order: [date_DESC], limit: 2, preview: false) {
+        items {
+          title
+          summary
+          slug
+        }
+      }
+    }`,
+    z.object({
+      data: z.object({
+        blogPostCollection: z.object({
+          items: z.array(
+            z.object({
+              title: z.string(),
+              summary: z.string(),
+              slug: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const blogPosts = blogPostsData.data.blogPostCollection.items;
+
+  const smartHomeSnippetData = await queryContentSave(
+    `{
+      textSnippetCollection(where: {title: "Smart Home Widget"}, limit: 1, preview: false) {
+        items {
+          content
+        }
+      }
+    }`,
+    z.object({
+      data: z.object({
+        textSnippetCollection: z.object({
+          items: z.array(
+            z.object({
+              content: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const smartHomeText =
+    smartHomeSnippetData.data.textSnippetCollection.items[0].content;
+
+  const smartHomeFootnoteSnippetDate = await queryContentSave(
+    `{
+      textSnippetCollection(where: {title: "Smart Home Widget Footnote"}, limit: 1, preview: false) {
+        items {
+          content
+        }
+      }
+    }`,
+    z.object({
+      data: z.object({
+        textSnippetCollection: z.object({
+          items: z.array(
+            z.object({
+              content: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
   const smartHomeFootnoteText =
-    response.data.smartHomeFootnoteSnippet.items[0].content;
-  const contactText = response.data.contactSnippet.items[0].content;
+    smartHomeFootnoteSnippetDate.data.textSnippetCollection.items[0].content;
+
+  const contactSnippetData = await queryContentSave(
+    `{
+      textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
+        items {
+          content
+        }
+      }
+    }`,
+    z.object({
+      data: z.object({
+        textSnippetCollection: z.object({
+          items: z.array(
+            z.object({
+              content: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const contactText =
+    contactSnippetData.data.textSnippetCollection.items[0].content;
+
+  const lcdImageData = await queryContentSave(
+    `{
+      assetCollection(where: {title: "Life Centered Design.Net"}, limit: 1, preview: false) {
+        items {
+          url
+          description
+        }
+      }
+    }`,
+    z.object({
+      data: z.object({
+        assetCollection: z.object({
+          items: z.array(
+            z.object({
+              url: z.string().url(),
+              description: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const lcdImage = lcdImageData.data.assetCollection.items[0];
+  const { base64: LCDImageBase64 } = await getPlaceholder(lcdImage.url);
+  const enhancedLcdImage = { ...lcdImage, blurDataURL: LCDImageBase64 };
+
   const favoritePodcasts = getFavoritePodcasts();
-  const LCDImage = response.data.LCDImage.items[0];
-  const { base64: LCDImageBase64 } = await getPlaceholder(LCDImage.url);
-  LCDImage.blurDataURL = LCDImageBase64;
-  const MLImage = response.data.MLImage.items[0];
-  const { base64: MLImageBase64 } = await getPlaceholder(MLImage.url);
-  MLImage.blurDataURL = MLImageBase64;
+
+  const mlImageData = await queryContentSave(
+    `{
+      assetCollection(where: {title: "Makersleague.de"}, limit: 1, preview: false) {
+        items {
+          url
+          description
+        }
+      }
+    }`,
+    z.object({
+      data: z.object({
+        assetCollection: z.object({
+          items: z.array(
+            z.object({
+              url: z.string().url(),
+              description: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const mlImage = mlImageData.data.assetCollection.items[0];
+  const { base64: MLImageBase64 } = await getPlaceholder(mlImage.url);
+  const enhancedMlImage = { ...mlImage, blurDataURL: MLImageBase64 };
 
   let aboutTeaser = person.cvText;
   aboutTeaser = stripFirstLine(aboutTeaser);
@@ -192,15 +319,15 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       description: page.description,
       previewImage,
       header: await markdownToHTML(headerText),
-      image: image,
+      image: enhancedImage,
       aboutTeaser,
       blogPosts,
       smartHome: await markdownToHTML(smartHomeText),
       smartHomeFootnote: await markdownToHTML(smartHomeFootnoteText),
       favoritePodcasts,
-      LCDImage,
-      MLImage,
+      LCDImage: enhancedLcdImage,
+      MLImage: enhancedMlImage,
       contact: await markdownToHTML(contactText),
     },
   };
-};
+}) satisfies GetStaticProps;
