@@ -1,7 +1,6 @@
 import { XMLParser } from 'fast-xml-parser';
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'fs';
 import he from 'he';
-import fetch from 'node-fetch';
 import prettier from 'prettier';
 import { remark } from 'remark';
 import strip from 'remark-strip-html';
@@ -54,12 +53,12 @@ mkdirSync(coversDir);
           podcastObj.favorite = favs.includes(podcastObj.title);
           podcastObj.feed = podcast.xmlUrl;
           podcastObj.description = await stripHTML(
-            he.decode(podcastJSObj.description)
+            he.decode(podcastJSObj.description),
           );
           podcastObj.website = addHTTP(podcastJSObj.link);
           podcastObj.hosts = he.decode(podcastJSObj['itunes:author']);
           podcastObj.categories = findCategories(
-            podcastJSObj['itunes:category']
+            podcastJSObj['itunes:category'],
           );
           podcastObj.image = `cover-${hashString(podcastObj.title)}.jpg`;
           const imageUrl = podcastJSObj.image
@@ -74,7 +73,7 @@ mkdirSync(coversDir);
             .toFile(`${coversDir}/${podcastObj.image}`);
         } catch (e) {
           console.log(
-            `❌ (parse feed) ${podcast.title} (${podcast.xmlUrl}): ${e.message}`
+            `❌ (parse feed) ${podcast.title} (${podcast.xmlUrl}): ${e.message}`,
           );
           return [];
         }
@@ -83,7 +82,7 @@ mkdirSync(coversDir);
         return [];
       }
       return podcastObj;
-    })
+    }),
   );
 
   const podcastsSorted = podcasts

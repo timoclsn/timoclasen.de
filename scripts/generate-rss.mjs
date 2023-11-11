@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 import { Feed } from 'feed';
 import { writeFileSync } from 'fs';
-import fetch from 'node-fetch';
 import { remark } from 'remark';
 import html from 'remark-html';
 
@@ -34,7 +33,7 @@ const email = 'timo@timoclasen.de';
           }
         }
       }
-    }`
+    }`,
   );
 
   const blogPosts = response.data.blogPosts.items;

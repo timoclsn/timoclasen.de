@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 import { writeFileSync } from 'fs';
 import { globby } from 'globby';
-import fetch from 'node-fetch';
 import prettier from 'prettier';
 
 dotenv.config();
@@ -27,7 +26,7 @@ const publicAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
           slug
         }
       }
-    }`
+    }`,
   );
 
   const blogPosts = response.data.blogPosts.items;
