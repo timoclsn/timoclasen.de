@@ -6,6 +6,7 @@ import type { Podcast as PodcastType } from "../lib/podcasts";
 import { MediaPreview } from "./MediaPreview";
 import { PodcastFilter } from "./PodcastFilter";
 import { Search } from "./Search";
+import { track } from "../lib/tracking";
 
 export type PodcastsListFilter = {
   favorites: boolean;
@@ -66,7 +67,7 @@ export function PodcastsList({ podcasts }: Props) {
 
   const categoriesObj = sortedCategories.reduce(
     (acc, category) => ({ ...acc, [category]: false }),
-    {} as { [key: string]: boolean },
+    {} as { [key: string]: boolean }
   );
 
   const initialState: State = {
@@ -102,7 +103,7 @@ export function PodcastsList({ podcasts }: Props) {
 
     if (filteredCategories.length) {
       const showPodcast = filteredCategories.every((category) =>
-        podcast.categories.includes(category),
+        podcast.categories.includes(category)
       );
 
       return filter.favorites ? showPodcast && podcast.favorite : showPodcast;
@@ -130,7 +131,7 @@ export function PodcastsList({ podcasts }: Props) {
             });
           }}
           handleBlur={() => {
-            splitbee.track("Podcast Search", {
+            track("Podcast Search", {
               search: inputValue,
             });
           }}
@@ -166,7 +167,7 @@ export function PodcastsList({ podcasts }: Props) {
               });
             }
 
-            splitbee.track("Podcast Filter", filter);
+            track("Podcast Filter", filter);
           }}
           clearFilter={() => {
             dispatch({

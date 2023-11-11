@@ -3,6 +3,7 @@ import { Music, User } from "react-feather";
 import { trpc } from "../utils/trpc";
 import { MediaPreview } from "./MediaPreview";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./Tabs";
+import { track } from "../lib/tracking";
 
 export function TopMusic() {
   const { data: topArtistsData, error: topArtistsError } =
@@ -31,7 +32,7 @@ export function TopMusic() {
         <TabsTrigger
           value="1"
           onClick={() => {
-            splitbee.track("Tabs Control", {
+            track("Tabs Control", {
               tab: "Artists",
             });
           }}
@@ -41,7 +42,7 @@ export function TopMusic() {
         <TabsTrigger
           value="2"
           onClick={() => {
-            splitbee.track("Tabs Control", {
+            track("Tabs Control", {
               tab: "Songs",
             });
           }}
