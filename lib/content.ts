@@ -7,36 +7,9 @@ const {
   NODE_ENV: env,
 } = process.env;
 
-export async function queryContent(query: string, preview = false) {
-  const draftContentInDevelopmentMode = true;
-
-  if (draftContentInDevelopmentMode) {
-    preview = preview || env === "development";
-  }
-
-  if (preview) {
-    query = query.replace(/preview: false/g, "preview: true");
-  }
-
-  const res = await fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${spaceId}`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${
-          preview ? previewAccessToken : publicAccessToken
-        }`,
-      },
-      body: JSON.stringify({ query }),
-    },
-  );
-  return await res.json();
-}
-
-export const queryContentSave = async <TSchema extends z.ZodTypeAny>(
+export const queryContent = async <TSchema extends z.ZodTypeAny>(
   query: string,
-  schema: TSchema,
+  schema: TSchema
 ) => {
   let preview = false;
   const draftContentInDevelopmentMode = true;
@@ -61,7 +34,7 @@ export const queryContentSave = async <TSchema extends z.ZodTypeAny>(
       next: {
         revalidate: 60,
       },
-    },
+    }
   );
   const data = await res.json();
 

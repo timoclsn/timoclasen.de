@@ -11,11 +11,11 @@ export const config = {
 };
 
 const fontRegular = fetch(
-  new URL("../../public/fonts/Inter-Regular.woff", import.meta.url),
+  new URL("../../public/fonts/Inter-Regular.woff", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 const fontBold = fetch(
-  new URL("../../public/fonts/Inter-Bold.woff", import.meta.url),
+  new URL("../../public/fonts/Inter-Bold.woff", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 export default async function OGImageAPI(req: NextRequest) {
@@ -28,9 +28,9 @@ export default async function OGImageAPI(req: NextRequest) {
   const subtitle = searchParams.get("subtitle");
   const image = searchParams.get("image");
 
-  const response = await queryContent(
+  const personData = await queryContent(
     `{
-      person: personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
+      personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
         items {
           profileImageCollection {
             items {
@@ -40,13 +40,21 @@ export default async function OGImageAPI(req: NextRequest) {
         }
       }
     }`,
+    z.object({
+      personCollection: z.object({
+        items: z.array(
+          z.object({
+            profileImageCollection: z.object({
+              items: z.array(z.object({ url: z.string() })),
+            }),
+          })
+        ),
+      }),
+    })
   );
 
-  const person = response.data.person.items[0];
-  const fallbackImage = person.profileImageCollection.items[1] as Record<
-    "url",
-    string
-  >;
+  const person = personData.personCollection.items[0];
+  const fallbackImage = person.profileImageCollection.items[1];
 
   const reactElement = createElement(OGImage, {
     name,

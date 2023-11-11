@@ -6,7 +6,7 @@ import { ContactWidget } from "../components/ContactWidget";
 import { CV } from "../components/CV";
 import { Layout } from "../components/Layout";
 import { TextBlock } from "../components/TextBlock";
-import { queryContentSave } from "../lib/content";
+import { queryContent } from "../lib/content";
 import { getPlaceholder } from "../lib/placeholder";
 import { markdownToHTML, objToUrlParams } from "../lib/text";
 
@@ -43,7 +43,7 @@ const About = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 export default About;
 
 export const getStaticProps = (async ({ preview = false }) => {
-  const pageData = await queryContentSave(
+  const pageData = await queryContent(
     `{
       pageCollection(where: {slug: "ueber"}, limit: 1, preview: false) {
         items {
@@ -61,16 +61,16 @@ export const getStaticProps = (async ({ preview = false }) => {
               title: z.string(),
               slug: z.string(),
               description: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const page = pageData.data.pageCollection.items[0];
 
-  const personData = await queryContentSave(
+  const personData = await queryContent(
     `{
       personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
         items {
@@ -96,15 +96,15 @@ export const getStaticProps = (async ({ preview = false }) => {
                   z.object({
                     url: z.string(),
                     description: z.string(),
-                  }),
+                  })
                 ),
               }),
               linkCollection: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const person = personData.data.personCollection.items[0];
@@ -112,7 +112,7 @@ export const getStaticProps = (async ({ preview = false }) => {
   const { base64 } = await getPlaceholder(image.url);
   const enhancedImage = { ...image, blurDataURL: base64 };
 
-  const cvEntriesData = await queryContentSave(
+  const cvEntriesData = await queryContent(
     `{
       cvEntryCollection(order: [order_DESC], preview: false) {
         items {
@@ -144,16 +144,16 @@ export const getStaticProps = (async ({ preview = false }) => {
                   description: z.string(),
                 }),
               }),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const cvEntries = cvEntriesData.data.cvEntryCollection.items;
 
-  const contactSnippetData = await queryContentSave(
+  const contactSnippetData = await queryContent(
     `{
       textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
         items {
@@ -167,11 +167,11 @@ export const getStaticProps = (async ({ preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const contactText =

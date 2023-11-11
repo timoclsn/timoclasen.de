@@ -7,7 +7,7 @@ import { z } from "zod";
 import { BlogPostPreview } from "../components/BlogPostPreview";
 import { ContactWidget } from "../components/ContactWidget";
 import { Layout } from "../components/Layout";
-import { queryContentSave } from "../lib/content";
+import { queryContent } from "../lib/content";
 import { markdownToHTML, objToUrlParams } from "../lib/text";
 
 const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -38,7 +38,7 @@ const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 export default Blog;
 
 export const getStaticProps = (async ({ preview = false }) => {
-  const pageDate = await queryContentSave(
+  const pageDate = await queryContent(
     `{
       pageCollection(where: {slug: "blog"}, limit: 1, preview: false) {
         items {
@@ -56,16 +56,16 @@ export const getStaticProps = (async ({ preview = false }) => {
               title: z.string(),
               slug: z.string(),
               description: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const page = pageDate.data.pageCollection.items[0];
 
-  const blogPostsData = await queryContentSave(
+  const blogPostsData = await queryContent(
     `{
       blogPostCollection(order: [date_DESC], preview: false) {
         items {
@@ -95,11 +95,11 @@ export const getStaticProps = (async ({ preview = false }) => {
               slug: z.string(),
               date: z.string(),
               text: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const blogPosts = blogPostsData.data.blogPostCollection.items.map(
@@ -113,10 +113,10 @@ export const getStaticProps = (async ({ preview = false }) => {
           locale: de,
         }),
       };
-    },
+    }
   );
 
-  const contactSnippetData = await queryContentSave(
+  const contactSnippetData = await queryContent(
     `{
       textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
         items {
@@ -130,11 +130,11 @@ export const getStaticProps = (async ({ preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const contactText =

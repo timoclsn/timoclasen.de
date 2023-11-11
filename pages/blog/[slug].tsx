@@ -15,7 +15,7 @@ import { Layout } from "../../components/Layout";
 import { SEOBlogPost } from "../../components/SEOBlogPost";
 import { TextBlock } from "../../components/TextBlock";
 import { TextPost } from "../../components/TextPost";
-import { queryContentSave } from "../../lib/content";
+import { queryContent } from "../../lib/content";
 import { markdownToHTML, objToUrlParams } from "../../lib/text";
 
 const BlogPost = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -77,7 +77,7 @@ const BlogPost = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 export default BlogPost;
 
 export const getStaticProps = (async ({ params, preview = false }) => {
-  const blogPostData = await queryContentSave(
+  const blogPostData = await queryContent(
     `{
     blogPostCollection(where: {slug: "${params?.slug}"}, limit: 1, preview: false) {
       items {
@@ -123,17 +123,17 @@ export const getStaticProps = (async ({ params, preview = false }) => {
                     z.object({
                       url: z.string().url(),
                       description: z.string(),
-                    }),
+                    })
                   ),
                 }),
               }),
               summary: z.string(),
               text: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const blogPost = blogPostData.data.blogPostCollection.items[0];
@@ -154,7 +154,7 @@ export const getStaticProps = (async ({ params, preview = false }) => {
     }),
   };
 
-  const errorSnippetData = await queryContentSave(
+  const errorSnippetData = await queryContent(
     `{
       textSnippetCollection(where: {title: "Error 404"}, limit: 1, preview: false) {
         items {
@@ -168,17 +168,17 @@ export const getStaticProps = (async ({ params, preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const errorText =
     errorSnippetData.data.textSnippetCollection.items[0].content;
 
-  const contactSnippetData = await queryContentSave(
+  const contactSnippetData = await queryContent(
     `{
       textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
         items {
@@ -192,11 +192,11 @@ export const getStaticProps = (async ({ params, preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const contactText =
@@ -224,7 +224,7 @@ export const getStaticProps = (async ({ params, preview = false }) => {
 }) satisfies GetStaticProps;
 
 export const getStaticPaths = (async () => {
-  const blogPostsData = await queryContentSave(
+  const blogPostsData = await queryContent(
     `{
     blogPostCollection(preview: false) {
       items {
@@ -238,11 +238,11 @@ export const getStaticPaths = (async () => {
           items: z.array(
             z.object({
               slug: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const blogPosts = blogPostsData.data.blogPostCollection.items;

@@ -4,7 +4,7 @@ import { z } from "zod";
 import { ContactWidget } from "../components/ContactWidget";
 import { Layout } from "../components/Layout";
 import { TextBlock } from "../components/TextBlock";
-import { queryContentSave } from "../lib/content";
+import { queryContent } from "../lib/content";
 import { markdownToHTML, objToUrlParams } from "../lib/text";
 
 const Error = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -25,7 +25,7 @@ const Error = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 export default Error;
 
 export const getStaticProps = (async ({ preview = false }) => {
-  const pageData = await queryContentSave(
+  const pageData = await queryContent(
     `{
     pageCollection(where: {slug: "404"}, limit: 1, preview: false) {
       items {
@@ -43,16 +43,16 @@ export const getStaticProps = (async ({ preview = false }) => {
               title: z.string(),
               slug: z.string(),
               description: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const page = pageData.data.pageCollection.items[0];
 
-  const errorSnippetData = await queryContentSave(
+  const errorSnippetData = await queryContent(
     `{
     textSnippetCollection(where: {title: "Error 404"}, limit: 1, preview: false) {
       items {
@@ -66,17 +66,17 @@ export const getStaticProps = (async ({ preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const errorText =
     errorSnippetData.data.textSnippetCollection.items[0].content;
 
-  const contactSnippetData = await queryContentSave(
+  const contactSnippetData = await queryContent(
     `{
     textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
       items {
@@ -90,11 +90,11 @@ export const getStaticProps = (async ({ preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const contactText =

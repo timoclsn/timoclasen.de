@@ -12,7 +12,7 @@ import { PodcastsWidget } from "../components/PodcastsWidget";
 import { RunningWidget } from "../components/RunningWidget";
 import { SmartHomeWidget } from "../components/SmartHomeWidget";
 import { Teaser } from "../components/Teaser";
-import { queryContentSave } from "../lib/content";
+import { queryContent } from "../lib/content";
 import { getPlaceholder } from "../lib/placeholder";
 import { getFavoritePodcasts } from "../lib/podcasts";
 import {
@@ -53,7 +53,7 @@ const Home = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 export default Home;
 
 export const getStaticProps = (async ({ preview = false }) => {
-  const pageData = await queryContentSave(
+  const pageData = await queryContent(
     `{
       pageCollection(where: {slug: "home"}, limit: 1, preview: false) {
         items {
@@ -71,16 +71,16 @@ export const getStaticProps = (async ({ preview = false }) => {
               title: z.string(),
               slug: z.string(),
               description: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const page = pageData.data.pageCollection.items[0];
 
-  const headerSnippetData = await queryContentSave(
+  const headerSnippetData = await queryContent(
     `{
       textSnippetCollection(where: {title: "Frontpage Header"}, limit: 1, preview: false) {
         items {
@@ -94,17 +94,17 @@ export const getStaticProps = (async ({ preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const headerText =
     headerSnippetData.data.textSnippetCollection.items[0].content;
 
-  const personData = await queryContentSave(
+  const personData = await queryContent(
     `{
       personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
         items {
@@ -129,14 +129,14 @@ export const getStaticProps = (async ({ preview = false }) => {
                   z.object({
                     url: z.string().url(),
                     description: z.string(),
-                  }),
+                  })
                 ),
               }),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const person = personData.data.personCollection.items[0];
@@ -145,7 +145,7 @@ export const getStaticProps = (async ({ preview = false }) => {
   const { base64: personImageBase64 } = await getPlaceholder(image.url);
   const enhancedImage = { ...image, blurDataURL: personImageBase64 };
 
-  const blogPostsData = await queryContentSave(
+  const blogPostsData = await queryContent(
     `{
       blogPostCollection(order: [date_DESC], limit: 2, preview: false) {
         items {
@@ -163,16 +163,16 @@ export const getStaticProps = (async ({ preview = false }) => {
               title: z.string(),
               summary: z.string(),
               slug: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const blogPosts = blogPostsData.data.blogPostCollection.items;
 
-  const smartHomeSnippetData = await queryContentSave(
+  const smartHomeSnippetData = await queryContent(
     `{
       textSnippetCollection(where: {title: "Smart Home Widget"}, limit: 1, preview: false) {
         items {
@@ -186,17 +186,17 @@ export const getStaticProps = (async ({ preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const smartHomeText =
     smartHomeSnippetData.data.textSnippetCollection.items[0].content;
 
-  const smartHomeFootnoteSnippetDate = await queryContentSave(
+  const smartHomeFootnoteSnippetDate = await queryContent(
     `{
       textSnippetCollection(where: {title: "Smart Home Widget Footnote"}, limit: 1, preview: false) {
         items {
@@ -210,17 +210,17 @@ export const getStaticProps = (async ({ preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const smartHomeFootnoteText =
     smartHomeFootnoteSnippetDate.data.textSnippetCollection.items[0].content;
 
-  const contactSnippetData = await queryContentSave(
+  const contactSnippetData = await queryContent(
     `{
       textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
         items {
@@ -234,17 +234,17 @@ export const getStaticProps = (async ({ preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const contactText =
     contactSnippetData.data.textSnippetCollection.items[0].content;
 
-  const lcdImageData = await queryContentSave(
+  const lcdImageData = await queryContent(
     `{
       assetCollection(where: {title: "Life Centered Design.Net"}, limit: 1, preview: false) {
         items {
@@ -260,11 +260,11 @@ export const getStaticProps = (async ({ preview = false }) => {
             z.object({
               url: z.string().url(),
               description: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const lcdImage = lcdImageData.data.assetCollection.items[0];
@@ -273,7 +273,7 @@ export const getStaticProps = (async ({ preview = false }) => {
 
   const favoritePodcasts = getFavoritePodcasts();
 
-  const mlImageData = await queryContentSave(
+  const mlImageData = await queryContent(
     `{
       assetCollection(where: {title: "Makersleague.de"}, limit: 1, preview: false) {
         items {
@@ -289,11 +289,11 @@ export const getStaticProps = (async ({ preview = false }) => {
             z.object({
               url: z.string().url(),
               description: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const mlImage = mlImageData.data.assetCollection.items[0];

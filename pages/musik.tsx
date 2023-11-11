@@ -6,7 +6,7 @@ import { Layout } from "../components/Layout";
 import { NowPlaying } from "../components/NowPlaying";
 import { TextBlock } from "../components/TextBlock";
 import { TopMusic } from "../components/TopMusic";
-import { queryContentSave } from "../lib/content";
+import { queryContent } from "../lib/content";
 import { markdownToHTML, objToUrlParams } from "../lib/text";
 
 const Music = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
@@ -29,7 +29,7 @@ const Music = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 export default Music;
 
 export const getStaticProps = (async ({ preview = false }) => {
-  const pageData = await queryContentSave(
+  const pageData = await queryContent(
     `{
     pageCollection(where: {slug: "musik"}, limit: 1, preview: false) {
       items {
@@ -47,16 +47,16 @@ export const getStaticProps = (async ({ preview = false }) => {
               title: z.string(),
               slug: z.string(),
               description: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const page = pageData.data.pageCollection.items[0];
 
-  const musicSnippetData = await queryContentSave(
+  const musicSnippetData = await queryContent(
     `{
     textSnippetCollection(where: {title: "Music"}, limit: 1, preview: false) {
       items {
@@ -70,17 +70,17 @@ export const getStaticProps = (async ({ preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const musicText =
     musicSnippetData.data.textSnippetCollection.items[0].content;
 
-  const contactSnippetData = await queryContentSave(
+  const contactSnippetData = await queryContent(
     `{
     textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
       items {
@@ -94,11 +94,11 @@ export const getStaticProps = (async ({ preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const contactText =

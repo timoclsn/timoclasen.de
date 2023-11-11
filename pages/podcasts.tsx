@@ -5,7 +5,7 @@ import { Layout } from "../components/Layout";
 import { PodcastsList } from "../components/PodcastsList";
 import { Recommendations } from "../components/Recommendations";
 import { TextBlock } from "../components/TextBlock";
-import { queryContentSave } from "../lib/content";
+import { queryContent } from "../lib/content";
 import { getPodcasts } from "../lib/podcasts";
 import { markdownToHTML, objToUrlParams } from "../lib/text";
 
@@ -28,7 +28,7 @@ const Podcasts = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
 export default Podcasts;
 
 export const getStaticProps = (async ({ preview = false }) => {
-  const pageData = await queryContentSave(
+  const pageData = await queryContent(
     `{
     pageCollection(where: {slug: "podcasts"}, limit: 1, preview: false) {
       items {
@@ -46,16 +46,16 @@ export const getStaticProps = (async ({ preview = false }) => {
               title: z.string(),
               slug: z.string(),
               description: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const page = pageData.data.pageCollection.items[0];
 
-  const podcastsSnippetData = await queryContentSave(
+  const podcastsSnippetData = await queryContent(
     `{
         textSnippetCollection(where: {title: "Podcasts"}, limit: 1, preview: false) {
             items {
@@ -69,11 +69,11 @@ export const getStaticProps = (async ({ preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            }),
+            })
           ),
         }),
       }),
-    }),
+    })
   );
 
   const podcastsText =
