@@ -1,29 +1,15 @@
-import type { NextPage } from 'next';
-import type { GetStaticProps } from 'next';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { z } from 'zod';
 
 import { Layout } from '../components/Layout';
 import { PodcastsList } from '../components/PodcastsList';
 import { Recommendations } from '../components/Recommendations';
 import { TextBlock } from '../components/TextBlock';
-import { queryContent } from '../lib/content';
-import type { Podcast } from '../lib/podcasts';
+import { queryContentSave } from '../lib/content';
 import { getPodcasts } from '../lib/podcasts';
 import { markdownToHTML, objToUrlParams } from '../lib/text';
 
-interface Props {
-  preview: boolean;
-  title: string;
-  description: string;
-  slug: string;
-  previewImage: {
-    url: string;
-    description: string;
-  };
-  podcastsText: string;
-  podcasts: Podcast[];
-}
-
-const Podcasts: NextPage<Props> = function (props) {
+const Podcasts = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout
       preview={props.preview}
@@ -41,27 +27,58 @@ const Podcasts: NextPage<Props> = function (props) {
 
 export default Podcasts;
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const response = await queryContent(
+export const getStaticProps = (async ({ preview = false }) => {
+  const pageData = await queryContentSave(
     `{
-        page: pageCollection(where: {slug: "podcasts"}, limit: 1, preview: false) {
-            items {
-                title
-                slug
-                description
-            }
-        }
-        podcastsSnippet: textSnippetCollection(where: {title: "Podcasts"}, limit: 1, preview: false) {
+    pageCollection(where: {slug: "podcasts"}, limit: 1, preview: false) {
+      items {
+        title
+        slug
+        description
+      }
+    }
+  }`,
+    z.object({
+      data: z.object({
+        pageCollection: z.object({
+          items: z.array(
+            z.object({
+              title: z.string(),
+              slug: z.string(),
+              description: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const page = pageData.data.pageCollection.items[0];
+
+  const podcastsSnippetData = await queryContentSave(
+    `{
+        textSnippetCollection(where: {title: "Podcasts"}, limit: 1, preview: false) {
             items {
                 content
             }
         }
     }`,
-    preview,
+    z.object({
+      data: z.object({
+        textSnippetCollection: z.object({
+          items: z.array(
+            z.object({
+              content: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
   );
 
-  const page = response.data.page.items[0];
-  const podcastsText = response.data.podcastsSnippet.items[0].content;
+  const podcastsText =
+    podcastsSnippetData.data.textSnippetCollection.items[0].content;
+
   const podcasts = getPodcasts();
 
   const previewImage = {
@@ -82,4 +99,4 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       podcastsText: await markdownToHTML(podcastsText),
     },
   };
-};
+}) satisfies GetStaticProps;
