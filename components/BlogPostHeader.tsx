@@ -13,7 +13,7 @@ interface Author {
 }
 
 interface Sys {
-  publishedVersion: string;
+  publishedVersion: number | null;
 }
 
 interface Props {

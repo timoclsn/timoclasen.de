@@ -1,8 +1,13 @@
 import { format, parseISO } from 'date-fns';
 import { de } from 'date-fns/locale';
-import type { GetStaticPaths, GetStaticProps } from 'next';
+import type {
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
+} from 'next';
 import { useRouter } from 'next/router';
 import readingTime from 'reading-time';
+import { z } from 'zod';
 
 import { BlogPostHeader } from '../../components/BlogPostHeader';
 import { ContactWidget } from '../../components/ContactWidget';
@@ -10,23 +15,10 @@ import { Layout } from '../../components/Layout';
 import { SEOBlogPost } from '../../components/SEOBlogPost';
 import { TextBlock } from '../../components/TextBlock';
 import { TextPost } from '../../components/TextPost';
-import { queryContent } from '../../lib/content';
+import { queryContentSave } from '../../lib/content';
 import { markdownToHTML, objToUrlParams } from '../../lib/text';
-import type { BlogPost as BlogPostType } from '../blog';
 
-interface Props {
-  preview: boolean;
-  previewImage: {
-    url: string;
-    description: string;
-  };
-  blogPost: BlogPostType;
-  loading: string;
-  error: string;
-  contact: string;
-}
-
-export default function BlogPost(props: Props) {
+const BlogPost = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
 
   if (!router.isFallback && !props.blogPost) {
@@ -80,71 +72,141 @@ export default function BlogPost(props: Props) {
       <ContactWidget text={props.contact} />
     </Layout>
   );
-}
+};
 
-export const getStaticProps: GetStaticProps = async ({
-  params,
-  preview = false,
-}) => {
-  const response = await queryContent(
+export default BlogPost;
+
+export const getStaticProps = (async ({ params, preview = false }) => {
+  const blogPostData = await queryContentSave(
     `{
-            blogPost: blogPostCollection(where: {slug: "${params?.slug}"}, limit: 1, preview: false) {
-                items {
-                    sys {
-                        publishedVersion
-                    }
-                    title
-                    subtitle
-                    slug
-                    date
-                    author {
-                        name
-                        username
-                        profileImageCollection {
-                            items {
-                                url
-                                description
-                            }
-                        }
-                    }
-                    summary
-                    text
-                }
+    blogPostCollection(where: {slug: "${params?.slug}"}, limit: 1, preview: false) {
+      items {
+        sys {
+          publishedVersion
+        }
+        title
+        subtitle
+        slug
+        date
+        author {
+          name
+          username
+          profileImageCollection {
+            items {
+              url
+              description
             }
-            errorSnippet: textSnippetCollection(where: {title: "Error 404"}, limit: 1, preview: false) {
-                items {
-                    content
-                }
-            }
-            contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1) {
-                items {
-                    content
-                }
-            }
-        }`,
-    preview,
+          }
+        }
+        summary
+        text
+      }
+    }
+  }`,
+    z.object({
+      data: z.object({
+        blogPostCollection: z.object({
+          items: z.array(
+            z.object({
+              sys: z.object({
+                publishedVersion: z.number().nullable(),
+              }),
+              title: z.string(),
+              subtitle: z.string(),
+              slug: z.string(),
+              date: z.string(),
+              author: z.object({
+                name: z.string(),
+                username: z.string(),
+                profileImageCollection: z.object({
+                  items: z.array(
+                    z.object({
+                      url: z.string().url(),
+                      description: z.string(),
+                    }),
+                  ),
+                }),
+              }),
+              summary: z.string(),
+              text: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
   );
 
-  const blogPost = response.data.blogPost.items[0];
-
-  blogPost.author.image = blogPost.author.profileImageCollection.items[1];
-  delete blogPost.author.profileImageCollection;
+  const blogPost = blogPostData.data.blogPostCollection.items[0];
 
   const readingTimeObj = readingTime(blogPost.text);
-  blogPost.readingTime = Math.ceil(readingTimeObj.minutes);
 
-  blogPost.dateFormatted = format(parseISO(blogPost.date), 'dd. MMMM yyyy', {
-    locale: de,
-  });
+  const enhancedBlogPost = {
+    ...blogPost,
+    author: {
+      ...blogPost.author,
+      name: blogPost.author.name,
+      username: blogPost.author.username,
+      image: blogPost.author.profileImageCollection.items[1],
+    },
+    readingTime: Math.ceil(readingTimeObj.minutes),
+    dateFormatted: format(parseISO(blogPost.date), 'dd. MMMM yyyy', {
+      locale: de,
+    }),
+  };
 
-  const errorText = response.data.errorSnippet.items[0].content;
-  const contactText = response.data.contactSnippet.items[0].content;
+  const errorSnippetData = await queryContentSave(
+    `{
+      textSnippetCollection(where: {title: "Error 404"}, limit: 1, preview: false) {
+        items {
+          content
+        }
+      }
+    }`,
+    z.object({
+      data: z.object({
+        textSnippetCollection: z.object({
+          items: z.array(
+            z.object({
+              content: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const errorText =
+    errorSnippetData.data.textSnippetCollection.items[0].content;
+
+  const contactSnippetData = await queryContentSave(
+    `{
+      textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
+        items {
+          content
+        }
+      }
+    }`,
+    z.object({
+      data: z.object({
+        textSnippetCollection: z.object({
+          items: z.array(
+            z.object({
+              content: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const contactText =
+    contactSnippetData.data.textSnippetCollection.items[0].content;
 
   const previewImage = {
     url: `https://timoclasen.de/api/og-image?${objToUrlParams({
       name: 'Blog • Timo Clasen',
       title: blogPost.title,
-      subtitle: `${blogPost.dateFormatted} • ${blogPost.readingTime} Min`,
+      subtitle: `${enhancedBlogPost.dateFormatted} • ${enhancedBlogPost.readingTime} Min`,
     })}`,
     description: 'Teasertext der Seite "Blog" und Profilfoto von Timo Clasen',
   };
@@ -152,27 +214,38 @@ export const getStaticProps: GetStaticProps = async ({
   return {
     props: {
       preview,
-      blogPost,
+      blogPost: enhancedBlogPost,
       previewImage,
       error: await markdownToHTML(errorText),
       loading: await markdownToHTML('# Seite lädt…'),
       contact: await markdownToHTML(contactText),
     },
   };
-};
+}) satisfies GetStaticProps;
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await queryContent(
+export const getStaticPaths = (async () => {
+  const blogPostsData = await queryContentSave(
     `{
-            blogPosts: blogPostCollection(preview: false) {
-                items {
-                    slug
-                }
-            }
-        }`,
+    blogPostCollection(preview: false) {
+      items {
+        slug
+      }
+    }
+  }`,
+    z.object({
+      data: z.object({
+        blogPostCollection: z.object({
+          items: z.array(
+            z.object({
+              slug: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
   );
 
-  const blogPosts = response.data.blogPosts.items;
+  const blogPosts = blogPostsData.data.blogPostCollection.items;
 
   return {
     paths: blogPosts.map((blogPost: { slug: string }) => {
@@ -184,4 +257,4 @@ export const getStaticPaths: GetStaticPaths = async () => {
     }),
     fallback: true,
   };
-};
+}) satisfies GetStaticPaths;
