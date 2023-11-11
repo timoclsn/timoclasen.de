@@ -1,26 +1,13 @@
-import type { NextPage } from 'next';
-import type { GetStaticProps } from 'next';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { z } from 'zod';
 
 import { ContactWidget } from '../components/ContactWidget';
 import { Layout } from '../components/Layout';
 import { TextBlock } from '../components/TextBlock';
-import { queryContent } from '../lib/content';
+import { queryContentSave } from '../lib/content';
 import { markdownToHTML, objToUrlParams } from '../lib/text';
 
-interface Props {
-  preview: boolean;
-  title: string;
-  description: string;
-  slug: string;
-  previewImage: {
-    url: string;
-    description: string;
-  };
-  legal: string;
-  contact: string;
-}
-
-const Legal: NextPage<Props> = function (props) {
+const Legal = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout
       preview={props.preview}
@@ -37,33 +24,81 @@ const Legal: NextPage<Props> = function (props) {
 
 export default Legal;
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const response = await queryContent(
+export const getStaticProps = (async ({ preview = false }) => {
+  const pageData = await queryContentSave(
     `{
-        page: pageCollection(where: {slug: "impressum"}, limit: 1, preview: false) {
+        pageCollection(where: {slug: "impressum"}, limit: 1, preview: false) {
             items {
                 title
                 slug
                 description
             }
         }
-        legalSnippet: textSnippetCollection(where: {title: "Impressum & Datenschutz"}, limit: 1, preview: false) {
-            items {
-                content
-            }
-        }
-        contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
+    }`,
+    z.object({
+      data: z.object({
+        pageCollection: z.object({
+          items: z.array(
+            z.object({
+              title: z.string(),
+              slug: z.string(),
+              description: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const page = pageData.data.pageCollection.items[0];
+
+  const legalSnippetData = await queryContentSave(
+    `{
+        textSnippetCollection(where: {title: "Impressum & Datenschutz"}, limit: 1, preview: false) {
             items {
                 content
             }
         }
     }`,
-    preview,
+    z.object({
+      data: z.object({
+        textSnippetCollection: z.object({
+          items: z.array(
+            z.object({
+              content: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
   );
 
-  const page = response.data.page.items[0];
-  const legalText = response.data.legalSnippet.items[0].content;
-  const contactText = response.data.contactSnippet.items[0].content;
+  const legalText =
+    legalSnippetData.data.textSnippetCollection.items[0].content;
+
+  const contactSnippetData = await queryContentSave(
+    `{
+        textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
+            items {
+                content
+            }
+        }
+    }`,
+    z.object({
+      data: z.object({
+        textSnippetCollection: z.object({
+          items: z.array(
+            z.object({
+              content: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const contactText =
+    contactSnippetData.data.textSnippetCollection.items[0].content;
 
   const previewImage = {
     url: `https://timoclasen.de/api/og-image?${objToUrlParams({
@@ -83,4 +118,4 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       contact: await markdownToHTML(contactText),
     },
   };
-};
+}) satisfies GetStaticProps;
