@@ -37,7 +37,6 @@
   },
   "dependencies": {
     "@mapbox/polyline": "1.2.1",
-    "@next/bundle-analyzer": "14.0.1",
     "@prisma/client": "5.5.2",
     "@radix-ui/react-tabs": "1.0.4",
     "@tailwindcss/aspect-ratio": "0.4.2",
