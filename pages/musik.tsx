@@ -1,28 +1,15 @@
-import type { NextPage } from 'next';
-import type { GetStaticProps } from 'next';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import { z } from 'zod';
 
 import { ContactWidget } from '../components/ContactWidget';
 import { Layout } from '../components/Layout';
 import { NowPlaying } from '../components/NowPlaying';
 import { TextBlock } from '../components/TextBlock';
 import { TopMusic } from '../components/TopMusic';
-import { queryContent } from '../lib/content';
+import { queryContentSave } from '../lib/content';
 import { markdownToHTML, objToUrlParams } from '../lib/text';
 
-interface Props {
-  preview: boolean;
-  title: string;
-  description: string;
-  slug: string;
-  previewImage: {
-    url: string;
-    description: string;
-  };
-  musicText: string;
-  contact: string;
-}
-
-const Music: NextPage<Props> = function (props) {
+const Music = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout
       preview={props.preview}
@@ -41,33 +28,81 @@ const Music: NextPage<Props> = function (props) {
 
 export default Music;
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const response = await queryContent(
+export const getStaticProps = (async ({ preview = false }) => {
+  const pageData = await queryContentSave(
     `{
-        page: pageCollection(where: {slug: "musik"}, limit: 1, preview: false) {
-            items {
-                title
-                slug
-                description
-            }
-        }
-        musicSnippet: textSnippetCollection(where: {title: "Music"}, limit: 1, preview: false) {
-            items {
-                content
-            }
-        }
-        contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
-            items {
-                content
-            }
-        }
-    }`,
-    preview,
+    pageCollection(where: {slug: "musik"}, limit: 1, preview: false) {
+      items {
+        title
+        slug
+        description
+      }
+    }
+  }`,
+    z.object({
+      data: z.object({
+        pageCollection: z.object({
+          items: z.array(
+            z.object({
+              title: z.string(),
+              slug: z.string(),
+              description: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
   );
 
-  const page = response.data.page.items[0];
-  const musicText = response.data.musicSnippet.items[0].content;
-  const contactText = response.data.contactSnippet.items[0].content;
+  const page = pageData.data.pageCollection.items[0];
+
+  const musicSnippetData = await queryContentSave(
+    `{
+    textSnippetCollection(where: {title: "Music"}, limit: 1, preview: false) {
+      items {
+        content
+      }
+    }
+  }`,
+    z.object({
+      data: z.object({
+        textSnippetCollection: z.object({
+          items: z.array(
+            z.object({
+              content: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const musicText =
+    musicSnippetData.data.textSnippetCollection.items[0].content;
+
+  const contactSnippetData = await queryContentSave(
+    `{
+    textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
+      items {
+        content
+      }
+    }
+  }`,
+    z.object({
+      data: z.object({
+        textSnippetCollection: z.object({
+          items: z.array(
+            z.object({
+              content: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const contactText =
+    contactSnippetData.data.textSnippetCollection.items[0].content;
 
   const previewImage = {
     url: `https://timoclasen.de/api/og-image?${objToUrlParams({
@@ -87,4 +122,4 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       contact: await markdownToHTML(contactText),
     },
   };
-};
+}) satisfies GetStaticProps;
