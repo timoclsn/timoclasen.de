@@ -1,8 +1,8 @@
-import { Linkedin, Mail, Twitter } from 'react-feather';
+import { Linkedin, Mail, Twitter } from "react-feather";
 
-import { Button } from './Button';
-import { WidgetLayout } from './WidgetLayout';
-import { WidgetText } from './WidgetText';
+import { Button } from "./Button";
+import { WidgetLayout } from "./WidgetLayout";
+import { WidgetText } from "./WidgetText";
 
 interface Props {
   text: string;

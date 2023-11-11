@@ -1,8 +1,9 @@
-import { Music, User } from 'react-feather';
+import { Music, User } from "react-feather";
 
-import { trpc } from '../utils/trpc';
-import { MediaPreview } from './MediaPreview';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './Tabs';
+import { trpc } from "../utils/trpc";
+import { MediaPreview } from "./MediaPreview";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "./Tabs";
+import { track } from "../lib/tracking";
 
 export function TopMusic() {
   const { data: topArtistsData, error: topArtistsError } =
@@ -31,8 +32,8 @@ export function TopMusic() {
         <TabsTrigger
           value="1"
           onClick={() => {
-            splitbee.track('Tabs Control', {
-              tab: 'Artists',
+            track("Tabs Control", {
+              tab: "Artists",
             });
           }}
         >
@@ -41,8 +42,8 @@ export function TopMusic() {
         <TabsTrigger
           value="2"
           onClick={() => {
-            splitbee.track('Tabs Control', {
-              tab: 'Songs',
+            track("Tabs Control", {
+              tab: "Songs",
             });
           }}
         >
@@ -59,7 +60,7 @@ export function TopMusic() {
                     no={index + 1}
                     image={artist.image}
                     BylineIcon={Music}
-                    byline={artist.genres.join(', ')}
+                    byline={artist.genres.join(", ")}
                     subline={`Follower: ${artist.followers}`}
                     url={artist.url}
                   />

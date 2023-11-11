@@ -1,56 +1,16 @@
-import { format, parseISO } from 'date-fns';
-import { de } from 'date-fns/locale';
-import type { NextPage } from 'next';
-import type { GetStaticProps } from 'next';
-import readingTime from 'reading-time';
+import { format, parseISO } from "date-fns";
+import { de } from "date-fns/locale";
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import readingTime from "reading-time";
+import { z } from "zod";
 
-import { BlogPostPreview } from '../components/BlogPostPreview';
-import { ContactWidget } from '../components/ContactWidget';
-import { Layout } from '../components/Layout';
-import { queryContent } from '../lib/content';
-import { markdownToHTML, objToUrlParams } from '../lib/text';
+import { BlogPostPreview } from "../components/BlogPostPreview";
+import { ContactWidget } from "../components/ContactWidget";
+import { Layout } from "../components/Layout";
+import { queryContent } from "../lib/content";
+import { markdownToHTML, objToUrlParams } from "../lib/text";
 
-export interface BlogPost {
-  sys: {
-    id: string;
-    publishedVersion: string;
-  };
-  title: string;
-  subtitle: string;
-  date: string;
-  dateFormatted: string;
-  slug: string;
-  previewImage: {
-    url: string;
-    description: string;
-  };
-  readingTime: number;
-  author: {
-    name: string;
-    username: string;
-    image: {
-      url: string;
-      description: string;
-    };
-  };
-  summary: string;
-  text: string;
-}
-interface Props {
-  preview: boolean;
-  title: string;
-  description: string;
-  slug: string;
-  previewImage: {
-    url: string;
-    description: string;
-  };
-  aboutTeaser: string;
-  blogPosts: BlogPost[];
-  contact: string;
-}
-
-const Blog: NextPage<Props> = function (props) {
+const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout
       preview={props.preview}
@@ -59,7 +19,7 @@ const Blog: NextPage<Props> = function (props) {
       previewImage={props.previewImage}
       slug={props.slug}
     >
-      {props.blogPosts.map((post: BlogPost) => (
+      {props.blogPosts.map((post) => (
         <BlogPostPreview
           title={post.title}
           subtitle={post.subtitle}
@@ -77,54 +37,108 @@ const Blog: NextPage<Props> = function (props) {
 
 export default Blog;
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const response = await queryContent(
+export const getStaticProps = (async ({ preview = false }) => {
+  const pageDate = await queryContent(
     `{
-        page: pageCollection(where: {slug: "blog"}, limit: 1, preview: false) {
-            items {
-                title
-                slug
-                description
-            }
+      pageCollection(where: {slug: "blog"}, limit: 1, preview: false) {
+        items {
+          title
+          slug
+          description
         }
-        blogPosts: blogPostCollection(order: [date_DESC], preview: false) {
-            items {
-                sys {
-                    id
-                    publishedVersion
-                }
-                title
-                subtitle
-                slug
-                date
-                text
-            }
-        }
-        contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
-            items {
-                content
-            }
-        }
+      }
     }`,
-    preview,
+    z.object({
+      data: z.object({
+        pageCollection: z.object({
+          items: z.array(
+            z.object({
+              title: z.string(),
+              slug: z.string(),
+              description: z.string(),
+            })
+          ),
+        }),
+      }),
+    })
   );
 
-  const page = response.data.page.items[0];
+  const page = pageDate.data.pageCollection.items[0];
 
-  const blogPosts = response.data.blogPosts.items.map((blogPost: BlogPost) => {
-    const readingTimeObj = readingTime(blogPost.text);
-    blogPost.readingTime = Math.ceil(readingTimeObj.minutes);
+  const blogPostsData = await queryContent(
+    `{
+      blogPostCollection(order: [date_DESC], preview: false) {
+        items {
+          sys {
+            id
+            publishedVersion
+          }
+          title
+          subtitle
+          slug
+          date
+          text
+        }
+      }
+    }`,
+    z.object({
+      data: z.object({
+        blogPostCollection: z.object({
+          items: z.array(
+            z.object({
+              sys: z.object({
+                id: z.string(),
+                publishedVersion: z.number().nullable(),
+              }),
+              title: z.string(),
+              subtitle: z.string(),
+              slug: z.string(),
+              date: z.string(),
+              text: z.string(),
+            })
+          ),
+        }),
+      }),
+    })
+  );
 
-    blogPost.text = '';
+  const blogPosts = blogPostsData.data.blogPostCollection.items.map(
+    (blogPost) => {
+      const readingTimeObj = readingTime(blogPost.text);
+      return {
+        ...blogPost,
+        readingTime: Math.ceil(readingTimeObj.minutes),
+        text: "",
+        dateFormatted: format(parseISO(blogPost.date), "dd. MMMM yyyy", {
+          locale: de,
+        }),
+      };
+    }
+  );
 
-    blogPost.dateFormatted = format(parseISO(blogPost.date), 'dd. MMMM yyyy', {
-      locale: de,
-    });
+  const contactSnippetData = await queryContent(
+    `{
+      textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
+        items {
+          content
+        }
+      }
+    }`,
+    z.object({
+      data: z.object({
+        textSnippetCollection: z.object({
+          items: z.array(
+            z.object({
+              content: z.string(),
+            })
+          ),
+        }),
+      }),
+    })
+  );
 
-    return blogPost;
-  });
-
-  const contactText = response.data.contactSnippet.items[0].content;
+  const contactText =
+    contactSnippetData.data.textSnippetCollection.items[0].content;
 
   const previewImage = {
     url: `https://timoclasen.de/api/og-image?${objToUrlParams({
@@ -144,4 +158,4 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       contact: await markdownToHTML(contactText),
     },
   };
-};
+}) satisfies GetStaticProps;

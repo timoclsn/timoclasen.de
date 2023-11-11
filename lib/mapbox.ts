@@ -1,7 +1,7 @@
-import polyline from '@mapbox/polyline';
-import type { Position } from 'geojson';
-import simplify from 'simplify-geojson';
-import { z } from 'zod';
+import polyline from "@mapbox/polyline";
+import type { Position } from "geojson";
+import simplify from "simplify-geojson";
+import { z } from "zod";
 
 const mapboxAccessToken = z.string().parse(process.env.MAPBOX_ACCESS_TOKEN);
 
@@ -16,7 +16,7 @@ interface GeoJSON {
       };
       properties: {
         stroke: string;
-        'stroke-width': number;
+        "stroke-width": number;
       };
     },
   ];
@@ -28,24 +28,24 @@ export function getMapURLs(runPolyline: string) {
 
   const geometry = polyline.toGeoJSON(runPolyline);
 
-  const themeLight = 'light-v10';
-  const themeDark = 'dark-v10';
-  const pathColorLight = '#3E51F7';
-  const pathColorDark = '#4F5FEF';
+  const themeLight = "light-v10";
+  const themeDark = "dark-v10";
+  const pathColorLight = "#3E51F7";
+  const pathColorDark = "#4F5FEF";
   const pathWidth = 10;
   const width = 1280;
   const height = 1280;
   const padding = 200;
 
   const geoJSON: GeoJSON = {
-    type: 'FeatureCollection',
+    type: "FeatureCollection",
     features: [
       {
-        type: 'Feature',
+        type: "Feature",
         geometry: geometry,
         properties: {
           stroke: pathColorLight,
-          'stroke-width': pathWidth,
+          "stroke-width": pathWidth,
         },
       },
     ],

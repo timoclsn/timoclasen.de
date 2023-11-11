@@ -1,20 +1,20 @@
-import { TRPCError } from '@trpc/server';
-import { z } from 'zod';
+import { TRPCError } from "@trpc/server";
+import { z } from "zod";
 
-import { AttributeType, NodeState } from '../../lib/enums';
+import { AttributeType, NodeState } from "../../lib/enums";
 import {
   formatValue,
   getHexColor,
   getNodes,
   isLight,
   playHomeegram,
-} from '../../lib/homee';
-import { prisma } from '../../lib/prisma';
-import { publicProcedure, router } from '../trpc';
+} from "../../lib/homee";
+import { prisma } from "../../lib/prisma";
+import { publicProcedure, router } from "../trpc";
 
 type ColorHomeegramIds = Record<string, number>;
 
-const colorSchema = z.enum(['red', 'green', 'blue']);
+const colorSchema = z.enum(["red", "green", "blue"]);
 
 export const smarthomeRouter = router({
   smarthome: publicProcedure
@@ -34,8 +34,8 @@ export const smarthomeRouter = router({
 
       if (!nodes.length) {
         throw new TRPCError({
-          code: 'INTERNAL_SERVER_ERROR',
-          message: 'Could not get nodes.',
+          code: "INTERNAL_SERVER_ERROR",
+          message: "Could not get nodes.",
         });
       }
 
@@ -109,29 +109,29 @@ export const smarthomeRouter = router({
         );
 
       return {
-        lights: lightsOn ? 'An' : 'Aus',
+        lights: lightsOn ? "An" : "Aus",
         rain: outsideTempAtr
           ? isRaining
             ? outsideTempAtr.current_value > 0
-              ? 'Es regnet'
-              : 'Es schneit'
-            : 'Kein Regen'
-          : '',
+              ? "Es regnet"
+              : "Es schneit"
+            : "Kein Regen"
+          : "",
         temperature: tempAtr
           ? formatValue(tempAtr.current_value, tempAtr.unit)
-          : '',
+          : "",
         humidity: humidityAtr
           ? formatValue(humidityAtr.current_value, humidityAtr.unit)
-          : '',
-        energy: accumulatedEnergy ? formatValue(accumulatedEnergy, 'W') : '',
+          : "",
+        energy: accumulatedEnergy ? formatValue(accumulatedEnergy, "W") : "",
         outsideTemperature: outsideTempAtr
           ? formatValue(outsideTempAtr.current_value, outsideTempAtr.unit)
-          : '',
+          : "",
         balconyOnOff:
-          balconyOnOffAtr && balconyOnOffAtr.current_value ? 'An' : 'Aus',
+          balconyOnOffAtr && balconyOnOffAtr.current_value ? "An" : "Aus",
         balconyColor: balconyColorAtr
           ? getHexColor(balconyColorAtr.current_value)
-          : '',
+          : "",
       };
     }),
   turnOnBalcony: publicProcedure
@@ -195,12 +195,12 @@ async function waitFor(duration: number) {
 }
 
 const cache = {
-  lights: 'An',
-  rain: 'Kein Regen',
-  temperature: '21.8 °C',
-  humidity: '45.6 %',
-  energy: '11.9 W',
-  outsideTemperature: '3.2 °C',
-  balconyOnOff: 'An',
-  balconyColor: '#fa0501',
+  lights: "An",
+  rain: "Kein Regen",
+  temperature: "21.8 °C",
+  humidity: "45.6 %",
+  energy: "11.9 W",
+  outsideTemperature: "3.2 °C",
+  balconyOnOff: "An",
+  balconyColor: "#fa0501",
 };

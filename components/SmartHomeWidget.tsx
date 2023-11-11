@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   CloudSnow,
   Droplet,
@@ -8,15 +8,16 @@ import {
   ToggleRight,
   Umbrella,
   Zap,
-} from 'react-feather';
-import toast from 'react-hot-toast';
+} from "react-feather";
+import toast from "react-hot-toast";
 
-import { trpc } from '../utils/trpc';
-import { Button } from './Button';
-import { Skeleton } from './Skeleton';
-import { SmartHomeElement } from './SmartHomeElement';
-import { useTheme } from './ThemeContext';
-import { WidgetLayout } from './WidgetLayout';
+import { trpc } from "../utils/trpc";
+import { Button } from "./Button";
+import { Skeleton } from "./Skeleton";
+import { SmartHomeElement } from "./SmartHomeElement";
+import { useTheme } from "./ThemeContext";
+import { WidgetLayout } from "./WidgetLayout";
+import { track } from "../lib/tracking";
 
 interface Props {
   text: string;
@@ -57,18 +58,18 @@ export function SmartHomeWidget({ text, footnote }: Props) {
     },
   });
 
-  const errorMessage = 'Nicht erreichbar…';
+  const errorMessage = "Nicht erreichbar…";
 
-  async function controlLight(color: 'red' | 'green' | 'blue', emoji: string) {
+  async function controlLight(color: "red" | "green" | "blue", emoji: string) {
     setDisableButtons(true);
 
-    const toastId = toast.loading('Schalten...');
+    const toastId = toast.loading("Schalten...");
     mutateSmartHome.mutate(
       { balconyColor: color },
       {
         onSuccess: () => {
           toast.remove(toastId);
-          toast.success('Balkon wurde eingeschaltet!', {
+          toast.success("Balkon wurde eingeschaltet!", {
             icon: emoji,
             duration: 5000,
           });
@@ -79,18 +80,18 @@ export function SmartHomeWidget({ text, footnote }: Props) {
               onSuccess: () => {
                 setDisableButtons(false);
               },
-            },
+            }
           );
-          splitbee.track('Balcony Light Control', {
+          track("Balcony Light Control", {
             color: `${emoji} ${color}`,
           });
         },
         onError: () => {
           toast.remove(toastId);
-          toast.error('Hat nicht funktioniert.');
+          toast.error("Hat nicht funktioniert.");
           setDisableButtons(false);
         },
-      },
+      }
     );
   }
 
@@ -120,7 +121,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
         </div>
         <div className="-mt-6 space-y-6 sm:mt-0 sm:space-y-8">
           <SmartHomeElement
-            Icon={smartHomeData?.lights === 'An' ? ToggleRight : ToggleLeft}
+            Icon={smartHomeData?.lights === "An" ? ToggleRight : ToggleLeft}
             title="Lichter"
             value={smartHomeError ? errorMessage : smartHomeData?.lights}
           />
@@ -133,9 +134,9 @@ export function SmartHomeWidget({ text, footnote }: Props) {
           />
           <SmartHomeElement
             Icon={
-              smartHomeData?.rain === 'Es regnet'
+              smartHomeData?.rain === "Es regnet"
                 ? Umbrella
-                : smartHomeData?.rain === 'Es schneit'
+                : smartHomeData?.rain === "Es schneit"
                 ? CloudSnow
                 : Sun
             }
@@ -155,24 +156,24 @@ export function SmartHomeWidget({ text, footnote }: Props) {
               <div
                 className="flex flex-none items-center justify-center font-bold"
                 style={{
-                  width: '100px',
-                  height: '100px',
-                  borderRadius: '9999px',
+                  width: "100px",
+                  height: "100px",
+                  borderRadius: "9999px",
                   boxShadow:
-                    smartHomeData.balconyOnOff === 'Aus'
-                      ? 'none'
+                    smartHomeData.balconyOnOff === "Aus"
+                      ? "none"
                       : `0 0 50px ${smartHomeData?.balconyColor}`,
                   backgroundColor:
-                    smartHomeData.balconyOnOff === 'Aus'
+                    smartHomeData.balconyOnOff === "Aus"
                       ? darkMode
-                        ? '#000000'
-                        : '#FFFFFF'
+                        ? "#000000"
+                        : "#FFFFFF"
                       : smartHomeData?.balconyColor,
                 }}
               >
                 <span>
                   {smartHomeData &&
-                    smartHomeData.balconyOnOff === 'Aus' &&
+                    smartHomeData.balconyOnOff === "Aus" &&
                     smartHomeData.balconyOnOff}
                 </span>
               </div>
@@ -196,7 +197,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                 <Button
                   variant="ghost"
                   size="small"
-                  onClick={() => controlLight('red', '🔥')}
+                  onClick={() => controlLight("red", "🔥")}
                   disabled={disableButtons}
                   fullWidth
                 >
@@ -205,7 +206,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                 <Button
                   variant="ghost"
                   size="small"
-                  onClick={() => controlLight('green', '🌿')}
+                  onClick={() => controlLight("green", "🌿")}
                   disabled={disableButtons}
                   fullWidth
                 >
@@ -214,7 +215,7 @@ export function SmartHomeWidget({ text, footnote }: Props) {
                 <Button
                   variant="ghost"
                   size="small"
-                  onClick={() => controlLight('blue', '🌊')}
+                  onClick={() => controlLight("blue", "🌊")}
                   disabled={disableButtons}
                   fullWidth
                 >

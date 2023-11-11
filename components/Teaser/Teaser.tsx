@@ -1,4 +1,4 @@
-import styles from './Teaser.module.css';
+import styles from "./Teaser.module.css";
 
 interface Props {
   text: string;

@@ -1,7 +1,7 @@
-import { XCircle } from 'react-feather';
+import { XCircle } from "react-feather";
 
-import { Button } from './Button';
-import { CenteredColumn } from './CenteredColumn';
+import { Button } from "./Button";
+import { CenteredColumn } from "./CenteredColumn";
 
 export function PreviewAlert() {
   return (

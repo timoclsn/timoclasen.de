@@ -1,4 +1,4 @@
-import { getPlaiceholder } from 'plaiceholder';
+import { getPlaiceholder } from "plaiceholder";
 
 export const getPlaceholder = async (src: string) => {
   const buffer = await fetch(src).then(async (res) =>

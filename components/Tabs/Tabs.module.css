@@ -1,7 +1,7 @@
-.tab[data-state='active'] {
+.tab[data-state="active"] {
   @apply bg-highlight text-light dark:bg-highlight-dark;
 }
 
-.tab[data-state='inactive'] {
+.tab[data-state="inactive"] {
   @apply text-highlight dark:text-highlight-dark;
 }

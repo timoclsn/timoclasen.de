@@ -1,8 +1,8 @@
-import Image from 'next/image';
+import Image from "next/image";
 
-import { trpc } from '../utils/trpc';
-import { Skeleton } from './Skeleton';
-import { SoundBars } from './SoundBars';
+import { trpc } from "../utils/trpc";
+import { Skeleton } from "./Skeleton";
+import { SoundBars } from "./SoundBars";
 
 export function NowPlaying() {
   const { data, error } = trpc.music.nowPlaying.useQuery();
@@ -58,7 +58,7 @@ export function NowPlaying() {
                 color="bg-[#116E32] dark:bg-[#1DB954]"
               />
               <p className="text-center text-base">
-                {data?.isPlaying ? 'Läuft gerade auf ' : 'Zuletzt gehört auf '}
+                {data?.isPlaying ? "Läuft gerade auf " : "Zuletzt gehört auf "}
                 <a
                   href="https://www.spotify.com"
                   target="_blank"

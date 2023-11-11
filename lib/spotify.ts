@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 const envSchema = z.object({
   SPOTIFY_CLIENT_ID: z.string(),
@@ -12,7 +12,7 @@ const {
   SPOTIFY_REFRESH_TOKEN: refreshToken,
 } = envSchema.parse(process.env);
 
-const basic = Buffer.from(`${clientID}:${clientSecret}`).toString('base64');
+const basic = Buffer.from(`${clientID}:${clientSecret}`).toString("base64");
 
 const accessDataSchema = z.object({
   access_token: z.string(),
@@ -20,15 +20,15 @@ const accessDataSchema = z.object({
 
 async function getAccessToken() {
   const searchParams = new URLSearchParams({
-    grant_type: 'refresh_token',
+    grant_type: "refresh_token",
     refresh_token: refreshToken,
   });
 
-  const res = await fetch('https://accounts.spotify.com/api/token', {
-    method: 'POST',
+  const res = await fetch("https://accounts.spotify.com/api/token", {
+    method: "POST",
     headers: {
       Authorization: `Basic ${basic}`,
-      'Content-Type': 'application/x-www-form-urlencoded',
+      "Content-Type": "application/x-www-form-urlencoded",
     },
     body: searchParams.toString(),
   });
@@ -58,7 +58,7 @@ export async function getTopArtists() {
   const access_token = await getAccessToken();
 
   const res = await fetch(
-    'https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=5',
+    "https://api.spotify.com/v1/me/top/artists?time_range=long_term&limit=5",
     {
       headers: {
         Authorization: `Bearer ${access_token}`,
@@ -101,7 +101,7 @@ export async function getTopTracks() {
   const access_token = await getAccessToken();
 
   const res = await fetch(
-    'https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=5',
+    "https://api.spotify.com/v1/me/top/tracks?time_range=long_term&limit=5",
     {
       headers: {
         Authorization: `Bearer ${access_token}`,
@@ -134,7 +134,7 @@ export async function getNowPlaying() {
   const access_token = await getAccessToken();
 
   const res = await fetch(
-    'https://api.spotify.com/v1/me/player/currently-playing',
+    "https://api.spotify.com/v1/me/player/currently-playing",
     {
       headers: {
         Authorization: `Bearer ${access_token}`,
@@ -159,7 +159,7 @@ export async function getRecentlyPlayed() {
   const access_token = await getAccessToken();
 
   const res = await fetch(
-    'https://api.spotify.com/v1/me/player/recently-played?limit=1',
+    "https://api.spotify.com/v1/me/player/recently-played?limit=1",
     {
       headers: {
         Authorization: `Bearer ${access_token}`,

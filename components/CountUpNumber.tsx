@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const easeOutQuad = (t: number) => t * (2 - t);
 const frameDuration = 1000 / 60;
@@ -38,7 +38,7 @@ export function CountUpAnimation({ children, duration = 2000, play }: Props) {
   return (
     <>
       {play
-        ? Math.floor(count).toString().padStart(countTo.toString().length, '0')
+        ? Math.floor(count).toString().padStart(countTo.toString().length, "0")
         : countTo}
     </>
   );

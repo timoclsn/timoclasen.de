@@ -1,21 +1,21 @@
-import { ImageResponse } from '@vercel/og';
-import type { NextRequest } from 'next/server';
-import { createElement } from 'react';
-import { z } from 'zod';
+import { ImageResponse } from "@vercel/og";
+import type { NextRequest } from "next/server";
+import { createElement } from "react";
+import { z } from "zod";
 
-import { OGImage } from '../../components/OGImage';
-import { queryContent } from '../../lib/content';
+import { OGImage } from "../../components/OGImage";
+import { queryContent } from "../../lib/content";
 
 export const config = {
-  runtime: 'edge',
+  runtime: "edge",
 };
 
 const fontRegular = fetch(
-  new URL('../../public/fonts/Inter-Regular.woff', import.meta.url),
+  new URL("../../public/fonts/Inter-Regular.woff", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 const fontBold = fetch(
-  new URL('../../public/fonts/Inter-Bold.woff', import.meta.url),
+  new URL("../../public/fonts/Inter-Bold.woff", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 export default async function OGImageAPI(req: NextRequest) {
@@ -23,14 +23,14 @@ export default async function OGImageAPI(req: NextRequest) {
   const fontBoldData = await fontBold;
 
   const { searchParams } = new URL(req.url);
-  const name = z.string().parse(searchParams.get('name'));
-  const title = searchParams.get('title');
-  const subtitle = searchParams.get('subtitle');
-  const image = searchParams.get('image');
+  const name = z.string().parse(searchParams.get("name"));
+  const title = searchParams.get("title");
+  const subtitle = searchParams.get("subtitle");
+  const image = searchParams.get("image");
 
-  const response = await queryContent(
+  const personData = await queryContent(
     `{
-      person: personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
+      personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
         items {
           profileImageCollection {
             items {
@@ -40,13 +40,21 @@ export default async function OGImageAPI(req: NextRequest) {
         }
       }
     }`,
+    z.object({
+      personCollection: z.object({
+        items: z.array(
+          z.object({
+            profileImageCollection: z.object({
+              items: z.array(z.object({ url: z.string() })),
+            }),
+          })
+        ),
+      }),
+    })
   );
 
-  const person = response.data.person.items[0];
-  const fallbackImage = person.profileImageCollection.items[1] as Record<
-    'url',
-    string
-  >;
+  const person = personData.personCollection.items[0];
+  const fallbackImage = person.profileImageCollection.items[1];
 
   const reactElement = createElement(OGImage, {
     name,
@@ -60,15 +68,15 @@ export default async function OGImageAPI(req: NextRequest) {
     height: 630,
     fonts: [
       {
-        name: 'Inter',
+        name: "Inter",
         data: fontRegularData,
-        style: 'normal',
+        style: "normal",
         weight: 400,
       },
       {
-        name: 'Inter',
+        name: "Inter",
         data: fontBoldData,
-        style: 'normal',
+        style: "normal",
         weight: 700,
       },
     ],

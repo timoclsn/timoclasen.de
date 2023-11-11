@@ -1,9 +1,9 @@
-import { useRef } from 'react';
-import type { Icon } from 'react-feather';
+import { useRef } from "react";
+import type { Icon } from "react-feather";
 
-import { CountUpAnimation } from './CountUpNumber';
-import { Skeleton } from './Skeleton';
-import { useOnScreen } from './useOnScreen';
+import { CountUpAnimation } from "./CountUpNumber";
+import { Skeleton } from "./Skeleton";
+import { useOnScreen } from "./useOnScreen";
 interface Label {
   text: string;
   description: string;
@@ -37,7 +37,7 @@ export function RunningElement({
           <Skeleton circle height="20px" width="20px" />
         )}
       </div>
-      <p className={`my-2${nowrap && ' whitespace-nowrap'}`}>
+      <p className={`my-2${nowrap && " whitespace-nowrap"}`}>
         {href ? (
           <a href={href} target="_blank" rel="noopener noreferrer">
             {text}

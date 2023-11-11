@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import { ArrowRight } from 'react-feather';
+import Image from "next/image";
+import { ArrowRight } from "react-feather";
 
-import { Button } from './Button';
+import { Button } from "./Button";
 
 interface BgImage {
   url: string;

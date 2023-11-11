@@ -24,7 +24,7 @@
     transform 300ms ease;
 }
 
-.menuIcon svg[data-hide='true'] {
+.menuIcon svg[data-hide="true"] {
   opacity: 0;
   transform: scale(0);
 }

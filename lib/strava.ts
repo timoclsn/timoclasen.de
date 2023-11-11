@@ -1,5 +1,5 @@
-import { intervalToDuration, startOfYear } from 'date-fns';
-import { z } from 'zod';
+import { intervalToDuration, startOfYear } from "date-fns";
+import { z } from "zod";
 
 const envSchema = z.object({
   STRAVA_CLIENT_ID: z.string(),
@@ -19,14 +19,14 @@ const accessDataSchema = z.object({
 
 async function getAccessToken() {
   const searchParams = new URLSearchParams({
-    grant_type: 'refresh_token',
+    grant_type: "refresh_token",
     client_id: clientID,
     client_secret: clientSecret,
     refresh_token: refreshToken,
   });
 
-  const res = await fetch('https://www.strava.com/oauth/token', {
-    method: 'POST',
+  const res = await fetch("https://www.strava.com/oauth/token", {
+    method: "POST",
     body: searchParams,
   });
 
@@ -71,13 +71,13 @@ export function formatSpeed(speedMs: number) {
   const speedMinKm = 60 / speedKmh;
   const min = Math.floor(speedMinKm);
   const sec = Math.round((speedMinKm - Math.floor(speedMinKm)) * 60);
-  return `${min}:${sec >= 10 ? sec : '0' + sec} /km`;
+  return `${min}:${sec >= 10 ? sec : "0" + sec} /km`;
 }
 
 export function formatTime(timeS: number) {
   const timeMs = timeS * 1000;
   const duration = intervalToDuration({ start: 0, end: timeMs });
-  return `${duration.hours ? `${duration.hours}h ` : ''}${duration.minutes}m ${
+  return `${duration.hours ? `${duration.hours}h ` : ""}${duration.minutes}m ${
     duration.seconds
   }s`;
 }

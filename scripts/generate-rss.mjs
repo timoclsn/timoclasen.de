@@ -1,18 +1,17 @@
-import dotenv from 'dotenv';
-import { Feed } from 'feed';
-import { writeFileSync } from 'fs';
-import fetch from 'node-fetch';
-import { remark } from 'remark';
-import html from 'remark-html';
+import dotenv from "dotenv";
+import { Feed } from "feed";
+import { writeFileSync } from "fs";
+import { remark } from "remark";
+import html from "remark-html";
 
 dotenv.config();
 
 const spaceId = process.env.CONTENTFUL_SPACE_ID;
 const publicAccessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
 
-const name = 'Timo Clasen';
-const url = 'https://timoclasen.de';
-const email = 'timo@timoclasen.de';
+const name = "Timo Clasen";
+const url = "https://timoclasen.de";
+const email = "timo@timoclasen.de";
 
 (async () => {
   const response = await queryContent(
@@ -34,17 +33,17 @@ const email = 'timo@timoclasen.de';
           }
         }
       }
-    }`
+    }`,
   );
 
   const blogPosts = response.data.blogPosts.items;
 
   const feed = new Feed({
     title: `${name} • Blog`,
-    description: 'Mein persönlicher Blog',
+    description: "Mein persönlicher Blog",
     id: url,
     link: url,
-    language: 'de',
+    language: "de",
     favicon: `${url}/favicons/favicon.ico`,
     copyright: name,
     feedLinks: {
@@ -75,14 +74,14 @@ const email = 'timo@timoclasen.de';
     });
   }
 
-  writeFileSync('./public/rss.xml', feed.rss2());
+  writeFileSync("./public/rss.xml", feed.rss2());
 })();
 
 async function queryContent(query) {
   return fetch(`https://graphql.contentful.com/content/v1/spaces/${spaceId}`, {
-    method: 'POST',
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
       Authorization: `Bearer ${publicAccessToken}`,
     },
     body: JSON.stringify({ query }),

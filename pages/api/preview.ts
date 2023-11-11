@@ -1,4 +1,4 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
+import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function preview(
   req: NextApiRequest,
@@ -7,10 +7,10 @@ export default async function preview(
   const { secret } = req.query;
 
   if (secret !== process.env.CONTENTFUL_PREVIEW_SECRET) {
-    return res.status(401).json({ message: 'Invalid token' });
+    return res.status(401).json({ message: "Invalid token" });
   }
 
   res.setPreviewData({});
-  res.redirect('/');
+  res.redirect("/");
   res.end();
 }

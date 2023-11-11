@@ -1,26 +1,13 @@
-import type { NextPage } from 'next';
-import type { GetStaticProps } from 'next';
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import { z } from "zod";
 
-import { ContactWidget } from '../components/ContactWidget';
-import { Layout } from '../components/Layout';
-import { TextBlock } from '../components/TextBlock';
-import { queryContent } from '../lib/content';
-import { markdownToHTML, objToUrlParams } from '../lib/text';
+import { ContactWidget } from "../components/ContactWidget";
+import { Layout } from "../components/Layout";
+import { TextBlock } from "../components/TextBlock";
+import { queryContent } from "../lib/content";
+import { markdownToHTML, objToUrlParams } from "../lib/text";
 
-interface Props {
-  preview: boolean;
-  title: string;
-  description: string;
-  slug: string;
-  previewImage: {
-    url: string;
-    description: string;
-  };
-  error: string;
-  contact: string;
-}
-
-const Error: NextPage<Props> = function (props) {
+const Error = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout
       preview={props.preview}
@@ -37,33 +24,81 @@ const Error: NextPage<Props> = function (props) {
 
 export default Error;
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const response = await queryContent(
+export const getStaticProps = (async ({ preview = false }) => {
+  const pageData = await queryContent(
     `{
-        page: pageCollection(where: {slug: "404"}, limit: 1, preview: false) {
-            items {
-                title
-                slug
-                description
-            }
-        }
-        errorSnippet: textSnippetCollection(where: {title: "Error 404"}, limit: 1, preview: false) {
-            items {
-                content
-            }
-        }
-        contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
-            items {
-                content
-            }
-        }
-    }`,
-    preview,
+    pageCollection(where: {slug: "404"}, limit: 1, preview: false) {
+      items {
+        title
+        slug
+        description
+      }
+    }
+  }`,
+    z.object({
+      data: z.object({
+        pageCollection: z.object({
+          items: z.array(
+            z.object({
+              title: z.string(),
+              slug: z.string(),
+              description: z.string(),
+            })
+          ),
+        }),
+      }),
+    })
   );
 
-  const page = response.data.page.items[0];
-  const errorText = response.data.errorSnippet.items[0].content;
-  const contactText = response.data.contactSnippet.items[0].content;
+  const page = pageData.data.pageCollection.items[0];
+
+  const errorSnippetData = await queryContent(
+    `{
+    textSnippetCollection(where: {title: "Error 404"}, limit: 1, preview: false) {
+      items {
+        content
+      }
+    }
+  }`,
+    z.object({
+      data: z.object({
+        textSnippetCollection: z.object({
+          items: z.array(
+            z.object({
+              content: z.string(),
+            })
+          ),
+        }),
+      }),
+    })
+  );
+
+  const errorText =
+    errorSnippetData.data.textSnippetCollection.items[0].content;
+
+  const contactSnippetData = await queryContent(
+    `{
+    textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
+      items {
+        content
+      }
+    }
+  }`,
+    z.object({
+      data: z.object({
+        textSnippetCollection: z.object({
+          items: z.array(
+            z.object({
+              content: z.string(),
+            })
+          ),
+        }),
+      }),
+    })
+  );
+
+  const contactText =
+    contactSnippetData.data.textSnippetCollection.items[0].content;
 
   const previewImage = {
     url: `https://timoclasen.de/api/og-image?${objToUrlParams({
@@ -83,4 +118,4 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       contact: await markdownToHTML(contactText),
     },
   };
-};
+}) satisfies GetStaticProps;

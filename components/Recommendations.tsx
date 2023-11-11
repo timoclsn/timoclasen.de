@@ -1,11 +1,11 @@
-import type { ChangeEvent, FormEvent } from 'react';
-import { useState } from 'react';
-import { Loader, Send } from 'react-feather';
+import type { ChangeEvent, FormEvent } from "react";
+import { useState } from "react";
+import { Loader, Send } from "react-feather";
 
-import { Button } from './Button';
+import { Button } from "./Button";
 
 export function Recommendations() {
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [serverState, setServerState] = useState({
     submitting: false,
     submitted: false,
@@ -21,11 +21,11 @@ export function Recommendations() {
     const form = e.target as HTMLFormElement;
     setServerState({ submitting: true, submitted: false, error: false });
 
-    const response = await fetch('https://formspree.io/f/xleoyqpj', {
-      method: 'POST',
+    const response = await fetch("https://formspree.io/f/xleoyqpj", {
+      method: "POST",
       body: new FormData(form),
       headers: {
-        Accept: 'application/json',
+        Accept: "application/json",
       },
     });
 
@@ -36,7 +36,7 @@ export function Recommendations() {
         error: false,
       });
       form.reset();
-      setMessage('');
+      setMessage("");
     } else {
       const data = await response.json();
 
@@ -49,7 +49,7 @@ export function Recommendations() {
   }
 
   const inputStyles =
-    'block w-full p-4 text-base bg-light dark:bg-dark rounded-xl placeholder-dark dark:placeholder-light placeholder-opacity-60 dark:placeholder-opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight dark:focus-visible:ring-highlight-dark';
+    "block w-full p-4 text-base bg-light dark:bg-dark rounded-xl placeholder-dark dark:placeholder-light placeholder-opacity-60 dark:placeholder-opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight dark:focus-visible:ring-highlight-dark";
 
   return (
     <div className="rounded-3xl bg-dark bg-opacity-10 px-6 py-12 dark:bg-light dark:bg-opacity-10 xl:px-12 xl:py-20">

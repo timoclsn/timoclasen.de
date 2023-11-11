@@ -3,8 +3,8 @@ import {
   getRecentlyPlayed,
   getTopArtists,
   getTopTracks,
-} from '../../lib/spotify';
-import { publicProcedure, router } from '../trpc';
+} from "../../lib/spotify";
+import { publicProcedure, router } from "../trpc";
 
 export const musicRouter = router({
   nowPlaying: publicProcedure.query(async () => {

@@ -1,10 +1,10 @@
-import Link from 'next/link';
-import { Calendar, Clock, Feather } from 'react-feather';
+import Link from "next/link";
+import { Calendar, Clock, Feather } from "react-feather";
 
-import { BlogPostLabel } from './BlogPostLabel';
+import { BlogPostLabel } from "./BlogPostLabel";
 
 interface Sys {
-  publishedVersion: string;
+  publishedVersion: number | null;
 }
 
 interface Props {

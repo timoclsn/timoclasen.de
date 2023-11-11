@@ -1,14 +1,14 @@
-import NextImage from 'next/image';
-import ReactMarkdown, { Components } from 'react-markdown';
-import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter';
-import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx';
-import styleDark from 'react-syntax-highlighter/dist/cjs/styles/prism/material-dark';
-import styleLight from 'react-syntax-highlighter/dist/cjs/styles/prism/material-light';
+import NextImage from "next/image";
+import ReactMarkdown, { Components } from "react-markdown";
+import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import jsx from "react-syntax-highlighter/dist/cjs/languages/prism/jsx";
+import styleDark from "react-syntax-highlighter/dist/cjs/styles/prism/material-dark";
+import styleLight from "react-syntax-highlighter/dist/cjs/styles/prism/material-light";
 
-import { TextBlock } from './TextBlock';
-import { useTheme } from './ThemeContext';
+import { TextBlock } from "./TextBlock";
+import { useTheme } from "./ThemeContext";
 
-SyntaxHighlighter.registerLanguage('jsx', jsx);
+SyntaxHighlighter.registerLanguage("jsx", jsx);
 
 interface CodeNode {
   value: string;
@@ -25,7 +25,7 @@ export function TextPost({ children }: Props) {
     pre: ({ node }) => {
       const domNode = node as unknown as HTMLElement;
       const codeNode = domNode.children[0].children[0] as unknown as CodeNode;
-      const text = codeNode.value.replace(/\n$/, '');
+      const text = codeNode.value.replace(/\n$/, "");
       const style = darkMode ? styleDark : styleLight;
       return (
         <SyntaxHighlighter style={style} language="jsx">
@@ -42,7 +42,7 @@ export function TextPost({ children }: Props) {
             height="2200"
             sizes="90vw"
             quality={60}
-            alt={alt ?? ''}
+            alt={alt ?? ""}
             className="object-contain object-center"
           />
         </span>

@@ -1,6 +1,6 @@
-import clsx from 'clsx';
+import clsx from "clsx";
 
-import styles from './SoundBars.module.css';
+import styles from "./SoundBars.module.css";
 
 interface Props {
   isPlaying?: boolean;
@@ -9,11 +9,11 @@ interface Props {
 
 export function SoundBars({ isPlaying, color }: Props) {
   const barStyles = clsx(
-    'w-[3px]',
-    'rounded-sm',
+    "w-[3px]",
+    "rounded-sm",
     styles.soundBars,
     isPlaying && styles.isPlaying,
-    color ? color : 'bg-highlight dark:bg-highlight-dark',
+    color ? color : "bg-highlight dark:bg-highlight-dark",
   );
 
   return (

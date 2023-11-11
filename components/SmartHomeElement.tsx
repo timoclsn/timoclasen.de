@@ -1,6 +1,6 @@
-import type { Icon } from 'react-feather';
+import type { Icon } from "react-feather";
 
-import { Skeleton } from './Skeleton';
+import { Skeleton } from "./Skeleton";
 
 interface Props {
   Icon: Icon;

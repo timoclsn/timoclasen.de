@@ -1,19 +1,19 @@
-import { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 
-import { useTheme } from './ThemeContext';
+import { useTheme } from "./ThemeContext";
 
 const lightToast = {
-  minWidth: '300px',
-  borderRadius: '1rem',
-  background: '#FFFFFF',
-  color: '#000000',
+  minWidth: "300px",
+  borderRadius: "1rem",
+  background: "#FFFFFF",
+  color: "#000000",
 };
 
 const darkToast = {
-  minWidth: '300px',
-  borderRadius: '1rem',
-  background: '#333333',
-  color: '#FFFFFF',
+  minWidth: "300px",
+  borderRadius: "1rem",
+  background: "#333333",
+  color: "#FFFFFF",
 };
 
 export function ToastProvider() {

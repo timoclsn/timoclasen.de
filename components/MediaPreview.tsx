@@ -1,8 +1,8 @@
-import Image from 'next/image';
-import type { Icon } from 'react-feather';
-import { Heart } from 'react-feather';
+import Image from "next/image";
+import type { Icon } from "react-feather";
+import { Heart } from "react-feather";
 
-import { Skeleton } from './Skeleton';
+import { Skeleton } from "./Skeleton";
 
 interface Props {
   title?: string;
@@ -32,7 +32,7 @@ export function MediaPreview({
           className="h-[80px] w-[80px] rounded-2xl"
           src={image}
           quality={60}
-          alt={title ?? ''}
+          alt={title ?? ""}
           width={80}
           height={80}
         />
