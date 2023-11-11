@@ -1,6 +1,17 @@
 import Image from 'next/image';
 
-import type { CVEntry } from '../pages/ueber';
+interface CVEntry {
+  title: string;
+  timespan: string;
+  company: {
+    name: string;
+    url: string;
+    image: {
+      url: string;
+      description: string;
+    };
+  };
+}
 
 interface Props {
   entries: CVEntry[];

@@ -1,48 +1,16 @@
-import type { GetStaticProps, NextPage } from 'next';
+import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import Image from 'next/image';
+import { z } from 'zod';
 
 import { ContactWidget } from '../components/ContactWidget';
 import { CV } from '../components/CV';
 import { Layout } from '../components/Layout';
 import { TextBlock } from '../components/TextBlock';
-import { queryContent } from '../lib/content';
+import { queryContentSave } from '../lib/content';
 import { getPlaceholder } from '../lib/placeholder';
 import { markdownToHTML, objToUrlParams } from '../lib/text';
 
-export interface CVEntry {
-  title: string;
-  timespan: string;
-  company: {
-    name: string;
-    url: string;
-    image: {
-      url: string;
-      description: string;
-    };
-  };
-}
-
-interface Props {
-  preview: boolean;
-  title: string;
-  description: string;
-  slug: string;
-  previewImage: {
-    url: string;
-    description: string;
-  };
-  image: {
-    url: string;
-    description: string;
-    blurDataURL: string;
-  };
-  about: string;
-  cvEntries: CVEntry[];
-  linkCollection: string;
-  contact: string;
-}
-
-const About: NextPage<Props> = function (props) {
+const About = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <Layout
       preview={props.preview}
@@ -74,58 +42,140 @@ const About: NextPage<Props> = function (props) {
 
 export default About;
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const response = await queryContent(
+export const getStaticProps = (async ({ preview = false }) => {
+  const pageData = await queryContentSave(
     `{
-        page: pageCollection(where: {slug: "ueber"}, limit: 1, preview: false) {
-            items {
-                title
-                slug
-                description
-            }
+      pageCollection(where: {slug: "ueber"}, limit: 1, preview: false) {
+        items {
+          title
+          slug
+          description
         }
-        person: personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
+      }
+    }`,
+    z.object({
+      data: z.object({
+        pageCollection: z.object({
+          items: z.array(
+            z.object({
+              title: z.string(),
+              slug: z.string(),
+              description: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const page = pageData.data.pageCollection.items[0];
+
+  const personData = await queryContentSave(
+    `{
+      personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
+        items {
+          cvText
+          imagesCollection {
             items {
-                cvText
-                imagesCollection {
-                    items {
-                        url
-                        description
-                    }
-                }
-                linkCollection
-            }
-        }
-        cvEntries: cvEntryCollection(order: [order_DESC], preview: false) {
-          items {
-            title
-            timespan
-            company {
-              name
               url
-              image {
-                url
-                description
-              }
+              description
+            }
+          }
+          linkCollection
+        }
+      }
+    }`,
+    z.object({
+      data: z.object({
+        personCollection: z.object({
+          items: z.array(
+            z.object({
+              cvText: z.string(),
+              imagesCollection: z.object({
+                items: z.array(
+                  z.object({
+                    url: z.string(),
+                    description: z.string(),
+                  }),
+                ),
+              }),
+              linkCollection: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const person = personData.data.personCollection.items[0];
+  const image = person.imagesCollection.items[2];
+  const { base64 } = await getPlaceholder(image.url);
+  const enhancedImage = { ...image, blurDataURL: base64 };
+
+  const cvEntriesData = await queryContentSave(
+    `{
+      cvEntryCollection(order: [order_DESC], preview: false) {
+        items {
+          title
+          timespan
+          company {
+            name
+            url
+            image {
+              url
+              description
             }
           }
         }
-        contactSnippet: textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
-            items {
-                content
-            }
-        }
+      }
     }`,
-    preview,
+    z.object({
+      data: z.object({
+        cvEntryCollection: z.object({
+          items: z.array(
+            z.object({
+              title: z.string(),
+              timespan: z.string(),
+              company: z.object({
+                name: z.string(),
+                url: z.string().url(),
+                image: z.object({
+                  url: z.string().url(),
+                  description: z.string(),
+                }),
+              }),
+            }),
+          ),
+        }),
+      }),
+    }),
   );
 
-  const page = response.data.page.items[0];
-  const person = response.data.person.items[0];
-  const image = person.imagesCollection.items[2];
-  const { base64 } = await getPlaceholder(image.url);
-  image.blurDataURL = base64;
-  const cvEntries = response.data.cvEntries.items;
-  const contactText = response.data.contactSnippet.items[0].content;
+  const cvEntries = cvEntriesData.data.cvEntryCollection.items;
+
+  const contactSnippetData = await queryContentSave(
+    `{
+      textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
+        items {
+          content
+        }
+      }
+    }`,
+    z.object({
+      data: z.object({
+        textSnippetCollection: z.object({
+          items: z.array(
+            z.object({
+              content: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
+
+  const contactText =
+    contactSnippetData.data.textSnippetCollection.items[0].content;
 
   const previewImage = {
     url: `https://timoclasen.de/api/og-image?${objToUrlParams({
@@ -141,11 +191,11 @@ export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
       description: page.description,
       previewImage,
       slug: page.slug,
-      image: image,
+      image: enhancedImage,
       about: await markdownToHTML(person.cvText),
       cvEntries,
       linkCollection: await markdownToHTML(person.linkCollection),
       contact: await markdownToHTML(contactText),
     },
   };
-};
+}) satisfies GetStaticProps;
