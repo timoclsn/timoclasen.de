@@ -1,7 +1,7 @@
-import WebSocket from 'ws';
-import { z } from 'zod';
+import WebSocket from "ws";
+import { z } from "zod";
 
-import { AttributeType, NodeProfile, NodeState } from '../lib/enums';
+import { AttributeType, NodeProfile, NodeState } from "../lib/enums";
 
 const envSchema = z.object({
   HOMEE_ID: z.string(),
@@ -33,18 +33,18 @@ export function getNodes() {
 
     const ws = new WebSocket(
       `wss://${homeeID}.hom.ee/connection?access_token=${accessToken}`,
-      'v2',
+      "v2",
     );
 
-    ws.on('error', () => {
+    ws.on("error", () => {
       reject(nodes);
     });
 
-    ws.on('open', () => {
-      ws.send('GET:nodes');
+    ws.on("open", () => {
+      ws.send("GET:nodes");
     });
 
-    ws.on('message', (data: string) => {
+    ws.on("message", (data: string) => {
       const dataJson = JSON.parse(data);
 
       if (dataJson.nodes) {
@@ -53,7 +53,7 @@ export function getNodes() {
       }
     });
 
-    ws.on('close', () => {
+    ws.on("close", () => {
       resolve(nodes);
     });
   });
@@ -63,7 +63,7 @@ export async function playHomeegram(homeegramID: number) {
   return await fetch(
     `https://${homeeID}.hom.ee/api/v2/homeegrams/${homeegramID}?play=1`,
     {
-      method: 'PUT',
+      method: "PUT",
       headers: {
         Cookie: accessToken,
       },
@@ -104,7 +104,7 @@ export function isLight(node: Node) {
     case NodeProfile.DimmableMeteringPlug:
     case NodeProfile.DoubleOnOffPlug:
     case NodeProfile.ImpulsePlug:
-      return node.image.includes('bulb') || node.image.includes('xmas');
+      return node.image.includes("bulb") || node.image.includes("xmas");
     default:
       return false;
   }
@@ -114,8 +114,8 @@ export function getHexColor(number: number) {
   let hexString = number.toString(16);
 
   while (hexString.length < 6) {
-    hexString = '0' + hexString;
+    hexString = "0" + hexString;
   }
 
-  return '#' + hexString;
+  return "#" + hexString;
 }

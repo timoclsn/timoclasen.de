@@ -1,6 +1,6 @@
-import { WidgetImage } from './WidgetImage';
-import { WidgetLayout } from './WidgetLayout';
-import { WidgetText } from './WidgetText';
+import { WidgetImage } from "./WidgetImage";
+import { WidgetLayout } from "./WidgetLayout";
+import { WidgetText } from "./WidgetText";
 
 interface Props {
   text: string;

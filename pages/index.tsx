@@ -1,26 +1,26 @@
-import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { z } from 'zod';
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import { z } from "zod";
 
-import { AboutWidget } from '../components/AboutWidget';
-import { BlogWidget } from '../components/BlogWidget';
-import { ContactWidget } from '../components/ContactWidget';
-import { Layout } from '../components/Layout';
-import { LCDWidget } from '../components/LCDWidget';
-import { MLWidget } from '../components/MLWidget';
-import { NowPlaying } from '../components/NowPlaying';
-import { PodcastsWidget } from '../components/PodcastsWidget';
-import { RunningWidget } from '../components/RunningWidget';
-import { SmartHomeWidget } from '../components/SmartHomeWidget';
-import { Teaser } from '../components/Teaser';
-import { queryContentSave } from '../lib/content';
-import { getPlaceholder } from '../lib/placeholder';
-import { getFavoritePodcasts } from '../lib/podcasts';
+import { AboutWidget } from "../components/AboutWidget";
+import { BlogWidget } from "../components/BlogWidget";
+import { ContactWidget } from "../components/ContactWidget";
+import { Layout } from "../components/Layout";
+import { LCDWidget } from "../components/LCDWidget";
+import { MLWidget } from "../components/MLWidget";
+import { NowPlaying } from "../components/NowPlaying";
+import { PodcastsWidget } from "../components/PodcastsWidget";
+import { RunningWidget } from "../components/RunningWidget";
+import { SmartHomeWidget } from "../components/SmartHomeWidget";
+import { Teaser } from "../components/Teaser";
+import { queryContentSave } from "../lib/content";
+import { getPlaceholder } from "../lib/placeholder";
+import { getFavoritePodcasts } from "../lib/podcasts";
 import {
   markdownToHTML,
   objToUrlParams,
   stripFirstLine,
   truncate,
-} from '../lib/text';
+} from "../lib/text";
 
 const Home = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -307,9 +307,9 @@ export const getStaticProps = (async ({ preview = false }) => {
 
   const previewImage = {
     url: `https://timoclasen.de/api/og-image?${objToUrlParams({
-      name: 'Timo Clasen',
+      name: "Timo Clasen",
     })}`,
-    description: 'Teasertext der Startseite und Profilfoto von Timo Clasen',
+    description: "Teasertext der Startseite und Profilfoto von Timo Clasen",
   };
 
   return {

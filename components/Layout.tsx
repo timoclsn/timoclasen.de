@@ -1,13 +1,13 @@
-import Head from 'next/head';
-import Script from 'next/script';
-import type { ReactNode } from 'react';
+import Head from "next/head";
+import Script from "next/script";
+import type { ReactNode } from "react";
 
-import { CenteredColumn } from './CenteredColumn';
-import { Favicons } from './Favicons';
-import { Footer } from './Footer';
-import { Navigation } from './Navigation';
-import { PreviewAlert } from './PreviewAlert';
-import { SEO } from './SEO';
+import { CenteredColumn } from "./CenteredColumn";
+import { Favicons } from "./Favicons";
+import { Footer } from "./Footer";
+import { Navigation } from "./Navigation";
+import { PreviewAlert } from "./PreviewAlert";
+import { SEO } from "./SEO";
 
 interface PreviewImage {
   url: string;
@@ -31,9 +31,9 @@ export function Layout({
   slug,
   preview,
 }: Props) {
-  const name = 'Timo Clasen';
+  const name = "Timo Clasen";
   const pageTitle = title.includes(name) ? title : `${title}  •  ${name}`;
-  slug = slug ? `/${slug}` : '';
+  slug = slug ? `/${slug}` : "";
 
   return (
     <>

@@ -1,10 +1,10 @@
-import '../styles/globals.css';
+import "../styles/globals.css";
 
-import type { AppProps } from 'next/app';
+import type { AppProps } from "next/app";
 
-import { ThemeProvider } from '../components/ThemeContext';
-import { ToastProvider } from '../components/ToastProvider';
-import { trpc } from '../utils/trpc';
+import { ThemeProvider } from "../components/ThemeContext";
+import { ToastProvider } from "../components/ToastProvider";
+import { trpc } from "../utils/trpc";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

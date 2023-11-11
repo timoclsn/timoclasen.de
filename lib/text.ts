@@ -1,6 +1,6 @@
-import { remark } from 'remark';
-import html from 'remark-html';
-import strip from 'strip-markdown';
+import { remark } from "remark";
+import html from "remark-html";
+import strip from "strip-markdown";
 
 export async function markdownToHTML(markdown: string) {
   const result = await remark().use(html).process(markdown);
@@ -19,17 +19,17 @@ export function truncate(str: string, n: number, useWordBoundary: boolean) {
   const subString = str.substring(0, n - 1);
   return (
     (useWordBoundary
-      ? subString.substring(0, subString.lastIndexOf(' '))
-      : subString) + '&hellip;'
+      ? subString.substring(0, subString.lastIndexOf(" "))
+      : subString) + "&hellip;"
   );
 }
 
 export function stripFirstLine(text: string) {
-  return text.substring(text.indexOf('\n') + 1);
+  return text.substring(text.indexOf("\n") + 1);
 }
 
 export function objToUrlParams(params: Record<string, string>) {
   return Object.entries(params)
     .map(([key, val]) => `${key}=${encodeURIComponent(val)}`)
-    .join('&');
+    .join("&");
 }

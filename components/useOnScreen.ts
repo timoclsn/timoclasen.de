@@ -1,4 +1,4 @@
-import { RefObject, useEffect, useState } from 'react';
+import { RefObject, useEffect, useState } from "react";
 
 export function useOnScreen<T extends Element>(
   ref: RefObject<T>,

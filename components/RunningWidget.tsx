@@ -1,8 +1,8 @@
-import { trpc } from '../utils/trpc';
-import { useTheme } from './ThemeContext';
-import { WidgetImage } from './WidgetImage';
-import { WidgetLayout } from './WidgetLayout';
-import { WidgetRunning } from './WidgetRunning';
+import { trpc } from "../utils/trpc";
+import { useTheme } from "./ThemeContext";
+import { WidgetImage } from "./WidgetImage";
+import { WidgetLayout } from "./WidgetLayout";
+import { WidgetRunning } from "./WidgetRunning";
 
 export function RunningWidget() {
   const { data, error } = trpc.sports.running.useQuery({
@@ -16,9 +16,9 @@ export function RunningWidget() {
   }
 
   const placeholderLight =
-    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8+vXTfwAJoAPddP66FgAAAABJRU5ErkJggg==';
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8+vXTfwAJoAPddP66FgAAAABJRU5ErkJggg==";
   const placeholderDark =
-    'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPU09X5DwACoAGIYYmEdwAAAABJRU5ErkJggg==';
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPU09X5DwACoAGIYYmEdwAAAABJRU5ErkJggg==";
 
   return (
     <div id="running">

@@ -1,6 +1,6 @@
-import Image from 'next/image';
+import Image from "next/image";
 
-import { Skeleton } from './Skeleton';
+import { Skeleton } from "./Skeleton";
 
 interface Props {
   url?: string;
@@ -38,9 +38,9 @@ export function WidgetImage({
         sizes="(min-width: 640px) 45vw, 90vw"
         quality={60}
         priority={priority}
-        alt={description ?? ''}
+        alt={description ?? ""}
         unoptimized={unoptimized}
-        placeholder={blurDataURL ? 'blur' : undefined}
+        placeholder={blurDataURL ? "blur" : undefined}
         blurDataURL={blurDataURL}
         className="object-cover object-center"
       />

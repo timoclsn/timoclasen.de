@@ -1,15 +1,15 @@
 {
-    "name": "timoclasen.de",
-    "icons": [
-        {
-            "src": "/favicon-android-small.png",
-            "type": "image/png",
-            "sizes": "192x192"
-        },
-        {
-            "src": "/favicon-android-big.png",
-            "type": "image/png",
-            "sizes": "512x512"
-        }
-    ]
+  "name": "timoclasen.de",
+  "icons": [
+    {
+      "src": "/favicon-android-small.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/favicon-android-big.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
 }

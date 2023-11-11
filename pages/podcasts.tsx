@@ -1,13 +1,13 @@
-import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { z } from 'zod';
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import { z } from "zod";
 
-import { Layout } from '../components/Layout';
-import { PodcastsList } from '../components/PodcastsList';
-import { Recommendations } from '../components/Recommendations';
-import { TextBlock } from '../components/TextBlock';
-import { queryContentSave } from '../lib/content';
-import { getPodcasts } from '../lib/podcasts';
-import { markdownToHTML, objToUrlParams } from '../lib/text';
+import { Layout } from "../components/Layout";
+import { PodcastsList } from "../components/PodcastsList";
+import { Recommendations } from "../components/Recommendations";
+import { TextBlock } from "../components/TextBlock";
+import { queryContentSave } from "../lib/content";
+import { getPodcasts } from "../lib/podcasts";
+import { markdownToHTML, objToUrlParams } from "../lib/text";
 
 const Podcasts = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (

@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import { Calendar, Clock, Feather, Twitter, User } from 'react-feather';
+import Image from "next/image";
+import { Calendar, Clock, Feather, Twitter, User } from "react-feather";
 
-import { BlogPostLabel } from './BlogPostLabel';
+import { BlogPostLabel } from "./BlogPostLabel";
 
 interface Author {
   name: string;

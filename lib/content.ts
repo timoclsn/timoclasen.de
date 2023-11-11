@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 const {
   CONTENTFUL_SPACE_ID: spaceId,
@@ -11,19 +11,19 @@ export async function queryContent(query: string, preview = false) {
   const draftContentInDevelopmentMode = true;
 
   if (draftContentInDevelopmentMode) {
-    preview = preview || env === 'development';
+    preview = preview || env === "development";
   }
 
   if (preview) {
-    query = query.replace(/preview: false/g, 'preview: true');
+    query = query.replace(/preview: false/g, "preview: true");
   }
 
   const res = await fetch(
     `https://graphql.contentful.com/content/v1/spaces/${spaceId}`,
     {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${
           preview ? previewAccessToken : publicAccessToken
         }`,
@@ -41,18 +41,18 @@ export const queryContentSave = async <TSchema extends z.ZodTypeAny>(
   let preview = false;
   const draftContentInDevelopmentMode = true;
   if (draftContentInDevelopmentMode) {
-    preview = preview || env === 'development';
+    preview = preview || env === "development";
   }
   if (preview) {
-    query = query.replace(/preview: false/g, 'preview: true');
+    query = query.replace(/preview: false/g, "preview: true");
   }
 
   const res = await fetch(
     `https://graphql.contentful.com/content/v1/spaces/${spaceId}`,
     {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${
           preview ? previewAccessToken : publicAccessToken
         }`,

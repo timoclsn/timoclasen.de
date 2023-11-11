@@ -1,7 +1,7 @@
-import type { ChangeEvent } from 'react';
-import { Filter, XCircle } from 'react-feather';
+import type { ChangeEvent } from "react";
+import { Filter, XCircle } from "react-feather";
 
-import type { PodcastsListFilter } from './PodcastsList';
+import type { PodcastsListFilter } from "./PodcastsList";
 
 interface Props {
   filter: PodcastsListFilter;
@@ -28,8 +28,8 @@ export function PodcastFilter({ filter, handleChange, clearFilter }: Props) {
         <label
           className={`sflex cursor-pointer select-none items-center justify-center whitespace-nowrap rounded-lg px-2 py-0.5 text-base ring-2 ring-highlight focus-visible:outline-none dark:ring-highlight-dark ${
             filter.favorites
-              ? 'bg-highlight text-light focus-within:ring-dark dark:bg-highlight-dark dark:focus-within:ring-light'
-              : 'text-highlight focus-within:ring-dark dark:text-highlight-dark dark:focus-within:ring-light'
+              ? "bg-highlight text-light focus-within:ring-dark dark:bg-highlight-dark dark:focus-within:ring-light"
+              : "text-highlight focus-within:ring-dark dark:text-highlight-dark dark:focus-within:ring-light"
           }`}
         >
           <input
@@ -46,8 +46,8 @@ export function PodcastFilter({ filter, handleChange, clearFilter }: Props) {
             key={index}
             className={`sflex cursor-pointer select-none items-center justify-center whitespace-nowrap rounded-lg px-2 py-0.5 text-base ring-2 ring-highlight focus-visible:outline-none dark:ring-highlight-dark ${
               filter.categories[category]
-                ? 'bg-highlight text-light focus-within:ring-dark dark:bg-highlight-dark dark:focus-within:ring-light'
-                : 'text-highlight focus-within:ring-dark dark:text-highlight-dark dark:focus-within:ring-light'
+                ? "bg-highlight text-light focus-within:ring-dark dark:bg-highlight-dark dark:focus-within:ring-light"
+                : "text-highlight focus-within:ring-dark dark:text-highlight-dark dark:focus-within:ring-light"
             }`}
           >
             <input

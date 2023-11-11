@@ -1,1 +1,1 @@
-export * from './SwitchMode';
+export * from "./SwitchMode";

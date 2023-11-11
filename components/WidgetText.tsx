@@ -1,7 +1,7 @@
-import Link from 'next/link';
-import { ArrowRight } from 'react-feather';
+import Link from "next/link";
+import { ArrowRight } from "react-feather";
 
-import { Button } from './Button';
+import { Button } from "./Button";
 
 interface Props {
   title: string;

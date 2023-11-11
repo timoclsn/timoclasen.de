@@ -1,11 +1,11 @@
-import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { z } from 'zod';
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import { z } from "zod";
 
-import { ContactWidget } from '../components/ContactWidget';
-import { Layout } from '../components/Layout';
-import { TextBlock } from '../components/TextBlock';
-import { queryContentSave } from '../lib/content';
-import { markdownToHTML, objToUrlParams } from '../lib/text';
+import { ContactWidget } from "../components/ContactWidget";
+import { Layout } from "../components/Layout";
+import { TextBlock } from "../components/TextBlock";
+import { queryContentSave } from "../lib/content";
+import { markdownToHTML, objToUrlParams } from "../lib/text";
 
 const Legal = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (

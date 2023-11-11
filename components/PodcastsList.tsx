@@ -1,11 +1,11 @@
-import { matchSorter } from 'match-sorter';
-import { startTransition, useReducer } from 'react';
-import { User } from 'react-feather';
+import { matchSorter } from "match-sorter";
+import { startTransition, useReducer } from "react";
+import { User } from "react-feather";
 
-import type { Podcast as PodcastType } from '../lib/podcasts';
-import { MediaPreview } from './MediaPreview';
-import { PodcastFilter } from './PodcastFilter';
-import { Search } from './Search';
+import type { Podcast as PodcastType } from "../lib/podcasts";
+import { MediaPreview } from "./MediaPreview";
+import { PodcastFilter } from "./PodcastFilter";
+import { Search } from "./Search";
 
 export type PodcastsListFilter = {
   favorites: boolean;
@@ -21,35 +21,35 @@ interface State {
 }
 
 type Action =
-  | { type: 'changeInputValue'; payload: { inputValue: string } }
-  | { type: 'search' }
-  | { type: 'filter'; payload: { filter: PodcastsListFilter } }
-  | { type: 'resetFilter'; payload: { initialFilter: PodcastsListFilter } };
+  | { type: "changeInputValue"; payload: { inputValue: string } }
+  | { type: "search" }
+  | { type: "filter"; payload: { filter: PodcastsListFilter } }
+  | { type: "resetFilter"; payload: { initialFilter: PodcastsListFilter } };
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'changeInputValue':
+    case "changeInputValue":
       return {
         ...state,
         inputValue: action.payload.inputValue,
       };
-    case 'search':
+    case "search":
       return {
         ...state,
         searchQuery: state.inputValue,
       };
-    case 'filter':
+    case "filter":
       return {
         ...state,
         filter: action.payload.filter,
       };
-    case 'resetFilter':
+    case "resetFilter":
       return {
         ...state,
         filter: action.payload.initialFilter,
       };
     default:
-      throw new Error('Unknown action type');
+      throw new Error("Unknown action type");
   }
 };
 
@@ -70,8 +70,8 @@ export function PodcastsList({ podcasts }: Props) {
   );
 
   const initialState: State = {
-    inputValue: '',
-    searchQuery: '',
+    inputValue: "",
+    searchQuery: "",
     filter: {
       favorites: false,
       categories: categoriesObj,
@@ -82,7 +82,7 @@ export function PodcastsList({ podcasts }: Props) {
   const { filter, inputValue, searchQuery } = state;
 
   const filteredPodcast = matchSorter(podcasts, searchQuery, {
-    keys: ['title', 'hosts', 'description'],
+    keys: ["title", "hosts", "description"],
   }).filter((podcast) => {
     const filteredCategories = [];
 
@@ -118,19 +118,19 @@ export function PodcastsList({ podcasts }: Props) {
           placeholder="Podcasts durchsuchen"
           handleChange={(e) => {
             dispatch({
-              type: 'changeInputValue',
+              type: "changeInputValue",
               payload: {
                 inputValue: e.target.value,
               },
             });
             startTransition(() => {
               dispatch({
-                type: 'search',
+                type: "search",
               });
             });
           }}
           handleBlur={() => {
-            splitbee.track('Podcast Search', {
+            splitbee.track("Podcast Search", {
               search: inputValue,
             });
           }}
@@ -141,9 +141,9 @@ export function PodcastsList({ podcasts }: Props) {
         <PodcastFilter
           filter={filter}
           handleChange={(e) => {
-            if (e.target.name.includes('Favoriten')) {
+            if (e.target.name.includes("Favoriten")) {
               dispatch({
-                type: 'filter',
+                type: "filter",
                 payload: {
                   filter: {
                     ...filter,
@@ -153,7 +153,7 @@ export function PodcastsList({ podcasts }: Props) {
               });
             } else {
               dispatch({
-                type: 'filter',
+                type: "filter",
                 payload: {
                   filter: {
                     favorites: filter.favorites,
@@ -166,11 +166,11 @@ export function PodcastsList({ podcasts }: Props) {
               });
             }
 
-            splitbee.track('Podcast Filter', filter);
+            splitbee.track("Podcast Filter", filter);
           }}
           clearFilter={() => {
             dispatch({
-              type: 'resetFilter',
+              type: "resetFilter",
               payload: {
                 initialFilter: initialState.filter,
               },

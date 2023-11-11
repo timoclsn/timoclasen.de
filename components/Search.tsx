@@ -1,5 +1,5 @@
-import type { ChangeEvent } from 'react';
-import { Search as SearchIcon } from 'react-feather';
+import type { ChangeEvent } from "react";
+import { Search as SearchIcon } from "react-feather";
 
 interface Props {
   placeholder: string;

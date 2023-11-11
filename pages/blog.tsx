@@ -1,14 +1,14 @@
-import { format, parseISO } from 'date-fns';
-import { de } from 'date-fns/locale';
-import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import readingTime from 'reading-time';
-import { z } from 'zod';
+import { format, parseISO } from "date-fns";
+import { de } from "date-fns/locale";
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import readingTime from "reading-time";
+import { z } from "zod";
 
-import { BlogPostPreview } from '../components/BlogPostPreview';
-import { ContactWidget } from '../components/ContactWidget';
-import { Layout } from '../components/Layout';
-import { queryContentSave } from '../lib/content';
-import { markdownToHTML, objToUrlParams } from '../lib/text';
+import { BlogPostPreview } from "../components/BlogPostPreview";
+import { ContactWidget } from "../components/ContactWidget";
+import { Layout } from "../components/Layout";
+import { queryContentSave } from "../lib/content";
+import { markdownToHTML, objToUrlParams } from "../lib/text";
 
 const Blog = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -108,8 +108,8 @@ export const getStaticProps = (async ({ preview = false }) => {
       return {
         ...blogPost,
         readingTime: Math.ceil(readingTimeObj.minutes),
-        text: '',
-        dateFormatted: format(parseISO(blogPost.date), 'dd. MMMM yyyy', {
+        text: "",
+        dateFormatted: format(parseISO(blogPost.date), "dd. MMMM yyyy", {
           locale: de,
         }),
       };

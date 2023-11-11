@@ -11,57 +11,57 @@ export function OGImage({ name, title, subtitle, image }: Props) {
   return (
     <section
       style={{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: '1200px',
-        height: '630px',
-        fontFamily: 'Inter',
-        background: '#FFFFFF',
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        width: "1200px",
+        height: "630px",
+        fontFamily: "Inter",
+        background: "#FFFFFF",
       }}
     >
       <div
         style={{
-          padding: '32px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'space-between',
-          width: '728px',
-          height: '630px',
+          padding: "32px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          width: "728px",
+          height: "630px",
         }}
       >
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'column',
+            display: "flex",
+            flexDirection: "column",
           }}
         >
           <h1
             style={{
-              fontSize: '48px',
-              marginBottom: '60px',
+              fontSize: "48px",
+              marginBottom: "60px",
             }}
           >
             {name}
           </h1>
           <h2
             style={{
-              fontSize: '48px',
-              fontWeight: 'normal',
-              marginBottom: '16px',
-              color: '#3E51F7',
+              fontSize: "48px",
+              fontWeight: "normal",
+              marginBottom: "16px",
+              color: "#3E51F7",
             }}
           >
             {title
               ? title
-              : 'Designer und Entwickler mit Leidenschaft für gut gemachte, digitale Produkte.'}
+              : "Designer und Entwickler mit Leidenschaft für gut gemachte, digitale Produkte."}
           </h2>
 
           {title && subtitle && (
             <p
               style={{
-                fontSize: '32px',
-                color: 'grey',
+                fontSize: "32px",
+                color: "grey",
               }}
             >
               {subtitle}
@@ -70,19 +70,19 @@ export function OGImage({ name, title, subtitle, image }: Props) {
         </div>
         <footer
           style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            fontSize: '24px',
-            width: '100%',
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            fontSize: "24px",
+            width: "100%",
           }}
         >
           <div
             style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
             <svg
@@ -96,7 +96,7 @@ export function OGImage({ name, title, subtitle, image }: Props) {
               stroke-linecap="round"
               stroke-linejoin="round"
               style={{
-                marginRight: '8px',
+                marginRight: "8px",
               }}
             >
               <circle cx="12" cy="12" r="10"></circle>
@@ -107,10 +107,10 @@ export function OGImage({ name, title, subtitle, image }: Props) {
           </div>
           <div
             style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
             <svg
@@ -124,7 +124,7 @@ export function OGImage({ name, title, subtitle, image }: Props) {
               stroke-linecap="round"
               stroke-linejoin="round"
               style={{
-                marginRight: '8px',
+                marginRight: "8px",
               }}
             >
               <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
@@ -137,10 +137,10 @@ export function OGImage({ name, title, subtitle, image }: Props) {
         src={image}
         alt="Image"
         style={{
-          height: '630px',
-          width: '460px',
-          objectFit: 'cover',
-          objectPosition: 'center',
+          height: "630px",
+          width: "460px",
+          objectFit: "cover",
+          objectPosition: "center",
         }}
       />
     </section>

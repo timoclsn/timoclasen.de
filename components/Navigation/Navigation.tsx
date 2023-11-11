@@ -1,12 +1,12 @@
-import clsx from 'clsx';
-import Link from 'next/link';
-import { useState } from 'react';
-import { Menu, X } from 'react-feather';
+import clsx from "clsx";
+import Link from "next/link";
+import { useState } from "react";
+import { Menu, X } from "react-feather";
 
-import { CenteredColumn } from '../CenteredColumn';
-import { NavigationLink } from '../NavigationLink';
-import { SwitchMode } from '../SwitchMode';
-import styles from './Navigation.module.css';
+import { CenteredColumn } from "../CenteredColumn";
+import { NavigationLink } from "../NavigationLink";
+import { SwitchMode } from "../SwitchMode";
+import styles from "./Navigation.module.css";
 
 interface Props {
   name: string;
@@ -18,7 +18,7 @@ export function Navigation({ name }: Props) {
   return (
     <header
       className={clsx(
-        'xl:mb-22 mb-8 bg-light bg-opacity-80 py-4 dark:bg-dark dark:bg-opacity-80 md:mb-20 md:py-6',
+        "xl:mb-22 mb-8 bg-light bg-opacity-80 py-4 dark:bg-dark dark:bg-opacity-80 md:mb-20 md:py-6",
         styles.stickyNav,
       )}
     >
@@ -43,7 +43,7 @@ export function Navigation({ name }: Props) {
           </div>
           <ul
             className={`${
-              menuOpen ? 'flex' : 'hidden'
+              menuOpen ? "flex" : "hidden"
             } mt-16 flex-1 flex-col items-center space-y-8 pb-8 sm:mt-0 sm:flex sm:flex-initial sm:flex-row sm:space-y-0 sm:space-x-4 sm:pb-0 md:space-x-8`}
           >
             <li>
@@ -71,15 +71,15 @@ export function Navigation({ name }: Props) {
             <button
               type="button"
               className={clsx(
-                'h-8 w-8 focus-visible:outline-none',
+                "h-8 w-8 focus-visible:outline-none",
                 styles.menuIcon,
               )}
               aria-controls="mobile-menu"
-              aria-expanded={menuOpen ? 'true' : 'false'}
+              aria-expanded={menuOpen ? "true" : "false"}
               onClick={() => setMenuOpen(!menuOpen)}
             >
               <span className="sr-only">
-                {menuOpen ? 'Menü schließen' : 'Menü öffnen'}
+                {menuOpen ? "Menü schließen" : "Menü öffnen"}
               </span>
               <Menu data-hide={menuOpen} />
               <X data-hide={!menuOpen} />

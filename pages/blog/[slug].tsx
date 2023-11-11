@@ -1,22 +1,22 @@
-import { format, parseISO } from 'date-fns';
-import { de } from 'date-fns/locale';
+import { format, parseISO } from "date-fns";
+import { de } from "date-fns/locale";
 import type {
   GetStaticPaths,
   GetStaticProps,
   InferGetStaticPropsType,
-} from 'next';
-import { useRouter } from 'next/router';
-import readingTime from 'reading-time';
-import { z } from 'zod';
+} from "next";
+import { useRouter } from "next/router";
+import readingTime from "reading-time";
+import { z } from "zod";
 
-import { BlogPostHeader } from '../../components/BlogPostHeader';
-import { ContactWidget } from '../../components/ContactWidget';
-import { Layout } from '../../components/Layout';
-import { SEOBlogPost } from '../../components/SEOBlogPost';
-import { TextBlock } from '../../components/TextBlock';
-import { TextPost } from '../../components/TextPost';
-import { queryContentSave } from '../../lib/content';
-import { markdownToHTML, objToUrlParams } from '../../lib/text';
+import { BlogPostHeader } from "../../components/BlogPostHeader";
+import { ContactWidget } from "../../components/ContactWidget";
+import { Layout } from "../../components/Layout";
+import { SEOBlogPost } from "../../components/SEOBlogPost";
+import { TextBlock } from "../../components/TextBlock";
+import { TextPost } from "../../components/TextPost";
+import { queryContentSave } from "../../lib/content";
+import { markdownToHTML, objToUrlParams } from "../../lib/text";
 
 const BlogPost = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   const router = useRouter();
@@ -149,7 +149,7 @@ export const getStaticProps = (async ({ params, preview = false }) => {
       image: blogPost.author.profileImageCollection.items[1],
     },
     readingTime: Math.ceil(readingTimeObj.minutes),
-    dateFormatted: format(parseISO(blogPost.date), 'dd. MMMM yyyy', {
+    dateFormatted: format(parseISO(blogPost.date), "dd. MMMM yyyy", {
       locale: de,
     }),
   };
@@ -204,7 +204,7 @@ export const getStaticProps = (async ({ params, preview = false }) => {
 
   const previewImage = {
     url: `https://timoclasen.de/api/og-image?${objToUrlParams({
-      name: 'Blog • Timo Clasen',
+      name: "Blog • Timo Clasen",
       title: blogPost.title,
       subtitle: `${enhancedBlogPost.dateFormatted} • ${enhancedBlogPost.readingTime} Min`,
     })}`,
@@ -217,7 +217,7 @@ export const getStaticProps = (async ({ params, preview = false }) => {
       blogPost: enhancedBlogPost,
       previewImage,
       error: await markdownToHTML(errorText),
-      loading: await markdownToHTML('# Seite lädt…'),
+      loading: await markdownToHTML("# Seite lädt…"),
       contact: await markdownToHTML(contactText),
     },
   };

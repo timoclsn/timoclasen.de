@@ -1,13 +1,13 @@
-import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import { z } from 'zod';
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import { z } from "zod";
 
-import { ContactWidget } from '../components/ContactWidget';
-import { Layout } from '../components/Layout';
-import { NowPlaying } from '../components/NowPlaying';
-import { TextBlock } from '../components/TextBlock';
-import { TopMusic } from '../components/TopMusic';
-import { queryContentSave } from '../lib/content';
-import { markdownToHTML, objToUrlParams } from '../lib/text';
+import { ContactWidget } from "../components/ContactWidget";
+import { Layout } from "../components/Layout";
+import { NowPlaying } from "../components/NowPlaying";
+import { TextBlock } from "../components/TextBlock";
+import { TopMusic } from "../components/TopMusic";
+import { queryContentSave } from "../lib/content";
+import { markdownToHTML, objToUrlParams } from "../lib/text";
 
 const Music = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (

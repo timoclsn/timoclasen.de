@@ -1,14 +1,14 @@
-import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import Image from 'next/image';
-import { z } from 'zod';
+import type { GetStaticProps, InferGetStaticPropsType } from "next";
+import Image from "next/image";
+import { z } from "zod";
 
-import { ContactWidget } from '../components/ContactWidget';
-import { CV } from '../components/CV';
-import { Layout } from '../components/Layout';
-import { TextBlock } from '../components/TextBlock';
-import { queryContentSave } from '../lib/content';
-import { getPlaceholder } from '../lib/placeholder';
-import { markdownToHTML, objToUrlParams } from '../lib/text';
+import { ContactWidget } from "../components/ContactWidget";
+import { CV } from "../components/CV";
+import { Layout } from "../components/Layout";
+import { TextBlock } from "../components/TextBlock";
+import { queryContentSave } from "../lib/content";
+import { getPlaceholder } from "../lib/placeholder";
+import { markdownToHTML, objToUrlParams } from "../lib/text";
 
 const About = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (

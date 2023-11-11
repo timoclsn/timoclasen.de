@@ -1,6 +1,6 @@
-import type { inferProcedureOutput } from '@trpc/server';
-import JSConfetti from 'js-confetti';
-import { useEffect, useRef } from 'react';
+import type { inferProcedureOutput } from "@trpc/server";
+import JSConfetti from "js-confetti";
+import { useEffect, useRef } from "react";
 import {
   ArrowRight,
   Calendar,
@@ -9,15 +9,15 @@ import {
   Heart,
   ThumbsUp,
   TrendingUp,
-} from 'react-feather';
+} from "react-feather";
 
-import type { AppRouter } from '../server/routers/_app';
-import { RunningElement } from './RunningElement';
-import { useOnScreen } from './useOnScreen';
+import type { AppRouter } from "../server/routers/_app";
+import { RunningElement } from "./RunningElement";
+import { useOnScreen } from "./useOnScreen";
 
-const jsConfetti = typeof window !== 'undefined' ? new JSConfetti() : null;
+const jsConfetti = typeof window !== "undefined" ? new JSConfetti() : null;
 
-type RunningData = inferProcedureOutput<AppRouter['sports']['running']>;
+type RunningData = inferProcedureOutput<AppRouter["sports"]["running"]>;
 
 interface Props {
   runningData?: RunningData;
@@ -32,24 +32,24 @@ export function WidgetRunning({ runningData }: Props) {
   const timeThreshold = 3600; // 1h in s
   const heartrateThreshold = 160; // 160 bpm in bpm
   const yearsBestLabel = {
-    text: 'best',
-    description: 'Bester Wert des Jahres in dieser Kategorie',
+    text: "best",
+    description: "Bester Wert des Jahres in dieser Kategorie",
   };
 
   const dateLabels = [
     ...(lastRun?.stroller
       ? [
           {
-            text: 'Stroller',
-            description: 'Lauf mit Kinderwagen',
+            text: "Stroller",
+            description: "Lauf mit Kinderwagen",
           },
         ]
       : []),
     ...(lastRun?.race
       ? [
           {
-            text: 'Race',
-            description: 'Offizieller Wettkampf',
+            text: "Race",
+            description: "Offizieller Wettkampf",
           },
         ]
       : []),
@@ -57,7 +57,7 @@ export function WidgetRunning({ runningData }: Props) {
 
   const distanceLabels = [
     ...(lastRun && lastRun.distance.raw >= distanceThreshold
-      ? [{ text: 'far', description: 'Strecke von 10 km oder mehr' }]
+      ? [{ text: "far", description: "Strecke von 10 km oder mehr" }]
       : []),
     ...(lastRun && thisYear && lastRun.distance.raw >= thisYear.farthest
       ? [yearsBestLabel]
@@ -68,8 +68,8 @@ export function WidgetRunning({ runningData }: Props) {
     ...(lastRun && lastRun.avgSpeed.raw > speedThreshold
       ? [
           {
-            text: 'fast',
-            description: 'Geschwindigkeit schneller als 5:30 /km',
+            text: "fast",
+            description: "Geschwindigkeit schneller als 5:30 /km",
           },
         ]
       : []),
@@ -82,8 +82,8 @@ export function WidgetRunning({ runningData }: Props) {
     ...(lastRun && lastRun.time.raw >= timeThreshold
       ? [
           {
-            text: 'long',
-            description: 'Laufzeit von über einer Stunde',
+            text: "long",
+            description: "Laufzeit von über einer Stunde",
           },
         ]
       : []),
@@ -94,7 +94,7 @@ export function WidgetRunning({ runningData }: Props) {
 
   const heartrateLabels = [
     ...(lastRun && lastRun.avgHeartrate?.raw < heartrateThreshold
-      ? [{ text: 'low', description: 'Puls von unter 160 bpm' }]
+      ? [{ text: "low", description: "Puls von unter 160 bpm" }]
       : []),
     ...(lastRun && thisYear && lastRun.avgHeartrate?.raw <= thisYear.lowest
       ? [yearsBestLabel]
@@ -105,7 +105,7 @@ export function WidgetRunning({ runningData }: Props) {
     ? Math.round(thisYear.distance / (yearlyRunningGoal / 100))
     : 0;
   const yearProgress = getYearProgress();
-  const yearTrend = runningProgress >= yearProgress ? '↑' : '↓';
+  const yearTrend = runningProgress >= yearProgress ? "↑" : "↓";
 
   // Emoji explosion if running progress is over 100%
   const ref = useRef<HTMLDivElement>(null);
@@ -118,7 +118,7 @@ export function WidgetRunning({ runningData }: Props) {
       timer = setTimeout(() => {
         if (jsConfetti && runningProgress >= 100) {
           jsConfetti.addConfetti({
-            emojis: ['🏆', '🏃‍♂️', '🏃', '🏃‍♀️'],
+            emojis: ["🏆", "🏃‍♂️", "🏃", "🏃‍♀️"],
             confettiNumber: runningProgress,
           });
         }

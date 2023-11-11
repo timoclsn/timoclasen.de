@@ -1,9 +1,9 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { ArrowRight } from 'react-feather';
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from "react-feather";
 
-import type { Podcast } from '../lib/podcasts';
-import { Button } from './Button';
+import type { Podcast } from "../lib/podcasts";
+import { Button } from "./Button";
 
 interface Props {
   podcasts: Podcast[];
@@ -46,7 +46,7 @@ export function PodcastsWidget({ podcasts }: Props) {
                 height="160"
                 quality={60}
                 alt={`Podcast cover von ${podcast.title}`}
-                style={{ width: '160px', height: '160px' }}
+                style={{ width: "160px", height: "160px" }}
               />
             </a>
           </li>
