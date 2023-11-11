@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Script from "next/script";
 import type { ReactNode } from "react";
 
@@ -37,15 +36,6 @@ export function Layout({
 
   return (
     <>
-      <Head>
-        <link
-          rel="preload"
-          href="/fonts/inter-var-latin.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-      </Head>
       <Script data-no-cookie data-api="/_hive" src="/bee.js" />
       <SEO
         title={pageTitle}
