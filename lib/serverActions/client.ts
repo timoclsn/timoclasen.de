@@ -103,7 +103,7 @@ export const useAction = <
       ...inputArgs: InferInputArgs<TInputSchema>
     ) => void;
     onSettled?: (...inputArgs: InferInputArgs<TInputSchema>) => void;
-    reset?: () => void;
+    onReset?: () => void;
   } = {},
 ) => {
   const reducer = createReducer<TResponse, TInputSchema>();
@@ -191,7 +191,8 @@ export const useAction = <
     dispatch({
       type: "RESET",
     });
-  }, []);
+    options.onReset?.();
+  }, [options]);
 
   return {
     runAction,
