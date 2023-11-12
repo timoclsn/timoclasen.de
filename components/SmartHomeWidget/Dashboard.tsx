@@ -8,7 +8,7 @@ import {
   Umbrella,
   Zap,
 } from "react-feather";
-import { getSmartHomeDataCached } from "../../data/smarthome";
+import { getSmartHomeData } from "../../data/smarthome";
 import { Await } from "../Await";
 import { WidgetLayout } from "../WidgetLayout";
 import { SmartHomeElement } from "./SmartHomeElement";
@@ -18,7 +18,7 @@ interface Props {
 }
 
 export const Dashboard = async ({ footnote }: Props) => {
-  const promise = getSmartHomeDataCached();
+  const promise = getSmartHomeData();
   return (
     <Await
       promise={promise}

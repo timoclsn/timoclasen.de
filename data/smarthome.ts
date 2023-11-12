@@ -15,7 +15,7 @@ const cache = {
   balconyColor: "#fa0501",
 };
 
-const getSmartHomeData = async (options: { cached?: boolean } = {}) => {
+export const getSmartHomeData = async (options: { cached?: boolean } = {}) => {
   if (options.cached) {
     return cache;
   }
