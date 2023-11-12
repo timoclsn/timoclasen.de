@@ -14,3 +14,11 @@ export const getErrorMessage = (error: unknown): string => {
     return "Something went wrong";
   }
 };
+
+/**
+ * Wait for a specified amount of time.
+ * @param ms - The number of milliseconds to wait.
+ * @returns A promise that resolves after the specified time has elapsed.
+ */
+export const wait = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));

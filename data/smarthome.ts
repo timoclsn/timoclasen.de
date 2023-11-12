@@ -3,6 +3,7 @@ import { formatValue, getHexColor, getNodes, isLight } from "../lib/homee";
 import { AttributeType, NodeState } from "../lib/enums";
 import { unstable_cache as nextCache } from "next/cache";
 import { cache as reactCache } from "react";
+import { wait } from "../lib/utils";
 
 const cache = {
   lights: "An",
@@ -90,6 +91,8 @@ export const getSmartHomeData = async (options: { cached?: boolean } = {}) => {
   const balconyColorAtr = nodes
     .find((node) => node.id === balconyLightId)
     ?.attributes.find((attribute) => attribute.type === AttributeType.Color);
+
+  await wait(5000);
 
   return {
     lights: lightsOn ? "An" : "Aus",
