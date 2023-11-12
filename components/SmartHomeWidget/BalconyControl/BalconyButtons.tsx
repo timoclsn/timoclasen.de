@@ -1,53 +1,49 @@
 "use client";
 
-import { useRef } from "react";
 import toast from "react-hot-toast";
 import { useAction } from "../../../lib/serverActions/client";
 import { track } from "../../../lib/tracking";
 import { Button } from "../../Button/Button";
 import { turnOnBalcony } from "./actions";
 
-export const BalconyButtons = () => {
-  const emojiRef = useRef("");
-  const toastIdRef = useRef("");
-  const colorRef = useRef("");
+const toastId = "balcony-buttons";
+const colorEmojiMap = {
+  red: "🔥",
+  green: "🌿",
+  blue: "🌊",
+} as const;
 
+export const BalconyButtons = () => {
   const { runAction, isRunning } = useAction(turnOnBalcony, {
-    onSuccess: () => {
-      toast.remove(toastIdRef.current);
+    onRunAction: () => {
+      toast.loading("Schalten...", {
+        id: toastId,
+      });
+    },
+    onSuccess: (_, { color }) => {
+      const emoji = colorEmojiMap[color];
       toast.success("Balkon wurde eingeschaltet!", {
-        icon: emojiRef.current,
+        id: toastId,
+        icon: emoji,
         duration: 5000,
       });
       track("Balcony Light Control", {
-        color: `${emojiRef.current} ${colorRef.current}`,
+        color: `${emoji} ${color}`,
       });
     },
     onError: () => {
-      toast.remove(toastIdRef.current);
-      toast.error("Hat nicht funktioniert.");
+      toast.error("Hat nicht funktioniert.", {
+        id: toastId,
+      });
     },
   });
-
-  const controlLight = async (
-    color: "red" | "green" | "blue",
-    emoji: string,
-  ) => {
-    const toastId = toast.loading("Schalten...");
-    emojiRef.current = emoji;
-    toastIdRef.current = toastId;
-    colorRef.current = color;
-    await runAction({
-      color,
-    });
-  };
 
   return (
     <div className="mb-4 flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
       <Button
         variant="ghost"
         size="small"
-        onClick={() => controlLight("red", "🔥")}
+        onClick={() => runAction({ color: "red" })}
         disabled={isRunning}
         fullWidth
       >
@@ -56,7 +52,7 @@ export const BalconyButtons = () => {
       <Button
         variant="ghost"
         size="small"
-        onClick={() => controlLight("green", "🌿")}
+        onClick={() => runAction({ color: "green" })}
         disabled={isRunning}
         fullWidth
       >
@@ -65,7 +61,7 @@ export const BalconyButtons = () => {
       <Button
         variant="ghost"
         size="small"
-        onClick={() => controlLight("blue", "🌊")}
+        onClick={() => runAction({ color: "blue" })}
         disabled={isRunning}
         fullWidth
       >

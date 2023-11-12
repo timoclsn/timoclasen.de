@@ -1,9 +1,9 @@
-import { useCallback, useReducer, useTransition } from 'react';
-import { z } from 'zod';
-import { InferInputArgs, InferValidationErrors, ServerAction } from './types';
+import { useCallback, useReducer, useTransition } from "react";
+import { z } from "zod";
+import { InferInputArgs, InferValidationErrors, ServerAction } from "./types";
 
 interface State<TResponse extends any, TInputSchema extends z.ZodTypeAny> {
-  status: 'idle' | 'running' | 'success' | 'error';
+  status: "idle" | "running" | "success" | "error";
   isIdle: boolean;
   isSuccess: boolean;
   isError: boolean;
@@ -13,7 +13,7 @@ interface State<TResponse extends any, TInputSchema extends z.ZodTypeAny> {
 }
 
 const initalState: State<any, any> = {
-  status: 'idle',
+  status: "idle",
   isIdle: true,
   isSuccess: false,
   isError: false,
@@ -23,17 +23,17 @@ const initalState: State<any, any> = {
 };
 
 type Action<TResponse extends any, TInputSchema extends z.ZodTypeAny> =
-  | { type: 'RUN_ACTION' }
-  | { type: 'IS_SUCCESS'; data: TResponse | null }
+  | { type: "RUN_ACTION" }
+  | { type: "IS_SUCCESS"; data: TResponse | null }
   | {
-      type: 'IS_VALIDATION_ERROR';
+      type: "IS_VALIDATION_ERROR";
       validationErrors: InferValidationErrors<TInputSchema>;
     }
   | {
-      type: 'IS_ERROR';
+      type: "IS_ERROR";
       error: string;
     }
-  | { type: 'RESET' };
+  | { type: "RESET" };
 
 const createReducer =
   <TResponse extends any, TInputSchema extends z.ZodTypeAny>() =>
@@ -42,45 +42,45 @@ const createReducer =
     action: Action<TResponse, TInputSchema>,
   ): State<TResponse, TInputSchema> => {
     switch (action.type) {
-      case 'RUN_ACTION':
+      case "RUN_ACTION":
         return {
           ...state,
-          status: 'running',
+          status: "running",
           isIdle: false,
           isSuccess: false,
           isError: false,
           error: null,
         };
-      case 'IS_SUCCESS':
+      case "IS_SUCCESS":
         return {
           ...state,
-          status: 'success',
+          status: "success",
           isIdle: true,
           isSuccess: true,
           data: action.data,
         };
-      case 'IS_ERROR':
+      case "IS_ERROR":
         return {
           ...state,
-          status: 'error',
+          status: "error",
           isIdle: true,
           isError: true,
           error: action.error,
         };
-      case 'IS_VALIDATION_ERROR':
+      case "IS_VALIDATION_ERROR":
         return {
           ...state,
-          status: 'error',
+          status: "error",
           isIdle: true,
           isError: true,
           validationErrors: action.validationErrors,
         };
-      case 'RESET':
+      case "RESET":
         return {
           ...initalState,
         };
       default:
-        throw new Error('Unknown action type');
+        throw new Error("Unknown action type");
     }
   };
 
@@ -91,12 +91,18 @@ export const useAction = <
   inputAction: ServerAction<TInputSchema, TResponse>,
   options: {
     onRunAction?: (...inputArgs: InferInputArgs<TInputSchema>) => void;
-    onSuccess?: (data: TResponse | null) => void;
-    onError?: (errors: {
-      error: string | null;
-      validationErrors: InferValidationErrors<TInputSchema> | null;
-    }) => void;
-    onSettled?: () => void;
+    onSuccess?: (
+      data: TResponse | null,
+      ...inputArgs: InferInputArgs<TInputSchema>
+    ) => void;
+    onError?: (
+      errors: {
+        error: string | null;
+        validationErrors: InferValidationErrors<TInputSchema> | null;
+      },
+      ...inputArgs: InferInputArgs<TInputSchema>
+    ) => void;
+    onSettled?: (...inputArgs: InferInputArgs<TInputSchema>) => void;
     reset?: () => void;
   } = {},
 ) => {
@@ -108,12 +114,12 @@ export const useAction = <
 
   const runAction = useCallback(
     async (...inputArgs: InferInputArgs<TInputSchema>) => {
+      options.onRunAction?.(...inputArgs);
+
       startTransition(async () => {
         dispatch({
-          type: 'RUN_ACTION',
+          type: "RUN_ACTION",
         });
-
-        options.onRunAction?.(...inputArgs);
 
         try {
           const result = await inputAction(...inputArgs);
@@ -124,57 +130,66 @@ export const useAction = <
             return;
           }
 
-          if (result.state === 'validationError') {
+          if (result.state === "validationError") {
             dispatch({
-              type: 'IS_VALIDATION_ERROR',
+              type: "IS_VALIDATION_ERROR",
               validationErrors: result.validationErrors,
             });
-            options.onError?.({
-              error: null,
-              validationErrors: result.validationErrors,
-            });
+            options.onError?.(
+              {
+                error: null,
+                validationErrors: result.validationErrors,
+              },
+              ...inputArgs,
+            );
           }
 
-          if (result.state === 'error') {
+          if (result.state === "error") {
             dispatch({
-              type: 'IS_ERROR',
+              type: "IS_ERROR",
               error: result.error,
             });
-            options.onError?.({
-              error: result.error,
-              validationErrors: null,
-            });
+            options.onError?.(
+              {
+                error: result.error,
+                validationErrors: null,
+              },
+              ...inputArgs,
+            );
           }
 
-          if (result.state === 'success') {
+          if (result.state === "success") {
             dispatch({
-              type: 'IS_SUCCESS',
+              type: "IS_SUCCESS",
               data: result.data,
             });
-            options.onSuccess?.(result.data);
+            options.onSuccess?.(result.data, ...inputArgs);
           }
         } catch (error) {
-          const userErrorMessage = 'Something went wrong. Please try again.';
+          const userErrorMessage = "Something went wrong. Please try again.";
           dispatch({
-            type: 'IS_ERROR',
+            type: "IS_ERROR",
             error: userErrorMessage,
           });
-          options.onError?.({
-            error: userErrorMessage,
-            validationErrors: null,
-          });
+          options.onError?.(
+            {
+              error: userErrorMessage,
+              validationErrors: null,
+            },
+            ...inputArgs,
+          );
           console.error(error);
         }
-
-        options.onSettled?.();
       });
+
+      options.onSettled?.(...inputArgs);
     },
     [inputAction, options],
   );
 
   const reset = useCallback(() => {
     dispatch({
-      type: 'RESET',
+      type: "RESET",
     });
   }, []);
 
