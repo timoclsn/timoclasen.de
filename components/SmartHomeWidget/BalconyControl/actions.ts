@@ -7,7 +7,11 @@ import { wait } from "../../../lib/utils";
 import { prisma } from "../../../lib/prisma";
 import { revalidatePath } from "next/cache";
 
-type ColorHomeegramIds = Record<string, number>;
+const colorHomeegramIds = {
+  red: 239,
+  green: 240,
+  blue: 241,
+} as const;
 
 const colorSchema = z.enum(["red", "green", "blue"]);
 
@@ -17,12 +21,6 @@ export const turnOnBalcony = createAction({
   }),
   action: async ({ input }) => {
     const { color } = input;
-
-    const colorHomeegramIds: ColorHomeegramIds = {
-      red: 239,
-      green: 240,
-      blue: 241,
-    };
 
     const homeegramId = colorHomeegramIds[color];
     await playHomeegram(homeegramId);
