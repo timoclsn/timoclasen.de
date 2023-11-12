@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { queryContent } from "../../lib/content";
 import { markdownToHTML } from "../../lib/text";
-import { Dashboard } from "./Dashboard";
+import { Dashboard } from "./Dashboard/Dashboard";
 import { BalconyControl } from "./BalconyControl/BalconyControl";
 
 export const SmartHomeWidget = async () => {

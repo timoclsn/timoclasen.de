@@ -6,7 +6,7 @@ interface Props {
   value: string;
 }
 
-export const SmartHomeElement = ({ Icon, title, value }: Props) => {
+export const DashboardElement = ({ Icon, title, value }: Props) => {
   return (
     <div className="flex rounded-3xl bg-dark bg-opacity-10 p-4 dark:bg-light dark:bg-opacity-10">
       <div className="flex h-16 w-16 flex-none items-center justify-center rounded-full bg-light dark:bg-dark">

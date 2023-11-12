@@ -12,7 +12,6 @@ export const BalconyLight = () => {
       error={<div>error!</div>}
     >
       {({ balconyOnOff, balconyColor }) => {
-        console.log({ balconyOnOff, balconyColor });
         return (
           <div
             className="flex flex-none items-center justify-center bg-[#FFFFFF] font-bold dark:bg-[#000000]"

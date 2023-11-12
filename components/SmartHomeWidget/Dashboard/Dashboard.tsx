@@ -9,10 +9,10 @@ import {
   Umbrella,
   Zap,
 } from "react-feather";
-import { getSmartHomeDataCached } from "../../data/smarthome";
-import { Await } from "../Await";
-import { WidgetLayout } from "../WidgetLayout";
-import { SmartHomeElement } from "./SmartHomeElement";
+import { getSmartHomeDataCached } from "../../../data/smarthome";
+import { Await } from "../../Await";
+import { WidgetLayout } from "../../WidgetLayout";
+import { DashboardElement } from "./DashboardElement";
 
 interface Props {
   footnote: string;
@@ -32,34 +32,34 @@ export const Dashboard = ({ footnote }: Props) => {
           <>
             <WidgetLayout separate transparent>
               <div className="space-y-6 sm:space-y-8">
-                <SmartHomeElement
+                <DashboardElement
                   Icon={Thermometer}
                   title="Raumtemperatur"
                   value={data.temperature}
                 />
-                <SmartHomeElement
+                <DashboardElement
                   Icon={Droplet}
                   title="Luftfeuchtigkeit"
                   value={data.humidity}
                 />
-                <SmartHomeElement
+                <DashboardElement
                   Icon={Zap}
                   title="Energieverbrauch"
                   value={data.energy}
                 />
               </div>
               <div className="-mt-6 space-y-6 sm:mt-0 sm:space-y-8">
-                <SmartHomeElement
+                <DashboardElement
                   Icon={data.lights === "An" ? ToggleRight : ToggleLeft}
                   title="Lichter"
                   value={data.lights}
                 />
-                <SmartHomeElement
+                <DashboardElement
                   Icon={Thermometer}
                   title="Außentemperatur"
                   value={data.outsideTemperature}
                 />
-                <SmartHomeElement
+                <DashboardElement
                   Icon={
                     data.rain === "Es regnet"
                       ? Umbrella

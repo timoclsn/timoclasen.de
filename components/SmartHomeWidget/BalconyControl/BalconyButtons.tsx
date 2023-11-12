@@ -29,12 +29,15 @@ export const BalconyButtons = () => {
     },
   });
 
-  const controlLight = (color: "red" | "green" | "blue", emoji: string) => {
+  const controlLight = async (
+    color: "red" | "green" | "blue",
+    emoji: string,
+  ) => {
     const toastId = toast.loading("Schalten...");
     emojiRef.current = emoji;
     toastIdRef.current = toastId;
     colorRef.current = color;
-    runAction({
+    await runAction({
       color,
     });
   };
