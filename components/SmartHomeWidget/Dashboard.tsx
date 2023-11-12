@@ -1,3 +1,4 @@
+import { unstable_noStore as noStore } from "next/cache";
 import {
   CloudSnow,
   Droplet,
@@ -8,19 +9,18 @@ import {
   Umbrella,
   Zap,
 } from "react-feather";
-import { getSmartHomeData } from "../../data/smarthome";
+import { getSmartHomeDataCached } from "../../data/smarthome";
 import { Await } from "../Await";
 import { WidgetLayout } from "../WidgetLayout";
 import { SmartHomeElement } from "./SmartHomeElement";
-import { unstable_noStore as noStore } from "next/cache";
 
 interface Props {
   footnote: string;
 }
 
-export const Dashboard = async ({ footnote }: Props) => {
+export const Dashboard = ({ footnote }: Props) => {
   noStore();
-  const promise = getSmartHomeData();
+  const promise = getSmartHomeDataCached();
   return (
     <Await
       promise={promise}

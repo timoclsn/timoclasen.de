@@ -1,9 +1,9 @@
-import "server-only";
-import { formatValue, getHexColor, getNodes, isLight } from "../lib/homee";
-import { AttributeType, NodeState } from "../lib/enums";
 import { unstable_cache as nextCache } from "next/cache";
 import { cache as reactCache } from "react";
-import { wait } from "../lib/utils";
+import "server-only";
+import { AttributeType, NodeState } from "../lib/enums";
+import { formatValue, getHexColor, getNodes, isLight } from "../lib/homee";
+import { prisma } from "../lib/prisma";
 
 const cache = {
   lights: "An",
@@ -92,8 +92,6 @@ export const getSmartHomeData = async (options: { cached?: boolean } = {}) => {
     .find((node) => node.id === balconyLightId)
     ?.attributes.find((attribute) => attribute.type === AttributeType.Color);
 
-  await wait(5000);
-
   return {
     lights: lightsOn ? "An" : "Aus",
     rain: outsideTempAtr
@@ -121,9 +119,19 @@ export const getSmartHomeData = async (options: { cached?: boolean } = {}) => {
   };
 };
 
-export const getSmartHomeDataCached = reactCache(async () => {
-  return await nextCache(getSmartHomeData, ["smarthome"], {
-    revalidate: 60,
-    tags: ["smarthome"],
-  })();
-});
+export const getSmartHomeDataCached = reactCache(getSmartHomeData);
+
+const getControlCount = async () => {
+  const rawCounts = await prisma.balcony_control.findMany();
+
+  return rawCounts.reduce(
+    (acc, count) => ({ ...acc, [count.color]: count.count }),
+    {
+      red: 0,
+      green: 0,
+      blue: 0,
+    },
+  );
+};
+
+export const getControlCountCached = nextCache(getControlCount);
