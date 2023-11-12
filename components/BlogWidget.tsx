@@ -1,18 +1,38 @@
+import { z } from "zod";
+import { queryContent } from "../lib/content";
 import { WidgetLayout } from "./WidgetLayout";
 import { WidgetText } from "./WidgetText";
 
-interface BlogPost {
-  title: string;
-  summary: string;
-  slug: string;
-}
+export const BlogWidget = async () => {
+  const blogPostsData = await queryContent(
+    `{
+      blogPostCollection(order: [date_DESC], limit: 2, preview: false) {
+        items {
+          title
+          summary
+          slug
+        }
+      }
+    }`,
+    z.object({
+      data: z.object({
+        blogPostCollection: z.object({
+          items: z.array(
+            z.object({
+              title: z.string(),
+              summary: z.string(),
+              slug: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
 
-interface Props {
-  blogPost1: BlogPost;
-  blogPost2: BlogPost;
-}
+  const blogPosts = blogPostsData.data.blogPostCollection.items;
+  const blogPost1 = blogPosts[0];
+  const blogPost2 = blogPosts[1];
 
-export function BlogWidget({ blogPost1, blogPost2 }: Props) {
   return (
     <WidgetLayout>
       <WidgetText
@@ -29,4 +49,4 @@ export function BlogWidget({ blogPost1, blogPost2 }: Props) {
       />
     </WidgetLayout>
   );
-}
+};

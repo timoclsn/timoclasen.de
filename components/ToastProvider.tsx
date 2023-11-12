@@ -1,5 +1,6 @@
-import { Toaster } from "react-hot-toast";
+"use client";
 
+import { Toaster } from "react-hot-toast";
 import { useTheme } from "./ThemeContext";
 
 const lightToast = {
@@ -16,7 +17,7 @@ const darkToast = {
   color: "#FFFFFF",
 };
 
-export function ToastProvider() {
+export const ToastProvider = () => {
   const { darkMode } = useTheme();
   return (
     <Toaster
@@ -24,4 +25,4 @@ export function ToastProvider() {
       toastOptions={{ style: darkMode ? darkToast : lightToast }}
     />
   );
-}
+};

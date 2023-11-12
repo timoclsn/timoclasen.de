@@ -28,7 +28,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)"],
+        sans: ["var(--font-sans)"],
       },
       typography: (theme) => ({
         custom: {

@@ -1,4 +1,6 @@
-import { useRouter } from "next/router";
+"use client";
+
+import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { forwardRef } from "react";
 
@@ -10,13 +12,13 @@ type Props = {
 
 export const NavigationLink = forwardRef<HTMLAnchorElement, Props>(
   function NavigationLink({ children, href, ...props }, ref) {
-    const router = useRouter();
+    const pathname = usePathname();
     return (
       <a
         href={href}
         ref={ref}
         className={`hover:text-highlight dark:hover:text-highlight-dark ${
-          href && router.pathname.includes(href)
+          href && pathname.includes(href)
             ? "text-highlight hover:opacity-80 dark:text-highlight-dark"
             : ""
         }`}
@@ -25,5 +27,5 @@ export const NavigationLink = forwardRef<HTMLAnchorElement, Props>(
         {children}
       </a>
     );
-  },
+  }
 );

@@ -1,0 +1,17 @@
+import { AboutWidget } from "../../components/AboutWidget";
+import { BlogWidget } from "../../components/BlogWidget";
+import { LCDWidget } from "../../components/LCDWidget";
+import { Teaser } from "../../components/Teaser/Teaser";
+
+const HomePage = () => {
+  return (
+    <>
+      <Teaser />
+      <AboutWidget />
+      <BlogWidget />
+      <LCDWidget />
+    </>
+  );
+};
+
+export default HomePage;

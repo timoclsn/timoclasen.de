@@ -4,9 +4,9 @@ import type { ReactNode } from "react";
 import { CenteredColumn } from "./CenteredColumn";
 import { Favicons } from "./Favicons";
 import { Footer } from "./Footer";
-import { Navigation } from "./Navigation";
 import { PreviewAlert } from "./PreviewAlert";
 import { SEO } from "./SEO";
+import { Navigation } from "./Navigation/Navigation";
 
 interface PreviewImage {
   url: string;
@@ -47,7 +47,7 @@ export function Layout({
       <Favicons />
       {preview && <PreviewAlert />}
       <div className="flex min-h-screen flex-col text-base antialiased lg:text-lg xl:text-xl">
-        <Navigation name={name} />
+        <Navigation />
         <main id="skip">
           <CenteredColumn>{children}</CenteredColumn>
         </main>

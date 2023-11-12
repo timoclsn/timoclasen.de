@@ -1,9 +1,8 @@
 import Link from "next/link";
-
 import { CenteredColumn } from "./CenteredColumn";
 import { NavigationLink } from "./NavigationLink";
 
-export function Footer() {
+export const Footer = () => {
   return (
     <footer className="mt-auto" data-cy="footer">
       <CenteredColumn>
@@ -56,4 +55,4 @@ export function Footer() {
       </CenteredColumn>
     </footer>
   );
-}
+};

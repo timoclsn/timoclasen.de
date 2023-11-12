@@ -7,15 +7,15 @@ import { ThemeProvider } from "../components/ThemeContext";
 import { ToastProvider } from "../components/ToastProvider";
 import { trpc } from "../utils/trpc";
 
-const inter = Inter({
+const fontSans = Inter({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-sans",
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider>
-      <div className={`${inter.variable} font-sans`}>
+      <div className={`${fontSans.variable} font-sans`}>
         <Component {...pageProps} />
         <ToastProvider />
       </div>

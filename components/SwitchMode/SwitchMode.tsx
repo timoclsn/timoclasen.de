@@ -1,22 +1,23 @@
+"use client";
+
 import clsx from "clsx";
 import { Moon, Sun } from "react-feather";
-
 import { useTheme } from "../ThemeContext";
 import { useIsMounted } from "../useIsMounted";
 import styles from "./SwitchMode.module.css";
 import { track } from "../../lib/tracking";
 
-export function SwitchMode() {
+export const SwitchMode = () => {
   const { darkMode, setDarkMode } = useTheme();
 
   const isMounted = useIsMounted();
 
-  function handleThemeChange() {
+  const handleThemeChange = () => {
     setDarkMode?.(!darkMode);
     track("Switch Theme", {
       theme: darkMode ? "dark" : "light",
     });
-  }
+  };
 
   return (
     <button
@@ -37,4 +38,4 @@ export function SwitchMode() {
       )}
     </button>
   );
-}
+};

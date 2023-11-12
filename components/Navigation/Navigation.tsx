@@ -1,25 +1,22 @@
+"use client";
+
 import clsx from "clsx";
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "react-feather";
-
 import { CenteredColumn } from "../CenteredColumn";
 import { NavigationLink } from "../NavigationLink";
-import { SwitchMode } from "../SwitchMode";
 import styles from "./Navigation.module.css";
+import { SwitchMode } from "../SwitchMode/SwitchMode";
 
-interface Props {
-  name: string;
-}
-
-export function Navigation({ name }: Props) {
+export const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header
       className={clsx(
         "xl:mb-22 mb-8 bg-light bg-opacity-80 py-4 dark:bg-dark dark:bg-opacity-80 md:mb-20 md:py-6",
-        styles.stickyNav,
+        styles.stickyNav
       )}
     >
       <CenteredColumn>
@@ -37,7 +34,7 @@ export function Navigation({ name }: Props) {
               title="Home"
               className="whitespace-nowrap hover:text-highlight dark:hover:text-highlight-dark"
             >
-              <h1>{name}</h1>
+              <h1>Timo Clasen</h1>
             </Link>
             <SwitchMode />
           </div>
@@ -72,7 +69,7 @@ export function Navigation({ name }: Props) {
               type="button"
               className={clsx(
                 "h-8 w-8 focus-visible:outline-none",
-                styles.menuIcon,
+                styles.menuIcon
               )}
               aria-controls="mobile-menu"
               aria-expanded={menuOpen ? "true" : "false"}
@@ -89,4 +86,4 @@ export function Navigation({ name }: Props) {
       </CenteredColumn>
     </header>
   );
-}
+};
