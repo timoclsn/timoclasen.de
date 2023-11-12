@@ -10,8 +10,7 @@ import { MLWidget } from "../components/MLWidget";
 import { NowPlaying } from "../components/NowPlaying";
 import { PodcastsWidget } from "../components/PodcastsWidget";
 import { RunningWidget } from "../components/RunningWidget";
-import { SmartHomeWidget } from "../components/SmartHomeWidget";
-import { Teaser } from "../components/Teaser";
+import { SmartHomeWidget } from "../components/SmartHomeWidget/SmartHomeWidget";
 import { queryContent } from "../lib/content";
 import { getPlaceholder } from "../lib/placeholder";
 import { getFavoritePodcasts } from "../lib/podcasts";
@@ -21,6 +20,7 @@ import {
   stripFirstLine,
   truncate,
 } from "../lib/text";
+import { Teaser } from "../components/Teaser/Teaser";
 
 const Home = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -71,11 +71,11 @@ export const getStaticProps = (async ({ preview = false }) => {
               title: z.string(),
               slug: z.string(),
               description: z.string(),
-            })
+            }),
           ),
         }),
       }),
-    })
+    }),
   );
 
   const page = pageData.data.pageCollection.items[0];
@@ -94,11 +94,11 @@ export const getStaticProps = (async ({ preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            })
+            }),
           ),
         }),
       }),
-    })
+    }),
   );
 
   const headerText =
@@ -129,14 +129,14 @@ export const getStaticProps = (async ({ preview = false }) => {
                   z.object({
                     url: z.string().url(),
                     description: z.string(),
-                  })
+                  }),
                 ),
               }),
-            })
+            }),
           ),
         }),
       }),
-    })
+    }),
   );
 
   const person = personData.data.personCollection.items[0];
@@ -163,11 +163,11 @@ export const getStaticProps = (async ({ preview = false }) => {
               title: z.string(),
               summary: z.string(),
               slug: z.string(),
-            })
+            }),
           ),
         }),
       }),
-    })
+    }),
   );
 
   const blogPosts = blogPostsData.data.blogPostCollection.items;
@@ -186,11 +186,11 @@ export const getStaticProps = (async ({ preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            })
+            }),
           ),
         }),
       }),
-    })
+    }),
   );
 
   const smartHomeText =
@@ -210,11 +210,11 @@ export const getStaticProps = (async ({ preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            })
+            }),
           ),
         }),
       }),
-    })
+    }),
   );
 
   const smartHomeFootnoteText =
@@ -234,11 +234,11 @@ export const getStaticProps = (async ({ preview = false }) => {
           items: z.array(
             z.object({
               content: z.string(),
-            })
+            }),
           ),
         }),
       }),
-    })
+    }),
   );
 
   const contactText =
@@ -260,11 +260,11 @@ export const getStaticProps = (async ({ preview = false }) => {
             z.object({
               url: z.string().url(),
               description: z.string(),
-            })
+            }),
           ),
         }),
       }),
-    })
+    }),
   );
 
   const lcdImage = lcdImageData.data.assetCollection.items[0];
@@ -289,11 +289,11 @@ export const getStaticProps = (async ({ preview = false }) => {
             z.object({
               url: z.string().url(),
               description: z.string(),
-            })
+            }),
           ),
         }),
       }),
-    })
+    }),
   );
 
   const mlImage = mlImageData.data.assetCollection.items[0];

@@ -1,6 +1,9 @@
 import { PodcastsListFilter } from "../components/PodcastsList";
 
 interface TrackingEvents {
+  "Uncaught error": {
+    message: string;
+  };
   "Podcast Search": {
     search: string;
   };
