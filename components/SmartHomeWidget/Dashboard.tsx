@@ -12,12 +12,14 @@ import { getSmartHomeData } from "../../data/smarthome";
 import { Await } from "../Await";
 import { WidgetLayout } from "../WidgetLayout";
 import { SmartHomeElement } from "./SmartHomeElement";
+import { unstable_noStore as noStore } from "next/cache";
 
 interface Props {
   footnote: string;
 }
 
 export const Dashboard = async ({ footnote }: Props) => {
+  noStore();
   const promise = getSmartHomeData();
   return (
     <Await
