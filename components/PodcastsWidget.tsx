@@ -1,15 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "react-feather";
-
-import type { Podcast } from "../lib/podcasts";
 import { Button } from "./Button";
+import { getFavoritePodcasts } from "../data/podcasts/podcasts";
 
-interface Props {
-  podcasts: Podcast[];
-}
-
-export function PodcastsWidget({ podcasts }: Props) {
+export function PodcastsWidget() {
+  const podcasts = getFavoritePodcasts();
   return (
     <section id="podcasts">
       <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">
