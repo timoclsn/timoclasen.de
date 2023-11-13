@@ -20,21 +20,6 @@ dependencies:
   '@tailwindcss/typography':
     specifier: 0.5.10
     version: 0.5.10(tailwindcss@3.3.5)
-  '@tanstack/react-query':
-    specifier: 5.4.3
-    version: 5.4.3(react-dom@18.2.0)(react@18.2.0)
-  '@trpc/client':
-    specifier: next
-    version: 11.0.0-alpha-next-2023-11-01-15-02-16.94(@trpc/server@11.0.0-alpha-next-2023-11-01-15-02-16.94)
-  '@trpc/next':
-    specifier: next
-    version: 11.0.0-alpha-next-2023-11-01-15-02-16.94(@tanstack/react-query@5.4.3)(@trpc/client@11.0.0-alpha-next-2023-11-01-15-02-16.94)(@trpc/react-query@11.0.0-alpha-next-2023-11-01-15-02-16.94)(@trpc/server@11.0.0-alpha-next-2023-11-01-15-02-16.94)(next@14.0.3-canary.4)(react-dom@18.2.0)(react@18.2.0)
-  '@trpc/react-query':
-    specifier: next
-    version: 11.0.0-alpha-next-2023-11-01-15-02-16.94(@tanstack/react-query@5.4.3)(@trpc/client@11.0.0-alpha-next-2023-11-01-15-02-16.94)(@trpc/server@11.0.0-alpha-next-2023-11-01-15-02-16.94)(react-dom@18.2.0)(react@18.2.0)
-  '@trpc/server':
-    specifier: next
-    version: 11.0.0-alpha-next-2023-11-01-15-02-16.94
   '@vercel/og':
     specifier: 0.5.20
     version: 0.5.20
@@ -1390,27 +1375,6 @@ packages:
       tailwindcss: 3.3.5
     dev: false
 
-  /@tanstack/query-core@5.4.3:
-    resolution: {integrity: sha512-fnI9ORjcuLGm1sNrKatKIosRQUpuqcD4SV7RqRSVmj8JSicX2aoMyKryHEBpVQvf6N4PaBVgBxQomjsbsGPssQ==}
-    dev: false
-
-  /@tanstack/react-query@5.4.3(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-4aSOrRNa6yEmf7mws5QPTVMn8Lp7L38tFoTZ0c1ZmhIvbr8GIA0WT7X5N3yz/nuK8hUtjw9cAzBr4BPDZZ+tzA==}
-    peerDependencies:
-      react: ^18.0.0
-      react-dom: ^18.0.0
-      react-native: '*'
-    peerDependenciesMeta:
-      react-dom:
-        optional: true
-      react-native:
-        optional: true
-    dependencies:
-      '@tanstack/query-core': 5.4.3
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
   /@testing-library/dom@9.0.0:
     resolution: {integrity: sha512-+/TLgKNFsYUshOY/zXsQOk+PlFQK+eyJ9T13IDVNJEi+M+Un7xlJK+FZKkbGSnf0+7E1G6PlDhkSYQ/GFiruBQ==}
     engines: {node: '>=14'}
@@ -1473,56 +1437,6 @@ packages:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
     engines: {node: '>= 10'}
     dev: true
-
-  /@trpc/client@11.0.0-alpha-next-2023-11-01-15-02-16.94(@trpc/server@11.0.0-alpha-next-2023-11-01-15-02-16.94):
-    resolution: {integrity: sha512-MWdpb6GKEvpVYx2AEWZnMT9VgdBgBEClwaOJ242PZqu3Y+XdesBKb90RT2riuLk3f36byel29TcGTwm1v6y6zA==}
-    peerDependencies:
-      '@trpc/server': 11.0.0-alpha-next-2023-11-01-15-02-16.94+a9368b41d
-    dependencies:
-      '@trpc/server': 11.0.0-alpha-next-2023-11-01-15-02-16.94
-    dev: false
-
-  /@trpc/next@11.0.0-alpha-next-2023-11-01-15-02-16.94(@tanstack/react-query@5.4.3)(@trpc/client@11.0.0-alpha-next-2023-11-01-15-02-16.94)(@trpc/react-query@11.0.0-alpha-next-2023-11-01-15-02-16.94)(@trpc/server@11.0.0-alpha-next-2023-11-01-15-02-16.94)(next@14.0.3-canary.4)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-AEU3rp/R6FU2qpAJFz2EKpeyrXSYSKCd/NtBespSPnWuBFMgvEKKkfbLio7O5z9A7TWVM2Hiq9iBCUQdy3wjXg==}
-    peerDependencies:
-      '@tanstack/react-query': ^5.0.0
-      '@trpc/client': 11.0.0-alpha-next-2023-11-01-15-02-16.94+a9368b41d
-      '@trpc/react-query': 11.0.0-alpha-next-2023-11-01-15-02-16.94+a9368b41d
-      '@trpc/server': 11.0.0-alpha-next-2023-11-01-15-02-16.94+a9368b41d
-      next: '*'
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
-    dependencies:
-      '@tanstack/react-query': 5.4.3(react-dom@18.2.0)(react@18.2.0)
-      '@trpc/client': 11.0.0-alpha-next-2023-11-01-15-02-16.94(@trpc/server@11.0.0-alpha-next-2023-11-01-15-02-16.94)
-      '@trpc/react-query': 11.0.0-alpha-next-2023-11-01-15-02-16.94(@tanstack/react-query@5.4.3)(@trpc/client@11.0.0-alpha-next-2023-11-01-15-02-16.94)(@trpc/server@11.0.0-alpha-next-2023-11-01-15-02-16.94)(react-dom@18.2.0)(react@18.2.0)
-      '@trpc/server': 11.0.0-alpha-next-2023-11-01-15-02-16.94
-      next: 14.0.3-canary.4(@babel/core@7.19.3)(react-dom@18.2.0)(react@18.2.0)
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      react-ssr-prepass: 1.5.0(react@18.2.0)
-    dev: false
-
-  /@trpc/react-query@11.0.0-alpha-next-2023-11-01-15-02-16.94(@tanstack/react-query@5.4.3)(@trpc/client@11.0.0-alpha-next-2023-11-01-15-02-16.94)(@trpc/server@11.0.0-alpha-next-2023-11-01-15-02-16.94)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-PaOU9foKPiXn/gGaCkD4RgMP6OeeH7w0avF3vh0+6mS2KtG7O8HHNfAvZrFSUcBSVwCzcx6CvDzOyDqkBvxToQ==}
-    peerDependencies:
-      '@tanstack/react-query': ^5.0.0
-      '@trpc/client': 11.0.0-alpha-next-2023-11-01-15-02-16.94+a9368b41d
-      '@trpc/server': 11.0.0-alpha-next-2023-11-01-15-02-16.94+a9368b41d
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
-    dependencies:
-      '@tanstack/react-query': 5.4.3(react-dom@18.2.0)(react@18.2.0)
-      '@trpc/client': 11.0.0-alpha-next-2023-11-01-15-02-16.94(@trpc/server@11.0.0-alpha-next-2023-11-01-15-02-16.94)
-      '@trpc/server': 11.0.0-alpha-next-2023-11-01-15-02-16.94
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
-  /@trpc/server@11.0.0-alpha-next-2023-11-01-15-02-16.94:
-    resolution: {integrity: sha512-TsMTpuQBW2tSQz0loh5ledJICleBklLWmuSTTvvK+piAgCwg2JR+ftObZcW1HuhKi9p26bQfPcU/VqJPHvCa5A==}
-    engines: {node: '>=18.0.0'}
-    dev: false
 
   /@types/acorn@4.0.6:
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
@@ -6836,14 +6750,6 @@ packages:
   /react-is@18.2.0:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: true
-
-  /react-ssr-prepass@1.5.0(react@18.2.0):
-    resolution: {integrity: sha512-yFNHrlVEReVYKsLI5lF05tZoHveA5pGzjFbFJY/3pOqqjGOmMmqx83N4hIjN2n6E1AOa+eQEUxs3CgRnPmT0RQ==}
-    peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    dependencies:
-      react: 18.2.0
-    dev: false
 
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}

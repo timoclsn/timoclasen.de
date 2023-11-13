@@ -3,19 +3,19 @@ import type { NextRequest } from "next/server";
 import { createElement } from "react";
 import { z } from "zod";
 
-import { OGImage } from "../../components/OGImage";
-import { queryContent } from "../../lib/content";
+import { OGImage } from "../../../components/OGImage";
+import { queryContent } from "../../../lib/content";
 
 export const config = {
   runtime: "edge",
 };
 
 const fontRegular = fetch(
-  new URL("../../public/fonts/Inter-Regular.woff", import.meta.url)
+  new URL("../../public/fonts/Inter-Regular.woff", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 const fontBold = fetch(
-  new URL("../../public/fonts/Inter-Bold.woff", import.meta.url)
+  new URL("../../public/fonts/Inter-Bold.woff", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 export default async function OGImageAPI(req: NextRequest) {
@@ -47,10 +47,10 @@ export default async function OGImageAPI(req: NextRequest) {
             profileImageCollection: z.object({
               items: z.array(z.object({ url: z.string() })),
             }),
-          })
+          }),
         ),
       }),
-    })
+    }),
   );
 
   const person = personData.personCollection.items[0];
