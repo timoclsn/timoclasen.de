@@ -1,93 +1,114 @@
 import { Music, User } from "react-feather";
-
-import { trpc } from "../utils/trpc";
+import { getTopArtistsDataCached, getTopTracksDataCached } from "../data/music";
+import { Await } from "./Await";
 import { MediaPreview } from "./MediaPreview";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./Tabs";
-import { track } from "../lib/tracking";
+import { Track } from "./Track/Track";
 
-export function TopMusic() {
-  const { data: topArtistsData, error: topArtistsError } =
-    trpc.music.topArtists.useQuery();
-
-  const { data: topTracksData, error: topTracksError } =
-    trpc.music.topTracks.useQuery();
-
-  if (topArtistsError || topTracksError) {
-    return <div>Fehler beim Laden…</div>;
-  }
-
-  const loadingState = (
-    <>
-      <MediaPreview />
-      <MediaPreview />
-      <MediaPreview />
-      <MediaPreview />
-      <MediaPreview />
-    </>
-  );
+export const TopMusic = () => {
+  const topArtistsPromise = getTopArtistsDataCached();
+  const topTracksPromise = getTopTracksDataCached();
 
   return (
     <Tabs defaultValue="1">
       <TabsList aria-label="Meine Lieblingsmusik">
-        <TabsTrigger
-          value="1"
-          onClick={() => {
-            track("Tabs Control", {
+        <TabsTrigger value="1">
+          <Track
+            as="span"
+            className="inline-block h-full w-full"
+            event="Tabs Control"
+            data={{
               tab: "Artists",
-            });
-          }}
-        >
-          Künstler:innen
+            }}
+          >
+            Künstler:innen
+          </Track>
         </TabsTrigger>
-        <TabsTrigger
-          value="2"
-          onClick={() => {
-            track("Tabs Control", {
+        <TabsTrigger value="2">
+          <Track
+            as="span"
+            className="inline-block h-full w-full"
+            event="Tabs Control"
+            data={{
               tab: "Songs",
-            });
-          }}
-        >
-          Songs
+            }}
+          >
+            Songs
+          </Track>
         </TabsTrigger>
       </TabsList>
       <TabsContent value="1">
-        <ul className="space-y-20">
-          {topArtistsData
-            ? topArtistsData.artists.map((artist, index: number) => (
-                <li key={index}>
-                  <MediaPreview
-                    title={artist.name}
-                    no={index + 1}
-                    image={artist.image}
-                    BylineIcon={Music}
-                    byline={artist.genres.join(", ")}
-                    subline={`Follower: ${artist.followers}`}
-                    url={artist.url}
-                  />
-                </li>
-              ))
-            : loadingState}
-        </ul>
+        <Await
+          promise={topArtistsPromise}
+          loading={<Loading />}
+          error={<Error />}
+        >
+          {(topArtists) => {
+            return (
+              <ul className="space-y-20">
+                {topArtists.map((artist, index) => (
+                  <li key={index}>
+                    <MediaPreview
+                      title={artist.name}
+                      no={index + 1}
+                      image={artist.image}
+                      BylineIcon={Music}
+                      byline={artist.genres.join(", ")}
+                      subline={`Follower: ${artist.followers}`}
+                      url={artist.url}
+                    />
+                  </li>
+                ))}
+              </ul>
+            );
+          }}
+        </Await>
       </TabsContent>
       <TabsContent value="2">
-        <ul className="space-y-20">
-          {topTracksData
-            ? topTracksData.tracks.map((track, index: number) => (
-                <li key={index}>
-                  <MediaPreview
-                    title={track.name}
-                    no={index + 1}
-                    image={track.image}
-                    BylineIcon={User}
-                    byline={track.artistName}
-                    subline={track.albumName}
-                    url={track.url}
-                  />
-                </li>
-              ))
-            : loadingState}
-        </ul>
+        <Await
+          promise={topTracksPromise}
+          loading={<Loading />}
+          error={<Error />}
+        >
+          {(topTracks) => {
+            return (
+              <ul className="space-y-20">
+                {topTracks.map((track, index) => (
+                  <li key={index}>
+                    <MediaPreview
+                      title={track.name}
+                      no={index + 1}
+                      image={track.image}
+                      BylineIcon={User}
+                      byline={track.artistName}
+                      subline={track.albumName}
+                      url={track.url}
+                    />
+                  </li>
+                ))}
+              </ul>
+            );
+          }}
+        </Await>
       </TabsContent>
     </Tabs>
   );
-}
+};
+
+const Loading = () => {
+  return (
+    <ul className="space-y-20">
+      <MediaPreview />
+      <MediaPreview />
+      <MediaPreview />
+      <MediaPreview />
+      <MediaPreview />
+    </ul>
+  );
+};
+
+const Error = () => {
+  return (
+    <div className="flex items-center justify-center">Fehler beim Laden…</div>
+  );
+};

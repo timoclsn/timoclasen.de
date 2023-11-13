@@ -1,6 +1,6 @@
 import { PodcastsListFilter } from "../components/PodcastsList";
 
-interface TrackingEvents {
+export interface TrackingEvents {
   "Uncaught error": {
     message: string;
   };

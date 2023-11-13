@@ -44,7 +44,7 @@ export function MediaPreview({
           <div className="flex items-center space-x-2 truncate">
             {BylineIcon && <BylineIcon size={16} className="flex-none" />}
             <p title={byline} className="truncate">
-              {byline ? byline : <Skeleton width="200px" />}
+              {byline !== undefined ? byline : <Skeleton width="200px" />}
             </p>
           </div>
           {favorite && <Heart size={16} className="flex-none" />}
@@ -62,7 +62,7 @@ export function MediaPreview({
             {title ? title : <Skeleton width="100%" />}
           </h2>
         </a>
-        <p className="md:text-md text-base text-opacity-60 line-clamp-2 lg:text-lg xl:text-xl">
+        <p className="md:text-md line-clamp-2 text-base text-opacity-60 lg:text-lg xl:text-xl">
           {subline ? subline : <Skeleton width="50%" />}
         </p>
       </div>
