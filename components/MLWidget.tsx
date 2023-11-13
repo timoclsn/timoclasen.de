@@ -1,35 +1,54 @@
 import Image from "next/image";
 import { ArrowRight } from "react-feather";
-
+import { z } from "zod";
+import { queryContent } from "../lib/content";
+import { getPlaceholder } from "../lib/placeholder";
 import { Button } from "./Button";
 
-interface BgImage {
-  url: string;
-  description: string;
-  blurDataURL: string;
-}
+export const MLWidget = async () => {
+  const mlImageData = await queryContent(
+    `{
+      assetCollection(where: {title: "Makersleague.de"}, limit: 1, preview: false) {
+        items {
+          url
+          description
+        }
+      }
+    }`,
+    z.object({
+      data: z.object({
+        assetCollection: z.object({
+          items: z.array(
+            z.object({
+              url: z.string().url(),
+              description: z.string(),
+            }),
+          ),
+        }),
+      }),
+    }),
+  );
 
-interface Props {
-  bgImage: BgImage;
-}
+  const mlImage = mlImageData.data.assetCollection.items[0];
+  const { base64: MLImageBase64 } = await getPlaceholder(mlImage.url);
+  const enhancedMlImage = { ...mlImage, blurDataURL: MLImageBase64 };
 
-export function MLWidget({ bgImage }: Props) {
   return (
     <section id="makers-league" className="relative rounded-3xl bg-[#E5F0F2]">
-      <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-3xl sm:aspect-w-2 sm:aspect-h-1">
+      <div className="aspect-h-2 aspect-w-3 overflow-hidden rounded-3xl sm:aspect-h-1 sm:aspect-w-2">
         <Image
-          src={bgImage.url}
+          src={enhancedMlImage.url}
           width="2200"
           height="1100"
           sizes="90vw"
           quality={90}
-          alt={bgImage.description}
+          alt={enhancedMlImage.description}
           className="hidden rounded-3xl sm:block"
-          blurDataURL={bgImage.blurDataURL}
+          blurDataURL={enhancedMlImage.blurDataURL}
           placeholder="blur"
         />
       </div>
-      <div className="absolute top-0 left-0 flex h-full w-full flex-col justify-end rounded-3xl px-6 py-12 text-dark xl:px-12 xl:py-20">
+      <div className="absolute left-0 top-0 flex h-full w-full flex-col justify-end rounded-3xl px-6 py-12 text-dark xl:px-12 xl:py-20">
         <div>
           <h2 className="mb-2 text-2xl font-bold sm:text-3xl md:mb-2 md:text-4xl lg:text-5xl">
             Makers League e. V.
@@ -48,4 +67,4 @@ export function MLWidget({ bgImage }: Props) {
       </div>
     </section>
   );
-}
+};
