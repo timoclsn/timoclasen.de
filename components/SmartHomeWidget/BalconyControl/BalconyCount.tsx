@@ -9,11 +9,7 @@ export const BalconyCount = () => {
   return (
     <div className="flex justify-center">
       <p className="whitespace-nowrap text-sm opacity-60">
-        <Await
-          promise={promise}
-          loading={<Skeleton width="250px" />}
-          error={<div>error!</div>}
-        >
+        <Await promise={promise} loading={<Loading />} error={<Error />}>
           {(data) => {
             return (
               <>{`Zähler: Rot ${data.red} | Grün ${data.green} | Blau ${data.blue}`}</>
@@ -23,4 +19,12 @@ export const BalconyCount = () => {
       </p>
     </div>
   );
+};
+
+const Loading = () => {
+  return <Skeleton width="250px" />;
+};
+
+const Error = () => {
+  return <span>Nicht erreichbar…</span>;
 };

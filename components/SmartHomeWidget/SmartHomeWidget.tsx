@@ -60,8 +60,12 @@ export const SmartHomeWidget = async () => {
       <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">
         Smart Home
       </h2>
-      <div className="mb-8" dangerouslySetInnerHTML={{ __html: text }}></div>
-      <Dashboard footnote={footnote} />
+      <div className="mb-8" dangerouslySetInnerHTML={{ __html: text }} />
+      <Dashboard />
+      <div
+        className="my-8 text-sm opacity-60"
+        dangerouslySetInnerHTML={{ __html: footnote }}
+      />
       <BalconyControl />
     </section>
   );
