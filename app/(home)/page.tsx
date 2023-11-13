@@ -2,6 +2,7 @@ import { AboutWidget } from "../../components/AboutWidget";
 import { BlogWidget } from "../../components/BlogWidget";
 import { LCDWidget } from "../../components/LCDWidget";
 import { MLWidget } from "../../components/MLWidget";
+import { NowPlaying } from "../../components/NowPlaying";
 import { PodcastsWidget } from "../../components/PodcastsWidget";
 import { RunningWidget } from "../../components/RunningWidget/RunningWidget";
 import { SmartHomeWidget } from "../../components/SmartHomeWidget/SmartHomeWidget";
@@ -18,6 +19,7 @@ const HomePage = () => {
       <RunningWidget />
       <PodcastsWidget />
       <MLWidget />
+      <NowPlaying />
     </>
   );
 };

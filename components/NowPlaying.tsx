@@ -1,16 +1,25 @@
 import Image from "next/image";
-
-import { trpc } from "../utils/trpc";
+import { NowPlayingData, getNowPlayingDataCached } from "../data/music";
+import { Await } from "./Await";
 import { Skeleton } from "./Skeleton";
 import { SoundBars } from "./SoundBars";
 
 export function NowPlaying() {
-  const { data, error } = trpc.music.nowPlaying.useQuery();
+  const promise = getNowPlayingDataCached();
+  return (
+    <Await promise={promise} loading={<Loading />} error={<Error />}>
+      {(data) => {
+        return <NowPlayingInner data={data} />;
+      }}
+    </Await>
+  );
+}
 
-  if (error) {
-    return <div>Fehler beim Laden…</div>;
-  }
+interface NowPlayingInnerProps {
+  data?: NowPlayingData;
+}
 
+const NowPlayingInner = ({ data }: NowPlayingInnerProps) => {
   return (
     <section className="flex justify-center">
       <div className="w-full space-y-4 rounded-3xl bg-dark bg-opacity-10 px-6 py-6 dark:bg-light dark:bg-opacity-10 sm:w-auto sm:min-w-[450px] xl:px-12 xl:py-12">
@@ -75,4 +84,14 @@ export function NowPlaying() {
       </div>
     </section>
   );
-}
+};
+
+const Loading = () => {
+  return <NowPlayingInner />;
+};
+
+const Error = () => {
+  return (
+    <div className="flex items-center justify-center">Fehler beim Laden…</div>
+  );
+};
