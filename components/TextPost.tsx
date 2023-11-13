@@ -1,3 +1,4 @@
+"use client";
 import NextImage from "next/image";
 import ReactMarkdown, { Components } from "react-markdown";
 import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
@@ -35,7 +36,7 @@ export function TextPost({ children }: Props) {
     },
     img: ({ src, alt }) => {
       return (
-        <span className="not-prose aspect-w-3 aspect-h-2 block rounded-md bg-dark bg-opacity-10 dark:bg-light dark:bg-opacity-10">
+        <span className="not-prose aspect-h-2 aspect-w-3 block rounded-md bg-dark bg-opacity-10 dark:bg-light dark:bg-opacity-10">
           <NextImage
             src={`https:${src}`}
             width="2200"
