@@ -1,12 +1,13 @@
+"use client";
+
 import { matchSorter } from "match-sorter";
 import { startTransition, useReducer } from "react";
 import { User } from "react-feather";
-
-import type { Podcast as PodcastType } from "../lib/podcasts";
+import { Podcasts } from "../data/podcasts/podcasts";
+import { track } from "../lib/tracking";
 import { MediaPreview } from "./MediaPreview";
 import { PodcastFilter } from "./PodcastFilter";
 import { Search } from "./Search";
-import { track } from "../lib/tracking";
 
 export type PodcastsListFilter = {
   favorites: boolean;
@@ -55,7 +56,7 @@ const reducer = (state: State, action: Action): State => {
 };
 
 interface Props {
-  podcasts: PodcastType[];
+  podcasts: Podcasts;
 }
 
 export function PodcastsList({ podcasts }: Props) {
@@ -67,7 +68,7 @@ export function PodcastsList({ podcasts }: Props) {
 
   const categoriesObj = sortedCategories.reduce(
     (acc, category) => ({ ...acc, [category]: false }),
-    {} as { [key: string]: boolean }
+    {} as { [key: string]: boolean },
   );
 
   const initialState: State = {
@@ -103,7 +104,7 @@ export function PodcastsList({ podcasts }: Props) {
 
     if (filteredCategories.length) {
       const showPodcast = filteredCategories.every((category) =>
-        podcast.categories.includes(category)
+        podcast.categories.includes(category),
       );
 
       return filter.favorites ? showPodcast && podcast.favorite : showPodcast;

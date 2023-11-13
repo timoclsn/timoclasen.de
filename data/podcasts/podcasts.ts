@@ -1,6 +1,5 @@
-import "server-only";
-
 import { readFileSync } from "fs";
+import "server-only";
 import { z } from "zod";
 
 const podcastSchema = z.object({
@@ -13,6 +12,8 @@ const podcastSchema = z.object({
   image: z.string(),
   categories: z.array(z.string()),
 });
+
+export type Podcasts = Awaited<ReturnType<typeof getPodcasts>>;
 
 export const getPodcasts = () => {
   const podcasts = JSON.parse(
