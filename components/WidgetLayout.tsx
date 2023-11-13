@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cva } from "class-variance-authority";
 import type { ReactNode } from "react";
 
 interface Props {
@@ -26,23 +26,38 @@ export function WidgetLayout({
     ? "text-light dark:text-light"
     : "text-dark dark:text-light";
 
-  const containerSyles = clsx(
-    "flex",
-    "flex-col",
-    "sm:flex-row",
-    "sm:space-x-12",
-    "md:space-x-16",
-    "lg:space-x-24",
-    textColor,
-    separate ? "space-y-12 sm:space-y-0" : `rounded-3xl ${bgColor}`,
+  const containerVariants = cva(
+    [
+      "flex",
+      "flex-col",
+      "sm:flex-row",
+      "sm:space-x-12",
+      "md:space-x-16",
+      "lg:space-x-24",
+      textColor,
+    ],
+    {
+      variants: {
+        separate: {
+          true: "space-y-12 sm:space-y-0",
+          false: `rounded-3xl ${bgColor}`,
+        },
+      },
+    },
   );
 
-  const widgetStyles = clsx("flex-1", separate && `rounded-3xl ${bgColor}`);
+  const widgetVariants = cva("flex-1", {
+    variants: {
+      separate: {
+        true: `rounded-3xl ${bgColor}`,
+      },
+    },
+  });
 
   return (
-    <section className={containerSyles}>
-      <div className={widgetStyles}>{children[0]}</div>
-      <div className={widgetStyles}>{children[1]}</div>
+    <section className={containerVariants({ separate })}>
+      <div className={widgetVariants({ separate })}>{children[0]}</div>
+      <div className={widgetVariants({ separate })}>{children[1]}</div>
     </section>
   );
 }

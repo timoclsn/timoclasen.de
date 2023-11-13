@@ -1,5 +1,4 @@
-import clsx from "clsx";
-
+import { cva } from "class-variance-authority";
 import styles from "./SoundBars.module.css";
 
 interface Props {
@@ -8,19 +7,37 @@ interface Props {
 }
 
 export function SoundBars({ isPlaying, color }: Props) {
-  const barStyles = clsx(
-    "w-[3px]",
-    "rounded-sm",
-    styles.soundBars,
-    isPlaying && styles.isPlaying,
-    color ? color : "bg-highlight dark:bg-highlight-dark",
-  );
+  const barVariants = cva(["w-[3px]", "rounded-sm", styles.soundBars], {
+    variants: {
+      isPlaying: {
+        true: styles.isPlaying,
+      },
+      color: {
+        true: color,
+        false: "bg-highlight dark:bg-highlight-dark",
+      },
+    },
+  });
 
   return (
     <div className="relative flex h-[15px] w-[15px] items-end justify-between">
-      <div className={`${barStyles} h-[5px]`} />
-      <div className={`${barStyles} h-[15px]`} />
-      <div className={`${barStyles} h-[10px]`} />
+      <div
+        className={barVariants({ isPlaying, color: !!color, class: "h-[5px]" })}
+      />
+      <div
+        className={barVariants({
+          isPlaying,
+          color: !!color,
+          class: "h-[15px]",
+        })}
+      />
+      <div
+        className={barVariants({
+          isPlaying,
+          color: !!color,
+          class: "h-[10px]",
+        })}
+      />
     </div>
   );
 }

@@ -1,22 +1,22 @@
 "use client";
 
-import clsx from "clsx";
+import { cx } from "class-variance-authority";
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "react-feather";
 import { CenteredColumn } from "../CenteredColumn";
 import { NavigationLink } from "../NavigationLink";
-import styles from "./Navigation.module.css";
 import { SwitchMode } from "../SwitchMode/SwitchMode";
+import styles from "./Navigation.module.css";
 
 export const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header
-      className={clsx(
+      className={cx(
         "xl:mb-22 mb-8 bg-light bg-opacity-80 py-4 dark:bg-dark dark:bg-opacity-80 md:mb-20 md:py-6",
-        styles.stickyNav
+        styles.stickyNav,
       )}
     >
       <CenteredColumn>
@@ -41,7 +41,7 @@ export const Navigation = () => {
           <ul
             className={`${
               menuOpen ? "flex" : "hidden"
-            } mt-16 flex-1 flex-col items-center space-y-8 pb-8 sm:mt-0 sm:flex sm:flex-initial sm:flex-row sm:space-y-0 sm:space-x-4 sm:pb-0 md:space-x-8`}
+            } mt-16 flex-1 flex-col items-center space-y-8 pb-8 sm:mt-0 sm:flex sm:flex-initial sm:flex-row sm:space-x-4 sm:space-y-0 sm:pb-0 md:space-x-8`}
           >
             <li>
               <Link href="/ueber" passHref legacyBehavior>
@@ -67,9 +67,9 @@ export const Navigation = () => {
           <div className="flex flex-1 justify-end sm:hidden sm:flex-initial">
             <button
               type="button"
-              className={clsx(
+              className={cx(
                 "h-8 w-8 focus-visible:outline-none",
-                styles.menuIcon
+                styles.menuIcon,
               )}
               aria-controls="mobile-menu"
               aria-expanded={menuOpen ? "true" : "false"}

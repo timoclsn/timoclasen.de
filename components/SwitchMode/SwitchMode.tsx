@@ -1,11 +1,11 @@
 "use client";
 
-import clsx from "clsx";
+import { cx } from "class-variance-authority";
 import { Moon, Sun } from "react-feather";
+import { track } from "../../lib/tracking";
 import { useTheme } from "../ThemeContext";
 import { useIsMounted } from "../useIsMounted";
 import styles from "./SwitchMode.module.css";
-import { track } from "../../lib/tracking";
 
 export const SwitchMode = () => {
   const { darkMode, setDarkMode } = useTheme();
@@ -23,9 +23,9 @@ export const SwitchMode = () => {
     <button
       aria-label="Farbschema wechseln"
       type="button"
-      className={clsx(
+      className={cx(
         "h-8 w-8 flex-none rounded-xl bg-dark bg-opacity-10 text-highlight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight dark:bg-light dark:bg-opacity-10 dark:text-highlight-dark dark:focus-visible:ring-highlight-dark",
-        styles.switchMode
+        styles.switchMode,
       )}
       onClick={handleThemeChange}
       title={`Farbschema zu ${darkMode ? "hell" : "dunkel"} welchseln`}

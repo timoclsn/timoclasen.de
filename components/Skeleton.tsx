@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import { cx } from "class-variance-authority";
 
 interface Props {
   className?: string;
@@ -19,7 +19,7 @@ export function Skeleton({
 }: Props) {
   return (
     <span
-      className={clsx(
+      className={cx(
         "inline-block animate-pulse bg-dark/25 leading-none dark:bg-light/25",
         className,
       )}

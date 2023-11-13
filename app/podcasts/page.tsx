@@ -1,12 +1,26 @@
 import { z } from "zod";
-import { PodcastsList } from "../../components/PodcastsList";
+import { PodcastsList } from "../../components/PodcastsList/PodcastsList";
 import { Recommendations } from "../../components/Recommendations";
 import { TextBlock } from "../../components/TextBlock";
 import { getPodcasts } from "../../data/podcasts/podcasts";
 import { queryContent } from "../../lib/content";
 import { markdownToHTML } from "../../lib/text";
 
-const PodcastPage = async () => {
+const searchParamsSchema = z.object({
+  search: z.coerce.string().optional(),
+  favorites: z.coerce.boolean().optional(),
+  filter: z.coerce.string().optional(),
+});
+
+interface Props {
+  searchParams?: {
+    [key: string]: string | string[] | undefined;
+  };
+}
+
+const PodcastPage = async ({ searchParams }: Props) => {
+  const { search, favorites, filter } = searchParamsSchema.parse(searchParams);
+
   const podcastsSnippetData = await queryContent(
     `{
         textSnippetCollection(where: {title: "Podcasts"}, limit: 1, preview: false) {
@@ -32,12 +46,14 @@ const PodcastPage = async () => {
     podcastsSnippetData.data.textSnippetCollection.items[0].content,
   );
 
-  const podcasts = getPodcasts();
-
   return (
     <>
       <TextBlock text={podcastsText} />
-      <PodcastsList podcasts={podcasts} />
+      <PodcastsList
+        search={search}
+        favorites={favorites}
+        filter={filter?.split(";")}
+      />
       <Recommendations />
     </>
   );
