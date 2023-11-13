@@ -4,7 +4,7 @@ import readingTime from "reading-time";
 import { z } from "zod";
 import { BlogPostHeader } from "../../../components/BlogPostHeader";
 import { ContactWidget } from "../../../components/ContactWidget";
-import { TextPost } from "../../../components/TextPost";
+import { MDXContent } from "../../../components/MDXContent/MDXContent";
 import { queryContent } from "../../../lib/content";
 
 interface Props {
@@ -104,7 +104,7 @@ const BlogPostPage = async ({ params }: Props) => {
           readingTime={enhancedBlogPost.readingTime}
           sys={enhancedBlogPost.sys}
         />
-        <TextPost>{enhancedBlogPost.text}</TextPost>
+        <MDXContent source={enhancedBlogPost.text} />
       </article>
       <ContactWidget />
     </>

@@ -21,10 +21,12 @@ export function ThemeProvider({ children }: ThemeProvider) {
     rawSetDarkMode(value);
     if (value) {
       document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
       document.documentElement.style.colorScheme = "dark";
     } else {
+      document.documentElement.classList.add("light");
       document.documentElement.classList.remove("dark");
-      document.documentElement.style.colorScheme = "";
+      document.documentElement.style.colorScheme = "light";
     }
   }
 
