@@ -50,9 +50,6 @@ dependencies:
   date-fns-tz:
     specifier: 2.0.0
     version: 2.0.0(date-fns@2.30.0)
-  js-confetti:
-    specifier: 0.11.0
-    version: 0.11.0
   match-sorter:
     specifier: 6.3.1
     version: 6.3.1
@@ -4923,10 +4920,6 @@ packages:
   /jiti@1.21.0:
     resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
     hasBin: true
-    dev: false
-
-  /js-confetti@0.11.0:
-    resolution: {integrity: sha512-Hc7I3VI4r4H0nq5q/oQK+JJwGoYRYVHK72fGk8E9Ay1dbh+aiZ9yl0yFp1K4oYeq7YFDQAndYChwqLPA3QWQuA==}
     dev: false
 
   /js-tokens@4.0.0:

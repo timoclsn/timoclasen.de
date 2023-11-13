@@ -1,9 +1,5 @@
-import { useRef } from "react";
 import type { Icon } from "react-feather";
-
-import { CountUpAnimation } from "./CountUpNumber";
 import { Skeleton } from "./Skeleton";
-import { useOnScreen } from "./useOnScreen";
 interface Label {
   text: string;
   description: string;
@@ -15,21 +11,11 @@ interface Props {
   href?: string;
   labels?: Label[];
   nowrap?: boolean;
-  animateLabelNumber?: boolean;
 }
 
-export function RunningElement({
-  Icon,
-  text,
-  href,
-  labels,
-  nowrap,
-  animateLabelNumber,
-}: Props) {
-  const ref = useRef<HTMLDivElement>(null);
-  const visible = useOnScreen(ref);
+export const RunningElement = ({ Icon, text, href, labels, nowrap }: Props) => {
   return (
-    <div className="flex items-center space-x-4" ref={ref}>
+    <div className="flex items-center space-x-4">
       <div className="leading-none">
         {text ? (
           <Icon size={22} />
@@ -49,23 +35,13 @@ export function RunningElement({
       {labels && (
         <div className="flex flex-wrap items-center">
           {labels.map((label) => {
-            const textElements = label.text.match(/[^\d]+|\d+/g) ?? [];
-            const number = textElements[0] as unknown as number;
-            const rest = textElements[1];
             return (
               <div
                 key={label.text}
                 className="m-1 whitespace-nowrap rounded-full bg-highlight px-3 py-1 text-xs font-bold uppercase text-light dark:bg-highlight-dark"
                 title={label.description}
               >
-                {animateLabelNumber ? (
-                  <>
-                    <CountUpAnimation play={visible}>{number}</CountUpAnimation>
-                    {rest}
-                  </>
-                ) : (
-                  label.text
-                )}
+                {label.text}
               </div>
             );
           })}
@@ -73,4 +49,4 @@ export function RunningElement({
       )}
     </div>
   );
-}
+};

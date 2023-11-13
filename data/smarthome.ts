@@ -1,4 +1,3 @@
-import { unstable_cache as nextCache } from "next/cache";
 import { cache as reactCache } from "react";
 import "server-only";
 import { AttributeType, NodeState } from "../lib/enums";
@@ -134,4 +133,4 @@ const getControlCount = async () => {
   );
 };
 
-export const getControlCountCached = nextCache(getControlCount);
+export const getControlCountCached = reactCache(getControlCount);
