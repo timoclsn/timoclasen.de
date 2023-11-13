@@ -1,5 +1,6 @@
 import { AboutWidget } from "../../components/AboutWidget";
 import { BlogWidget } from "../../components/BlogWidget";
+import { ContactWidget } from "../../components/ContactWidget";
 import { LCDWidget } from "../../components/LCDWidget";
 import { MLWidget } from "../../components/MLWidget";
 import { NowPlaying } from "../../components/NowPlaying";
@@ -20,6 +21,7 @@ const HomePage = () => {
       <PodcastsWidget />
       <MLWidget />
       <NowPlaying />
+      <ContactWidget />
     </>
   );
 };
