@@ -1,16 +1,16 @@
-import "server-only";
+import { formatRelative, parseISO } from "date-fns";
+import { utcToZonedTime } from "date-fns-tz";
+import { de } from "date-fns/locale";
 import { cache as reactCache } from "react";
+import "server-only";
+import { getMapURLs } from "../lib/mapbox";
 import {
   formatSpeed,
   formatTime,
   getActivities,
   roundDistance,
 } from "../lib/strava";
-import { formatRelative, parseISO } from "date-fns";
 import { capitalizeFirstLetter } from "../lib/utils";
-import { utcToZonedTime } from "date-fns-tz";
-import { de } from "date-fns/locale";
-import { getMapURLs } from "../lib/mapbox";
 
 export type RunningData = Awaited<ReturnType<typeof getRunningData>>;
 

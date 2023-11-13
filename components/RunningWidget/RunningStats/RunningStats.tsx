@@ -15,11 +15,7 @@ import { getYearProgress } from "../../../lib/utils";
 export const RunningStats = () => {
   const promise = getRunningDataCached();
   return (
-    <Await
-      promise={promise}
-      loading={<div>loading…</div>}
-      error={<div>error!</div>}
-    >
+    <Await promise={promise} loading={<Loading />} error={<Error />}>
       {(runningData) => {
         const thisYear = runningData.thisYear;
         const lastRun = runningData.lastRun;
@@ -34,7 +30,7 @@ export const RunningStats = () => {
         };
 
         const dateLabels = [
-          ...(lastRun?.stroller
+          ...(lastRun.stroller
             ? [
                 {
                   text: "Stroller",
@@ -42,7 +38,7 @@ export const RunningStats = () => {
                 },
               ]
             : []),
-          ...(lastRun?.race
+          ...(lastRun.race
             ? [
                 {
                   text: "Race",
@@ -53,16 +49,16 @@ export const RunningStats = () => {
         ];
 
         const distanceLabels = [
-          ...(lastRun && lastRun.distance.raw >= distanceThreshold
+          ...(lastRun.distance.raw >= distanceThreshold
             ? [{ text: "far", description: "Strecke von 10 km oder mehr" }]
             : []),
-          ...(lastRun && thisYear && lastRun.distance.raw >= thisYear.farthest
+          ...(lastRun.distance.raw >= thisYear.farthest
             ? [yearsBestLabel]
             : []),
         ];
 
         const speedLabels = [
-          ...(lastRun && lastRun.avgSpeed.raw > speedThreshold
+          ...(lastRun.avgSpeed.raw > speedThreshold
             ? [
                 {
                   text: "fast",
@@ -70,13 +66,11 @@ export const RunningStats = () => {
                 },
               ]
             : []),
-          ...(lastRun && thisYear && lastRun.avgSpeed?.raw >= thisYear.fastest
-            ? [yearsBestLabel]
-            : []),
+          ...(lastRun.avgSpeed.raw >= thisYear.fastest ? [yearsBestLabel] : []),
         ];
 
         const timeLabels = [
-          ...(lastRun && lastRun.time.raw >= timeThreshold
+          ...(lastRun.time.raw >= timeThreshold
             ? [
                 {
                   text: "long",
@@ -84,18 +78,14 @@ export const RunningStats = () => {
                 },
               ]
             : []),
-          ...(lastRun && thisYear && lastRun.time.raw >= thisYear.longest
-            ? [yearsBestLabel]
-            : []),
+          ...(lastRun.time.raw >= thisYear.longest ? [yearsBestLabel] : []),
         ];
 
         const heartrateLabels = [
-          ...(lastRun && lastRun.avgHeartrate?.raw < heartrateThreshold
+          ...(lastRun.avgHeartrate.raw < heartrateThreshold
             ? [{ text: "low", description: "Puls von unter 160 bpm" }]
             : []),
-          ...(lastRun &&
-          thisYear &&
-          lastRun.avgHeartrate?.raw <= thisYear.lowest
+          ...(lastRun.avgHeartrate.raw <= thisYear.lowest
             ? [yearsBestLabel]
             : []),
         ];
@@ -105,6 +95,7 @@ export const RunningStats = () => {
           : 0;
         const yearProgress = getYearProgress();
         const yearTrend = runningProgress >= yearProgress ? "↑" : "↓";
+
         return (
           <div className="px-6 py-12 xl:px-12 xl:py-20">
             <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">
@@ -114,24 +105,19 @@ export const RunningStats = () => {
               <li>
                 <RunningElement
                   Icon={TrendingUp}
-                  text={
-                    thisYear &&
-                    `${thisYear.distance} von ${yearlyRunningGoal} km pro Jahr`
-                  }
-                  labels={
-                    thisYear && [
-                      {
-                        text: `${runningProgress}% ${yearTrend}`,
-                        description: `Erreichtes Jahresziel. ${yearProgress}% des Jahres sind vorbei.`,
-                      },
-                    ]
-                  }
+                  text={`${thisYear.distance} von ${yearlyRunningGoal} km pro Jahr`}
+                  labels={[
+                    {
+                      text: `${runningProgress}% ${yearTrend}`,
+                      description: `Erreichtes Jahresziel. ${yearProgress}% des Jahres sind vorbei.`,
+                    },
+                  ]}
                 />
               </li>
             </ul>
             <div className="mb-2 mt-8 flex justify-between">
               <h3 className="font-bold">Letzter Lauf</h3>
-              {lastRun && lastRun.kudos > 0 && (
+              {lastRun.kudos > 0 && (
                 <div
                   className="flex items-center space-x-1 opacity-60"
                   title={`${lastRun.kudos} Kudos für diesen Lauf auf Strava`}
@@ -145,15 +131,15 @@ export const RunningStats = () => {
               <li>
                 <RunningElement
                   Icon={Calendar}
-                  text={lastRun?.date?.relative}
-                  href={lastRun?.url}
+                  text={lastRun.date.relative}
+                  href={lastRun.url}
                   labels={dateLabels}
                 />
               </li>
               <li>
                 <RunningElement
                   Icon={ArrowRight}
-                  text={lastRun?.distance?.formatted}
+                  text={lastRun.distance.formatted}
                   labels={distanceLabels}
                   nowrap
                 />
@@ -161,7 +147,7 @@ export const RunningStats = () => {
               <li>
                 <RunningElement
                   Icon={FastForward}
-                  text={lastRun?.avgSpeed?.formatted}
+                  text={lastRun.avgSpeed.formatted}
                   labels={speedLabels}
                   nowrap
                 />
@@ -169,7 +155,7 @@ export const RunningStats = () => {
               <li>
                 <RunningElement
                   Icon={Clock}
-                  text={lastRun?.time?.formatted}
+                  text={lastRun.time.formatted}
                   labels={timeLabels}
                   nowrap
                 />
@@ -177,7 +163,7 @@ export const RunningStats = () => {
               <li>
                 <RunningElement
                   Icon={Heart}
-                  text={lastRun?.avgHeartrate?.formatted}
+                  text={lastRun.avgHeartrate.formatted}
                   labels={heartrateLabels}
                   nowrap
                 />
@@ -187,5 +173,46 @@ export const RunningStats = () => {
         );
       }}
     </Await>
+  );
+};
+
+const Loading = () => {
+  return (
+    <div className="px-6 py-12 xl:px-12 xl:py-20">
+      <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">Laufen</h2>
+      <ul>
+        <li>
+          <RunningElement Icon={TrendingUp} />
+        </li>
+      </ul>
+      <div className="mb-2 mt-8 flex justify-between">
+        <h3 className="font-bold">Letzter Lauf</h3>
+      </div>
+      <ul>
+        <li>
+          <RunningElement Icon={Calendar} />
+        </li>
+        <li>
+          <RunningElement Icon={ArrowRight} />
+        </li>
+        <li>
+          <RunningElement Icon={FastForward} />
+        </li>
+        <li>
+          <RunningElement Icon={Clock} />
+        </li>
+        <li>
+          <RunningElement Icon={Heart} />
+        </li>
+      </ul>
+    </div>
+  );
+};
+
+const Error = () => {
+  return (
+    <div className="flex items-center justify-center p-10">
+      Fehler beim Laden…
+    </div>
   );
 };

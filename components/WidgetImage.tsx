@@ -1,9 +1,7 @@
 import Image from "next/image";
 
-import { Skeleton } from "./Skeleton";
-
 interface Props {
-  url?: string;
+  url: string;
   description?: string;
   priority?: boolean;
   unoptimized?: boolean;
@@ -17,20 +15,8 @@ export function WidgetImage({
   unoptimized,
   blurDataURL,
 }: Props) {
-  if (!url) {
-    return (
-      <Skeleton
-        width="100%"
-        height="100%"
-        borderRadius="1.5rem"
-        lineHeight="normal"
-        className="aspect-w-1 aspect-h-1"
-      />
-    );
-  }
-
   return (
-    <div className="sm:aspect-w-none sm:aspect-h-none aspect-w-1 aspect-h-1 relative h-full overflow-hidden rounded-3xl bg-light dark:bg-dark">
+    <div className="sm:aspect-w-none sm:aspect-h-none aspect-h-1 aspect-w-1 relative h-full overflow-hidden rounded-3xl bg-light dark:bg-dark">
       <Image
         src={url}
         width="1000"
