@@ -4,7 +4,7 @@ import { cx } from "class-variance-authority";
 import { Moon, Sun } from "react-feather";
 import { track } from "../../lib/tracking";
 import { useTheme } from "../ThemeContext";
-import { useIsMounted } from "../useIsMounted";
+import { useIsMounted } from "../../hooks/useIsMounted";
 import styles from "./SwitchMode.module.css";
 
 export const SwitchMode = () => {
