@@ -3,6 +3,7 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTransition, type ChangeEvent } from "react";
 import { Filter, XCircle } from "react-feather";
+import { track } from "../../lib/tracking";
 
 interface Props {
   categories: Array<string>;
@@ -19,18 +20,30 @@ export const PodcastFilter = ({ categories }: Props) => {
   const filter = filterSearchParam ? filterSearchParam.split(";") : [];
   const favorites = searchParams.get("favorites") || "";
 
+  const handleFilter = () => {
+    const searchParamsString = searchParams.toString();
+    startTransition(() => {
+      replace(
+        `${pathname}${searchParamsString ? "?" : ""}${searchParamsString}`,
+        {
+          scroll: false,
+        },
+      );
+    });
+  };
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
-    const value = event.target.checked;
+    const checked = event.target.checked;
 
     if (name === "favorites") {
-      if (value) {
+      if (checked) {
         searchParams.set("favorites", "true");
       } else {
         searchParams.delete("favorites");
       }
     } else {
-      if (value) {
+      if (checked) {
         filter.push(name);
       } else {
         filter.splice(filter.indexOf(name), 1);
@@ -43,30 +56,20 @@ export const PodcastFilter = ({ categories }: Props) => {
       }
     }
 
-    startTransition(() => {
-      const searchParamsString = searchParams.toString();
-      replace(
-        `${pathname}${searchParamsString ? "?" : ""}${searchParamsString}`,
-        {
-          scroll: false,
-        },
-      );
+    handleFilter();
+
+    track("Podcast Filter", {
+      name,
+      checked,
     });
   };
 
   const clearFilter = () => {
-    searchParams.delete("filter");
+    searchParams.delete("search");
     searchParams.delete("favorites");
-
-    startTransition(() => {
-      const searchParamsString = searchParams.toString();
-      replace(
-        `${pathname}${searchParamsString ? "?" : ""}${searchParamsString}`,
-        {
-          scroll: false,
-        },
-      );
-    });
+    searchParams.delete("filter");
+    handleFilter();
+    track("Clear Podcast Filter");
   };
 
   return (

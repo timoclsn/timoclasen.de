@@ -1,5 +1,3 @@
-import { PodcastsListFilter } from "../components/PodcastsList/PodcastsList";
-
 export interface TrackingEvents {
   "Uncaught error": {
     message: string;
@@ -7,7 +5,11 @@ export interface TrackingEvents {
   "Podcast Search": {
     search: string;
   };
-  "Podcast Filter": PodcastsListFilter;
+  "Podcast Filter": {
+    name: string;
+    checked: boolean;
+  };
+  "Clear Podcast Filter": null;
   "Balcony Light Control": {
     color: string;
   };

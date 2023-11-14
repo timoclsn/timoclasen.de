@@ -4,6 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent, FormEvent, useTransition } from "react";
 import { Loader, Search as SearchIcon } from "react-feather";
 import { useDebouncedCallback } from "use-debounce";
+import { track } from "../../lib/tracking";
 
 export const PodcastsSearch = () => {
   const { replace } = useRouter();
@@ -13,25 +14,25 @@ export const PodcastsSearch = () => {
   const searchParams = new URLSearchParams(nextSearchParams.toString());
   const search = searchParams.get("search");
 
+  const handleFilter = () => {
+    const searchParamsString = searchParams.toString();
+    startTransition(() => {
+      replace(
+        `${pathname}${searchParamsString ? "?" : ""}${searchParamsString}`,
+        {
+          scroll: false,
+        },
+      );
+    });
+  };
+
   const handleChange = useDebouncedCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const search = event.target.value;
-
-      if (!search) {
-        startTransition(() => {
-          replace(pathname, {
-            scroll: false,
-          });
-        });
-        return;
-      }
-
       searchParams.set("search", search);
-
-      startTransition(() => {
-        replace(`${pathname}?${searchParams}`, {
-          scroll: false,
-        });
+      handleFilter();
+      track("Podcast Search", {
+        search,
       });
     },
     500,

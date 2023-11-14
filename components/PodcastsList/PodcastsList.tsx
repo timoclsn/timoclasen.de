@@ -5,6 +5,7 @@ import { MediaPreview } from "../MediaPreview";
 import { PodcastFilter } from "./PodcastFilter";
 import { PodcastsSearch } from "./PodcastsSearch";
 import { Suspense } from "react";
+import { getCategories } from "../../lib/podcasts";
 
 interface Props {
   search?: string;
@@ -18,12 +19,7 @@ export function PodcastsList({
   filter = [],
 }: Props) {
   const podcasts = getPodcasts();
-
-  const categories = [
-    ...Array.from(new Set(podcasts.flatMap((podcast) => podcast.categories))),
-  ];
-
-  const sortedCategories = categories.sort((a, b) => a.localeCompare(b));
+  const categories = getCategories(podcasts);
 
   const filteredPodcast = matchSorter(podcasts, search, {
     keys: ["title", "hosts", "description"],
@@ -32,11 +28,7 @@ export function PodcastsList({
       return false;
     }
 
-    const showPodcast = filter.every((category) =>
-      podcast.categories.includes(category),
-    );
-
-    return showPodcast;
+    return filter.every((category) => podcast.categories.includes(category));
   });
 
   return (
@@ -49,7 +41,7 @@ export function PodcastsList({
 
       <div className="mx-auto mb-16 max-w-prose">
         <Suspense>
-          <PodcastFilter categories={sortedCategories} />
+          <PodcastFilter categories={categories} />
         </Suspense>
       </div>
       <ul className="space-y-20">
