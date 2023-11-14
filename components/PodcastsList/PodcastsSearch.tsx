@@ -1,36 +1,21 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { ChangeEvent, FormEvent, useTransition } from "react";
+import { ChangeEvent } from "react";
 import { Loader, Search as SearchIcon } from "react-feather";
 import { useDebouncedCallback } from "use-debounce";
+import { useSearchParams } from "../../hooks/useSearchParams";
 import { track } from "../../lib/tracking";
 
 export const PodcastsSearch = () => {
-  const { replace } = useRouter();
-  const [isPending, startTransition] = useTransition();
-  const pathname = usePathname();
-  const nextSearchParams = useSearchParams();
-  const searchParams = new URLSearchParams(nextSearchParams.toString());
-  const search = searchParams.get("search");
-
-  const handleFilter = () => {
-    const searchParamsString = searchParams.toString();
-    startTransition(() => {
-      replace(
-        `${pathname}${searchParamsString ? "?" : ""}${searchParamsString}`,
-        {
-          scroll: false,
-        },
-      );
-    });
-  };
+  const { searchParams, updateUrlLWithSearchParams, isPending } =
+    useSearchParams();
+  const search = searchParams.get("search") ?? "";
 
   const handleChange = useDebouncedCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const search = event.target.value;
       searchParams.set("search", search);
-      handleFilter();
+      updateUrlLWithSearchParams();
       track("Podcast Search", {
         search,
       });
@@ -45,9 +30,9 @@ export const PodcastsSearch = () => {
       </label>
       <input
         key={search}
-        defaultValue={search ?? ""}
         name="search"
         type="text"
+        defaultValue={search}
         placeholder="Podcasts durchsuchen"
         onChange={handleChange}
         autoComplete="off"

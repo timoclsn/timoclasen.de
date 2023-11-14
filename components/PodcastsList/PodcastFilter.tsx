@@ -1,8 +1,8 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useTransition, type ChangeEvent } from "react";
-import { Filter, XCircle } from "react-feather";
+import { type ChangeEvent } from "react";
+import { Filter, Loader, XCircle } from "react-feather";
+import { useSearchParams } from "../../hooks/useSearchParams";
 import { track } from "../../lib/tracking";
 
 interface Props {
@@ -10,27 +10,12 @@ interface Props {
 }
 
 export const PodcastFilter = ({ categories }: Props) => {
-  const { replace } = useRouter();
-  const [isPending, startTransition] = useTransition();
-  const pathname = usePathname();
-  const nextSearchParams = useSearchParams();
-  const searchParams = new URLSearchParams(nextSearchParams.toString());
+  const { searchParams, updateUrlLWithSearchParams, isPending } =
+    useSearchParams();
 
-  const filterSearchParam = searchParams.get("filter");
-  const filter = filterSearchParam ? filterSearchParam.split(";") : [];
-  const favorites = searchParams.get("favorites") || "";
-
-  const handleFilter = () => {
-    const searchParamsString = searchParams.toString();
-    startTransition(() => {
-      replace(
-        `${pathname}${searchParamsString ? "?" : ""}${searchParamsString}`,
-        {
-          scroll: false,
-        },
-      );
-    });
-  };
+  const filterRaw = searchParams.get("filter");
+  const filter = filterRaw ? filterRaw.split(";") : [];
+  const favorites = Boolean(searchParams.get("favorites"));
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
@@ -56,7 +41,7 @@ export const PodcastFilter = ({ categories }: Props) => {
       }
     }
 
-    handleFilter();
+    updateUrlLWithSearchParams();
 
     track("Podcast Filter", {
       name,
@@ -68,7 +53,7 @@ export const PodcastFilter = ({ categories }: Props) => {
     searchParams.delete("search");
     searchParams.delete("favorites");
     searchParams.delete("filter");
-    handleFilter();
+    updateUrlLWithSearchParams();
     track("Clear Podcast Filter");
   };
 
@@ -81,19 +66,19 @@ export const PodcastFilter = ({ categories }: Props) => {
       <div className="-my-4 flex space-x-4 overflow-x-auto px-1 py-4">
         <label
           className={`sflex cursor-pointer select-none items-center justify-center whitespace-nowrap rounded-lg px-2 py-0.5 text-base ring-2 ring-highlight focus-visible:outline-none dark:ring-highlight-dark ${
-            favorites === "true"
+            favorites
               ? "bg-highlight text-light focus-within:ring-dark dark:bg-highlight-dark dark:focus-within:ring-light"
               : "text-highlight focus-within:ring-dark dark:text-highlight-dark dark:focus-within:ring-light"
           }`}
         >
           <input
-            key={String(favorites === "true")}
-            className="h-0 w-0 opacity-0"
-            type="checkbox"
-            defaultChecked={favorites === "true"}
-            onChange={handleChange}
+            key={String(favorites)}
             name="favorites"
+            type="checkbox"
+            defaultChecked={favorites}
+            onChange={handleChange}
             disabled={isPending}
+            className="h-0 w-0 opacity-0"
           />
           Meine Favoriten
         </label>
@@ -109,30 +94,32 @@ export const PodcastFilter = ({ categories }: Props) => {
               }`}
             >
               <input
-                key={String(filter.includes(category))}
-                className="h-0 w-0 opacity-0"
+                key={String(isActive)}
+                name={category}
                 type="checkbox"
                 defaultChecked={isActive}
                 onChange={handleChange}
-                name={category}
                 disabled={isPending}
+                className="h-0 w-0 opacity-0"
               />
               {category}
             </label>
           );
         })}
       </div>
-      <button
-        title="Filter löschen"
-        className="text-highlight disabled:opacity-60 dark:text-highlight-dark"
-        onClick={() => {
-          clearFilter();
-        }}
-        disabled={nextSearchParams.toString() === "" || isPending}
-      >
-        <XCircle size={24} />
-        <span className="sr-only">Filter löschen</span>
-      </button>
+      {isPending ? (
+        <Loader className="flex-none animate-spin text-highlight opacity-60 dark:text-highlight-dark" />
+      ) : (
+        <button
+          title="Filter löschen"
+          className="text-highlight disabled:opacity-60 dark:text-highlight-dark"
+          onClick={clearFilter}
+          disabled={searchParams.toString() === ""}
+        >
+          <XCircle size={24} />
+          <span className="sr-only">Filter löschen</span>
+        </button>
+      )}
     </div>
   );
 };
