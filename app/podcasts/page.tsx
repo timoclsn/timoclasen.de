@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { PodcastsList } from "../../components/PodcastsList/PodcastsList";
-import { Recommendations } from "../../components/Recommendations";
+import { Recommendations } from "../../components/Recommendations/Recommendations";
 import { TextBlock } from "../../components/TextBlock";
 import { getMetadata, getTextSnippet } from "../../data/content";
 import { createGenerateMetadata, ogImage } from "../../lib/metadata";

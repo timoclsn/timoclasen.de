@@ -17,16 +17,16 @@ module.exports = {
       lg: "1024px",
       xl: "1280px",
     },
-    colors: {
-      light: colors.white,
-      dark: colors.black,
-      gray: colors.neutral,
-      highlight: {
-        DEFAULT: "#3E51F7",
-        dark: "#4F5FEF",
-      },
-    },
     extend: {
+      colors: {
+        light: colors.white,
+        dark: colors.black,
+        gray: colors.neutral,
+        highlight: {
+          DEFAULT: "#3E51F7",
+          dark: "#4F5FEF",
+        },
+      },
       fontFamily: {
         sans: ["var(--font-sans)"],
       },
