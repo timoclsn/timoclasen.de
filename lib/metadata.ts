@@ -9,23 +9,15 @@ export const createGenerateMetadata = (
 ) => generateMetadata;
 
 interface OgImageOptions {
-  name?: string | null;
+  name: string;
   title?: string | null;
   subtitle?: string | null;
   image?: string | null;
 }
 
-export const ogImage = ({
-  name,
-  title,
-  subtitle,
-  image,
-}: OgImageOptions = {}) => {
+export const ogImage = ({ name, title, subtitle, image }: OgImageOptions) => {
   const searchParams = new URLSearchParams();
-
-  if (name) {
-    searchParams.set("name", name);
-  }
+  searchParams.set("name", name);
 
   if (title) {
     searchParams.set("title", title);
@@ -39,7 +31,5 @@ export const ogImage = ({
     searchParams.set("image", image);
   }
 
-  return `/og-image${
-    searchParams.toString() ? "?" : ""
-  }${searchParams.toString()}`;
+  return `/og-image?${searchParams}`;
 };

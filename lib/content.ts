@@ -9,7 +9,7 @@ const {
 
 export const queryContent = async <TSchema extends z.ZodTypeAny>(
   query: string,
-  schema: TSchema
+  schema: TSchema,
 ) => {
   let preview = false;
   const draftContentInDevelopmentMode = true;
@@ -34,7 +34,7 @@ export const queryContent = async <TSchema extends z.ZodTypeAny>(
       next: {
         revalidate: 60,
       },
-    }
+    },
   );
   const data = await res.json();
 
