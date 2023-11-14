@@ -1,35 +1,11 @@
 import Image from "next/image";
 import { ArrowRight } from "react-feather";
-import { Button } from "./Button";
-import { queryContent } from "../lib/content";
-import { z } from "zod";
+import { getImage } from "../data/content";
 import { getPlaceholder } from "../lib/placeholder";
+import { Button } from "./Button";
 
 export const LCDWidget = async () => {
-  const lcdImageData = await queryContent(
-    `{
-      assetCollection(where: {title: "Life Centered Design.Net"}, limit: 1, preview: false) {
-        items {
-          url
-          description
-        }
-      }
-    }`,
-    z.object({
-      data: z.object({
-        assetCollection: z.object({
-          items: z.array(
-            z.object({
-              url: z.string().url(),
-              description: z.string(),
-            }),
-          ),
-        }),
-      }),
-    }),
-  );
-
-  const lcdImage = lcdImageData.data.assetCollection.items[0];
+  const lcdImage = await getImage("Life Centered Design.Net");
   const { base64: LCDImageBase64 } = await getPlaceholder(lcdImage.url);
   const enhancedLcdImage = { ...lcdImage, blurDataURL: LCDImageBase64 };
 

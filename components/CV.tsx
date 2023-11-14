@@ -1,48 +1,8 @@
 import Image from "next/image";
-import { z } from "zod";
-import { queryContent } from "../lib/content";
+import { getCvEntries } from "../data/content";
 
 export const CV = async () => {
-  const cvEntriesData = await queryContent(
-    `{
-      cvEntryCollection(order: [order_DESC], preview: false) {
-        items {
-          title
-          timespan
-          company {
-            name
-            url
-            image {
-              url
-              description
-            }
-          }
-        }
-      }
-    }`,
-    z.object({
-      data: z.object({
-        cvEntryCollection: z.object({
-          items: z.array(
-            z.object({
-              title: z.string(),
-              timespan: z.string(),
-              company: z.object({
-                name: z.string(),
-                url: z.string().url(),
-                image: z.object({
-                  url: z.string().url(),
-                  description: z.string(),
-                }),
-              }),
-            }),
-          ),
-        }),
-      }),
-    }),
-  );
-
-  const entries = cvEntriesData.data.cvEntryCollection.items;
+  const cvEntries = await getCvEntries();
 
   return (
     <section className="mx-auto max-w-prose" id="cv">
@@ -50,7 +10,7 @@ export const CV = async () => {
         Stationen
       </h2>
       <ol className="space-y-6 sm:space-y-8">
-        {entries.map((entry, index) => (
+        {cvEntries.map((entry, index) => (
           <li
             className="flex rounded-3xl bg-dark bg-opacity-10 p-4 dark:bg-light dark:bg-opacity-10"
             key={index}

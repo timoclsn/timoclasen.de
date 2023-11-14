@@ -4,7 +4,7 @@ import { createElement } from "react";
 import { z } from "zod";
 
 import { OGImage } from "../../../components/OGImage";
-import { queryContent } from "../../../lib/content";
+import { getPerson } from "../../../data/content";
 
 export const config = {
   runtime: "edge",
@@ -28,32 +28,7 @@ export default async function OGImageAPI(req: NextRequest) {
   const subtitle = searchParams.get("subtitle");
   const image = searchParams.get("image");
 
-  const personData = await queryContent(
-    `{
-      personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
-        items {
-          profileImageCollection {
-            items {
-              url
-            }
-          }
-        }
-      }
-    }`,
-    z.object({
-      personCollection: z.object({
-        items: z.array(
-          z.object({
-            profileImageCollection: z.object({
-              items: z.array(z.object({ url: z.string() })),
-            }),
-          }),
-        ),
-      }),
-    }),
-  );
-
-  const person = personData.personCollection.items[0];
+  const person = await getPerson();
   const fallbackImage = person.profileImageCollection.items[1];
 
   const reactElement = createElement(OGImage, {

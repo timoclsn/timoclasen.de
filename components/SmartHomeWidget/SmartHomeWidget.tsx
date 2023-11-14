@@ -1,59 +1,14 @@
-import { z } from "zod";
-import { queryContent } from "../../lib/content";
+import { getTextSnippet } from "../../data/content";
 import { markdownToHTML } from "../../lib/text";
-import { Dashboard } from "./Dashboard/Dashboard";
 import { BalconyControl } from "./BalconyControl/BalconyControl";
+import { Dashboard } from "./Dashboard/Dashboard";
 
 export const SmartHomeWidget = async () => {
-  const [textData, footnoteData] = await Promise.all([
-    queryContent(
-      `{
-        textSnippetCollection(where: {title: "Smart Home Widget"}, limit: 1, preview: false) {
-          items {
-            content
-          }
-        }
-      }`,
-      z.object({
-        data: z.object({
-          textSnippetCollection: z.object({
-            items: z.array(
-              z.object({
-                content: z.string(),
-              }),
-            ),
-          }),
-        }),
-      }),
-    ),
-    queryContent(
-      `{
-        textSnippetCollection(where: {title: "Smart Home Widget Footnote"}, limit: 1, preview: false) {
-          items {
-            content
-          }
-        }
-      }`,
-      z.object({
-        data: z.object({
-          textSnippetCollection: z.object({
-            items: z.array(
-              z.object({
-                content: z.string(),
-              }),
-            ),
-          }),
-        }),
-      }),
-    ),
-  ]);
+  const textData = await getTextSnippet("Smart Home Widget");
+  const text = await markdownToHTML(textData);
 
-  const text = await markdownToHTML(
-    textData.data.textSnippetCollection.items[0].content,
-  );
-  const footnote = await markdownToHTML(
-    footnoteData.data.textSnippetCollection.items[0].content,
-  );
+  const footnoteData = await getTextSnippet("Smart Home Widget Footnote");
+  const footnote = await markdownToHTML(footnoteData);
 
   return (
     <section id="smarthome">

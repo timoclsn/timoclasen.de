@@ -1,62 +1,34 @@
-import { z } from "zod";
-import { queryContent } from "../../lib/content";
-import readingTime from "reading-time";
-import { format, parseISO } from "date-fns";
-import { de } from "date-fns/locale";
 import { BlogPostPreview } from "../../components/BlogPostPreview";
 import { ContactWidget } from "../../components/ContactWidget";
+import { getBlogPosts, getMetadata } from "../../data/content";
+import { createGenerateMetadata, ogImage } from "../../lib/metadata";
+
+export const generateMetadata = createGenerateMetadata(async () => {
+  const { title, description, slug } = await getMetadata("blog");
+
+  return {
+    title,
+    description,
+    openGraph: {
+      siteName: "Timo Clasen",
+      type: "website",
+      url: `https://timoclasen.de/${slug}`,
+      title,
+      description,
+      images: {
+        url: ogImage({
+          name: `${title} • Timo Clasen`,
+        }),
+        alt: `Teasertext der Seite "${title}" und Profilfoto von Timo Clasen`,
+        width: 1200,
+        height: 630,
+      },
+    },
+  };
+});
 
 const BlogPage = async () => {
-  const blogPostsData = await queryContent(
-    `{
-      blogPostCollection(order: [date_DESC], preview: false) {
-        items {
-          sys {
-            id
-            publishedVersion
-          }
-          title
-          subtitle
-          slug
-          date
-          text
-        }
-      }
-    }`,
-    z.object({
-      data: z.object({
-        blogPostCollection: z.object({
-          items: z.array(
-            z.object({
-              sys: z.object({
-                id: z.string(),
-                publishedVersion: z.number().nullable(),
-              }),
-              title: z.string(),
-              subtitle: z.string(),
-              slug: z.string(),
-              date: z.string(),
-              text: z.string(),
-            }),
-          ),
-        }),
-      }),
-    }),
-  );
-
-  const blogPosts = blogPostsData.data.blogPostCollection.items.map(
-    (blogPost) => {
-      const readingTimeObj = readingTime(blogPost.text);
-      return {
-        ...blogPost,
-        readingTime: Math.ceil(readingTimeObj.minutes),
-        text: "",
-        dateFormatted: format(parseISO(blogPost.date), "dd. MMMM yyyy", {
-          locale: de,
-        }),
-      };
-    },
-  );
+  const blogPosts = await getBlogPosts();
 
   return (
     <>

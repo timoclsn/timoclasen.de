@@ -1,35 +1,11 @@
 import Image from "next/image";
 import { ArrowRight } from "react-feather";
-import { z } from "zod";
-import { queryContent } from "../lib/content";
+import { getImage } from "../data/content";
 import { getPlaceholder } from "../lib/placeholder";
 import { Button } from "./Button";
 
 export const MLWidget = async () => {
-  const mlImageData = await queryContent(
-    `{
-      assetCollection(where: {title: "Makersleague.de"}, limit: 1, preview: false) {
-        items {
-          url
-          description
-        }
-      }
-    }`,
-    z.object({
-      data: z.object({
-        assetCollection: z.object({
-          items: z.array(
-            z.object({
-              url: z.string().url(),
-              description: z.string(),
-            }),
-          ),
-        }),
-      }),
-    }),
-  );
-
-  const mlImage = mlImageData.data.assetCollection.items[0];
+  const mlImage = await getImage("Makersleague.de");
   const { base64: MLImageBase64 } = await getPlaceholder(mlImage.url);
   const enhancedMlImage = { ...mlImage, blurDataURL: MLImageBase64 };
 

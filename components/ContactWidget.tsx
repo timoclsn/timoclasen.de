@@ -1,36 +1,14 @@
 import { Linkedin, Mail, Twitter } from "react-feather";
-import { z } from "zod";
-import { queryContent } from "../lib/content";
+import { getTextSnippet } from "../data/content";
+import { markdownToHTML } from "../lib/text";
 import { Button } from "./Button";
 import { WidgetLayout } from "./WidgetLayout";
 import { WidgetText } from "./WidgetText";
-import { markdownToHTML } from "../lib/text";
 
 export const ContactWidget = async () => {
-  const data = await queryContent(
-    `{
-      textSnippetCollection(where: {title: "Contact Widget"}, limit: 1, preview: false) {
-        items {
-          content
-        }
-      }
-    }`,
-    z.object({
-      data: z.object({
-        textSnippetCollection: z.object({
-          items: z.array(
-            z.object({
-              content: z.string(),
-            }),
-          ),
-        }),
-      }),
-    }),
-  );
+  const textSnippet = await getTextSnippet("Contact Widget");
+  const text = await markdownToHTML(textSnippet);
 
-  const text = await markdownToHTML(
-    data.data.textSnippetCollection.items[0].content,
-  );
   return (
     <WidgetLayout>
       <WidgetText title="Kontakt" text={text} />

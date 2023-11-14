@@ -1,35 +1,9 @@
-import { z } from "zod";
-import { queryContent } from "../lib/content";
+import { getBlogPosts } from "../data/content";
 import { WidgetLayout } from "./WidgetLayout";
 import { WidgetText } from "./WidgetText";
 
 export const BlogWidget = async () => {
-  const blogPostsData = await queryContent(
-    `{
-      blogPostCollection(order: [date_DESC], limit: 2, preview: false) {
-        items {
-          title
-          summary
-          slug
-        }
-      }
-    }`,
-    z.object({
-      data: z.object({
-        blogPostCollection: z.object({
-          items: z.array(
-            z.object({
-              title: z.string(),
-              summary: z.string(),
-              slug: z.string(),
-            }),
-          ),
-        }),
-      }),
-    }),
-  );
-
-  const blogPosts = blogPostsData.data.blogPostCollection.items;
+  const blogPosts = await getBlogPosts();
   const blogPost1 = blogPosts[0];
   const blogPost2 = blogPosts[1];
 

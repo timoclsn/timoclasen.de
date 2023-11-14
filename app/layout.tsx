@@ -1,12 +1,13 @@
-import { Metadata } from "next";
+import { cx } from "class-variance-authority";
+import { Inter } from "next/font/google";
 import Script from "next/script";
 import { ReactNode } from "react";
-import { Inter } from "next/font/google";
-import { cx } from "class-variance-authority";
-import { NoFlash } from "../components/NoFlash";
-import { Navigation } from "../components/Navigation/Navigation";
 import { CenteredColumn } from "../components/CenteredColumn";
 import { Footer } from "../components/Footer";
+import { Navigation } from "../components/Navigation/Navigation";
+import { NoFlash } from "../components/NoFlash";
+import { getMetadata } from "../data/content";
+import { createGenerateMetadata, ogImage } from "../lib/metadata";
 import "../styles/globals.css";
 import { Providers } from "./Providers";
 
@@ -15,9 +16,52 @@ const fontSans = Inter({
   variable: "--font-sans",
 });
 
-export const metadata: Metadata = {
-  title: "Timo Clasen",
-  description: "Timo Clasen Portfolio",
+export const generateMetadata = createGenerateMetadata(async () => {
+  const { title, description } = await getMetadata("home");
+
+  return {
+    metadataBase: new URL("https://timoclasen.de"),
+    title: {
+      default: title,
+      template: "%s • Timo Clasen",
+    },
+    description,
+    icons: "/favicon.png",
+    openGraph: {
+      siteName: "Timo Clasen",
+      type: "website",
+      url: "/",
+      title,
+      description,
+      images: {
+        url: ogImage({
+          name: "Timo Clasen",
+        }),
+        alt: "Teasertext der Startseite und Profilfoto von Timo Clasen",
+        width: 1200,
+        height: 630,
+      },
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      site: "@timoclsn",
+      creator: "@timoclsn",
+    },
+    alternates: {
+      types: {
+        "application/rss+xml": "/rss.xml",
+      },
+    },
+  };
+});
+
+export const viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
+    { media: "(prefers-color-scheme: dark)", color: "#000000" },
+  ],
 };
 
 interface Props {

@@ -2,8 +2,33 @@ import { z } from "zod";
 import { PodcastsList } from "../../components/PodcastsList/PodcastsList";
 import { Recommendations } from "../../components/Recommendations";
 import { TextBlock } from "../../components/TextBlock";
-import { queryContent } from "../../lib/content";
+import { getMetadata, getTextSnippet } from "../../data/content";
+import { createGenerateMetadata, ogImage } from "../../lib/metadata";
 import { markdownToHTML } from "../../lib/text";
+
+export const generateMetadata = createGenerateMetadata(async () => {
+  const { title, description, slug } = await getMetadata("podcasts");
+
+  return {
+    title,
+    description,
+    openGraph: {
+      siteName: "Timo Clasen",
+      type: "website",
+      url: `https://timoclasen.de/${slug}`,
+      title,
+      description,
+      images: {
+        url: ogImage({
+          name: `${title} • Timo Clasen`,
+        }),
+        alt: `Teasertext der Seite "${title}" und Profilfoto von Timo Clasen`,
+        width: 1200,
+        height: 630,
+      },
+    },
+  };
+});
 
 const searchParamsSchema = z.object({
   search: z.coerce.string().optional(),
@@ -20,30 +45,8 @@ interface Props {
 const PodcastPage = async ({ searchParams }: Props) => {
   const { search, favorites, filter } = searchParamsSchema.parse(searchParams);
 
-  const podcastsSnippetData = await queryContent(
-    `{
-      textSnippetCollection(where: {title: "Podcasts"}, limit: 1, preview: false) {
-        items {
-          content
-        }
-      }
-    }`,
-    z.object({
-      data: z.object({
-        textSnippetCollection: z.object({
-          items: z.array(
-            z.object({
-              content: z.string(),
-            }),
-          ),
-        }),
-      }),
-    }),
-  );
-
-  const podcastsText = await markdownToHTML(
-    podcastsSnippetData.data.textSnippetCollection.items[0].content,
-  );
+  const textSnippet = await getTextSnippet("Podcasts");
+  const podcastsText = await markdownToHTML(textSnippet);
 
   return (
     <>
