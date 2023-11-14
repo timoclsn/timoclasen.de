@@ -1,11 +1,11 @@
-import type { Icon } from "react-feather";
+import type { LucideIcon } from "lucide-react";
 import { Skeleton } from "../../Skeleton";
 
 type Props =
   | {
       isLoading?: false;
       title: string;
-      Icon: Icon;
+      Icon: LucideIcon;
       value: string;
     }
   | {

@@ -1,7 +1,7 @@
 "use client";
 
 import { cx } from "class-variance-authority";
-import { Moon, Sun } from "react-feather";
+import { Moon, Sun } from "lucide-react";
 import { track } from "../../lib/tracking";
 import { useTheme } from "../ThemeContext";
 import { useIsMounted } from "../../hooks/useIsMounted";

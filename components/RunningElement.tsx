@@ -1,4 +1,4 @@
-import type { Icon } from "react-feather";
+import type { LucideIcon } from "lucide-react";
 import { Skeleton } from "./Skeleton";
 interface Label {
   text: string;
@@ -6,7 +6,7 @@ interface Label {
 }
 
 interface Props {
-  Icon: Icon;
+  Icon: LucideIcon;
   text?: string;
   href?: string;
   labels?: Label[];

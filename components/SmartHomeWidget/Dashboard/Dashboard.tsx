@@ -8,7 +8,7 @@ import {
   ToggleRight,
   Umbrella,
   Zap,
-} from "react-feather";
+} from "lucide-react";
 import { getSmartHomeDataCached } from "../../../data/smarthome";
 import { Await } from "../../Await";
 import { WidgetLayout } from "../../WidgetLayout";

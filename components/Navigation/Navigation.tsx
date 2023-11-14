@@ -3,7 +3,7 @@
 import { cx } from "class-variance-authority";
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X } from "react-feather";
+import { Menu, X } from "lucide-react";
 import { CenteredColumn } from "../CenteredColumn";
 import { NavigationLink } from "../NavigationLink";
 import { SwitchMode } from "../SwitchMode/SwitchMode";

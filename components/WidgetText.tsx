@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "react-feather";
+import { ArrowRight } from "lucide-react";
 
 import { Button } from "./Button";
 
@@ -23,7 +23,7 @@ export function WidgetText({ title, text, linkText, href }: Props) {
         ></div>
       </div>
       {href && (
-        <div className="mt-4 -mb-6 flex justify-end xl:-mb-12">
+        <div className="-mb-6 mt-4 flex justify-end xl:-mb-12">
           <Link href={href} passHref legacyBehavior>
             <Button as="a" variant="link">
               <ArrowRight />

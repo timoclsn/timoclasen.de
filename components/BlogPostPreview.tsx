@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Calendar, Clock, Feather } from "react-feather";
+import { Calendar, Clock, Feather } from "lucide-react";
 
 import { BlogPostLabel } from "./BlogPostLabel";
 

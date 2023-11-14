@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowRight } from "react-feather";
+import { ArrowRight } from "lucide-react";
 import { getImage } from "../data/content";
 import { getPlaceholder } from "../lib/placeholder";
 import { Button } from "./Button";

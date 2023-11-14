@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Calendar, Clock, Feather, Twitter, User } from "react-feather";
+import { Calendar, Clock, Feather, Twitter, User } from "lucide-react";
 
 import { BlogPostLabel } from "./BlogPostLabel";
 
@@ -49,7 +49,7 @@ export function BlogPostHeader({
 
       <div className="flex flex-col justify-between space-y-2 text-xs uppercase text-highlight dark:text-highlight-dark sm:flex-row sm:space-y-0 sm:text-sm">
         <div className="flex">
-          <div className="mr-6 -mb-1 hidden sm:block">
+          <div className="-mb-1 mr-6 hidden sm:block">
             <Image
               src={author.image.url}
               width={32}

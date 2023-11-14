@@ -1,7 +1,7 @@
-import type { Icon } from "react-feather";
+import type { LucideIcon } from "lucide-react";
 
 interface Props {
-  Icon: Icon;
+  Icon: LucideIcon;
   text: string;
   href?: string;
 }

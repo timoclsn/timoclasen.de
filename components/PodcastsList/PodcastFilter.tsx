@@ -1,7 +1,7 @@
 "use client";
 
 import { type ChangeEvent } from "react";
-import { Filter, Loader, XCircle } from "react-feather";
+import { Filter, Loader, XCircle } from "lucide-react";
 import { useSearchParams } from "../../hooks/useSearchParams";
 import { track } from "../../lib/tracking";
 

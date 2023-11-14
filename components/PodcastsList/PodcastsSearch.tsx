@@ -1,7 +1,7 @@
 "use client";
 
 import { ChangeEvent } from "react";
-import { Loader, Search as SearchIcon } from "react-feather";
+import { Loader, Search as SearchIcon } from "lucide-react";
 import { useDebouncedCallback } from "use-debounce";
 import { useSearchParams } from "../../hooks/useSearchParams";
 import { track } from "../../lib/tracking";

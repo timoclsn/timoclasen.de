@@ -1,4 +1,4 @@
-import { XCircle } from "react-feather";
+import { XCircle } from "lucide-react";
 
 import { Button } from "./Button";
 import { CenteredColumn } from "./CenteredColumn";

@@ -1,6 +1,6 @@
 import Image from "next/image";
-import type { Icon } from "react-feather";
-import { Heart } from "react-feather";
+import type { LucideIcon } from "lucide-react";
+import { Heart } from "lucide-react";
 
 import { Skeleton } from "./Skeleton";
 
@@ -8,7 +8,7 @@ interface Props {
   title?: string;
   no?: number;
   image?: string;
-  BylineIcon?: Icon;
+  BylineIcon?: LucideIcon;
   byline?: string;
   subline?: string;
   url?: string;

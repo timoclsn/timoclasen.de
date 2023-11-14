@@ -1,4 +1,4 @@
-import { Linkedin, Mail, Twitter } from "react-feather";
+import { Linkedin, Mail, Twitter } from "lucide-react";
 import { getTextSnippet } from "../data/content";
 import { markdownToHTML } from "../lib/text";
 import { Button } from "./Button";

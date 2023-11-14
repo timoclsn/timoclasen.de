@@ -6,7 +6,7 @@ import {
   Heart,
   ThumbsUp,
   TrendingUp,
-} from "react-feather";
+} from "lucide-react";
 import { getRunningDataCached } from "../../../data/sports";
 import { Await } from "../../Await";
 import { RunningElement } from "../../RunningElement";

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "react-feather";
+import { ArrowRight } from "lucide-react";
 import { Button } from "./Button";
 import { getFavoritePodcasts } from "../data/podcasts/podcasts";
 

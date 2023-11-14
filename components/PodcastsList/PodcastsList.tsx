@@ -1,5 +1,5 @@
 import { matchSorter } from "match-sorter";
-import { User } from "react-feather";
+import { User } from "lucide-react";
 import { getPodcasts } from "../../data/podcasts/podcasts";
 import { MediaPreview } from "../MediaPreview";
 import { PodcastFilter } from "./PodcastFilter";

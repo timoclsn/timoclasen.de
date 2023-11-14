@@ -1,4 +1,4 @@
-import { Music, User } from "react-feather";
+import { Music, User } from "lucide-react";
 import { getTopArtistsDataCached, getTopTracksDataCached } from "../data/music";
 import { Await } from "./Await";
 import { MediaPreview } from "./MediaPreview";
