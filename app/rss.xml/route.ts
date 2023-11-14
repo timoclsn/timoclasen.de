@@ -29,9 +29,10 @@ export const GET = async (request: Request) => {
       link: buildUrl(""),
     },
   });
+
   const blogPosts = await getBlogPosts();
 
-  blogPosts.forEach(async (blogPost) => {
+  for (const blogPost of blogPosts) {
     feed.addItem({
       title: blogPost.title,
       id: buildUrl(`/blog/${blogPost.slug}`),
@@ -46,7 +47,7 @@ export const GET = async (request: Request) => {
       ],
       date: new Date(blogPost.date),
     });
-  });
+  }
 
   return new Response(feed.rss2(), {
     headers: {
