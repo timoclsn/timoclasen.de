@@ -7,7 +7,7 @@ import { Footer } from "../components/Footer";
 import { Navigation } from "../components/Navigation/Navigation";
 import { NoFlash } from "../components/NoFlash";
 import { getMetadata } from "../data/content";
-import { createGenerateMetadata, ogImage } from "../lib/metadata";
+import { createGenerateMetadata, openGraph } from "../lib/metadata";
 import "../styles/globals.css";
 import { Providers } from "./Providers";
 
@@ -28,19 +28,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
     description,
     icons: "/favicon.png",
     openGraph: {
-      siteName: "Timo Clasen",
-      type: "website",
-      url: "/",
-      title,
-      description,
-      images: {
-        url: ogImage({
-          name: "Timo Clasen",
-        }),
-        alt: "Teasertext der Startseite und Profilfoto von Timo Clasen",
-        width: 1200,
-        height: 630,
-      },
+      ...openGraph(title, description, "/"),
     },
     twitter: {
       card: "summary_large_image",

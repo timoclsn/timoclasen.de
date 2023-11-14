@@ -1,7 +1,7 @@
 import { BlogPostPreview } from "../../components/BlogPostPreview";
 import { ContactWidget } from "../../components/ContactWidget";
 import { getBlogPosts, getMetadata } from "../../data/content";
-import { createGenerateMetadata, ogImage } from "../../lib/metadata";
+import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 
 export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description, slug } = await getMetadata("blog");
@@ -10,19 +10,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
     title,
     description,
     openGraph: {
-      siteName: "Timo Clasen",
-      type: "website",
-      url: `https://timoclasen.de/${slug}`,
-      title,
-      description,
-      images: {
-        url: ogImage({
-          name: `${title} • Timo Clasen`,
-        }),
-        alt: `Teasertext der Seite "${title}" und Profilfoto von Timo Clasen`,
-        width: 1200,
-        height: 630,
-      },
+      ...openGraph(title, description, slug),
     },
   };
 });
