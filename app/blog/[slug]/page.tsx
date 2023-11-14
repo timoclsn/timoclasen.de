@@ -1,6 +1,7 @@
 import { BlogPostHeader } from "../../../components/BlogPostHeader";
 import { ContactWidget } from "../../../components/ContactWidget";
 import { MDXContent } from "../../../components/MDXContent/MDXContent";
+import { StructuredData } from "../../../components/StructuredData/StructuredData";
 import { getBlogPost, getBlogPosts } from "../../../data/content";
 import { createGenerateMetadata, ogImage } from "../../../lib/metadata";
 
@@ -60,6 +61,32 @@ const BlogPostPage = async ({ params }: Props) => {
 
   return (
     <>
+      <StructuredData type="Article">
+        {{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          mainEntityOfPage: {
+            "@type": "BlogPosting",
+            "@id": `https://timoclasen.de/blog/${blogPost.slug}`,
+          },
+          headline: blogPost.title,
+          datePublished: blogPost.date,
+          dateModified: blogPost.date,
+          author: {
+            "@type": "Person",
+            name: "Timo Clasen",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "Timo clasen",
+            logo: {
+              "@type": "ImageObject",
+              url: "/favicon.png",
+            },
+          },
+          description: blogPost.summary,
+        }}
+      </StructuredData>
       <article className="space-y-8 md:space-y-16">
         <BlogPostHeader
           title={blogPost.title}
