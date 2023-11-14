@@ -11,16 +11,20 @@ interface AwaitProps<T> {
 export const Await = <T extends unknown>({
   promise,
   children,
-  loading = <div>Loading…</div>,
-  error = <div>Error loading data.</div>,
+  loading,
+  error,
 }: AwaitProps<T>) => {
-  return (
-    <ErrorBoundary fallback={error}>
-      <Suspense fallback={loading}>
-        <InnerAwait promise={promise}>{children}</InnerAwait>
-      </Suspense>
-    </ErrorBoundary>
+  const content = (
+    <Suspense fallback={loading}>
+      <InnerAwait promise={promise}>{children}</InnerAwait>
+    </Suspense>
   );
+
+  if (error) {
+    return <ErrorBoundary fallback={error}>{content}</ErrorBoundary>;
+  }
+
+  return content;
 };
 
 interface InnerAwaitProps<T> {
