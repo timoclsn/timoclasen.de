@@ -10,9 +10,9 @@ interface Props {
 
 export function WidgetLayout({
   children,
-  separate,
-  highlight,
-  transparent,
+  separate = false,
+  highlight = false,
+  transparent = false,
 }: Props) {
   const bgColor = highlight
     ? "bg-highlight dark:bg-highlight-dark"
