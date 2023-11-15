@@ -1,4 +1,3 @@
-import { unstable_noStore as noStore } from "next/cache";
 import Image from "next/image";
 import { NowPlayingData, getNowPlayingData } from "../data/music";
 import { Await } from "./Await";
@@ -6,7 +5,6 @@ import { Skeleton } from "./Skeleton";
 import { SoundBars } from "./SoundBars";
 
 export function NowPlaying() {
-  noStore();
   const promise = getNowPlayingData();
   return (
     <Await promise={promise} loading={<Loading />} error={<Error />}>

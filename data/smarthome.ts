@@ -1,4 +1,7 @@
-import { unstable_cache as nextCache } from "next/cache";
+import {
+  unstable_cache as nextCache,
+  unstable_noStore as noStore,
+} from "next/cache";
 import { cache as reactCache } from "react";
 import "server-only";
 import { AttributeType, NodeState } from "../lib/enums";
@@ -18,6 +21,8 @@ const cachedData = {
 
 export const getSmartHomeData = reactCache(
   async (options: { cached?: boolean } = {}) => {
+    noStore();
+
     if (options.cached) {
       return cachedData;
     }

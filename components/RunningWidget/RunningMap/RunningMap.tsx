@@ -1,11 +1,9 @@
-import { unstable_noStore as noStore } from "next/cache";
 import { getRunningData } from "../../../data/sports";
 import { Await } from "../../Await";
 import { Skeleton } from "../../Skeleton";
 import { RunningMapClient } from "./RunningMapClient";
 
 export const RunningMap = () => {
-  noStore();
   const promise = getRunningData();
   return (
     <Await promise={promise} loading={<Loading />} error={<Error />}>

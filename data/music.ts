@@ -1,3 +1,4 @@
+import { unstable_noStore as noStore } from "next/cache";
 import {
   getNowPlaying,
   getRecentlyPlayed,
@@ -8,6 +9,8 @@ import {
 export type NowPlayingData = Awaited<ReturnType<typeof getNowPlayingData>>;
 
 export const getNowPlayingData = async () => {
+  noStore();
+
   const nowPlaying = await getNowPlaying();
 
   if (nowPlaying === null || nowPlaying.item === null) {
@@ -42,6 +45,8 @@ export const getNowPlayingData = async () => {
 };
 
 export const getTopArtistsData = async () => {
+  noStore();
+
   const topArtists = await getTopArtists();
 
   const artists = topArtists.map((artist) => {
@@ -60,6 +65,8 @@ export const getTopArtistsData = async () => {
 };
 
 export const getTopTracksData = async () => {
+  noStore();
+
   const topTracks = await getTopTracks();
 
   const tracks = topTracks.map((track) => {

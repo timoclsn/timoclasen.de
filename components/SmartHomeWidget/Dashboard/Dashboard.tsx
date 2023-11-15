@@ -8,14 +8,12 @@ import {
   Umbrella,
   Zap,
 } from "lucide-react";
-import { unstable_noStore as noStore } from "next/cache";
 import { getSmartHomeData } from "../../../data/smarthome";
 import { Await } from "../../Await";
 import { WidgetLayout } from "../../WidgetLayout";
 import { DashboardElement } from "./DashboardElement";
 
 export const Dashboard = () => {
-  noStore();
   const promise = getSmartHomeData();
   return (
     <Await promise={promise} loading={<Loading />} error={<Error />}>

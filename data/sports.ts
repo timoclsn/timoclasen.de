@@ -1,6 +1,7 @@
 import { formatRelative, parseISO } from "date-fns";
 import { utcToZonedTime } from "date-fns-tz";
 import { de } from "date-fns/locale";
+import { unstable_noStore as noStore } from "next/cache";
 import { cache } from "react";
 import "server-only";
 import { getMapURLs } from "../lib/mapbox";
@@ -16,6 +17,8 @@ export type RunningData = Awaited<ReturnType<typeof getRunningData>>;
 
 export const getRunningData = cache(
   async (options: { cached?: boolean } = {}) => {
+    noStore();
+
     if (options?.cached) {
       return cachedData;
     }
