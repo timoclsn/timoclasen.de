@@ -53,10 +53,10 @@ export const MDXContent = ({
     pre: Code,
   };
 
-  const Content = <MDXRemote source={children} components={components} />;
+  const content = <MDXRemote source={children} components={components} />;
 
   if (!styled) {
-    return <Element className={className}>{Content}</Element>;
+    return <Element className={className}>{content}</Element>;
   }
 
   return (
@@ -66,7 +66,7 @@ export const MDXContent = ({
         className,
       )}
     >
-      <MDXRemote source={children} components={components} />
+      {content}
     </Element>
   );
 };
