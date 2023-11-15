@@ -2,10 +2,10 @@ import { cx } from "class-variance-authority";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 import { ReactNode } from "react";
-import { CenteredColumn } from "../components/CenteredColumn";
-import { Footer } from "../components/Footer";
+import { Container } from "../design-system/Container/Container";
+import { Footer } from "../components/Footer/Footer";
 import { Navigation } from "../components/Navigation/Navigation";
-import { NoFlash } from "../components/NoFlash";
+import { NoFlash } from "../components/NoFlash/NoFlash";
 import { getMetadata } from "../data/content";
 import { createGenerateMetadata, openGraph } from "../lib/metadata";
 import "../styles/globals.css";
@@ -70,7 +70,7 @@ const RootLayout = ({ children }: Props) => {
           <Providers>
             <Navigation />
             <main id="skip">
-              <CenteredColumn>{children}</CenteredColumn>
+              <Container>{children}</Container>
             </main>
             <Footer />
           </Providers>

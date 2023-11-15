@@ -3,7 +3,7 @@
 import { cx } from "class-variance-authority";
 import { Moon, Sun } from "lucide-react";
 import { track } from "../../lib/tracking";
-import { useTheme } from "../ThemeProvider";
+import { useTheme } from "../ThemeProvider/ThemeProvider";
 import { useIsMounted } from "../../hooks/useIsMounted";
 import styles from "./SwitchMode.module.css";
 

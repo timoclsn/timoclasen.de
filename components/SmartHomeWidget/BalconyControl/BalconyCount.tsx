@@ -1,6 +1,6 @@
 import { getControlCount } from "../../../data/smarthome";
-import { Await } from "../../Await";
-import { Skeleton } from "../../Skeleton";
+import { Await } from "../../Await/Await";
+import { Skeleton } from "../../../design-system/Skeleton/Skeleton";
 
 export const BalconyCount = () => {
   const promise = getControlCount();

@@ -3,7 +3,7 @@
 import toast from "react-hot-toast";
 import { useAction } from "../../../lib/serverActions/client";
 import { track } from "../../../lib/tracking";
-import { Button } from "../../Button/Button";
+import { Button } from "../../../design-system/Button/Button";
 import { turnOnBalcony } from "./actions";
 
 const toastId = "balcony-buttons";

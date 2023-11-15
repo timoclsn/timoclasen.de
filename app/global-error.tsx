@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "../components/Button";
+import { Button } from "../design-system/Button";
 
 interface Props {
   error: Error & { digest?: string };

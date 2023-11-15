@@ -1,7 +1,7 @@
 import { ImageResponse } from "@vercel/og";
 import { createElement } from "react";
 import { z } from "zod";
-import { OGImage } from "../../components/OGImage";
+import { OGImage } from "../../components/OGImage/OGImage";
 import { queryContent } from "../../lib/content";
 
 export const runtime = "edge";

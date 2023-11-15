@@ -1,5 +1,5 @@
-import { BlogPostPreview } from "../../components/BlogPostPreview";
-import { ContactWidget } from "../../components/ContactWidget";
+import { BlogPostPreview } from "../../components/BlogPost/BlogPostPreview";
+import { ContactWidget } from "../../components/ContactWidget/ContactWidget";
 import { getBlogPosts, getMetadata } from "../../data/content";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 

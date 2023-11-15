@@ -1,8 +1,8 @@
 "use client";
 
 import { RunningData } from "../../../data/sports";
-import { useTheme } from "../../ThemeProvider";
-import { WidgetImage } from "../../WidgetImage";
+import { useTheme } from "../../ThemeProvider/ThemeProvider";
+import { ImageWidget } from "../../Widget/ImageWidget";
 
 interface Props {
   runningData: RunningData;
@@ -16,7 +16,7 @@ export const RunningMapClient = ({ runningData }: Props) => {
   const placeholderDark =
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mPU09X5DwACoAGIYYmEdwAAAABJRU5ErkJggg==";
   return (
-    <WidgetImage
+    <ImageWidget
       url={
         darkMode ? runningData.lastRun.map.dark : runningData.lastRun.map.light
       }

@@ -1,5 +1,5 @@
-import { ContactWidget } from "../components/ContactWidget";
-import { Markdown } from "../components/Markdown/Markdown";
+import { ContactWidget } from "../components/ContactWidget/ContactWidget";
+import { Markdown } from "../design-system/Markdown/Markdown";
 import { getMetadata, getTextSnippet } from "../data/content";
 import { createGenerateMetadata, openGraph } from "../lib/metadata";
 

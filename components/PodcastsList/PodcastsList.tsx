@@ -1,7 +1,7 @@
 import { User } from "lucide-react";
 import { matchSorter } from "match-sorter";
 import { getCategories, getPodcasts } from "../../data/podcasts/podcasts";
-import { MediaPreview } from "../MediaPreview";
+import { MediaPreview } from "../MediaPreview/MediaPreview";
 import { PodcastFilter } from "./PodcastFilter";
 import { PodcastsSearch } from "./PodcastsSearch";
 

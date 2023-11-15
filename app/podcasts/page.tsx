@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { Markdown } from "../../components/Markdown/Markdown";
+import { Markdown } from "../../design-system/Markdown/Markdown";
 import { PodcastsList } from "../../components/PodcastsList/PodcastsList";
 import { Recommendations } from "../../components/Recommendations/Recommendations";
 import { getMetadata, getTextSnippet } from "../../data/content";

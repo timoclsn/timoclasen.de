@@ -4,8 +4,8 @@ import { cx } from "class-variance-authority";
 import Link from "next/link";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { CenteredColumn } from "../CenteredColumn";
-import { NavigationLink } from "../NavigationLink";
+import { Container } from "../../design-system/Container/Container";
+import { NavigationLink } from "./NavigationLink";
 import { SwitchMode } from "../SwitchMode/SwitchMode";
 import styles from "./Navigation.module.css";
 
@@ -19,7 +19,7 @@ export const Navigation = () => {
         styles.stickyNav,
       )}
     >
-      <CenteredColumn>
+      <Container>
         <nav
           role="navigation"
           data-cy="navigation"
@@ -83,7 +83,7 @@ export const Navigation = () => {
             </button>
           </div>
         </nav>
-      </CenteredColumn>
+      </Container>
     </header>
   );
 };

@@ -1,10 +1,10 @@
-import { AboutWidget } from "../../components/AboutWidget";
-import { BlogWidget } from "../../components/BlogWidget";
-import { ContactWidget } from "../../components/ContactWidget";
-import { LCDWidget } from "../../components/LCDWidget";
-import { MLWidget } from "../../components/MLWidget";
-import { NowPlaying } from "../../components/NowPlaying";
-import { PodcastsWidget } from "../../components/PodcastsWidget";
+import { AboutWidget } from "../../components/AboutWidget/AboutWidget";
+import { BlogWidget } from "../../components/BlogWidget/BlogWidget";
+import { ContactWidget } from "../../components/ContactWidget/ContactWidget";
+import { LCDWidget } from "../../components/LCDWidget/LCDWidget";
+import { MLWidget } from "../../components/MLWidget/MLWidget";
+import { NowPlaying } from "../../components/Music/NowPlaying";
+import { PodcastsWidget } from "../../components/PodcastsWidget/PodcastsWidget";
 import { RunningWidget } from "../../components/RunningWidget/RunningWidget";
 import { SmartHomeWidget } from "../../components/SmartHomeWidget/SmartHomeWidget";
 import { Teaser } from "../../components/Teaser/Teaser";

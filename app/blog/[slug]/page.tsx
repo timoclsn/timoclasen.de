@@ -1,6 +1,6 @@
-import { BlogPostHeader } from "../../../components/BlogPostHeader";
-import { ContactWidget } from "../../../components/ContactWidget";
-import { Mdx } from "../../../components/Markdown/Mdx";
+import { BlogPostHeader } from "../../../components/BlogPost/BlogPostHeader";
+import { ContactWidget } from "../../../components/ContactWidget/ContactWidget";
+import { Mdx } from "../../../design-system/Markdown/Mdx";
 import { StructuredData } from "../../../components/StructuredData/StructuredData";
 import { getBlogPost, getBlogPosts } from "../../../data/content";
 import { createGenerateMetadata, ogImage } from "../../../lib/metadata";

@@ -2,7 +2,7 @@
 
 import { Loader, Send } from "lucide-react";
 import { useAction } from "../../lib/serverActions/client";
-import { Button } from "../Button";
+import { Button } from "../../design-system/Button";
 import { addRecommendation } from "./actions";
 
 export const errorStyles =

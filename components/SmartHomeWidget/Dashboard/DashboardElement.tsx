@@ -1,5 +1,5 @@
 import type { LucideIcon } from "lucide-react";
-import { Skeleton } from "../../Skeleton";
+import { Skeleton } from "../../../design-system/Skeleton/Skeleton";
 
 type Props =
   | {

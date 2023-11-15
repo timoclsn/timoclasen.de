@@ -9,8 +9,8 @@ import {
 } from "lucide-react";
 import { getRunningData } from "../../../data/sports";
 import { getYearProgress } from "../../../lib/utils";
-import { Await } from "../../Await";
-import { RunningElement } from "../../RunningElement";
+import { Await } from "../../Await/Await";
+import { RunningElement } from "./RunningElement";
 
 export const RunningStats = () => {
   const promise = getRunningData();

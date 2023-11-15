@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { CV } from "../../components/CV";
-import { ContactWidget } from "../../components/ContactWidget";
-import { Markdown } from "../../components/Markdown/Markdown";
+import { CV } from "../../components/CV/CV";
+import { ContactWidget } from "../../components/ContactWidget/ContactWidget";
+import { Markdown } from "../../design-system/Markdown/Markdown";
 import { getMetadata, getPerson } from "../../data/content";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 import { getPlaceholder } from "../../lib/placeholder";

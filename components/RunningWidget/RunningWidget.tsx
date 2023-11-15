@@ -1,4 +1,4 @@
-import { WidgetLayout } from "../WidgetLayout";
+import { WidgetLayout } from "../Widget/WidgetLayout";
 import { RunningMap } from "./RunningMap/RunningMap";
 import { RunningStats } from "./RunningStats/RunningStats";
 

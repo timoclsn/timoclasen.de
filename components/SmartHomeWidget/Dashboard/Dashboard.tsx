@@ -9,8 +9,8 @@ import {
   Zap,
 } from "lucide-react";
 import { getSmartHomeData } from "../../../data/smarthome";
-import { Await } from "../../Await";
-import { WidgetLayout } from "../../WidgetLayout";
+import { Await } from "../../Await/Await";
+import { WidgetLayout } from "../../Widget/WidgetLayout";
 import { DashboardElement } from "./DashboardElement";
 
 export const Dashboard = () => {

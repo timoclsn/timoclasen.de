@@ -1,5 +1,5 @@
 import { getTextSnippet } from "../../data/content";
-import { Markdown } from "../Markdown/Markdown";
+import { Markdown } from "../../design-system/Markdown/Markdown";
 import styles from "./Teaser.module.css";
 
 export const Teaser = async () => {

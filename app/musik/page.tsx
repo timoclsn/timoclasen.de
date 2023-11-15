@@ -1,7 +1,7 @@
-import { ContactWidget } from "../../components/ContactWidget";
-import { Markdown } from "../../components/Markdown/Markdown";
-import { NowPlaying } from "../../components/NowPlaying";
-import { TopMusic } from "../../components/TopMusic";
+import { ContactWidget } from "../../components/ContactWidget/ContactWidget";
+import { Markdown } from "../../design-system/Markdown/Markdown";
+import { NowPlaying } from "../../components/Music/NowPlaying";
+import { TopMusic } from "../../components/Music/TopMusic";
 import { getMetadata, getTextSnippet } from "../../data/content";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 

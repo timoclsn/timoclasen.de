@@ -1,6 +1,6 @@
 import { getRunningData } from "../../../data/sports";
-import { Await } from "../../Await";
-import { Skeleton } from "../../Skeleton";
+import { Await } from "../../Await/Await";
+import { Skeleton } from "../../../design-system/Skeleton/Skeleton";
 import { RunningMapClient } from "./RunningMapClient";
 
 export const RunningMap = () => {
