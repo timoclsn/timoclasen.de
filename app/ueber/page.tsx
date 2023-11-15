@@ -1,11 +1,10 @@
 import Image from "next/image";
 import { CV } from "../../components/CV";
 import { ContactWidget } from "../../components/ContactWidget";
-import { TextBlock } from "../../components/TextBlock";
+import { MDXContent } from "../../components/MDXContent/MDXContent";
 import { getMetadata, getPerson } from "../../data/content";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 import { getPlaceholder } from "../../lib/placeholder";
-import { markdownToHTML } from "../../lib/text";
 
 export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description, slug } = await getMetadata("ueber");
@@ -26,9 +25,6 @@ const AboutPage = async () => {
   const { base64 } = await getPlaceholder(image.url);
   const enhancedImage = { ...image, blurDataURL: base64 };
 
-  const about = await markdownToHTML(person.cvText);
-  const linkCollection = await markdownToHTML(person.linkCollection);
-
   return (
     <>
       <div className="aspect-h-1 aspect-w-2 overflow-hidden rounded-3xl">
@@ -44,9 +40,9 @@ const AboutPage = async () => {
           placeholder="blur"
         />
       </div>
-      <TextBlock text={about} />
+      <MDXContent>{person.cvText}</MDXContent>
       <CV />
-      <TextBlock text={linkCollection} />
+      <MDXContent>{person.linkCollection}</MDXContent>
       <ContactWidget />
     </>
   );

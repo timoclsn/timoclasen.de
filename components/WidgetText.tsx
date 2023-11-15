@@ -1,6 +1,5 @@
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-
+import Link from "next/link";
 import { Button } from "./Button";
 
 interface Props {
@@ -10,7 +9,7 @@ interface Props {
   href?: string;
 }
 
-export function WidgetText({ title, text, linkText, href }: Props) {
+export const WidgetText = ({ title, text, linkText, href }: Props) => {
   return (
     <div className="flex h-full flex-col justify-between px-6 py-12 xl:px-12 xl:py-20">
       <div>
@@ -20,7 +19,7 @@ export function WidgetText({ title, text, linkText, href }: Props) {
         <div
           className="flex flex-col space-y-4"
           dangerouslySetInnerHTML={{ __html: text }}
-        ></div>
+        />
       </div>
       {href && (
         <div className="-mb-6 mt-4 flex justify-end xl:-mb-12">
@@ -34,4 +33,4 @@ export function WidgetText({ title, text, linkText, href }: Props) {
       )}
     </div>
   );
-}
+};

@@ -1,8 +1,7 @@
 import { ContactWidget } from "../../components/ContactWidget";
-import { TextBlock } from "../../components/TextBlock";
+import { MDXContent } from "../../components/MDXContent/MDXContent";
 import { getMetadata, getTextSnippet } from "../../data/content";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
-import { markdownToHTML } from "../../lib/text";
 
 export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description, slug } = await getMetadata("impressum");
@@ -17,12 +16,10 @@ export const generateMetadata = createGenerateMetadata(async () => {
 });
 
 const LegalPage = async () => {
-  const textSnippet = await getTextSnippet("Impressum & Datenschutz");
-  const legalText = await markdownToHTML(textSnippet);
-
+  const text = await getTextSnippet("Impressum & Datenschutz");
   return (
     <>
-      <TextBlock text={legalText} />
+      <MDXContent>{text}</MDXContent>
       <ContactWidget />
     </>
   );

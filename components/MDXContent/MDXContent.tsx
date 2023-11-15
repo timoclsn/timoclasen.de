@@ -1,9 +1,9 @@
-import { MDXRemote, MDXRemoteProps } from "next-mdx-remote/rsc";
+import { Code } from "bright";
+import { cx } from "class-variance-authority";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import Image from "next/image";
 import Link from "next/link";
 import { HTMLProps } from "react";
-import { TextBlock } from "../TextBlock";
-import { Code } from "bright";
 
 Code.theme = {
   dark: "github-dark",
@@ -12,7 +12,12 @@ Code.theme = {
 };
 Code.lineNumbers = true;
 
-export const MDXContent = ({ source }: MDXRemoteProps) => {
+interface Props {
+  children: string;
+  className?: string;
+}
+
+export const MDXContent = ({ children, className }: Props) => {
   const components = {
     img: ({ src, alt }: HTMLProps<HTMLImageElement>) => {
       if (!src || !alt) {
@@ -42,8 +47,13 @@ export const MDXContent = ({ source }: MDXRemoteProps) => {
   };
 
   return (
-    <TextBlock>
-      <MDXRemote source={source} components={components} />
-    </TextBlock>
+    <div
+      className={cx(
+        "prose prose-custom mx-auto dark:prose-invert lg:prose-lg xl:prose-xl",
+        className,
+      )}
+    >
+      <MDXRemote source={children} components={components} />
+    </div>
   );
 };

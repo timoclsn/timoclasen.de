@@ -96,7 +96,7 @@ const BlogPostPage = async ({ params }: Props) => {
           readingTime={blogPost.readingTime}
           sys={blogPost.sys}
         />
-        <MDXContent source={blogPost.text} />
+        <MDXContent>{blogPost.text}</MDXContent>
       </article>
       <ContactWidget />
     </>

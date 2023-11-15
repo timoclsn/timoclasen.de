@@ -1,10 +1,9 @@
 import { z } from "zod";
+import { MDXContent } from "../../components/MDXContent/MDXContent";
 import { PodcastsList } from "../../components/PodcastsList/PodcastsList";
 import { Recommendations } from "../../components/Recommendations/Recommendations";
-import { TextBlock } from "../../components/TextBlock";
 import { getMetadata, getTextSnippet } from "../../data/content";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
-import { markdownToHTML } from "../../lib/text";
 import { SearchParams } from "../../lib/types";
 
 export const generateMetadata = createGenerateMetadata(async () => {
@@ -32,12 +31,11 @@ interface Props {
 const PodcastPage = async ({ searchParams }: Props) => {
   const { search, favorites, filter } = searchParamsSchema.parse(searchParams);
 
-  const textSnippet = await getTextSnippet("Podcasts");
-  const podcastsText = await markdownToHTML(textSnippet);
+  const text = await getTextSnippet("Podcasts");
 
   return (
     <>
-      <TextBlock text={podcastsText} />
+      <MDXContent>{text}</MDXContent>
       <PodcastsList
         search={search}
         favorites={favorites}

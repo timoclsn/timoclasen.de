@@ -1,10 +1,9 @@
 import { ContactWidget } from "../../components/ContactWidget";
+import { MDXContent } from "../../components/MDXContent/MDXContent";
 import { NowPlaying } from "../../components/NowPlaying";
-import { TextBlock } from "../../components/TextBlock";
 import { TopMusic } from "../../components/TopMusic";
 import { getMetadata, getTextSnippet } from "../../data/content";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
-import { markdownToHTML } from "../../lib/text";
 
 export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description, slug } = await getMetadata("musik");
@@ -19,12 +18,11 @@ export const generateMetadata = createGenerateMetadata(async () => {
 });
 
 const MusicPage = async () => {
-  const textSnippet = await getTextSnippet("Music");
-  const musicText = await markdownToHTML(textSnippet);
+  const text = await getTextSnippet("Music");
 
   return (
     <>
-      <TextBlock text={musicText} />
+      <MDXContent>{text}</MDXContent>
       <TopMusic />
       <NowPlaying />
       <ContactWidget />
