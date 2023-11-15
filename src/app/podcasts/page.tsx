@@ -1,8 +1,7 @@
-import { z } from "zod";
-import { Markdown } from "../../design-system/Markdown/Markdown";
 import { Podcasts } from "../../components/Podcasts/Podcasts";
 import { Recommendations } from "../../components/Recommendations/Recommendations";
 import { getMetadata, getTextSnippet } from "../../data/content";
+import { Markdown } from "../../design-system/Markdown/Markdown";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 import { SearchParams } from "../../lib/types";
 
@@ -18,29 +17,17 @@ export const generateMetadata = createGenerateMetadata(async () => {
   };
 });
 
-const searchParamsSchema = z.object({
-  search: z.coerce.string().optional(),
-  favorites: z.coerce.boolean().optional(),
-  filter: z.coerce.string().optional(),
-});
-
 interface Props {
-  searchParams?: SearchParams;
+  searchParams: SearchParams;
 }
 
 const PodcastPage = async ({ searchParams }: Props) => {
-  const { search, favorites, filter } = searchParamsSchema.parse(searchParams);
-
   const text = await getTextSnippet("Podcasts");
 
   return (
     <>
       <Markdown>{text}</Markdown>
-      <Podcasts
-        search={search}
-        favorites={favorites}
-        filter={filter?.split(";")}
-      />
+      <Podcasts searchParams={searchParams} />
       <Recommendations />
     </>
   );

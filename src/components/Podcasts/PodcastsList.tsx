@@ -1,15 +1,25 @@
 import { User } from "lucide-react";
 import { matchSorter } from "match-sorter";
+import { z } from "zod";
 import { getPodcasts } from "../../data/podcasts/podcasts";
+import { SearchParams } from "../../lib/types";
 import { MediaPreview } from "../MediaPreview/MediaPreview";
 
+const searchParamsSchema = z.object({
+  search: z.coerce.string().optional().default(""),
+  favorites: z.coerce.boolean().optional().default(false),
+  filter: z.coerce
+    .string()
+    .optional()
+    .transform((value) => (value ? value.split(";") : [])),
+});
+
 interface Props {
-  search: string;
-  favorites: boolean;
-  filter: Array<string>;
+  searchParams: SearchParams;
 }
 
-export const PodcastsList = ({ search, favorites, filter }: Props) => {
+export const PodcastsList = ({ searchParams }: Props) => {
+  const { search, favorites, filter } = searchParamsSchema.parse(searchParams);
   const podcasts = getPodcasts();
 
   const filteredPodcast = matchSorter(podcasts, search, {
