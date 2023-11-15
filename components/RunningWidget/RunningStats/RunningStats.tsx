@@ -7,13 +7,15 @@ import {
   ThumbsUp,
   TrendingUp,
 } from "lucide-react";
-import { getRunningDataCached } from "../../../data/sports";
+import { unstable_noStore as noStore } from "next/cache";
+import { getRunningData } from "../../../data/sports";
+import { getYearProgress } from "../../../lib/utils";
 import { Await } from "../../Await";
 import { RunningElement } from "../../RunningElement";
-import { getYearProgress } from "../../../lib/utils";
 
 export const RunningStats = () => {
-  const promise = getRunningDataCached();
+  noStore();
+  const promise = getRunningData();
   return (
     <Await promise={promise} loading={<Loading />} error={<Error />}>
       {(runningData) => {

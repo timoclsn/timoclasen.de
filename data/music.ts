@@ -1,4 +1,3 @@
-import { cache as reactCache } from "react";
 import {
   getNowPlaying,
   getRecentlyPlayed,
@@ -8,7 +7,7 @@ import {
 
 export type NowPlayingData = Awaited<ReturnType<typeof getNowPlayingData>>;
 
-const getNowPlayingData = async () => {
+export const getNowPlayingData = async () => {
   const nowPlaying = await getNowPlaying();
 
   if (nowPlaying === null || nowPlaying.item === null) {
@@ -42,9 +41,7 @@ const getNowPlayingData = async () => {
   };
 };
 
-export const getNowPlayingDataCached = reactCache(getNowPlayingData);
-
-const getTopArtistsData = async () => {
+export const getTopArtistsData = async () => {
   const topArtists = await getTopArtists();
 
   const artists = topArtists.map((artist) => {
@@ -62,9 +59,7 @@ const getTopArtistsData = async () => {
   return artists;
 };
 
-export const getTopArtistsDataCached = reactCache(getTopArtistsData);
-
-const getTopTracksData = async () => {
+export const getTopTracksData = async () => {
   const topTracks = await getTopTracks();
 
   const tracks = topTracks.map((track) => {
@@ -82,5 +77,3 @@ const getTopTracksData = async () => {
 
   return tracks;
 };
-
-export const getTopTracksDataCached = reactCache(getTopTracksData);

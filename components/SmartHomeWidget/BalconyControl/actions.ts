@@ -1,11 +1,11 @@
 "use server";
 
+import { revalidateTag } from "next/cache";
 import { z } from "zod";
-import { createAction } from "../../../lib/serverActions/create";
 import { playHomeegram } from "../../../lib/homee";
-import { wait } from "../../../lib/utils";
 import { prisma } from "../../../lib/prisma";
-import { revalidatePath } from "next/cache";
+import { createAction } from "../../../lib/serverActions/create";
+import { wait } from "../../../lib/utils";
 
 const colorHomeegramIds = {
   red: 239,
@@ -38,6 +38,6 @@ export const turnOnBalcony = createAction({
       },
     });
 
-    revalidatePath("/");
+    revalidateTag("control-count");
   },
 });

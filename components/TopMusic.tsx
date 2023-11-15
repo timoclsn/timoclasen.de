@@ -1,13 +1,15 @@
 import { Music, User } from "lucide-react";
-import { getTopArtistsDataCached, getTopTracksDataCached } from "../data/music";
+import { unstable_noStore as noStore } from "next/cache";
+import { getTopArtistsData, getTopTracksData } from "../data/music";
 import { Await } from "./Await";
 import { MediaPreview } from "./MediaPreview";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./Tabs";
 import { Track } from "./Track/Track";
 
 export const TopMusic = () => {
-  const topArtistsPromise = getTopArtistsDataCached();
-  const topTracksPromise = getTopTracksDataCached();
+  noStore();
+  const topArtistsPromise = getTopArtistsData();
+  const topTracksPromise = getTopTracksData();
 
   return (
     <Tabs defaultValue="1">

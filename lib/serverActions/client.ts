@@ -123,7 +123,6 @@ export const useAction = <
 
         try {
           const result = await inputAction(...inputArgs);
-          console.log(result);
 
           // If /next/navigation function (redirect() and notFound()) is called in the action, the result will be undefined
           // Skip processing because the page will be redirected

@@ -1,4 +1,3 @@
-import { unstable_noStore as noStore } from "next/cache";
 import {
   CloudSnow,
   Droplet,
@@ -9,14 +8,15 @@ import {
   Umbrella,
   Zap,
 } from "lucide-react";
-import { getSmartHomeDataCached } from "../../../data/smarthome";
+import { unstable_noStore as noStore } from "next/cache";
+import { getSmartHomeData } from "../../../data/smarthome";
 import { Await } from "../../Await";
 import { WidgetLayout } from "../../WidgetLayout";
 import { DashboardElement } from "./DashboardElement";
 
 export const Dashboard = () => {
   noStore();
-  const promise = getSmartHomeDataCached();
+  const promise = getSmartHomeData();
   return (
     <Await promise={promise} loading={<Loading />} error={<Error />}>
       {(data) => {

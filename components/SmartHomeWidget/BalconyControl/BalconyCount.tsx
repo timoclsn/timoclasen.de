@@ -1,11 +1,9 @@
-import { unstable_noStore as noStore } from "next/cache";
-import { getControlCountCached } from "../../../data/smarthome";
+import { getControlCount } from "../../../data/smarthome";
 import { Await } from "../../Await";
 import { Skeleton } from "../../Skeleton";
 
 export const BalconyCount = () => {
-  noStore();
-  const promise = getControlCountCached();
+  const promise = getControlCount();
   return (
     <div className="flex justify-center">
       <p className="whitespace-nowrap text-sm opacity-60">

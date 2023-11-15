@@ -1,11 +1,11 @@
 import { unstable_noStore as noStore } from "next/cache";
-import { getSmartHomeDataCached } from "../../../data/smarthome";
+import { getSmartHomeData } from "../../../data/smarthome";
 import { Await } from "../../Await";
 import { Skeleton } from "../../Skeleton";
 
 export const BalconyLight = () => {
   noStore();
-  const promise = getSmartHomeDataCached();
+  const promise = getSmartHomeData();
   return (
     <div className="h-[100px] w-[100px] flex-none rounded-full bg-[#FFFFFF] font-bold dark:bg-[#000000]">
       <Await promise={promise} loading={<Loading />} error={<Error />}>
