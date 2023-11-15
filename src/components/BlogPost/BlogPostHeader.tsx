@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Calendar, Clock, Feather, Twitter, User } from "lucide-react";
 
-import { BlogPostLabel } from "../BlogPost/BlogPostLabel";
+import { BlogPostLabel } from "./BlogPostLabel";
 
 interface Author {
   name: string;

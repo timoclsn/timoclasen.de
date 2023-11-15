@@ -17,7 +17,7 @@ export type Podcasts = Awaited<ReturnType<typeof getPodcasts>>;
 
 export const getPodcasts = () => {
   const podcasts = JSON.parse(
-    readFileSync("./data/podcasts/podcasts.json", "utf-8"),
+    readFileSync("./src/data/podcasts/podcasts.json", "utf-8"),
   );
   return z.array(podcastSchema).parse(podcasts);
 };

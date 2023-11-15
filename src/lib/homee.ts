@@ -1,7 +1,7 @@
 import WebSocket from "ws";
 import { z } from "zod";
 
-import { AttributeType, NodeProfile, NodeState } from "../lib/enums";
+import { AttributeType, NodeProfile, NodeState } from "./enums";
 
 const envSchema = z.object({
   HOMEE_ID: z.string(),

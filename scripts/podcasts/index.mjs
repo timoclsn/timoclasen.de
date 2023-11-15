@@ -94,7 +94,7 @@ mkdirSync(coversDir);
     parser: "json",
   });
 
-  writeFileSync("./data/podcasts/podcasts.json", formatted);
+  writeFileSync("./src/data/podcasts/podcasts.json", formatted);
 })();
 
 function hashString(string) {

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render, screen } from "../../jest.setup";
+import { render, screen } from "../../../jest.setup";
 import { Button } from "./Button";
 
 describe("<Button />", () => {
