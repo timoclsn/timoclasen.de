@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./Button";
-import { MDXContent } from "./MDXContent/MDXContent";
+import { Markdown } from "./Markdown/Markdown";
 
 interface Props {
   title: string;
@@ -17,9 +17,9 @@ export const WidgetText = ({ title, text, linkText, href }: Props) => {
         <h2 className="mb-4 text-xl font-bold md:text-2xl lg:text-3xl">
           {title}
         </h2>
-        <MDXContent styled={false} className="flex flex-col space-y-4">
+        <Markdown unstyled className="flex flex-col space-y-4">
           {text}
-        </MDXContent>
+        </Markdown>
       </div>
       {href && (
         <div className="-mb-6 mt-4 flex justify-end xl:-mb-12">

@@ -1,5 +1,5 @@
 import { ContactWidget } from "../components/ContactWidget";
-import { MDXContent } from "../components/MDXContent/MDXContent";
+import { Markdown } from "../components/Markdown/Markdown";
 import { getMetadata, getTextSnippet } from "../data/content";
 import { createGenerateMetadata, openGraph } from "../lib/metadata";
 
@@ -19,7 +19,7 @@ const NotFoundPage = async () => {
   const text = await getTextSnippet("Error 404");
   return (
     <>
-      <MDXContent>{text}</MDXContent>
+      <Markdown>{text}</Markdown>
       <ContactWidget />
     </>
   );

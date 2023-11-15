@@ -1,6 +1,6 @@
 import { BlogPostHeader } from "../../../components/BlogPostHeader";
 import { ContactWidget } from "../../../components/ContactWidget";
-import { MDXContent } from "../../../components/MDXContent/MDXContent";
+import { Mdx } from "../../../components/Markdown/Mdx";
 import { StructuredData } from "../../../components/StructuredData/StructuredData";
 import { getBlogPost, getBlogPosts } from "../../../data/content";
 import { createGenerateMetadata, ogImage } from "../../../lib/metadata";
@@ -96,7 +96,7 @@ const BlogPostPage = async ({ params }: Props) => {
           readingTime={blogPost.readingTime}
           sys={blogPost.sys}
         />
-        <MDXContent>{blogPost.text}</MDXContent>
+        <Mdx>{blogPost.text}</Mdx>
       </article>
       <ContactWidget />
     </>

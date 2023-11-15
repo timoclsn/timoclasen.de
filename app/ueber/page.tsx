@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { CV } from "../../components/CV";
 import { ContactWidget } from "../../components/ContactWidget";
-import { MDXContent } from "../../components/MDXContent/MDXContent";
+import { Markdown } from "../../components/Markdown/Markdown";
 import { getMetadata, getPerson } from "../../data/content";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 import { getPlaceholder } from "../../lib/placeholder";
@@ -40,9 +40,9 @@ const AboutPage = async () => {
           placeholder="blur"
         />
       </div>
-      <MDXContent>{person.cvText}</MDXContent>
+      <Markdown>{person.cvText}</Markdown>
       <CV />
-      <MDXContent>{person.linkCollection}</MDXContent>
+      <Markdown>{person.linkCollection}</Markdown>
       <ContactWidget />
     </>
   );

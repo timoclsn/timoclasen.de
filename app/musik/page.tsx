@@ -1,5 +1,5 @@
 import { ContactWidget } from "../../components/ContactWidget";
-import { MDXContent } from "../../components/MDXContent/MDXContent";
+import { Markdown } from "../../components/Markdown/Markdown";
 import { NowPlaying } from "../../components/NowPlaying";
 import { TopMusic } from "../../components/TopMusic";
 import { getMetadata, getTextSnippet } from "../../data/content";
@@ -22,7 +22,7 @@ const MusicPage = async () => {
 
   return (
     <>
-      <MDXContent>{text}</MDXContent>
+      <Markdown>{text}</Markdown>
       <TopMusic />
       <NowPlaying />
       <ContactWidget />

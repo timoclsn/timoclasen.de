@@ -1,5 +1,5 @@
 import { getTextSnippet } from "../../data/content";
-import { MDXContent } from "../MDXContent/MDXContent";
+import { Markdown } from "../Markdown/Markdown";
 import { BalconyControl } from "./BalconyControl/BalconyControl";
 import { Dashboard } from "./Dashboard/Dashboard";
 
@@ -13,13 +13,13 @@ export const SmartHomeWidget = async () => {
         Smart Home
       </h2>
       <div className="mb-8" />
-      <MDXContent styled={false} className="mb-8">
+      <Markdown unstyled className="mb-8">
         {text}
-      </MDXContent>
+      </Markdown>
       <Dashboard />
-      <MDXContent styled={false} className="my-8 text-sm opacity-60">
+      <Markdown unstyled className="my-8 text-sm opacity-60">
         {footnote}
-      </MDXContent>
+      </Markdown>
       <BalconyControl />
     </section>
   );

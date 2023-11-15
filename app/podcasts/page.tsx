@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { MDXContent } from "../../components/MDXContent/MDXContent";
+import { Markdown } from "../../components/Markdown/Markdown";
 import { PodcastsList } from "../../components/PodcastsList/PodcastsList";
 import { Recommendations } from "../../components/Recommendations/Recommendations";
 import { getMetadata, getTextSnippet } from "../../data/content";
@@ -35,7 +35,7 @@ const PodcastPage = async ({ searchParams }: Props) => {
 
   return (
     <>
-      <MDXContent>{text}</MDXContent>
+      <Markdown>{text}</Markdown>
       <PodcastsList
         search={search}
         favorites={favorites}
