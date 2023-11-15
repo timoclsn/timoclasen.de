@@ -1,16 +1,17 @@
 import { getTextSnippet } from "../../data/content";
-import { markdownToHTML } from "../../lib/text";
+import { MDXContent } from "../MDXContent/MDXContent";
 import styles from "./Teaser.module.css";
 
 export const Teaser = async () => {
-  const headerText = await getTextSnippet("Frontpage Header");
-  const text = await markdownToHTML(headerText);
+  const text = await getTextSnippet("Frontpage Header");
 
   return (
-    <section
+    <MDXContent
+      styled={false}
       className={styles.textTeaser}
       data-cy="home-page-teaser"
-      dangerouslySetInnerHTML={{ __html: text }}
-    ></section>
+    >
+      {text}
+    </MDXContent>
   );
 };

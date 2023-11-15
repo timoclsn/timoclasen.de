@@ -1,6 +1,6 @@
 import { getPerson } from "../data/content";
 import { getPlaceholder } from "../lib/placeholder";
-import { markdownToHTML, stripFirstLine, truncate } from "../lib/text";
+import { stripFirstLine, truncate } from "../lib/text";
 import { WidgetImage } from "./WidgetImage";
 import { WidgetLayout } from "./WidgetLayout";
 import { WidgetText } from "./WidgetText";
@@ -15,7 +15,6 @@ export const AboutWidget = async () => {
   let aboutTeaser = person.cvText;
   aboutTeaser = stripFirstLine(aboutTeaser);
   aboutTeaser = truncate(aboutTeaser, 400, true);
-  aboutTeaser = await markdownToHTML(aboutTeaser);
 
   return (
     <WidgetLayout separate highlight>

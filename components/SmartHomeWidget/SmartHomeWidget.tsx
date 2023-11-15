@@ -1,26 +1,25 @@
 import { getTextSnippet } from "../../data/content";
-import { markdownToHTML } from "../../lib/text";
+import { MDXContent } from "../MDXContent/MDXContent";
 import { BalconyControl } from "./BalconyControl/BalconyControl";
 import { Dashboard } from "./Dashboard/Dashboard";
 
 export const SmartHomeWidget = async () => {
-  const textData = await getTextSnippet("Smart Home Widget");
-  const text = await markdownToHTML(textData);
-
-  const footnoteData = await getTextSnippet("Smart Home Widget Footnote");
-  const footnote = await markdownToHTML(footnoteData);
+  const text = await getTextSnippet("Smart Home Widget");
+  const footnote = await getTextSnippet("Smart Home Widget Footnote");
 
   return (
     <section id="smarthome">
       <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">
         Smart Home
       </h2>
-      <div className="mb-8" dangerouslySetInnerHTML={{ __html: text }} />
+      <div className="mb-8" />
+      <MDXContent styled={false} className="mb-8">
+        {text}
+      </MDXContent>
       <Dashboard />
-      <div
-        className="my-8 text-sm opacity-60"
-        dangerouslySetInnerHTML={{ __html: footnote }}
-      />
+      <MDXContent styled={false} className="my-8 text-sm opacity-60">
+        {footnote}
+      </MDXContent>
       <BalconyControl />
     </section>
   );

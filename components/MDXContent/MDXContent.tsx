@@ -3,7 +3,7 @@ import { cx } from "class-variance-authority";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Image from "next/image";
 import Link from "next/link";
-import { HTMLProps } from "react";
+import { ElementType, HTMLProps } from "react";
 
 Code.theme = {
   dark: "github-dark",
@@ -13,11 +13,18 @@ Code.theme = {
 Code.lineNumbers = true;
 
 interface Props {
+  as?: ElementType;
   children: string;
   className?: string;
+  styled?: boolean;
 }
 
-export const MDXContent = ({ children, className }: Props) => {
+export const MDXContent = ({
+  as: Element = "div",
+  children,
+  className,
+  styled = true,
+}: Props) => {
   const components = {
     img: ({ src, alt }: HTMLProps<HTMLImageElement>) => {
       if (!src || !alt) {
@@ -46,14 +53,20 @@ export const MDXContent = ({ children, className }: Props) => {
     pre: Code,
   };
 
+  const Content = <MDXRemote source={children} components={components} />;
+
+  if (!styled) {
+    return <Element className={className}>{Content}</Element>;
+  }
+
   return (
-    <div
+    <Element
       className={cx(
         "prose prose-custom mx-auto dark:prose-invert lg:prose-lg xl:prose-xl",
         className,
       )}
     >
       <MDXRemote source={children} components={components} />
-    </div>
+    </Element>
   );
 };
