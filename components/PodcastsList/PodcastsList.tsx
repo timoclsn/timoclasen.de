@@ -1,11 +1,9 @@
-import { matchSorter } from "match-sorter";
 import { User } from "lucide-react";
-import { getPodcasts } from "../../data/podcasts/podcasts";
+import { matchSorter } from "match-sorter";
+import { getCategories, getPodcasts } from "../../data/podcasts/podcasts";
 import { MediaPreview } from "../MediaPreview";
 import { PodcastFilter } from "./PodcastFilter";
 import { PodcastsSearch } from "./PodcastsSearch";
-import { Suspense } from "react";
-import { getCategories } from "../../lib/podcasts";
 
 interface Props {
   search?: string;
@@ -19,7 +17,7 @@ export function PodcastsList({
   filter = [],
 }: Props) {
   const podcasts = getPodcasts();
-  const categories = getCategories(podcasts);
+  const categories = getCategories();
 
   const filteredPodcast = matchSorter(podcasts, search, {
     keys: ["title", "hosts", "description"],
@@ -34,15 +32,11 @@ export function PodcastsList({
   return (
     <div>
       <div className="mx-auto mb-6 max-w-prose">
-        <Suspense>
-          <PodcastsSearch />
-        </Suspense>
+        <PodcastsSearch />
       </div>
 
       <div className="mx-auto mb-16 max-w-prose">
-        <Suspense>
-          <PodcastFilter categories={categories} />
-        </Suspense>
+        <PodcastFilter categories={categories} />
       </div>
       <ul className="space-y-20">
         {filteredPodcast.map((podcast) => (

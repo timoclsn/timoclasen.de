@@ -26,3 +26,10 @@ export const getFavoritePodcasts = () => {
   const podcasts = getPodcasts();
   return podcasts.filter((podcast) => podcast.favorite);
 };
+
+export const getCategories = () => {
+  const podcasts = getPodcasts();
+  return [
+    ...Array.from(new Set(podcasts.flatMap((podcast) => podcast.categories))),
+  ].sort((a, b) => a.localeCompare(b));
+};
