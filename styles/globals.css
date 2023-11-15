@@ -3,12 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  #__next {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-
   a {
     transition: text-underline-offset 300ms;
     @apply underline-offset-4;
