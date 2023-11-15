@@ -5,6 +5,7 @@ import { TextBlock } from "../../components/TextBlock";
 import { getMetadata, getTextSnippet } from "../../data/content";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 import { markdownToHTML } from "../../lib/text";
+import { SearchParams } from "../../lib/types";
 
 export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description, slug } = await getMetadata("podcasts");
@@ -25,9 +26,7 @@ const searchParamsSchema = z.object({
 });
 
 interface Props {
-  searchParams?: {
-    [key: string]: string | string[] | undefined;
-  };
+  searchParams?: SearchParams;
 }
 
 const PodcastPage = async ({ searchParams }: Props) => {
