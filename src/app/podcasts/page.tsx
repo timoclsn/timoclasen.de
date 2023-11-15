@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { Markdown } from "../../design-system/Markdown/Markdown";
-import { PodcastsList } from "../../components/PodcastsList/PodcastsList";
+import { Podcasts } from "../../components/Podcasts/Podcasts";
 import { Recommendations } from "../../components/Recommendations/Recommendations";
 import { getMetadata, getTextSnippet } from "../../data/content";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
@@ -36,7 +36,7 @@ const PodcastPage = async ({ searchParams }: Props) => {
   return (
     <>
       <Markdown>{text}</Markdown>
-      <PodcastsList
+      <Podcasts
         search={search}
         favorites={favorites}
         filter={filter?.split(";")}
