@@ -1,8 +1,9 @@
 import { getBlogPosts } from "../data/content";
+import { MetadataRoute } from "next";
 
 export const dynamic = "force-dynamic";
 
-const sitemap = async () => {
+const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const origin = "https://timoclasen.de";
   const buildUrl = (path: string) => `${origin}${path}`;
 

@@ -2,8 +2,6 @@ import { Feed } from "feed";
 import { getBlogPosts } from "../../data/content";
 import { markdownToHTML } from "../../lib/text";
 
-export const dynamic = "force-dynamic";
-
 const name = "Timo Clasen";
 const email = "timo@timoclasen.de";
 

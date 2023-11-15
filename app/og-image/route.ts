@@ -5,7 +5,6 @@ import { OGImage } from "../../components/OGImage";
 import { queryContent } from "../../lib/content";
 
 export const runtime = "edge";
-export const dynamic = "force-dynamic";
 export const alt = "Timo Clasen Portfolio";
 export const size = {
   width: 1200,
