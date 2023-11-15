@@ -6,18 +6,24 @@ interface ThemeContext {
   setDarkMode: (value: boolean) => void;
 }
 
-const ThemeContext = createContext<Partial<ThemeContext>>({});
+const ThemeContext = createContext<ThemeContext | null>(null);
 
-export const useTheme = () => useContext(ThemeContext);
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
+  return context;
+};
 
 interface ThemeProvider {
   children: ReactNode;
 }
 
-export function ThemeProvider({ children }: ThemeProvider) {
-  const [darkMode, rawSetDarkMode] = useState<boolean>();
+export const ThemeProvider = ({ children }: ThemeProvider) => {
+  const [darkMode, rawSetDarkMode] = useState(false);
 
-  function setDarkMode(value: boolean) {
+  const setDarkMode = (value: boolean) => {
     rawSetDarkMode(value);
     if (value) {
       document.documentElement.classList.add("dark");
@@ -28,7 +34,7 @@ export function ThemeProvider({ children }: ThemeProvider) {
       document.documentElement.classList.remove("dark");
       document.documentElement.style.colorScheme = "light";
     }
-  }
+  };
 
   useEffect(() => {
     rawSetDarkMode(document.documentElement.classList.contains("dark"));
@@ -50,4 +56,4 @@ export function ThemeProvider({ children }: ThemeProvider) {
       {children}
     </ThemeContext.Provider>
   );
-}
+};

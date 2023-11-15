@@ -1,7 +1,7 @@
 "use client";
 
 import { RunningData } from "../../../data/sports";
-import { useTheme } from "../../ThemeContext";
+import { useTheme } from "../../ThemeProvider";
 import { WidgetImage } from "../../WidgetImage";
 
 interface Props {
