@@ -28,7 +28,7 @@ export const Navigation = () => {
           <a href="#skip" className="sr-only">
             Zu Inhalt springen
           </a>
-          <div className="flex flex-1 items-center space-x-2 sm:flex-initial md:space-x-4">
+          <div className="flex flex-1 items-center gap-2 sm:flex-initial md:gap-4">
             <Link
               href="/"
               title="Home"
@@ -41,7 +41,7 @@ export const Navigation = () => {
           <ul
             className={`${
               menuOpen ? "flex" : "hidden"
-            } mt-16 flex-1 flex-col items-center space-y-8 pb-8 sm:mt-0 sm:flex sm:flex-initial sm:flex-row sm:space-x-4 sm:space-y-0 sm:pb-0 md:space-x-8`}
+            } mt-16 flex-1 flex-col items-center gap-8 pb-8 sm:mt-0 sm:flex sm:flex-initial sm:flex-row sm:gap-4 sm:pb-0 md:gap-8`}
           >
             <li>
               <Link href="/ueber" passHref legacyBehavior>

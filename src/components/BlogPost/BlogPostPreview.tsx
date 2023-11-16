@@ -30,7 +30,7 @@ export function BlogPostPreview({
 
   return (
     <article className="mx-auto max-w-prose">
-      <div className="mb-1 flex space-x-6 text-xs uppercase text-highlight dark:text-highlight-dark sm:mb-2 sm:text-sm">
+      <div className="mb-1 flex gap-6 text-xs uppercase text-highlight dark:text-highlight-dark sm:mb-2 sm:text-sm">
         <BlogPostLabel Icon={Calendar} text={date} />
 
         <BlogPostLabel Icon={Clock} text={`${readingTime} min`} />

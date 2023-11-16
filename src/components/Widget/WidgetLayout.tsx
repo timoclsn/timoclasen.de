@@ -31,9 +31,9 @@ export const WidgetLayout = ({
       "flex",
       "flex-col",
       "sm:flex-row",
-      "sm:space-x-12",
-      "md:space-x-16",
-      "lg:space-x-24",
+      "sm:gap-12",
+      "md:gap-16",
+      "lg:gap-24",
       textColor,
     ],
     {

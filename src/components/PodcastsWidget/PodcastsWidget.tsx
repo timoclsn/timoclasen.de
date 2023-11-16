@@ -11,7 +11,7 @@ export function PodcastsWidget() {
       <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">
         Podcasts
       </h2>
-      <div className="mb-8 flex flex-col justify-between space-x-0 space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
+      <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row">
         <p>
           Sie sind eins meiner absoluten Lieblingsmedien. Schau dir an, was ich
           so regelmäßig höre.
@@ -25,7 +25,7 @@ export function PodcastsWidget() {
           </Link>
         </div>
       </div>
-      <ul className="flex snap-x justify-between space-x-4 overflow-x-scroll">
+      <ul className="flex snap-x justify-between gap-4 overflow-x-scroll">
         {podcasts.map((podcast) => (
           <li key={podcast.title} className="flex-none snap-center">
             <a

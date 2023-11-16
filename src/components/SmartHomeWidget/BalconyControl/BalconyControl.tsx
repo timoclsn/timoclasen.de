@@ -6,7 +6,7 @@ export const BalconyControl = () => {
   return (
     <div className="flex justify-center">
       <div className="w-full max-w-screen-sm space-y-2 rounded-3xl bg-dark bg-opacity-10 px-6 py-6 dark:bg-light dark:bg-opacity-10 xl:px-12 xl:py-12">
-        <div className="flex space-x-6">
+        <div className="flex gap-6">
           <BalconyLight />
           <div>
             <h2 className="text-md mb-2 font-bold md:text-xl lg:text-2xl">

@@ -119,7 +119,7 @@ export const RunningStats = () => {
               <h3 className="font-bold">Letzter Lauf</h3>
               {lastRun.kudos > 0 && (
                 <div
-                  className="flex items-center space-x-1 opacity-60"
+                  className="flex items-center gap-1 opacity-60"
                   title={`${lastRun.kudos} Kudos für diesen Lauf auf Strava`}
                 >
                   <ThumbsUp size={18} />

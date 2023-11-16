@@ -47,7 +47,7 @@ export function BlogPostHeader({
         {subtitle}
       </h2>
 
-      <div className="flex flex-col justify-between space-y-2 text-xs uppercase text-highlight dark:text-highlight-dark sm:flex-row sm:space-y-0 sm:text-sm">
+      <div className="flex flex-col justify-between gap-2 text-xs uppercase text-highlight dark:text-highlight-dark sm:flex-row sm:gap-0 sm:text-sm">
         <div className="flex">
           <div className="-mb-1 mr-6 hidden sm:block">
             <Image
@@ -59,7 +59,7 @@ export function BlogPostHeader({
               className="block rounded-full"
             />
           </div>
-          <div className="flex space-x-6">
+          <div className="flex gap-6">
             {author.username ? (
               <BlogPostLabel
                 Icon={Twitter}

@@ -25,7 +25,7 @@ const buttonWrapper = cva(
 );
 
 const buttonContent = cva(
-  "inline-flex items-center justify-center icon-md space-x-2 cursor-pointer group-disabled:opacity-50",
+  "inline-flex items-center justify-center icon-md gap-2 cursor-pointer group-disabled:opacity-50",
   {
     variants: {
       variant: {

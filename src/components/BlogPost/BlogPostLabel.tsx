@@ -8,7 +8,7 @@ interface Props {
 
 export function BlogPostLabel({ Icon, text, href }: Props) {
   return (
-    <div className="flex items-center space-x-2">
+    <div className="flex items-center gap-2">
       <Icon size={16} />
       <p className="whitespace-nowrap">
         {href ? (

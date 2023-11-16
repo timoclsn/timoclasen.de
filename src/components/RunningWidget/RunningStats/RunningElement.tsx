@@ -15,7 +15,7 @@ interface Props {
 
 export const RunningElement = ({ Icon, text, href, labels, nowrap }: Props) => {
   return (
-    <div className="flex items-center space-x-4">
+    <div className="flex items-center gap-4">
       <div className="leading-none">
         {text ? (
           <Icon size={22} />

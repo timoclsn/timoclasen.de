@@ -32,7 +32,7 @@ export const Recommendations = () => {
       </p>
       <form
         ref={formRef}
-        className="flex flex-col space-y-4 sm:space-y-8"
+        className="flex flex-col gap-4 sm:gap-8"
         action={(formData) => {
           runAction({
             message: String(formData.get("message")),
@@ -81,7 +81,7 @@ export const Recommendations = () => {
             </div>
           )}
         </label>
-        <div className="flex space-x-4 sm:space-x-8">
+        <div className="flex gap-4 sm:gap-8">
           <label className="relative w-full">
             <span className="sr-only">Name</span>
             <input

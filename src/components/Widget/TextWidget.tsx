@@ -17,7 +17,7 @@ export const TextWidget = ({ title, text, linkText, href }: Props) => {
         <h2 className="mb-4 text-xl font-bold md:text-2xl lg:text-3xl">
           {title}
         </h2>
-        <Markdown unstyled className="flex flex-col space-y-4">
+        <Markdown unstyled className="flex flex-col gap-4">
           {text}
         </Markdown>
       </div>

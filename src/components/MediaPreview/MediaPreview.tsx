@@ -26,7 +26,7 @@ export function MediaPreview({
   favorite,
 }: Props) {
   return (
-    <div className="mx-auto flex max-w-prose space-x-4">
+    <div className="mx-auto flex max-w-prose gap-4">
       {image ? (
         <Image
           className="h-[80px] w-[80px] rounded-2xl"
@@ -40,8 +40,8 @@ export function MediaPreview({
         <Skeleton width="80px" height="80px" borderRadius="1rem" />
       )}
       <div className="flex-1 overflow-hidden">
-        <div className="mb-1 flex justify-between space-x-2 text-xs uppercase text-highlight dark:text-highlight-dark sm:mb-2">
-          <div className="flex items-center space-x-2 truncate">
+        <div className="mb-1 flex justify-between gap-2 text-xs uppercase text-highlight dark:text-highlight-dark sm:mb-2">
+          <div className="flex items-center gap-2 truncate">
             {BylineIcon && <BylineIcon size={16} className="flex-none" />}
             <p title={byline} className="truncate">
               {byline !== undefined ? byline : <Skeleton width="200px" />}

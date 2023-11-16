@@ -10,7 +10,7 @@ export const ContactWidget = async () => {
   return (
     <WidgetLayout>
       <TextWidget title="Kontakt" text={text} />
-      <div className="flex h-full w-full flex-col items-center justify-between space-y-4 px-6 py-12 pt-0 sm:space-y-0 sm:pt-12 xl:px-12 xl:py-20">
+      <div className="flex h-full w-full flex-col items-center justify-between gap-4 px-6 py-12 pt-0 sm:gap-0 sm:pt-12 xl:px-12 xl:py-20">
         <Button as="a" href="mailto:timo@timoclasen.de" fullWidth>
           <Mail />
           E-Mail

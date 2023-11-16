@@ -6,7 +6,7 @@ export const Footer = () => {
   return (
     <footer className="mt-auto" data-cy="footer">
       <Container>
-        <ul className="mb-12 mt-12 flex flex-col space-y-6 text-center sm:flex-row sm:space-y-0 sm:text-left md:mt-16 xl:mt-24">
+        <ul className="mb-12 mt-12 flex flex-col gap-6 text-center sm:flex-row sm:gap-0 sm:text-left md:mt-16 xl:mt-24">
           <li className="mr-0 sm:mr-8">
             <NavigationLink
               href="https://twitter.com/timoclsn"
