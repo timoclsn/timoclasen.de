@@ -4,6 +4,7 @@ import { Loader, Send } from "lucide-react";
 import { useAction } from "../../lib/serverActions/client";
 import { Button } from "../../design-system/Button";
 import { addRecommendation } from "./actions";
+import { useRef } from "react";
 
 export const errorStyles =
   "absolute left-0 bottom-0 -mb-6 text-red-700 text-sm slide-in-from-top-full duration-100 ease-in-out fade-in animate-in";
@@ -12,8 +13,13 @@ const inputStyles =
   "block w-full p-4 text-base bg-light dark:bg-dark rounded-xl placeholder-dark dark:placeholder-light placeholder-opacity-60 dark:placeholder-opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight dark:focus-visible:ring-highlight-dark";
 
 export const Recommendations = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const { runAction, isRunning, error, validationErrors, isSuccess } =
-    useAction(addRecommendation);
+    useAction(addRecommendation, {
+      onSuccess: () => {
+        formRef.current?.reset();
+      },
+    });
 
   return (
     <div className="rounded-3xl bg-dark bg-opacity-10 px-6 py-12 dark:bg-light dark:bg-opacity-10 xl:px-12 xl:py-20">
@@ -25,9 +31,9 @@ export const Recommendations = () => {
         unbedingt mal reinhören muss? Schick mir gerne deine Empfehlung!
       </p>
       <form
+        ref={formRef}
         className="flex flex-col space-y-4 sm:space-y-8"
         action={(formData) => {
-          console.log(formData.get("url"));
           runAction({
             message: String(formData.get("message")),
             url: formData.get("url") ? String(formData.get("url")) : undefined,
