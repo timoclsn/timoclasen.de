@@ -1,6 +1,6 @@
 import { ContactWidget } from "../../components/ContactWidget/ContactWidget";
-import { Markdown } from "../../design-system/Markdown/Markdown";
 import { getMetadata, getTextSnippet } from "../../data/content";
+import { Markdown } from "../../design-system/Markdown/Markdown";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 
 export const generateMetadata = createGenerateMetadata(async () => {

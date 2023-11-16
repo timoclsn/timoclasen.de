@@ -18,9 +18,9 @@ interface Props {
   searchParams: SearchParams;
 }
 
-export const PodcastsList = ({ searchParams }: Props) => {
+export const PodcastsList = async ({ searchParams }: Props) => {
   const { search, favorites, filter } = searchParamsSchema.parse(searchParams);
-  const podcasts = getPodcasts();
+  const podcasts = await getPodcasts();
 
   const filteredPodcast = matchSorter(podcasts, search, {
     keys: ["title", "hosts", "description"],

@@ -1,4 +1,5 @@
-import { readFileSync } from "fs";
+import { promises as fs } from "fs";
+import { cache } from "react";
 import "server-only";
 import { z } from "zod";
 
@@ -15,20 +16,19 @@ const podcastSchema = z.object({
 
 export type Podcasts = Awaited<ReturnType<typeof getPodcasts>>;
 
-export const getPodcasts = () => {
-  const podcasts = JSON.parse(
-    readFileSync("./src/data/podcasts/podcasts.json", "utf-8"),
-  );
+export const getPodcasts = cache(async () => {
+  const data = await fs.readFile("./src/data/podcasts/podcasts.json", "utf-8");
+  const podcasts = JSON.parse(data);
   return z.array(podcastSchema).parse(podcasts);
-};
+});
 
-export const getFavoritePodcasts = () => {
-  const podcasts = getPodcasts();
+export const getFavoritePodcasts = async () => {
+  const podcasts = await getPodcasts();
   return podcasts.filter((podcast) => podcast.favorite);
 };
 
-export const getCategories = () => {
-  const podcasts = getPodcasts();
+export const getCategories = async () => {
+  const podcasts = await getPodcasts();
   return [
     ...Array.from(new Set(podcasts.flatMap((podcast) => podcast.categories))),
   ].sort((a, b) => a.localeCompare(b));

@@ -4,8 +4,8 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "../../design-system/Button";
 import { getFavoritePodcasts } from "../../data/podcasts/podcasts";
 
-export function PodcastsWidget() {
-  const podcasts = getFavoritePodcasts();
+export const PodcastsWidget = async () => {
+  const podcasts = await getFavoritePodcasts();
   return (
     <section id="podcasts">
       <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">
@@ -50,4 +50,4 @@ export function PodcastsWidget() {
       </ul>
     </section>
   );
-}
+};

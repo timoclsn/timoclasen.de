@@ -14,11 +14,11 @@ export const size = {
 export const contentType = "image/png";
 
 const fontRegular = fetch(
-  new URL("../../public/fonts/Inter-Regular.woff", import.meta.url),
+  new URL("../../../public/fonts/Inter-Regular.woff", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 const fontBold = fetch(
-  new URL("../../public/fonts/Inter-Bold.woff", import.meta.url),
+  new URL("../../../public/fonts/Inter-Bold.woff", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 export const GET = async (request: Request) => {
