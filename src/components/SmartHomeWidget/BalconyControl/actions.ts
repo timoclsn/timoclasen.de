@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { z } from "zod";
 import { playHomeegram } from "../../../lib/homee";
 import { prisma } from "../../../lib/prisma";
@@ -39,5 +39,6 @@ export const turnOnBalcony = createAction({
     });
 
     revalidateTag("control-count");
+    revalidatePath("/");
   },
 });
