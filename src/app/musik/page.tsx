@@ -1,8 +1,7 @@
 import { ContactWidget } from "../../components/ContactWidget/ContactWidget";
-import { Markdown } from "../../design-system/Markdown/Markdown";
-import { NowPlaying } from "../../components/Music/NowPlaying";
 import { TopMusic } from "../../components/Music/TopMusic";
 import { getMetadata, getTextSnippet } from "../../data/content";
+import { Markdown } from "../../design-system/Markdown/Markdown";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 
 export const generateMetadata = createGenerateMetadata(async () => {
@@ -24,7 +23,7 @@ const MusicPage = async () => {
     <>
       <Markdown>{text}</Markdown>
       <TopMusic />
-      <NowPlaying />
+      {/* <NowPlaying /> */}
       <ContactWidget />
     </>
   );
