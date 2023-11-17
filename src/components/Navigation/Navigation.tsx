@@ -11,6 +11,7 @@ import styles from "./Navigation.module.css";
 
 export const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <header
@@ -45,22 +46,22 @@ export const Navigation = () => {
           >
             <li>
               <Link href="/ueber" passHref legacyBehavior>
-                <NavigationLink>Über</NavigationLink>
+                <NavigationLink onClick={closeMenu}>Über</NavigationLink>
               </Link>
             </li>
             <li>
               <Link href="/blog" passHref legacyBehavior>
-                <NavigationLink>Blog</NavigationLink>
+                <NavigationLink onClick={closeMenu}>Blog</NavigationLink>
               </Link>
             </li>
             <li>
               <Link href="/podcasts" passHref legacyBehavior>
-                <NavigationLink>Podcasts</NavigationLink>
+                <NavigationLink onClick={closeMenu}>Podcasts</NavigationLink>
               </Link>
             </li>
             <li>
               <Link href="/musik" passHref legacyBehavior>
-                <NavigationLink>Musik</NavigationLink>
+                <NavigationLink onClick={closeMenu}>Musik</NavigationLink>
               </Link>
             </li>
           </ul>
