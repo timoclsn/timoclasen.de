@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "../design-system/Button";
+import "../styles/globals.css";
 
 interface Props {
   error: Error & { digest?: string };
@@ -13,7 +14,7 @@ const GlobalErrorPage = ({ error, reset }: Props) => {
     <html className="min-h-screen">
       <body className="flex min-h-screen items-center justify-center">
         <div className="flex flex-col gap-10">
-          <h2>Irgemdwas ist schief gelaufen…</h2>
+          <h2>Irgendwas ist schief gelaufen…</h2>
           <Button onClick={() => reset()}>Probier es nochmal</Button>
         </div>
       </body>
