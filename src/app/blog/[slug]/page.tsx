@@ -22,7 +22,7 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
       siteName: "Timo Clasen",
       description: blogPost.summary,
       images: {
-        url: ogImage({
+        url: await ogImage({
           name: "Blog • Timo Clasen",
           title: blogPost.title,
           subtitle: `${blogPost.dateFormatted} • ${blogPost.readingTime} Min`,

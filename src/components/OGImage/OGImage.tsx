@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 
 interface Props {
-  name: string;
+  name?: string;
   title?: string;
   subtitle?: string;
-  image: string;
+  image?: string;
 }
 
 export function OGImage({ name, title, subtitle, image }: Props) {
@@ -36,28 +36,30 @@ export function OGImage({ name, title, subtitle, image }: Props) {
             flexDirection: "column",
           }}
         >
-          <h1
-            style={{
-              fontSize: "48px",
-              marginBottom: "60px",
-            }}
-          >
-            {name}
-          </h1>
-          <h2
-            style={{
-              fontSize: "48px",
-              fontWeight: "normal",
-              marginBottom: "16px",
-              color: "#3E51F7",
-            }}
-          >
-            {title
-              ? title
-              : "Designer und Entwickler mit Leidenschaft für gut gemachte, digitale Produkte."}
-          </h2>
+          {name && (
+            <h1
+              style={{
+                fontSize: "48px",
+                marginBottom: "60px",
+              }}
+            >
+              {name}
+            </h1>
+          )}
+          {title && (
+            <h2
+              style={{
+                fontSize: "48px",
+                fontWeight: "normal",
+                marginBottom: "16px",
+                color: "#3E51F7",
+              }}
+            >
+              {title}
+            </h2>
+          )}
 
-          {title && subtitle && (
+          {subtitle && (
             <p
               style={{
                 fontSize: "32px",
@@ -133,16 +135,18 @@ export function OGImage({ name, title, subtitle, image }: Props) {
           </div>
         </footer>
       </div>
-      <img
-        src={image}
-        alt="Image"
-        style={{
-          height: "630px",
-          width: "460px",
-          objectFit: "cover",
-          objectPosition: "center",
-        }}
-      />
+      {image && (
+        <img
+          src={image}
+          alt="Image"
+          style={{
+            height: "630px",
+            width: "460px",
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
+        />
+      )}
     </section>
   );
 }

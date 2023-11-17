@@ -1,8 +1,6 @@
 import { ImageResponse } from "@vercel/og";
 import { createElement } from "react";
-import { z } from "zod";
 import { OGImage } from "../../components/OGImage/OGImage";
-import { queryContent } from "../../lib/content";
 
 export const runtime = "edge";
 export const alt = "Timo Clasen Portfolio";
@@ -24,46 +22,16 @@ const fontBold = fetch(
 export const GET = async (request: Request) => {
   const { searchParams } = new URL(request.url);
 
-  const name = z.string().parse(searchParams.get("name"));
+  const name = searchParams.get("name");
   const title = searchParams.get("title");
   const subtitle = searchParams.get("subtitle");
   const image = searchParams.get("image");
 
-  const response = await queryContent(
-    `{
-      personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
-        items {
-          profileImageCollection {
-            items {
-              url
-            }
-          }
-        }
-      }
-    }`,
-    z.object({
-      data: z.object({
-        personCollection: z.object({
-          items: z.array(
-            z.object({
-              profileImageCollection: z.object({
-                items: z.array(z.object({ url: z.string() })),
-              }),
-            }),
-          ),
-        }),
-      }),
-    }),
-  );
-
-  const person = response.data.personCollection.items[0];
-  const fallbackImage = person.profileImageCollection.items[1];
-
   const reactElement = createElement(OGImage, {
-    name,
+    name: name || undefined,
     title: title || undefined,
     subtitle: subtitle || undefined,
-    image: image || fallbackImage.url,
+    image: image || undefined,
   });
 
   return new ImageResponse(reactElement, {

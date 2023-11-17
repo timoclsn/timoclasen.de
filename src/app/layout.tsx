@@ -30,7 +30,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
     description,
     icons: "/favicon.png",
     openGraph: {
-      ...openGraph(title, description, "/"),
+      ...(await openGraph(title, description, "/")),
     },
     twitter: {
       card: "summary_large_image",

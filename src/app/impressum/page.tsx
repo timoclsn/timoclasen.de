@@ -10,7 +10,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
     title,
     description,
     openGraph: {
-      ...openGraph(title, description, slug),
+      ...(await openGraph(title, description, slug)),
     },
   };
 });
