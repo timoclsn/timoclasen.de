@@ -10,8 +10,6 @@ Visit on: https://timoclasen.de
 - [React](https://reactjs.org/)
 - [Next.js](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [tRPC](https://trpc.io/)
-- [React Query](https://tanstack.com/query/v4/)
 - [Radix UI](https://www.radix-ui.com/)
 - [Prisma](https://www.prisma.io/)
 - [Jest](https://jestjs.io/)
