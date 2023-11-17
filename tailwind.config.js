@@ -5,10 +5,7 @@ module.exports = {
   future: {
     hoverOnlyWhenSupported: true,
   },
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx}",
-    "./components/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
     screens: {
@@ -17,18 +14,18 @@ module.exports = {
       lg: "1024px",
       xl: "1280px",
     },
-    colors: {
-      light: colors.white,
-      dark: colors.black,
-      gray: colors.neutral,
-      highlight: {
-        DEFAULT: "#3E51F7",
-        dark: "#4F5FEF",
-      },
-    },
     extend: {
+      colors: {
+        light: colors.white,
+        dark: colors.black,
+        gray: colors.neutral,
+        highlight: {
+          DEFAULT: "#3E51F7",
+          dark: "#4F5FEF",
+        },
+      },
       fontFamily: {
-        sans: ["var(--font-inter)"],
+        sans: ["var(--font-sans)"],
       },
       typography: (theme) => ({
         custom: {
