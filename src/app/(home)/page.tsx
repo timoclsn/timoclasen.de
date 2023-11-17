@@ -3,8 +3,9 @@ import { BlogWidget } from "../../components/BlogWidget/BlogWidget";
 import { ContactWidget } from "../../components/ContactWidget/ContactWidget";
 import { LCDWidget } from "../../components/LCDWidget/LCDWidget";
 import { MLWidget } from "../../components/MLWidget/MLWidget";
+import { NowPlaying } from "../../components/Music/NowPlaying";
 import { PodcastsWidget } from "../../components/PodcastsWidget/PodcastsWidget";
-import { SmartHomeWidget } from "../../components/SmartHomeWidget/SmartHomeWidget";
+import { RunningWidget } from "../../components/RunningWidget/RunningWidget";
 import { Teaser } from "../../components/Teaser/Teaser";
 
 const HomePage = () => {
@@ -14,11 +15,11 @@ const HomePage = () => {
       <AboutWidget />
       <BlogWidget />
       <LCDWidget />
-      <SmartHomeWidget />
-      {/* <RunningWidget /> */}
+      {/* <SmartHomeWidget /> */}
+      <RunningWidget />
       <PodcastsWidget />
       <MLWidget />
-      {/* <NowPlaying /> */}
+      <NowPlaying />
       <ContactWidget />
     </>
   );
