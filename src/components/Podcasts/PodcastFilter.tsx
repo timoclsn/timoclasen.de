@@ -1,7 +1,7 @@
 "use client";
 
+import { Filter, Loader2, XCircle } from "lucide-react";
 import { type ChangeEvent } from "react";
-import { Filter, Loader, XCircle } from "lucide-react";
 import { useSearchParams } from "../../hooks/useSearchParams";
 import { track } from "../../lib/tracking";
 
@@ -53,6 +53,7 @@ export const PodcastFilter = ({ categories }: Props) => {
     searchParams.delete("search");
     searchParams.delete("favorites");
     searchParams.delete("filter");
+    searchParams.delete("limit");
     updateUrlLWithSearchParams();
     track("Clear Podcast Filter");
   };
@@ -108,7 +109,7 @@ export const PodcastFilter = ({ categories }: Props) => {
         })}
       </div>
       {isPending ? (
-        <Loader className="flex-none animate-spin text-highlight opacity-60 dark:text-highlight-dark" />
+        <Loader2 className="flex-none animate-spin text-highlight opacity-60 dark:text-highlight-dark" />
       ) : (
         <button
           title="Filter löschen"

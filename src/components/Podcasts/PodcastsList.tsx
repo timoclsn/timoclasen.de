@@ -3,7 +3,9 @@ import { matchSorter } from "match-sorter";
 import { z } from "zod";
 import { getPodcasts } from "../../data/podcasts/podcasts";
 import { SearchParams } from "../../lib/types";
+import { AutoAnimate } from "../AutoAnimate/AutoAnimate";
 import { MediaPreview } from "../MediaPreview/MediaPreview";
+import { ShowMoreButton } from "./ShowMoreButton";
 
 const searchParamsSchema = z.object({
   search: z.coerce.string().optional().default(""),
@@ -12,6 +14,7 @@ const searchParamsSchema = z.object({
     .string()
     .optional()
     .transform((value) => (value ? value.split(";") : [])),
+  limit: z.coerce.number().optional().default(10),
 });
 
 interface Props {
@@ -19,7 +22,8 @@ interface Props {
 }
 
 export const PodcastsList = async ({ searchParams }: Props) => {
-  const { search, favorites, filter } = searchParamsSchema.parse(searchParams);
+  const { search, favorites, filter, limit } =
+    searchParamsSchema.parse(searchParams);
   const podcasts = await getPodcasts();
 
   const filteredPodcast = matchSorter(podcasts, search, {
@@ -31,10 +35,15 @@ export const PodcastsList = async ({ searchParams }: Props) => {
 
     return filter.every((category) => podcast.categories.includes(category));
   });
+
+  const podcastsToDisplay = filteredPodcast.slice(0, limit);
+  const noPodcastsFound = !podcastsToDisplay.length;
+  const showShowMoreBtn = filteredPodcast.length > limit;
+
   return (
     <>
-      <ul className="space-y-20">
-        {filteredPodcast.map((podcast) => (
+      <AutoAnimate as="ul" className="space-y-20">
+        {podcastsToDisplay.map((podcast) => (
           <li key={podcast.title}>
             <MediaPreview
               title={podcast.title}
@@ -47,9 +56,14 @@ export const PodcastsList = async ({ searchParams }: Props) => {
             />
           </li>
         ))}
-      </ul>
-      {!filteredPodcast.length && (
+      </AutoAnimate>
+      {noPodcastsFound && (
         <p className="mx-auto max-w-prose">Keinen Podcast gefunden…</p>
+      )}
+      {showShowMoreBtn && (
+        <div className="my-12 flex items-center justify-center">
+          <ShowMoreButton />
+        </div>
       )}
     </>
   );

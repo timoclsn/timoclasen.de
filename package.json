@@ -30,6 +30,7 @@
     "check-format": "pnpm prettier -- --list-different"
   },
   "dependencies": {
+    "@formkit/auto-animate": "^0.8.1",
     "@mapbox/polyline": "1.2.1",
     "@prisma/client": "5.5.2",
     "@radix-ui/react-tabs": "1.0.4",
