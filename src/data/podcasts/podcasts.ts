@@ -18,7 +18,7 @@ export type Podcasts = Awaited<ReturnType<typeof getPodcasts>>;
 
 export const getPodcasts = cache(async () => {
   const data = await fs.readFile(
-    process.cwd() + "/src/data/podcasts/podcasts.json",
+    process.cwd() + "/public/podcasts.json",
     "utf-8",
   );
   const podcasts = JSON.parse(data);
