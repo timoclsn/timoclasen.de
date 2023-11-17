@@ -1,7 +1,13 @@
-import { promises as fs } from "fs";
+import { readFile } from "fs/promises";
+import { join as pathJoin } from "path";
 import { cache } from "react";
 import "server-only";
 import { z } from "zod";
+
+const podcastsPath = pathJoin(
+  process.cwd() + "/src/data/podcasts/podcasts.json",
+);
+console.log(podcastsPath);
 
 const podcastSchema = z.object({
   title: z.string(),
@@ -17,10 +23,7 @@ const podcastSchema = z.object({
 export type Podcasts = Awaited<ReturnType<typeof getPodcasts>>;
 
 export const getPodcasts = cache(async () => {
-  const data = await fs.readFile(
-    process.cwd() + "/src/data/podcasts/podcasts.json",
-    "utf-8",
-  );
+  const data = await readFile(podcastsPath, "utf-8");
   const podcasts = JSON.parse(data);
   return z.array(podcastSchema).parse(podcasts);
 });
