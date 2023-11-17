@@ -1,6 +1,7 @@
 import { getTextSnippet } from "../../data/content";
 import { Markdown } from "../../design-system/Markdown/Markdown";
 import { BalconyControl } from "./BalconyControl/BalconyControl";
+import { Dashboard } from "./Dashboard/Dashboard";
 
 export const SmartHomeWidget = async () => {
   const text = await getTextSnippet("Smart Home Widget");
@@ -15,7 +16,7 @@ export const SmartHomeWidget = async () => {
       <Markdown unstyled className="mb-8">
         {text}
       </Markdown>
-      {/* <Dashboard /> */}
+      <Dashboard />
       <Markdown unstyled className="my-8 text-sm opacity-60">
         {footnote}
       </Markdown>
