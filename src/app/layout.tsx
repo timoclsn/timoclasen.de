@@ -1,12 +1,14 @@
 import { cx } from "class-variance-authority";
 import { Inter } from "next/font/google";
+import { draftMode } from "next/headers";
 import Script from "next/script";
 import { ReactNode } from "react";
-import { Container } from "../design-system/Container/Container";
+import { DraftModeBanner } from "../components/DraftModeBanner/DraftModeBanner";
 import { Footer } from "../components/Footer/Footer";
 import { Navigation } from "../components/Navigation/Navigation";
 import { NoFlash } from "../components/NoFlash/NoFlash";
 import { getMetadata } from "../data/content";
+import { Container } from "../design-system/Container/Container";
 import { createGenerateMetadata, openGraph } from "../lib/metadata";
 import "../styles/globals.css";
 import { Providers } from "./Providers";
@@ -57,6 +59,7 @@ interface Props {
 }
 
 const RootLayout = ({ children }: Props) => {
+  const isDraftMode = draftMode().isEnabled;
   return (
     <>
       <Script data-no-cookie data-api="/_hive" src="/bee.js" />
@@ -68,6 +71,7 @@ const RootLayout = ({ children }: Props) => {
         <body className="flex min-h-screen flex-col bg-light text-base text-dark antialiased dark:bg-dark dark:text-light lg:text-lg xl:text-xl">
           <NoFlash />
           <Providers>
+            {isDraftMode && <DraftModeBanner />}
             <Navigation />
             <main id="skip">
               <Container>{children}</Container>
