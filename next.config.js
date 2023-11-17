@@ -24,9 +24,6 @@ const config = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  experimental: {
-    ppr: true,
-  },
   async rewrites() {
     return [
       {
