@@ -6,6 +6,7 @@ import { MLWidget } from "../../components/MLWidget/MLWidget";
 import { NowPlaying } from "../../components/Music/NowPlaying";
 import { PodcastsWidget } from "../../components/PodcastsWidget/PodcastsWidget";
 import { RunningWidget } from "../../components/RunningWidget/RunningWidget";
+import { SmartHomeWidget } from "../../components/SmartHomeWidget/SmartHomeWidget";
 import { Teaser } from "../../components/Teaser/Teaser";
 
 const HomePage = () => {
@@ -15,7 +16,7 @@ const HomePage = () => {
       <AboutWidget />
       <BlogWidget />
       <LCDWidget />
-      {/* <SmartHomeWidget /> */}
+      <SmartHomeWidget />
       <RunningWidget />
       <PodcastsWidget />
       <MLWidget />
