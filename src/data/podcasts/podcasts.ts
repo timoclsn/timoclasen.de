@@ -17,7 +17,10 @@ const podcastSchema = z.object({
 export type Podcasts = Awaited<ReturnType<typeof getPodcasts>>;
 
 export const getPodcasts = cache(async () => {
-  const data = await fs.readFile("./src/data/podcasts/podcasts.json", "utf-8");
+  const data = await fs.readFile(
+    process.cwd() + "/src/data/podcasts/podcasts.json",
+    "utf-8",
+  );
   const podcasts = JSON.parse(data);
   return z.array(podcastSchema).parse(podcasts);
 });
