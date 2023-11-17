@@ -7,7 +7,6 @@ import { z } from "zod";
 const podcastsPath = pathJoin(
   process.cwd() + "/src/data/podcasts/podcasts.json",
 );
-console.log(podcastsPath);
 
 const podcastSchema = z.object({
   title: z.string(),
