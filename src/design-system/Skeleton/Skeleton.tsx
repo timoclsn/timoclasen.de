@@ -2,6 +2,7 @@ import { cx } from "class-variance-authority";
 
 interface Props {
   className?: string;
+  display?: string;
   circle?: boolean;
   width?: string;
   height?: string;
@@ -9,32 +10,27 @@ interface Props {
   lineHeight?: string;
 }
 
-export function Skeleton({
+export const Skeleton = ({
   className,
-  circle,
-  width,
-  height,
-  borderRadius,
-  lineHeight,
-}: Props) {
+  display = "inline-block",
+  circle = false,
+  width = "100%",
+  height = "auto",
+  borderRadius = "0.25rem",
+  lineHeight = "1",
+}: Props) => {
   return (
     <span
-      className={cx(
-        "inline-block animate-pulse bg-dark/25 leading-none dark:bg-light/25",
-        className,
-      )}
+      className={cx("animate-pulse bg-dark/25 dark:bg-light/25", className)}
       style={{
-        width: width ? width : "100%",
-        height: height ? height : "auto",
-        borderRadius: circle
-          ? "9999px"
-          : borderRadius
-          ? borderRadius
-          : "0.25rem",
-        lineHeight: lineHeight ? lineHeight : "1",
+        display,
+        width,
+        height,
+        borderRadius: circle ? "9999px" : borderRadius,
+        lineHeight,
       }}
     >
       &zwnj;
     </span>
   );
-}
+};
