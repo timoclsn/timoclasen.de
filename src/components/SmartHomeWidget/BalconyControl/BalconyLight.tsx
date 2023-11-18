@@ -30,7 +30,7 @@ export const BalconyLight = () => {
 };
 
 const Loading = () => {
-  return <Skeleton circle width="100px" height="100px" />;
+  return <Skeleton circle width="100px" height="100px" display="block" />;
 };
 
 const Error = () => {

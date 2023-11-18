@@ -89,7 +89,7 @@ mkdirSync(coversDir);
     .flat()
     .sort((a, b) => a.title.localeCompare(b.title));
 
-  const formatted = prettier.format(JSON.stringify(podcastsSorted), {
+  const formatted = await prettier.format(JSON.stringify(podcastsSorted), {
     ...prettierConfig,
     parser: "json",
   });
