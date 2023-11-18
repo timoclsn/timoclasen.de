@@ -1,3 +1,4 @@
+import { draftMode } from "next/headers";
 import { z } from "zod";
 
 const {
@@ -11,12 +12,12 @@ export const queryContent = async <TSchema extends z.ZodTypeAny>(
   query: string,
   schema: TSchema,
 ) => {
-  let preview = false;
+  let isDraftMode = draftMode().isEnabled;
   const draftContentInDevelopmentMode = true;
   if (draftContentInDevelopmentMode) {
-    preview = preview || env === "development";
+    isDraftMode = isDraftMode || env === "development";
   }
-  if (preview) {
+  if (isDraftMode) {
     query = query.replace(/preview: false/g, "preview: true");
   }
 
@@ -27,7 +28,7 @@ export const queryContent = async <TSchema extends z.ZodTypeAny>(
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${
-          preview ? previewAccessToken : publicAccessToken
+          isDraftMode ? previewAccessToken : publicAccessToken
         }`,
       },
       body: JSON.stringify({ query }),
