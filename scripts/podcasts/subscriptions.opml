@@ -20,9 +20,7 @@
     <outline xmlUrl="http://chaosradio.ccc.de/chaosradio-latest.rss" text="Chaosradio" title="Chaosradio" type="rss" version="RSS"/>
     <outline xmlUrl="https://www.relay.fm/automators/feed" text="Automators" title="Automators" type="rss" version="RSS"/>
     <outline xmlUrl="https://audioboom.com/channels/4964339.rss" text="F1: Beyond The Grid" title="F1: Beyond The Grid" type="rss" version="RSS"/>
-    <outline xmlUrl="https://designbetter.libsyn.com/rss" text="Design Better Podcast" title="Design Better Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://alphaux.libsyn.com/rss" text="This is Product Management" title="This is Product Management" type="rss" version="RSS"/>
-    <outline xmlUrl="https://workingdraft.de/?feed=podcast" text="Working Draft" title="Working Draft" type="rss" version="RSS"/>
     <outline xmlUrl="https://www.cleanelectric.de/feed/mp3/" text="CleanElectric" title="CleanElectric" type="rss" version="RSS"/>
     <outline xmlUrl="https://audioboom.com/channels/4949565.rss" text="WTF1 Podcast" title="WTF1 Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.megaphone.fm/pivot" text="Pivot" title="Pivot" type="rss" version="RSS"/>
@@ -34,8 +32,7 @@
     <outline xmlUrl="https://schirm-charme-sensoren.libsyn.com/rss" text="Mit Schirm, Charme und Sensoren . . . dein IoT Podcast" title="Mit Schirm, Charme und Sensoren . . . dein IoT Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://digitalkompakt.podigee.io/feed/mp3" text="digital kompakt" title="digital kompakt" type="rss" version="RSS"/>
     <outline xmlUrl="https://podcast.cloudonaut.io/feed/aac" text="cloudonaut" title="cloudonaut" type="rss" version="RSS"/>
-    <outline xmlUrl="https://feeds.transistor.fm/rework" text="Rework" title="Rework" type="rss" version="RSS"/>
-    <outline xmlUrl="https://digitalevorreiter.podigee.io/feed/mp3" text="Digitale Vorreiter:innen - Business Cases" title="Digitale Vorreiter:innen - Business Cases" type="rss" version="RSS"/>
+    <outline xmlUrl="https://digitalevorreiter.podigee.io/feed/mp3" text="Digitale Vorreiter:innen" title="Digitale Vorreiter:innen" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.theincomparable.com/theincomparable" text="The Incomparable Mothership" title="The Incomparable Mothership" type="rss" version="RSS"/>
     <outline xmlUrl="https://layout.fm/rss" text="Layout" title="Layout" type="rss" version="RSS"/>
     <outline xmlUrl="https://newwork.podigee.io/feed/mp3" text="On the Way to New Work - Der Podcast &#xFC;ber neue Arbeit" title="On the Way to New Work - Der Podcast &#xFC;ber neue Arbeit" type="rss" version="RSS"/>
@@ -53,7 +50,6 @@
     <outline xmlUrl="https://feeds.megaphone.fm/howtosaveaplanet" text="How to Save a Planet" title="How to Save a Planet" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.lagedernation.org/feeds/ldn-mp3.xml" text="Lage der Nation - der Politik-Podcast aus Berlin" title="Lage der Nation - der Politik-Podcast aus Berlin" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.transistor.fm/full-stack-radio" text="Full Stack Radio" title="Full Stack Radio" type="rss" version="RSS"/>
-    <outline xmlUrl="https://stackoverflow.blog/podcast/?feed=podcast" text="The Stack Overflow Podcast" title="The Stack Overflow Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://pinecast.com/feed/ladybug-podcast" text="Ladybug Podcast" title="Ladybug Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://changelog.com/podcast/feed" text="The Changelog: Software Development, Open Source" title="The Changelog: Software Development, Open Source" type="rss" version="RSS"/>
     <outline xmlUrl="https://changelog.com/jsparty/feed" text="JS Party: JavaScript, CSS, Web Development" title="JS Party: JavaScript, CSS, Web Development" type="rss" version="RSS"/>
@@ -68,7 +64,7 @@
     <outline xmlUrl="https://feeds.simplecast.com/X_wS_WYh" text="Chats with Kent C. Dodds" title="Chats with Kent C. Dodds" type="rss" version="RSS"/>
     <outline xmlUrl="https://anchor.fm/s/5249f848/podcast/rss" text="Information Lovers Podcast" title="Information Lovers Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.simplecast.com/JoR28o79" text="React Podcast" title="React Podcast" type="rss" version="RSS"/>
-    <outline xmlUrl="https://german-aws-podcast.libsyn.com/rss" text="Der AWS-Podcast auf Deutsch" title="Der AWS-Podcast auf Deutsch" type="rss" version="RSS"/>
+    <outline xmlUrl="https://german-aws-podcast.libsyn.com/rss" text="AWS Cloud Horizonte" title="AWS Cloud Horizonte" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.buzzsprout.com/887923.rss" text="Design Systems Podcast" title="Design Systems Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.simplecast.com/8lcA0Is7" text="The Undefined Podcast" title="The Undefined Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://anchor.fm/s/4548b47c/podcast/rss" text="Frontend Greatness" title="Frontend Greatness" type="rss" version="RSS"/>
@@ -89,16 +85,13 @@
     <outline xmlUrl="https://hebammensalon.podigee.io/feed/mp3" text="Hebammensalon" title="Hebammensalon" type="rss" version="RSS"/>
     <outline xmlUrl="https://exponent.fm/feed/" text="Exponent" title="Exponent" type="rss" version="RSS"/>
     <outline xmlUrl="https://hotelmatze.podigee.io/feed/mp3" text="Hotel Matze" title="Hotel Matze" type="rss" version="RSS"/>
-    <outline xmlUrl="https://rss.nexx.cloud/BY3027EHVZ5ODH" text="Deutschland3000 - 'ne gute Stunde mit Eva Schulz" title="Deutschland3000 - 'ne gute Stunde mit Eva Schulz" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.simplecast.com/sOJAMohP" text="Frontend First" title="Frontend First" type="rss" version="RSS"/>
-    <outline xmlUrl="https://doppelgaenger.podigee.io/feed/mp3" text="Doppelg&#xE4;nger Tech Talk" title="Doppelg&#xE4;nger Tech Talk" type="rss" version="RSS"/>
     <outline xmlUrl="https://formel-schmidt.podigee.io/feed/mp3" text="Formel Schmidt" title="Formel Schmidt" type="rss" version="RSS"/>
     <outline xmlUrl="https://tax2tech.podigee.io/feed/mp3" text="Tax2Tech - Der TaxTech Podcast" title="Tax2Tech - Der TaxTech Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://www.relay.fm/backmarkers/feed" text="The Backmarkers" title="The Backmarkers" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.soundcloud.com/users/soundcloud:users:473431884/sounds.rss" text="deutsche-startups.de-Podcast" title="deutsche-startups.de-Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://anchor.fm/s/7e0ce6ac/podcast/rss" text="Design System Office Hours" title="Design System Office Hours" type="rss" version="RSS"/>
     <outline xmlUrl="https://rss.art19.com/smartless" text="SmartLess" title="SmartLess" type="rss" version="RSS"/>
-    <outline xmlUrl="https://ohneaktienwirdschwer.podigee.io/feed/mp3" text="OHNE AKTIEN WIRD SCHWER - T&#xE4;gliche B&#xF6;rsen-News" title="OHNE AKTIEN WIRD SCHWER - T&#xE4;gliche B&#xF6;rsen-News" type="rss" version="RSS"/>
     <outline xmlUrl="https://rss.art19.com/schneller-schlau" text="Schneller schlau - Der kurze Wissenspodcast von P.M." title="Schneller schlau - Der kurze Wissenspodcast von P.M." type="rss" version="RSS"/>
     <outline xmlUrl="https://omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/C0AE8C6E-22F0-4E9B-AC1C-AE390037AC53/7F5A4714-6B10-4CCF-A424-AE390037AC70/podcast.rss" text="Cautionary Tales with Tim Harford" title="Cautionary Tales with Tim Harford" type="rss" version="RSS"/>
     <outline xmlUrl="https://jung-naiv.podigee.io/feed/mp3" text="Jung &amp; Naiv" title="Jung &amp; Naiv" type="rss" version="RSS"/>
@@ -112,15 +105,32 @@
     <outline xmlUrl="https://stacktracepodcast.fm/feed.rss" text="Stacktrace" title="Stacktrace" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.feedburner.com/ipadpros" text="iPad Pros" title="iPad Pros" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.feedburner.com/soundcloud/scvz" text="The Smart Home Show" title="The Smart Home Show" type="rss" version="RSS"/>
-    <outline xmlUrl="https://feeds.buzzsprout.com/2092514.rss" text="Index Podcast" title="Index Podcast" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.buzzsprout.com/2092514.rss" text="The Index Podcast" title="The Index Podcast" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.redcircle.com/0b80be0d-f0c2-4d12-9f23-d31d3bbde618" text="React Round Up" title="React Round Up" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.redcircle.com/a4faed6e-afe0-4a65-b4e7-de790ee67d4b" text="JavaScript Jabber" title="JavaScript Jabber" type="rss" version="RSS"/>
     <outline xmlUrl="https://heinlein-weigert.podigee.io/feed/mp3" text="HEINLEIN &amp; WEIGERT &#x2013; sagt JA zum Leben!" title="HEINLEIN &amp; WEIGERT &#x2013; sagt JA zum Leben!" type="rss" version="RSS"/>
-    <outline xmlUrl="https://feeds.buzzsprout.com/1772992.rss" text="devtools.fm" title="devtools.fm" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.acast.com/public/shows/63e24225436c36001119fc66" text="P1 with Matt and Tommy" title="P1 with Matt and Tommy" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.buzzsprout.com/176239.rss" text="programmier.bar &#x2013; der Podcast f&#xFC;r App- und Webentwicklung" title="programmier.bar &#x2013; der Podcast f&#xFC;r App- und Webentwicklung" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.simplecast.com/NLc_9EWn" text="Full Stack Whatever" title="Full Stack Whatever" type="rss" version="RSS"/>
     <outline xmlUrl="https://reflektor-podcast.podigee.io/feed/mp3" text="Reflektor" title="Reflektor" type="rss" version="RSS"/>
     <outline xmlUrl="https://feeds.acast.com/public/shows/63ef44ce479d5000119ce798" text="The Fast And The Curious" title="The Fast And The Curious" type="rss" version="RSS"/>
+    <outline xmlUrl="https://anchor.fm/s/dd6922b4/podcast/rss" text="devtools.fm" title="devtools.fm" type="rss" version="RSS"/>
+    <outline xmlUrl="https://workingdraft.de/feed/" text="Working Draft" title="Working Draft" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.megaphone.fm/LINDALA4208458418" text="Doppelg&#xE4;nger Tech Talk" title="Doppelg&#xE4;nger Tech Talk" type="rss" version="RSS"/>
+    <outline xmlUrl="https://hazel-thomas-hoererlebnis.podigee.io/feed/mp3" text="Hazel Thomas H&#xF6;rerlebnis" title="Hazel Thomas H&#xF6;rerlebnis" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.megaphone.fm/PDS3666998460" text="OHNE AKTIEN WIRD SCHWER - T&#xE4;gliche B&#xF6;rsen-News" title="OHNE AKTIEN WIRD SCHWER - T&#xE4;gliche B&#xF6;rsen-News" type="rss" version="RSS"/>
+    <outline xmlUrl="https://anchor.fm/s/daead85c/podcast/rss" text="Poparazzi - die Geschichte eines Songs" title="Poparazzi - die Geschichte eines Songs" type="rss" version="RSS"/>
+    <outline xmlUrl="https://omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/FF0BA2F2-F33C-4193-ABA2-AE32006CD633/11C188A1-CB86-4869-9C57-AE32006CD63C/podcast.rss" text="Broken Record with Rick Rubin, Malcolm Gladwell, Bruce Headlam and Justin Richmond" title="Broken Record with Rick Rubin, Malcolm Gladwell, Bruce Headlam and Justin Richmond" type="rss" version="RSS"/>
+    <outline xmlUrl="https://sunset-club.podigee.io/feed/mp3" text="Sunset Club" title="Sunset Club" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.transistor.fm/the-secret-sauce" text="The Secret Sauce" title="The Secret Sauce" type="rss" version="RSS"/>
+    <outline xmlUrl="https://lexfridman.com/feed/podcast/" text="Lex Fridman Podcast" title="Lex Fridman Podcast" type="rss" version="RSS"/>
+    <outline xmlUrl="https://rss.art19.com/kurt-kromer-feelings" text="Kurt Kr&#xF6;mer - Feelings" title="Kurt Kr&#xF6;mer - Feelings" type="rss" version="RSS"/>
+    <outline xmlUrl="https://omr-rabbit-hole.podigee.io/feed/mp3" text="OMR Rabbit Hole: Die Samwer-Story" title="OMR Rabbit Hole: Die Samwer-Story" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.megaphone.fm/designbetter" text="Design Better" title="Design Better" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.acast.com/public/shows/64dc7fa8223176001089e7bc" text="HITZE &#x2013; Letzte Generation Close-Up" title="HITZE &#x2013; Letzte Generation Close-Up" type="rss" version="RSS"/>
+    <outline xmlUrl="https://www.omnycontent.com/d/playlist/5ac1e950-45c7-4eb7-87c0-aa0f018441b8/2a316725-d935-437a-849a-afcd01080c0d/8e752661-e41c-4d9f-ba6f-afcd011068e3/podcast.rss" text="SPIEGEL Original: Krypto-Guru" title="SPIEGEL Original: Krypto-Guru" type="rss" version="RSS"/>
+    <outline xmlUrl="https://www.n-joy.de/podcast/eine_stunde_mit_eva_schulz/podcast4504.xml" text="Deutschland3000 - 'ne gute Stunde mit Eva Schulz" title="Deutschland3000 - 'ne gute Stunde mit Eva Schulz" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.buzzsprout.com/2260539.rss" text="REWORK" title="REWORK" type="rss" version="RSS"/>
+    <outline xmlUrl="https://feeds.simplecast.com/XA_851k3" text="The Stack Overflow Podcast" title="The Stack Overflow Podcast" type="rss" version="RSS"/>
   </body>
 </opml>
