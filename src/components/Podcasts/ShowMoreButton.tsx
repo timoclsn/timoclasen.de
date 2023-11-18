@@ -18,8 +18,7 @@ export const ShowMoreButton = () => {
       }}
       disabled={isPending}
     >
-      {isPending && <Loader2 className="animate-spin" />}
-      {!isPending && <ArrowDown />}
+      {isPending ? <Loader2 className="animate-spin" /> : <ArrowDown />}
       Mehr anzeigen
     </Button>
   );
