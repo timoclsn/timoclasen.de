@@ -6,6 +6,7 @@ import { track } from "../../lib/tracking";
 import { useTheme } from "../ThemeProvider/ThemeProvider";
 import { useIsMounted } from "../../hooks/useIsMounted";
 import styles from "./SwitchMode.module.css";
+import { Skeleton } from "../../design-system/Skeleton/Skeleton";
 
 export const SwitchMode = () => {
   const { darkMode, setDarkMode } = useTheme();
@@ -24,17 +25,19 @@ export const SwitchMode = () => {
       aria-label="Farbschema wechseln"
       type="button"
       className={cx(
-        "h-8 w-8 flex-none rounded-xl bg-dark bg-opacity-10 text-highlight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight dark:bg-light dark:bg-opacity-10 dark:text-highlight-dark dark:focus-visible:ring-highlight-dark",
+        "h-8 w-8 flex-none overflow-hidden rounded-xl bg-dark bg-opacity-10 text-highlight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight dark:bg-light dark:bg-opacity-10 dark:text-highlight-dark dark:focus-visible:ring-highlight-dark",
         styles.switchMode,
       )}
       onClick={handleThemeChange}
       title={`Farbschema zu ${darkMode ? "hell" : "dunkel"} welchseln`}
     >
-      {isMounted && (
+      {isMounted ? (
         <>
           <Sun size={16} data-hide={!darkMode} className={styles.sun} />
           <Moon size={16} data-hide={darkMode} className={styles.moon} />
         </>
+      ) : (
+        <Skeleton display="block" height="100%" />
       )}
     </button>
   );
