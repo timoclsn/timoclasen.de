@@ -4,7 +4,7 @@ import { Markdown } from "../design-system/Markdown/Markdown";
 import { createGenerateMetadata, openGraph } from "../lib/metadata";
 
 export const generateMetadata = createGenerateMetadata(async () => {
-  const { title, description, slug } = await query.content.getMetadata("404");
+  const { title, description, slug } = await query.content.metadata("404");
 
   return {
     title,
@@ -16,7 +16,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
 });
 
 const NotFoundPage = async () => {
-  const text = await query.content.getTextSnippet("Error 404");
+  const text = await query.content.textSnippet("Error 404");
   return (
     <>
       <Markdown>{text}</Markdown>

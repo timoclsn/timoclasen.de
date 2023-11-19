@@ -6,8 +6,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../Tabs";
 import { Track } from "../Track/Track";
 
 export const TopMusic = () => {
-  const topArtistsPromise = query.music.getTopArtistsData();
-  const topTracksPromise = query.music.getTopTracksData();
+  const topArtistsPromise = query.music.topArtists();
+  const topTracksPromise = query.music.topTracks();
 
   return (
     <Tabs defaultValue="1">

@@ -4,7 +4,7 @@ import { ContactWidget } from "../../components/ContactWidget/ContactWidget";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 
 export const generateMetadata = createGenerateMetadata(async () => {
-  const { title, description, slug } = await query.content.getMetadata("blog");
+  const { title, description, slug } = await query.content.metadata("blog");
 
   return {
     title,
@@ -16,7 +16,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
 });
 
 const BlogPage = async () => {
-  const blogPosts = await query.content.getBlogPosts();
+  const blogPosts = await query.content.blogPosts();
 
   return (
     <>

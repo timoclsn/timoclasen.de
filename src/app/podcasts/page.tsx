@@ -6,8 +6,7 @@ import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 import { SearchParams } from "../../lib/types";
 
 export const generateMetadata = createGenerateMetadata(async () => {
-  const { title, description, slug } =
-    await query.content.getMetadata("podcasts");
+  const { title, description, slug } = await query.content.metadata("podcasts");
 
   return {
     title,
@@ -23,7 +22,7 @@ interface Props {
 }
 
 const PodcastPage = async ({ searchParams }: Props) => {
-  const text = await query.content.getTextSnippet("Podcasts");
+  const text = await query.content.textSnippet("Podcasts");
 
   return (
     <>

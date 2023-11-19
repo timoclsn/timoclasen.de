@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { createAction } from "../../lib/serverActions/create";
 
-export const addRecommendation = createAction({
+export const add = createAction({
   input: z.object({
     message: z.string(),
     url: z.string().url().optional(),

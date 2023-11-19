@@ -1,11 +1,11 @@
 "use client";
 
-import { RunningData } from "../../../data/sports/query";
+import { Running } from "../../../data/sports/query";
 import { useTheme } from "../../ThemeProvider/ThemeProvider";
 import { ImageWidget } from "../../Widget/ImageWidget";
 
 interface Props {
-  runningData: RunningData;
+  runningData: Running;
 }
 
 export const RunningMapClient = ({ runningData }: Props) => {

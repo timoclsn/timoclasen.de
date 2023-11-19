@@ -7,7 +7,7 @@ import { createGenerateMetadata, ogImage } from "../../../lib/metadata";
 
 export const generateMetadata = createGenerateMetadata(async ({ params }) => {
   const { slug } = params;
-  const blogPost = await query.content.getBlogPost(slug);
+  const blogPost = await query.content.blogPost(slug);
 
   return {
     title: blogPost.title,
@@ -43,7 +43,7 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
 });
 
 export const generateStaticParams = async () => {
-  const blogPosts = await query.content.getBlogPosts();
+  const blogPosts = await query.content.blogPosts();
   return blogPosts.map((blogPost) => ({
     slug: blogPost.slug,
   }));
@@ -57,7 +57,7 @@ interface Props {
 
 const BlogPostPage = async ({ params }: Props) => {
   const { slug } = params;
-  const blogPost = await query.content.getBlogPost(slug);
+  const blogPost = await query.content.blogPost(slug);
 
   return (
     <>

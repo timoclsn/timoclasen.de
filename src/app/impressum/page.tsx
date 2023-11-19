@@ -5,7 +5,7 @@ import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 
 export const generateMetadata = createGenerateMetadata(async () => {
   const { title, description, slug } =
-    await query.content.getMetadata("impressum");
+    await query.content.metadata("impressum");
 
   return {
     title,
@@ -17,7 +17,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
 });
 
 const LegalPage = async () => {
-  const text = await query.content.getTextSnippet("Impressum & Datenschutz");
+  const text = await query.content.textSnippet("Impressum & Datenschutz");
   return (
     <>
       <Markdown>{text}</Markdown>

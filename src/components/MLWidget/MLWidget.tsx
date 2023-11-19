@@ -5,7 +5,7 @@ import { Button } from "../../design-system/Button";
 import { getPlaceholder } from "../../lib/placeholder";
 
 export const MLWidget = async () => {
-  const mlImage = await query.content.getImage("Makersleague.de");
+  const mlImage = await query.content.image("Makersleague.de");
   const { base64: MLImageBase64 } = await getPlaceholder(mlImage.url);
   const enhancedMlImage = { ...mlImage, blurDataURL: MLImageBase64 };
 

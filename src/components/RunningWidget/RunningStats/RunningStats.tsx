@@ -13,7 +13,7 @@ import { RunningElement } from "./RunningElement";
 import { query } from "../../../api/query";
 
 export const RunningStats = () => {
-  const promise = query.sports.getRunningData();
+  const promise = query.sports.running();
   return (
     <Await promise={promise} loading={<Loading />} error={<Error />}>
       {(runningData) => {

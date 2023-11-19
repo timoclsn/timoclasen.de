@@ -7,7 +7,7 @@ import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 import { getPlaceholder } from "../../lib/placeholder";
 
 export const generateMetadata = createGenerateMetadata(async () => {
-  const { title, description, slug } = await query.content.getMetadata("ueber");
+  const { title, description, slug } = await query.content.metadata("ueber");
 
   return {
     title,
@@ -19,7 +19,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
 });
 
 const AboutPage = async () => {
-  const person = await query.content.getPerson();
+  const person = await query.content.person();
 
   const image = person.imagesCollection.items[2];
   const { base64 } = await getPlaceholder(image.url);

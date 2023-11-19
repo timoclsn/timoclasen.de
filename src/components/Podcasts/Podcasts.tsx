@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const Podcasts = async ({ searchParams }: Props) => {
-  const categories = await query.podcasts.getCategories();
+  const categories = await query.podcasts.categories();
   return (
     <div>
       <div className="mx-auto mb-6 max-w-prose">

@@ -14,7 +14,7 @@ import { DashboardElement } from "./DashboardElement";
 import { query } from "../../../api/query";
 
 export const Dashboard = () => {
-  const promise = query.smarthome.getSmartHomeData();
+  const promise = query.smarthome.data();
   return (
     <Await promise={promise} loading={<Loading />} error={<Error />}>
       {(data) => {

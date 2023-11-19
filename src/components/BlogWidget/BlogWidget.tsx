@@ -3,7 +3,7 @@ import { TextWidget } from "../Widget/TextWidget";
 import { WidgetLayout } from "../Widget/WidgetLayout";
 
 export const BlogWidget = async () => {
-  const blogPosts = await query.content.getBlogPosts();
+  const blogPosts = await query.content.blogPosts();
   const blogPost1 = blogPosts[0];
   const blogPost2 = blogPosts[1];
 

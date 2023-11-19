@@ -4,7 +4,7 @@ import { RunningMapClient } from "./RunningMapClient";
 import { query } from "../../../api/query";
 
 export const RunningMap = () => {
-  const promise = query.sports.getRunningData();
+  const promise = query.sports.running();
   return (
     <Await promise={promise} loading={<Loading />} error={<Error />}>
       {(data) => {

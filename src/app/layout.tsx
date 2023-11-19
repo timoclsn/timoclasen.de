@@ -19,7 +19,7 @@ const fontSans = Inter({
 });
 
 export const generateMetadata = createGenerateMetadata(async () => {
-  const { title, description } = await query.content.getMetadata("home");
+  const { title, description } = await query.content.metadata("home");
 
   return {
     metadataBase: new URL("https://timoclasen.de"),

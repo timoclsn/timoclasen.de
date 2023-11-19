@@ -2,7 +2,7 @@ import Image from "next/image";
 import { query } from "../../api/query";
 
 export const CV = async () => {
-  const cvEntries = await query.content.getCvEntries();
+  const cvEntries = await query.content.cvEntries();
 
   return (
     <section className="mx-auto max-w-prose" id="cv">

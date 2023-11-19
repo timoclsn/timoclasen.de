@@ -4,8 +4,8 @@ import { BalconyControl } from "./BalconyControl/BalconyControl";
 import { Dashboard } from "./Dashboard/Dashboard";
 
 export const SmartHomeWidget = async () => {
-  const text = await query.content.getTextSnippet("Smart Home Widget");
-  const footnote = await query.content.getTextSnippet(
+  const text = await query.content.textSnippet("Smart Home Widget");
+  const footnote = await query.content.textSnippet(
     "Smart Home Widget Footnote",
   );
 

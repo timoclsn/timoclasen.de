@@ -5,7 +5,7 @@ import { TextWidget } from "../Widget/TextWidget";
 import { WidgetLayout } from "../Widget/WidgetLayout";
 
 export const ContactWidget = async () => {
-  const text = await query.content.getTextSnippet("Contact Widget");
+  const text = await query.content.textSnippet("Contact Widget");
 
   return (
     <WidgetLayout>

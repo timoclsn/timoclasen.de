@@ -9,7 +9,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
 
   const pages = ["/", "/ueber", "/blog", "/podcasts", "/musik", "/impressum"];
 
-  const blogPosts = await query.content.getBlogPosts();
+  const blogPosts = await query.content.blogPosts();
 
   blogPosts.forEach((blogPost) => {
     pages.push(`/blog/${blogPost.slug}`);

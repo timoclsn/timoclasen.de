@@ -6,7 +6,7 @@ import { TextWidget } from "../Widget/TextWidget";
 import { WidgetLayout } from "../Widget/WidgetLayout";
 
 export const AboutWidget = async () => {
-  const person = await query.content.getPerson();
+  const person = await query.content.person();
 
   const image = person.profileImageCollection.items[1];
   const { base64: personImageBase64 } = await getPlaceholder(image.url);

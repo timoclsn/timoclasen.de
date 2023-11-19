@@ -2,7 +2,7 @@ import { formatRelative, parseISO } from "date-fns";
 import { utcToZonedTime } from "date-fns-tz";
 import { de } from "date-fns/locale";
 import { unstable_noStore as noStore } from "next/cache";
-import { cache } from "react";
+import { cache as reactCache } from "react";
 import { getMapURLs } from "../../lib/mapbox";
 import {
   formatSpeed,
@@ -12,14 +12,14 @@ import {
 } from "../../lib/strava";
 import { capitalizeFirstLetter } from "../../lib/utils";
 
-export type RunningData = Awaited<ReturnType<typeof getRunningData>>;
+export type Running = Awaited<ReturnType<typeof running>>;
 
-export const getRunningData = cache(
+export const running = reactCache(
   async (options: { cached?: boolean } = {}) => {
     noStore();
 
     if (options?.cached) {
-      return cachedData;
+      return cache;
     }
 
     const activites = await getActivities();
@@ -121,7 +121,7 @@ export const getRunningData = cache(
   },
 );
 
-const cachedData = {
+const cache = {
   thisYear: {
     distance: 0,
     fastest: 2.842,

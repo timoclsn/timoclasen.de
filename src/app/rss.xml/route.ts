@@ -28,7 +28,7 @@ export const GET = async (request: Request) => {
     },
   });
 
-  const blogPosts = await query.content.getBlogPosts();
+  const blogPosts = await query.content.blogPosts();
 
   for (const blogPost of blogPosts) {
     feed.addItem({

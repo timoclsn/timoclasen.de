@@ -3,7 +3,7 @@ import { Skeleton } from "../../../design-system/Skeleton/Skeleton";
 import { query } from "../../../api/query";
 
 export const BalconyCount = () => {
-  const promise = query.smarthome.getControlCount();
+  const promise = query.smarthome.controlCount();
   return (
     <div className="flex justify-center">
       <p className="whitespace-nowrap text-sm opacity-60">

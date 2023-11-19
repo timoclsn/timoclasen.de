@@ -5,7 +5,7 @@ import { query } from "../../api/query";
 import { Button } from "../../design-system/Button";
 
 export const PodcastsWidget = async () => {
-  const podcasts = await query.podcasts.getFavoritePodcasts();
+  const podcasts = await query.podcasts.favoritePodcasts();
 
   return (
     <section id="podcasts">

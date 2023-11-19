@@ -6,7 +6,7 @@ import { Markdown } from "../../design-system/Markdown/Markdown";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 
 export const generateMetadata = createGenerateMetadata(async () => {
-  const { title, description, slug } = await query.content.getMetadata("musik");
+  const { title, description, slug } = await query.content.metadata("musik");
 
   return {
     title,
@@ -18,7 +18,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
 });
 
 const MusicPage = async () => {
-  const text = await query.content.getTextSnippet("Music");
+  const text = await query.content.textSnippet("Music");
 
   return (
     <>

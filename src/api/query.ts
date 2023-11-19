@@ -1,3 +1,4 @@
+import "server-only";
 import * as content from "../data/content/query";
 import * as music from "../data/music/query";
 import * as podcasts from "../data/podcasts/query";
