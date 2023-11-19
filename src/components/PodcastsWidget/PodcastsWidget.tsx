@@ -1,11 +1,12 @@
+import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { query } from "../../api/query";
 import { Button } from "../../design-system/Button";
-import { getFavoritePodcasts } from "../../data/podcasts/podcasts";
 
 export const PodcastsWidget = async () => {
-  const podcasts = await getFavoritePodcasts();
+  const podcasts = await query.podcasts.getFavoritePodcasts();
+
   return (
     <section id="podcasts">
       <h2 className="mb-2 text-xl font-bold md:text-2xl lg:text-3xl">

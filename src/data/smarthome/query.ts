@@ -3,10 +3,9 @@ import {
   unstable_noStore as noStore,
 } from "next/cache";
 import { cache as reactCache } from "react";
-import "server-only";
-import { AttributeType, NodeState } from "../lib/enums";
-import { formatValue, getHexColor, getNodes, isLight } from "../lib/homee";
-import { prisma } from "../lib/prisma";
+import { AttributeType, NodeState } from "../../lib/enums";
+import { formatValue, getHexColor, getNodes, isLight } from "../../lib/homee";
+import { prisma } from "../../lib/prisma";
 
 const cachedData = {
   lights: "An",

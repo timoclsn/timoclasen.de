@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { useAction } from "../../../lib/serverActions/client";
 import { track } from "../../../lib/tracking";
 import { Button } from "../../../design-system/Button/Button";
-import { turnOnBalcony } from "./actions";
+import { action } from "../../../api/action";
 
 const toastId = "balcony-buttons";
 const colorEmojiMap = {
@@ -14,7 +14,7 @@ const colorEmojiMap = {
 } as const;
 
 export const BalconyButtons = () => {
-  const { runAction, isRunning } = useAction(turnOnBalcony, {
+  const { runAction, isRunning } = useAction(action.smarthome.turnOnBalcony, {
     onRunAction: () => {
       toast.loading("Schalten...", {
         id: toastId,

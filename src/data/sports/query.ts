@@ -3,15 +3,14 @@ import { utcToZonedTime } from "date-fns-tz";
 import { de } from "date-fns/locale";
 import { unstable_noStore as noStore } from "next/cache";
 import { cache } from "react";
-import "server-only";
-import { getMapURLs } from "../lib/mapbox";
+import { getMapURLs } from "../../lib/mapbox";
 import {
   formatSpeed,
   formatTime,
   getActivities,
   roundDistance,
-} from "../lib/strava";
-import { capitalizeFirstLetter } from "../lib/utils";
+} from "../../lib/strava";
+import { capitalizeFirstLetter } from "../../lib/utils";
 
 export type RunningData = Awaited<ReturnType<typeof getRunningData>>;
 

@@ -1,9 +1,9 @@
-import { getBlogPosts } from "../../data/content";
-import { WidgetLayout } from "../Widget/WidgetLayout";
+import { query } from "../../api/query";
 import { TextWidget } from "../Widget/TextWidget";
+import { WidgetLayout } from "../Widget/WidgetLayout";
 
 export const BlogWidget = async () => {
-  const blogPosts = await getBlogPosts();
+  const blogPosts = await query.content.getBlogPosts();
   const blogPost1 = blogPosts[0];
   const blogPost2 = blogPosts[1];
 

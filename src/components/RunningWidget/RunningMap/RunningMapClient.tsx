@@ -1,6 +1,6 @@
 "use client";
 
-import { RunningData } from "../../../data/sports";
+import { RunningData } from "../../../data/sports/query";
 import { useTheme } from "../../ThemeProvider/ThemeProvider";
 import { ImageWidget } from "../../Widget/ImageWidget";
 

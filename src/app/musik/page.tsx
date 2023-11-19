@@ -1,12 +1,12 @@
+import { query } from "../../api/query";
 import { ContactWidget } from "../../components/ContactWidget/ContactWidget";
-import { Markdown } from "../../design-system/Markdown/Markdown";
 import { NowPlaying } from "../../components/Music/NowPlaying";
 import { TopMusic } from "../../components/Music/TopMusic";
-import { getMetadata, getTextSnippet } from "../../data/content";
+import { Markdown } from "../../design-system/Markdown/Markdown";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 
 export const generateMetadata = createGenerateMetadata(async () => {
-  const { title, description, slug } = await getMetadata("musik");
+  const { title, description, slug } = await query.content.getMetadata("musik");
 
   return {
     title,
@@ -18,7 +18,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
 });
 
 const MusicPage = async () => {
-  const text = await getTextSnippet("Music");
+  const text = await query.content.getTextSnippet("Music");
 
   return (
     <>

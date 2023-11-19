@@ -1,13 +1,13 @@
 import Image from "next/image";
+import { query } from "../../api/query";
 import { CV } from "../../components/CV/CV";
 import { ContactWidget } from "../../components/ContactWidget/ContactWidget";
 import { Markdown } from "../../design-system/Markdown/Markdown";
-import { getMetadata, getPerson } from "../../data/content";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 import { getPlaceholder } from "../../lib/placeholder";
 
 export const generateMetadata = createGenerateMetadata(async () => {
-  const { title, description, slug } = await getMetadata("ueber");
+  const { title, description, slug } = await query.content.getMetadata("ueber");
 
   return {
     title,
@@ -19,7 +19,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
 });
 
 const AboutPage = async () => {
-  const person = await getPerson();
+  const person = await query.content.getPerson();
 
   const image = person.imagesCollection.items[2];
   const { base64 } = await getPlaceholder(image.url);

@@ -1,5 +1,5 @@
 import { Feed } from "feed";
-import { getBlogPosts } from "../../data/content";
+import { query } from "../../api/query";
 import { markdownToHTML } from "../../lib/text";
 
 const name = "Timo Clasen";
@@ -28,7 +28,7 @@ export const GET = async (request: Request) => {
     },
   });
 
-  const blogPosts = await getBlogPosts();
+  const blogPosts = await query.content.getBlogPosts();
 
   for (const blogPost of blogPosts) {
     feed.addItem({

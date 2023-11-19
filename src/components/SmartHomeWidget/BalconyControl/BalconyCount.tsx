@@ -1,9 +1,9 @@
-import { getControlCount } from "../../../data/smarthome";
 import { Await } from "../../Await/Await";
 import { Skeleton } from "../../../design-system/Skeleton/Skeleton";
+import { query } from "../../../api/query";
 
 export const BalconyCount = () => {
-  const promise = getControlCount();
+  const promise = query.smarthome.getControlCount();
   return (
     <div className="flex justify-center">
       <p className="whitespace-nowrap text-sm opacity-60">

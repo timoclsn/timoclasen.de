@@ -1,12 +1,12 @@
-import { getPerson } from "../../data/content";
+import { query } from "../../api/query";
 import { getPlaceholder } from "../../lib/placeholder";
 import { stripFirstLine, truncate } from "../../lib/text";
 import { ImageWidget } from "../Widget/ImageWidget";
-import { WidgetLayout } from "../Widget/WidgetLayout";
 import { TextWidget } from "../Widget/TextWidget";
+import { WidgetLayout } from "../Widget/WidgetLayout";
 
 export const AboutWidget = async () => {
-  const person = await getPerson();
+  const person = await query.content.getPerson();
 
   const image = person.profileImageCollection.items[1];
   const { base64: personImageBase64 } = await getPlaceholder(image.url);

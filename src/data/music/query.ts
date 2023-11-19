@@ -4,7 +4,7 @@ import {
   getRecentlyPlayed,
   getTopArtists,
   getTopTracks,
-} from "../lib/spotify";
+} from "../../lib/spotify";
 
 export type NowPlayingData = Awaited<ReturnType<typeof getNowPlayingData>>;
 

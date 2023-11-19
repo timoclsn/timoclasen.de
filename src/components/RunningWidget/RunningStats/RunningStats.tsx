@@ -7,13 +7,13 @@ import {
   ThumbsUp,
   TrendingUp,
 } from "lucide-react";
-import { getRunningData } from "../../../data/sports";
 import { getYearProgress } from "../../../lib/utils";
 import { Await } from "../../Await/Await";
 import { RunningElement } from "./RunningElement";
+import { query } from "../../../api/query";
 
 export const RunningStats = () => {
-  const promise = getRunningData();
+  const promise = query.sports.getRunningData();
   return (
     <Await promise={promise} loading={<Loading />} error={<Error />}>
       {(runningData) => {

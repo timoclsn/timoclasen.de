@@ -1,11 +1,11 @@
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { getImage } from "../../data/content";
-import { getPlaceholder } from "../../lib/placeholder";
+import Image from "next/image";
+import { query } from "../../api/query";
 import { Button } from "../../design-system/Button";
+import { getPlaceholder } from "../../lib/placeholder";
 
 export const MLWidget = async () => {
-  const mlImage = await getImage("Makersleague.de");
+  const mlImage = await query.content.getImage("Makersleague.de");
   const { base64: MLImageBase64 } = await getPlaceholder(mlImage.url);
   const enhancedMlImage = { ...mlImage, blurDataURL: MLImageBase64 };
 

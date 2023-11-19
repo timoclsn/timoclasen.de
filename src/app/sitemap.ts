@@ -1,5 +1,5 @@
-import { getBlogPosts } from "../data/content";
 import { MetadataRoute } from "next";
+import { query } from "../api/query";
 
 export const dynamic = "force-dynamic";
 
@@ -9,7 +9,7 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
 
   const pages = ["/", "/ueber", "/blog", "/podcasts", "/musik", "/impressum"];
 
-  const blogPosts = await getBlogPosts();
+  const blogPosts = await query.content.getBlogPosts();
 
   blogPosts.forEach((blogPost) => {
     pages.push(`/blog/${blogPost.slug}`);

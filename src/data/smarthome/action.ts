@@ -2,10 +2,10 @@
 
 import { revalidateTag } from "next/cache";
 import { z } from "zod";
-import { playHomeegram } from "../../../lib/homee";
-import { prisma } from "../../../lib/prisma";
-import { createAction } from "../../../lib/serverActions/create";
-import { wait } from "../../../lib/utils";
+import { playHomeegram } from "../../lib/homee";
+import { prisma } from "../../lib/prisma";
+import { createAction } from "../../lib/serverActions/create";
+import { wait } from "../../lib/utils";
 
 const colorHomeegramIds = {
   red: 239,

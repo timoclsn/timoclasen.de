@@ -1,9 +1,9 @@
-import { getSmartHomeData } from "../../../data/smarthome";
 import { Await } from "../../Await/Await";
 import { Skeleton } from "../../../design-system/Skeleton/Skeleton";
+import { query } from "../../../api/query";
 
 export const BalconyLight = () => {
-  const promise = getSmartHomeData();
+  const promise = query.smarthome.getSmartHomeData();
   return (
     <div className="h-[100px] w-[100px] flex-none rounded-full bg-[#FFFFFF] font-bold dark:bg-[#000000]">
       <Await promise={promise} loading={<Loading />} error={<Error />}>

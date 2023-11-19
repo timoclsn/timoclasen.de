@@ -8,13 +8,13 @@ import {
   Umbrella,
   Zap,
 } from "lucide-react";
-import { getSmartHomeData } from "../../../data/smarthome";
 import { Await } from "../../Await/Await";
 import { WidgetLayout } from "../../Widget/WidgetLayout";
 import { DashboardElement } from "./DashboardElement";
+import { query } from "../../../api/query";
 
 export const Dashboard = () => {
-  const promise = getSmartHomeData();
+  const promise = query.smarthome.getSmartHomeData();
   return (
     <Await promise={promise} loading={<Loading />} error={<Error />}>
       {(data) => {

@@ -3,7 +3,7 @@ import { de } from "date-fns/locale";
 import readingTime from "reading-time";
 import "server-only";
 import { z } from "zod";
-import { queryContent } from "../lib/content";
+import { queryContent } from "../../lib/content";
 
 export const getMetadata = async (slug: string) => {
   const response = await queryContent(

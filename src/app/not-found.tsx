@@ -1,10 +1,10 @@
+import { query } from "../api/query";
 import { ContactWidget } from "../components/ContactWidget/ContactWidget";
 import { Markdown } from "../design-system/Markdown/Markdown";
-import { getMetadata, getTextSnippet } from "../data/content";
 import { createGenerateMetadata, openGraph } from "../lib/metadata";
 
 export const generateMetadata = createGenerateMetadata(async () => {
-  const { title, description, slug } = await getMetadata("404");
+  const { title, description, slug } = await query.content.getMetadata("404");
 
   return {
     title,
@@ -16,7 +16,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
 });
 
 const NotFoundPage = async () => {
-  const text = await getTextSnippet("Error 404");
+  const text = await query.content.getTextSnippet("Error 404");
   return (
     <>
       <Markdown>{text}</Markdown>
