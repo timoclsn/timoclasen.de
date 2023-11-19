@@ -1,11 +1,11 @@
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { getImage } from "../../data/content";
-import { getPlaceholder } from "../../lib/placeholder";
+import Image from "next/image";
+import { query } from "../../api/query";
 import { Button } from "../../design-system/Button";
+import { getPlaceholder } from "../../lib/placeholder";
 
 export const LCDWidget = async () => {
-  const lcdImage = await getImage("Life Centered Design.Net");
+  const lcdImage = await query.content.image("Life Centered Design.Net");
   const { base64: LCDImageBase64 } = await getPlaceholder(lcdImage.url);
   const enhancedLcdImage = { ...lcdImage, blurDataURL: LCDImageBase64 };
 

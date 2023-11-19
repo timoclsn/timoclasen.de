@@ -1,13 +1,13 @@
+import { query } from "../../../api/query";
 import { BlogPostHeader } from "../../../components/BlogPost/BlogPostHeader";
 import { ContactWidget } from "../../../components/ContactWidget/ContactWidget";
-import { Mdx } from "../../../design-system/Markdown/Mdx";
 import { StructuredData } from "../../../components/StructuredData/StructuredData";
-import { getBlogPost, getBlogPosts } from "../../../data/content";
+import { Mdx } from "../../../design-system/Markdown/Mdx";
 import { createGenerateMetadata, ogImage } from "../../../lib/metadata";
 
 export const generateMetadata = createGenerateMetadata(async ({ params }) => {
   const { slug } = params;
-  const blogPost = await getBlogPost(slug);
+  const blogPost = await query.content.blogPost(slug);
 
   return {
     title: blogPost.title,
@@ -43,7 +43,7 @@ export const generateMetadata = createGenerateMetadata(async ({ params }) => {
 });
 
 export const generateStaticParams = async () => {
-  const blogPosts = await getBlogPosts();
+  const blogPosts = await query.content.blogPosts();
   return blogPosts.map((blogPost) => ({
     slug: blogPost.slug,
   }));
@@ -57,7 +57,7 @@ interface Props {
 
 const BlogPostPage = async ({ params }: Props) => {
   const { slug } = params;
-  const blogPost = await getBlogPost(slug);
+  const blogPost = await query.content.blogPost(slug);
 
   return (
     <>

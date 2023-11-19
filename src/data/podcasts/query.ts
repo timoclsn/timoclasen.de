@@ -19,21 +19,21 @@ const podcastSchema = z.object({
   categories: z.array(z.string()),
 });
 
-export type Podcasts = Awaited<ReturnType<typeof getPodcasts>>;
+export type Podcasts = Awaited<ReturnType<typeof allPodcasts>>;
 
-export const getPodcasts = cache(async () => {
+export const allPodcasts = cache(async () => {
   const data = await readFile(podcastsPath, "utf-8");
   const podcasts = JSON.parse(data);
   return z.array(podcastSchema).parse(podcasts);
 });
 
-export const getFavoritePodcasts = async () => {
-  const podcasts = await getPodcasts();
+export const favoritePodcasts = async () => {
+  const podcasts = await allPodcasts();
   return podcasts.filter((podcast) => podcast.favorite);
 };
 
-export const getCategories = async () => {
-  const podcasts = await getPodcasts();
+export const categories = async () => {
+  const podcasts = await allPodcasts();
   return [
     ...Array.from(new Set(podcasts.flatMap((podcast) => podcast.categories))),
   ].sort((a, b) => a.localeCompare(b));

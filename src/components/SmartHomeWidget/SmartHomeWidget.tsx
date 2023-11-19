@@ -1,11 +1,13 @@
-import { getTextSnippet } from "../../data/content";
+import { query } from "../../api/query";
 import { Markdown } from "../../design-system/Markdown/Markdown";
 import { BalconyControl } from "./BalconyControl/BalconyControl";
 import { Dashboard } from "./Dashboard/Dashboard";
 
 export const SmartHomeWidget = async () => {
-  const text = await getTextSnippet("Smart Home Widget");
-  const footnote = await getTextSnippet("Smart Home Widget Footnote");
+  const text = await query.content.textSnippet("Smart Home Widget");
+  const footnote = await query.content.textSnippet(
+    "Smart Home Widget Footnote",
+  );
 
   return (
     <section id="smarthome">

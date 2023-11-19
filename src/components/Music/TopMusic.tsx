@@ -1,13 +1,13 @@
 import { Music, User } from "lucide-react";
-import { getTopArtistsData, getTopTracksData } from "../../data/music";
+import { query } from "../../api/query";
 import { Await } from "../Await/Await";
 import { MediaPreview } from "../MediaPreview/MediaPreview";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../Tabs";
 import { Track } from "../Track/Track";
 
 export const TopMusic = () => {
-  const topArtistsPromise = getTopArtistsData();
-  const topTracksPromise = getTopTracksData();
+  const topArtistsPromise = query.music.topArtists();
+  const topTracksPromise = query.music.topTracks();
 
   return (
     <Tabs defaultValue="1">

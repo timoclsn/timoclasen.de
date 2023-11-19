@@ -4,11 +4,11 @@ import {
   getRecentlyPlayed,
   getTopArtists,
   getTopTracks,
-} from "../lib/spotify";
+} from "../../lib/spotify";
 
-export type NowPlayingData = Awaited<ReturnType<typeof getNowPlayingData>>;
+export type NowPlaying = Awaited<ReturnType<typeof nowPlaying>>;
 
-export const getNowPlayingData = async () => {
+export const nowPlaying = async () => {
   noStore();
 
   const nowPlaying = await getNowPlaying();
@@ -44,7 +44,7 @@ export const getNowPlayingData = async () => {
   };
 };
 
-export const getTopArtistsData = async () => {
+export const topArtists = async () => {
   noStore();
 
   const topArtists = await getTopArtists();
@@ -64,7 +64,7 @@ export const getTopArtistsData = async () => {
   return artists;
 };
 
-export const getTopTracksData = async () => {
+export const topTracks = async () => {
   noStore();
 
   const topTracks = await getTopTracks();

@@ -3,11 +3,11 @@ import { Inter } from "next/font/google";
 import { draftMode } from "next/headers";
 import Script from "next/script";
 import { ReactNode } from "react";
+import { query } from "../api/query";
 import { DraftModeBanner } from "../components/DraftModeBanner/DraftModeBanner";
 import { Footer } from "../components/Footer/Footer";
 import { Navigation } from "../components/Navigation/Navigation";
 import { NoFlash } from "../components/NoFlash/NoFlash";
-import { getMetadata } from "../data/content";
 import { Container } from "../design-system/Container/Container";
 import { createGenerateMetadata, openGraph } from "../lib/metadata";
 import "../styles/globals.css";
@@ -19,7 +19,7 @@ const fontSans = Inter({
 });
 
 export const generateMetadata = createGenerateMetadata(async () => {
-  const { title, description } = await getMetadata("home");
+  const { title, description } = await query.content.metadata("home");
 
   return {
     metadataBase: new URL("https://timoclasen.de"),

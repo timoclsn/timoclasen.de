@@ -1,10 +1,10 @@
+import { query } from "../../api/query";
 import { BlogPostPreview } from "../../components/BlogPost/BlogPostPreview";
 import { ContactWidget } from "../../components/ContactWidget/ContactWidget";
-import { getBlogPosts, getMetadata } from "../../data/content";
 import { createGenerateMetadata, openGraph } from "../../lib/metadata";
 
 export const generateMetadata = createGenerateMetadata(async () => {
-  const { title, description, slug } = await getMetadata("blog");
+  const { title, description, slug } = await query.content.metadata("blog");
 
   return {
     title,
@@ -16,7 +16,7 @@ export const generateMetadata = createGenerateMetadata(async () => {
 });
 
 const BlogPage = async () => {
-  const blogPosts = await getBlogPosts();
+  const blogPosts = await query.content.blogPosts();
 
   return (
     <>

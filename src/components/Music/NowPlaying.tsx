@@ -1,11 +1,12 @@
 import Image from "next/image";
-import { NowPlayingData, getNowPlayingData } from "../../data/music";
-import { Await } from "../Await/Await";
+import { query } from "../../api/query";
+import { NowPlaying } from "../../data/music/query";
 import { Skeleton } from "../../design-system/Skeleton/Skeleton";
+import { Await } from "../Await/Await";
 import { SoundBars } from "../SoundBars";
 
 export function NowPlaying() {
-  const promise = getNowPlayingData();
+  const promise = query.music.nowPlaying();
   return (
     <Await promise={promise} loading={<Loading />} error={<Error />}>
       {(data) => {
@@ -16,7 +17,7 @@ export function NowPlaying() {
 }
 
 interface NowPlayingInnerProps {
-  data?: NowPlayingData;
+  data?: NowPlaying;
 }
 
 const NowPlayingInner = ({ data }: NowPlayingInnerProps) => {

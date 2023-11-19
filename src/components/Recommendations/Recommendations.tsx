@@ -3,8 +3,8 @@
 import { Loader, Send } from "lucide-react";
 import { useAction } from "../../lib/serverActions/client";
 import { Button } from "../../design-system/Button";
-import { addRecommendation } from "./actions";
 import { useRef } from "react";
+import { action } from "../../api/action";
 
 export const errorStyles =
   "absolute left-0 bottom-0 -mb-6 text-red-700 text-sm slide-in-from-top-full duration-100 ease-in-out fade-in animate-in";
@@ -15,7 +15,7 @@ const inputStyles =
 export const Recommendations = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const { runAction, isRunning, error, validationErrors, isSuccess } =
-    useAction(addRecommendation, {
+    useAction(action.recommendation.add, {
       onSuccess: () => {
         formRef.current?.reset();
       },

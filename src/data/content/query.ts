@@ -3,9 +3,9 @@ import { de } from "date-fns/locale";
 import readingTime from "reading-time";
 import "server-only";
 import { z } from "zod";
-import { queryContent } from "../lib/content";
+import { queryContent } from "../../lib/content";
 
-export const getMetadata = async (slug: string) => {
+export const metadata = async (slug: string) => {
   const response = await queryContent(
     `{
       pageCollection(where: {slug: "${slug}"}, limit: 1, preview: false) {
@@ -34,7 +34,7 @@ export const getMetadata = async (slug: string) => {
   return response.data.pageCollection.items[0];
 };
 
-export const getImage = async (title: string) => {
+export const image = async (title: string) => {
   const response = await queryContent(
     `{
       assetCollection(where: {title: "${title}"}, limit: 1, preview: false) {
@@ -61,7 +61,7 @@ export const getImage = async (title: string) => {
   return response.data.assetCollection.items[0];
 };
 
-export const getPerson = async () => {
+export const person = async () => {
   const response = await queryContent(
     `{
       personCollection(where: {name: "Timo Clasen"}, limit: 1, preview: false) {
@@ -116,7 +116,7 @@ export const getPerson = async () => {
   return response.data.personCollection.items[0];
 };
 
-export const getTextSnippet = async (title: string) => {
+export const textSnippet = async (title: string) => {
   const response = await queryContent(
     `{
       textSnippetCollection(where: {title: "${title}"}, limit: 1, preview: false) {
@@ -141,7 +141,7 @@ export const getTextSnippet = async (title: string) => {
   return response.data.textSnippetCollection.items[0].content;
 };
 
-export const getBlogPosts = async () => {
+export const blogPosts = async () => {
   const response = await queryContent(
     `{
       blogPostCollection(order: [date_DESC], preview: false) {
@@ -193,7 +193,7 @@ export const getBlogPosts = async () => {
   });
 };
 
-export const getBlogPost = async (slug: string) => {
+export const blogPost = async (slug: string) => {
   const response = await queryContent(
     `{
     blogPostCollection(where: {slug: "${slug}"}, limit: 1, preview: false) {
@@ -272,7 +272,7 @@ export const getBlogPost = async (slug: string) => {
   };
 };
 
-export const getCvEntries = async () => {
+export const cvEntries = async () => {
   const response = await queryContent(
     `{
       cvEntryCollection(order: [order_DESC], preview: false) {

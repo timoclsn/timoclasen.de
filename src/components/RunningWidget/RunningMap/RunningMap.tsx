@@ -1,10 +1,10 @@
-import { getRunningData } from "../../../data/sports";
 import { Await } from "../../Await/Await";
 import { Skeleton } from "../../../design-system/Skeleton/Skeleton";
 import { RunningMapClient } from "./RunningMapClient";
+import { query } from "../../../api/query";
 
 export const RunningMap = () => {
-  const promise = getRunningData();
+  const promise = query.sports.running();
   return (
     <Await promise={promise} loading={<Loading />} error={<Error />}>
       {(data) => {

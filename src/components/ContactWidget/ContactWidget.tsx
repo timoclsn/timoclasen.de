@@ -1,11 +1,11 @@
 import { Linkedin, Mail, Twitter } from "lucide-react";
-import { getTextSnippet } from "../../data/content";
+import { query } from "../../api/query";
 import { Button } from "../../design-system/Button";
-import { WidgetLayout } from "../Widget/WidgetLayout";
 import { TextWidget } from "../Widget/TextWidget";
+import { WidgetLayout } from "../Widget/WidgetLayout";
 
 export const ContactWidget = async () => {
-  const text = await getTextSnippet("Contact Widget");
+  const text = await query.content.textSnippet("Contact Widget");
 
   return (
     <WidgetLayout>

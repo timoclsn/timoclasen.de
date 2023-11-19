@@ -1,7 +1,7 @@
 import { User } from "lucide-react";
 import { matchSorter } from "match-sorter";
 import { z } from "zod";
-import { getPodcasts } from "../../data/podcasts/podcasts";
+import { query } from "../../api/query";
 import { SearchParams } from "../../lib/types";
 import { AutoAnimate } from "../AutoAnimate/AutoAnimate";
 import { MediaPreview } from "../MediaPreview/MediaPreview";
@@ -24,7 +24,7 @@ interface Props {
 export const PodcastsList = async ({ searchParams }: Props) => {
   const { search, favorites, filter, limit } =
     searchParamsSchema.parse(searchParams);
-  const podcasts = await getPodcasts();
+  const podcasts = await query.podcasts.allPodcasts();
 
   const filteredPodcast = matchSorter(podcasts, search, {
     keys: ["title", "hosts", "description"],

@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { getCategories } from "../../data/podcasts/podcasts";
+import { query } from "../../api/query";
 import { SearchParams } from "../../lib/types";
 import { PodcastFilter } from "./PodcastFilter";
 import { PodcastsList } from "./PodcastsList";
@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const Podcasts = async ({ searchParams }: Props) => {
-  const categories = await getCategories();
+  const categories = await query.podcasts.categories();
   return (
     <div>
       <div className="mx-auto mb-6 max-w-prose">
