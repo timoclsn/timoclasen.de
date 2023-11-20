@@ -50,12 +50,12 @@ export const createQueryClient = <Context>(
       });
     };
 
-    // Wrap query in next cache if provided
+    // Populate data in next data cache if cache options are provided
     if (querynBuilderOpts.cache?.keyParts || querynBuilderOpts.cache?.options) {
       return reactCache(
         nextCache(
-          // @ts-expect-error
-          (...args: any[]) => query(...args),
+          // @ts-expect-error: Couldn't find a way to type this properly
+          (...args) => query(...args),
           querynBuilderOpts.cache.keyParts,
           querynBuilderOpts.cache.options,
         ),
