@@ -1,6 +1,5 @@
 import { AttributeType, NodeState } from "../../lib/enums";
 import { formatValue, getHexColor, getNodes, isLight } from "../../lib/homee";
-import { prisma } from "../../lib/prisma";
 import { createQuery } from "../clients";
 
 const useCachedData = false;
@@ -131,8 +130,9 @@ export const controlCount = createQuery({
       tags: ["control-count"],
     },
   },
-  query: async () => {
-    const rawCounts = await prisma.balcony_control.findMany();
+  query: async ({ ctx }) => {
+    const { db } = ctx;
+    const rawCounts = await db.balcony_control.findMany();
 
     return rawCounts.reduce(
       (acc, count) => ({ ...acc, [count.color]: count.count }),
