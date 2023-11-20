@@ -3,8 +3,7 @@
 import { revalidateTag } from "next/cache";
 import { z } from "zod";
 import { playHomeegram } from "../../lib/homee";
-import { prisma } from "../../lib/prisma";
-import { createAction } from "../../lib/serverActions/create";
+import { createAction } from "../clients";
 import { wait } from "../../lib/utils";
 
 const colorHomeegramIds = {
@@ -19,15 +18,16 @@ export const turnOnBalcony = createAction({
   input: z.object({
     color: colorSchema,
   }),
-  action: async ({ input }) => {
+  action: async ({ input, ctx }) => {
     const { color } = input;
+    const { db } = ctx;
 
     const homeegramId = colorHomeegramIds[color];
     await playHomeegram(homeegramId);
 
     await wait(2000); // Delay needed because HG also has a delay of 1 sec.
 
-    await prisma.balcony_control.update({
+    await db.balcony_control.update({
       where: {
         color,
       },

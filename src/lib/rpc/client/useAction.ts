@@ -1,6 +1,6 @@
 import { useCallback, useReducer, useTransition } from "react";
 import { z } from "zod";
-import { InferInputArgs, InferValidationErrors, ServerAction } from "./types";
+import { InferInputArgs, InferValidationErrors, ServerAction } from "../types";
 
 interface State<TResponse extends any, TInputSchema extends z.ZodTypeAny> {
   status: "idle" | "running" | "success" | "error";

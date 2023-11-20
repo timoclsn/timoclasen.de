@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export type MaybePromise<T> = Promise<T> | T;
 
@@ -8,19 +8,19 @@ export type InferInputArgs<TInputSchema extends z.ZodTypeAny> =
   z.ZodTypeAny extends TInputSchema ? [] : [input: z.infer<TInputSchema>];
 
 export type InferValidationErrors<TInputSchema extends z.ZodTypeAny> =
-  z.inferFlattenedErrors<TInputSchema>['fieldErrors'];
+  z.inferFlattenedErrors<TInputSchema>["fieldErrors"];
 
 export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
   | {
-      state: 'success';
+      state: "success";
       data: TResponse | null;
     }
   | {
-      state: 'validationError';
+      state: "validationError";
       validationErrors: InferValidationErrors<TInputSchema>;
     }
   | {
-      state: 'error';
+      state: "error";
       error: string;
     };
 
@@ -30,3 +30,21 @@ export type ServerAction<
 > = (
   ...inputArgs: InferInputArgs<TInputSchema>
 ) => Promise<Result<TInputSchema, TResponse>> | void;
+
+export type ServerQuery<
+  TInputSchema extends z.ZodTypeAny,
+  TResponse extends any,
+> = (...inputArgs: InferInputArgs<TInputSchema>) => Promise<TResponse>;
+
+export interface CacheOptions {
+  noStore?: boolean;
+  keyParts?: Array<string>;
+  options?: {
+    revalidate?: number | false;
+    tags?: Array<string>;
+  };
+}
+
+export interface CreateClientOptions<Context> {
+  middleware?: () => MaybePromise<Context>;
+}

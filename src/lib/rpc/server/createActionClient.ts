@@ -3,12 +3,12 @@ import {
   getErrorMessage,
   isNextNotFoundError,
   isNextRedirectError,
-} from "../utils";
-import { MaybePromise, ServerAction } from "./types";
+} from "../../utils";
+import { CreateClientOptions, MaybePromise, ServerAction } from "../types";
 
-export const createActionClient = <Context>(createClientOpts?: {
-  middleware?: () => MaybePromise<Context>;
-}) => {
+export const createActionClient = <Context>(
+  createClientOpts?: CreateClientOptions<Context>,
+) => {
   const createAction = <
     TInputSchema extends z.ZodTypeAny,
     TResponse extends any,

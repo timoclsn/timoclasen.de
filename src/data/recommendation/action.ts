@@ -1,7 +1,7 @@
 "use server";
 
 import { z } from "zod";
-import { createAction } from "../../lib/serverActions/create";
+import { createAction } from "../clients";
 
 export const add = createAction({
   input: z.object({
