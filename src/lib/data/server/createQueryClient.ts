@@ -51,7 +51,7 @@ export const createQueryClient = <Context>(
     };
 
     // Wrap query in next cache if provided
-    if (querynBuilderOpts.cache) {
+    if (querynBuilderOpts.cache?.keyParts || querynBuilderOpts.cache?.options) {
       return reactCache(
         nextCache(
           // @ts-expect-error
