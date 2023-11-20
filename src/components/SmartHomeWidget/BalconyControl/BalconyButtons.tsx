@@ -1,7 +1,7 @@
 "use client";
 
 import toast from "react-hot-toast";
-import { useAction } from "../../../lib/rpc/client/useAction";
+import { useAction } from "../../../lib/data/client/useAction";
 import { track } from "../../../lib/tracking";
 import { Button } from "../../../design-system/Button/Button";
 import { action } from "../../../api/action";

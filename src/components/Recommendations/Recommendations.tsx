@@ -1,7 +1,7 @@
 "use client";
 
 import { Loader, Send } from "lucide-react";
-import { useAction } from "../../lib/rpc/client/useAction";
+import { useAction } from "../../lib/data/client/useAction";
 import { Button } from "../../design-system/Button";
 import { useRef } from "react";
 import { action } from "../../api/action";

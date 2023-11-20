@@ -1,6 +1,5 @@
+import { createActionClient, createQueryClient } from "../lib/data/server";
 import { prisma } from "../lib/prisma";
-import { createQueryClient } from "../lib/rpc/server";
-import { createActionClient } from "../lib/rpc/server/createActionClient";
 
 export const createAction = createActionClient({
   middleware: () => {
