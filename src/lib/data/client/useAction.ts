@@ -6,16 +6,7 @@ import {
   Result,
   ServerAction,
 } from "../types";
-
-export const initalState: Result<any, any> = {
-  status: "idle",
-  isIdle: true,
-  isSuccess: false,
-  isError: false,
-  data: null,
-  error: null,
-  validationErrors: null,
-};
+import { initalState } from "./initialState";
 
 type Action<TResponse extends any, TInputSchema extends z.ZodTypeAny> =
   | { type: "RUN_ACTION" }

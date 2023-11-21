@@ -1,10 +1,10 @@
 "use client";
 
 import { Loader, Send } from "lucide-react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useFormStatus } from "react-dom";
 import { action } from "../../api/action";
 import { Button } from "../../design-system/Button";
-import { initalState } from "../../lib/data/client";
+import { useFormAction } from "../../lib/data/client";
 
 export const errorStyles =
   "absolute left-0 bottom-0 -mb-6 text-red-700 text-sm slide-in-from-top-full duration-100 ease-in-out fade-in animate-in";
@@ -13,11 +13,9 @@ const inputStyles =
   "block w-full p-4 text-base bg-light dark:bg-dark rounded-xl placeholder-dark dark:placeholder-light placeholder-opacity-60 dark:placeholder-opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight dark:focus-visible:ring-highlight-dark";
 
 export const Recommendations = () => {
-  const [state, formAction] = useFormState(
+  const { runAction, status, error, validationErrors } = useFormAction(
     action.recommendation.add,
-    initalState,
   );
-  const { status, error, validationErrors } = state;
 
   return (
     <div className="rounded-3xl bg-dark bg-opacity-10 px-6 py-12 dark:bg-light dark:bg-opacity-10 xl:px-12 xl:py-20">
@@ -28,7 +26,7 @@ export const Recommendations = () => {
         Du kennst einen Podcast, der auf meiner Liste fehlt und in den ich
         unbedingt mal reinhören muss? Schick mir gerne deine Empfehlung!
       </p>
-      <form className="flex flex-col gap-4 sm:gap-8" action={formAction}>
+      <form className="flex flex-col gap-4 sm:gap-8" action={runAction}>
         <label className="relative">
           <span className="sr-only">Nachricht</span>
           <textarea
