@@ -1,1 +1,1 @@
-export { useAction } from "./useAction";
+export { useAction, initalState } from "./useAction";

@@ -4,6 +4,7 @@ import { Loader, Send } from "lucide-react";
 import { useFormState, useFormStatus } from "react-dom";
 import { action } from "../../api/action";
 import { Button } from "../../design-system/Button";
+import { initalState } from "../../lib/data/client";
 
 export const errorStyles =
   "absolute left-0 bottom-0 -mb-6 text-red-700 text-sm slide-in-from-top-full duration-100 ease-in-out fade-in animate-in";
@@ -12,12 +13,11 @@ const inputStyles =
   "block w-full p-4 text-base bg-light dark:bg-dark rounded-xl placeholder-dark dark:placeholder-light placeholder-opacity-60 dark:placeholder-opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight dark:focus-visible:ring-highlight-dark";
 
 export const Recommendations = () => {
-  const [state, formAction] = useFormState(action.recommendation.add, {
-    status: "idle",
-    data: null,
-    validationErrors: null,
-    error: null,
-  });
+  const [state, formAction] = useFormState(
+    action.recommendation.add,
+    initalState,
+  );
+  const { status, error, validationErrors } = state;
 
   return (
     <div className="rounded-3xl bg-dark bg-opacity-10 px-6 py-12 dark:bg-light dark:bg-opacity-10 xl:px-12 xl:py-20">
@@ -41,9 +41,9 @@ export const Recommendations = () => {
             rows={4}
             required
           ></textarea>
-          {state.validationErrors?.message && (
+          {validationErrors?.message && (
             <div id="message-error" aria-live="polite">
-              <p className={errorStyles}>{state.validationErrors.message[0]}</p>
+              <p className={errorStyles}>{validationErrors.message[0]}</p>
             </div>
           )}
         </label>
@@ -58,9 +58,9 @@ export const Recommendations = () => {
             aria-label="Podcast Website (optional)"
             aria-describedby="url-error"
           />
-          {state.validationErrors?.url && (
+          {validationErrors?.url && (
             <div id="url-error" aria-live="polite">
-              <p className={errorStyles}>{state.validationErrors.url[0]}</p>
+              <p className={errorStyles}>{validationErrors.url[0]}</p>
             </div>
           )}
         </label>
@@ -76,9 +76,9 @@ export const Recommendations = () => {
               aria-label="Dein Name (optional)"
               aria-describedby="name-error"
             />
-            {state.validationErrors?.name && (
+            {validationErrors?.name && (
               <div id="name-error" aria-live="polite">
-                <p className={errorStyles}>{state.validationErrors.name[0]}</p>
+                <p className={errorStyles}>{validationErrors.name[0]}</p>
               </div>
             )}
           </label>
@@ -93,9 +93,9 @@ export const Recommendations = () => {
               aria-label="Deine E-Mail (optional)"
               aria-describedby="email-error"
             />
-            {state.validationErrors?.email && (
+            {validationErrors?.email && (
               <div id="email-error" aria-live="polite">
-                <p className={errorStyles}>{state.validationErrors.email[0]}</p>
+                <p className={errorStyles}>{validationErrors.email[0]}</p>
               </div>
             )}
           </label>
@@ -104,10 +104,10 @@ export const Recommendations = () => {
           <SubmitButton />
         </div>
         <div className="mx-auto">
-          {state.status === "success" && (
+          {status === "success" && (
             <p>Danke für die Empfehlung – ich höre mal rein!</p>
           )}
-          {state.status === "error" && <p>{state.error}</p>}
+          {status === "error" && <p>{error}</p>}
         </div>
       </form>
     </div>

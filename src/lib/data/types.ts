@@ -12,42 +12,46 @@ export type InferValidationErrors<TInputSchema extends z.ZodTypeAny> =
 
 export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
   | {
-      state: "success";
-      data: TResponse | null;
-    }
-  | {
-      state: "validationError";
-      validationErrors: InferValidationErrors<TInputSchema>;
-    }
-  | {
-      state: "error";
-      error: string;
-    };
-
-export type FormActionResult<
-  TInputSchema extends z.ZodTypeAny,
-  TResponse extends any,
-> =
-  | {
       status: "idle";
+      isIdle: true;
+      isSuccess: false;
+      isError: false;
+      data: null;
+      validationErrors: null;
+      error: null;
+    }
+  | {
+      status: "running";
+      isIdle: false;
+      isSuccess: false;
+      isError: false;
       data: null;
       validationErrors: null;
       error: null;
     }
   | {
       status: "success";
+      isIdle: true;
+      isSuccess: true;
+      isError: false;
       data: TResponse | null;
       validationErrors: null;
       error: null;
     }
   | {
       status: "validationError";
+      isIdle: true;
+      isSuccess: false;
+      isError: true;
       data: null;
       validationErrors: InferValidationErrors<TInputSchema>;
       error: null;
     }
   | {
       status: "error";
+      isIdle: true;
+      isSuccess: false;
+      isError: true;
       data: null;
       validationErrors: null;
       error: string;
@@ -64,9 +68,9 @@ export type ServerFormAction<
   TInputSchema extends z.ZodTypeAny,
   TResponse extends any,
 > = (
-  previousState: FormActionResult<TInputSchema, TResponse>,
+  previousState: Result<TInputSchema, TResponse>,
   formData: FormData,
-) => Promise<FormActionResult<TInputSchema, TResponse>>;
+) => Promise<Result<TInputSchema, TResponse>>;
 
 export type ServerQuery<
   TInputSchema extends z.ZodTypeAny,

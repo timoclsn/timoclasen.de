@@ -6,8 +6,8 @@ import {
 } from "../../utils";
 import {
   CreateClientOptions,
-  FormActionResult,
   MaybePromise,
+  Result,
   ServerFormAction,
 } from "../types";
 
@@ -22,7 +22,7 @@ export const createFormActionClient = <Context>(
     action: (actionArgs: {
       input: z.output<TInputSchema>;
       ctx: Context;
-      previousState: FormActionResult<TInputSchema, TResponse>;
+      previousState: Result<TInputSchema, TResponse>;
     }) => MaybePromise<void> | MaybePromise<TResponse>;
   }) => {
     const action: ServerFormAction<TInputSchema, TResponse> = async (
@@ -37,6 +37,9 @@ export const createFormActionClient = <Context>(
           if (!result.success) {
             return {
               status: "validationError",
+              isIdle: true,
+              isSuccess: false,
+              isError: true,
               data: null,
               validationErrors: result.error.flatten().fieldErrors,
               error: null,
@@ -57,6 +60,9 @@ export const createFormActionClient = <Context>(
 
         return {
           status: "success",
+          isIdle: true,
+          isSuccess: true,
+          isError: false,
           data: response ?? null,
           validationErrors: null,
           error: null,
@@ -76,6 +82,9 @@ export const createFormActionClient = <Context>(
 
         return {
           status: "error",
+          isIdle: true,
+          isSuccess: false,
+          isError: true,
           data: null,
           validationErrors: null,
           error: errorMessage,

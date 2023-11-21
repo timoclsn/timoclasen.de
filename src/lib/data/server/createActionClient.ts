@@ -31,8 +31,13 @@ export const createActionClient = <Context>(
           const result = actionBuilderOpts.input.safeParse(input);
           if (!result.success) {
             return {
-              state: "validationError",
+              status: "validationError",
+              isIdle: true,
+              isSuccess: false,
+              isError: true,
+              data: null,
               validationErrors: result.error.flatten().fieldErrors,
+              error: null,
             };
           }
           parsedInput = result.data;
@@ -48,8 +53,13 @@ export const createActionClient = <Context>(
         });
 
         return {
-          state: "success",
+          status: "success",
+          isIdle: true,
+          isSuccess: true,
+          isError: false,
           data: response ?? null,
+          validationErrors: null,
+          error: null,
         };
       } catch (error) {
         const errorMessage = getErrorMessage(error);
@@ -65,7 +75,12 @@ export const createActionClient = <Context>(
         }
 
         return {
-          state: "error",
+          status: "error",
+          isIdle: true,
+          isSuccess: false,
+          isError: true,
+          data: null,
+          validationErrors: null,
           error: errorMessage,
         };
       }
