@@ -24,12 +24,49 @@ export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
       error: string;
     };
 
+export type FormActionResult<
+  TInputSchema extends z.ZodTypeAny,
+  TResponse extends any,
+> =
+  | {
+      status: "idle";
+      data: null;
+      validationErrors: null;
+      error: null;
+    }
+  | {
+      status: "success";
+      data: TResponse | null;
+      validationErrors: null;
+      error: null;
+    }
+  | {
+      status: "validationError";
+      data: null;
+      validationErrors: InferValidationErrors<TInputSchema>;
+      error: null;
+    }
+  | {
+      status: "error";
+      data: null;
+      validationErrors: null;
+      error: string;
+    };
+
 export type ServerAction<
   TInputSchema extends z.ZodTypeAny,
   TResponse extends any,
 > = (
   ...inputArgs: InferInputArgs<TInputSchema>
 ) => Promise<Result<TInputSchema, TResponse>> | void;
+
+export type ServerFormAction<
+  TInputSchema extends z.ZodTypeAny,
+  TResponse extends any,
+> = (
+  previousState: FormActionResult<TInputSchema, TResponse>,
+  formData: FormData,
+) => Promise<FormActionResult<TInputSchema, TResponse>>;
 
 export type ServerQuery<
   TInputSchema extends z.ZodTypeAny,
