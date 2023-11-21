@@ -5,7 +5,7 @@ export type MaybePromise<T> = Promise<T> | T;
 // If TInputSchema is a more specific type than z.ZodTypeAny (e.g. z.ZodString),
 // then we can infer the input type. Otherwise, no input is needed.
 export type InferInputArgs<TInputSchema extends z.ZodTypeAny> =
-  z.ZodTypeAny extends TInputSchema ? [] : [input: z.infer<TInputSchema>];
+  z.ZodTypeAny extends TInputSchema ? [] : [input: z.input<TInputSchema>];
 
 export type InferValidationErrors<TInputSchema extends z.ZodTypeAny> =
   z.inferFlattenedErrors<TInputSchema>["fieldErrors"];
