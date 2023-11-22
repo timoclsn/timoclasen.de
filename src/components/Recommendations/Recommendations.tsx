@@ -1,6 +1,7 @@
 "use client";
 
 import { Loader, Send } from "lucide-react";
+import { useRef } from "react";
 import { useFormStatus } from "react-dom";
 import { action } from "../../api/action";
 import { Button } from "../../design-system/Button";
@@ -13,8 +14,14 @@ const inputStyles =
   "block w-full p-4 text-base bg-light dark:bg-dark rounded-xl placeholder-dark dark:placeholder-light placeholder-opacity-60 dark:placeholder-opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight dark:focus-visible:ring-highlight-dark";
 
 export const Recommendations = () => {
+  const formRef = useRef<HTMLFormElement>(null);
   const { runAction, status, error, validationErrors } = useFormAction(
     action.recommendation.add,
+    {
+      onSuccess: () => {
+        formRef.current?.reset();
+      },
+    },
   );
 
   return (
@@ -26,7 +33,11 @@ export const Recommendations = () => {
         Du kennst einen Podcast, der auf meiner Liste fehlt und in den ich
         unbedingt mal reinhören muss? Schick mir gerne deine Empfehlung!
       </p>
-      <form className="flex flex-col gap-4 sm:gap-8" action={runAction}>
+      <form
+        ref={formRef}
+        action={runAction}
+        className="flex flex-col gap-4 sm:gap-8"
+      >
         <label className="relative">
           <span className="sr-only">Nachricht</span>
           <textarea

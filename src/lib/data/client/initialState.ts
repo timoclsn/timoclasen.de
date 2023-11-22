@@ -1,7 +1,7 @@
 import { Result } from "../types";
 
 export const initalState: Result<any, any> = {
-  status: "idle",
+  status: "initial",
   isIdle: true,
   isSuccess: false,
   isError: false,

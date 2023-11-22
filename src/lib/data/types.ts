@@ -12,7 +12,7 @@ export type InferValidationErrors<TInputSchema extends z.ZodTypeAny> =
 
 export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
   | {
-      status: "idle";
+      status: "initial";
       isIdle: true;
       isSuccess: false;
       isError: false;
