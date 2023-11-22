@@ -1,10 +1,10 @@
 import { z } from "zod";
+import { CreateClientOptions, MaybePromise, ServerAction } from "../types";
 import {
   getErrorMessage,
   isNextNotFoundError,
   isNextRedirectError,
-} from "../../utils";
-import { CreateClientOptions, MaybePromise, ServerAction } from "../types";
+} from "../utils";
 
 export const createActionClient = <Context>(
   createClientOpts?: CreateClientOptions<Context>,

@@ -1,15 +1,15 @@
 import { z } from "zod";
 import {
-  getErrorMessage,
-  isNextNotFoundError,
-  isNextRedirectError,
-} from "../../utils";
-import {
   CreateClientOptions,
   MaybePromise,
   Result,
   ServerFormAction,
 } from "../types";
+import {
+  getErrorMessage,
+  isNextNotFoundError,
+  isNextRedirectError,
+} from "../utils";
 
 export const createFormActionClient = <Context>(
   createClientOpts?: CreateClientOptions<Context>,
