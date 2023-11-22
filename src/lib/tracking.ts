@@ -1,5 +1,5 @@
 export interface TrackingEvents {
-  "Uncaught error": {
+  "Caught error": {
     componentStack: string;
     digest: string;
   };
