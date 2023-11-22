@@ -10,17 +10,56 @@ export type InferInputArgs<TInputSchema extends z.ZodTypeAny> =
 export type InferValidationErrors<TInputSchema extends z.ZodTypeAny> =
   z.inferFlattenedErrors<TInputSchema>["fieldErrors"];
 
+export interface CreateClientOptions<Context> {
+  middleware?: () => MaybePromise<Context>;
+}
+
+// Client Action
+
 export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
   | {
-      state: "success";
+      status: "initial";
+      isIdle: true;
+      isSuccess: false;
+      isError: false;
+      data: null;
+      validationErrors: null;
+      error: null;
+    }
+  | {
+      status: "running";
+      isIdle: false;
+      isSuccess: false;
+      isError: false;
+      data: null;
+      validationErrors: null;
+      error: null;
+    }
+  | {
+      status: "success";
+      isIdle: true;
+      isSuccess: true;
+      isError: false;
       data: TResponse | null;
+      validationErrors: null;
+      error: null;
     }
   | {
-      state: "validationError";
+      status: "validationError";
+      isIdle: true;
+      isSuccess: false;
+      isError: true;
+      data: null;
       validationErrors: InferValidationErrors<TInputSchema>;
+      error: null;
     }
   | {
-      state: "error";
+      status: "error";
+      isIdle: true;
+      isSuccess: false;
+      isError: true;
+      data: null;
+      validationErrors: null;
       error: string;
     };
 
@@ -30,6 +69,28 @@ export type ServerAction<
 > = (
   ...inputArgs: InferInputArgs<TInputSchema>
 ) => Promise<Result<TInputSchema, TResponse>> | void;
+
+// Form Action
+
+// FormActionResult is the same as Result, but the object with status of "running" is removed.
+export type FormActionResult<
+  TInputSchema extends z.ZodTypeAny,
+  TResponse extends any,
+> = Result<TInputSchema, TResponse> extends infer R
+  ? R extends { status: "running" }
+    ? never
+    : R
+  : never;
+
+export type ServerFormAction<
+  TInputSchema extends z.ZodTypeAny,
+  TResponse extends any,
+> = (
+  previousState: FormActionResult<TInputSchema, TResponse>,
+  formData: FormData,
+) => Promise<FormActionResult<TInputSchema, TResponse>>;
+
+// Query
 
 export type ServerQuery<
   TInputSchema extends z.ZodTypeAny,
@@ -43,8 +104,4 @@ export interface CacheOptions {
     revalidate?: number | false;
     tags?: Array<string>;
   };
-}
-
-export interface CreateClientOptions<Context> {
-  middleware?: () => MaybePromise<Context>;
 }

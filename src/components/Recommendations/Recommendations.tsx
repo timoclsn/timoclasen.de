@@ -1,10 +1,11 @@
 "use client";
 
 import { Loader, Send } from "lucide-react";
-import { useAction } from "../../lib/data/client/useAction";
-import { Button } from "../../design-system/Button";
 import { useRef } from "react";
+import { useFormStatus } from "react-dom";
 import { action } from "../../api/action";
+import { Button } from "../../design-system/Button";
+import { useFormAction } from "../../lib/data/client";
 
 export const errorStyles =
   "absolute left-0 bottom-0 -mb-6 text-red-700 text-sm slide-in-from-top-full duration-100 ease-in-out fade-in animate-in";
@@ -14,12 +15,14 @@ const inputStyles =
 
 export const Recommendations = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const { runAction, isRunning, error, validationErrors, isSuccess } =
-    useAction(action.recommendation.add, {
+  const { runAction, status, error, validationErrors } = useFormAction(
+    action.recommendation.add,
+    {
       onSuccess: () => {
         formRef.current?.reset();
       },
-    });
+    },
+  );
 
   return (
     <div className="rounded-3xl bg-dark bg-opacity-10 px-6 py-12 dark:bg-light dark:bg-opacity-10 xl:px-12 xl:py-20">
@@ -32,19 +35,8 @@ export const Recommendations = () => {
       </p>
       <form
         ref={formRef}
+        action={runAction}
         className="flex flex-col gap-4 sm:gap-8"
-        action={(formData) => {
-          runAction({
-            message: String(formData.get("message")),
-            url: formData.get("url") ? String(formData.get("url")) : undefined,
-            name: formData.get("name")
-              ? String(formData.get("name"))
-              : undefined,
-            email: formData.get("email")
-              ? String(formData.get("email"))
-              : undefined,
-          });
-        }}
       >
         <label className="relative">
           <span className="sr-only">Nachricht</span>
@@ -118,16 +110,25 @@ export const Recommendations = () => {
           </label>
         </div>
         <div className="flex justify-end">
-          <Button type="submit" disabled={isRunning}>
-            {isRunning ? <Loader className="animate-spin" /> : <Send />}
-            Empfehlung senden
-          </Button>
+          <SubmitButton />
         </div>
         <div className="mx-auto">
-          {isSuccess && <p>Danke für die Empfehlung – ich höre mal rein!</p>}
-          {error && <p>{error}</p>}
+          {status === "success" && (
+            <p>Danke für die Empfehlung – ich höre mal rein!</p>
+          )}
+          {status === "error" && <p>{error}</p>}
         </div>
       </form>
     </div>
+  );
+};
+
+const SubmitButton = () => {
+  const { pending } = useFormStatus();
+  return (
+    <Button type="submit" disabled={pending}>
+      {pending ? <Loader className="animate-spin" /> : <Send />}
+      Empfehlung senden
+    </Button>
   );
 };

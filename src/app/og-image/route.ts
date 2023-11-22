@@ -3,13 +3,6 @@ import { createElement } from "react";
 import { OGImage } from "../../components/OGImage/OGImage";
 
 export const runtime = "edge";
-export const alt = "Timo Clasen Portfolio";
-export const size = {
-  width: 1200,
-  height: 630,
-};
-
-export const contentType = "image/png";
 
 const fontRegular = fetch(
   new URL("../../../public/fonts/Inter-Regular.woff", import.meta.url),
@@ -35,7 +28,8 @@ export const GET = async (request: Request) => {
   });
 
   return new ImageResponse(reactElement, {
-    ...size,
+    width: 1200,
+    height: 630,
     fonts: [
       {
         name: "Inter",

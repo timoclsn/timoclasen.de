@@ -1,6 +1,7 @@
 export interface TrackingEvents {
-  "Uncaught error": {
-    message: string;
+  "Caught error": {
+    componentStack: string;
+    digest: string;
   };
   "Podcast Search": {
     search: string;

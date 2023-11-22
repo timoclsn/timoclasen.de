@@ -1,26 +1,12 @@
 import { useCallback, useReducer, useTransition } from "react";
 import { z } from "zod";
-import { InferInputArgs, InferValidationErrors, ServerAction } from "../types";
-
-interface State<TResponse extends any, TInputSchema extends z.ZodTypeAny> {
-  status: "idle" | "running" | "success" | "error";
-  isIdle: boolean;
-  isSuccess: boolean;
-  isError: boolean;
-  data: TResponse | null;
-  error: string | null;
-  validationErrors: InferValidationErrors<TInputSchema> | null;
-}
-
-const initalState: State<any, any> = {
-  status: "idle",
-  isIdle: true,
-  isSuccess: false,
-  isError: false,
-  data: null,
-  error: null,
-  validationErrors: null,
-};
+import {
+  InferInputArgs,
+  InferValidationErrors,
+  Result,
+  ServerAction,
+} from "../types";
+import { initalState } from "./initialState";
 
 type Action<TResponse extends any, TInputSchema extends z.ZodTypeAny> =
   | { type: "RUN_ACTION" }
@@ -38,9 +24,9 @@ type Action<TResponse extends any, TInputSchema extends z.ZodTypeAny> =
 const createReducer =
   <TResponse extends any, TInputSchema extends z.ZodTypeAny>() =>
   (
-    state: State<TResponse, TInputSchema>,
+    state: Result<TInputSchema, TResponse>,
     action: Action<TResponse, TInputSchema>,
-  ): State<TResponse, TInputSchema> => {
+  ): Result<TInputSchema, TResponse> => {
     switch (action.type) {
       case "RUN_ACTION":
         return {
@@ -49,6 +35,8 @@ const createReducer =
           isIdle: false,
           isSuccess: false,
           isError: false,
+          data: null,
+          validationErrors: null,
           error: null,
         };
       case "IS_SUCCESS":
@@ -57,23 +45,32 @@ const createReducer =
           status: "success",
           isIdle: true,
           isSuccess: true,
+          isError: false,
           data: action.data,
+          validationErrors: null,
+          error: null,
+        };
+      case "IS_VALIDATION_ERROR":
+        return {
+          ...state,
+          status: "validationError",
+          isIdle: true,
+          isSuccess: false,
+          isError: true,
+          data: null,
+          validationErrors: action.validationErrors,
+          error: null,
         };
       case "IS_ERROR":
         return {
           ...state,
           status: "error",
           isIdle: true,
+          isSuccess: false,
           isError: true,
+          data: null,
+          validationErrors: null,
           error: action.error,
-        };
-      case "IS_VALIDATION_ERROR":
-        return {
-          ...state,
-          status: "error",
-          isIdle: true,
-          isError: true,
-          validationErrors: action.validationErrors,
         };
       case "RESET":
         return {
@@ -130,7 +127,7 @@ export const useAction = <
             return;
           }
 
-          if (result.state === "validationError") {
+          if (result.status === "validationError") {
             dispatch({
               type: "IS_VALIDATION_ERROR",
               validationErrors: result.validationErrors,
@@ -144,7 +141,7 @@ export const useAction = <
             );
           }
 
-          if (result.state === "error") {
+          if (result.status === "error") {
             dispatch({
               type: "IS_ERROR",
               error: result.error,
@@ -158,7 +155,7 @@ export const useAction = <
             );
           }
 
-          if (result.state === "success") {
+          if (result.status === "success") {
             dispatch({
               type: "IS_SUCCESS",
               data: result.data,

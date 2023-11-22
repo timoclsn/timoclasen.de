@@ -1,12 +1,17 @@
 import { z } from "zod";
-import { CreateClientOptions, MaybePromise, ServerAction } from "../types";
+import {
+  CreateClientOptions,
+  FormActionResult,
+  MaybePromise,
+  ServerFormAction,
+} from "../types";
 import {
   getErrorMessage,
   isNextNotFoundError,
   isNextRedirectError,
 } from "../utils";
 
-export const createActionClient = <Context>(
+export const createFormActionClient = <Context>(
   createClientOpts?: CreateClientOptions<Context>,
 ) => {
   const createAction = <
@@ -17,18 +22,18 @@ export const createActionClient = <Context>(
     action: (actionArgs: {
       input: z.output<TInputSchema>;
       ctx: Context;
+      previousState: FormActionResult<TInputSchema, TResponse>;
     }) => MaybePromise<void> | MaybePromise<TResponse>;
   }) => {
-    const action: ServerAction<TInputSchema, TResponse> = async (
-      ...inputArgs
+    const action: ServerFormAction<TInputSchema, TResponse> = async (
+      previousState,
+      formData,
     ) => {
-      const [input] = inputArgs;
-
       try {
         // Validate input if schema is provided
-        let parsedInput = input;
+        let parsedInput = formData;
         if (actionBuilderOpts.input) {
-          const result = actionBuilderOpts.input.safeParse(input);
+          const result = actionBuilderOpts.input.safeParse(formData);
           if (!result.success) {
             return {
               status: "validationError",
@@ -50,6 +55,7 @@ export const createActionClient = <Context>(
         const response = await actionBuilderOpts.action({
           input: parsedInput,
           ctx,
+          previousState,
         });
 
         return {
