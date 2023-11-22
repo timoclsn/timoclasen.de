@@ -10,6 +10,12 @@ export type InferInputArgs<TInputSchema extends z.ZodTypeAny> =
 export type InferValidationErrors<TInputSchema extends z.ZodTypeAny> =
   z.inferFlattenedErrors<TInputSchema>["fieldErrors"];
 
+export interface CreateClientOptions<Context> {
+  middleware?: () => MaybePromise<Context>;
+}
+
+// Client Action
+
 export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
   | {
       status: "initial";
@@ -64,13 +70,27 @@ export type ServerAction<
   ...inputArgs: InferInputArgs<TInputSchema>
 ) => Promise<Result<TInputSchema, TResponse>> | void;
 
+// Form Action
+
+// FormActionResult is the same as Result, but the object with status of "running" is removed.
+export type FormActionResult<
+  TInputSchema extends z.ZodTypeAny,
+  TResponse extends any,
+> = Result<TInputSchema, TResponse> extends infer R
+  ? R extends { status: "running" }
+    ? never
+    : R
+  : never;
+
 export type ServerFormAction<
   TInputSchema extends z.ZodTypeAny,
   TResponse extends any,
 > = (
-  previousState: Result<TInputSchema, TResponse>,
+  previousState: FormActionResult<TInputSchema, TResponse>,
   formData: FormData,
-) => Promise<Result<TInputSchema, TResponse>>;
+) => Promise<FormActionResult<TInputSchema, TResponse>>;
+
+// Query
 
 export type ServerQuery<
   TInputSchema extends z.ZodTypeAny,
@@ -84,8 +104,4 @@ export interface CacheOptions {
     revalidate?: number | false;
     tags?: Array<string>;
   };
-}
-
-export interface CreateClientOptions<Context> {
-  middleware?: () => MaybePromise<Context>;
 }

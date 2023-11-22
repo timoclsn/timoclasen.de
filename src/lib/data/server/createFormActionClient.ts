@@ -1,8 +1,8 @@
 import { z } from "zod";
 import {
   CreateClientOptions,
+  FormActionResult,
   MaybePromise,
-  Result,
   ServerFormAction,
 } from "../types";
 import {
@@ -22,7 +22,7 @@ export const createFormActionClient = <Context>(
     action: (actionArgs: {
       input: z.output<TInputSchema>;
       ctx: Context;
-      previousState: Result<TInputSchema, TResponse>;
+      previousState: FormActionResult<TInputSchema, TResponse>;
     }) => MaybePromise<void> | MaybePromise<TResponse>;
   }) => {
     const action: ServerFormAction<TInputSchema, TResponse> = async (
