@@ -114,9 +114,11 @@ export const Recommendations = () => {
         </div>
         <div className="mx-auto">
           {status === "success" && (
-            <p>Danke für die Empfehlung – ich höre mal rein!</p>
+            <p className="text-green-700">
+              Danke für die Empfehlung – ich höre mal rein!
+            </p>
           )}
-          {status === "error" && <p>{error}</p>}
+          {status === "error" && <p className="text-red-700">{error}</p>}
         </div>
       </form>
     </div>
