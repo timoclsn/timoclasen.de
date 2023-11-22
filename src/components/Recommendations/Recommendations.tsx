@@ -16,7 +16,7 @@ const inputStyles =
 export const Recommendations = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const { runAction, status, error, validationErrors } = useFormAction(
-    action.recommendation.add,
+    action.podcasts.recommend,
     {
       onSuccess: () => {
         formRef.current?.reset();
