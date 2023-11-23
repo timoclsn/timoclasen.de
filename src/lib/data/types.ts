@@ -68,7 +68,7 @@ export type ServerAction<
   TResponse extends any,
 > = (
   ...inputArgs: InferInputArgs<TInputSchema>
-) => Promise<Result<TInputSchema, TResponse>> | void;
+) => Promise<Result<TInputSchema, TResponse>>;
 
 // Form Action
 
