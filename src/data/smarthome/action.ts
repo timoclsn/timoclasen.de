@@ -40,7 +40,5 @@ export const turnOnBalcony = createFormAction({
     });
 
     revalidateTag("control-count");
-
-    return { color };
   },
 });
