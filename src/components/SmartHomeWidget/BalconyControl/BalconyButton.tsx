@@ -19,7 +19,7 @@ interface Props {
   color: keyof typeof colorEmojiMap;
 }
 
-export const BalconyButtonForm = ({ children, color }: Props) => {
+export const BalconyButton = ({ children, color }: Props) => {
   const { runAction, onSubmitClick } = useFormAction(
     action.smarthome.turnOnBalcony,
     {
