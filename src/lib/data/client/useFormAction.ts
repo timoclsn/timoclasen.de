@@ -20,15 +20,18 @@ export const useFormAction = <
   } = {},
 ) => {
   const [state, formAction] = useFormState(action, initalState);
+  const isSuccess = state.status === "success";
+  const isError =
+    state.status === "error" || state.status === "validationError";
 
   useEffect(() => {
     if (!state.id) return; // Only run on server response
 
-    if (state.isSuccess) {
+    if (isSuccess) {
       options.onSuccess?.(state.data);
     }
 
-    if (state.isError) {
+    if (isError) {
       options.onError?.({
         error: state.error,
         validationErrors: state.validationErrors,
@@ -49,5 +52,7 @@ export const useFormAction = <
     runAction: formAction,
     onSubmitClick,
     ...state,
+    isSuccess,
+    isError,
   };
 };

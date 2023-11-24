@@ -32,9 +32,6 @@ const createReducer =
         return {
           ...state,
           status: "running",
-          isIdle: false,
-          isSuccess: false,
-          isError: false,
           data: null,
           validationErrors: null,
           error: null,
@@ -43,9 +40,6 @@ const createReducer =
         return {
           ...state,
           status: "success",
-          isIdle: true,
-          isSuccess: true,
-          isError: false,
           data: action.data,
           validationErrors: null,
           error: null,
@@ -54,9 +48,6 @@ const createReducer =
         return {
           ...state,
           status: "validationError",
-          isIdle: true,
-          isSuccess: false,
-          isError: true,
           data: null,
           validationErrors: action.validationErrors,
           error: null,
@@ -65,9 +56,6 @@ const createReducer =
         return {
           ...state,
           status: "error",
-          isIdle: true,
-          isSuccess: false,
-          isError: true,
           data: null,
           validationErrors: null,
           error: action.error,
@@ -105,8 +93,9 @@ export const useAction = <
 ) => {
   const reducer = createReducer<TResponse, TInputSchema>();
   const [state, dispatch] = useReducer(reducer, initalState);
-  const { status, isIdle, isSuccess, isError, data, error, validationErrors } =
-    state;
+  const { status, data, error, validationErrors } = state;
+  const isSuccess = status === "success";
+  const isError = status === "error" || status === "validationError";
   const [isRunning, startTransition] = useTransition();
 
   const runAction = useCallback(
@@ -194,7 +183,6 @@ export const useAction = <
   return {
     runAction,
     status,
-    isIdle,
     isRunning,
     isSuccess,
     isError,

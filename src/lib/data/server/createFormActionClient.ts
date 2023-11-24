@@ -33,9 +33,6 @@ export const createFormActionClient = <Context>(
             return {
               status: "validationError",
               id: id(),
-              isIdle: true,
-              isSuccess: false,
-              isError: true,
               data: null,
               validationErrors: result.error.flatten().fieldErrors,
               error: null,
@@ -56,9 +53,6 @@ export const createFormActionClient = <Context>(
         return {
           status: "success",
           id: id(),
-          isIdle: true,
-          isSuccess: true,
-          isError: false,
           data: response ?? null,
           validationErrors: null,
           error: null,
@@ -79,9 +73,6 @@ export const createFormActionClient = <Context>(
         return {
           status: "error",
           id: id(),
-          isIdle: true,
-          isSuccess: false,
-          isError: true,
           data: null,
           validationErrors: null,
           error: errorMessage,

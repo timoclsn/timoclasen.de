@@ -20,9 +20,6 @@ export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
   | {
       status: "initial";
       id: string;
-      isIdle: true;
-      isSuccess: false;
-      isError: false;
       data: null;
       validationErrors: null;
       error: null;
@@ -30,9 +27,6 @@ export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
   | {
       status: "running";
       id: string;
-      isIdle: false;
-      isSuccess: false;
-      isError: false;
       data: null;
       validationErrors: null;
       error: null;
@@ -40,9 +34,6 @@ export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
   | {
       status: "success";
       id: string;
-      isIdle: true;
-      isSuccess: true;
-      isError: false;
       data: TResponse | null;
       validationErrors: null;
       error: null;
@@ -50,9 +41,6 @@ export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
   | {
       status: "validationError";
       id: string;
-      isIdle: true;
-      isSuccess: false;
-      isError: true;
       data: null;
       validationErrors: InferValidationErrors<TInputSchema>;
       error: null;
@@ -60,9 +48,6 @@ export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
   | {
       status: "error";
       id: string;
-      isIdle: true;
-      isSuccess: false;
-      isError: true;
       data: null;
       validationErrors: null;
       error: string;

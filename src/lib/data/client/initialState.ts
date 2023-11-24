@@ -4,9 +4,6 @@ import { FormActionResult } from "../types";
 export const initalState: FormActionResult<any, any> = {
   status: "initial",
   id: "",
-  isIdle: true,
-  isSuccess: false,
-  isError: false,
   data: null,
   error: null,
   validationErrors: null,
