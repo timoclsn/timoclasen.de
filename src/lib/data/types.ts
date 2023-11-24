@@ -19,6 +19,7 @@ export interface CreateClientOptions<Context> {
 export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
   | {
       status: "initial";
+      id: string;
       isIdle: true;
       isSuccess: false;
       isError: false;
@@ -28,6 +29,7 @@ export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
     }
   | {
       status: "running";
+      id: string;
       isIdle: false;
       isSuccess: false;
       isError: false;
@@ -37,6 +39,7 @@ export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
     }
   | {
       status: "success";
+      id: string;
       isIdle: true;
       isSuccess: true;
       isError: false;
@@ -46,6 +49,7 @@ export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
     }
   | {
       status: "validationError";
+      id: string;
       isIdle: true;
       isSuccess: false;
       isError: true;
@@ -55,6 +59,7 @@ export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
     }
   | {
       status: "error";
+      id: string;
       isIdle: true;
       isSuccess: false;
       isError: true;

@@ -2,9 +2,10 @@
 
 import { revalidateTag } from "next/cache";
 import { z } from "zod";
+import { zfd } from "zod-form-data";
 import { playHomeegram } from "../../lib/homee";
-import { createAction } from "../clients";
 import { wait } from "../../lib/utils";
+import { createFormAction } from "../clients";
 
 const colorHomeegramIds = {
   red: 239,
@@ -14,9 +15,9 @@ const colorHomeegramIds = {
 
 const colorSchema = z.enum(["red", "green", "blue"]);
 
-export const turnOnBalcony = createAction({
-  input: z.object({
-    color: colorSchema,
+export const turnOnBalcony = createFormAction({
+  input: zfd.formData({
+    color: zfd.text(colorSchema),
   }),
   action: async ({ input, ctx }) => {
     const { color } = input;
@@ -39,5 +40,7 @@ export const turnOnBalcony = createAction({
     });
 
     revalidateTag("control-count");
+
+    return { color };
   },
 });

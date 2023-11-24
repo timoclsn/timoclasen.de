@@ -1,12 +1,8 @@
 import { z } from "zod";
-import {
-  CreateClientOptions,
-  FormActionResult,
-  MaybePromise,
-  ServerFormAction,
-} from "../types";
+import { CreateClientOptions, MaybePromise, ServerFormAction } from "../types";
 import {
   getErrorMessage,
+  id,
   isNextNotFoundError,
   isNextRedirectError,
 } from "../utils";
@@ -22,7 +18,6 @@ export const createFormActionClient = <Context>(
     action: (actionArgs: {
       input: z.output<TInputSchema>;
       ctx: Context;
-      previousState: FormActionResult<TInputSchema, TResponse>;
     }) => MaybePromise<void> | MaybePromise<TResponse>;
   }) => {
     const action: ServerFormAction<TInputSchema, TResponse> = async (
@@ -37,6 +32,7 @@ export const createFormActionClient = <Context>(
           if (!result.success) {
             return {
               status: "validationError",
+              id: id(),
               isIdle: true,
               isSuccess: false,
               isError: true,
@@ -55,11 +51,11 @@ export const createFormActionClient = <Context>(
         const response = await actionBuilderOpts.action({
           input: parsedInput,
           ctx,
-          previousState,
         });
 
         return {
           status: "success",
+          id: id(),
           isIdle: true,
           isSuccess: true,
           isError: false,
@@ -82,6 +78,7 @@ export const createFormActionClient = <Context>(
 
         return {
           status: "error",
+          id: id(),
           isIdle: true,
           isSuccess: false,
           isError: true,

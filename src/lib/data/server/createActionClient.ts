@@ -2,6 +2,7 @@ import { z } from "zod";
 import { CreateClientOptions, MaybePromise, ServerAction } from "../types";
 import {
   getErrorMessage,
+  id,
   isNextNotFoundError,
   isNextRedirectError,
 } from "../utils";
@@ -32,6 +33,7 @@ export const createActionClient = <Context>(
           if (!result.success) {
             return {
               status: "validationError",
+              id: id(),
               isIdle: true,
               isSuccess: false,
               isError: true,
@@ -54,6 +56,7 @@ export const createActionClient = <Context>(
 
         return {
           status: "success",
+          id: id(),
           isIdle: true,
           isSuccess: true,
           isError: false,
@@ -76,6 +79,7 @@ export const createActionClient = <Context>(
 
         return {
           status: "error",
+          id: id(),
           isIdle: true,
           isSuccess: false,
           isError: true,

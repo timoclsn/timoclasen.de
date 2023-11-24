@@ -21,22 +21,14 @@ export const useFormAction = <
 ) => {
   const [state, formAction] = useFormState(action, initalState);
 
-  const proxiedFormAction = new Proxy(formAction, {
-    apply: (target, thisArg, argumentsList) => {
-      options.onRunAction?.();
-      const [payload] = argumentsList;
-      return target.apply(thisArg, [payload]);
-    },
-  });
-
   useEffect(() => {
-    if (state.status === "initial") return;
+    if (!state.id) return; // Only run on server response
 
-    if (state.status === "success") {
+    if (state.isSuccess) {
       options.onSuccess?.(state.data);
     }
 
-    if (state.status === "error" || state.status === "validationError") {
+    if (state.isError) {
       options.onError?.({
         error: state.error,
         validationErrors: state.validationErrors,
@@ -46,10 +38,16 @@ export const useFormAction = <
     options.onSettled?.();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.status]);
+  }, [state.id]);
+
+  // Attach to form submit button to make onRunAction work
+  const onSubmitClick = () => {
+    options.onRunAction?.();
+  };
 
   return {
-    runAction: proxiedFormAction,
+    runAction: formAction,
+    onSubmitClick,
     ...state,
   };
 };
