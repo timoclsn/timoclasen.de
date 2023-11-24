@@ -19,45 +19,35 @@ export interface CreateClientOptions<Context> {
 export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
   | {
       status: "initial";
-      isIdle: true;
-      isSuccess: false;
-      isError: false;
+      id: string;
       data: null;
       validationErrors: null;
       error: null;
     }
   | {
       status: "running";
-      isIdle: false;
-      isSuccess: false;
-      isError: false;
+      id: string;
       data: null;
       validationErrors: null;
       error: null;
     }
   | {
       status: "success";
-      isIdle: true;
-      isSuccess: true;
-      isError: false;
+      id: string;
       data: TResponse | null;
       validationErrors: null;
       error: null;
     }
   | {
       status: "validationError";
-      isIdle: true;
-      isSuccess: false;
-      isError: true;
+      id: string;
       data: null;
       validationErrors: InferValidationErrors<TInputSchema>;
       error: null;
     }
   | {
       status: "error";
-      isIdle: true;
-      isSuccess: false;
-      isError: true;
+      id: string;
       data: null;
       validationErrors: null;
       error: string;
@@ -68,7 +58,7 @@ export type ServerAction<
   TResponse extends any,
 > = (
   ...inputArgs: InferInputArgs<TInputSchema>
-) => Promise<Result<TInputSchema, TResponse>> | void;
+) => Promise<Result<TInputSchema, TResponse>>;
 
 // Form Action
 

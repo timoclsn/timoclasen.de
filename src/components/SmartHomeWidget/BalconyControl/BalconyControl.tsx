@@ -1,4 +1,4 @@
-import { BalconyButtons } from "./BalconyButtons";
+import { BalconyButton } from "./BalconyButton";
 import { BalconyCount } from "./BalconyCount";
 import { BalconyLight } from "./BalconyLight";
 
@@ -16,7 +16,11 @@ export const BalconyControl = () => {
               Hinterlasse mir einen Gruß und schalte meine Balkonbeleuchtung in
               eine Farbe deiner Wahl:
             </p>
-            <BalconyButtons />
+            <div className="mb-4 flex flex-col gap-4 sm:flex-row">
+              <BalconyButton color="red">🔥 Rot</BalconyButton>
+              <BalconyButton color="green">🌿 Grün</BalconyButton>
+              <BalconyButton color="blue">🌊 Blau</BalconyButton>
+            </div>
           </div>
         </div>
         <BalconyCount />

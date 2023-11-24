@@ -30,3 +30,9 @@ export const isNextRedirectError = (message: string) =>
  */
 export const isNextNotFoundError = (message: string) =>
   message === "NEXT_NOT_FOUND";
+
+/**
+ * Generates a unique identifier based on the current timestamp.
+ * @returns The generated identifier.
+ */
+export const id = () => new Date().getTime().toString();

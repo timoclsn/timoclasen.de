@@ -46,7 +46,7 @@ const buttonContent = cva(
   },
 );
 
-type ButtonProps = VariantProps<typeof buttonContent>;
+type ButtonVariantProps = VariantProps<typeof buttonContent>;
 
 interface CommmonProps {
   children: ReactNode;
@@ -74,42 +74,43 @@ type ElementProps =
       disabled?: never;
     };
 
-type Props = CommmonProps & ElementProps & ButtonProps;
+export type ButtonProps = CommmonProps & ElementProps & ButtonVariantProps;
 
-export const Button = forwardRef<HTMLButtonElement & HTMLAnchorElement, Props>(
-  function Button(
-    {
-      children,
-      as: Element = "button",
-      type = "button",
-      variant = "solid",
-      size = "normal",
-      fullWidth,
-      className,
-      ...props
-    },
-    ref,
-  ) {
-    return (
-      <Element
-        type={Element === "button" ? type : undefined}
-        ref={ref}
-        className={buttonWrapper({ variant, fullWidth })}
-        {...props}
-      >
-        <span
-          className={buttonContent({
-            variant,
-            size,
-            fullWidth,
-            class: className,
-          })}
-        >
-          {Children.map(children, (child, index) => (
-            <span key={index}>{child}</span>
-          ))}
-        </span>
-      </Element>
-    );
+export const Button = forwardRef<
+  HTMLButtonElement & HTMLAnchorElement,
+  ButtonProps
+>(function Button(
+  {
+    children,
+    as: Element = "button",
+    type = "button",
+    variant = "solid",
+    size = "normal",
+    fullWidth,
+    className,
+    ...props
   },
-);
+  ref,
+) {
+  return (
+    <Element
+      type={Element === "button" ? type : undefined}
+      ref={ref}
+      className={buttonWrapper({ variant, fullWidth })}
+      {...props}
+    >
+      <span
+        className={buttonContent({
+          variant,
+          size,
+          fullWidth,
+          class: className,
+        })}
+      >
+        {Children.map(children, (child, index) => (
+          <span key={index}>{child}</span>
+        ))}
+      </span>
+    </Element>
+  );
+});
