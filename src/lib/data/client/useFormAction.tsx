@@ -34,7 +34,7 @@ export const useFormAction = <
   const isError =
     state.status === "error" || state.status === "validationError";
 
-  const FormState = () => {
+  const FormStatus = () => {
     const { pending } = useFormStatus();
 
     // We have to keep track of the previous pending state outside of the component
@@ -47,13 +47,13 @@ export const useFormAction = <
       if (isRunning) {
         setIsRunning(true);
         options.onRunAction?.();
-        wasPending = pending;
+        wasPending = true;
       }
 
       if (isNotRunning) {
         setIsRunning(false);
         options.onSettled?.();
-        wasPending = pending;
+        wasPending = false;
       }
 
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -68,7 +68,7 @@ export const useFormAction = <
   const Form = useCallback(({ children, refProp, ...rest }: FormProps) => {
     return (
       <form {...rest} ref={refProp}>
-        <FormState />
+        <FormStatus />
         {children}
       </form>
     );
