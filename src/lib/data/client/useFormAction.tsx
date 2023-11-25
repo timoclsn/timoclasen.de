@@ -60,13 +60,13 @@ export const useFormAction = <
     return null;
   };
 
-  type FormProps = ComponentPropsWithoutRef<"form"> & {
+  type FormProps = Omit<ComponentPropsWithoutRef<"form">, "action"> & {
     refProp?: RefObject<HTMLFormElement>;
   };
 
   const Form = ({ children, refProp, ...rest }: FormProps) => {
     return (
-      <form {...rest} ref={refProp}>
+      <form ref={refProp} action={formAction} {...rest}>
         <FormStatus />
         {children}
       </form>
@@ -92,7 +92,6 @@ export const useFormAction = <
 
   return {
     Form,
-    runAction: formAction,
     ...state,
     isSuccess,
     isError,

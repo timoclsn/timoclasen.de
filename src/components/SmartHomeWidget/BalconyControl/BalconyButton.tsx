@@ -20,37 +20,34 @@ interface Props {
 }
 
 export const BalconyButton = ({ children, color }: Props) => {
-  const { Form, runAction, isRunning } = useFormAction(
-    action.smarthome.turnOnBalcony,
-    {
-      onRunAction: () => {
-        toast.loading("Schalten...", {
-          id: toastId,
-          icon: undefined,
-        });
-      },
-      onSuccess: () => {
-        const emoji = colorEmojiMap[color];
-        toast.success("Balkon wurde eingeschaltet!", {
-          id: toastId,
-          icon: emoji,
-          duration: 5000,
-        });
-        track("Balcony Light Control", {
-          color: `${emoji} ${color}`,
-        });
-      },
-      onError: () => {
-        toast.error("Hat nicht funktioniert.", {
-          id: toastId,
-          icon: undefined,
-        });
-      },
+  const { Form, isRunning } = useFormAction(action.smarthome.turnOnBalcony, {
+    onRunAction: () => {
+      toast.loading("Schalten...", {
+        id: toastId,
+        icon: undefined,
+      });
     },
-  );
+    onSuccess: () => {
+      const emoji = colorEmojiMap[color];
+      toast.success("Balkon wurde eingeschaltet!", {
+        id: toastId,
+        icon: emoji,
+        duration: 5000,
+      });
+      track("Balcony Light Control", {
+        color: `${emoji} ${color}`,
+      });
+    },
+    onError: () => {
+      toast.error("Hat nicht funktioniert.", {
+        id: toastId,
+        icon: undefined,
+      });
+    },
+  });
 
   return (
-    <Form action={runAction} className="w-full">
+    <Form className="w-full">
       <input type="hidden" name="color" value={color} />
       <Button
         type="submit"
