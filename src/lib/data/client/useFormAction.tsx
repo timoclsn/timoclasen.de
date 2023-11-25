@@ -1,7 +1,6 @@
 import {
   ComponentPropsWithoutRef,
   RefObject,
-  useCallback,
   useEffect,
   useState,
 } from "react";
@@ -40,17 +39,17 @@ export const useFormAction = <
     // We have to keep track of the previous pending state outside of the component
     // to be able to compare it with the current pending state because the reference
     // of pending also changes on every render.
-    const isRunning = pending && !wasPending;
-    const isNotRunning = !pending && wasPending;
+    const run = pending && !wasPending;
+    const settled = !pending && wasPending;
 
     useEffect(() => {
-      if (isRunning) {
+      if (run) {
         setIsRunning(true);
         options.onRunAction?.();
         wasPending = true;
       }
 
-      if (isNotRunning) {
+      if (settled) {
         setIsRunning(false);
         options.onSettled?.();
         wasPending = false;
@@ -65,16 +64,14 @@ export const useFormAction = <
     refProp?: RefObject<HTMLFormElement>;
   };
 
-  const Form = useCallback(({ children, refProp, ...rest }: FormProps) => {
+  const Form = ({ children, refProp, ...rest }: FormProps) => {
     return (
       <form {...rest} ref={refProp}>
         <FormStatus />
         {children}
       </form>
     );
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  };
 
   useEffect(() => {
     if (!state.id) return; // Only run on server response
