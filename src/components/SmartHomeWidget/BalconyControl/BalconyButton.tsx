@@ -3,9 +3,9 @@
 import { ReactNode } from "react";
 import toast from "react-hot-toast";
 import { action } from "../../../api/action";
+import { Button } from "../../../design-system/Button";
 import { useFormAction } from "../../../lib/data/client";
 import { track } from "../../../lib/tracking";
-import { SubmitButton } from "../../SubmitButton/SubmitButton";
 
 const toastId = "balcony-buttons";
 const colorEmojiMap = {
@@ -20,7 +20,7 @@ interface Props {
 }
 
 export const BalconyButton = ({ children, color }: Props) => {
-  const { runAction, onSubmitClick } = useFormAction(
+  const { Form, runAction, isRunning } = useFormAction(
     action.smarthome.turnOnBalcony,
     {
       onRunAction: () => {
@@ -48,17 +48,19 @@ export const BalconyButton = ({ children, color }: Props) => {
       },
     },
   );
+
   return (
-    <form action={runAction} className="w-full">
+    <Form action={runAction} className="w-full">
       <input type="hidden" name="color" value={color} />
-      <SubmitButton
+      <Button
+        type="submit"
         variant="ghost"
         size="small"
-        onClick={onSubmitClick}
+        disabled={isRunning}
         fullWidth
       >
         {children}
-      </SubmitButton>
-    </form>
+      </Button>
+    </Form>
   );
 };
