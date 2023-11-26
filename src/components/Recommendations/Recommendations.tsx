@@ -15,7 +15,7 @@ const inputStyles =
 
 export const Recommendations = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const { runAction, status, error, validationErrors } = useFormAction(
+  const { Form, isRunning, status, error, validationErrors } = useFormAction(
     action.podcasts.recommend,
     {
       onSuccess: () => {
@@ -33,11 +33,7 @@ export const Recommendations = () => {
         Du kennst einen Podcast, der auf meiner Liste fehlt und in den ich
         unbedingt mal reinhören muss? Schick mir gerne deine Empfehlung!
       </p>
-      <form
-        ref={formRef}
-        action={runAction}
-        className="flex flex-col gap-4 sm:gap-8"
-      >
+      <Form refProp={formRef} className="flex flex-col gap-4 sm:gap-8">
         <label className="relative">
           <span className="sr-only">Nachricht</span>
           <textarea
@@ -110,7 +106,10 @@ export const Recommendations = () => {
           </label>
         </div>
         <div className="flex justify-end">
-          <SubmitButton />
+          <Button type="submit" disabled={isRunning}>
+            {isRunning ? <Loader className="animate-spin" /> : <Send />}
+            Empfehlung senden
+          </Button>
         </div>
         <div className="mx-auto">
           {status === "success" && (
@@ -120,7 +119,7 @@ export const Recommendations = () => {
           )}
           {status === "error" && <p className="text-red-700">{error}</p>}
         </div>
-      </form>
+      </Form>
     </div>
   );
 };
