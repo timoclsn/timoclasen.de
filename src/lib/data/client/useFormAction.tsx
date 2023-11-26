@@ -2,14 +2,13 @@ import {
   ComponentPropsWithoutRef,
   RefObject,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { z } from "zod";
 import { InferValidationErrors, ServerFormAction } from "../types";
 import { initalState } from "./initialState";
-
-let wasPending = false;
 
 export const useFormAction = <
   TInputSchema extends z.ZodTypeAny,
@@ -26,6 +25,7 @@ export const useFormAction = <
     onSettled?: () => void;
   } = {},
 ) => {
+  const wasPendingRef = useRef(false);
   const [state, formAction] = useFormState(action, initalState);
 
   const [isRunning, setIsRunning] = useState(false);
@@ -39,20 +39,21 @@ export const useFormAction = <
     // We have to keep track of the previous pending state outside of the component
     // to be able to compare it with the current pending state because the reference
     // of pending also changes on every render.
-    const run = pending && !wasPending;
-    const settled = !pending && wasPending;
+    const hasUpdated = wasPendingRef.current !== pending;
 
     useEffect(() => {
-      if (run) {
-        setIsRunning(true);
-        options.onRunAction?.();
-        wasPending = true;
-      }
+      if (hasUpdated) {
+        setIsRunning(pending);
 
-      if (settled) {
-        setIsRunning(false);
-        options.onSettled?.();
-        wasPending = false;
+        if (pending) {
+          options.onRunAction?.();
+        }
+
+        if (!pending) {
+          options.onSettled?.();
+        }
+
+        wasPendingRef.current = pending;
       }
 
       // eslint-disable-next-line react-hooks/exhaustive-deps
