@@ -1,6 +1,7 @@
 import {
   ComponentPropsWithoutRef,
   RefObject,
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -65,14 +66,16 @@ export const useFormAction = <
     refProp?: RefObject<HTMLFormElement>;
   };
 
-  const Form = ({ children, refProp, ...rest }: FormProps) => {
+  const Form = useCallback(({ children, refProp, ...rest }: FormProps) => {
     return (
       <form ref={refProp} action={formAction} {...rest}>
         <FormStatus />
         {children}
       </form>
     );
-  };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (!state.id) return; // Only run on server response
