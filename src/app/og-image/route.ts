@@ -8,10 +8,6 @@ const fontRegular = fetch(
   new URL("../../../public/fonts/Inter-Regular.woff", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
-const fontBold = fetch(
-  new URL("../../../public/fonts/Inter-Bold.woff", import.meta.url),
-).then((res) => res.arrayBuffer());
-
 export const GET = async (request: Request) => {
   const { searchParams } = new URL(request.url);
 
@@ -36,12 +32,6 @@ export const GET = async (request: Request) => {
         data: await fontRegular,
         style: "normal",
         weight: 400,
-      },
-      {
-        name: "Inter",
-        data: await fontBold,
-        style: "normal",
-        weight: 700,
       },
     ],
   });
