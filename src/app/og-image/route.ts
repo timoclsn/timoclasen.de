@@ -1,4 +1,4 @@
-import { ImageResponse } from "@vercel/og";
+import { ImageResponse } from "next/og";
 import { createElement } from "react";
 import { OGImage } from "../../components/OGImage/OGImage";
 
@@ -6,6 +6,10 @@ export const runtime = "edge";
 
 const fontRegular = fetch(
   new URL("../../../public/fonts/Inter-Regular.woff", import.meta.url),
+).then((res) => res.arrayBuffer());
+
+const fontBold = fetch(
+  new URL("../../../public/fonts/Inter-Bold.woff", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
 export const GET = async (request: Request) => {
@@ -32,6 +36,12 @@ export const GET = async (request: Request) => {
         data: await fontRegular,
         style: "normal",
         weight: 400,
+      },
+      {
+        name: "Inter",
+        data: await fontBold,
+        style: "normal",
+        weight: 700,
       },
     ],
   });
