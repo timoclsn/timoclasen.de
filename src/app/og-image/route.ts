@@ -1,19 +1,20 @@
 import { ImageResponse } from "next/og";
+import { NextRequest } from "next/server";
 import { createElement } from "react";
 import { OGImage } from "../../components/OGImage/OGImage";
 
 export const runtime = "edge";
 
-const fontRegular = fetch(
-  new URL("../../../public/fonts/Inter-Regular.woff", import.meta.url),
-).then((res) => res.arrayBuffer());
-
-const fontBold = fetch(
-  new URL("../../../public/fonts/Inter-Bold.woff", import.meta.url),
-).then((res) => res.arrayBuffer());
-
-export const GET = async (request: Request) => {
+export const GET = async (request: NextRequest) => {
   const { searchParams } = new URL(request.url);
+
+  const fontRegular = fetch(
+    new URL("../../../public/fonts/Inter-Regular.woff", import.meta.url),
+  ).then((res) => res.arrayBuffer());
+
+  const fontBold = fetch(
+    new URL("../../../public/fonts/Inter-Bold.woff", import.meta.url),
+  ).then((res) => res.arrayBuffer());
 
   const name = searchParams.get("name");
   const title = searchParams.get("title");
