@@ -7,9 +7,9 @@ interface Props {
   image?: string;
 }
 
-export const OGImage = ({ name, title, subtitle, image }: Props) => {
+export function OGImage({ name, title, subtitle, image }: Props) {
   return (
-    <div
+    <section
       style={{
         display: "flex",
         flexDirection: "row",
@@ -70,7 +70,7 @@ export const OGImage = ({ name, title, subtitle, image }: Props) => {
             </p>
           )}
         </div>
-        <div
+        <footer
           style={{
             display: "flex",
             flexDirection: "row",
@@ -133,7 +133,7 @@ export const OGImage = ({ name, title, subtitle, image }: Props) => {
             </svg>
             <p>@timoclsn</p>
           </div>
-        </div>
+        </footer>
       </div>
       {image && (
         <img
@@ -147,6 +147,6 @@ export const OGImage = ({ name, title, subtitle, image }: Props) => {
           }}
         />
       )}
-    </div>
+    </section>
   );
-};
+}
