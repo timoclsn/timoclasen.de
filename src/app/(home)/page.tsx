@@ -20,7 +20,7 @@ const HomePage = () => {
       <RunningWidget />
       <PodcastsWidget />
       <MLWidget />
-      <NowPlaying />
+      {/* <NowPlaying /> */}
       <ContactWidget />
     </>
   );

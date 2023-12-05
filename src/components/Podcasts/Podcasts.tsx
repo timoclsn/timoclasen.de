@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { query } from "../../api/query";
 import { SearchParams } from "../../lib/types";
 import { PodcastFilter } from "./PodcastFilter";
@@ -14,14 +13,10 @@ export const Podcasts = async ({ searchParams }: Props) => {
   return (
     <div>
       <div className="mx-auto mb-6 max-w-prose">
-        <Suspense>
-          <PodcastsSearch />
-        </Suspense>
+        <PodcastsSearch />
       </div>
       <div className="mx-auto mb-16 max-w-prose">
-        <Suspense>
-          <PodcastFilter categories={categories} />
-        </Suspense>
+        <PodcastFilter categories={categories} />
       </div>
       <PodcastsList searchParams={searchParams} />
     </div>
