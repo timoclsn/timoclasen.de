@@ -23,7 +23,7 @@ export const RunningElement = ({ Icon, text, href, labels, nowrap }: Props) => {
           <Skeleton circle height="20px" width="20px" />
         )}
       </div>
-      <p className={`my-2${nowrap && " whitespace-nowrap"}`}>
+      <p className={`my-2${nowrap ? " whitespace-nowrap" : ""}`}>
         {href ? (
           <a href={href} target="_blank" rel="noopener noreferrer">
             {text}
