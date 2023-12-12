@@ -1,17 +1,22 @@
-import { Await } from "../../Await/Await";
-import { Skeleton } from "../../../design-system/Skeleton/Skeleton";
-import { RunningMapClient } from "./RunningMapClient";
+import { Suspense } from "react";
 import { query } from "../../../api/query";
+import { Skeleton } from "../../../design-system/Skeleton/Skeleton";
+import { ErrorBoundary } from "../../ErrorBoundary/ErrorBoundary";
+import { RunningMapClient } from "./RunningMapClient";
 
 export const RunningMap = () => {
-  const promise = query.sports.running();
   return (
-    <Await promise={promise} loading={<Loading />} error={<Error />}>
-      {(data) => {
-        return <RunningMapClient runningData={data} />;
-      }}
-    </Await>
+    <ErrorBoundary fallback={<Error />}>
+      <Suspense fallback={<Loading />}>
+        <RunningMapInner />
+      </Suspense>
+    </ErrorBoundary>
   );
+};
+
+const RunningMapInner = async () => {
+  const data = await query.sports.running();
+  return <RunningMapClient runningData={data} />;
 };
 
 const Loading = () => {

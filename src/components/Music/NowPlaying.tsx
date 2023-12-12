@@ -1,26 +1,22 @@
 import Image from "next/image";
+import { Suspense } from "react";
 import { query } from "../../api/query";
-import { NowPlaying } from "../../data/music/query";
 import { Skeleton } from "../../design-system/Skeleton/Skeleton";
-import { Await } from "../Await/Await";
+import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
 import { SoundBars } from "../SoundBars";
 
-export function NowPlaying() {
-  const promise = query.music.nowPlaying();
+export const NowPlaying = () => {
   return (
-    <Await promise={promise} loading={<Loading />} error={<Error />}>
-      {(data) => {
-        return <NowPlayingInner data={data} />;
-      }}
-    </Await>
+    <ErrorBoundary fallback={<Error />}>
+      <Suspense fallback={<Loading />}>
+        <NowPlayingInner />
+      </Suspense>
+    </ErrorBoundary>
   );
-}
+};
 
-interface NowPlayingInnerProps {
-  data?: NowPlaying;
-}
-
-const NowPlayingInner = ({ data }: NowPlayingInnerProps) => {
+const NowPlayingInner = async () => {
+  const data = await query.music.nowPlaying();
   return (
     <section className="flex justify-center">
       <div className="w-full space-y-4 rounded-3xl bg-dark bg-opacity-10 px-6 py-6 dark:bg-light dark:bg-opacity-10 sm:w-auto sm:min-w-[450px] xl:px-12 xl:py-12">
