@@ -7,9 +7,9 @@ interface Props {
   image?: string;
 }
 
-export function OGImage({ name, title, subtitle, image }: Props) {
+export const OGImage = ({ name, title, subtitle, image }: Props) => {
   return (
-    <section
+    <div
       style={{
         display: "flex",
         flexDirection: "row",
@@ -22,7 +22,7 @@ export function OGImage({ name, title, subtitle, image }: Props) {
     >
       <div
         style={{
-          padding: "32px",
+          padding: "44px 32px",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
@@ -37,40 +37,40 @@ export function OGImage({ name, title, subtitle, image }: Props) {
           }}
         >
           {name && (
-            <h1
+            <div
               style={{
                 fontSize: "48px",
-                marginBottom: "60px",
+                fontWeight: "bold",
+                marginBottom: "80px",
               }}
             >
               {name}
-            </h1>
+            </div>
           )}
           {title && (
-            <h2
+            <div
               style={{
                 fontSize: "48px",
-                fontWeight: "normal",
-                marginBottom: "16px",
+                marginBottom: "32px",
                 color: "#3E51F7",
               }}
             >
               {title}
-            </h2>
+            </div>
           )}
 
           {subtitle && (
-            <p
+            <div
               style={{
                 fontSize: "32px",
                 color: "grey",
               }}
             >
               {subtitle}
-            </p>
+            </div>
           )}
         </div>
-        <footer
+        <div
           style={{
             display: "flex",
             flexDirection: "row",
@@ -105,7 +105,7 @@ export function OGImage({ name, title, subtitle, image }: Props) {
               <line x1="2" y1="12" x2="22" y2="12"></line>
               <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
             </svg>
-            <p>https://timoclasen.de</p>
+            <div>https://timoclasen.de</div>
           </div>
           <div
             style={{
@@ -131,9 +131,9 @@ export function OGImage({ name, title, subtitle, image }: Props) {
             >
               <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
             </svg>
-            <p>@timoclsn</p>
+            <div>@timoclsn</div>
           </div>
-        </footer>
+        </div>
       </div>
       {image && (
         <img
@@ -147,6 +147,6 @@ export function OGImage({ name, title, subtitle, image }: Props) {
           }}
         />
       )}
-    </section>
+    </div>
   );
-}
+};

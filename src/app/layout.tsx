@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { cx } from "class-variance-authority";
 import { Inter } from "next/font/google";
 import { draftMode } from "next/headers";
@@ -78,6 +79,7 @@ const RootLayout = ({ children }: Props) => {
             </main>
             <Footer />
           </Providers>
+          <SpeedInsights />
         </body>
       </html>
     </>

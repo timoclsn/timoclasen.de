@@ -1,4 +1,5 @@
-import { ImageResponse } from "@vercel/og";
+import { ImageResponse } from "next/og";
+import { NextRequest } from "next/server";
 import { createElement } from "react";
 import { OGImage } from "../../components/OGImage/OGImage";
 
@@ -12,7 +13,7 @@ const fontBold = fetch(
   new URL("../../../public/fonts/Inter-Bold.woff", import.meta.url),
 ).then((res) => res.arrayBuffer());
 
-export const GET = async (request: Request) => {
+export const GET = async (request: NextRequest) => {
   const { searchParams } = new URL(request.url);
 
   const name = searchParams.get("name");
