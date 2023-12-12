@@ -40,6 +40,5 @@ export const turnOnBalcony = createFormAction({
     });
 
     revalidateTag("control-count");
-    revalidateTag("smarthome");
   },
 });
