@@ -17,7 +17,11 @@ export type Running = Awaited<ReturnType<typeof running>>;
 
 export const running = createQuery({
   cache: {
-    noStore: true,
+    keyParts: ["running"],
+    options: {
+      revalidate: 60,
+      tags: ["running"],
+    },
   },
   query: async () => {
     if (useCachedData) {

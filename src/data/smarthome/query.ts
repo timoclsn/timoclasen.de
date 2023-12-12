@@ -17,7 +17,11 @@ const cache = {
 
 export const data = createQuery({
   cache: {
-    noStore: true,
+    keyParts: ["smarthome"],
+    options: {
+      revalidate: 10,
+      tags: ["smarthome"],
+    },
   },
   query: async () => {
     if (useCachedData) {

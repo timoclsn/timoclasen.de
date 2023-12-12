@@ -10,7 +10,11 @@ export type NowPlaying = Awaited<ReturnType<typeof nowPlaying>>;
 
 export const nowPlaying = createQuery({
   cache: {
-    noStore: true,
+    keyParts: ["now-playing"],
+    options: {
+      revalidate: 60,
+      tags: ["now-playing"],
+    },
   },
   query: async () => {
     const nowPlaying = await getNowPlaying();
@@ -49,7 +53,11 @@ export const nowPlaying = createQuery({
 
 export const topArtists = createQuery({
   cache: {
-    noStore: true,
+    keyParts: ["top-artists"],
+    options: {
+      revalidate: 60,
+      tags: ["top-artists"],
+    },
   },
   query: async () => {
     const topArtists = await getTopArtists();
@@ -72,7 +80,11 @@ export const topArtists = createQuery({
 
 export const topTracks = createQuery({
   cache: {
-    noStore: true,
+    keyParts: ["top-tracks"],
+    options: {
+      revalidate: 60,
+      tags: ["top-tracks"],
+    },
   },
   query: async () => {
     const topTracks = await getTopTracks();
