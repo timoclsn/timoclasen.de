@@ -1,12 +1,14 @@
 import { Music, User } from "lucide-react";
-import { Suspense } from "react";
 import { query } from "../../api/query";
-import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
+import { Await } from "../Await/Await";
 import { MediaPreview } from "../MediaPreview/MediaPreview";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../Tabs";
 import { Track } from "../Track/Track";
 
 export const TopMusic = () => {
+  const topArtistsPromise = query.music.topArtists();
+  const topTracksPromise = query.music.topTracks();
+
   return (
     <Tabs defaultValue="1">
       <TabsList aria-label="Meine Lieblingsmusik">
@@ -36,62 +38,60 @@ export const TopMusic = () => {
         </TabsTrigger>
       </TabsList>
       <TabsContent value="1">
-        <ErrorBoundary fallback={<Error />}>
-          <Suspense fallback={<Loading />}>
-            <TopArtists />
-          </Suspense>
-        </ErrorBoundary>
+        <Await
+          promise={topArtistsPromise}
+          loading={<Loading />}
+          error={<Error />}
+        >
+          {(topArtists) => {
+            return (
+              <ul className="space-y-20">
+                {topArtists.map((artist, index) => (
+                  <li key={index}>
+                    <MediaPreview
+                      title={artist.name}
+                      no={index + 1}
+                      image={artist.image}
+                      BylineIcon={Music}
+                      byline={artist.genres.join(", ")}
+                      subline={`Follower: ${artist.followers}`}
+                      url={artist.url}
+                    />
+                  </li>
+                ))}
+              </ul>
+            );
+          }}
+        </Await>
       </TabsContent>
       <TabsContent value="2">
-        <ErrorBoundary fallback={<Error />}>
-          <Suspense fallback={<Loading />}>
-            <TopTracks />
-          </Suspense>
-        </ErrorBoundary>
+        <Await
+          promise={topTracksPromise}
+          loading={<Loading />}
+          error={<Error />}
+        >
+          {(topTracks) => {
+            return (
+              <ul className="space-y-20">
+                {topTracks.map((track, index) => (
+                  <li key={index}>
+                    <MediaPreview
+                      title={track.name}
+                      no={index + 1}
+                      image={track.image}
+                      BylineIcon={User}
+                      byline={track.artistName}
+                      subline={track.albumName}
+                      url={track.url}
+                    />
+                  </li>
+                ))}
+              </ul>
+            );
+          }}
+        </Await>
       </TabsContent>
     </Tabs>
-  );
-};
-
-const TopArtists = async () => {
-  const topArtists = await query.music.topArtists();
-  return (
-    <ul className="space-y-20">
-      {topArtists.map((artist, index) => (
-        <li key={index}>
-          <MediaPreview
-            title={artist.name}
-            no={index + 1}
-            image={artist.image}
-            BylineIcon={Music}
-            byline={artist.genres.join(", ")}
-            subline={`Follower: ${artist.followers}`}
-            url={artist.url}
-          />
-        </li>
-      ))}
-    </ul>
-  );
-};
-
-const TopTracks = async () => {
-  const topTracks = await query.music.topTracks();
-  return (
-    <ul className="space-y-20">
-      {topTracks.map((track, index) => (
-        <li key={index}>
-          <MediaPreview
-            title={track.name}
-            no={index + 1}
-            image={track.image}
-            BylineIcon={User}
-            byline={track.artistName}
-            subline={track.albumName}
-            url={track.url}
-          />
-        </li>
-      ))}
-    </ul>
   );
 };
 

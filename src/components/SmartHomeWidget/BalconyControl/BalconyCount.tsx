@@ -1,26 +1,21 @@
-import { Suspense } from "react";
-import { query } from "../../../api/query";
+import { Await } from "../../Await/Await";
 import { Skeleton } from "../../../design-system/Skeleton/Skeleton";
-import { ErrorBoundary } from "../../ErrorBoundary/ErrorBoundary";
+import { query } from "../../../api/query";
 
 export const BalconyCount = () => {
+  const promise = query.smarthome.controlCount();
   return (
     <div className="flex justify-center">
       <p className="whitespace-nowrap text-sm opacity-60">
-        <ErrorBoundary fallback={<Error />}>
-          <Suspense fallback={<Loading />}>
-            <BalconyCountInner />
-          </Suspense>
-        </ErrorBoundary>
+        <Await promise={promise} loading={<Loading />} error={<Error />}>
+          {(data) => {
+            return (
+              <>{`Zähler: Rot ${data.red} | Grün ${data.green} | Blau ${data.blue}`}</>
+            );
+          }}
+        </Await>
       </p>
     </div>
-  );
-};
-
-const BalconyCountInner = async () => {
-  const data = await query.smarthome.controlCount();
-  return (
-    <>{`Zähler: Rot ${data.red} | Grün ${data.green} | Blau ${data.blue}`}</>
   );
 };
 

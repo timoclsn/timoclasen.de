@@ -8,68 +8,62 @@ import {
   Umbrella,
   Zap,
 } from "lucide-react";
-import { Suspense } from "react";
-import { query } from "../../../api/query";
-import { ErrorBoundary } from "../../ErrorBoundary/ErrorBoundary";
+import { Await } from "../../Await/Await";
 import { WidgetLayout } from "../../Widget/WidgetLayout";
 import { DashboardElement } from "./DashboardElement";
+import { query } from "../../../api/query";
 
 export const Dashboard = () => {
+  const promise = query.smarthome.data();
   return (
-    <ErrorBoundary fallback={<Error />}>
-      <Suspense fallback={<Loading />}>
-        <DashboardInner />
-      </Suspense>
-    </ErrorBoundary>
-  );
-};
-
-const DashboardInner = async () => {
-  const data = await query.smarthome.data();
-
-  return (
-    <WidgetLayout separate transparent>
-      <div className="space-y-6 sm:space-y-8">
-        <DashboardElement
-          Icon={Thermometer}
-          title="Raumtemperatur"
-          value={data.temperature}
-        />
-        <DashboardElement
-          Icon={Droplet}
-          title="Luftfeuchtigkeit"
-          value={data.humidity}
-        />
-        <DashboardElement
-          Icon={Zap}
-          title="Energieverbrauch"
-          value={data.energy}
-        />
-      </div>
-      <div className="-mt-6 space-y-6 sm:mt-0 sm:space-y-8">
-        <DashboardElement
-          Icon={data.lights === "An" ? ToggleRight : ToggleLeft}
-          title="Lichter"
-          value={data.lights}
-        />
-        <DashboardElement
-          Icon={Thermometer}
-          title="Außentemperatur"
-          value={data.outsideTemperature}
-        />
-        <DashboardElement
-          Icon={
-            data.rain === "Es regnet"
-              ? Umbrella
-              : data.rain === "Es schneit"
-                ? CloudSnow
-                : Sun
-          }
-          title="Regensensor"
-          value={data.rain}
-        />
-      </div>
-    </WidgetLayout>
+    <Await promise={promise} loading={<Loading />} error={<Error />}>
+      {(data) => {
+        return (
+          <WidgetLayout separate transparent>
+            <div className="space-y-6 sm:space-y-8">
+              <DashboardElement
+                Icon={Thermometer}
+                title="Raumtemperatur"
+                value={data.temperature}
+              />
+              <DashboardElement
+                Icon={Droplet}
+                title="Luftfeuchtigkeit"
+                value={data.humidity}
+              />
+              <DashboardElement
+                Icon={Zap}
+                title="Energieverbrauch"
+                value={data.energy}
+              />
+            </div>
+            <div className="-mt-6 space-y-6 sm:mt-0 sm:space-y-8">
+              <DashboardElement
+                Icon={data.lights === "An" ? ToggleRight : ToggleLeft}
+                title="Lichter"
+                value={data.lights}
+              />
+              <DashboardElement
+                Icon={Thermometer}
+                title="Außentemperatur"
+                value={data.outsideTemperature}
+              />
+              <DashboardElement
+                Icon={
+                  data.rain === "Es regnet"
+                    ? Umbrella
+                    : data.rain === "Es schneit"
+                    ? CloudSnow
+                    : Sun
+                }
+                title="Regensensor"
+                value={data.rain}
+              />
+            </div>
+          </WidgetLayout>
+        );
+      }}
+    </Await>
   );
 };
 
