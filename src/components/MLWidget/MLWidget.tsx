@@ -19,14 +19,14 @@ export const MLWidget = async () => {
           sizes="90vw"
           quality={90}
           alt={enhancedMlImage.description}
-          className="hidden rounded-3xl sm:block"
+          className="rounded-3xl sm:block"
           blurDataURL={enhancedMlImage.blurDataURL}
           placeholder="blur"
         />
       </div>
-      <div className="absolute left-0 top-0 flex h-full w-full flex-col justify-end rounded-3xl px-6 py-12 text-dark xl:px-12 xl:py-20">
+      <div className="absolute left-0 top-0 flex h-full w-full flex-col justify-end rounded-3xl px-6 py-4 text-dark sm:py-12 xl:px-12 xl:py-20">
         <div>
-          <h2 className="mb-2 text-2xl font-bold sm:text-3xl md:mb-2 md:text-4xl lg:text-5xl">
+          <h2 className="text-2xl font-bold sm:text-3xl md:mb-2 md:text-4xl lg:text-5xl">
             Makers League e. V.
           </h2>
           <Button
