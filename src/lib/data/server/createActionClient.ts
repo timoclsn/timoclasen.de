@@ -1,11 +1,8 @@
+import { isNotFoundError } from "next/dist/client/components/not-found";
+import { isRedirectError } from "next/dist/client/components/redirect";
 import { z } from "zod";
 import { CreateClientOptions, MaybePromise, ServerAction } from "../types";
-import {
-  getErrorMessage,
-  id,
-  isNextNotFoundError,
-  isNextRedirectError,
-} from "../utils";
+import { getErrorMessage, id } from "../utils";
 
 export const createActionClient = <Context>(
   createClientOpts?: CreateClientOptions<Context>,
@@ -59,15 +56,10 @@ export const createActionClient = <Context>(
           error: null,
         };
       } catch (error) {
-        const errorMessage = getErrorMessage(error);
-
         // The next/navigation functions (redirect() and notFound()) operate by deliberately triggering an error,
         // which will then be handled internally by Next.js. In this specific scenario,
         // we must intentionally propagate the error further.
-        if (
-          isNextRedirectError(errorMessage) ||
-          isNextNotFoundError(errorMessage)
-        ) {
+        if (isRedirectError(error) || isNotFoundError(error)) {
           throw error;
         }
 
@@ -76,7 +68,7 @@ export const createActionClient = <Context>(
           id: id(),
           data: null,
           validationErrors: null,
-          error: errorMessage,
+          error: getErrorMessage(error),
         };
       }
     };

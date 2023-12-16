@@ -16,22 +16,6 @@ export const getErrorMessage = (error: unknown): string => {
 };
 
 /**
- * Checks if the given message is a "NEXT_REDIRECT" error.
- * @param message - The error message to check.
- * @returns True if the message is a "NEXT_REDIRECT" error, false otherwise.
- */
-export const isNextRedirectError = (message: string) =>
-  message === "NEXT_REDIRECT";
-
-/**
- * Checks if the given message is a 'NEXT_NOT_FOUND' error.
- * @param message - The error message to check.
- * @returns True if the message is a 'NEXT_NOT_FOUND' error, false otherwise.
- */
-export const isNextNotFoundError = (message: string) =>
-  message === "NEXT_NOT_FOUND";
-
-/**
  * Generates a unique identifier based on the current timestamp.
  * @returns The generated identifier.
  */
