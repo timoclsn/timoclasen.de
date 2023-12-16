@@ -34,6 +34,23 @@ export const useFormAction = <
   const isError =
     state.status === "error" || state.status === "validationError";
 
+  useEffect(() => {
+    if (!state.id) return; // Only run on server response
+
+    if (isSuccess) {
+      options.onSuccess?.(state.data);
+    }
+
+    if (isError) {
+      options.onError?.({
+        error: state.error,
+        validationErrors: state.validationErrors,
+      });
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state.id]);
+
   const FormStatus = () => {
     const { pending } = useFormStatus();
 
@@ -43,22 +60,21 @@ export const useFormAction = <
     const hasUpdated = wasPendingRef.current !== pending;
 
     useEffect(() => {
-      if (hasUpdated) {
-        setIsRunning(pending);
+      setIsRunning(pending);
 
-        if (pending) {
-          options.onRunAction?.();
-        }
-
-        if (!pending) {
-          options.onSettled?.();
-        }
-
-        wasPendingRef.current = pending;
+      if (pending) {
+        options.onRunAction?.();
       }
 
+      if (!pending) {
+        options.onSettled?.();
+      }
+
+      wasPendingRef.current = pending;
+
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pending]);
+    }, [hasUpdated]);
+
     return null;
   };
 
@@ -76,23 +92,6 @@ export const useFormAction = <
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  useEffect(() => {
-    if (!state.id) return; // Only run on server response
-
-    if (isSuccess) {
-      options.onSuccess?.(state.data);
-    }
-
-    if (isError) {
-      options.onError?.({
-        error: state.error,
-        validationErrors: state.validationErrors,
-      });
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state.id]);
 
   return {
     Form,
