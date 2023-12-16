@@ -24,9 +24,9 @@ export const LCDWidget = async () => {
           className="object-cover"
         />
       </div>
-      <div className="absolute left-0 top-0 flex h-full w-full flex-col justify-end rounded-3xl bg-gradient-to-t from-[rgba(0,0,0,0.3)] px-6 py-12 text-light xl:px-12 xl:py-20">
+      <div className="absolute left-0 top-0 flex h-full w-full flex-col justify-end rounded-3xl bg-gradient-to-t from-[rgba(0,0,0,0.3)] px-6 py-4 text-light sm:py-12 xl:px-12 xl:py-20">
         <div className="text-opacity-100">
-          <h2 className="mb-1 text-2xl font-bold sm:text-3xl md:mb-2 md:text-4xl lg:text-5xl">
+          <h2 className="text-2xl font-bold sm:text-3xl md:mb-2 md:text-4xl lg:text-5xl">
             Life Centered Design.Net
           </h2>
           <p className="mb-2 text-sm sm:text-base md:mb-4 md:text-lg lg:text-xl xl:text-2xl">
