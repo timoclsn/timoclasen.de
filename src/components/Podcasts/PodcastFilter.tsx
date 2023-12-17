@@ -10,7 +10,7 @@ interface Props {
 }
 
 export const PodcastFilter = ({ categories }: Props) => {
-  const { searchParams, updateUrlLWithSearchParams, isPending } =
+  const { searchParams, updateUrlWithSearchParams, isPending } =
     useSearchParams();
 
   const filterRaw = searchParams.get("filter");
@@ -41,7 +41,7 @@ export const PodcastFilter = ({ categories }: Props) => {
       }
     }
 
-    updateUrlLWithSearchParams();
+    updateUrlWithSearchParams();
 
     track("Podcast Filter", {
       name,
@@ -54,7 +54,7 @@ export const PodcastFilter = ({ categories }: Props) => {
     searchParams.delete("favorites");
     searchParams.delete("filter");
     searchParams.delete("limit");
-    updateUrlLWithSearchParams();
+    updateUrlWithSearchParams();
     track("Clear Podcast Filter");
   };
 

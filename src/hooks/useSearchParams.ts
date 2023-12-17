@@ -12,7 +12,7 @@ export const useSearchParams = () => {
   const nextSearchParams = useNextSearchParams();
   const searchParams = new URLSearchParams(nextSearchParams.toString());
 
-  const updateUrlLWithSearchParams = () => {
+  const updateUrlWithSearchParams = () => {
     const searchParamsString = searchParams.toString();
     startTransition(() => {
       replace(
@@ -26,7 +26,7 @@ export const useSearchParams = () => {
 
   return {
     searchParams,
-    updateUrlLWithSearchParams,
+    updateUrlWithSearchParams,
     isPending,
   };
 };

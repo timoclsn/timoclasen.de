@@ -7,7 +7,7 @@ import { useSearchParams } from "../../hooks/useSearchParams";
 import { track } from "../../lib/tracking";
 
 export const PodcastsSearch = () => {
-  const { searchParams, updateUrlLWithSearchParams, isPending } =
+  const { searchParams, updateUrlWithSearchParams, isPending } =
     useSearchParams();
   const search = searchParams.get("search") ?? "";
 
@@ -15,7 +15,7 @@ export const PodcastsSearch = () => {
     (event: ChangeEvent<HTMLInputElement>) => {
       const search = event.target.value;
       searchParams.set("search", search);
-      updateUrlLWithSearchParams();
+      updateUrlWithSearchParams();
       track("Podcast Search", {
         search,
       });
