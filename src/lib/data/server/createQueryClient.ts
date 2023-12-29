@@ -17,50 +17,61 @@ export const createQueryClient = <Context>(
   const createQuery = <
     TInputSchema extends z.ZodTypeAny,
     TResponse extends any,
-  >(querynBuilderOpts: {
+  >(queryBuilderOpts: {
     input?: TInputSchema;
     query: (queryArgs: {
       input: z.output<TInputSchema>;
       ctx: Context;
     }) => MaybePromise<TResponse>;
-    cache?: CacheOptions;
+    cache?:
+      | CacheOptions
+      | ((queryArgs: { input: z.output<TInputSchema> }) => CacheOptions);
   }) => {
+    let cacheOptions: CacheOptions | undefined;
+
     const query: ServerQuery<TInputSchema, TResponse> = async (
       ...inputArgs
     ) => {
-      if (querynBuilderOpts.cache?.noStore) {
-        noStore();
-      }
-
       const [input] = inputArgs;
 
       // Validate input if schema is provided
       let parsedInput = input;
-      if (querynBuilderOpts.input) {
-        parsedInput = querynBuilderOpts.input.parse(input);
+      if (queryBuilderOpts.input) {
+        parsedInput = queryBuilderOpts.input.parse(input);
       }
 
-      // Run middleware if provided and get context
-      const ctx = (await createClientOpts?.middleware?.()) ?? ({} as Context);
+      // Resolve cache options
+      cacheOptions =
+        typeof queryBuilderOpts.cache === "function"
+          ? queryBuilderOpts.cache({ input: parsedInput })
+          : queryBuilderOpts.cache;
 
-      // Call query
-      return await querynBuilderOpts.query({
-        input: parsedInput,
-        ctx,
-      });
+      if (cacheOptions?.noStore) {
+        noStore();
+      }
+
+      // Wrapper function to allow for caching
+      const innerQuery = async () => {
+        // Run middleware if provided and get context
+        const ctx = (await createClientOpts?.middleware?.()) ?? ({} as Context);
+
+        // Call query
+        return await queryBuilderOpts.query({
+          input: parsedInput,
+          ctx,
+        });
+      };
+
+      if (cacheOptions?.keyParts || cacheOptions?.options) {
+        return await nextCache(
+          innerQuery,
+          cacheOptions.keyParts,
+          cacheOptions.options,
+        )();
+      }
+
+      return await innerQuery();
     };
-
-    // Populate data in next data cache if cache options are provided
-    if (querynBuilderOpts.cache?.keyParts || querynBuilderOpts.cache?.options) {
-      return reactCache(
-        nextCache(
-          // @ts-expect-error: Couldn't find a way to type this properly
-          (...args) => query(...args),
-          querynBuilderOpts.cache.keyParts,
-          querynBuilderOpts.cache.options,
-        ),
-      );
-    }
 
     return reactCache(query);
   };
