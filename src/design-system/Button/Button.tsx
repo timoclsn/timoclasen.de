@@ -1,50 +1,45 @@
-import type { VariantProps } from "class-variance-authority";
-import { cva } from "class-variance-authority";
+import { VariantProps, cva } from "cva";
 import type { ReactNode } from "react";
 import { Children, forwardRef } from "react";
 import buttonStyles from "./Button.module.css";
 
-const buttonWrapper = cva(
-  "group focus-visible:outline-none active:scale-[0.98] transition-transform duration-100",
-  {
-    variants: {
-      variant: {
-        solid: [buttonStyles.solidAnimation],
-        link: [buttonStyles.linkAnimation],
-        ghost: null,
-      },
-      size: {
-        normal: null,
-        small: null,
-      },
-      fullWidth: {
-        true: "w-full",
-      },
+const buttonWrapper = cva({
+  base: "group focus-visible:outline-none active:scale-[0.98] transition-transform duration-100",
+  variants: {
+    variant: {
+      solid: buttonStyles.solidAnimation,
+      link: buttonStyles.linkAnimation,
+      ghost: null,
+    },
+    size: {
+      normal: null,
+      small: null,
+    },
+    fullWidth: {
+      true: "w-full",
     },
   },
-);
+});
 
-const buttonContent = cva(
-  "inline-flex items-center justify-center icon-md gap-2 cursor-pointer group-disabled:opacity-50",
-  {
-    variants: {
-      variant: {
-        solid:
-          "rounded-full text-light bg-highlight dark:bg-highlight-dark group-focus-visible:ring-2 group-focus-visible:ring-inset group-focus-visible:ring-dark dark:group-focus-visible:ring-light",
-        ghost:
-          "rounded-full ring-2 ring-inset ring-dark dark:ring-light group-hover:bg-dark dark:group-hover:bg-light group-hover:bg-opacity-20 dark:group-hover:bg-opacity-20 group-focus-visible:ring-highlight dark:group-focus-visible:ring-highlight-dark",
-        link: "group-hover:opacity-80 group-focus-visible:underline !p-0",
-      },
-      size: {
-        normal: "px-8 py-4 font-bold",
-        small: "px-4 py-2",
-      },
-      fullWidth: {
-        true: "w-full",
-      },
+const buttonContent = cva({
+  base: "inline-flex items-center justify-center icon-md gap-2 cursor-pointer group-disabled:opacity-50",
+  variants: {
+    variant: {
+      solid:
+        "rounded-full text-light bg-highlight dark:bg-highlight-dark group-focus-visible:ring-2 group-focus-visible:ring-inset group-focus-visible:ring-dark dark:group-focus-visible:ring-light",
+      ghost:
+        "rounded-full ring-2 ring-inset ring-dark dark:ring-light group-hover:bg-dark dark:group-hover:bg-light group-hover:bg-opacity-20 dark:group-hover:bg-opacity-20 group-focus-visible:ring-highlight dark:group-focus-visible:ring-highlight-dark",
+      link: "group-hover:opacity-80 group-focus-visible:underline !p-0",
+    },
+    size: {
+      normal: "px-8 py-4 font-bold",
+      small: "px-4 py-2",
+    },
+    fullWidth: {
+      true: "w-full",
     },
   },
-);
+});
 
 type ButtonVariantProps = VariantProps<typeof buttonContent>;
 
