@@ -1,4 +1,4 @@
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import { ElementType } from "react";
 import { markdownToHTML } from "../../lib/text";
 

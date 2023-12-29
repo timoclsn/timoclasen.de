@@ -1,9 +1,8 @@
 "use client";
 
 import * as TabsPrimitive from "@radix-ui/react-tabs";
+import { cx } from "cva";
 import type { ComponentProps } from "react";
-
-import { cx } from "class-variance-authority";
 import styles from "./Tabs.module.css";
 
 export function Tabs({

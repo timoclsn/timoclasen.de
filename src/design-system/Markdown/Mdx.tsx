@@ -1,5 +1,5 @@
 import { Code } from "bright";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import Image from "next/image";
 import Link from "next/link";

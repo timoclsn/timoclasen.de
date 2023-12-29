@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority";
+import { cva } from "cva";
 import styles from "./SoundBars.module.css";
 
 interface Props {
@@ -7,7 +7,8 @@ interface Props {
 }
 
 export function SoundBars({ isPlaying, color }: Props) {
-  const barVariants = cva(["w-[3px]", "rounded-sm", styles.soundBars], {
+  const barVariants = cva({
+    base: ["w-[3px] rounded-sm", styles.soundBars],
     variants: {
       isPlaying: {
         true: styles.isPlaying,

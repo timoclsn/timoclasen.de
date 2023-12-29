@@ -1,12 +1,12 @@
 "use client";
 
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import { Moon, Sun } from "lucide-react";
+import { Skeleton } from "../../design-system/Skeleton/Skeleton";
+import { useIsMounted } from "../../hooks/useIsMounted";
 import { track } from "../../lib/tracking";
 import { useTheme } from "../ThemeProvider/ThemeProvider";
-import { useIsMounted } from "../../hooks/useIsMounted";
 import styles from "./SwitchMode.module.css";
-import { Skeleton } from "../../design-system/Skeleton/Skeleton";
 
 export const SwitchMode = () => {
   const { darkMode, setDarkMode } = useTheme();
