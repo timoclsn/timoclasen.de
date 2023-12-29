@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority";
+import { cva } from "cva";
 import type { ReactNode } from "react";
 
 interface Props {
@@ -26,27 +26,21 @@ export const WidgetLayout = ({
     ? "text-light dark:text-light"
     : "text-dark dark:text-light";
 
-  const containerVariants = cva(
-    [
-      "flex",
-      "flex-col",
-      "sm:flex-row",
-      "sm:gap-12",
-      "md:gap-16",
-      "lg:gap-24",
+  const containerVariants = cva({
+    base: [
+      "flex flex-col sm:flex-row sm:gap-12 md:gap-16 lg:gap-24",
       textColor,
     ],
-    {
-      variants: {
-        separate: {
-          true: "space-y-12 sm:space-y-0",
-          false: `rounded-3xl ${bgColor}`,
-        },
+    variants: {
+      separate: {
+        true: "space-y-12 sm:space-y-0",
+        false: `rounded-3xl ${bgColor}`,
       },
     },
-  );
+  });
 
-  const widgetVariants = cva("flex-1", {
+  const widgetVariants = cva({
+    base: "flex-1",
     variants: {
       separate: {
         true: `rounded-3xl ${bgColor}`,

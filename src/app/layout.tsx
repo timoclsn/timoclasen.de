@@ -1,5 +1,5 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
 import { Inter } from "next/font/google";
 import { draftMode } from "next/headers";
 import Script from "next/script";

@@ -1,13 +1,13 @@
 "use client";
 
-import { cx } from "class-variance-authority";
+import { cx } from "cva";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
 import { Container } from "../../design-system/Container/Container";
-import { NavigationLink } from "./NavigationLink";
 import { SwitchMode } from "../SwitchMode/SwitchMode";
 import styles from "./Navigation.module.css";
+import { NavigationLink } from "./NavigationLink";
 
 export const Navigation = () => {
   const [menuOpen, setMenuOpen] = useState(false);
