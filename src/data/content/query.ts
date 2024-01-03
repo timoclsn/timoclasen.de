@@ -348,6 +348,8 @@ export const photos = createQuery({
             image {
               url
               description
+              width
+              height
             }
           }
         }
@@ -361,6 +363,8 @@ export const photos = createQuery({
                 image: z.object({
                   url: z.string().url(),
                   description: z.string(),
+                  width: z.number(),
+                  height: z.number(),
                 }),
               }),
             ),
