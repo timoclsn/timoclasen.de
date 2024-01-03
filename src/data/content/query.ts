@@ -333,3 +333,42 @@ export const cvEntries = createQuery({
     return response.data.cvEntryCollection.items;
   },
 });
+
+export const photos = createQuery({
+  query: async () => {
+    const response = await queryContent(
+      `{
+        photoCollection(preview: false) {
+          items {
+            sys {
+              id
+              publishedVersion
+            }
+            title
+            image {
+              url
+              description
+            }
+          }
+        }
+      }`,
+      z.object({
+        data: z.object({
+          photoCollection: z.object({
+            items: z.array(
+              z.object({
+                title: z.string(),
+                image: z.object({
+                  url: z.string().url(),
+                  description: z.string(),
+                }),
+              }),
+            ),
+          }),
+        }),
+      }),
+    );
+
+    return response.data.photoCollection.items;
+  },
+});

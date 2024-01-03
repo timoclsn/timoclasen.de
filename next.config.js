@@ -6,7 +6,7 @@ const config = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "images.ctfassets.net",
+        hostname: "*.ctfassets.net",
       },
       {
         protocol: "https",
