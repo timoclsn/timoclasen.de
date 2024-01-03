@@ -7,7 +7,15 @@ const sitemap = async (): Promise<MetadataRoute.Sitemap> => {
   const origin = "https://timoclasen.de";
   const buildUrl = (path: string) => `${origin}${path}`;
 
-  const pages = ["/", "/ueber", "/blog", "/podcasts", "/musik", "/impressum"];
+  const pages = [
+    "/",
+    "/ueber",
+    "/blog",
+    "/podcasts",
+    "/musik",
+    "/fotografie",
+    "/impressum",
+  ];
 
   const blogPosts = await query.content.blogPosts();
 
