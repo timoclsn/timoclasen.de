@@ -340,7 +340,7 @@ export const photos = createQuery({
   query: async () => {
     const response = await queryContent(
       `{
-        photoCollection(preview: false) {
+        photoCollection(order: [date_DESC], preview: false) {
           items {
             sys {
               id

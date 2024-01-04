@@ -6,6 +6,7 @@ import { Button } from "../../design-system/Button";
 
 export const PhotographyWidget = async () => {
   const photos = await query.content.photos();
+  const photosToDisplay = photos.slice(0, 10);
 
   return (
     <section id="photos">
@@ -27,7 +28,7 @@ export const PhotographyWidget = async () => {
         </div>
       </div>
       <ul className="flex h-[160px] gap-4 overflow-x-scroll sm:h-[320px]">
-        {photos.map((photo) => (
+        {photosToDisplay.map((photo) => (
           <li key={photo.title} className="h-full flex-none">
             <Image
               src={photo.image.url}
