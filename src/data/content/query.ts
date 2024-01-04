@@ -334,6 +334,8 @@ export const cvEntries = createQuery({
   },
 });
 
+export type Photo = Awaited<ReturnType<typeof photos>>[number];
+
 export const photos = createQuery({
   query: async () => {
     const response = await queryContent(
@@ -351,6 +353,13 @@ export const photos = createQuery({
               width
               height
             }
+            date
+            camera
+            lens
+            iso
+            focalLength
+            aperture
+            exposureTime
           }
         }
       }`,
@@ -366,6 +375,13 @@ export const photos = createQuery({
                   width: z.number(),
                   height: z.number(),
                 }),
+                date: z.string(),
+                camera: z.string(),
+                lens: z.string(),
+                iso: z.number(),
+                focalLength: z.number(),
+                aperture: z.number(),
+                exposureTime: z.string(),
               }),
             ),
           }),
