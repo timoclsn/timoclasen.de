@@ -16,7 +16,7 @@ export const PhotoGridItem = ({ photo }: Props) => {
         alt={photo.image.description}
         width={photo.image.width}
         height={photo.image.height}
-        className="relative"
+        className="relative h-auto w-full"
       />
       <PhotoGridItemOverlay>
         <div className="flex border-b-[1px] border-dark/30 p-1">
