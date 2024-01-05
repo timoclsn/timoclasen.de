@@ -60,7 +60,7 @@ export const PhotoGridItemOverlay = ({ children }: Props) => {
           buttonRef.current?.focus();
         }}
         onBlur={() => {
-          hideOverlay();
+          // hideOverlay();
         }}
       />
     </>
