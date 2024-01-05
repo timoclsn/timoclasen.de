@@ -3,6 +3,7 @@
 import { cva } from "cva";
 import { ReactNode, useRef, useState } from "react";
 import { useHover } from "react-aria";
+import { flushSync } from "react-dom";
 
 const styles = cva({
   base: "transition absolute bottom-2 left-2 right-2 rounded-md border-[1px] border-dark/30 bg-light/30 text-[10px] leading-none backdrop-blur-md dark:bg-dark/30 2xl:text-sm ease-in-out",
@@ -53,7 +54,9 @@ export const PhotoGridItemOverlay = ({ children }: Props) => {
               block: "nearest",
             });
           }
-          toggleOverlay();
+          flushSync(() => {
+            toggleOverlay();
+          });
           buttonRef.current?.focus();
         }}
         onBlur={() => {
