@@ -26,7 +26,7 @@ export const PodcastsWidget = async () => {
           </Link>
         </div>
       </div>
-      <ul className="flex snap-x justify-between gap-4 overflow-x-scroll">
+      <ul className="flex snap-x gap-4 overflow-x-scroll">
         {podcasts.map((podcast) => (
           <li key={podcast.title} className="flex-none snap-center">
             <a

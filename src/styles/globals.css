@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
   a {
     transition: text-underline-offset 300ms;
     @apply underline-offset-4;

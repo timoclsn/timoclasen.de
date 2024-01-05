@@ -333,3 +333,62 @@ export const cvEntries = createQuery({
     return response.data.cvEntryCollection.items;
   },
 });
+
+export type Photo = Awaited<ReturnType<typeof photos>>[number];
+
+export const photos = createQuery({
+  query: async () => {
+    const response = await queryContent(
+      `{
+        photoCollection(order: [date_DESC], preview: false) {
+          items {
+            sys {
+              id
+              publishedVersion
+            }
+            title
+            image {
+              url
+              description
+              width
+              height
+            }
+            date
+            camera
+            lens
+            iso
+            focalLength
+            aperture
+            exposureTime
+          }
+        }
+      }`,
+      z.object({
+        data: z.object({
+          photoCollection: z.object({
+            items: z.array(
+              z.object({
+                title: z.string(),
+                image: z.object({
+                  url: z.string().url(),
+                  description: z.string(),
+                  width: z.number(),
+                  height: z.number(),
+                }),
+                date: z.string(),
+                camera: z.string(),
+                lens: z.string(),
+                iso: z.number(),
+                focalLength: z.number(),
+                aperture: z.number(),
+                exposureTime: z.string(),
+              }),
+            ),
+          }),
+        }),
+      }),
+    );
+
+    return response.data.photoCollection.items;
+  },
+});

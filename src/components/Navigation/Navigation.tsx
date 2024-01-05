@@ -64,6 +64,11 @@ export const Navigation = () => {
                 <NavigationLink onClick={closeMenu}>Musik</NavigationLink>
               </Link>
             </li>
+            <li>
+              <Link href="/fotografie" passHref legacyBehavior>
+                <NavigationLink onClick={closeMenu}>Fotografie</NavigationLink>
+              </Link>
+            </li>
           </ul>
           <div className="flex flex-1 justify-end sm:hidden sm:flex-initial">
             <button
