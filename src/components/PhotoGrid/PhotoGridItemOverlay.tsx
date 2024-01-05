@@ -47,7 +47,6 @@ export const PhotoGridItemOverlay = ({ children }: Props) => {
         className="absolute left-0 top-0 h-full w-full outline-offset-4 outline-highlight focus-visible:outline-2 dark:outline-highlight-dark"
         aria-label={isVisible ? "Hide overlay" : "Show Overlay"}
         onClick={() => {
-          buttonRef.current?.focus();
           if (!isVisible && !isHovered) {
             overlayRef.current?.scrollIntoView({
               behavior: "smooth",
@@ -55,6 +54,7 @@ export const PhotoGridItemOverlay = ({ children }: Props) => {
             });
           }
           toggleOverlay();
+          buttonRef.current?.focus();
         }}
         onBlur={() => {
           hideOverlay();
