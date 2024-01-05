@@ -19,9 +19,9 @@ interface Props {
 }
 
 export const PhotoGridItemOverlay = ({ children }: Props) => {
+  const clickedRef = useRef(false);
   const overlayRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const clickedRef = useRef(false);
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleOverlay = () => setIsVisible((prev) => !prev);
@@ -45,10 +45,25 @@ export const PhotoGridItemOverlay = ({ children }: Props) => {
       <button
         ref={buttonRef}
         {...hoverProps}
-        className="absolute left-0 top-0 h-full w-full outline-offset-4 outline-highlight focus-visible:outline-2 dark:outline-highlight-dark"
+        className="absolute left-0 top-0 h-full w-full cursor-default outline-offset-4 outline-highlight focus-visible:outline-2 dark:outline-highlight-dark"
         aria-label={isVisible ? "Hide overlay" : "Show Overlay"}
-        onClick={() => {
+        onMouseDown={() => {
+          // Workaround for iOS Safari issue
+          // iOS doesn't focus the button on click
+          // so we need to focus it manually in onClick
+          // but this triggers the onBlur event as it blurs and than focuses again
+          // so we need to set a flag to prevent the onBlur event
+          // onMouseDown runs befor the onBlur event so we can set the flag here
           clickedRef.current = true;
+        }}
+        onBlur={() => {
+          if (!clickedRef.current) {
+            hideOverlay();
+          }
+        }}
+        onClick={() => {
+          // Scroll into view to display (not when hiding) the overlay
+          // But only on touch devices
           if (!isVisible && !isHovered) {
             overlayRef.current?.scrollIntoView({
               behavior: "smooth",
@@ -56,12 +71,7 @@ export const PhotoGridItemOverlay = ({ children }: Props) => {
             });
           }
           toggleOverlay();
-          buttonRef.current?.focus();
-        }}
-        onBlur={() => {
-          if (clickedRef.current) {
-            hideOverlay();
-          }
+          buttonRef.current?.focus(); // Workaround for iOS not focusing on click
           clickedRef.current = false;
         }}
       />
