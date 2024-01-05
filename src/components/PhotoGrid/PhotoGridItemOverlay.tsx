@@ -2,7 +2,7 @@
 
 import { cva } from "cva";
 import { ReactNode, useRef, useState } from "react";
-import { useHover } from "react-aria";
+import { useHover, useFocus } from "react-aria";
 import { flushSync } from "react-dom";
 
 const styles = cva({
@@ -37,6 +37,12 @@ export const PhotoGridItemOverlay = ({ children }: Props) => {
     },
   });
 
+  const { focusProps } = useFocus({
+    onBlur: () => {
+      hideOverlay();
+    },
+  });
+
   return (
     <>
       <div ref={overlayRef} className={styles({ isVisible })}>
@@ -45,6 +51,7 @@ export const PhotoGridItemOverlay = ({ children }: Props) => {
       <button
         ref={buttonRef}
         {...hoverProps}
+        {...focusProps}
         className="absolute left-0 top-0 h-full w-full outline-offset-4 outline-highlight focus-visible:outline-2 dark:outline-highlight-dark"
         aria-label={isVisible ? "Hide overlay" : "Show Overlay"}
         onClick={() => {
@@ -54,13 +61,8 @@ export const PhotoGridItemOverlay = ({ children }: Props) => {
               block: "nearest",
             });
           }
-          flushSync(() => {
-            toggleOverlay();
-          });
+          toggleOverlay();
           buttonRef.current?.focus();
-        }}
-        onBlur={() => {
-          // hideOverlay();
         }}
       />
     </>
