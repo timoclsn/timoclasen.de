@@ -2,8 +2,7 @@
 
 import { cva } from "cva";
 import { ReactNode, useRef, useState } from "react";
-import { useHover, useFocus } from "react-aria";
-import { flushSync } from "react-dom";
+import { useHover } from "react-aria";
 
 const styles = cva({
   base: "transition absolute bottom-2 left-2 right-2 rounded-md border-[1px] border-dark/30 bg-light/30 text-[10px] leading-none backdrop-blur-md dark:bg-dark/30 2xl:text-sm ease-in-out",
@@ -22,6 +21,7 @@ interface Props {
 export const PhotoGridItemOverlay = ({ children }: Props) => {
   const overlayRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const clickedRef = useRef(false);
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleOverlay = () => setIsVisible((prev) => !prev);
@@ -37,12 +37,6 @@ export const PhotoGridItemOverlay = ({ children }: Props) => {
     },
   });
 
-  const { focusProps } = useFocus({
-    onBlur: () => {
-      hideOverlay();
-    },
-  });
-
   return (
     <>
       <div ref={overlayRef} className={styles({ isVisible })}>
@@ -51,10 +45,10 @@ export const PhotoGridItemOverlay = ({ children }: Props) => {
       <button
         ref={buttonRef}
         {...hoverProps}
-        {...focusProps}
         className="absolute left-0 top-0 h-full w-full outline-offset-4 outline-highlight focus-visible:outline-2 dark:outline-highlight-dark"
         aria-label={isVisible ? "Hide overlay" : "Show Overlay"}
         onClick={() => {
+          clickedRef.current = true;
           if (!isVisible && !isHovered) {
             overlayRef.current?.scrollIntoView({
               behavior: "smooth",
@@ -63,6 +57,12 @@ export const PhotoGridItemOverlay = ({ children }: Props) => {
           }
           toggleOverlay();
           buttonRef.current?.focus();
+        }}
+        onBlur={() => {
+          if (clickedRef.current) {
+            hideOverlay();
+          }
+          clickedRef.current = false;
         }}
       />
     </>
