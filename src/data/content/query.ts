@@ -7,12 +7,18 @@ import { queryContent } from "../../lib/content";
 import { createQuery } from "../clients";
 
 export const metadata = createQuery({
-  cache: {
-    options: {
-      revalidate: 60,
-    },
-  },
   input: z.string(),
+  cache: ({ input }) => {
+    const slug = input;
+    const tag = `metadata-${slug}`;
+    return {
+      keyParts: [tag],
+      options: {
+        revalidate: 60,
+        tags: [tag],
+      },
+    };
+  },
   query: async ({ input: slug }) => {
     const response = await queryContent(
       `{
@@ -44,12 +50,18 @@ export const metadata = createQuery({
 });
 
 export const image = createQuery({
-  cache: {
-    options: {
-      revalidate: 60,
-    },
-  },
   input: z.string(),
+  cache: ({ input }) => {
+    const title = input;
+    const tag = `image-${title}`;
+    return {
+      keyParts: [tag],
+      options: {
+        revalidate: 60,
+        tags: [tag],
+      },
+    };
+  },
   query: async ({ input: title }) => {
     const response = await queryContent(
       `{
@@ -141,12 +153,18 @@ export const person = createQuery({
 });
 
 export const textSnippet = createQuery({
-  cache: {
-    options: {
-      revalidate: 60,
-    },
-  },
   input: z.string(),
+  cache: ({ input }) => {
+    const title = input;
+    const tag = `text-snippet-${title}`;
+    return {
+      keyParts: [tag],
+      options: {
+        revalidate: 60,
+        tags: [tag],
+      },
+    };
+  },
   query: async ({ input: title }) => {
     const response = await queryContent(
       `{
@@ -233,12 +251,18 @@ export const blogPosts = createQuery({
 });
 
 export const blogPost = createQuery({
-  cache: {
-    options: {
-      revalidate: 60,
-    },
-  },
   input: z.string(),
+  cache: ({ input }) => {
+    const slug = input;
+    const tag = `blogpost-${slug}`;
+    return {
+      keyParts: [tag],
+      options: {
+        revalidate: 60,
+        tags: [tag],
+      },
+    };
+  },
   query: async ({ input: slug }) => {
     const response = await queryContent(
       `{
