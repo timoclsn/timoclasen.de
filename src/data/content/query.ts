@@ -7,6 +7,11 @@ import { queryContent } from "../../lib/content";
 import { createQuery } from "../clients";
 
 export const metadata = createQuery({
+  cache: {
+    options: {
+      revalidate: 60,
+    },
+  },
   input: z.string(),
   query: async ({ input: slug }) => {
     const response = await queryContent(
@@ -39,6 +44,11 @@ export const metadata = createQuery({
 });
 
 export const image = createQuery({
+  cache: {
+    options: {
+      revalidate: 60,
+    },
+  },
   input: z.string(),
   query: async ({ input: title }) => {
     const response = await queryContent(
@@ -69,6 +79,11 @@ export const image = createQuery({
 });
 
 export const person = createQuery({
+  cache: {
+    options: {
+      revalidate: 60,
+    },
+  },
   query: async () => {
     const response = await queryContent(
       `{
@@ -126,6 +141,11 @@ export const person = createQuery({
 });
 
 export const textSnippet = createQuery({
+  cache: {
+    options: {
+      revalidate: 60,
+    },
+  },
   input: z.string(),
   query: async ({ input: title }) => {
     const response = await queryContent(
@@ -154,6 +174,11 @@ export const textSnippet = createQuery({
 });
 
 export const blogPosts = createQuery({
+  cache: {
+    options: {
+      revalidate: 60,
+    },
+  },
   query: async () => {
     const response = await queryContent(
       `{
@@ -208,6 +233,11 @@ export const blogPosts = createQuery({
 });
 
 export const blogPost = createQuery({
+  cache: {
+    options: {
+      revalidate: 60,
+    },
+  },
   input: z.string(),
   query: async ({ input: slug }) => {
     const response = await queryContent(
@@ -290,6 +320,11 @@ export const blogPost = createQuery({
 });
 
 export const cvEntries = createQuery({
+  cache: {
+    options: {
+      revalidate: 60,
+    },
+  },
   query: async () => {
     const response = await queryContent(
       `{
@@ -337,6 +372,11 @@ export const cvEntries = createQuery({
 export type Photo = Awaited<ReturnType<typeof photos>>[number];
 
 export const photos = createQuery({
+  cache: {
+    options: {
+      revalidate: 60,
+    },
+  },
   query: async () => {
     const response = await queryContent(
       `{
