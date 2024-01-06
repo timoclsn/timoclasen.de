@@ -92,8 +92,10 @@ export const image = createQuery({
 
 export const person = createQuery({
   cache: {
+    keyParts: ["person"],
     options: {
       revalidate: 60,
+      tags: ["person"],
     },
   },
   query: async () => {
@@ -193,8 +195,10 @@ export const textSnippet = createQuery({
 
 export const blogPosts = createQuery({
   cache: {
+    keyParts: ["blogposts"],
     options: {
       revalidate: 60,
+      tags: ["blogposts"],
     },
   },
   query: async () => {
@@ -345,8 +349,10 @@ export const blogPost = createQuery({
 
 export const cvEntries = createQuery({
   cache: {
+    keyParts: ["cv-entries"],
     options: {
       revalidate: 60,
+      tags: ["cv-entries"],
     },
   },
   query: async () => {
@@ -397,8 +403,10 @@ export type Photo = Awaited<ReturnType<typeof photos>>[number];
 
 export const photos = createQuery({
   cache: {
+    keyParts: ["photos"],
     options: {
       revalidate: 60,
+      tags: ["photos"],
     },
   },
   query: async () => {
