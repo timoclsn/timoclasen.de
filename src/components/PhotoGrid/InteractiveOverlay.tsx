@@ -1,11 +1,18 @@
 "use client";
 
-import { cva } from "cva";
-import { ReactNode, useRef, useState } from "react";
+import { cva, cx } from "cva";
+import {
+  ReactElement,
+  ReactNode,
+  cloneElement,
+  isValidElement,
+  useRef,
+  useState,
+} from "react";
 import { useHover } from "react-aria";
 
 const styles = cva({
-  base: "transition absolute bottom-2 left-2 right-2 rounded-md border-[1px] border-dark/30 bg-light/30 text-[10px] leading-none backdrop-blur-md dark:bg-dark/30 2xl:text-sm ease-in-out",
+  base: "transition ease-in-out",
   variants: {
     isVisible: {
       true: "opacity-100 translate-y-0 scale-100",
@@ -18,7 +25,7 @@ interface Props {
   children: ReactNode;
 }
 
-export const PhotoGridItemOverlay = ({ children }: Props) => {
+export const InteractiveOverlay = ({ children }: Props) => {
   const clickedRef = useRef(false);
   const overlayRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -29,19 +36,20 @@ export const PhotoGridItemOverlay = ({ children }: Props) => {
   const hideOverlay = () => setIsVisible(false);
 
   const { hoverProps, isHovered } = useHover({
-    onHoverStart: () => {
-      showOverlay();
-    },
-    onHoverEnd: () => {
-      hideOverlay();
-    },
+    onHoverStart: showOverlay,
+    onHoverEnd: hideOverlay,
+  });
+
+  if (!isValidElement(children)) return null;
+
+  const overlay = cloneElement(children as ReactElement, {
+    ref: overlayRef,
+    className: cx(children.props.className, styles({ isVisible })),
   });
 
   return (
     <>
-      <div ref={overlayRef} className={styles({ isVisible })}>
-        {children}
-      </div>
+      {overlay}
       <button
         ref={buttonRef}
         {...hoverProps}
