@@ -21,19 +21,19 @@ export const PhotoGridItem = ({ photo }: Props) => {
       <InteractiveOverlay>
         <div className="absolute bottom-2 left-2 right-2 rounded-md border-[1px] border-dark/30 bg-light/30 text-[10px] leading-none backdrop-blur-md dark:bg-dark/30 2xl:text-sm ">
           <div className="flex border-b-[1px] border-dark/30 p-1">
-            <div className="flex flex-1 flex-col gap-1">
-              <div>{format(parseISO(photo.date), "dd.MM.yyyy")}</div>
-              <div>{photo.camera}</div>
-              <div>{photo.lens}</div>
-            </div>
+            <ul className="flex flex-1 flex-col gap-1">
+              <li>{format(parseISO(photo.date), "dd.MM.yyyy")}</li>
+              <li>{photo.camera}</li>
+              <li>{photo.lens}</li>
+            </ul>
             <Camera className="h-3 w-3 flex-none 2xl:h-4 2xl:w-4" />
           </div>
-          <div className="flex justify-between p-1">
-            <div>{`ISO ${photo.iso}`}</div>
-            <div>{`${photo.focalLength} mm`}</div>
-            <div>{`ƒ${photo.aperture}`}</div>
-            <div>{`${photo.exposureTime} s`}</div>
-          </div>
+          <ul className="flex justify-between p-1">
+            <li>{`ISO ${photo.iso}`}</li>
+            <li>{`${photo.focalLength} mm`}</li>
+            <li>{`ƒ${photo.aperture}`}</li>
+            <li>{`${photo.exposureTime} s`}</li>
+          </ul>
         </div>
       </InteractiveOverlay>
     </div>
