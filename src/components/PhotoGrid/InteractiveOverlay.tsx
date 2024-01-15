@@ -1,17 +1,10 @@
 "use client";
 
 import { cva, cx } from "cva";
-import {
-  ReactElement,
-  ReactNode,
-  cloneElement,
-  isValidElement,
-  useRef,
-  useState,
-} from "react";
+import { ReactElement, cloneElement, useRef, useState } from "react";
 import { useHover } from "react-aria";
 
-const styles = cva({
+const overlayStyles = cva({
   base: "transition ease-in-out",
   variants: {
     isVisible: {
@@ -22,7 +15,7 @@ const styles = cva({
 });
 
 interface Props {
-  children: ReactNode;
+  children: ReactElement;
 }
 
 export const InteractiveOverlay = ({ children }: Props) => {
@@ -40,11 +33,9 @@ export const InteractiveOverlay = ({ children }: Props) => {
     onHoverEnd: hideOverlay,
   });
 
-  if (!isValidElement(children)) return null;
-
-  const overlay = cloneElement(children as ReactElement, {
+  const overlay = cloneElement(children, {
     ref: overlayRef,
-    className: cx(children.props.className, styles({ isVisible })),
+    className: cx(children.props.className, overlayStyles({ isVisible })),
   });
 
   return (
