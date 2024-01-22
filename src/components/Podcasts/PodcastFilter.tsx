@@ -88,7 +88,7 @@ export const PodcastFilter = ({ categories }: Props) => {
           return (
             <label
               key={index}
-              className={`sflex cursor-pointer select-none items-center justify-center whitespace-nowrap rounded-lg px-2 py-0.5 text-base ring-2 ring-highlight focus-visible:outline-none dark:ring-highlight-dark ${
+              className={`flex cursor-pointer select-none items-center justify-center whitespace-nowrap rounded-lg px-2 py-0.5 text-base ring-2 ring-highlight focus-visible:outline-none dark:ring-highlight-dark ${
                 isActive
                   ? "bg-highlight text-light focus-within:ring-dark dark:bg-highlight-dark dark:focus-within:ring-light"
                   : "text-highlight focus-within:ring-dark dark:text-highlight-dark dark:focus-within:ring-light"
