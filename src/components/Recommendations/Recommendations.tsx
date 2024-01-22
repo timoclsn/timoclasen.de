@@ -2,7 +2,6 @@
 
 import { Loader, Send } from "lucide-react";
 import { useRef } from "react";
-import { useFormStatus } from "react-dom";
 import { action } from "../../api/action";
 import { Button } from "../../design-system/Button";
 import { useFormAction } from "../../lib/data/client";
@@ -121,15 +120,5 @@ export const Recommendations = () => {
         </div>
       </Form>
     </div>
-  );
-};
-
-const SubmitButton = () => {
-  const { pending } = useFormStatus();
-  return (
-    <Button type="submit" disabled={pending}>
-      {pending ? <Loader className="animate-spin" /> : <Send />}
-      Empfehlung senden
-    </Button>
   );
 };

@@ -10,7 +10,7 @@ export const useSearchParams = () => {
   const [isPending, startTransition] = useTransition();
   const pathname = usePathname();
   const nextSearchParams = useNextSearchParams();
-  const searchParams = new URLSearchParams(nextSearchParams.toString());
+  const searchParams = new URLSearchParams(nextSearchParams);
 
   const updateUrlWithSearchParams = () => {
     const searchParamsString = searchParams.toString();
