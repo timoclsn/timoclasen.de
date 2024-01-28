@@ -20,7 +20,7 @@ export const Await = <T extends unknown>({
     </Suspense>
   );
 
-  if (error) {
+  if (error !== undefined) {
     return <ErrorBoundary fallback={error}>{content}</ErrorBoundary>;
   }
 
