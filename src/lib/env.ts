@@ -15,7 +15,7 @@ const envSchema = z.object({
   STRAVA_CLIENT_ID: z.string().min(1),
   STRAVA_CLIENT_SECRET: z.string().min(1),
   STRAVA_REFRESH_TOKEN: z.string().min(1),
-  NEXT_PUBLIC_VERCEL_ENV: z.enum(["development", "production"]).optional(),
+  NEXT_PUBLIC_VERCEL_ENV: z.enum(["preview", "production"]).optional(),
 });
 
 envSchema.parse(process.env);
