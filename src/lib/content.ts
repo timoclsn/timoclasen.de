@@ -2,9 +2,9 @@ import { draftMode } from "next/headers";
 import { z } from "zod";
 
 const {
-  CONTENTFUL_SPACE_ID: spaceId,
-  CONTENTFUL_ACCESS_TOKEN: publicAccessToken,
-  CONTENTFUL_PREVIEW_ACCESS_TOKEN: previewAccessToken,
+  CONTENTFUL_SPACE_ID,
+  CONTENTFUL_ACCESS_TOKEN,
+  CONTENTFUL_PREVIEW_ACCESS_TOKEN,
   NODE_ENV: env,
 } = process.env;
 
@@ -30,13 +30,15 @@ export const queryContent = async <TSchema extends z.ZodTypeAny>(
   }
 
   const res = await fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${spaceId}`,
+    `https://graphql.contentful.com/content/v1/spaces/${CONTENTFUL_SPACE_ID}`,
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${
-          isDraftMode ? previewAccessToken : publicAccessToken
+          isDraftMode
+            ? CONTENTFUL_PREVIEW_ACCESS_TOKEN
+            : CONTENTFUL_ACCESS_TOKEN
         }`,
       },
       body: JSON.stringify({ query }),

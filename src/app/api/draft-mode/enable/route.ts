@@ -1,10 +1,7 @@
 import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
-import { z } from "zod";
 
-const CONTENTFUL_PREVIEW_SECRET = z
-  .string()
-  .parse(process.env.CONTENTFUL_PREVIEW_SECRET);
+const { CONTENTFUL_PREVIEW_SECRET } = process.env;
 
 export const GET = async (request: Request) => {
   const { searchParams } = new URL(request.url);

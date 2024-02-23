@@ -3,14 +3,7 @@ import { z } from "zod";
 
 import { AttributeType, NodeProfile, NodeState } from "./enums";
 
-const envSchema = z.object({
-  HOMEE_ID: z.string(),
-  HOMEE_ACCESS_TOKEN: z.string(),
-});
-
-const { HOMEE_ID: homeeID, HOMEE_ACCESS_TOKEN: accessToken } = envSchema.parse(
-  process.env,
-);
+const { HOMEE_ID, HOMEE_ACCESS_TOKEN } = process.env;
 
 const attributeSchema = z.object({
   type: z.nativeEnum(AttributeType).or(z.unknown()),
@@ -32,7 +25,7 @@ export function getNodes() {
     let nodes: Array<Node> = [];
 
     const ws = new WebSocket(
-      `wss://${homeeID}.hom.ee/connection?access_token=${accessToken}`,
+      `wss://${HOMEE_ID}.hom.ee/connection?access_token=${HOMEE_ACCESS_TOKEN}`,
       "v2",
     );
 
@@ -61,11 +54,11 @@ export function getNodes() {
 
 export async function playHomeegram(homeegramID: number) {
   return await fetch(
-    `https://${homeeID}.hom.ee/api/v2/homeegrams/${homeegramID}?play=1`,
+    `https://${HOMEE_ID}.hom.ee/api/v2/homeegrams/${homeegramID}?play=1`,
     {
       method: "PUT",
       headers: {
-        Cookie: accessToken,
+        Cookie: HOMEE_ACCESS_TOKEN,
       },
     },
   );

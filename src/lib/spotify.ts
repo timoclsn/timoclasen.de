@@ -1,18 +1,11 @@
 import { z } from "zod";
 
-const envSchema = z.object({
-  SPOTIFY_CLIENT_ID: z.string(),
-  SPOTIFY_CLIENT_SECRET: z.string(),
-  SPOTIFY_REFRESH_TOKEN: z.string(),
-});
+const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, SPOTIFY_REFRESH_TOKEN } =
+  process.env;
 
-const {
-  SPOTIFY_CLIENT_ID: clientID,
-  SPOTIFY_CLIENT_SECRET: clientSecret,
-  SPOTIFY_REFRESH_TOKEN: refreshToken,
-} = envSchema.parse(process.env);
-
-const basic = Buffer.from(`${clientID}:${clientSecret}`).toString("base64");
+const basic = Buffer.from(
+  `${SPOTIFY_CLIENT_ID}:${SPOTIFY_CLIENT_SECRET}`,
+).toString("base64");
 
 const accessDataSchema = z.object({
   access_token: z.string(),
@@ -21,7 +14,7 @@ const accessDataSchema = z.object({
 async function getAccessToken() {
   const searchParams = new URLSearchParams({
     grant_type: "refresh_token",
-    refresh_token: refreshToken,
+    refresh_token: SPOTIFY_REFRESH_TOKEN,
   });
 
   const res = await fetch("https://accounts.spotify.com/api/token", {
