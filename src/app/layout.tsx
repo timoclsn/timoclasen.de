@@ -13,6 +13,7 @@ import { Container } from "../design-system/Container/Container";
 import { createGenerateMetadata, openGraph } from "../lib/metadata";
 import "../styles/globals.css";
 import { Providers } from "./Providers";
+import "../lib/env";
 
 const fontSans = Inter({
   subsets: ["latin"],

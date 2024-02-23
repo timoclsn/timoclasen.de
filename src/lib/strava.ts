@@ -1,17 +1,8 @@
 import { intervalToDuration, startOfYear } from "date-fns";
 import { z } from "zod";
 
-const envSchema = z.object({
-  STRAVA_CLIENT_ID: z.string(),
-  STRAVA_CLIENT_SECRET: z.string(),
-  STRAVA_REFRESH_TOKEN: z.string(),
-});
-
-const {
-  STRAVA_CLIENT_ID: clientID,
-  STRAVA_CLIENT_SECRET: clientSecret,
-  STRAVA_REFRESH_TOKEN: refreshToken,
-} = envSchema.parse(process.env);
+const { STRAVA_CLIENT_ID, STRAVA_CLIENT_SECRET, STRAVA_REFRESH_TOKEN } =
+  process.env;
 
 const accessDataSchema = z.object({
   access_token: z.string(),
@@ -20,9 +11,9 @@ const accessDataSchema = z.object({
 async function getAccessToken() {
   const searchParams = new URLSearchParams({
     grant_type: "refresh_token",
-    client_id: clientID,
-    client_secret: clientSecret,
-    refresh_token: refreshToken,
+    client_id: STRAVA_CLIENT_ID,
+    client_secret: STRAVA_CLIENT_SECRET,
+    refresh_token: STRAVA_REFRESH_TOKEN,
   });
 
   const res = await fetch("https://www.strava.com/oauth/token", {

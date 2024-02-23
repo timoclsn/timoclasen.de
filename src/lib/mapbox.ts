@@ -1,9 +1,8 @@
 import polyline from "@mapbox/polyline";
 import type { Position } from "geojson";
 import simplify from "simplify-geojson";
-import { z } from "zod";
 
-const mapboxAccessToken = z.string().parse(process.env.MAPBOX_ACCESS_TOKEN);
+const { MAPBOX_ACCESS_TOKEN } = process.env;
 
 interface GeoJSON {
   type: string;
@@ -96,5 +95,5 @@ function getMapURL(
 ) {
   return `https://api.mapbox.com/styles/v1/mapbox/${theme}/static/geojson(${prepareGeoJSON(
     geoJSON,
-  )})/auto/${width}x${height}?padding=${padding}&logo=false&access_token=${mapboxAccessToken}`;
+  )})/auto/${width}x${height}?padding=${padding}&logo=false&access_token=${MAPBOX_ACCESS_TOKEN}`;
 }
