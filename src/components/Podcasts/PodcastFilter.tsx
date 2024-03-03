@@ -1,7 +1,7 @@
 "use client";
 
 import { Filter, Loader2, XCircle } from "lucide-react";
-import { type ChangeEvent } from "react";
+import { useOptimistic, type ChangeEvent } from "react";
 import { useSearchParams } from "../../hooks/useSearchParams";
 import { track } from "../../lib/tracking";
 
@@ -10,12 +10,22 @@ interface Props {
 }
 
 export const PodcastFilter = ({ categories }: Props) => {
-  const { searchParams, updateUrlWithSearchParams, isPending } =
-    useSearchParams();
+  const {
+    searchParamsString,
+    getSearchParam,
+    setSearchParam,
+    deleteSearchParam,
+    updateSearchParams,
+    isPending,
+  } = useSearchParams();
 
-  const filterRaw = searchParams.get("filter");
+  const filterRaw = getSearchParam("filter");
   const filter = filterRaw ? filterRaw.split(";") : [];
-  const favorites = Boolean(searchParams.get("favorites"));
+  const favorites = Boolean(getSearchParam("favorites"));
+
+  const [optimisticFilter, setOptimisticFilter] = useOptimistic(filter);
+  const [optimisticFavourites, setOptimisticFavourites] =
+    useOptimistic(favorites);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
@@ -23,9 +33,9 @@ export const PodcastFilter = ({ categories }: Props) => {
 
     if (name === "favorites") {
       if (checked) {
-        searchParams.set("favorites", "true");
+        setSearchParam("favorites", "true");
       } else {
-        searchParams.delete("favorites");
+        deleteSearchParam("favorites");
       }
     } else {
       if (checked) {
@@ -35,13 +45,31 @@ export const PodcastFilter = ({ categories }: Props) => {
       }
 
       if (filter.length) {
-        searchParams.set("filter", filter.join(";"));
+        setSearchParam("filter", filter.join(";"));
       } else {
-        searchParams.delete("filter");
+        deleteSearchParam("filter");
       }
     }
 
-    updateUrlWithSearchParams();
+    updateSearchParams({
+      onStartTransition: () => {
+        if (name === "favorites") {
+          if (checked) {
+            setOptimisticFavourites(true);
+          } else {
+            setOptimisticFavourites(false);
+          }
+        } else {
+          if (checked) {
+            setOptimisticFilter([...optimisticFilter, name]);
+          } else {
+            setOptimisticFilter(
+              optimisticFilter.filter((item) => item !== name),
+            );
+          }
+        }
+      },
+    });
 
     track("Podcast Filter", {
       name,
@@ -50,11 +78,18 @@ export const PodcastFilter = ({ categories }: Props) => {
   };
 
   const clearFilter = () => {
-    searchParams.delete("search");
-    searchParams.delete("favorites");
-    searchParams.delete("filter");
-    searchParams.delete("limit");
-    updateUrlWithSearchParams();
+    deleteSearchParam("search");
+    deleteSearchParam("favorites");
+    deleteSearchParam("filter");
+    deleteSearchParam("limit");
+
+    updateSearchParams({
+      onStartTransition: () => {
+        setOptimisticFavourites(false);
+        setOptimisticFilter([]);
+      },
+    });
+
     track("Clear Podcast Filter");
   };
 
@@ -67,16 +102,16 @@ export const PodcastFilter = ({ categories }: Props) => {
       <div className="-my-4 flex gap-4 overflow-x-auto px-1 py-4">
         <label
           className={`sflex cursor-pointer select-none items-center justify-center whitespace-nowrap rounded-lg px-2 py-0.5 text-base ring-2 ring-highlight focus-visible:outline-none dark:ring-highlight-dark ${
-            favorites
+            optimisticFavourites
               ? "bg-highlight text-light focus-within:ring-dark dark:bg-highlight-dark dark:focus-within:ring-light"
               : "text-highlight focus-within:ring-dark dark:text-highlight-dark dark:focus-within:ring-light"
           }`}
         >
           <input
-            key={String(favorites)}
+            key={String(optimisticFavourites)}
             name="favorites"
             type="checkbox"
-            defaultChecked={favorites}
+            defaultChecked={optimisticFavourites}
             onChange={handleChange}
             disabled={isPending}
             className="h-0 w-0 opacity-0"
@@ -84,7 +119,7 @@ export const PodcastFilter = ({ categories }: Props) => {
           Meine Favoriten
         </label>
         {categories.map((category, index) => {
-          const isActive = filter.includes(category);
+          const isActive = optimisticFilter.includes(category);
           return (
             <label
               key={index}
@@ -115,7 +150,7 @@ export const PodcastFilter = ({ categories }: Props) => {
           title="Filter löschen"
           className="text-highlight disabled:opacity-60 dark:text-highlight-dark"
           onClick={clearFilter}
-          disabled={searchParams.toString() === ""}
+          disabled={!searchParamsString}
         >
           <XCircle size={24} />
           <span className="sr-only">Filter löschen</span>

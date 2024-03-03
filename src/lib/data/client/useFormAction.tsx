@@ -3,13 +3,28 @@ import {
   RefObject,
   useCallback,
   useEffect,
-  useRef,
   useState,
 } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { z } from "zod";
 import { InferValidationErrors, ServerFormAction } from "../types";
 import { initalState } from "./initialState";
+
+interface FormStatusProps {
+  onPendingChange: (pending: boolean) => void;
+}
+
+const FormStatus = ({ onPendingChange }: FormStatusProps) => {
+  const { pending } = useFormStatus();
+
+  useEffect(() => {
+    onPendingChange(pending);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pending]);
+
+  return null;
+};
 
 export const useFormAction = <
   TInputSchema extends z.ZodTypeAny,
@@ -26,12 +41,19 @@ export const useFormAction = <
     onSettled?: () => void;
   } = {},
 ) => {
-  const wasPendingRef = useRef(false);
   const [state, formAction] = useFormState(action, initalState);
   const [isRunning, setIsRunning] = useState(false);
   const isSuccess = state.status === "success";
   const isError =
     state.status === "error" || state.status === "validationError";
+
+  useEffect(() => {
+    if (isRunning) {
+      options.onRunAction?.();
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isRunning]);
 
   useEffect(() => {
     if (!state.id) return; // Only run on server response
@@ -47,35 +69,10 @@ export const useFormAction = <
       });
     }
 
+    options.onSettled?.();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.id]);
-
-  const FormStatus = () => {
-    const { pending } = useFormStatus();
-
-    // We have to keep track of the previous pending state outside of the component
-    // to be able to compare it with the current pending state because the reference
-    // of pending also changes on every render.
-    const hasPendingUpdated = wasPendingRef.current !== pending;
-
-    useEffect(() => {
-      setIsRunning(pending);
-
-      if (pending) {
-        options.onRunAction?.();
-      }
-
-      if (!pending) {
-        options.onSettled?.();
-      }
-
-      wasPendingRef.current = pending;
-
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [hasPendingUpdated]);
-
-    return null;
-  };
 
   type FormProps = Omit<ComponentPropsWithoutRef<"form">, "action"> & {
     refProp?: RefObject<HTMLFormElement>;
@@ -84,7 +81,7 @@ export const useFormAction = <
   const Form = useCallback(({ children, refProp, ...rest }: FormProps) => {
     return (
       <form ref={refProp} action={formAction} {...rest}>
-        <FormStatus />
+        <FormStatus onPendingChange={setIsRunning} />
         {children}
       </form>
     );
