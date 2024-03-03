@@ -11,18 +11,31 @@ export const useSearchParams = () => {
   const pathname = usePathname();
   const nextSearchParams = useNextSearchParams();
   const searchParams = new URLSearchParams(nextSearchParams);
+  const searchParamsString = searchParams.toString();
 
-  interface Options {
+  const getSearchParam = (key: string) => searchParams.get(key) ?? "";
+
+  const setSearchParam = (key: string, value: string) => {
+    if (value) {
+      searchParams.set(key, value);
+    } else {
+      searchParams.delete(key);
+    }
+  };
+
+  const deleteSearchParam = (key: string) => searchParams.delete(key);
+
+  const updateSearchParams = ({
+    onStartTransition,
+  }: {
     onStartTransition?: () => void;
-  }
-
-  const updateUrlWithSearchParams = ({ onStartTransition }: Options = {}) => {
+  } = {}) => {
     const searchParamsString = searchParams.toString();
     startTransition(() => {
       onStartTransition?.();
 
       replace(
-        `${pathname}${searchParamsString ? "?" : ""}${searchParamsString}`,
+        `${pathname}${searchParamsString ? "?" + searchParamsString : ""}`,
         {
           scroll: false,
         },
@@ -32,7 +45,11 @@ export const useSearchParams = () => {
 
   return {
     searchParams,
-    updateUrlWithSearchParams,
+    searchParamsString,
+    getSearchParam,
+    setSearchParam,
+    deleteSearchParam,
+    updateSearchParams,
     isPending,
   };
 };

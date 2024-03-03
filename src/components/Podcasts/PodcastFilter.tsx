@@ -10,12 +10,18 @@ interface Props {
 }
 
 export const PodcastFilter = ({ categories }: Props) => {
-  const { searchParams, updateUrlWithSearchParams, isPending } =
-    useSearchParams();
+  const {
+    searchParamsString,
+    getSearchParam,
+    setSearchParam,
+    deleteSearchParam,
+    updateSearchParams,
+    isPending,
+  } = useSearchParams();
 
-  const filterRaw = searchParams.get("filter");
+  const filterRaw = getSearchParam("filter");
   const filter = filterRaw ? filterRaw.split(";") : [];
-  const favorites = Boolean(searchParams.get("favorites"));
+  const favorites = Boolean(getSearchParam("favorites"));
 
   const [optimisticFilter, setOptimisticFilter] = useOptimistic(filter);
   const [optimisticFavourites, setOptimisticFavourites] =
@@ -27,9 +33,9 @@ export const PodcastFilter = ({ categories }: Props) => {
 
     if (name === "favorites") {
       if (checked) {
-        searchParams.set("favorites", "true");
+        setSearchParam("favorites", "true");
       } else {
-        searchParams.delete("favorites");
+        deleteSearchParam("favorites");
       }
     } else {
       if (checked) {
@@ -39,13 +45,13 @@ export const PodcastFilter = ({ categories }: Props) => {
       }
 
       if (filter.length) {
-        searchParams.set("filter", filter.join(";"));
+        setSearchParam("filter", filter.join(";"));
       } else {
-        searchParams.delete("filter");
+        deleteSearchParam("filter");
       }
     }
 
-    updateUrlWithSearchParams({
+    updateSearchParams({
       onStartTransition: () => {
         if (name === "favorites") {
           if (checked) {
@@ -72,17 +78,18 @@ export const PodcastFilter = ({ categories }: Props) => {
   };
 
   const clearFilter = () => {
-    searchParams.delete("search");
-    searchParams.delete("favorites");
-    searchParams.delete("filter");
-    searchParams.delete("limit");
+    deleteSearchParam("search");
+    deleteSearchParam("favorites");
+    deleteSearchParam("filter");
+    deleteSearchParam("limit");
 
-    updateUrlWithSearchParams({
+    updateSearchParams({
       onStartTransition: () => {
         setOptimisticFavourites(false);
         setOptimisticFilter([]);
       },
     });
+
     track("Clear Podcast Filter");
   };
 
@@ -143,7 +150,7 @@ export const PodcastFilter = ({ categories }: Props) => {
           title="Filter löschen"
           className="text-highlight disabled:opacity-60 dark:text-highlight-dark"
           onClick={clearFilter}
-          disabled={searchParams.toString() === ""}
+          disabled={!searchParamsString}
         >
           <XCircle size={24} />
           <span className="sr-only">Filter löschen</span>

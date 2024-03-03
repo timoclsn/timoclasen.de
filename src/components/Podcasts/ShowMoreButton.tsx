@@ -5,16 +5,16 @@ import { Button } from "../../design-system/Button";
 import { useSearchParams } from "../../hooks/useSearchParams";
 
 export const ShowMoreButton = () => {
-  const { searchParams, updateUrlWithSearchParams, isPending } =
+  const { getSearchParam, setSearchParam, updateSearchParams, isPending } =
     useSearchParams();
-  const limit = parseInt(searchParams.get("limit") ?? "") || 10;
+  const limit = parseInt(getSearchParam("limit")) || 10;
   return (
     <Button
       size="small"
       onClick={() => {
         const newLimit = limit + 10;
-        searchParams.set("limit", newLimit.toString());
-        updateUrlWithSearchParams();
+        setSearchParam("limit", newLimit.toString());
+        updateSearchParams();
       }}
       disabled={isPending}
     >

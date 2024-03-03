@@ -7,21 +7,16 @@ import { useSearchParams } from "../../hooks/useSearchParams";
 import { track } from "../../lib/tracking";
 
 export const PodcastsSearch = () => {
-  const { searchParams, updateUrlWithSearchParams, isPending } =
+  const { getSearchParam, setSearchParam, updateSearchParams, isPending } =
     useSearchParams();
-  const search = searchParams.get("search") ?? "";
+  const search = getSearchParam("search");
 
   const handleChange = useDebouncedCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const search = event.target.value;
 
-      if (search) {
-        searchParams.set("search", search);
-      } else {
-        searchParams.delete("search");
-      }
-
-      updateUrlWithSearchParams();
+      setSearchParam("search", search);
+      updateSearchParams();
 
       track("Podcast Search", {
         search,
