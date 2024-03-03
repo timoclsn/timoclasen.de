@@ -14,8 +14,15 @@ export const PodcastsSearch = () => {
   const handleChange = useDebouncedCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const search = event.target.value;
-      searchParams.set("search", search);
+
+      if (search) {
+        searchParams.set("search", search);
+      } else {
+        searchParams.delete("search");
+      }
+
       updateUrlWithSearchParams();
+
       track("Podcast Search", {
         search,
       });
