@@ -12,9 +12,15 @@ export const useSearchParams = () => {
   const nextSearchParams = useNextSearchParams();
   const searchParams = new URLSearchParams(nextSearchParams);
 
-  const updateUrlWithSearchParams = () => {
+  interface Options {
+    onStartTransition?: () => void;
+  }
+
+  const updateUrlWithSearchParams = ({ onStartTransition }: Options = {}) => {
     const searchParamsString = searchParams.toString();
     startTransition(() => {
+      onStartTransition?.();
+
       replace(
         `${pathname}${searchParamsString ? "?" : ""}${searchParamsString}`,
         {
