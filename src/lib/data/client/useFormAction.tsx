@@ -7,7 +7,7 @@ import {
 } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { z } from "zod";
-import { InferValidationErrors, ServerFormAction } from "../types";
+import { InferValidationErrors, Result, ServerFormAction } from "../types";
 import { initalState } from "./initialState";
 
 interface FormStatusProps {
@@ -41,8 +41,13 @@ export const useFormAction = <
     onSettled?: () => void;
   } = {},
 ) => {
-  const [state, formAction] = useFormState(action, initalState);
+  const [state, formAction] = useFormState<
+    Result<TInputSchema, TResponse>,
+    FormData
+  >(action, initalState);
   const [isRunning, setIsRunning] = useState(false);
+
+  if (isRunning) state.status = "running";
   const isSuccess = state.status === "success";
   const isError =
     state.status === "error" || state.status === "validationError";

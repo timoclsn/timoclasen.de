@@ -62,23 +62,13 @@ export type ServerAction<
 
 // Form Action
 
-// FormActionResult is the same as Result, but the object with status of "running" is removed.
-export type FormActionResult<
-  TInputSchema extends z.ZodTypeAny,
-  TResponse extends any,
-> = Result<TInputSchema, TResponse> extends infer R
-  ? R extends { status: "running" }
-    ? never
-    : R
-  : never;
-
 export type ServerFormAction<
   TInputSchema extends z.ZodTypeAny,
   TResponse extends any,
 > = (
-  previousState: FormActionResult<TInputSchema, TResponse>,
+  previousState: Result<TInputSchema, TResponse>,
   formData: FormData,
-) => Promise<FormActionResult<TInputSchema, TResponse>>;
+) => Promise<Result<TInputSchema, TResponse>>;
 
 // Query
 
