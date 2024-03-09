@@ -20,7 +20,8 @@ export const createActionClient = <Context>(
     const action: ServerAction<TInputSchema, TResponse> = async (
       ...inputArgs
     ) => {
-      const [input] = inputArgs;
+      const [firstArg, secondArg] = inputArgs;
+      const input = secondArg instanceof FormData ? secondArg : firstArg;
 
       try {
         // Validate input if schema is provided

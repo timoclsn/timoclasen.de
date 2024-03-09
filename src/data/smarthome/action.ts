@@ -5,7 +5,7 @@ import { z } from "zod";
 import { zfd } from "zod-form-data";
 import { playHomeegram } from "../../lib/homee";
 import { wait } from "../../lib/utils";
-import { createFormAction } from "../clients";
+import { createAction } from "../clients";
 
 const colorHomeegramIds = {
   red: 239,
@@ -15,7 +15,7 @@ const colorHomeegramIds = {
 
 const colorSchema = z.enum(["red", "green", "blue"]);
 
-export const turnOnBalcony = createFormAction({
+export const turnOnBalcony = createAction({
   input: zfd.formData({
     color: zfd.text(colorSchema),
   }),

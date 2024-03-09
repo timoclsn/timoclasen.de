@@ -2,9 +2,9 @@
 
 import { z } from "zod";
 import { zfd } from "zod-form-data";
-import { createFormAction } from "../clients";
+import { createAction } from "../clients";
 
-export const recommend = createFormAction({
+export const recommend = createAction({
   input: zfd.formData({
     message: zfd.text(),
     url: zfd.text(z.string().url().optional()),
