@@ -57,17 +57,9 @@ export type ServerAction<
   TInputSchema extends z.ZodTypeAny,
   TResponse extends any,
 > = (
-  ...inputArgs: InferInputArgs<TInputSchema>
-) => Promise<Result<TInputSchema, TResponse>>;
-
-// Form Action
-
-export type ServerFormAction<
-  TInputSchema extends z.ZodTypeAny,
-  TResponse extends any,
-> = (
-  previousState: Result<TInputSchema, TResponse>,
-  formData: FormData,
+  ...inputArgs:
+    | InferInputArgs<TInputSchema>
+    | [Result<TInputSchema, TResponse>, FormData]
 ) => Promise<Result<TInputSchema, TResponse>>;
 
 // Query

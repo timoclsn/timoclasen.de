@@ -102,11 +102,11 @@ export const useAction = <
     async (...inputArgs: InferInputArgs<TInputSchema>) => {
       options.onRunAction?.(...inputArgs);
 
-      startTransition(async () => {
-        dispatch({
-          type: "RUN_ACTION",
-        });
+      dispatch({
+        type: "RUN_ACTION",
+      });
 
+      startTransition(async () => {
         try {
           const result = await inputAction(...inputArgs);
 

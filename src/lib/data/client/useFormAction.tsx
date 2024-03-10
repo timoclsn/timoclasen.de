@@ -7,7 +7,7 @@ import {
 } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { z } from "zod";
-import { InferValidationErrors, Result, ServerFormAction } from "../types";
+import { InferValidationErrors, Result, ServerAction } from "../types";
 import { initalState } from "./initialState";
 
 interface FormStatusProps {
@@ -30,7 +30,7 @@ export const useFormAction = <
   TInputSchema extends z.ZodTypeAny,
   TResponse extends any,
 >(
-  action: ServerFormAction<TInputSchema, TResponse>,
+  action: ServerAction<TInputSchema, TResponse>,
   options: {
     onRunAction?: () => void;
     onSuccess?: (data: TResponse | null) => void;
@@ -47,7 +47,6 @@ export const useFormAction = <
   >(action, initalState);
   const [isRunning, setIsRunning] = useState(false);
 
-  if (isRunning) state.status = "running";
   const isSuccess = state.status === "success";
   const isError =
     state.status === "error" || state.status === "validationError";
