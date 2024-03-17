@@ -31,6 +31,10 @@
 }
 
 @layer utilities {
+  .debug {
+    @apply ring-1 ring-inset ring-red-500;
+  }
+
   .icon-md svg {
     width: 20px;
     height: 20px;
