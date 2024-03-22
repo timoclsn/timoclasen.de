@@ -11,7 +11,7 @@ Visit on: https://timoclasen.de
 - [Next.js](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Radix UI](https://www.radix-ui.com/)
-- [Prisma](https://www.prisma.io/)
+- [drizzle](https://orm.drizzle.team/)
 - [Jest](https://jestjs.io/)
 - [Cypress](https://www.cypress.io/)
 - [Vercel](https://vercel.com/)

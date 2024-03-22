@@ -28,6 +28,10 @@ const envSchema = z.object({
   STRAVA_CLIENT_SECRET: envVarSchema,
   STRAVA_REFRESH_TOKEN: envVarSchema,
 
+  // Turso DB
+  TURSO_DATABASE_URL: envVarSchema,
+  TURSO_AUTH_TOKEN: envVarSchema,
+
   // Client
 
   // Vercel

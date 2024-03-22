@@ -1,3 +1,4 @@
+import { balconyControl } from "../../../drizzle/schema";
 import { AttributeType, NodeState } from "../../lib/enums";
 import { formatValue, getHexColor, getNodes, isLight } from "../../lib/homee";
 import { createQuery } from "../clients";
@@ -132,7 +133,7 @@ export const controlCount = createQuery({
   },
   query: async ({ ctx }) => {
     const { db } = ctx;
-    const rawCounts = await db.balcony_control.findMany();
+    const rawCounts = await db.select().from(balconyControl);
 
     return rawCounts.reduce(
       (acc, count) => ({ ...acc, [count.color]: count.count }),
