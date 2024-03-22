@@ -1,8 +1,10 @@
 "use server";
 
+import { eq, sql } from "drizzle-orm";
 import { revalidateTag } from "next/cache";
 import { z } from "zod";
 import { zfd } from "zod-form-data";
+import { balconyControl } from "../../../drizzle/schema";
 import { playHomeegram } from "../../lib/homee";
 import { wait } from "../../lib/utils";
 import { createAction } from "../clients";
@@ -28,16 +30,12 @@ export const turnOnBalcony = createAction({
 
     await wait(2000); // Delay needed because HG also has a delay of 1 sec.
 
-    await db.balcony_control.update({
-      where: {
-        color,
-      },
-      data: {
-        count: {
-          increment: 1,
-        },
-      },
-    });
+    await db
+      .update(balconyControl)
+      .set({
+        count: sql`${balconyControl.count} + 1`,
+      })
+      .where(eq(balconyControl.color, color));
 
     revalidateTag("control-count");
   },

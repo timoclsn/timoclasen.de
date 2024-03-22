@@ -1,14 +1,14 @@
 import { createActionClient, createQueryClient } from "../lib/data/server";
-import { prisma } from "../lib/prisma";
+import { db } from "../lib/db";
 
 export const createAction = createActionClient({
   middleware: () => {
-    return { db: prisma };
+    return { db };
   },
 });
 
 export const createQuery = createQueryClient({
   middleware: () => {
-    return { db: prisma };
+    return { db };
   },
 });
