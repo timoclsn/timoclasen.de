@@ -4,7 +4,7 @@ import { eq, sql } from "drizzle-orm";
 import { revalidateTag } from "next/cache";
 import { z } from "zod";
 import { zfd } from "zod-form-data";
-import { balconyControl } from "../../../drizzle/schema";
+import { balconyControl } from "../../../db/schema";
 import { playHomeegram } from "../../lib/homee";
 import { wait } from "../../lib/utils";
 import { createAction } from "../clients";

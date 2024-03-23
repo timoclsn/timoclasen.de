@@ -1,4 +1,4 @@
-import { balconyControl } from "../../../drizzle/schema";
+import { balconyControl } from "../../../db/schema";
 import { AttributeType, NodeState } from "../../lib/enums";
 import { formatValue, getHexColor, getNodes, isLight } from "../../lib/homee";
 import { createQuery } from "../clients";
