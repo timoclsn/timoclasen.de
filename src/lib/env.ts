@@ -32,7 +32,7 @@ const envSchema = z.object({
   // Turso DB
   TURSO_DATABASE_URL: envVarSchema,
   TURSO_AUTH_TOKEN: envVarSchema,
-  USE_LOCAL_DB: booleanSchema.optional(),
+  LOCAL_DB: booleanSchema.optional(),
 
   // Client
 

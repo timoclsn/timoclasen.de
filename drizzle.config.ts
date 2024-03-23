@@ -1,8 +1,8 @@
 import "dotenv/config";
 import type { Config } from "drizzle-kit";
 
-const { TURSO_DATABASE_URL, TURSO_AUTH_TOKEN, USE_LOCAL_DB } = process.env;
-const localDb = USE_LOCAL_DB === "true";
+const { TURSO_DATABASE_URL, TURSO_AUTH_TOKEN, LOCAL_DB } = process.env;
+const localDb = LOCAL_DB === "true";
 
 if (localDb) {
   console.info("🚀 Using local database");

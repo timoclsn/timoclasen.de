@@ -1,9 +1,9 @@
 import { createClient } from "@libsql/client";
 import { drizzle } from "drizzle-orm/libsql";
 
-const { TURSO_DATABASE_URL, TURSO_AUTH_TOKEN, NODE_ENV, USE_LOCAL_DB } =
+const { TURSO_DATABASE_URL, TURSO_AUTH_TOKEN, NODE_ENV, LOCAL_DB } =
   process.env;
-const localDb = USE_LOCAL_DB === "true" && NODE_ENV === "development";
+const localDb = LOCAL_DB === "true" && NODE_ENV === "development";
 
 if (localDb) {
   console.info("🚀 Using local database");
