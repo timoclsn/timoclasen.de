@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 const envVarSchema = z.string().min(1);
+const booleanSchema = z.enum(["true", "false"]);
 
 const envSchema = z.object({
   // Server
@@ -31,6 +32,7 @@ const envSchema = z.object({
   // Turso DB
   TURSO_DATABASE_URL: envVarSchema,
   TURSO_AUTH_TOKEN: envVarSchema,
+  LOCAL_DB: booleanSchema.optional(),
 
   // Client
 

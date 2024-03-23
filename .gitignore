@@ -7,3 +7,4 @@ public/sitemap.xml
 public/rss.xml
 .vercel
 tsconfig.tsbuildinfo
+local.db
