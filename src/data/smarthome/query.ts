@@ -1,4 +1,3 @@
-import { balconyControl } from "../../../db/schema";
 import { AttributeType, NodeState } from "../../lib/enums";
 import { formatValue, getHexColor, getNodes, isLight } from "../../lib/homee";
 import { createQuery } from "../clients";
@@ -133,7 +132,7 @@ export const controlCount = createQuery({
   },
   query: async ({ ctx }) => {
     const { db } = ctx;
-    const rawCounts = await db.select().from(balconyControl);
+    const rawCounts = await db.query.balconyControl.findMany();
 
     return rawCounts.reduce(
       (acc, count) => ({ ...acc, [count.color]: count.count }),

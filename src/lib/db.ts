@@ -1,5 +1,6 @@
 import { createClient } from "@libsql/client";
 import { drizzle } from "drizzle-orm/libsql";
+import * as schema from "../../db/schema";
 
 const { TURSO_DATABASE_URL, TURSO_AUTH_TOKEN, NODE_ENV, LOCAL_DB } =
   process.env;
@@ -16,4 +17,4 @@ const turso = createClient({
   authToken: localDb ? undefined : TURSO_AUTH_TOKEN,
 });
 
-export const db = drizzle(turso);
+export const db = drizzle(turso, { schema });
