@@ -2,9 +2,9 @@
 
 import { cx } from "cva";
 import { Menu, X } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
 import { Container } from "../../design-system/Container/Container";
+import { ProgressLink } from "../ProgressLink/ProgressLink";
 import { SwitchMode } from "../SwitchMode/SwitchMode";
 import styles from "./Navigation.module.css";
 import { NavigationLink } from "./NavigationLink";
@@ -30,13 +30,14 @@ export const Navigation = () => {
             Zu Inhalt springen
           </a>
           <div className="flex flex-1 items-center gap-2 sm:flex-initial md:gap-4">
-            <Link
+            <ProgressLink
               href="/"
               title="Home"
+              onClick={closeMenu}
               className="whitespace-nowrap hover:text-highlight dark:hover:text-highlight-dark"
             >
               <h1>Timo Clasen</h1>
-            </Link>
+            </ProgressLink>
             <SwitchMode />
           </div>
           <ul
@@ -45,29 +46,29 @@ export const Navigation = () => {
             } mt-16 flex-1 flex-col items-center gap-8 pb-8 sm:mt-0 sm:flex sm:flex-initial sm:flex-row sm:gap-4 sm:pb-0 md:gap-8`}
           >
             <li>
-              <Link href="/ueber" passHref legacyBehavior>
-                <NavigationLink onClick={closeMenu}>Über</NavigationLink>
-              </Link>
+              <NavigationLink href="/ueber" onClick={closeMenu}>
+                Über
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/blog" passHref legacyBehavior>
-                <NavigationLink onClick={closeMenu}>Blog</NavigationLink>
-              </Link>
+              <NavigationLink href="/blog" onClick={closeMenu}>
+                Blog
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/podcasts" passHref legacyBehavior>
-                <NavigationLink onClick={closeMenu}>Podcasts</NavigationLink>
-              </Link>
+              <NavigationLink href="/podcasts" onClick={closeMenu}>
+                Podcasts
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/musik" passHref legacyBehavior>
-                <NavigationLink onClick={closeMenu}>Musik</NavigationLink>
-              </Link>
+              <NavigationLink href="/musik" onClick={closeMenu}>
+                Musik
+              </NavigationLink>
             </li>
             <li>
-              <Link href="/fotografie" passHref legacyBehavior>
-                <NavigationLink onClick={closeMenu}>Fotografie</NavigationLink>
-              </Link>
+              <NavigationLink href="/fotografie" onClick={closeMenu}>
+                Fotografie
+              </NavigationLink>
             </li>
           </ul>
           <div className="flex flex-1 justify-end sm:hidden sm:flex-initial">
