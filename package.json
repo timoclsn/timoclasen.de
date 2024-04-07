@@ -29,7 +29,8 @@
     "check-format": "pnpm prettier -- --list-different",
     "db:push": "drizzle-kit push:sqlite",
     "db:studio": "drizzle-kit studio",
-    "db:seed": "tsx ./db/seed.ts"
+    "db:seed": "tsx ./db/seed.ts",
+    "db:reset": "rm ./local.db && pnpm db:push && pnpm db:seed"
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.8.1",
