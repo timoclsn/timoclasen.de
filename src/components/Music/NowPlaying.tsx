@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { query } from "../../api/query";
-import { NowPlaying } from "../../data/music/query";
+import type { NowPlaying } from "../../data/music/query";
 import { Skeleton } from "../../design-system/Skeleton/Skeleton";
 import { Await } from "../Await/Await";
 import { SoundBars } from "../SoundBars";
