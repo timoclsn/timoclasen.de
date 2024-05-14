@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Container } from "../../design-system/Container/Container";
 import { NavigationLink } from "../Navigation/NavigationLink";
 
@@ -47,9 +46,9 @@ export const Footer = () => {
             <NavigationLink href="/rss.xml">RSS</NavigationLink>
           </li>
           <li className="ml-0 sm:ml-auto">
-            <Link href="/impressum" passHref legacyBehavior>
-              <NavigationLink>Impressum & Datenschutz</NavigationLink>
-            </Link>
+            <NavigationLink href="/impressum">
+              Impressum & Datenschutz
+            </NavigationLink>
           </li>
         </ul>
       </Container>
