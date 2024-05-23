@@ -27,7 +27,7 @@
     "prettier": "prettier --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,css,md,json}'",
     "format": "pnpm prettier -- --write",
     "check-format": "pnpm prettier -- --list-different",
-    "db:push": "drizzle-kit push:sqlite",
+    "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "db:seed": "tsx ./db/seed.ts",
     "db:reset": "rm ./local.db && pnpm db:push && pnpm db:seed"
