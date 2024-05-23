@@ -14,14 +14,17 @@ const inputStyles =
 
 export const Recommendations = () => {
   const formRef = useRef<HTMLFormElement>(null);
-  const { Form, isRunning, status, error, validationErrors } = useFormAction(
-    action.podcasts.recommend,
-    {
-      onSuccess: () => {
-        formRef.current?.reset();
-      },
+  const {
+    action: recommendAction,
+    isRunning,
+    status,
+    error,
+    validationErrors,
+  } = useFormAction(action.podcasts.recommend, {
+    onSuccess: () => {
+      formRef.current?.reset();
     },
-  );
+  });
 
   return (
     <div className="rounded-3xl bg-dark bg-opacity-10 px-6 py-12 dark:bg-light dark:bg-opacity-10 xl:px-12 xl:py-20">
@@ -32,7 +35,11 @@ export const Recommendations = () => {
         Du kennst einen Podcast, der auf meiner Liste fehlt und in den ich
         unbedingt mal reinhören muss? Schick mir gerne deine Empfehlung!
       </p>
-      <Form refProp={formRef} className="flex flex-col gap-4 sm:gap-8">
+      <form
+        action={recommendAction}
+        ref={formRef}
+        className="flex flex-col gap-4 sm:gap-8"
+      >
         <label className="relative">
           <span className="sr-only">Nachricht</span>
           <textarea
@@ -118,7 +125,7 @@ export const Recommendations = () => {
           )}
           {status === "error" && <p className="text-red-700">{error}</p>}
         </div>
-      </Form>
+      </form>
     </div>
   );
 };

@@ -25,52 +25,67 @@ export const createQueryClient = <Context>(
     }) => MaybePromise<TResponse>;
     cache?:
       | CacheOptions
-      | ((queryArgs: { input: z.output<TInputSchema> }) => CacheOptions);
+      | ((queryArgs: {
+          input: z.output<TInputSchema>;
+          ctx: Context;
+        }) => CacheOptions);
   }) => {
-    let cacheOptions: CacheOptions | undefined;
-
     const query: ServerQuery<TInputSchema, TResponse> = async (
       ...inputArgs
     ) => {
       const [input] = inputArgs;
 
-      // Validate input if schema is provided
-      let parsedInput = input;
-      if (queryBuilderOpts.input) {
-        parsedInput = queryBuilderOpts.input.parse(input);
-      }
+      try {
+        // Validate input if schema is provided
+        let parsedInput = input;
+        if (queryBuilderOpts.input) {
+          parsedInput = queryBuilderOpts.input.parse(input);
+        }
 
-      // Resolve cache options
-      cacheOptions =
-        typeof queryBuilderOpts.cache === "function"
-          ? queryBuilderOpts.cache({ input: parsedInput })
-          : queryBuilderOpts.cache;
-
-      if (cacheOptions?.noStore) {
-        noStore();
-      }
-
-      // Wrapper function to allow for caching
-      const innerQuery = async () => {
         // Run middleware if provided and get context
         const ctx = (await createClientOpts?.middleware?.()) ?? ({} as Context);
 
-        // Call query
-        return await queryBuilderOpts.query({
-          input: parsedInput,
-          ctx,
-        });
-      };
+        // Resolve cache options
+        const cacheOptions =
+          typeof queryBuilderOpts.cache === "function"
+            ? queryBuilderOpts.cache({ input: parsedInput, ctx })
+            : queryBuilderOpts.cache;
 
-      if (cacheOptions?.keyParts || cacheOptions?.options) {
-        return await nextCache(
-          innerQuery,
-          cacheOptions.keyParts,
-          cacheOptions.options,
-        )();
+        if (cacheOptions?.noStore) {
+          noStore();
+        }
+
+        // Wrapper function to allow for caching
+        const innerQuery = async () => {
+          // Call query
+          return await queryBuilderOpts.query({
+            input: parsedInput,
+            ctx,
+          });
+        };
+
+        if (cacheOptions?.keyParts || cacheOptions?.options) {
+          return await nextCache(
+            innerQuery,
+            cacheOptions.keyParts,
+            cacheOptions.options
+              ? {
+                  revalidate: cacheOptions.options.revalidate,
+                  tags: cacheOptions.options.tags
+                    ? ["all", ...cacheOptions.options.tags]
+                    : undefined,
+                }
+              : undefined,
+          )();
+        }
+
+        return await innerQuery();
+      } catch (error) {
+        createClientOpts?.onError?.(error);
+
+        // Retrow error as we use error boundaries to catch errors
+        throw error;
       }
-
-      return await innerQuery();
     };
 
     return reactCache(query);

@@ -32,7 +32,6 @@ const createReducer =
         return {
           ...state,
           status: "running",
-          data: null,
           validationErrors: null,
           error: null,
         };
@@ -48,7 +47,6 @@ const createReducer =
         return {
           ...state,
           status: "validationError",
-          data: null,
           validationErrors: action.validationErrors,
           error: null,
         };
@@ -56,7 +54,6 @@ const createReducer =
         return {
           ...state,
           status: "error",
-          data: null,
           validationErrors: null,
           error: action.error,
         };
@@ -113,7 +110,20 @@ export const useAction = <
           // If /next/navigation function (redirect() and notFound()) is called in the action, the result will be undefined
           // Skip processing because the page will be redirected
           if (!result) {
+            dispatch({
+              type: "IS_SUCCESS",
+              data: null,
+            });
+            options.onSuccess?.(null, ...inputArgs);
             return;
+          }
+
+          if (result.status === "success") {
+            dispatch({
+              type: "IS_SUCCESS",
+              data: result.data,
+            });
+            options.onSuccess?.(result.data, ...inputArgs);
           }
 
           if (result.status === "validationError") {
@@ -142,14 +152,6 @@ export const useAction = <
               },
               ...inputArgs,
             );
-          }
-
-          if (result.status === "success") {
-            dispatch({
-              type: "IS_SUCCESS",
-              data: result.data,
-            });
-            options.onSuccess?.(result.data, ...inputArgs);
           }
         } catch (error) {
           const userErrorMessage = "Something went wrong. Please try again.";

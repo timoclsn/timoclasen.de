@@ -1,8 +1,9 @@
 import { isNotFoundError } from "next/dist/client/components/not-found";
 import { isRedirectError } from "next/dist/client/components/redirect";
 import { z } from "zod";
+import { ActionError, DEFAULT_ERROR_MESSAGE } from "../errors";
 import { CreateClientOptions, MaybePromise, ServerAction } from "../types";
-import { getErrorMessage, id } from "../utils";
+import { id } from "../utils";
 
 export const createActionClient = <Context>(
   createClientOpts?: CreateClientOptions<Context>,
@@ -29,7 +30,7 @@ export const createActionClient = <Context>(
         // Validate input if schema is provided
         let parsedInput = input;
         if (actionBuilderOpts.input) {
-          const result = actionBuilderOpts.input.safeParse(input);
+          const result = await actionBuilderOpts.input.safeParseAsync(input);
           if (!result.success) {
             return {
               status: "validationError",
@@ -66,12 +67,17 @@ export const createActionClient = <Context>(
           throw error;
         }
 
+        createClientOpts?.onError?.(error);
+
+        const message =
+          error instanceof ActionError ? error.message : DEFAULT_ERROR_MESSAGE;
+
         return {
           status: "error",
           id: id(),
           data: null,
           validationErrors: null,
-          error: getErrorMessage(error),
+          error: message,
         };
       }
     };
