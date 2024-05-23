@@ -1,6 +1,6 @@
 import { VariantProps, cva } from "cva";
-import type { ReactNode } from "react";
-import { Children, forwardRef } from "react";
+import type { ReactNode, RefObject } from "react";
+import { Children } from "react";
 import buttonStyles from "./Button.module.css";
 
 const buttonWrapper = cva({
@@ -45,6 +45,7 @@ type ButtonVariantProps = VariantProps<typeof buttonContent>;
 
 interface CommmonProps {
   children: ReactNode;
+  ref?: RefObject<HTMLButtonElement & HTMLAnchorElement>;
   title?: string;
   className?: string;
 }
@@ -71,22 +72,17 @@ type ElementProps =
 
 export type ButtonProps = CommmonProps & ElementProps & ButtonVariantProps;
 
-export const Button = forwardRef<
-  HTMLButtonElement & HTMLAnchorElement,
-  ButtonProps
->(function Button(
-  {
-    children,
-    as: Element = "button",
-    type = "button",
-    variant = "solid",
-    size = "normal",
-    fullWidth,
-    className,
-    ...props
-  },
+export const Button = ({
+  children,
   ref,
-) {
+  as: Element = "button",
+  type = "button",
+  variant = "solid",
+  size = "normal",
+  fullWidth,
+  className,
+  ...props
+}: ButtonProps) => {
   return (
     <Element
       type={Element === "button" ? type : undefined}
@@ -108,4 +104,4 @@ export const Button = forwardRef<
       </span>
     </Element>
   );
-});
+};
