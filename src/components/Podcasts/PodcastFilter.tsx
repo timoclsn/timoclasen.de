@@ -55,16 +55,16 @@ export const PodcastFilter = ({ categories }: Props) => {
       onStartTransition: () => {
         if (name === "favorites") {
           if (checked) {
-            setOptimisticFavourites(true);
+            setOptimisticFavourites(() => true);
           } else {
-            setOptimisticFavourites(false);
+            setOptimisticFavourites(() => false);
           }
         } else {
           if (checked) {
-            setOptimisticFilter([...optimisticFilter, name]);
+            setOptimisticFilter((filter) => [...filter, name]);
           } else {
-            setOptimisticFilter(
-              optimisticFilter.filter((item) => item !== name),
+            setOptimisticFilter((filter) =>
+              filter.filter((item) => item !== name),
             );
           }
         }
