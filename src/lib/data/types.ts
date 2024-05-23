@@ -12,6 +12,7 @@ export type InferValidationErrors<TInputSchema extends z.ZodTypeAny> =
 
 export interface CreateClientOptions<Context> {
   middleware?: () => MaybePromise<Context>;
+  onError?(error: unknown): void;
 }
 
 // Client Action
@@ -27,7 +28,7 @@ export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
   | {
       status: "running";
       id: string;
-      data: null;
+      data: TResponse | null;
       validationErrors: null;
       error: null;
     }
@@ -41,14 +42,14 @@ export type Result<TInputSchema extends z.ZodTypeAny, TResponse extends any> =
   | {
       status: "validationError";
       id: string;
-      data: null;
+      data: TResponse | null;
       validationErrors: InferValidationErrors<TInputSchema>;
       error: null;
     }
   | {
       status: "error";
       id: string;
-      data: null;
+      data: TResponse | null;
       validationErrors: null;
       error: string;
     };

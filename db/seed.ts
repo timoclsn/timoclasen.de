@@ -1,5 +1,4 @@
 import { createClient } from "@libsql/client";
-import "dotenv/config";
 import { drizzle } from "drizzle-orm/libsql";
 import { balconyControl } from "./schema";
 

@@ -1,30 +1,7 @@
-import {
-  ComponentPropsWithoutRef,
-  RefObject,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState, useEffect } from "react";
 import { z } from "zod";
 import { InferValidationErrors, Result, ServerAction } from "../types";
 import { initalState } from "./initialState";
-
-interface FormStatusProps {
-  onPendingChange: (pending: boolean) => void;
-}
-
-const FormStatus = ({ onPendingChange }: FormStatusProps) => {
-  const { pending } = useFormStatus();
-
-  useEffect(() => {
-    onPendingChange(pending);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pending]);
-
-  return null;
-};
 
 export const useFormAction = <
   TInputSchema extends z.ZodTypeAny,
@@ -41,11 +18,10 @@ export const useFormAction = <
     onSettled?: () => void;
   } = {},
 ) => {
-  const [state, formAction] = useFormState<
+  const [state, formAction, isRunning] = useActionState<
     Result<TInputSchema, TResponse>,
     FormData
   >(action, initalState);
-  const [isRunning, setIsRunning] = useState(false);
 
   const isSuccess = state.status === "success";
   const isError =
@@ -78,23 +54,8 @@ export const useFormAction = <
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.id]);
 
-  type FormProps = Omit<ComponentPropsWithoutRef<"form">, "action"> & {
-    refProp?: RefObject<HTMLFormElement>;
-  };
-
-  const Form = useCallback(({ children, refProp, ...rest }: FormProps) => {
-    return (
-      <form ref={refProp} action={formAction} {...rest}>
-        <FormStatus onPendingChange={setIsRunning} />
-        {children}
-      </form>
-    );
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return {
-    Form,
+    action: formAction,
     ...state,
     isSuccess,
     isError,
