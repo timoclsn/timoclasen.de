@@ -40,6 +40,7 @@
     "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/typography": "0.5.13",
     "@vercel/speed-insights": "^1.0.10",
+    "babel-plugin-react-compiler": "0.0.0-experimental-592953e-20240517",
     "bright": "^0.8.5",
     "cva": "1.0.0-beta.1",
     "date-fns": "2.30.0",
