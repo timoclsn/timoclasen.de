@@ -114,11 +114,6 @@ export async function getTopTracks() {
 }
 
 const nowPlayingSchema = z.object({
-  context: z.object({
-    external_urls: z.object({
-      spotify: z.string().url(),
-    }),
-  }),
   item: topTrackSchema.nullable(),
   is_playing: z.boolean(),
 });
