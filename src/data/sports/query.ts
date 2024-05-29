@@ -1,5 +1,5 @@
 import { formatRelative, parseISO } from "date-fns";
-import { utcToZonedTime } from "date-fns-tz";
+import { toZonedTime } from "date-fns-tz";
 import { de } from "date-fns/locale";
 import { getMapURLs } from "../../lib/mapbox";
 import {
@@ -84,11 +84,11 @@ export const running = createQuery({
           raw: lastRun.start_date,
           relative: capitalizeFirstLetter(
             formatRelative(
-              utcToZonedTime(
+              toZonedTime(
                 parseISO(lastRun.start_date),
                 lastRun.timezone.split(" ")[1],
               ),
-              utcToZonedTime(new Date(), lastRun.timezone.split(" ")[1]),
+              toZonedTime(new Date(), lastRun.timezone.split(" ")[1]),
               {
                 locale: de,
                 weekStartsOn: 1, // Monday
