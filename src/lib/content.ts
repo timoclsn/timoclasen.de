@@ -42,9 +42,6 @@ export const queryContent = async <TSchema extends z.ZodTypeAny>(
         }`,
       },
       body: JSON.stringify({ query }),
-      next: {
-        revalidate: 60,
-      },
     },
   );
   const data = await res.json();
