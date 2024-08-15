@@ -24,3 +24,17 @@ export function Err<
 >(error: { type: TType } & TContext): ErrResult<{ type: TType } & TContext> {
   return { err: error };
 }
+
+export const tryCatch = async <TValue, Type extends string>(
+  promise: Promise<TValue>,
+  errorType: Type,
+) => {
+  try {
+    return Ok(await promise);
+  } catch (error) {
+    return Err({
+      type: errorType,
+      error,
+    });
+  }
+};
