@@ -1,33 +1,37 @@
-export type OkResult<TValue> = {
+export type Ok<TValue> = {
   val: TValue;
   err?: never;
 };
 
-export type ErrResult<TError extends { type: string }> = {
+type ErrorContext = Record<string, unknown>;
+type BaseError<TType extends string> = { type: TType } & ErrorContext;
+
+export type Err<TType extends string, TError extends BaseError<TType>> = {
   val?: never;
   err: TError;
 };
 
-export type Result<TValue, TError extends { type: string }> =
-  | OkResult<TValue>
-  | ErrResult<TError>;
+export type Result<
+  TValue,
+  TType extends string,
+  TError extends BaseError<TType>,
+> = Ok<TValue> | Err<TType, TError>;
 
-export function Ok(): OkResult<never>;
-export function Ok<TValue>(val: TValue): OkResult<TValue>;
-export function Ok<TValue>(val?: TValue): OkResult<TValue> {
-  return { val } as OkResult<TValue>;
+export function Ok(): Ok<never>;
+export function Ok<TValue>(val: TValue): Ok<TValue>;
+export function Ok<TValue>(val?: TValue): Ok<TValue> {
+  return { val } as Ok<TValue>;
 }
 
-export function Err<
-  TType extends string,
-  TContext extends Record<string, unknown>,
->(error: { type: TType } & TContext): ErrResult<{ type: TType } & TContext> {
+export function Err<TType extends string, TError extends BaseError<TType>>(
+  error: TError,
+): Err<TType, TError> {
   return { err: error };
 }
 
-export const tryCatch = async <TValue, Type extends string>(
+export const tryCatch = async <TValue, TErrorType extends string>(
   promise: Promise<TValue>,
-  errorType: Type,
+  errorType: TErrorType,
 ) => {
   try {
     return Ok(await promise);
@@ -37,4 +41,42 @@ export const tryCatch = async <TValue, Type extends string>(
       error,
     });
   }
+};
+
+const divide = (a: number, b: number) => {
+  if (b === 0) {
+    return Err({
+      type: "DividedByZeroError",
+    });
+  }
+  if (b === 10) {
+    return Err({
+      type: "DividedBy10Error",
+    });
+  }
+  return Ok(a / b);
+};
+
+const doStuff = () => {
+  const { val, err } = divide(10, 0);
+
+  if (err) {
+    if (err.type === "DividedByZeroError") {
+      throw new Error("Divided by zero");
+    }
+
+    return err;
+  }
+
+  return val;
+};
+
+const main = () => {
+  const result = divide(100, 0);
+
+  if (result instanceof DivideByZeroError) {
+    return;
+  }
+
+  result;
 };

@@ -39,3 +39,48 @@ export abstract class BaseError<
     )} - caused by ${this.cause?.toString()}`;
   }
 }
+
+const isError = (val: unknown): val is Error => val instanceof Error;
+
+class DividedByZeroError extends Error {}
+class DividedBy10Error extends Error {}
+
+const divide = (a: number, b: number) => {
+  if (b === 0) {
+    return new DividedByZeroError();
+  }
+
+  if (b === 10) {
+    return new DividedBy10Error();
+  }
+
+  return a / b;
+};
+
+const addTwo = () => {
+  const result = divide(10, 0);
+
+  // Forward error
+  if (isError(result)) {
+    return result;
+  }
+
+  return result + 2;
+};
+
+const main = () => {
+  const result = addTwo();
+
+  // Handle errors
+  if (result instanceof DividedByZeroError) {
+    console.error(result.name);
+    return;
+  } else if (result instanceof DividedBy10Error) {
+    console.error(result.name);
+    return;
+  }
+
+  console.log(result);
+};
+
+main();
