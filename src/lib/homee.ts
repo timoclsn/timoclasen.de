@@ -1,3 +1,4 @@
+import { Data, Effect } from "effect";
 import WebSocket from "ws";
 import { z } from "zod";
 
@@ -52,17 +53,29 @@ export function getNodes() {
   });
 }
 
-export async function playHomeegram(homeegramID: number) {
-  return await fetch(
-    `https://${HOMEE_ID}.hom.ee/api/v2/homeegrams/${homeegramID}?play=1`,
-    {
-      method: "PUT",
-      headers: {
-        Cookie: HOMEE_ACCESS_TOKEN,
-      },
+class PlayHomeegramError extends Data.TaggedError("PlayHomeegramError") {}
+
+export const playHomeegram = (homeegramID: number) =>
+  Effect.tryPromise({
+    try: async () => {
+      const response = await fetch(
+        `https://${HOMEE_ID}.hom.ee/api/v2/homeegrams/${homeegramID}?play=1`,
+        {
+          method: "PUT",
+          headers: {
+            Cookie: HOMEE_ACCESS_TOKEN,
+          },
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error();
+      }
+
+      return response.json();
     },
-  );
-}
+    catch: () => new PlayHomeegramError(),
+  });
 
 export function roundValue(value: number) {
   return Math.round(value * 10) / 10;

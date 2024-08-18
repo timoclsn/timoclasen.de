@@ -44,6 +44,9 @@ dependencies:
   drizzle-orm:
     specifier: ^0.30.10
     version: 0.30.10(@libsql/client@0.6.0)(@types/react@18.3.3)(react@19.0.0-rc-4c2e457c7c-20240522)
+  effect:
+    specifier: ^3.6.4
+    version: 3.6.4
   lucide-react:
     specifier: ^0.379.0
     version: 0.379.0(react@19.0.0-rc-4c2e457c7c-20240522)
@@ -5326,6 +5329,10 @@ packages:
       jsbn: 0.1.1
       safer-buffer: 2.1.2
     dev: true
+
+  /effect@3.6.4:
+    resolution: {integrity: sha512-nNsn+Uw/n4bHKR8w45IIuYGLCgHsQodjRPB+BHreylQJ89W3iLc/Av9CiL9uvtO/ERp4e3oy5wrTO2J2pkbRRw==}
+    dev: false
 
   /electron-to-chromium@1.4.505:
     resolution: {integrity: sha512-0A50eL5BCCKdxig2SsCXhpuztnB9PfUgRMojj5tMvt8O54lbwz3t6wNgnpiTRosw5QjlJB7ixhVyeg8daLQwSQ==}
