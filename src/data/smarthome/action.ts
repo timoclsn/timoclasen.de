@@ -49,27 +49,29 @@ export const turnOnBalcony = createAction({
       });
 
       revalidateTag("control-count");
-    }).pipe(
-      Effect.mapError((error) => {
-        let message = "";
+    });
 
-        switch (error._tag) {
-          case "PlayHomeegramError":
-            message = "Balkonlampe konnte nicht eingeschaltet werden.";
-            break;
-          case "IncrementBalconyCounterError":
-            message = `Der ${error.color} Zähler konnte nicht erhöht werden.`;
-            break;
-          default:
-            message = "Unbekannter Fehler";
-            break;
-        }
+    await Effect.runPromise(
+      action.pipe(
+        Effect.mapError((error) => {
+          let message = "";
 
-        return new ActionError({ message });
-      }),
-      Effect.orDie,
+          switch (error._tag) {
+            case "PlayHomeegramError":
+              message = "Balkonlampe konnte nicht eingeschaltet werden.";
+              break;
+            case "IncrementBalconyCounterError":
+              message = `Der ${error.color} Zähler konnte nicht erhöht werden.`;
+              break;
+            default:
+              message = "Unbekannter Fehler";
+              break;
+          }
+
+          return new ActionError({ message });
+        }),
+        Effect.orDie,
+      ),
     );
-
-    await Effect.runPromise(action);
   },
 });
