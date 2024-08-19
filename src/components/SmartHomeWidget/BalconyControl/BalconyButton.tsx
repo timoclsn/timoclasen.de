@@ -40,8 +40,8 @@ export const BalconyButton = ({ children, color }: Props) => {
           color: `${emoji} ${color}`,
         });
       },
-      onError: () => {
-        toast.error("Hat nicht funktioniert.", {
+      onError: ({ error }) => {
+        toast.error(error, {
           id: toastId,
           icon: undefined,
         });

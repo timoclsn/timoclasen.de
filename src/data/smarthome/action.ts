@@ -1,14 +1,19 @@
 "use server";
 
 import { eq, sql } from "drizzle-orm";
+import { Effect } from "effect";
 import { revalidateTag } from "next/cache";
 import { z } from "zod";
 import { zfd } from "zod-form-data";
 import { balconyControl } from "../../../db/schema";
+import { ActionError } from "../../lib/data/errors";
+import {
+  DatabaseContext,
+  DatabaseProvider,
+  IncrementBalconyCounterError,
+} from "../../lib/effect";
 import { playHomeegram } from "../../lib/homee";
 import { createAction } from "../clients";
-import { Data, Effect } from "effect";
-import { ActionError } from "../../lib/data/errors";
 
 const colorHomeegramIds = {
   red: 239,
@@ -18,18 +23,14 @@ const colorHomeegramIds = {
 
 const colorSchema = z.enum(["red", "green", "blue"]);
 
-class IncrementBalconyCounterError extends Data.TaggedError(
-  "IncrementBalconyCounterError",
-)<{ color: string }> {}
-
 export const turnOnBalcony = createAction({
   input: zfd.formData({
     color: zfd.text(colorSchema),
   }),
-  action: async ({ input, ctx }) => {
+  action: async ({ input }) => {
     const action = Effect.gen(function* () {
       const { color } = input;
-      const { db } = ctx;
+      const { db } = yield* DatabaseContext;
 
       const homeegramId = colorHomeegramIds[color];
 
@@ -45,7 +46,11 @@ export const turnOnBalcony = createAction({
               count: sql`${balconyControl.count} + 1`,
             })
             .where(eq(balconyControl.color, color)),
-        catch: () => new IncrementBalconyCounterError({ color }),
+        catch: (error) =>
+          new IncrementBalconyCounterError({
+            color,
+            cause: error,
+          }),
       });
 
       revalidateTag("control-count");
@@ -53,6 +58,7 @@ export const turnOnBalcony = createAction({
 
     await Effect.runPromise(
       action.pipe(
+        Effect.provide(DatabaseProvider),
         Effect.mapError((error) => {
           let message = "";
 

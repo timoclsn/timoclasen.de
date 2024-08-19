@@ -1,7 +1,8 @@
-import { Data, Effect } from "effect";
+import { Effect } from "effect";
 import WebSocket from "ws";
 import { z } from "zod";
 
+import { PlayHomeegramError } from "./effect";
 import { AttributeType, NodeProfile, NodeState } from "./enums";
 
 const { HOMEE_ID, HOMEE_ACCESS_TOKEN } = process.env;
@@ -53,8 +54,6 @@ export function getNodes() {
   });
 }
 
-class PlayHomeegramError extends Data.TaggedError("PlayHomeegramError") {}
-
 export const playHomeegram = (homeegramID: number) =>
   Effect.tryPromise({
     try: async () => {
@@ -71,10 +70,11 @@ export const playHomeegram = (homeegramID: number) =>
       if (!response.ok) {
         throw new Error();
       }
-
-      return response.json();
     },
-    catch: () => new PlayHomeegramError(),
+    catch: (error) =>
+      new PlayHomeegramError({
+        cause: error,
+      }),
   });
 
 export function roundValue(value: number) {
