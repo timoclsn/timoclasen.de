@@ -33,6 +33,7 @@
     "db:reset": "rm ./local.db && pnpm db:push && pnpm db:seed"
   },
   "dependencies": {
+    "@effect/platform": "^0.62.1",
     "@formkit/auto-animate": "^0.8.2",
     "@libsql/client": "^0.6.0",
     "@mapbox/polyline": "1.2.1",

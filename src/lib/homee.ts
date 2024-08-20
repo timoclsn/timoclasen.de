@@ -1,8 +1,6 @@
-import { Effect } from "effect";
 import WebSocket from "ws";
 import { z } from "zod";
 
-import { PlayHomeegramError } from "./effect";
 import { AttributeType, NodeProfile, NodeState } from "./enums";
 
 const { HOMEE_ID, HOMEE_ACCESS_TOKEN } = process.env;
@@ -53,29 +51,6 @@ export function getNodes() {
     });
   });
 }
-
-export const playHomeegram = (homeegramID: number) =>
-  Effect.tryPromise({
-    try: async () => {
-      const response = await fetch(
-        `https://${HOMEE_ID}.hom.ee/api/v2/homeegrams/${homeegramID}?play=1`,
-        {
-          method: "PUT",
-          headers: {
-            Cookie: HOMEE_ACCESS_TOKEN,
-          },
-        },
-      );
-
-      if (!response.ok) {
-        throw new Error();
-      }
-    },
-    catch: (error) =>
-      new PlayHomeegramError({
-        cause: error,
-      }),
-  });
 
 export function roundValue(value: number) {
   return Math.round(value * 10) / 10;

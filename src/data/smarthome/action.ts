@@ -1,18 +1,11 @@
 "use server";
 
-import { eq, sql } from "drizzle-orm";
 import { Effect } from "effect";
 import { revalidateTag } from "next/cache";
 import { z } from "zod";
 import { zfd } from "zod-form-data";
-import { balconyControl } from "../../../db/schema";
 import { ActionError } from "../../lib/data/errors";
-import {
-  DatabaseContext,
-  DatabaseProvider,
-  IncrementBalconyCounterError,
-} from "../../lib/effect";
-import { playHomeegram } from "../../lib/homee";
+import { DatabaseService, HomeeService } from "../../lib/effect";
 import { createAction } from "../clients";
 
 const colorHomeegramIds = {
@@ -30,35 +23,21 @@ export const turnOnBalcony = createAction({
   action: async ({ input }) => {
     const action = Effect.gen(function* () {
       const { color } = input;
-      const { db } = yield* DatabaseContext;
-
+      const { incrementBalconyCounter } = yield* DatabaseService;
+      const { playHomeegram } = yield* HomeeService;
       const homeegramId = colorHomeegramIds[color];
 
       yield* playHomeegram(homeegramId);
-
       yield* Effect.sleep("2 seconds");
-
-      yield* Effect.tryPromise({
-        try: () =>
-          db
-            .update(balconyControl)
-            .set({
-              count: sql`${balconyControl.count} + 1`,
-            })
-            .where(eq(balconyControl.color, color)),
-        catch: (error) =>
-          new IncrementBalconyCounterError({
-            color,
-            cause: error,
-          }),
-      });
+      yield* incrementBalconyCounter(color);
 
       revalidateTag("control-count");
     });
 
     await Effect.runPromise(
       action.pipe(
-        Effect.provide(DatabaseProvider),
+        Effect.provide(HomeeService.Live),
+        Effect.provide(DatabaseService.Live),
         Effect.mapError((error) => {
           let message = "";
 
