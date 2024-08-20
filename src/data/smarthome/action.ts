@@ -5,7 +5,12 @@ import { revalidateTag } from "next/cache";
 import { z } from "zod";
 import { zfd } from "zod-form-data";
 import { ActionError } from "../../lib/data/errors";
-import { DatabaseService, HomeeService } from "../../lib/effect";
+import {
+  DatabaseService,
+  DevToolsLive,
+  HomeeService,
+  NodeSdkLive,
+} from "../../lib/effect";
 import { createAction } from "../clients";
 
 const colorHomeegramIds = {
@@ -23,6 +28,8 @@ export const turnOnBalcony = createAction({
   action: async ({ input }) => {
     const action = Effect.gen(function* () {
       const { color } = input;
+      yield* Effect.logInfo(`Trying to turn on balcony light ${color}`);
+
       const { incrementBalconyCounter } = yield* DatabaseService;
       const { playHomeegram } = yield* HomeeService;
       const homeegramId = colorHomeegramIds[color];
@@ -31,11 +38,15 @@ export const turnOnBalcony = createAction({
       yield* Effect.sleep("2 seconds");
       yield* incrementBalconyCounter(color);
 
+      yield* Effect.logInfo(`Balcony light turned on ${color}`);
+
       revalidateTag("control-count");
     });
 
     await Effect.runPromise(
       action.pipe(
+        Effect.provide(DevToolsLive),
+        Effect.provide(NodeSdkLive),
         Effect.provide(HomeeService.Live),
         Effect.provide(DatabaseService.Live),
         Effect.mapError((error) => {

@@ -1,14 +1,30 @@
+import { DevTools } from "@effect/experimental";
+import { NodeSdk } from "@effect/opentelemetry";
 import {
   HttpClient,
   HttpClientRequest,
   HttpClientResponse,
 } from "@effect/platform";
+import { NodeSocket } from "@effect/platform-node";
+import {
+  BatchSpanProcessor,
+  ConsoleSpanExporter,
+} from "@opentelemetry/sdk-trace-base";
 import { eq, sql } from "drizzle-orm";
 import { Context, Data, Effect, Layer, Schedule } from "effect";
 import { balconyControl } from "../../db/schema";
 import { db } from "./db";
 
 const { HOMEE_ID, HOMEE_ACCESS_TOKEN } = process.env;
+
+export const NodeSdkLive = NodeSdk.layer(() => ({
+  resource: { serviceName: "timoclasen-de" },
+  spanProcessor: new BatchSpanProcessor(new ConsoleSpanExporter()),
+}));
+
+export const DevToolsLive = DevTools.layerWebSocket().pipe(
+  Layer.provide(NodeSocket.layerWebSocketConstructor),
+);
 
 export class IncrementBalconyCounterError extends Data.TaggedError(
   "IncrementBalconyCounterError",
@@ -29,7 +45,7 @@ const makeDatabaseService = Effect.gen(function* () {
           color,
           cause: error,
         }),
-    });
+    }).pipe(Effect.withSpan("incrementBalconyCounter"));
 
   return {
     db,
@@ -73,6 +89,7 @@ const makeHomeeService = Effect.gen(function* () {
       client,
       HttpClientResponse.text,
       Effect.mapError((error) => new PlayHomeegramError({ cause: error })),
+      Effect.withSpan("playHomeegram"),
     );
 
   return { playHomeegram } as const;
