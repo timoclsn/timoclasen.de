@@ -6,27 +6,22 @@ import {
   HttpClientResponse,
 } from "@effect/platform";
 import { NodeSocket } from "@effect/platform-node";
-import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
-import { BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
+import {
+  BatchSpanProcessor,
+  ConsoleSpanExporter,
+} from "@opentelemetry/sdk-trace-base";
 import { eq, sql } from "drizzle-orm";
 import { Context, Data, Effect, Layer, Schedule } from "effect";
 import { balconyControl } from "../../db/schema";
 import { db } from "./db";
 
-const { HOMEE_ID, HOMEE_ACCESS_TOKEN, GRAFANA_CLOUD_API_KEY } = process.env;
+const { HOMEE_ID, HOMEE_ACCESS_TOKEN } = process.env;
 
 // Observability
 
-const exporter = new OTLPTraceExporter({
-  url: "https://otlp-gateway-prod-eu-west-2.grafana.net/otlp",
-  headers: {
-    "api-key": GRAFANA_CLOUD_API_KEY,
-  },
-});
-
 export const NodeSdkLive = NodeSdk.layer(() => ({
   resource: { serviceName: "timoclasen-de" },
-  spanProcessor: new BatchSpanProcessor(exporter),
+  spanProcessor: new BatchSpanProcessor(new ConsoleSpanExporter()),
 }));
 
 export const DevToolsLive = DevTools.layerWebSocket().pipe(

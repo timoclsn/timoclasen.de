@@ -32,9 +32,6 @@ const envSchema = z.object({
   TURSO_DATABASE_URL: envVarSchema,
   TURSO_AUTH_TOKEN: envVarSchema,
 
-  // Grafana
-  GRAFANA_CLOUD_API_KEY: envVarSchema,
-
   // Client
 
   // Vercel
