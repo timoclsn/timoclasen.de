@@ -10,6 +10,7 @@ import {
   DevToolsLive,
   HomeeService,
   NodeSdkLive,
+  incrementBalconyCounter,
 } from "../../lib/effect";
 import { createAction } from "../clients";
 
@@ -30,7 +31,6 @@ export const turnOnBalcony = createAction({
       const { color } = input;
       yield* Effect.logInfo(`Trying to turn on balcony light ${color}`);
 
-      const { incrementBalconyCounter } = yield* DatabaseService;
       const { playHomeegram } = yield* HomeeService;
       const homeegramId = colorHomeegramIds[color];
 
@@ -64,7 +64,7 @@ export const turnOnBalcony = createAction({
               break;
           }
 
-          return new ActionError({ message });
+          return new ActionError({ message, cause: error.cause });
         }),
         Effect.orDie,
       ),

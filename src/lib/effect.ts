@@ -6,33 +6,55 @@ import {
   HttpClientResponse,
 } from "@effect/platform";
 import { NodeSocket } from "@effect/platform-node";
-import {
-  BatchSpanProcessor,
-  ConsoleSpanExporter,
-} from "@opentelemetry/sdk-trace-base";
+import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-http";
+import { BatchSpanProcessor } from "@opentelemetry/sdk-trace-base";
 import { eq, sql } from "drizzle-orm";
 import { Context, Data, Effect, Layer, Schedule } from "effect";
 import { balconyControl } from "../../db/schema";
 import { db } from "./db";
 
-const { HOMEE_ID, HOMEE_ACCESS_TOKEN } = process.env;
+const { HOMEE_ID, HOMEE_ACCESS_TOKEN, GRAFANA_CLOUD_API_KEY } = process.env;
+
+// Observability
+
+const exporter = new OTLPTraceExporter({
+  url: "https://otlp-gateway-prod-eu-west-2.grafana.net/otlp",
+  headers: {
+    "api-key": GRAFANA_CLOUD_API_KEY,
+  },
+});
 
 export const NodeSdkLive = NodeSdk.layer(() => ({
   resource: { serviceName: "timoclasen-de" },
-  spanProcessor: new BatchSpanProcessor(new ConsoleSpanExporter()),
+  spanProcessor: new BatchSpanProcessor(exporter),
 }));
 
 export const DevToolsLive = DevTools.layerWebSocket().pipe(
   Layer.provide(NodeSocket.layerWebSocketConstructor),
 );
 
+// Database service
+
+export class DatabaseService extends Context.Tag("Database")<
+  DatabaseService,
+  {
+    db: typeof db;
+  }
+>() {
+  static Live = Layer.succeed(DatabaseService, {
+    db,
+  });
+}
+
 export class IncrementBalconyCounterError extends Data.TaggedError(
   "IncrementBalconyCounterError",
 )<{ color: string; cause?: unknown }> {}
 
-const makeDatabaseService = Effect.gen(function* () {
-  const incrementBalconyCounter = (color: "red" | "blue" | "green") =>
-    Effect.tryPromise({
+export const incrementBalconyCounter = (color: "red" | "blue" | "green") =>
+  Effect.gen(function* () {
+    const { db } = yield* DatabaseService;
+
+    yield* Effect.tryPromise({
       try: () =>
         db
           .update(balconyControl)
@@ -46,19 +68,9 @@ const makeDatabaseService = Effect.gen(function* () {
           cause: error,
         }),
     }).pipe(Effect.withSpan("incrementBalconyCounter"));
+  });
 
-  return {
-    db,
-    incrementBalconyCounter,
-  } as const;
-});
-
-export class DatabaseService extends Context.Tag("Database")<
-  DatabaseService,
-  Effect.Effect.Success<typeof makeDatabaseService>
->() {
-  static Live = Layer.effect(DatabaseService, makeDatabaseService);
-}
+// homee service
 
 export class PlayHomeegramError extends Data.TaggedError("PlayHomeegramError")<{
   cause?: unknown;
