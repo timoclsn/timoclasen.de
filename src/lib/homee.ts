@@ -52,18 +52,6 @@ export function getNodes() {
   });
 }
 
-export async function playHomeegram(homeegramID: number) {
-  return await fetch(
-    `https://${HOMEE_ID}.hom.ee/api/v2/homeegrams/${homeegramID}?play=1`,
-    {
-      method: "PUT",
-      headers: {
-        Cookie: HOMEE_ACCESS_TOKEN,
-      },
-    },
-  );
-}
-
 export function roundValue(value: number) {
   return Math.round(value * 10) / 10;
 }
