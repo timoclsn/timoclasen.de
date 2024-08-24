@@ -1,3 +1,11 @@
+import { Effect } from "effect";
+import { ActionError } from "../../lib/data/errors";
+import {
+  DatabaseService,
+  DevToolsLive,
+  NodeSdkLive,
+  queryBalconyControl,
+} from "../../lib/effect";
 import { AttributeType, NodeState } from "../../lib/enums";
 import { formatValue, getHexColor, getNodes, isLight } from "../../lib/homee";
 import { createQuery } from "../clients";
@@ -130,17 +138,26 @@ export const controlCount = createQuery({
       tags: ["control-count"],
     },
   },
-  query: async ({ ctx }) => {
-    const { db } = ctx;
-    const rawCounts = await db.query.balconyControl.findMany();
+  query: async () =>
+    Effect.gen(function* () {
+      const rawCounts = yield* queryBalconyControl;
 
-    return rawCounts.reduce(
-      (acc, count) => ({ ...acc, [count.color]: count.count }),
-      {
-        red: 0,
-        green: 0,
-        blue: 0,
-      },
-    );
-  },
+      return rawCounts.reduce(
+        (acc, count) => ({ ...acc, [count.color]: count.count }),
+        {
+          red: 0,
+          green: 0,
+          blue: 0,
+        },
+      );
+    }).pipe(
+      Effect.provide(DevToolsLive),
+      Effect.provide(NodeSdkLive),
+      Effect.provide(DatabaseService.Live),
+      Effect.mapError(
+        ({ message, cause }) => new ActionError({ message, cause }),
+      ),
+      Effect.orDie,
+      Effect.runPromise,
+    ),
 });
