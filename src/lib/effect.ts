@@ -1,15 +1,8 @@
-import { DevTools } from "@effect/experimental";
-import { NodeSdk } from "@effect/opentelemetry";
 import {
   HttpClient,
   HttpClientRequest,
   HttpClientResponse,
 } from "@effect/platform";
-import { NodeSocket } from "@effect/platform-node";
-import {
-  BatchSpanProcessor,
-  ConsoleSpanExporter,
-} from "@opentelemetry/sdk-trace-base";
 import { eq, sql } from "drizzle-orm";
 import { Context, Data, Effect, Layer, Schedule } from "effect";
 import { balconyControl } from "../../db/schema";
@@ -17,18 +10,9 @@ import { db } from "./db";
 
 const { HOMEE_ID, HOMEE_ACCESS_TOKEN } = process.env;
 
-// Observability
-
-export const NodeSdkLive = NodeSdk.layer(() => ({
-  resource: { serviceName: "timoclasen-de" },
-  spanProcessor: new BatchSpanProcessor(new ConsoleSpanExporter()),
-}));
-
-export const DevToolsLive = DevTools.layerWebSocket().pipe(
-  Layer.provide(NodeSocket.layerWebSocketConstructor),
-);
-
+//
 // Database service
+//
 
 export class DatabaseService extends Context.Tag("Database")<
   DatabaseService,
@@ -44,6 +28,10 @@ export class DatabaseService extends Context.Tag("Database")<
 export class IncrementBalconyCounterError extends Data.TaggedError(
   "IncrementBalconyCounterError",
 )<{ color: string; cause?: unknown }> {}
+
+export class QueryBalconyCounterError extends Data.TaggedError(
+  "QueryBalconyCounterError",
+)<{ cause?: unknown }> {}
 
 export const incrementBalconyCounter = (color: "red" | "blue" | "green") =>
   Effect.gen(function* () {
@@ -62,10 +50,24 @@ export const incrementBalconyCounter = (color: "red" | "blue" | "green") =>
           color,
           cause: error,
         }),
-    }).pipe(Effect.withSpan("incrementBalconyCounter"));
+    });
   });
 
+export const queryBalconyControl = Effect.gen(function* () {
+  const { db } = yield* DatabaseService;
+
+  return yield* Effect.tryPromise({
+    try: () => db.query.balconyControl.findMany(),
+    catch: (error) =>
+      new QueryBalconyCounterError({
+        cause: error,
+      }),
+  });
+});
+
+//
 // homee service
+//
 
 export class PlayHomeegramError extends Data.TaggedError("PlayHomeegramError")<{
   cause?: unknown;
@@ -95,8 +97,12 @@ const makeHomeeService = Effect.gen(function* () {
     HttpClientRequest.put(`/homeegrams/${homeegramID}?play=1`).pipe(
       client,
       HttpClientResponse.text,
-      Effect.mapError((error) => new PlayHomeegramError({ cause: error })),
-      Effect.withSpan("playHomeegram"),
+      Effect.mapError(
+        (error) =>
+          new PlayHomeegramError({
+            cause: error,
+          }),
+      ),
     );
 
   return { playHomeegram } as const;

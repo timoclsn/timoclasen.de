@@ -18,6 +18,10 @@ export const nowPlaying = createQuery({
     if (nowPlaying === null || nowPlaying.item === null) {
       const recentlyPlayed = await getRecentlyPlayed();
 
+      if (!recentlyPlayed) {
+        throw new Error("Nothing playing and no recently played tracks");
+      }
+
       const track = recentlyPlayed.track;
       const artist = track.artists[0];
       const image = track.album.images[0];

@@ -1,10 +1,10 @@
 import { ReactNode, Suspense } from "react";
-import { ErrorBoundary } from "../ErrorBoundary/ErrorBoundary";
+import { ErrorBoundary, Fallback } from "../ErrorBoundary/ErrorBoundary";
 
 interface AwaitProps<T> {
   promise: Promise<T>;
   loading?: ReactNode;
-  error?: ReactNode;
+  error?: Fallback;
   children: (value: T) => JSX.Element | null;
 }
 

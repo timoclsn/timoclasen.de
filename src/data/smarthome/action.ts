@@ -7,9 +7,7 @@ import { zfd } from "zod-form-data";
 import { ActionError } from "../../lib/data/errors";
 import {
   DatabaseService,
-  DevToolsLive,
   HomeeService,
-  NodeSdkLive,
   incrementBalconyCounter,
 } from "../../lib/effect";
 import { createAction } from "../clients";
@@ -42,24 +40,22 @@ export const turnOnBalcony = createAction({
 
       yield* Effect.logInfo(`Balcony light turned on ${color}`);
     }).pipe(
-      Effect.provide(DevToolsLive),
-      Effect.provide(NodeSdkLive),
       Effect.provide(HomeeService.Live),
       Effect.provide(DatabaseService.Live),
       Effect.mapError((error) => {
-        let message = "";
         switch (error._tag) {
           case "PlayHomeegramError":
-            message = "Balkonlampe konnte nicht eingeschaltet werden.";
-            break;
+            return new ActionError({
+              message:
+                "Die Balkonbeleuchtung konnte nicht eingeschaltet werden.",
+              cause: error.cause,
+            });
           case "IncrementBalconyCounterError":
-            message = `Der ${error.color} Zähler konnte nicht erhöht werden.`;
-            break;
-          default:
-            message = "Unbekannter Fehler";
-            break;
+            return new ActionError({
+              message: `Der ${error.color} Zähler konnte nicht erhöht werden.`,
+              cause: error.cause,
+            });
         }
-        return new ActionError({ message, cause: error.cause });
       }),
       Effect.orDie,
       Effect.runPromise,

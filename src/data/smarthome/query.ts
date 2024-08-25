@@ -1,3 +1,6 @@
+import { Effect } from "effect";
+import { QueryError } from "../../lib/data/errors";
+import { DatabaseService, queryBalconyControl } from "../../lib/effect";
 import { AttributeType, NodeState } from "../../lib/enums";
 import { formatValue, getHexColor, getNodes, isLight } from "../../lib/homee";
 import { createQuery } from "../clients";
@@ -130,17 +133,35 @@ export const controlCount = createQuery({
       tags: ["control-count"],
     },
   },
-  query: async ({ ctx }) => {
-    const { db } = ctx;
-    const rawCounts = await db.query.balconyControl.findMany();
+  query: async () =>
+    Effect.gen(function* () {
+      yield* Effect.logInfo("Querying balcony control count");
 
-    return rawCounts.reduce(
-      (acc, count) => ({ ...acc, [count.color]: count.count }),
-      {
-        red: 0,
-        green: 0,
-        blue: 0,
-      },
-    );
-  },
+      const rawCounts = yield* queryBalconyControl;
+
+      yield* Effect.logInfo("Queried balcony control count", rawCounts);
+
+      return rawCounts.reduce(
+        (acc, count) => ({ ...acc, [count.color]: count.count }),
+        {
+          red: 0,
+          green: 0,
+          blue: 0,
+        },
+      );
+    }).pipe(
+      Effect.provide(DatabaseService.Live),
+      Effect.mapError((error) => {
+        switch (error._tag) {
+          case "QueryBalconyCounterError":
+            return new QueryError({
+              message:
+                "Der Balkonbeleuchtung-Zähler konnte nicht abgefragt werden.",
+              cause: error.cause,
+            });
+        }
+      }),
+      Effect.orDie,
+      Effect.runPromise,
+    ),
 });
