@@ -1,7 +1,7 @@
 import { isNotFoundError } from "next/dist/client/components/not-found";
 import { isRedirectError } from "next/dist/client/components/redirect";
 import { z } from "zod";
-import { DEFAULT_ERROR_MESSAGE, isActionError } from "../errors";
+import { DEFAULT_ACTION_ERROR_MESSAGE, isActionError } from "../errors";
 import { CreateClientOptions, MaybePromise, ServerAction } from "../types";
 import { id } from "../utils";
 
@@ -71,7 +71,7 @@ export const createActionClient = <Context>(
 
         const message = isActionError(error)
           ? error.message
-          : DEFAULT_ERROR_MESSAGE;
+          : DEFAULT_ACTION_ERROR_MESSAGE;
 
         return {
           status: "error",

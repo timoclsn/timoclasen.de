@@ -1,24 +1,28 @@
 "use client";
 
 import { Component, ErrorInfo, ReactNode } from "react";
+import { isQueryError } from "../../lib/data/errors";
 import { track } from "../../lib/tracking";
+
+type FallbackComponent = (props: { message?: string }) => ReactNode;
+export type Fallback = ReactNode | FallbackComponent;
 
 interface Props {
   children?: ReactNode;
-  fallback?: ReactNode;
+  fallback?: Fallback;
 }
 
 interface State {
-  hasError: boolean;
+  error: Error | null;
 }
 
 export class ErrorBoundary extends Component<Props, State> {
   public state: State = {
-    hasError: false,
+    error: null,
   };
 
-  public static getDerivedStateFromError(_: Error): State {
-    return { hasError: true };
+  public static getDerivedStateFromError(error: Error): State {
+    return { error };
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
@@ -30,7 +34,17 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   public render() {
-    if (this.state.hasError) {
+    if (this.state.error) {
+      if (typeof this.props.fallback === "function") {
+        const Fallback = this.props.fallback;
+        const queryErrorMessage = this.state.error.message.split(":")[1];
+        const message = isQueryError(this.state.error)
+          ? queryErrorMessage
+          : undefined;
+
+        return <Fallback message={message} />;
+      }
+
       return this.props.fallback;
     }
 

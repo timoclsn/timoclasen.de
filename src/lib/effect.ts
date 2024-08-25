@@ -1,15 +1,8 @@
-import { DevTools } from "@effect/experimental";
-import { NodeSdk } from "@effect/opentelemetry";
 import {
   HttpClient,
   HttpClientRequest,
   HttpClientResponse,
 } from "@effect/platform";
-import { NodeSocket } from "@effect/platform-node";
-import {
-  BatchSpanProcessor,
-  ConsoleSpanExporter,
-} from "@opentelemetry/sdk-trace-base";
 import { eq, sql } from "drizzle-orm";
 import { Context, Data, Effect, Layer, Schedule } from "effect";
 import { balconyControl } from "../../db/schema";
@@ -17,18 +10,9 @@ import { db } from "./db";
 
 const { HOMEE_ID, HOMEE_ACCESS_TOKEN } = process.env;
 
-// Observability
-
-export const NodeSdkLive = NodeSdk.layer(() => ({
-  resource: { serviceName: "timoclasen-de" },
-  spanProcessor: new BatchSpanProcessor(new ConsoleSpanExporter()),
-}));
-
-export const DevToolsLive = DevTools.layerWebSocket().pipe(
-  Layer.provide(NodeSocket.layerWebSocketConstructor),
-);
-
+//
 // Database service
+//
 
 export class DatabaseService extends Context.Tag("Database")<
   DatabaseService,
@@ -43,11 +27,11 @@ export class DatabaseService extends Context.Tag("Database")<
 
 export class IncrementBalconyCounterError extends Data.TaggedError(
   "IncrementBalconyCounterError",
-)<{ message: string; cause?: unknown }> {}
+)<{ color: string; cause?: unknown }> {}
 
 export class QueryBalconyCounterError extends Data.TaggedError(
   "QueryBalconyCounterError",
-)<{ message: string; cause?: unknown }> {}
+)<{ cause?: unknown }> {}
 
 export const incrementBalconyCounter = (color: "red" | "blue" | "green") =>
   Effect.gen(function* () {
@@ -63,11 +47,11 @@ export const incrementBalconyCounter = (color: "red" | "blue" | "green") =>
           .where(eq(balconyControl.color, color)),
       catch: (error) =>
         new IncrementBalconyCounterError({
-          message: `Der ${color} Zähler konnte nicht erhöht werden.` as const,
+          color,
           cause: error,
         }),
     });
-  }).pipe(Effect.withSpan("incrementBalconyCounter"));
+  });
 
 export const queryBalconyControl = Effect.gen(function* () {
   const { db } = yield* DatabaseService;
@@ -76,17 +60,16 @@ export const queryBalconyControl = Effect.gen(function* () {
     try: () => db.query.balconyControl.findMany(),
     catch: (error) =>
       new QueryBalconyCounterError({
-        message:
-          "Der Balkonlichtzähler konnte nicht abgefragt werden." as const,
         cause: error,
       }),
   });
-}).pipe(Effect.withSpan("queryBalconyCounter"));
+});
 
+//
 // homee service
+//
 
 export class PlayHomeegramError extends Data.TaggedError("PlayHomeegramError")<{
-  message: string;
   cause?: unknown;
 }> {}
 
@@ -117,11 +100,9 @@ const makeHomeeService = Effect.gen(function* () {
       Effect.mapError(
         (error) =>
           new PlayHomeegramError({
-            message: "Balkonlampe konnte nicht eingeschaltet werden." as const,
             cause: error,
           }),
       ),
-      Effect.withSpan("playHomeegram"),
     );
 
   return { playHomeegram } as const;

@@ -1,11 +1,6 @@
 import { Effect } from "effect";
-import { ActionError } from "../../lib/data/errors";
-import {
-  DatabaseService,
-  DevToolsLive,
-  NodeSdkLive,
-  queryBalconyControl,
-} from "../../lib/effect";
+import { QueryError } from "../../lib/data/errors";
+import { DatabaseService, queryBalconyControl } from "../../lib/effect";
 import { AttributeType, NodeState } from "../../lib/enums";
 import { formatValue, getHexColor, getNodes, isLight } from "../../lib/homee";
 import { createQuery } from "../clients";
@@ -151,12 +146,17 @@ export const controlCount = createQuery({
         },
       );
     }).pipe(
-      Effect.provide(DevToolsLive),
-      Effect.provide(NodeSdkLive),
       Effect.provide(DatabaseService.Live),
-      Effect.mapError(
-        ({ message, cause }) => new ActionError({ message, cause }),
-      ),
+      Effect.mapError((error) => {
+        switch (error._tag) {
+          case "QueryBalconyCounterError":
+            return new QueryError({
+              message:
+                "Der Balkonbeleuchtung-Zähler konnte nicht abgefragt werden.",
+              cause: error.cause,
+            });
+        }
+      }),
       Effect.orDie,
       Effect.runPromise,
     ),
