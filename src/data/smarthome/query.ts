@@ -135,7 +135,11 @@ export const controlCount = createQuery({
   },
   query: async () =>
     Effect.gen(function* () {
+      yield* Effect.logInfo("Querying balcony control count");
+
       const rawCounts = yield* queryBalconyControl;
+
+      yield* Effect.logInfo("Queried balcony control count", rawCounts);
 
       return rawCounts.reduce(
         (acc, count) => ({ ...acc, [count.color]: count.count }),
