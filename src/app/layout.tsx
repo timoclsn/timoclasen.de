@@ -1,7 +1,6 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { cx } from "cva";
 import { Inter } from "next/font/google";
-import { draftMode } from "next/headers";
 import Script from "next/script";
 import { ReactNode } from "react";
 import { query } from "../api/query";
@@ -10,10 +9,10 @@ import { Footer } from "../components/Footer/Footer";
 import { Navigation } from "../components/Navigation/Navigation";
 import { NoFlash } from "../components/NoFlash/NoFlash";
 import { Container } from "../design-system/Container/Container";
+import "../lib/env";
 import { createGenerateMetadata, openGraph } from "../lib/metadata";
 import "../styles/globals.css";
 import { Providers } from "./Providers";
-import "../lib/env";
 
 const fontSans = Inter({
   subsets: ["latin"],
@@ -61,7 +60,6 @@ interface Props {
 }
 
 const RootLayout = ({ children }: Props) => {
-  const isDraftMode = draftMode().isEnabled;
   return (
     <>
       <Script data-no-cookie data-api="/_hive" src="/bee.js" />
@@ -73,7 +71,7 @@ const RootLayout = ({ children }: Props) => {
         <body className="flex min-h-screen flex-col bg-light text-base text-dark antialiased dark:bg-dark dark:text-light lg:text-lg xl:text-xl">
           <NoFlash />
           <Providers>
-            {isDraftMode && <DraftModeBanner />}
+            <DraftModeBanner />
             <Navigation />
             <main id="skip">
               <Container>{children}</Container>

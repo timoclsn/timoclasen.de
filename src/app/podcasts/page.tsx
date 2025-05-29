@@ -18,16 +18,17 @@ export const generateMetadata = createGenerateMetadata(async () => {
 });
 
 interface Props {
-  searchParams: SearchParams;
+  searchParams: Promise<SearchParams>;
 }
 
 const PodcastPage = async ({ searchParams }: Props) => {
   const text = await query.content.textSnippet("Podcasts");
+  const params = await searchParams;
 
   return (
     <>
       <Markdown>{text}</Markdown>
-      <Podcasts searchParams={searchParams} />
+      <Podcasts searchParams={params} />
       <Recommendations />
     </>
   );

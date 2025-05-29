@@ -1,8 +1,16 @@
 import { Feather, XCircle } from "lucide-react";
+import { draftMode } from "next/headers";
 import Link from "next/link";
 import { Container } from "../../design-system/Container/Container";
 
-export const DraftModeBanner = () => {
+export const DraftModeBanner = async () => {
+  const draft = await draftMode();
+  const isDraftMode = draft.isEnabled;
+
+  if (!isDraftMode) {
+    return null;
+  }
+
   return (
     <div className="w-full bg-highlight text-light dark:bg-highlight-dark">
       <Container>

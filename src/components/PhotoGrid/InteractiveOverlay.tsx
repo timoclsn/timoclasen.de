@@ -15,12 +15,12 @@ const overlayStyles = cva({
 });
 
 interface Props {
-  children: ReactElement;
+  children: ReactElement<{ className?: string; ref?: any }>;
 }
 
 export const InteractiveOverlay = ({ children }: Props) => {
   const clickedRef = useRef(false);
-  const overlayRef = useRef<HTMLDivElement>(null);
+  const overlayRef = useRef<HTMLElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 

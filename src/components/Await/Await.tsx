@@ -1,4 +1,4 @@
-import { ReactNode, Suspense } from "react";
+import { JSX, ReactNode, Suspense } from "react";
 import { ErrorBoundary, Fallback } from "../ErrorBoundary/ErrorBoundary";
 
 interface AwaitProps<T> {

@@ -1,5 +1,5 @@
-import { isNotFoundError } from "next/dist/client/components/not-found";
-import { isRedirectError } from "next/dist/client/components/redirect";
+import { isHTTPAccessFallbackError } from "next/dist/client/components/http-access-fallback/http-access-fallback.js";
+import { isRedirectError } from "next/dist/client/components/redirect-error.js";
 import { z } from "zod";
 import { DEFAULT_ACTION_ERROR_MESSAGE, isActionError } from "../errors";
 import { CreateClientOptions, MaybePromise, ServerAction } from "../types";
@@ -63,7 +63,7 @@ export const createActionClient = <Context>(
         // The next/navigation functions (redirect() and notFound()) operate by deliberately triggering an error,
         // which will then be handled internally by Next.js. In this specific scenario,
         // we must intentionally propagate the error further.
-        if (isRedirectError(error) || isNotFoundError(error)) {
+        if (isRedirectError(error) || isHTTPAccessFallbackError(error)) {
           throw error;
         }
 
