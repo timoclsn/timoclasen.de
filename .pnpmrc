@@ -1,5 +1,0 @@
-only-built-dependencies[]=@vercel/speed-insights
-only-built-dependencies[]=cypress
-only-built-dependencies[]=esbuild
-only-built-dependencies[]=sharp
-only-built-dependencies[]=unrs-resolver

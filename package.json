@@ -12,6 +12,15 @@
     "type": "git",
     "url": "git+https://github.com/timoclsn/timoclasen.de.git"
   },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@vercel/speed-insights",
+      "cypress",
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
+  },
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",
