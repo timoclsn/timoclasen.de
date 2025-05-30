@@ -8,7 +8,7 @@ interface Props {
 
 export function SoundBars({ isPlaying, color }: Props) {
   const barVariants = cva({
-    base: ["w-[3px] rounded-sm", styles.soundBars],
+    base: ["w-[3px] rounded-xs", styles.soundBars],
     variants: {
       isPlaying: {
         true: styles.isPlaying,

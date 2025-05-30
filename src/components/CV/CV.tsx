@@ -12,7 +12,7 @@ export const CV = async () => {
       <ol className="space-y-6 sm:space-y-8">
         {cvEntries.map((entry, index) => (
           <li
-            className="flex rounded-3xl bg-dark bg-opacity-10 p-4 dark:bg-light dark:bg-opacity-10"
+            className="flex rounded-3xl bg-dark/10 p-4 dark:bg-light/10"
             key={index}
           >
             <div className="flex-none">
