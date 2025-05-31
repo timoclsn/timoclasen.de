@@ -39,8 +39,8 @@ importers:
         specifier: 19.1.0-rc.2
         version: 19.1.0-rc.2
       bright:
-        specifier: ^0.8.5
-        version: 0.8.6(react@19.1.0)
+        specifier: ^1.0.0
+        version: 1.0.0(react@19.1.0)
       cva:
         specifier: 1.0.0-beta.1
         version: 1.0.0-beta.1(typescript@5.8.3)
@@ -389,8 +389,8 @@ packages:
   '@bcoe/v8-coverage@0.2.3':
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
 
-  '@code-hike/lighter@0.8.1':
-    resolution: {integrity: sha512-St4rPmB7C2EWmAK1sAbvD3lZeM7UDInVDMjQDzEDsu4Q3B3AqF25vXedQK51U0UO0MCOASgBBdTiNwvJAfIqMQ==}
+  '@code-hike/lighter@1.0.3':
+    resolution: {integrity: sha512-LU0TbZfu3L3fQZ7y9tZHttnxyFm7ewU96arGMFnjLbvFj+onYfVkznhQOmU1ZsQtv9rpQzZ313GRz6hCGDrlJQ==}
 
   '@colors/colors@1.5.0':
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
@@ -2334,6 +2334,9 @@ packages:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}
     engines: {node: '>=8'}
 
+  ansi-sequence-parser@1.1.1:
+    resolution: {integrity: sha512-vJXt3yiaUL4UU546s3rPXlsry/RnM730G1+HkpKE012AN0sx1eOrxSu95oKDIonskeLTijMgqWZ3uDEe3NFvyg==}
+
   ansi-styles@4.3.0:
     resolution: {integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==}
     engines: {node: '>=8'}
@@ -2508,8 +2511,8 @@ packages:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
     engines: {node: '>=8'}
 
-  bright@0.8.6:
-    resolution: {integrity: sha512-WnuP+TTMUOhPpM6aRQOwKaEPk2s6sTauDwF8spDh+D+5ug78uj2YJY/zovCCJ4IR8ohZFtaDjcAgSWR9OzZmng==}
+  bright@1.0.0:
+    resolution: {integrity: sha512-AX93OXFCdQQrnCmyZ85gazHhKBfKcTLnj7Hx3DM3vJwuU7VONDlB58vh3hJZ9rKWLTULbScAmuapgNgzK4u4fQ==}
     peerDependencies:
       react: ^18 || ^19
 
@@ -5267,6 +5270,9 @@ packages:
     resolution: {integrity: sha512-WMi/OQ2axVTf/ykqCQgXiIct+mSQDFdH2fkwhPwgEwvJ1kSzZRiinb0zF2Xb8u4+OqPChmyI6MEu4EezNJz+FQ==}
     hasBin: true
 
+  tm-grammars@1.23.25:
+    resolution: {integrity: sha512-S/PLZiF/Ex2MPfG33nRMlyj5g+oHmj2DE9qWZ7tEeXZPNd7fZs1BVajMjBB5oRrGyUIlp8pLY3fEeIJ53doHbg==}
+
   tmp@0.2.3:
     resolution: {integrity: sha512-nZD7m9iCPC5g0pYmcaxogYKggSfLsdxl8of3Q/oIbqCqLLIO9IAF0GWjX1z9NZRHPiXv8Wex4yDCaZsgEw0Y8w==}
     engines: {node: '>=14.14'}
@@ -5826,7 +5832,10 @@ snapshots:
 
   '@bcoe/v8-coverage@0.2.3': {}
 
-  '@code-hike/lighter@0.8.1': {}
+  '@code-hike/lighter@1.0.3':
+    dependencies:
+      ansi-sequence-parser: 1.1.1
+      tm-grammars: 1.23.25
 
   '@colors/colors@1.5.0':
     optional: true
@@ -8127,6 +8136,8 @@ snapshots:
 
   ansi-regex@5.0.1: {}
 
+  ansi-sequence-parser@1.1.1: {}
+
   ansi-styles@4.3.0:
     dependencies:
       color-convert: 2.0.1
@@ -8339,9 +8350,9 @@ snapshots:
     dependencies:
       fill-range: 7.1.1
 
-  bright@0.8.6(react@19.1.0):
+  bright@1.0.0(react@19.1.0):
     dependencies:
-      '@code-hike/lighter': 0.8.1
+      '@code-hike/lighter': 1.0.3
       react: 19.1.0
       server-only: 0.0.1
 
@@ -11793,6 +11804,8 @@ snapshots:
   tldts@6.1.86:
     dependencies:
       tldts-core: 6.1.86
+
+  tm-grammars@1.23.25: {}
 
   tmp@0.2.3: {}
 
