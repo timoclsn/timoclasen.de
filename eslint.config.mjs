@@ -4,12 +4,6 @@ const compat = new FlatCompat({
   baseDirectory: import.meta.dirname,
 });
 
-const eslintConfig = [
-  ...compat.extends(
-    "next/core-web-vitals",
-    "plugin:cypress/recommended",
-    "prettier",
-  ),
-];
+const eslintConfig = [...compat.extends("next/core-web-vitals", "prettier")];
 
 export default eslintConfig;
