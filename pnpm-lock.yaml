@@ -60,8 +60,8 @@ importers:
         specifier: ^0.511.0
         version: 0.511.0(react@19.1.0)
       match-sorter:
-        specifier: 6.3.4
-        version: 6.3.4
+        specifier: 8.0.2
+        version: 8.0.2
       next:
         specifier: 15.4.0-canary.56
         version: 15.4.0-canary.56(@babel/core@7.27.3)(babel-plugin-react-compiler@19.1.0-rc.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -4284,8 +4284,8 @@ packages:
     resolution: {integrity: sha512-o5vL7aDWatOTX8LzaS1WMoaoxIiLRQJuIKKe2wAw6IeULDHaqbiqiggmx+pKvZDb1Sj+pE46Sn1T7lCqfFtg1Q==}
     engines: {node: '>=16'}
 
-  match-sorter@6.3.4:
-    resolution: {integrity: sha512-jfZW7cWS5y/1xswZo8VBOdudUiSd9nifYRWphc9M5D/ee4w4AoXLgBEdRbgVaxbMuagBPeUC5y2Hi8DO6o9aDg==}
+  match-sorter@8.0.2:
+    resolution: {integrity: sha512-5mXYiqA0QKXQDVaXtuMb4JfQFu5z4rzpgPUi3b+7+psOV+Q85RqVRrs8+kCorzR38LHv6ftkpSbbP5qhuPu3SQ==}
 
   math-intrinsics@1.1.0:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
@@ -10518,7 +10518,7 @@ snapshots:
 
   markdown-extensions@2.0.0: {}
 
-  match-sorter@6.3.4:
+  match-sorter@8.0.2:
     dependencies:
       '@babel/runtime': 7.27.3
       remove-accents: 0.5.0

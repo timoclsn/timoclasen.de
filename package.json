@@ -59,7 +59,7 @@
     "drizzle-orm": "^0.44.1",
     "effect": "^3.6.4",
     "lucide-react": "^0.511.0",
-    "match-sorter": "6.3.4",
+    "match-sorter": "8.0.2",
     "next": "15.4.0-canary.56",
     "next-mdx-remote": "^5.0.0",
     "plaiceholder": "3.0.0",
