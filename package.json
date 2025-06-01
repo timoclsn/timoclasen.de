@@ -42,7 +42,7 @@
     "db:reset": "rm ./local.db && pnpm db:push && pnpm db:seed"
   },
   "dependencies": {
-    "@effect/platform": "^0.62.1",
+    "@effect/platform": "^0.84.4",
     "@formkit/auto-animate": "^0.8.2",
     "@libsql/client": "^0.15.8",
     "@mapbox/polyline": "1.2.1",
@@ -57,7 +57,7 @@
     "date-fns": "4.1.0",
     "date-fns-tz": "3.2.0",
     "drizzle-orm": "^0.44.1",
-    "effect": "^3.6.4",
+    "effect": "^3.16.3",
     "lucide-react": "^0.511.0",
     "match-sorter": "8.0.2",
     "next": "15.4.0-canary.56",
