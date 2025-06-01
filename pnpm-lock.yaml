@@ -117,11 +117,11 @@ importers:
         specifier: 8.18.2
         version: 8.18.2
       zod:
-        specifier: 3.25.42
-        version: 3.25.42
+        specifier: 3.25.46
+        version: 3.25.46
       zod-form-data:
         specifier: ^2.0.7
-        version: 2.0.7(zod@3.25.42)
+        version: 2.0.7(zod@3.25.46)
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3.3.1
@@ -5649,8 +5649,8 @@ packages:
     peerDependencies:
       zod: '>= 3.11.0'
 
-  zod@3.25.42:
-    resolution: {integrity: sha512-PcALTLskaucbeHc41tU/xfjfhcz8z0GdhhDcSgrCTmSazUuqnYqiXO63M0QUBVwpBlsLsNVn5qHSC5Dw3KZvaQ==}
+  zod@3.25.46:
+    resolution: {integrity: sha512-IqRxcHEIjqLd4LNS/zKffB3Jzg3NwqJxQQ0Ns7pdrvgGkwQsEBdEQcOHaBVqvvZArShRzI39+aMST3FBGmTrLQ==}
 
   zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
@@ -12226,11 +12226,11 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zod-form-data@2.0.7(zod@3.25.42):
+  zod-form-data@2.0.7(zod@3.25.46):
     dependencies:
       '@rvf/set-get': 7.0.1
-      zod: 3.25.42
+      zod: 3.25.46
 
-  zod@3.25.42: {}
+  zod@3.25.46: {}
 
   zwitch@2.0.4: {}
