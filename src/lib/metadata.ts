@@ -6,7 +6,7 @@ export const createGenerateMetadata = (
   generateMetadata: ({
     params,
   }: {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
   }) => Promise<Metadata>,
 ) => generateMetadata;
 

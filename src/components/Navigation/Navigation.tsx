@@ -16,7 +16,7 @@ export const Navigation = () => {
   return (
     <header
       className={cx(
-        "xl:mb-22 mb-8 bg-light bg-opacity-80 py-4 dark:bg-dark dark:bg-opacity-80 md:mb-20 md:py-6",
+        "xl:mb-22 mb-8 bg-light/80 py-4 dark:bg-dark/80 md:mb-20 md:py-6",
         styles.stickyNav,
       )}
     >
@@ -74,7 +74,7 @@ export const Navigation = () => {
             <button
               type="button"
               className={cx(
-                "h-8 w-8 focus-visible:outline-none",
+                "focus-visible:outline-hidden h-8 w-8",
                 styles.menuIcon,
               )}
               aria-controls="mobile-menu"

@@ -17,7 +17,8 @@ export const queryContent = async <TSchema extends z.ZodTypeAny>(
   // Draft Mode is only available in server components
   // Add try catch to prevent error in other environments
   try {
-    isDraftMode = draftMode().isEnabled;
+    const draft = await draftMode();
+    isDraftMode = draft.isEnabled;
   } catch (error) {
     // Ignore error
   }

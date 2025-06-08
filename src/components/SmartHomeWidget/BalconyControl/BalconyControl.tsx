@@ -5,7 +5,7 @@ import { BalconyLight } from "./BalconyLight";
 export const BalconyControl = () => {
   return (
     <div className="flex justify-center">
-      <div className="w-full max-w-screen-sm space-y-2 rounded-3xl bg-dark bg-opacity-10 px-6 py-6 dark:bg-light dark:bg-opacity-10 xl:px-12 xl:py-12">
+      <div className="max-w-(--breakpoint-sm) w-full space-y-2 rounded-3xl bg-dark/10 px-6 py-6 dark:bg-light/10 xl:px-12 xl:py-12">
         <div className="flex gap-6">
           <BalconyLight />
           <div>

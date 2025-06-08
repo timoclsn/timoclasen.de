@@ -1,7 +1,7 @@
 import {
+  FetchHttpClient,
   HttpClient,
   HttpClientRequest,
-  HttpClientResponse,
 } from "@effect/platform";
 import { eq, sql } from "drizzle-orm";
 import { Context, Data, Effect, Layer, Schedule } from "effect";
@@ -94,9 +94,7 @@ const makeHomeeService = Effect.gen(function* () {
   );
 
   const playHomeegram = (homeegramID: number) =>
-    HttpClientRequest.put(`/homeegrams/${homeegramID}?play=1`).pipe(
-      client,
-      HttpClientResponse.text,
+    client.put(`/homeegrams/${homeegramID}?play=1`).pipe(
       Effect.mapError(
         (error) =>
           new PlayHomeegramError({
@@ -113,6 +111,6 @@ export class HomeeService extends Context.Tag("HomeeService")<
   Effect.Effect.Success<typeof makeHomeeService>
 >() {
   static Live = Layer.effect(HomeeService, makeHomeeService).pipe(
-    Layer.provide(HttpClient.layer),
+    Layer.provide(FetchHttpClient.layer),
   );
 }

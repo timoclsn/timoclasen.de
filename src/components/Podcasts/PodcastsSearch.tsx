@@ -38,7 +38,7 @@ export const PodcastsSearch = () => {
         placeholder="Podcasts durchsuchen"
         onChange={handleChange}
         autoComplete="off"
-        className="w-full rounded-xl bg-dark bg-opacity-10 px-4 py-2 text-base placeholder-dark placeholder-opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight dark:bg-light dark:bg-opacity-10 dark:placeholder-light dark:placeholder-opacity-60 dark:focus-visible:ring-highlight-dark"
+        className="focus-visible:outline-hidden w-full rounded-xl bg-dark/10 px-4 py-2 text-base placeholder-dark placeholder-opacity-60 focus-visible:ring-2 focus-visible:ring-highlight dark:bg-light/10 dark:placeholder-light dark:placeholder-opacity-60 dark:focus-visible:ring-highlight-dark"
       />
       <div className="absolute right-0 top-0 flex h-full items-center justify-center px-4">
         {isPending ? (

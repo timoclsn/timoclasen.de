@@ -25,7 +25,7 @@ export const SwitchMode = () => {
       aria-label="Farbschema wechseln"
       type="button"
       className={cx(
-        "h-8 w-8 flex-none overflow-hidden rounded-xl bg-dark bg-opacity-10 text-highlight focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight dark:bg-light dark:bg-opacity-10 dark:text-highlight-dark dark:focus-visible:ring-highlight-dark",
+        "focus-visible:outline-hidden h-8 w-8 flex-none overflow-hidden rounded-xl  bg-dark/10 text-highlight focus-visible:ring-2 focus-visible:ring-highlight dark:bg-light/10 dark:text-highlight-dark dark:focus-visible:ring-highlight-dark",
         styles.switchMode,
       )}
       onClick={handleThemeChange}

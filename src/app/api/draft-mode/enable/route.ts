@@ -12,6 +12,7 @@ export const GET = async (request: Request) => {
     return new Response("Invalid secret or slug", { status: 401 });
   }
 
-  draftMode().enable();
+  const draft = await draftMode();
+  draft.enable();
   redirect(slug);
 };

@@ -16,11 +16,9 @@ export const WidgetLayout = ({
 }: Props) => {
   const bgColor = highlight
     ? "bg-highlight dark:bg-highlight-dark"
-    : `bg-dark dark:bg-light ${
-        transparent
-          ? "bg-opacity-0 dark:bg-opacity-0"
-          : "bg-opacity-10 dark:bg-opacity-10"
-      }`;
+    : transparent
+      ? "bg-dark/0 dark:bg-light/0"
+      : "bg-dark/10 dark:bg-light/10";
 
   const textColor = highlight
     ? "text-light dark:text-light"

@@ -15,7 +15,7 @@ type Props =
 
 export const DashboardElement = (props: Props) => {
   return (
-    <div className="flex rounded-3xl bg-dark bg-opacity-10 p-4 dark:bg-light dark:bg-opacity-10">
+    <div className="flex rounded-3xl bg-dark/10  p-4 dark:bg-light/10">
       {props.isLoading ? (
         <Skeleton circle height="64px" width="64px" />
       ) : (

@@ -6,7 +6,7 @@ import { Mdx } from "../../../design-system/Markdown/Mdx";
 import { createGenerateMetadata, ogImage } from "../../../lib/metadata";
 
 export const generateMetadata = createGenerateMetadata(async ({ params }) => {
-  const { slug } = params;
+  const { slug } = await params;
   const blogPost = await query.content.blogPost(slug);
 
   return {
@@ -50,13 +50,13 @@ export const generateStaticParams = async () => {
 };
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 const BlogPostPage = async ({ params }: Props) => {
-  const { slug } = params;
+  const { slug } = await params;
   const blogPost = await query.content.blogPost(slug);
 
   return (

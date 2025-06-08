@@ -10,7 +10,7 @@ export const errorStyles =
   "absolute left-0 bottom-0 -mb-6 text-red-700 text-sm slide-in-from-top-full duration-100 ease-in-out fade-in animate-in";
 
 const inputStyles =
-  "block w-full p-4 text-base bg-light dark:bg-dark rounded-xl placeholder-dark dark:placeholder-light placeholder-opacity-60 dark:placeholder-opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-highlight dark:focus-visible:ring-highlight-dark";
+  "block w-full p-4 text-base bg-light dark:bg-dark rounded-xl placeholder-dark dark:placeholder-light placeholder-opacity-60 dark:placeholder-opacity-60 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-highlight dark:focus-visible:ring-highlight-dark";
 
 export const Recommendations = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -27,7 +27,7 @@ export const Recommendations = () => {
   });
 
   return (
-    <div className="rounded-3xl bg-dark bg-opacity-10 px-6 py-12 dark:bg-light dark:bg-opacity-10 xl:px-12 xl:py-20">
+    <div className="rounded-3xl bg-dark/10 px-6 py-12 dark:bg-light/10 xl:px-12 xl:py-20">
       <h2 className="mb-4 text-xl font-bold md:text-2xl lg:text-3xl">
         Empfehlung
       </h2>

@@ -24,7 +24,7 @@ export const Mdx = ({ children, className }: Props) => {
         return null;
       }
       return (
-        <span className="not-prose aspect-h-2 aspect-w-3 block rounded-md bg-dark bg-opacity-10 dark:bg-light dark:bg-opacity-10">
+        <span className="not-prose aspect-h-2 aspect-w-3 block rounded-md bg-dark/10 dark:bg-light/10">
           <Image
             src={`https:${src}`}
             alt={alt}

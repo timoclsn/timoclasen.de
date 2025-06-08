@@ -9,7 +9,7 @@ export const TouchTarget = ({ children }: Props) => {
     <>
       {children}
       <span
-        className="width-[max(100%,2.75rem)] height-[max(100%,2.75rem)] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 [@media(pointer:fine)]:hidden"
+        className="width-[max(100%,2.75rem)] height-[max(100%,2.75rem)] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-fine:hidden"
         aria-hidden="true"
       />
     </>

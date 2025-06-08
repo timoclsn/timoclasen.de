@@ -1,8 +1,43 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@config '../../tailwind.config.js';
+
+@theme {
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1920px;
+}
+
+@utility debug {
+  @apply ring-1 ring-inset ring-red-500;
+}
+
+@utility icon-md {
+  & svg {
+    width: 20px;
+    height: 20px;
+  }
+}
 
 @layer base {
+  /*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
   html {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
@@ -27,16 +62,5 @@
 
   address {
     @apply font-normal;
-  }
-}
-
-@layer utilities {
-  .debug {
-    @apply ring-1 ring-inset ring-red-500;
-  }
-
-  .icon-md svg {
-    width: 20px;
-    height: 20px;
   }
 }

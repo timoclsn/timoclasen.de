@@ -23,7 +23,7 @@ interface NowPlayingInnerProps {
 const NowPlayingInner = ({ data }: NowPlayingInnerProps) => {
   return (
     <section className="flex justify-center">
-      <div className="w-full space-y-4 rounded-3xl bg-dark bg-opacity-10 px-6 py-6 dark:bg-light dark:bg-opacity-10 sm:w-auto sm:min-w-[450px] xl:px-12 xl:py-12">
+      <div className="w-full space-y-4 rounded-3xl bg-dark/10 px-6 py-6 dark:bg-light/10 sm:w-auto sm:min-w-[450px] xl:px-12 xl:py-12">
         <div className="flex gap-6">
           {data && data.image ? (
             <Image
