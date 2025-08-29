@@ -1,7 +1,6 @@
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { cx } from "cva";
 import { Inter } from "next/font/google";
-import Script from "next/script";
 import { ReactNode } from "react";
 import { query } from "../api/query";
 import { DraftModeBanner } from "../components/DraftModeBanner/DraftModeBanner";
@@ -61,27 +60,24 @@ interface Props {
 
 const RootLayout = ({ children }: Props) => {
   return (
-    <>
-      <Script data-no-cookie data-api="/_hive" src="/bee.js" />
-      <html
-        lang="de"
-        className={cx(fontSans.variable, "min-h-screen")}
-        suppressHydrationWarning
-      >
-        <body className="flex min-h-screen flex-col bg-light text-base text-dark antialiased dark:bg-dark dark:text-light lg:text-lg xl:text-xl">
-          <NoFlash />
-          <Providers>
-            <DraftModeBanner />
-            <Navigation />
-            <main id="skip">
-              <Container>{children}</Container>
-            </main>
-            <Footer />
-          </Providers>
-          <SpeedInsights />
-        </body>
-      </html>
-    </>
+    <html
+      lang="de"
+      className={cx(fontSans.variable, "min-h-screen")}
+      suppressHydrationWarning
+    >
+      <body className="bg-light text-dark dark:bg-dark dark:text-light flex min-h-screen flex-col text-base antialiased lg:text-lg xl:text-xl">
+        <NoFlash />
+        <Providers>
+          <DraftModeBanner />
+          <Navigation />
+          <main id="skip">
+            <Container>{children}</Container>
+          </main>
+          <Footer />
+        </Providers>
+        <SpeedInsights />
+      </body>
+    </html>
   );
 };
 
