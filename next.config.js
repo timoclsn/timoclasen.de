@@ -29,6 +29,14 @@ const config = {
     ppr: true,
     reactCompiler: true,
   },
+  async rewrites() {
+    return [
+      {
+        source: "/stonks.js",
+        destination: "https://assets.onedollarstats.com/stonks.js",
+      },
+    ];
+  },
 };
 
 module.exports = config;

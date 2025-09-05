@@ -31,13 +31,17 @@ export const track = <TEventKey extends keyof TrackingEvents>(
     : [event: TEventKey, data: TrackingEvents[TEventKey]]
 ) => {
   const [event, data] = args;
-  if (NEXT_PUBLIC_VERCEL_ENV === "production") {
-    // Do nothing for now
-  }
+
   if (NODE_ENV === "development") {
-    console.info("Tracking event:", {
-      event,
-      data,
-    });
+    console.info("Tracking event:", { event, data });
+    return;
   }
+
+  if (NEXT_PUBLIC_VERCEL_ENV !== "production") return;
+
+  // @ts-expect-error - stonks is loaded from external script
+  if (typeof window === "undefined" || !window.stonks) return;
+
+  // @ts-expect-error - stonks is loaded from external script
+  window.stonks.event(event, data);
 };
