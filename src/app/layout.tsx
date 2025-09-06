@@ -62,10 +62,7 @@ interface Props {
 const RootLayout = ({ children }: Props) => {
   return (
     <>
-      <Script
-        src="https://assets.onedollarstats.com/stonks.js"
-        data-url="/ods/events"
-      />
+      <Script src="/stonks.js" data-url="/ods/events" />
       <html
         lang="de"
         className={cx(fontSans.variable, "min-h-screen")}
