@@ -62,7 +62,7 @@ interface Props {
 const RootLayout = ({ children }: Props) => {
   return (
     <>
-      <Script src="/stonks.js" data-url="/ods/events" />
+      <Script src="/ods/script" data-url="/ods/events" />
       <html
         lang="de"
         className={cx(fontSans.variable, "min-h-screen")}

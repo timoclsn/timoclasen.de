@@ -32,7 +32,7 @@ const config = {
   async rewrites() {
     return [
       {
-        source: "/stonks.js",
+        source: "/ods/script",
         destination: "https://assets.onedollarstats.com/stonks.js",
       },
       {
