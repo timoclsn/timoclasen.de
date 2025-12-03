@@ -60,7 +60,7 @@
     "effect": "^3.16.3",
     "lucide-react": "^0.511.0",
     "match-sorter": "8.0.2",
-    "next": "15.4.0-canary.56",
+    "next": "15.4.8",
     "next-mdx-remote": "^5.0.0",
     "plaiceholder": "3.0.0",
     "react": "19.1.0",
