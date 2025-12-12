@@ -4,7 +4,6 @@ const NODE_ENV = process.env.NODE_ENV;
 export interface TrackingEvents {
   "Caught error": {
     componentStack: string;
-    digest: string;
   };
   "Podcast Search": {
     search: string;
