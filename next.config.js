@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const config = {
   reactStrictMode: true,
+  reactCompiler: true,
   images: {
     minimumCacheTTL: 2678400,
     formats: ["image/webp"],
@@ -27,7 +28,6 @@ const config = {
   },
   experimental: {
     ppr: true,
-    reactCompiler: true,
   },
   async rewrites() {
     return [
