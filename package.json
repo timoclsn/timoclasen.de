@@ -61,7 +61,7 @@
     "lucide-react": "^0.511.0",
     "match-sorter": "8.0.2",
     "next": "15.6.0-canary.60",
-    "next-mdx-remote": "^5.0.0",
+    "next-mdx-remote": "^6.0.0",
     "plaiceholder": "3.0.0",
     "react": "19.2.3",
     "react-aria": "^3.40.0",
